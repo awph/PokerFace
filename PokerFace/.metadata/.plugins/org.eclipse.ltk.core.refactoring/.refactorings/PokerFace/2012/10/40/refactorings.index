@@ -1,0 +1,25 @@
+1349188638376	Delete element
+1349188656305	Move compilation unit
+1349188659497	Move compilation unit
+1349188682036	Rename method 'doSomething'
+1349188726599	Rename package 'ch.hearc.coursjava.kitbase.liste'
+1349188737835	Rename package 'ch.hearc.coursjava.kitbase.map'
+1349188748984	Rename package 'ch.hearc.coursjava.kitbase.set'
+1349189084604	Rename method 'afficherV2'
+1349189292164	Rename package 'ch.hearc.coursjava.kitbase.equationquadratique'
+1349189302905	Rename package 'ch.hearc.coursjava.kitbase.equationlineaire'
+1349189545350	Move compilation unit
+1349189550492	Move compilation unit
+1349189556947	Move compilation unit
+1349249894006	Delete element
+1349249992193	Delete element
+1349250480658	Extract method 'de'
+1349250594928	Extract method 'alea0N'
+1349250707388	Rename local variable 'n'
+1349256958929	Rename method 'afficherV1'
+1349257289118	Rename method 'afficherIndice'
+1349257532292	Extract method 'create'
+1349258408609	Rename type 'UseTableauManuelEterogene'
+1349258423835	Rename package 'ch.hearc.coursjava.kitbase.tableau2D.manuel.eterogene'
+1349512966073	Delete element
+1349513172006	Delete element

@@ -1,0 +1,69 @@
+
+package ch.hearc.coursjava.kitbase.tableau2D.manuel.triangulaire;
+
+
+
+public class UseTableauManuelTriangulaire
+	{
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	public static void main(String[] args)
+		{
+		main();
+		}
+
+	public static void main()
+		{
+		int n = 3;
+		float[][] tabTriangulaire = create(n);
+		fill(tabTriangulaire);
+		afficher(tabTriangulaire);
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	private static double[][] cloneOf(double[][] tabSource)
+		{
+		
+		}
+	
+	private static void afficher(float[][] tab2D)
+		{
+		for(float[] ligne:tab2D)
+			{
+			for(float aij:ligne)
+				{
+				System.out.print(aij + "\t");
+				}
+			System.out.println();
+			}
+		}
+
+	private static void fill(float[][] tabTriangulaire)
+		{
+		int n = tabTriangulaire.length;
+		for(int i = 1; i <= n; i++)
+			{
+			for(int j = 1; j <= i; j++)
+				{
+				tabTriangulaire[i-1][j-1]= i*10+j;
+				}
+			}
+		}
+
+	private static float[][] create(int n)
+		{
+		float[][] tableauExterne = new float[n][];
+		for(int i = 1; i <= n; i++)
+			{
+			tableauExterne[i-1] = new float[i];
+			}
+		return tableauExterne;
+		}
+	}
+

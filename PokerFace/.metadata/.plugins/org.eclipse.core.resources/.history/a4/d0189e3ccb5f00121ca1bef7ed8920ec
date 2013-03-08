@@ -1,0 +1,71 @@
+
+package ch.hearc.coursjava.gui.layout.exercice.consolidation;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
+import javax.swing.SwingConstants;
+
+public class JFrameConsolidation extends JFrame
+	{
+
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+
+	public JFrameConsolidation()
+		{
+		geometrie();
+		control();
+		apparence();
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	private void control()
+		{
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		}
+
+	private void geometrie()
+		{
+		BorderLayout layout = new BorderLayout();
+		setLayout(layout);
+
+		panelConsolidation = new JPanelConsolidation();
+
+		tabbedPane = new JTabbedPane(SwingConstants.TOP);
+		tabbedPane.add(panelConsolidation, 0);
+		tabbedPane.add(panelAbout, 1);
+
+		tabbedPane.setTitleAt(0, "Home");
+		tabbedPane.setTitleAt(1, "About");
+
+		add(tabbedPane);
+		}
+
+	private void apparence()
+		{
+		setSize(300, 300);
+		setTitle("Frame BoxGlue");
+		setLocation(30, 30);
+		setResizable(true);
+		this.setVisible(true);
+
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+
+	// Tools
+	private JPanelConsolidation panelConsolidation;
+	private JTabbedPane tabbedPane;
+	}

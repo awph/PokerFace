@@ -1,0 +1,3 @@
+rem a=1 c=12 b=-2	parametres d'entrée de main de UseEquationQuadratiqueArgs
+java -cp .;./*;ext/* ch.hearc.coursjava.kitbase.consolidation.mapargs.UseEquationQuadratiqueArgs a=1 c=12 b=-2
+pause

@@ -1,0 +1,1 @@
+start javaw -cp .;./*;./ext/* -Dalpha=0.1 -DdelayMS=200 ch.hearc.coursjava.gui.j2d.traitTournant.UseTraitTournant

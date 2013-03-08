@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;ch.hearc.coursjava.poo.complexe.Complexe.add(...)&apos; to &apos;sum&apos;&#x0D;&#x0A;- Original project: &apos;PCours&apos;&#x0D;&#x0A;- Original element: &apos;ch.hearc.coursjava.poo.complexe.Complexe.add(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;ch.hearc.coursjava.poo.complexe.Complexe.sum(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;add&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;ch.hearc.coursjava.poo.complexe{Complexe.java[Complexe~add~QComplexe;" name="sum" references="true" stamp="1351961414345" version="1.0"/>
+</session>

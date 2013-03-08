@@ -1,0 +1,106 @@
+
+package ch.hearc.coursjava.gui.j2d.traitTournant;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.SwingConstants;
+
+public class JPanelControle extends JPanel
+	{
+	
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+	
+	public JPanelControle(JPanelDessinTraitTournant jPanelDessinTraitTournant)
+		{
+		this.jPanelDessinTraitTournant = jPanelDessinTraitTournant;
+		
+		geometrie();
+		controle();
+		apparence();
+		}
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+	
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+	
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+	
+	private void geometrie()
+		{
+		boutonStart = new JButton("BoutonStart");
+		boutonStop = new JButton("BoutonStop");
+		sliderAlpha = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 50);
+		
+		setLayout(new FlowLayout(FlowLayout.CENTER));
+		
+		add(boutonStart);
+		add(boutonStop);
+		add(sliderAlpha);
+		}
+	
+	private void controle()
+		{
+		boutonStart.addActionListener(new ActionListener()
+			{
+				
+				@Override
+				public void actionPerformed(ActionEvent event)
+					{
+					switchEtatBouton();
+					jPanelDessinTraitTournant.startAnimation();
+					}
+				
+			});
+		
+		boutonStop.addActionListener(new ActionListener()
+			{
+				
+				@Override
+				public void actionPerformed(ActionEvent event)
+					{
+					switchEtatBouton();
+					jPanelDessinTraitTournant.stopAnimation();
+					}
+			});
+		}
+	
+	private void apparence()
+		{
+		boutonStop.setEnabled(false);
+		}
+	
+	private void switchEtatBouton()
+		{
+		boutonStart.setEnabled(!boutonStart.isEnabled());
+		boutonStop.setEnabled(!boutonStop.isEnabled());
+		}
+	
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+	
+	//Input
+	private JPanelDessinTraitTournant jPanelDessinTraitTournant;
+	
+	//Tools
+	private JButton boutonStart;
+	private JButton boutonStop;
+	private JSlider sliderAlpha;
+	}

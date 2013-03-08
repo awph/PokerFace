@@ -1,0 +1,12 @@
+rem Version minimal
+java -cp JavaCours.jar;ext/clavier.jar ch.hearc.coursjava.kitbase.tableau.equationquadratique.UseEquationQuadratique
+
+rem Version minimal syntaxe joker
+java -cp .;./*;ext/* ch.hearc.coursjava.kitbase.tableau.equationquadratique.UseEquationQuadratique
+
+rem syntaxe joker parametres jvm
+rem -verbose:gc  visualisation des activités du garbage dans la console
+rem -Xmx400m  	 Mémoire maximal qu'a le droit d'employer a jvm
+rem -Xms200m	 Mémoire aloué à la jvm au démarrage (mémoire réservé uniquement à la jvm)
+java -cp .;./*;ext/* -verbose:gc -Xmx400m -Xms200m ch.hearc.coursjava.kitbase.tableau.equationquadratique.UseEquationQuadratique
+pause

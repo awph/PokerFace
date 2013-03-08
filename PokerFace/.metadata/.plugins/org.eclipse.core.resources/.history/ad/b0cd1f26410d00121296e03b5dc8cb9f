@@ -1,0 +1,28 @@
+
+package ch.hearc.coursjava.kitbase.tableau2D.manuel.eterogene;
+
+
+
+public class UseTableauManuelHeterogene
+	{
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+	
+	public static void main(String[] args)
+		{
+		main();
+		}
+	
+	public static void main()
+		{
+		
+		}
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	}
+

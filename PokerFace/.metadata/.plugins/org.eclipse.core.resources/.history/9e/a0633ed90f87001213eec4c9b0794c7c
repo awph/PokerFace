@@ -1,0 +1,150 @@
+
+package ch.hearc.coursjava.gui.j2d.degradeHSB;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
+public class JPanelDegradeHSB extends JPanel
+	{
+	
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+	
+	public JPanelDegradeHSB()
+		{
+		isFini = true;
+		
+		geometrie();
+		controle();
+		apparence();
+		}
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+	
+	@Override
+	protected void paintComponent(Graphics g)
+		{
+		super.paintComponent(g);
+		
+		Graphics2D g2d = (Graphics2D)g;
+		
+		AffineTransform oldG2d = g2d.getTransform();
+		dessiner(g2d);
+		g2d.setTransform(oldG2d);
+		}
+	
+	public void startAnimation()
+		{
+		if (isFini)
+			{
+			Thread thread = new Thread(new Runnable()
+				{
+					
+					@Override
+					public void run()
+						{
+						while(!isFini)
+							{
+							stepAnimation();
+							}
+						}
+					
+				});
+			}
+		}
+	
+	public void stopAnimation()
+		{
+		
+		}
+	
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+	
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+	
+	private void apparence()
+		{
+		// rien
+		}
+	
+	private void controle()
+		{
+		this.addComponentListener(new ComponentAdapter()
+			{
+				
+				@Override
+				public void componentResized(ComponentEvent event)
+					{
+					int w = JPanelDegradeHSB.this.getWidth();
+					int h = JPanelDegradeHSB.this.getHeight();
+					
+					JPanelDegradeHSB.this.image = creer(w, h);
+					
+					}
+			});
+		
+		}
+	
+	private void geometrie()
+		{
+		// rien
+		}
+	
+	private void dessiner(Graphics2D g2d)
+		{
+		g2d.drawImage(image, 0, 0, null);
+		}
+	
+	private Image creer(int w, int h)
+		{
+		BufferedImage bufferedImage = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+		double hue = 0;
+		double deltaHue = 1 / (double)h;
+		
+		for(int i = 1; i <= h; i++)
+			{
+			for(int j = 1; j <= w; j++)
+				{
+				
+				int colorInt = Color.getHSBColor((float)hue, 1, 1).getRGB();
+				bufferedImage.setRGB(j - 1, i - 1, colorInt);
+				}
+			hue += deltaHue;
+			}
+		
+		return new ImageIcon(bufferedImage).getImage();
+		}
+	
+	private void stepAnimation()
+		{
+		// TODO Auto-generated method stub
+		
+		}
+	
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+	//tools
+	private Image image;
+	private boolean isFini;
+	}

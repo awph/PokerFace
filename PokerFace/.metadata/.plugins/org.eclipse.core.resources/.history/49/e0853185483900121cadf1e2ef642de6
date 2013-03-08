@@ -1,0 +1,73 @@
+
+package ch.hearc.coursjava.poo.interfaces;
+
+public class Homme implements Afficher_I, Comparable<Homme>
+	{
+
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+
+	public Homme(double taille, String nom)
+		{
+		this.taille = taille;
+		this.nom = nom;
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	@Override
+	public int compareTo(Homme homme2)
+		{
+		// TODO Auto-generated method stub
+		return 0;
+		}
+
+	@Override
+	public String toString()
+		{
+		StringBuilder builder = new StringBuilder();
+		builder.append("Homme [taille=");
+		builder.append(this.taille);
+		builder.append(", nom=");
+		builder.append(this.nom);
+		builder.append("]");
+		return builder.toString();
+		}
+
+	@Override
+	public void afficher()
+		{
+		System.out.println(this);
+		}
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
+	public double getTaille()
+		{
+		return this.taille;
+		}
+
+	public String getNom()
+		{
+		return this.nom;
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+
+	//Inputs
+	private double taille;
+	private String nom;
+
+
+	}

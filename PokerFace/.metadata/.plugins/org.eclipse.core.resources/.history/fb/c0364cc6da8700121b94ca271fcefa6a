@@ -1,0 +1,6 @@
+java -version
+
+rem Version minimal syntaxe joker
+java -cp .;./*;ext/* ch.hearc.coursjava.gui.geometrieControl.framejumelles.version1.UseFrameJumelle n=18
+
+pause
