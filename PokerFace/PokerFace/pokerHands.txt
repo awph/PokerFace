@@ -1,0 +1,7462 @@
+AJKQTs;1;Royal Flush
+9JKQTs;2;King-High Straight Flush
+89JQTs;3;Queen-High Straight Flush
+789JTs;4;Jack-High Straight Flush
+6789Ts;5;Ten-High Straight Flush
+56789s;6;Nine-High Straight Flush
+45678s;7;Eight-High Straight Flush
+34567s;8;Seven-High Straight Flush
+23456s;9;Six-High Straight Flush
+2345As;10;Five-High Straight Flush
+AAAAK;11;Four Aces
+AAAAQ;12;Four Aces
+AAAAJ;13;Four Aces
+AAAAT;14;Four Aces
+9AAAA;15;Four Aces
+8AAAA;16;Four Aces
+7AAAA;17;Four Aces
+6AAAA;18;Four Aces
+5AAAA;19;Four Aces
+4AAAA;20;Four Aces
+3AAAA;21;Four Aces
+2AAAA;22;Four Aces
+AKKKK;23;Four Kings
+KKKKQ;24;Four Kings
+JKKKK;25;Four Kings
+KKKKT;26;Four Kings
+9KKKK;27;Four Kings
+8KKKK;28;Four Kings
+7KKKK;29;Four Kings
+6KKKK;30;Four Kings
+5KKKK;31;Four Kings
+4KKKK;32;Four Kings
+3KKKK;33;Four Kings
+2KKKK;34;Four Kings
+AQQQQ;35;Four Queens
+KQQQQ;36;Four Queens
+JQQQQ;37;Four Queens
+QQQQT;38;Four Queens
+9QQQQ;39;Four Queens
+8QQQQ;40;Four Queens
+7QQQQ;41;Four Queens
+6QQQQ;42;Four Queens
+5QQQQ;43;Four Queens
+4QQQQ;44;Four Queens
+3QQQQ;45;Four Queens
+2QQQQ;46;Four Queens
+AJJJJ;47;Four Jacks
+JJJJK;48;Four Jacks
+JJJJQ;49;Four Jacks
+JJJJT;50;Four Jacks
+9JJJJ;51;Four Jacks
+8JJJJ;52;Four Jacks
+7JJJJ;53;Four Jacks
+6JJJJ;54;Four Jacks
+5JJJJ;55;Four Jacks
+4JJJJ;56;Four Jacks
+3JJJJ;57;Four Jacks
+2JJJJ;58;Four Jacks
+ATTTT;59;Four Tens
+KTTTT;60;Four Tens
+QTTTT;61;Four Tens
+JTTTT;62;Four Tens
+9TTTT;63;Four Tens
+8TTTT;64;Four Tens
+7TTTT;65;Four Tens
+6TTTT;66;Four Tens
+5TTTT;67;Four Tens
+4TTTT;68;Four Tens
+3TTTT;69;Four Tens
+2TTTT;70;Four Tens
+9999A;71;Four Nines
+9999K;72;Four Nines
+9999Q;73;Four Nines
+9999J;74;Four Nines
+9999T;75;Four Nines
+89999;76;Four Nines
+79999;77;Four Nines
+69999;78;Four Nines
+59999;79;Four Nines
+49999;80;Four Nines
+39999;81;Four Nines
+29999;82;Four Nines
+8888A;83;Four Eights
+8888K;84;Four Eights
+8888Q;85;Four Eights
+8888J;86;Four Eights
+8888T;87;Four Eights
+88889;88;Four Eights
+78888;89;Four Eights
+68888;90;Four Eights
+58888;91;Four Eights
+48888;92;Four Eights
+38888;93;Four Eights
+28888;94;Four Eights
+7777A;95;Four Sevens
+7777K;96;Four Sevens
+7777Q;97;Four Sevens
+7777J;98;Four Sevens
+7777T;99;Four Sevens
+77779;100;Four Sevens
+77778;101;Four Sevens
+67777;102;Four Sevens
+57777;103;Four Sevens
+47777;104;Four Sevens
+37777;105;Four Sevens
+27777;106;Four Sevens
+6666A;107;Four Sixes
+6666K;108;Four Sixes
+6666Q;109;Four Sixes
+6666J;110;Four Sixes
+6666T;111;Four Sixes
+66669;112;Four Sixes
+66668;113;Four Sixes
+66667;114;Four Sixes
+56666;115;Four Sixes
+46666;116;Four Sixes
+36666;117;Four Sixes
+26666;118;Four Sixes
+5555A;119;Four Fives
+5555K;120;Four Fives
+5555Q;121;Four Fives
+5555J;122;Four Fives
+5555T;123;Four Fives
+55559;124;Four Fives
+55558;125;Four Fives
+55557;126;Four Fives
+55556;127;Four Fives
+45555;128;Four Fives
+35555;129;Four Fives
+25555;130;Four Fives
+4444A;131;Four Fours
+4444K;132;Four Fours
+4444Q;133;Four Fours
+4444J;134;Four Fours
+4444T;135;Four Fours
+44449;136;Four Fours
+44448;137;Four Fours
+44447;138;Four Fours
+44446;139;Four Fours
+44445;140;Four Fours
+34444;141;Four Fours
+24444;142;Four Fours
+3333A;143;Four Treys
+3333K;144;Four Treys
+3333Q;145;Four Treys
+3333J;146;Four Treys
+3333T;147;Four Treys
+33339;148;Four Treys
+33338;149;Four Treys
+33337;150;Four Treys
+33336;151;Four Treys
+33335;152;Four Treys
+33334;153;Four Treys
+23333;154;Four Treys
+2222A;155;Four Deuces
+2222K;156;Four Deuces
+2222Q;157;Four Deuces
+2222J;158;Four Deuces
+2222T;159;Four Deuces
+22229;160;Four Deuces
+22228;161;Four Deuces
+22227;162;Four Deuces
+22226;163;Four Deuces
+22225;164;Four Deuces
+22224;165;Four Deuces
+22223;166;Four Deuces
+AAAKK;167;Aces Full over Kings
+AAAQQ;168;Aces Full over Queens
+AAAJJ;169;Aces Full over Jacks
+AAATT;170;Aces Full over Tens
+99AAA;171;Aces Full over Nines
+88AAA;172;Aces Full over Eights
+77AAA;173;Aces Full over Sevens
+66AAA;174;Aces Full over Sixes
+55AAA;175;Aces Full over Fives
+44AAA;176;Aces Full over Fours
+33AAA;177;Aces Full over Treys
+22AAA;178;Aces Full over Deuces
+AAKKK;179;Kings Full over Aces
+KKKQQ;180;Kings Full over Queens
+JJKKK;181;Kings Full over Jacks
+KKKTT;182;Kings Full over Tens
+99KKK;183;Kings Full over Nines
+88KKK;184;Kings Full over Eights
+77KKK;185;Kings Full over Sevens
+66KKK;186;Kings Full over Sixes
+55KKK;187;Kings Full over Fives
+44KKK;188;Kings Full over Fours
+33KKK;189;Kings Full over Treys
+22KKK;190;Kings Full over Deuces
+AAQQQ;191;Queens Full over Aces
+KKQQQ;192;Queens Full over Kings
+JJQQQ;193;Queens Full over Jacks
+QQQTT;194;Queens Full over Tens
+99QQQ;195;Queens Full over Nines
+88QQQ;196;Queens Full over Eights
+77QQQ;197;Queens Full over Sevens
+66QQQ;198;Queens Full over Sixes
+55QQQ;199;Queens Full over Fives
+44QQQ;200;Queens Full over Fours
+33QQQ;201;Queens Full over Treys
+22QQQ;202;Queens Full over Deuces
+AAJJJ;203;Jacks Full over Aces
+JJJKK;204;Jacks Full over Kings
+JJJQQ;205;Jacks Full over Queens
+JJJTT;206;Jacks Full over Tens
+99JJJ;207;Jacks Full over Nines
+88JJJ;208;Jacks Full over Eights
+77JJJ;209;Jacks Full over Sevens
+66JJJ;210;Jacks Full over Sixes
+55JJJ;211;Jacks Full over Fives
+44JJJ;212;Jacks Full over Fours
+33JJJ;213;Jacks Full over Treys
+22JJJ;214;Jacks Full over Deuces
+AATTT;215;Tens Full over Aces
+KKTTT;216;Tens Full over Kings
+QQTTT;217;Tens Full over Queens
+JJTTT;218;Tens Full over Jacks
+99TTT;219;Tens Full over Nines
+88TTT;220;Tens Full over Eights
+77TTT;221;Tens Full over Sevens
+66TTT;222;Tens Full over Sixes
+55TTT;223;Tens Full over Fives
+44TTT;224;Tens Full over Fours
+33TTT;225;Tens Full over Treys
+22TTT;226;Tens Full over Deuces
+999AA;227;Nines Full over Aces
+999KK;228;Nines Full over Kings
+999QQ;229;Nines Full over Queens
+999JJ;230;Nines Full over Jacks
+999TT;231;Nines Full over Tens
+88999;232;Nines Full over Eights
+77999;233;Nines Full over Sevens
+66999;234;Nines Full over Sixes
+55999;235;Nines Full over Fives
+44999;236;Nines Full over Fours
+33999;237;Nines Full over Treys
+22999;238;Nines Full over Deuces
+888AA;239;Eights Full over Aces
+888KK;240;Eights Full over Kings
+888QQ;241;Eights Full over Queens
+888JJ;242;Eights Full over Jacks
+888TT;243;Eights Full over Tens
+88899;244;Eights Full over Nines
+77888;245;Eights Full over Sevens
+66888;246;Eights Full over Sixes
+55888;247;Eights Full over Fives
+44888;248;Eights Full over Fours
+33888;249;Eights Full over Treys
+22888;250;Eights Full over Deuces
+777AA;251;Sevens Full over Aces
+777KK;252;Sevens Full over Kings
+777QQ;253;Sevens Full over Queens
+777JJ;254;Sevens Full over Jacks
+777TT;255;Sevens Full over Tens
+77799;256;Sevens Full over Nines
+77788;257;Sevens Full over Eights
+66777;258;Sevens Full over Sixes
+55777;259;Sevens Full over Fives
+44777;260;Sevens Full over Fours
+33777;261;Sevens Full over Treys
+22777;262;Sevens Full over Deuces
+666AA;263;Sixes Full over Aces
+666KK;264;Sixes Full over Kings
+666QQ;265;Sixes Full over Queens
+666JJ;266;Sixes Full over Jacks
+666TT;267;Sixes Full over Tens
+66699;268;Sixes Full over Nines
+66688;269;Sixes Full over Eights
+66677;270;Sixes Full over Sevens
+55666;271;Sixes Full over Fives
+44666;272;Sixes Full over Fours
+33666;273;Sixes Full over Treys
+22666;274;Sixes Full over Deuces
+555AA;275;Fives Full over Aces
+555KK;276;Fives Full over Kings
+555QQ;277;Fives Full over Queens
+555JJ;278;Fives Full over Jacks
+555TT;279;Fives Full over Tens
+55599;280;Fives Full over Nines
+55588;281;Fives Full over Eights
+55577;282;Fives Full over Sevens
+55566;283;Fives Full over Sixes
+44555;284;Fives Full over Fours
+33555;285;Fives Full over Treys
+22555;286;Fives Full over Deuces
+444AA;287;Fours Full over Aces
+444KK;288;Fours Full over Kings
+444QQ;289;Fours Full over Queens
+444JJ;290;Fours Full over Jacks
+444TT;291;Fours Full over Tens
+44499;292;Fours Full over Nines
+44488;293;Fours Full over Eights
+44477;294;Fours Full over Sevens
+44466;295;Fours Full over Sixes
+44455;296;Fours Full over Fives
+33444;297;Fours Full over Treys
+22444;298;Fours Full over Deuces
+333AA;299;Treys Full over Aces
+333KK;300;Treys Full over Kings
+333QQ;301;Treys Full over Queens
+333JJ;302;Treys Full over Jacks
+333TT;303;Treys Full over Tens
+33399;304;Treys Full over Nines
+33388;305;Treys Full over Eights
+33377;306;Treys Full over Sevens
+33366;307;Treys Full over Sixes
+33355;308;Treys Full over Fives
+33344;309;Treys Full over Fours
+22333;310;Treys Full over Deuces
+222AA;311;Deuces Full over Aces
+222KK;312;Deuces Full over Kings
+222QQ;313;Deuces Full over Queens
+222JJ;314;Deuces Full over Jacks
+222TT;315;Deuces Full over Tens
+22299;316;Deuces Full over Nines
+22288;317;Deuces Full over Eights
+22277;318;Deuces Full over Sevens
+22266;319;Deuces Full over Sixes
+22255;320;Deuces Full over Fives
+22244;321;Deuces Full over Fours
+22233;322;Deuces Full over Treys
+9AJKQs;323;Ace-High Flush
+8AJKQs;324;Ace-High Flush
+7AJKQs;325;Ace-High Flush
+6AJKQs;326;Ace-High Flush
+5AJKQs;327;Ace-High Flush
+4AJKQs;328;Ace-High Flush
+3AJKQs;329;Ace-High Flush
+2AJKQs;330;Ace-High Flush
+9AKQTs;331;Ace-High Flush
+8AKQTs;332;Ace-High Flush
+7AKQTs;333;Ace-High Flush
+6AKQTs;334;Ace-High Flush
+5AKQTs;335;Ace-High Flush
+4AKQTs;336;Ace-High Flush
+3AKQTs;337;Ace-High Flush
+2AKQTs;338;Ace-High Flush
+89AKQs;339;Ace-High Flush
+79AKQs;340;Ace-High Flush
+69AKQs;341;Ace-High Flush
+59AKQs;342;Ace-High Flush
+49AKQs;343;Ace-High Flush
+39AKQs;344;Ace-High Flush
+29AKQs;345;Ace-High Flush
+78AKQs;346;Ace-High Flush
+68AKQs;347;Ace-High Flush
+58AKQs;348;Ace-High Flush
+48AKQs;349;Ace-High Flush
+38AKQs;350;Ace-High Flush
+28AKQs;351;Ace-High Flush
+67AKQs;352;Ace-High Flush
+57AKQs;353;Ace-High Flush
+47AKQs;354;Ace-High Flush
+37AKQs;355;Ace-High Flush
+27AKQs;356;Ace-High Flush
+56AKQs;357;Ace-High Flush
+46AKQs;358;Ace-High Flush
+36AKQs;359;Ace-High Flush
+26AKQs;360;Ace-High Flush
+45AKQs;361;Ace-High Flush
+35AKQs;362;Ace-High Flush
+25AKQs;363;Ace-High Flush
+34AKQs;364;Ace-High Flush
+24AKQs;365;Ace-High Flush
+23AKQs;366;Ace-High Flush
+9AJKTs;367;Ace-High Flush
+8AJKTs;368;Ace-High Flush
+7AJKTs;369;Ace-High Flush
+6AJKTs;370;Ace-High Flush
+5AJKTs;371;Ace-High Flush
+4AJKTs;372;Ace-High Flush
+3AJKTs;373;Ace-High Flush
+2AJKTs;374;Ace-High Flush
+89AJKs;375;Ace-High Flush
+79AJKs;376;Ace-High Flush
+69AJKs;377;Ace-High Flush
+59AJKs;378;Ace-High Flush
+49AJKs;379;Ace-High Flush
+39AJKs;380;Ace-High Flush
+29AJKs;381;Ace-High Flush
+78AJKs;382;Ace-High Flush
+68AJKs;383;Ace-High Flush
+58AJKs;384;Ace-High Flush
+48AJKs;385;Ace-High Flush
+38AJKs;386;Ace-High Flush
+28AJKs;387;Ace-High Flush
+67AJKs;388;Ace-High Flush
+57AJKs;389;Ace-High Flush
+47AJKs;390;Ace-High Flush
+37AJKs;391;Ace-High Flush
+27AJKs;392;Ace-High Flush
+56AJKs;393;Ace-High Flush
+46AJKs;394;Ace-High Flush
+36AJKs;395;Ace-High Flush
+26AJKs;396;Ace-High Flush
+45AJKs;397;Ace-High Flush
+35AJKs;398;Ace-High Flush
+25AJKs;399;Ace-High Flush
+34AJKs;400;Ace-High Flush
+24AJKs;401;Ace-High Flush
+23AJKs;402;Ace-High Flush
+89AKTs;403;Ace-High Flush
+79AKTs;404;Ace-High Flush
+69AKTs;405;Ace-High Flush
+59AKTs;406;Ace-High Flush
+49AKTs;407;Ace-High Flush
+39AKTs;408;Ace-High Flush
+29AKTs;409;Ace-High Flush
+78AKTs;410;Ace-High Flush
+68AKTs;411;Ace-High Flush
+58AKTs;412;Ace-High Flush
+48AKTs;413;Ace-High Flush
+38AKTs;414;Ace-High Flush
+28AKTs;415;Ace-High Flush
+67AKTs;416;Ace-High Flush
+57AKTs;417;Ace-High Flush
+47AKTs;418;Ace-High Flush
+37AKTs;419;Ace-High Flush
+27AKTs;420;Ace-High Flush
+56AKTs;421;Ace-High Flush
+46AKTs;422;Ace-High Flush
+36AKTs;423;Ace-High Flush
+26AKTs;424;Ace-High Flush
+45AKTs;425;Ace-High Flush
+35AKTs;426;Ace-High Flush
+25AKTs;427;Ace-High Flush
+34AKTs;428;Ace-High Flush
+24AKTs;429;Ace-High Flush
+23AKTs;430;Ace-High Flush
+789AKs;431;Ace-High Flush
+689AKs;432;Ace-High Flush
+589AKs;433;Ace-High Flush
+489AKs;434;Ace-High Flush
+389AKs;435;Ace-High Flush
+289AKs;436;Ace-High Flush
+679AKs;437;Ace-High Flush
+579AKs;438;Ace-High Flush
+479AKs;439;Ace-High Flush
+379AKs;440;Ace-High Flush
+279AKs;441;Ace-High Flush
+569AKs;442;Ace-High Flush
+469AKs;443;Ace-High Flush
+369AKs;444;Ace-High Flush
+269AKs;445;Ace-High Flush
+459AKs;446;Ace-High Flush
+359AKs;447;Ace-High Flush
+259AKs;448;Ace-High Flush
+349AKs;449;Ace-High Flush
+249AKs;450;Ace-High Flush
+239AKs;451;Ace-High Flush
+678AKs;452;Ace-High Flush
+578AKs;453;Ace-High Flush
+478AKs;454;Ace-High Flush
+378AKs;455;Ace-High Flush
+278AKs;456;Ace-High Flush
+568AKs;457;Ace-High Flush
+468AKs;458;Ace-High Flush
+368AKs;459;Ace-High Flush
+268AKs;460;Ace-High Flush
+458AKs;461;Ace-High Flush
+358AKs;462;Ace-High Flush
+258AKs;463;Ace-High Flush
+348AKs;464;Ace-High Flush
+248AKs;465;Ace-High Flush
+238AKs;466;Ace-High Flush
+567AKs;467;Ace-High Flush
+467AKs;468;Ace-High Flush
+367AKs;469;Ace-High Flush
+267AKs;470;Ace-High Flush
+457AKs;471;Ace-High Flush
+357AKs;472;Ace-High Flush
+257AKs;473;Ace-High Flush
+347AKs;474;Ace-High Flush
+247AKs;475;Ace-High Flush
+237AKs;476;Ace-High Flush
+456AKs;477;Ace-High Flush
+356AKs;478;Ace-High Flush
+256AKs;479;Ace-High Flush
+346AKs;480;Ace-High Flush
+246AKs;481;Ace-High Flush
+236AKs;482;Ace-High Flush
+345AKs;483;Ace-High Flush
+245AKs;484;Ace-High Flush
+235AKs;485;Ace-High Flush
+234AKs;486;Ace-High Flush
+9AJQTs;487;Ace-High Flush
+8AJQTs;488;Ace-High Flush
+7AJQTs;489;Ace-High Flush
+6AJQTs;490;Ace-High Flush
+5AJQTs;491;Ace-High Flush
+4AJQTs;492;Ace-High Flush
+3AJQTs;493;Ace-High Flush
+2AJQTs;494;Ace-High Flush
+89AJQs;495;Ace-High Flush
+79AJQs;496;Ace-High Flush
+69AJQs;497;Ace-High Flush
+59AJQs;498;Ace-High Flush
+49AJQs;499;Ace-High Flush
+39AJQs;500;Ace-High Flush
+29AJQs;501;Ace-High Flush
+78AJQs;502;Ace-High Flush
+68AJQs;503;Ace-High Flush
+58AJQs;504;Ace-High Flush
+48AJQs;505;Ace-High Flush
+38AJQs;506;Ace-High Flush
+28AJQs;507;Ace-High Flush
+67AJQs;508;Ace-High Flush
+57AJQs;509;Ace-High Flush
+47AJQs;510;Ace-High Flush
+37AJQs;511;Ace-High Flush
+27AJQs;512;Ace-High Flush
+56AJQs;513;Ace-High Flush
+46AJQs;514;Ace-High Flush
+36AJQs;515;Ace-High Flush
+26AJQs;516;Ace-High Flush
+45AJQs;517;Ace-High Flush
+35AJQs;518;Ace-High Flush
+25AJQs;519;Ace-High Flush
+34AJQs;520;Ace-High Flush
+24AJQs;521;Ace-High Flush
+23AJQs;522;Ace-High Flush
+89AQTs;523;Ace-High Flush
+79AQTs;524;Ace-High Flush
+69AQTs;525;Ace-High Flush
+59AQTs;526;Ace-High Flush
+49AQTs;527;Ace-High Flush
+39AQTs;528;Ace-High Flush
+29AQTs;529;Ace-High Flush
+78AQTs;530;Ace-High Flush
+68AQTs;531;Ace-High Flush
+58AQTs;532;Ace-High Flush
+48AQTs;533;Ace-High Flush
+38AQTs;534;Ace-High Flush
+28AQTs;535;Ace-High Flush
+67AQTs;536;Ace-High Flush
+57AQTs;537;Ace-High Flush
+47AQTs;538;Ace-High Flush
+37AQTs;539;Ace-High Flush
+27AQTs;540;Ace-High Flush
+56AQTs;541;Ace-High Flush
+46AQTs;542;Ace-High Flush
+36AQTs;543;Ace-High Flush
+26AQTs;544;Ace-High Flush
+45AQTs;545;Ace-High Flush
+35AQTs;546;Ace-High Flush
+25AQTs;547;Ace-High Flush
+34AQTs;548;Ace-High Flush
+24AQTs;549;Ace-High Flush
+23AQTs;550;Ace-High Flush
+789AQs;551;Ace-High Flush
+689AQs;552;Ace-High Flush
+589AQs;553;Ace-High Flush
+489AQs;554;Ace-High Flush
+389AQs;555;Ace-High Flush
+289AQs;556;Ace-High Flush
+679AQs;557;Ace-High Flush
+579AQs;558;Ace-High Flush
+479AQs;559;Ace-High Flush
+379AQs;560;Ace-High Flush
+279AQs;561;Ace-High Flush
+569AQs;562;Ace-High Flush
+469AQs;563;Ace-High Flush
+369AQs;564;Ace-High Flush
+269AQs;565;Ace-High Flush
+459AQs;566;Ace-High Flush
+359AQs;567;Ace-High Flush
+259AQs;568;Ace-High Flush
+349AQs;569;Ace-High Flush
+249AQs;570;Ace-High Flush
+239AQs;571;Ace-High Flush
+678AQs;572;Ace-High Flush
+578AQs;573;Ace-High Flush
+478AQs;574;Ace-High Flush
+378AQs;575;Ace-High Flush
+278AQs;576;Ace-High Flush
+568AQs;577;Ace-High Flush
+468AQs;578;Ace-High Flush
+368AQs;579;Ace-High Flush
+268AQs;580;Ace-High Flush
+458AQs;581;Ace-High Flush
+358AQs;582;Ace-High Flush
+258AQs;583;Ace-High Flush
+348AQs;584;Ace-High Flush
+248AQs;585;Ace-High Flush
+238AQs;586;Ace-High Flush
+567AQs;587;Ace-High Flush
+467AQs;588;Ace-High Flush
+367AQs;589;Ace-High Flush
+267AQs;590;Ace-High Flush
+457AQs;591;Ace-High Flush
+357AQs;592;Ace-High Flush
+257AQs;593;Ace-High Flush
+347AQs;594;Ace-High Flush
+247AQs;595;Ace-High Flush
+237AQs;596;Ace-High Flush
+456AQs;597;Ace-High Flush
+356AQs;598;Ace-High Flush
+256AQs;599;Ace-High Flush
+346AQs;600;Ace-High Flush
+246AQs;601;Ace-High Flush
+236AQs;602;Ace-High Flush
+345AQs;603;Ace-High Flush
+245AQs;604;Ace-High Flush
+235AQs;605;Ace-High Flush
+234AQs;606;Ace-High Flush
+89AJTs;607;Ace-High Flush
+79AJTs;608;Ace-High Flush
+69AJTs;609;Ace-High Flush
+59AJTs;610;Ace-High Flush
+49AJTs;611;Ace-High Flush
+39AJTs;612;Ace-High Flush
+29AJTs;613;Ace-High Flush
+78AJTs;614;Ace-High Flush
+68AJTs;615;Ace-High Flush
+58AJTs;616;Ace-High Flush
+48AJTs;617;Ace-High Flush
+38AJTs;618;Ace-High Flush
+28AJTs;619;Ace-High Flush
+67AJTs;620;Ace-High Flush
+57AJTs;621;Ace-High Flush
+47AJTs;622;Ace-High Flush
+37AJTs;623;Ace-High Flush
+27AJTs;624;Ace-High Flush
+56AJTs;625;Ace-High Flush
+46AJTs;626;Ace-High Flush
+36AJTs;627;Ace-High Flush
+26AJTs;628;Ace-High Flush
+45AJTs;629;Ace-High Flush
+35AJTs;630;Ace-High Flush
+25AJTs;631;Ace-High Flush
+34AJTs;632;Ace-High Flush
+24AJTs;633;Ace-High Flush
+23AJTs;634;Ace-High Flush
+789AJs;635;Ace-High Flush
+689AJs;636;Ace-High Flush
+589AJs;637;Ace-High Flush
+489AJs;638;Ace-High Flush
+389AJs;639;Ace-High Flush
+289AJs;640;Ace-High Flush
+679AJs;641;Ace-High Flush
+579AJs;642;Ace-High Flush
+479AJs;643;Ace-High Flush
+379AJs;644;Ace-High Flush
+279AJs;645;Ace-High Flush
+569AJs;646;Ace-High Flush
+469AJs;647;Ace-High Flush
+369AJs;648;Ace-High Flush
+269AJs;649;Ace-High Flush
+459AJs;650;Ace-High Flush
+359AJs;651;Ace-High Flush
+259AJs;652;Ace-High Flush
+349AJs;653;Ace-High Flush
+249AJs;654;Ace-High Flush
+239AJs;655;Ace-High Flush
+678AJs;656;Ace-High Flush
+578AJs;657;Ace-High Flush
+478AJs;658;Ace-High Flush
+378AJs;659;Ace-High Flush
+278AJs;660;Ace-High Flush
+568AJs;661;Ace-High Flush
+468AJs;662;Ace-High Flush
+368AJs;663;Ace-High Flush
+268AJs;664;Ace-High Flush
+458AJs;665;Ace-High Flush
+358AJs;666;Ace-High Flush
+258AJs;667;Ace-High Flush
+348AJs;668;Ace-High Flush
+248AJs;669;Ace-High Flush
+238AJs;670;Ace-High Flush
+567AJs;671;Ace-High Flush
+467AJs;672;Ace-High Flush
+367AJs;673;Ace-High Flush
+267AJs;674;Ace-High Flush
+457AJs;675;Ace-High Flush
+357AJs;676;Ace-High Flush
+257AJs;677;Ace-High Flush
+347AJs;678;Ace-High Flush
+247AJs;679;Ace-High Flush
+237AJs;680;Ace-High Flush
+456AJs;681;Ace-High Flush
+356AJs;682;Ace-High Flush
+256AJs;683;Ace-High Flush
+346AJs;684;Ace-High Flush
+246AJs;685;Ace-High Flush
+236AJs;686;Ace-High Flush
+345AJs;687;Ace-High Flush
+245AJs;688;Ace-High Flush
+235AJs;689;Ace-High Flush
+234AJs;690;Ace-High Flush
+789ATs;691;Ace-High Flush
+689ATs;692;Ace-High Flush
+589ATs;693;Ace-High Flush
+489ATs;694;Ace-High Flush
+389ATs;695;Ace-High Flush
+289ATs;696;Ace-High Flush
+679ATs;697;Ace-High Flush
+579ATs;698;Ace-High Flush
+479ATs;699;Ace-High Flush
+379ATs;700;Ace-High Flush
+279ATs;701;Ace-High Flush
+569ATs;702;Ace-High Flush
+469ATs;703;Ace-High Flush
+369ATs;704;Ace-High Flush
+269ATs;705;Ace-High Flush
+459ATs;706;Ace-High Flush
+359ATs;707;Ace-High Flush
+259ATs;708;Ace-High Flush
+349ATs;709;Ace-High Flush
+249ATs;710;Ace-High Flush
+239ATs;711;Ace-High Flush
+678ATs;712;Ace-High Flush
+578ATs;713;Ace-High Flush
+478ATs;714;Ace-High Flush
+378ATs;715;Ace-High Flush
+278ATs;716;Ace-High Flush
+568ATs;717;Ace-High Flush
+468ATs;718;Ace-High Flush
+368ATs;719;Ace-High Flush
+268ATs;720;Ace-High Flush
+458ATs;721;Ace-High Flush
+358ATs;722;Ace-High Flush
+258ATs;723;Ace-High Flush
+348ATs;724;Ace-High Flush
+248ATs;725;Ace-High Flush
+238ATs;726;Ace-High Flush
+567ATs;727;Ace-High Flush
+467ATs;728;Ace-High Flush
+367ATs;729;Ace-High Flush
+267ATs;730;Ace-High Flush
+457ATs;731;Ace-High Flush
+357ATs;732;Ace-High Flush
+257ATs;733;Ace-High Flush
+347ATs;734;Ace-High Flush
+247ATs;735;Ace-High Flush
+237ATs;736;Ace-High Flush
+456ATs;737;Ace-High Flush
+356ATs;738;Ace-High Flush
+256ATs;739;Ace-High Flush
+346ATs;740;Ace-High Flush
+246ATs;741;Ace-High Flush
+236ATs;742;Ace-High Flush
+345ATs;743;Ace-High Flush
+245ATs;744;Ace-High Flush
+235ATs;745;Ace-High Flush
+234ATs;746;Ace-High Flush
+6789As;747;Ace-High Flush
+5789As;748;Ace-High Flush
+4789As;749;Ace-High Flush
+3789As;750;Ace-High Flush
+2789As;751;Ace-High Flush
+5689As;752;Ace-High Flush
+4689As;753;Ace-High Flush
+3689As;754;Ace-High Flush
+2689As;755;Ace-High Flush
+4589As;756;Ace-High Flush
+3589As;757;Ace-High Flush
+2589As;758;Ace-High Flush
+3489As;759;Ace-High Flush
+2489As;760;Ace-High Flush
+2389As;761;Ace-High Flush
+5679As;762;Ace-High Flush
+4679As;763;Ace-High Flush
+3679As;764;Ace-High Flush
+2679As;765;Ace-High Flush
+4579As;766;Ace-High Flush
+3579As;767;Ace-High Flush
+2579As;768;Ace-High Flush
+3479As;769;Ace-High Flush
+2479As;770;Ace-High Flush
+2379As;771;Ace-High Flush
+4569As;772;Ace-High Flush
+3569As;773;Ace-High Flush
+2569As;774;Ace-High Flush
+3469As;775;Ace-High Flush
+2469As;776;Ace-High Flush
+2369As;777;Ace-High Flush
+3459As;778;Ace-High Flush
+2459As;779;Ace-High Flush
+2359As;780;Ace-High Flush
+2349As;781;Ace-High Flush
+5678As;782;Ace-High Flush
+4678As;783;Ace-High Flush
+3678As;784;Ace-High Flush
+2678As;785;Ace-High Flush
+4578As;786;Ace-High Flush
+3578As;787;Ace-High Flush
+2578As;788;Ace-High Flush
+3478As;789;Ace-High Flush
+2478As;790;Ace-High Flush
+2378As;791;Ace-High Flush
+4568As;792;Ace-High Flush
+3568As;793;Ace-High Flush
+2568As;794;Ace-High Flush
+3468As;795;Ace-High Flush
+2468As;796;Ace-High Flush
+2368As;797;Ace-High Flush
+3458As;798;Ace-High Flush
+2458As;799;Ace-High Flush
+2358As;800;Ace-High Flush
+2348As;801;Ace-High Flush
+4567As;802;Ace-High Flush
+3567As;803;Ace-High Flush
+2567As;804;Ace-High Flush
+3467As;805;Ace-High Flush
+2467As;806;Ace-High Flush
+2367As;807;Ace-High Flush
+3457As;808;Ace-High Flush
+2457As;809;Ace-High Flush
+2357As;810;Ace-High Flush
+2347As;811;Ace-High Flush
+3456As;812;Ace-High Flush
+2456As;813;Ace-High Flush
+2356As;814;Ace-High Flush
+2346As;815;Ace-High Flush
+8JKQTs;816;King-High Flush
+7JKQTs;817;King-High Flush
+6JKQTs;818;King-High Flush
+5JKQTs;819;King-High Flush
+4JKQTs;820;King-High Flush
+3JKQTs;821;King-High Flush
+2JKQTs;822;King-High Flush
+89JKQs;823;King-High Flush
+79JKQs;824;King-High Flush
+69JKQs;825;King-High Flush
+59JKQs;826;King-High Flush
+49JKQs;827;King-High Flush
+39JKQs;828;King-High Flush
+29JKQs;829;King-High Flush
+78JKQs;830;King-High Flush
+68JKQs;831;King-High Flush
+58JKQs;832;King-High Flush
+48JKQs;833;King-High Flush
+38JKQs;834;King-High Flush
+28JKQs;835;King-High Flush
+67JKQs;836;King-High Flush
+57JKQs;837;King-High Flush
+47JKQs;838;King-High Flush
+37JKQs;839;King-High Flush
+27JKQs;840;King-High Flush
+56JKQs;841;King-High Flush
+46JKQs;842;King-High Flush
+36JKQs;843;King-High Flush
+26JKQs;844;King-High Flush
+45JKQs;845;King-High Flush
+35JKQs;846;King-High Flush
+25JKQs;847;King-High Flush
+34JKQs;848;King-High Flush
+24JKQs;849;King-High Flush
+23JKQs;850;King-High Flush
+89KQTs;851;King-High Flush
+79KQTs;852;King-High Flush
+69KQTs;853;King-High Flush
+59KQTs;854;King-High Flush
+49KQTs;855;King-High Flush
+39KQTs;856;King-High Flush
+29KQTs;857;King-High Flush
+78KQTs;858;King-High Flush
+68KQTs;859;King-High Flush
+58KQTs;860;King-High Flush
+48KQTs;861;King-High Flush
+38KQTs;862;King-High Flush
+28KQTs;863;King-High Flush
+67KQTs;864;King-High Flush
+57KQTs;865;King-High Flush
+47KQTs;866;King-High Flush
+37KQTs;867;King-High Flush
+27KQTs;868;King-High Flush
+56KQTs;869;King-High Flush
+46KQTs;870;King-High Flush
+36KQTs;871;King-High Flush
+26KQTs;872;King-High Flush
+45KQTs;873;King-High Flush
+35KQTs;874;King-High Flush
+25KQTs;875;King-High Flush
+34KQTs;876;King-High Flush
+24KQTs;877;King-High Flush
+23KQTs;878;King-High Flush
+789KQs;879;King-High Flush
+689KQs;880;King-High Flush
+589KQs;881;King-High Flush
+489KQs;882;King-High Flush
+389KQs;883;King-High Flush
+289KQs;884;King-High Flush
+679KQs;885;King-High Flush
+579KQs;886;King-High Flush
+479KQs;887;King-High Flush
+379KQs;888;King-High Flush
+279KQs;889;King-High Flush
+569KQs;890;King-High Flush
+469KQs;891;King-High Flush
+369KQs;892;King-High Flush
+269KQs;893;King-High Flush
+459KQs;894;King-High Flush
+359KQs;895;King-High Flush
+259KQs;896;King-High Flush
+349KQs;897;King-High Flush
+249KQs;898;King-High Flush
+239KQs;899;King-High Flush
+678KQs;900;King-High Flush
+578KQs;901;King-High Flush
+478KQs;902;King-High Flush
+378KQs;903;King-High Flush
+278KQs;904;King-High Flush
+568KQs;905;King-High Flush
+468KQs;906;King-High Flush
+368KQs;907;King-High Flush
+268KQs;908;King-High Flush
+458KQs;909;King-High Flush
+358KQs;910;King-High Flush
+258KQs;911;King-High Flush
+348KQs;912;King-High Flush
+248KQs;913;King-High Flush
+238KQs;914;King-High Flush
+567KQs;915;King-High Flush
+467KQs;916;King-High Flush
+367KQs;917;King-High Flush
+267KQs;918;King-High Flush
+457KQs;919;King-High Flush
+357KQs;920;King-High Flush
+257KQs;921;King-High Flush
+347KQs;922;King-High Flush
+247KQs;923;King-High Flush
+237KQs;924;King-High Flush
+456KQs;925;King-High Flush
+356KQs;926;King-High Flush
+256KQs;927;King-High Flush
+346KQs;928;King-High Flush
+246KQs;929;King-High Flush
+236KQs;930;King-High Flush
+345KQs;931;King-High Flush
+245KQs;932;King-High Flush
+235KQs;933;King-High Flush
+234KQs;934;King-High Flush
+89JKTs;935;King-High Flush
+79JKTs;936;King-High Flush
+69JKTs;937;King-High Flush
+59JKTs;938;King-High Flush
+49JKTs;939;King-High Flush
+39JKTs;940;King-High Flush
+29JKTs;941;King-High Flush
+78JKTs;942;King-High Flush
+68JKTs;943;King-High Flush
+58JKTs;944;King-High Flush
+48JKTs;945;King-High Flush
+38JKTs;946;King-High Flush
+28JKTs;947;King-High Flush
+67JKTs;948;King-High Flush
+57JKTs;949;King-High Flush
+47JKTs;950;King-High Flush
+37JKTs;951;King-High Flush
+27JKTs;952;King-High Flush
+56JKTs;953;King-High Flush
+46JKTs;954;King-High Flush
+36JKTs;955;King-High Flush
+26JKTs;956;King-High Flush
+45JKTs;957;King-High Flush
+35JKTs;958;King-High Flush
+25JKTs;959;King-High Flush
+34JKTs;960;King-High Flush
+24JKTs;961;King-High Flush
+23JKTs;962;King-High Flush
+789JKs;963;King-High Flush
+689JKs;964;King-High Flush
+589JKs;965;King-High Flush
+489JKs;966;King-High Flush
+389JKs;967;King-High Flush
+289JKs;968;King-High Flush
+679JKs;969;King-High Flush
+579JKs;970;King-High Flush
+479JKs;971;King-High Flush
+379JKs;972;King-High Flush
+279JKs;973;King-High Flush
+569JKs;974;King-High Flush
+469JKs;975;King-High Flush
+369JKs;976;King-High Flush
+269JKs;977;King-High Flush
+459JKs;978;King-High Flush
+359JKs;979;King-High Flush
+259JKs;980;King-High Flush
+349JKs;981;King-High Flush
+249JKs;982;King-High Flush
+239JKs;983;King-High Flush
+678JKs;984;King-High Flush
+578JKs;985;King-High Flush
+478JKs;986;King-High Flush
+378JKs;987;King-High Flush
+278JKs;988;King-High Flush
+568JKs;989;King-High Flush
+468JKs;990;King-High Flush
+368JKs;991;King-High Flush
+268JKs;992;King-High Flush
+458JKs;993;King-High Flush
+358JKs;994;King-High Flush
+258JKs;995;King-High Flush
+348JKs;996;King-High Flush
+248JKs;997;King-High Flush
+238JKs;998;King-High Flush
+567JKs;999;King-High Flush
+467JKs;1000;King-High Flush
+367JKs;1001;King-High Flush
+267JKs;1002;King-High Flush
+457JKs;1003;King-High Flush
+357JKs;1004;King-High Flush
+257JKs;1005;King-High Flush
+347JKs;1006;King-High Flush
+247JKs;1007;King-High Flush
+237JKs;1008;King-High Flush
+456JKs;1009;King-High Flush
+356JKs;1010;King-High Flush
+256JKs;1011;King-High Flush
+346JKs;1012;King-High Flush
+246JKs;1013;King-High Flush
+236JKs;1014;King-High Flush
+345JKs;1015;King-High Flush
+245JKs;1016;King-High Flush
+235JKs;1017;King-High Flush
+234JKs;1018;King-High Flush
+789KTs;1019;King-High Flush
+689KTs;1020;King-High Flush
+589KTs;1021;King-High Flush
+489KTs;1022;King-High Flush
+389KTs;1023;King-High Flush
+289KTs;1024;King-High Flush
+679KTs;1025;King-High Flush
+579KTs;1026;King-High Flush
+479KTs;1027;King-High Flush
+379KTs;1028;King-High Flush
+279KTs;1029;King-High Flush
+569KTs;1030;King-High Flush
+469KTs;1031;King-High Flush
+369KTs;1032;King-High Flush
+269KTs;1033;King-High Flush
+459KTs;1034;King-High Flush
+359KTs;1035;King-High Flush
+259KTs;1036;King-High Flush
+349KTs;1037;King-High Flush
+249KTs;1038;King-High Flush
+239KTs;1039;King-High Flush
+678KTs;1040;King-High Flush
+578KTs;1041;King-High Flush
+478KTs;1042;King-High Flush
+378KTs;1043;King-High Flush
+278KTs;1044;King-High Flush
+568KTs;1045;King-High Flush
+468KTs;1046;King-High Flush
+368KTs;1047;King-High Flush
+268KTs;1048;King-High Flush
+458KTs;1049;King-High Flush
+358KTs;1050;King-High Flush
+258KTs;1051;King-High Flush
+348KTs;1052;King-High Flush
+248KTs;1053;King-High Flush
+238KTs;1054;King-High Flush
+567KTs;1055;King-High Flush
+467KTs;1056;King-High Flush
+367KTs;1057;King-High Flush
+267KTs;1058;King-High Flush
+457KTs;1059;King-High Flush
+357KTs;1060;King-High Flush
+257KTs;1061;King-High Flush
+347KTs;1062;King-High Flush
+247KTs;1063;King-High Flush
+237KTs;1064;King-High Flush
+456KTs;1065;King-High Flush
+356KTs;1066;King-High Flush
+256KTs;1067;King-High Flush
+346KTs;1068;King-High Flush
+246KTs;1069;King-High Flush
+236KTs;1070;King-High Flush
+345KTs;1071;King-High Flush
+245KTs;1072;King-High Flush
+235KTs;1073;King-High Flush
+234KTs;1074;King-High Flush
+6789Ks;1075;King-High Flush
+5789Ks;1076;King-High Flush
+4789Ks;1077;King-High Flush
+3789Ks;1078;King-High Flush
+2789Ks;1079;King-High Flush
+5689Ks;1080;King-High Flush
+4689Ks;1081;King-High Flush
+3689Ks;1082;King-High Flush
+2689Ks;1083;King-High Flush
+4589Ks;1084;King-High Flush
+3589Ks;1085;King-High Flush
+2589Ks;1086;King-High Flush
+3489Ks;1087;King-High Flush
+2489Ks;1088;King-High Flush
+2389Ks;1089;King-High Flush
+5679Ks;1090;King-High Flush
+4679Ks;1091;King-High Flush
+3679Ks;1092;King-High Flush
+2679Ks;1093;King-High Flush
+4579Ks;1094;King-High Flush
+3579Ks;1095;King-High Flush
+2579Ks;1096;King-High Flush
+3479Ks;1097;King-High Flush
+2479Ks;1098;King-High Flush
+2379Ks;1099;King-High Flush
+4569Ks;1100;King-High Flush
+3569Ks;1101;King-High Flush
+2569Ks;1102;King-High Flush
+3469Ks;1103;King-High Flush
+2469Ks;1104;King-High Flush
+2369Ks;1105;King-High Flush
+3459Ks;1106;King-High Flush
+2459Ks;1107;King-High Flush
+2359Ks;1108;King-High Flush
+2349Ks;1109;King-High Flush
+5678Ks;1110;King-High Flush
+4678Ks;1111;King-High Flush
+3678Ks;1112;King-High Flush
+2678Ks;1113;King-High Flush
+4578Ks;1114;King-High Flush
+3578Ks;1115;King-High Flush
+2578Ks;1116;King-High Flush
+3478Ks;1117;King-High Flush
+2478Ks;1118;King-High Flush
+2378Ks;1119;King-High Flush
+4568Ks;1120;King-High Flush
+3568Ks;1121;King-High Flush
+2568Ks;1122;King-High Flush
+3468Ks;1123;King-High Flush
+2468Ks;1124;King-High Flush
+2368Ks;1125;King-High Flush
+3458Ks;1126;King-High Flush
+2458Ks;1127;King-High Flush
+2358Ks;1128;King-High Flush
+2348Ks;1129;King-High Flush
+4567Ks;1130;King-High Flush
+3567Ks;1131;King-High Flush
+2567Ks;1132;King-High Flush
+3467Ks;1133;King-High Flush
+2467Ks;1134;King-High Flush
+2367Ks;1135;King-High Flush
+3457Ks;1136;King-High Flush
+2457Ks;1137;King-High Flush
+2357Ks;1138;King-High Flush
+2347Ks;1139;King-High Flush
+3456Ks;1140;King-High Flush
+2456Ks;1141;King-High Flush
+2356Ks;1142;King-High Flush
+2346Ks;1143;King-High Flush
+2345Ks;1144;King-High Flush
+79JQTs;1145;Queen-High Flush
+69JQTs;1146;Queen-High Flush
+59JQTs;1147;Queen-High Flush
+49JQTs;1148;Queen-High Flush
+39JQTs;1149;Queen-High Flush
+29JQTs;1150;Queen-High Flush
+78JQTs;1151;Queen-High Flush
+68JQTs;1152;Queen-High Flush
+58JQTs;1153;Queen-High Flush
+48JQTs;1154;Queen-High Flush
+38JQTs;1155;Queen-High Flush
+28JQTs;1156;Queen-High Flush
+67JQTs;1157;Queen-High Flush
+57JQTs;1158;Queen-High Flush
+47JQTs;1159;Queen-High Flush
+37JQTs;1160;Queen-High Flush
+27JQTs;1161;Queen-High Flush
+56JQTs;1162;Queen-High Flush
+46JQTs;1163;Queen-High Flush
+36JQTs;1164;Queen-High Flush
+26JQTs;1165;Queen-High Flush
+45JQTs;1166;Queen-High Flush
+35JQTs;1167;Queen-High Flush
+25JQTs;1168;Queen-High Flush
+34JQTs;1169;Queen-High Flush
+24JQTs;1170;Queen-High Flush
+23JQTs;1171;Queen-High Flush
+789JQs;1172;Queen-High Flush
+689JQs;1173;Queen-High Flush
+589JQs;1174;Queen-High Flush
+489JQs;1175;Queen-High Flush
+389JQs;1176;Queen-High Flush
+289JQs;1177;Queen-High Flush
+679JQs;1178;Queen-High Flush
+579JQs;1179;Queen-High Flush
+479JQs;1180;Queen-High Flush
+379JQs;1181;Queen-High Flush
+279JQs;1182;Queen-High Flush
+569JQs;1183;Queen-High Flush
+469JQs;1184;Queen-High Flush
+369JQs;1185;Queen-High Flush
+269JQs;1186;Queen-High Flush
+459JQs;1187;Queen-High Flush
+359JQs;1188;Queen-High Flush
+259JQs;1189;Queen-High Flush
+349JQs;1190;Queen-High Flush
+249JQs;1191;Queen-High Flush
+239JQs;1192;Queen-High Flush
+678JQs;1193;Queen-High Flush
+578JQs;1194;Queen-High Flush
+478JQs;1195;Queen-High Flush
+378JQs;1196;Queen-High Flush
+278JQs;1197;Queen-High Flush
+568JQs;1198;Queen-High Flush
+468JQs;1199;Queen-High Flush
+368JQs;1200;Queen-High Flush
+268JQs;1201;Queen-High Flush
+458JQs;1202;Queen-High Flush
+358JQs;1203;Queen-High Flush
+258JQs;1204;Queen-High Flush
+348JQs;1205;Queen-High Flush
+248JQs;1206;Queen-High Flush
+238JQs;1207;Queen-High Flush
+567JQs;1208;Queen-High Flush
+467JQs;1209;Queen-High Flush
+367JQs;1210;Queen-High Flush
+267JQs;1211;Queen-High Flush
+457JQs;1212;Queen-High Flush
+357JQs;1213;Queen-High Flush
+257JQs;1214;Queen-High Flush
+347JQs;1215;Queen-High Flush
+247JQs;1216;Queen-High Flush
+237JQs;1217;Queen-High Flush
+456JQs;1218;Queen-High Flush
+356JQs;1219;Queen-High Flush
+256JQs;1220;Queen-High Flush
+346JQs;1221;Queen-High Flush
+246JQs;1222;Queen-High Flush
+236JQs;1223;Queen-High Flush
+345JQs;1224;Queen-High Flush
+245JQs;1225;Queen-High Flush
+235JQs;1226;Queen-High Flush
+234JQs;1227;Queen-High Flush
+789QTs;1228;Queen-High Flush
+689QTs;1229;Queen-High Flush
+589QTs;1230;Queen-High Flush
+489QTs;1231;Queen-High Flush
+389QTs;1232;Queen-High Flush
+289QTs;1233;Queen-High Flush
+679QTs;1234;Queen-High Flush
+579QTs;1235;Queen-High Flush
+479QTs;1236;Queen-High Flush
+379QTs;1237;Queen-High Flush
+279QTs;1238;Queen-High Flush
+569QTs;1239;Queen-High Flush
+469QTs;1240;Queen-High Flush
+369QTs;1241;Queen-High Flush
+269QTs;1242;Queen-High Flush
+459QTs;1243;Queen-High Flush
+359QTs;1244;Queen-High Flush
+259QTs;1245;Queen-High Flush
+349QTs;1246;Queen-High Flush
+249QTs;1247;Queen-High Flush
+239QTs;1248;Queen-High Flush
+678QTs;1249;Queen-High Flush
+578QTs;1250;Queen-High Flush
+478QTs;1251;Queen-High Flush
+378QTs;1252;Queen-High Flush
+278QTs;1253;Queen-High Flush
+568QTs;1254;Queen-High Flush
+468QTs;1255;Queen-High Flush
+368QTs;1256;Queen-High Flush
+268QTs;1257;Queen-High Flush
+458QTs;1258;Queen-High Flush
+358QTs;1259;Queen-High Flush
+258QTs;1260;Queen-High Flush
+348QTs;1261;Queen-High Flush
+248QTs;1262;Queen-High Flush
+238QTs;1263;Queen-High Flush
+567QTs;1264;Queen-High Flush
+467QTs;1265;Queen-High Flush
+367QTs;1266;Queen-High Flush
+267QTs;1267;Queen-High Flush
+457QTs;1268;Queen-High Flush
+357QTs;1269;Queen-High Flush
+257QTs;1270;Queen-High Flush
+347QTs;1271;Queen-High Flush
+247QTs;1272;Queen-High Flush
+237QTs;1273;Queen-High Flush
+456QTs;1274;Queen-High Flush
+356QTs;1275;Queen-High Flush
+256QTs;1276;Queen-High Flush
+346QTs;1277;Queen-High Flush
+246QTs;1278;Queen-High Flush
+236QTs;1279;Queen-High Flush
+345QTs;1280;Queen-High Flush
+245QTs;1281;Queen-High Flush
+235QTs;1282;Queen-High Flush
+234QTs;1283;Queen-High Flush
+6789Qs;1284;Queen-High Flush
+5789Qs;1285;Queen-High Flush
+4789Qs;1286;Queen-High Flush
+3789Qs;1287;Queen-High Flush
+2789Qs;1288;Queen-High Flush
+5689Qs;1289;Queen-High Flush
+4689Qs;1290;Queen-High Flush
+3689Qs;1291;Queen-High Flush
+2689Qs;1292;Queen-High Flush
+4589Qs;1293;Queen-High Flush
+3589Qs;1294;Queen-High Flush
+2589Qs;1295;Queen-High Flush
+3489Qs;1296;Queen-High Flush
+2489Qs;1297;Queen-High Flush
+2389Qs;1298;Queen-High Flush
+5679Qs;1299;Queen-High Flush
+4679Qs;1300;Queen-High Flush
+3679Qs;1301;Queen-High Flush
+2679Qs;1302;Queen-High Flush
+4579Qs;1303;Queen-High Flush
+3579Qs;1304;Queen-High Flush
+2579Qs;1305;Queen-High Flush
+3479Qs;1306;Queen-High Flush
+2479Qs;1307;Queen-High Flush
+2379Qs;1308;Queen-High Flush
+4569Qs;1309;Queen-High Flush
+3569Qs;1310;Queen-High Flush
+2569Qs;1311;Queen-High Flush
+3469Qs;1312;Queen-High Flush
+2469Qs;1313;Queen-High Flush
+2369Qs;1314;Queen-High Flush
+3459Qs;1315;Queen-High Flush
+2459Qs;1316;Queen-High Flush
+2359Qs;1317;Queen-High Flush
+2349Qs;1318;Queen-High Flush
+5678Qs;1319;Queen-High Flush
+4678Qs;1320;Queen-High Flush
+3678Qs;1321;Queen-High Flush
+2678Qs;1322;Queen-High Flush
+4578Qs;1323;Queen-High Flush
+3578Qs;1324;Queen-High Flush
+2578Qs;1325;Queen-High Flush
+3478Qs;1326;Queen-High Flush
+2478Qs;1327;Queen-High Flush
+2378Qs;1328;Queen-High Flush
+4568Qs;1329;Queen-High Flush
+3568Qs;1330;Queen-High Flush
+2568Qs;1331;Queen-High Flush
+3468Qs;1332;Queen-High Flush
+2468Qs;1333;Queen-High Flush
+2368Qs;1334;Queen-High Flush
+3458Qs;1335;Queen-High Flush
+2458Qs;1336;Queen-High Flush
+2358Qs;1337;Queen-High Flush
+2348Qs;1338;Queen-High Flush
+4567Qs;1339;Queen-High Flush
+3567Qs;1340;Queen-High Flush
+2567Qs;1341;Queen-High Flush
+3467Qs;1342;Queen-High Flush
+2467Qs;1343;Queen-High Flush
+2367Qs;1344;Queen-High Flush
+3457Qs;1345;Queen-High Flush
+2457Qs;1346;Queen-High Flush
+2357Qs;1347;Queen-High Flush
+2347Qs;1348;Queen-High Flush
+3456Qs;1349;Queen-High Flush
+2456Qs;1350;Queen-High Flush
+2356Qs;1351;Queen-High Flush
+2346Qs;1352;Queen-High Flush
+2345Qs;1353;Queen-High Flush
+689JTs;1354;Jack-High Flush
+589JTs;1355;Jack-High Flush
+489JTs;1356;Jack-High Flush
+389JTs;1357;Jack-High Flush
+289JTs;1358;Jack-High Flush
+679JTs;1359;Jack-High Flush
+579JTs;1360;Jack-High Flush
+479JTs;1361;Jack-High Flush
+379JTs;1362;Jack-High Flush
+279JTs;1363;Jack-High Flush
+569JTs;1364;Jack-High Flush
+469JTs;1365;Jack-High Flush
+369JTs;1366;Jack-High Flush
+269JTs;1367;Jack-High Flush
+459JTs;1368;Jack-High Flush
+359JTs;1369;Jack-High Flush
+259JTs;1370;Jack-High Flush
+349JTs;1371;Jack-High Flush
+249JTs;1372;Jack-High Flush
+239JTs;1373;Jack-High Flush
+678JTs;1374;Jack-High Flush
+578JTs;1375;Jack-High Flush
+478JTs;1376;Jack-High Flush
+378JTs;1377;Jack-High Flush
+278JTs;1378;Jack-High Flush
+568JTs;1379;Jack-High Flush
+468JTs;1380;Jack-High Flush
+368JTs;1381;Jack-High Flush
+268JTs;1382;Jack-High Flush
+458JTs;1383;Jack-High Flush
+358JTs;1384;Jack-High Flush
+258JTs;1385;Jack-High Flush
+348JTs;1386;Jack-High Flush
+248JTs;1387;Jack-High Flush
+238JTs;1388;Jack-High Flush
+567JTs;1389;Jack-High Flush
+467JTs;1390;Jack-High Flush
+367JTs;1391;Jack-High Flush
+267JTs;1392;Jack-High Flush
+457JTs;1393;Jack-High Flush
+357JTs;1394;Jack-High Flush
+257JTs;1395;Jack-High Flush
+347JTs;1396;Jack-High Flush
+247JTs;1397;Jack-High Flush
+237JTs;1398;Jack-High Flush
+456JTs;1399;Jack-High Flush
+356JTs;1400;Jack-High Flush
+256JTs;1401;Jack-High Flush
+346JTs;1402;Jack-High Flush
+246JTs;1403;Jack-High Flush
+236JTs;1404;Jack-High Flush
+345JTs;1405;Jack-High Flush
+245JTs;1406;Jack-High Flush
+235JTs;1407;Jack-High Flush
+234JTs;1408;Jack-High Flush
+6789Js;1409;Jack-High Flush
+5789Js;1410;Jack-High Flush
+4789Js;1411;Jack-High Flush
+3789Js;1412;Jack-High Flush
+2789Js;1413;Jack-High Flush
+5689Js;1414;Jack-High Flush
+4689Js;1415;Jack-High Flush
+3689Js;1416;Jack-High Flush
+2689Js;1417;Jack-High Flush
+4589Js;1418;Jack-High Flush
+3589Js;1419;Jack-High Flush
+2589Js;1420;Jack-High Flush
+3489Js;1421;Jack-High Flush
+2489Js;1422;Jack-High Flush
+2389Js;1423;Jack-High Flush
+5679Js;1424;Jack-High Flush
+4679Js;1425;Jack-High Flush
+3679Js;1426;Jack-High Flush
+2679Js;1427;Jack-High Flush
+4579Js;1428;Jack-High Flush
+3579Js;1429;Jack-High Flush
+2579Js;1430;Jack-High Flush
+3479Js;1431;Jack-High Flush
+2479Js;1432;Jack-High Flush
+2379Js;1433;Jack-High Flush
+4569Js;1434;Jack-High Flush
+3569Js;1435;Jack-High Flush
+2569Js;1436;Jack-High Flush
+3469Js;1437;Jack-High Flush
+2469Js;1438;Jack-High Flush
+2369Js;1439;Jack-High Flush
+3459Js;1440;Jack-High Flush
+2459Js;1441;Jack-High Flush
+2359Js;1442;Jack-High Flush
+2349Js;1443;Jack-High Flush
+5678Js;1444;Jack-High Flush
+4678Js;1445;Jack-High Flush
+3678Js;1446;Jack-High Flush
+2678Js;1447;Jack-High Flush
+4578Js;1448;Jack-High Flush
+3578Js;1449;Jack-High Flush
+2578Js;1450;Jack-High Flush
+3478Js;1451;Jack-High Flush
+2478Js;1452;Jack-High Flush
+2378Js;1453;Jack-High Flush
+4568Js;1454;Jack-High Flush
+3568Js;1455;Jack-High Flush
+2568Js;1456;Jack-High Flush
+3468Js;1457;Jack-High Flush
+2468Js;1458;Jack-High Flush
+2368Js;1459;Jack-High Flush
+3458Js;1460;Jack-High Flush
+2458Js;1461;Jack-High Flush
+2358Js;1462;Jack-High Flush
+2348Js;1463;Jack-High Flush
+4567Js;1464;Jack-High Flush
+3567Js;1465;Jack-High Flush
+2567Js;1466;Jack-High Flush
+3467Js;1467;Jack-High Flush
+2467Js;1468;Jack-High Flush
+2367Js;1469;Jack-High Flush
+3457Js;1470;Jack-High Flush
+2457Js;1471;Jack-High Flush
+2357Js;1472;Jack-High Flush
+2347Js;1473;Jack-High Flush
+3456Js;1474;Jack-High Flush
+2456Js;1475;Jack-High Flush
+2356Js;1476;Jack-High Flush
+2346Js;1477;Jack-High Flush
+2345Js;1478;Jack-High Flush
+5789Ts;1479;Ten-High Flush
+4789Ts;1480;Ten-High Flush
+3789Ts;1481;Ten-High Flush
+2789Ts;1482;Ten-High Flush
+5689Ts;1483;Ten-High Flush
+4689Ts;1484;Ten-High Flush
+3689Ts;1485;Ten-High Flush
+2689Ts;1486;Ten-High Flush
+4589Ts;1487;Ten-High Flush
+3589Ts;1488;Ten-High Flush
+2589Ts;1489;Ten-High Flush
+3489Ts;1490;Ten-High Flush
+2489Ts;1491;Ten-High Flush
+2389Ts;1492;Ten-High Flush
+5679Ts;1493;Ten-High Flush
+4679Ts;1494;Ten-High Flush
+3679Ts;1495;Ten-High Flush
+2679Ts;1496;Ten-High Flush
+4579Ts;1497;Ten-High Flush
+3579Ts;1498;Ten-High Flush
+2579Ts;1499;Ten-High Flush
+3479Ts;1500;Ten-High Flush
+2479Ts;1501;Ten-High Flush
+2379Ts;1502;Ten-High Flush
+4569Ts;1503;Ten-High Flush
+3569Ts;1504;Ten-High Flush
+2569Ts;1505;Ten-High Flush
+3469Ts;1506;Ten-High Flush
+2469Ts;1507;Ten-High Flush
+2369Ts;1508;Ten-High Flush
+3459Ts;1509;Ten-High Flush
+2459Ts;1510;Ten-High Flush
+2359Ts;1511;Ten-High Flush
+2349Ts;1512;Ten-High Flush
+5678Ts;1513;Ten-High Flush
+4678Ts;1514;Ten-High Flush
+3678Ts;1515;Ten-High Flush
+2678Ts;1516;Ten-High Flush
+4578Ts;1517;Ten-High Flush
+3578Ts;1518;Ten-High Flush
+2578Ts;1519;Ten-High Flush
+3478Ts;1520;Ten-High Flush
+2478Ts;1521;Ten-High Flush
+2378Ts;1522;Ten-High Flush
+4568Ts;1523;Ten-High Flush
+3568Ts;1524;Ten-High Flush
+2568Ts;1525;Ten-High Flush
+3468Ts;1526;Ten-High Flush
+2468Ts;1527;Ten-High Flush
+2368Ts;1528;Ten-High Flush
+3458Ts;1529;Ten-High Flush
+2458Ts;1530;Ten-High Flush
+2358Ts;1531;Ten-High Flush
+2348Ts;1532;Ten-High Flush
+4567Ts;1533;Ten-High Flush
+3567Ts;1534;Ten-High Flush
+2567Ts;1535;Ten-High Flush
+3467Ts;1536;Ten-High Flush
+2467Ts;1537;Ten-High Flush
+2367Ts;1538;Ten-High Flush
+3457Ts;1539;Ten-High Flush
+2457Ts;1540;Ten-High Flush
+2357Ts;1541;Ten-High Flush
+2347Ts;1542;Ten-High Flush
+3456Ts;1543;Ten-High Flush
+2456Ts;1544;Ten-High Flush
+2356Ts;1545;Ten-High Flush
+2346Ts;1546;Ten-High Flush
+2345Ts;1547;Ten-High Flush
+46789s;1548;Nine-High Flush
+36789s;1549;Nine-High Flush
+26789s;1550;Nine-High Flush
+45789s;1551;Nine-High Flush
+35789s;1552;Nine-High Flush
+25789s;1553;Nine-High Flush
+34789s;1554;Nine-High Flush
+24789s;1555;Nine-High Flush
+23789s;1556;Nine-High Flush
+45689s;1557;Nine-High Flush
+35689s;1558;Nine-High Flush
+25689s;1559;Nine-High Flush
+34689s;1560;Nine-High Flush
+24689s;1561;Nine-High Flush
+23689s;1562;Nine-High Flush
+34589s;1563;Nine-High Flush
+24589s;1564;Nine-High Flush
+23589s;1565;Nine-High Flush
+23489s;1566;Nine-High Flush
+45679s;1567;Nine-High Flush
+35679s;1568;Nine-High Flush
+25679s;1569;Nine-High Flush
+34679s;1570;Nine-High Flush
+24679s;1571;Nine-High Flush
+23679s;1572;Nine-High Flush
+34579s;1573;Nine-High Flush
+24579s;1574;Nine-High Flush
+23579s;1575;Nine-High Flush
+23479s;1576;Nine-High Flush
+34569s;1577;Nine-High Flush
+24569s;1578;Nine-High Flush
+23569s;1579;Nine-High Flush
+23469s;1580;Nine-High Flush
+23459s;1581;Nine-High Flush
+35678s;1582;Eight-High Flush
+25678s;1583;Eight-High Flush
+34678s;1584;Eight-High Flush
+24678s;1585;Eight-High Flush
+23678s;1586;Eight-High Flush
+34578s;1587;Eight-High Flush
+24578s;1588;Eight-High Flush
+23578s;1589;Eight-High Flush
+23478s;1590;Eight-High Flush
+34568s;1591;Eight-High Flush
+24568s;1592;Eight-High Flush
+23568s;1593;Eight-High Flush
+23468s;1594;Eight-High Flush
+23458s;1595;Eight-High Flush
+24567s;1596;Seven-High Flush
+23567s;1597;Seven-High Flush
+23467s;1598;Seven-High Flush
+23457s;1599;Seven-High Flush
+AJKQT;1600;Ace-High Straight
+9JKQT;1601;King-High Straight
+89JQT;1602;Queen-High Straight
+789JT;1603;Jack-High Straight
+6789T;1604;Ten-High Straight
+56789;1605;Nine-High Straight
+45678;1606;Eight-High Straight
+34567;1607;Seven-High Straight
+23456;1608;Six-High Straight
+2345A;1609;Five-High Straight
+AAAKQ;1610;Three Aces
+AAAJK;1611;Three Aces
+AAAKT;1612;Three Aces
+9AAAK;1613;Three Aces
+8AAAK;1614;Three Aces
+7AAAK;1615;Three Aces
+6AAAK;1616;Three Aces
+5AAAK;1617;Three Aces
+4AAAK;1618;Three Aces
+3AAAK;1619;Three Aces
+2AAAK;1620;Three Aces
+AAAJQ;1621;Three Aces
+AAAQT;1622;Three Aces
+9AAAQ;1623;Three Aces
+8AAAQ;1624;Three Aces
+7AAAQ;1625;Three Aces
+6AAAQ;1626;Three Aces
+5AAAQ;1627;Three Aces
+4AAAQ;1628;Three Aces
+3AAAQ;1629;Three Aces
+2AAAQ;1630;Three Aces
+AAAJT;1631;Three Aces
+9AAAJ;1632;Three Aces
+8AAAJ;1633;Three Aces
+7AAAJ;1634;Three Aces
+6AAAJ;1635;Three Aces
+5AAAJ;1636;Three Aces
+4AAAJ;1637;Three Aces
+3AAAJ;1638;Three Aces
+2AAAJ;1639;Three Aces
+9AAAT;1640;Three Aces
+8AAAT;1641;Three Aces
+7AAAT;1642;Three Aces
+6AAAT;1643;Three Aces
+5AAAT;1644;Three Aces
+4AAAT;1645;Three Aces
+3AAAT;1646;Three Aces
+2AAAT;1647;Three Aces
+89AAA;1648;Three Aces
+79AAA;1649;Three Aces
+69AAA;1650;Three Aces
+59AAA;1651;Three Aces
+49AAA;1652;Three Aces
+39AAA;1653;Three Aces
+29AAA;1654;Three Aces
+78AAA;1655;Three Aces
+68AAA;1656;Three Aces
+58AAA;1657;Three Aces
+48AAA;1658;Three Aces
+38AAA;1659;Three Aces
+28AAA;1660;Three Aces
+67AAA;1661;Three Aces
+57AAA;1662;Three Aces
+47AAA;1663;Three Aces
+37AAA;1664;Three Aces
+27AAA;1665;Three Aces
+56AAA;1666;Three Aces
+46AAA;1667;Three Aces
+36AAA;1668;Three Aces
+26AAA;1669;Three Aces
+45AAA;1670;Three Aces
+35AAA;1671;Three Aces
+25AAA;1672;Three Aces
+34AAA;1673;Three Aces
+24AAA;1674;Three Aces
+23AAA;1675;Three Aces
+AKKKQ;1676;Three Kings
+AJKKK;1677;Three Kings
+AKKKT;1678;Three Kings
+9AKKK;1679;Three Kings
+8AKKK;1680;Three Kings
+7AKKK;1681;Three Kings
+6AKKK;1682;Three Kings
+5AKKK;1683;Three Kings
+4AKKK;1684;Three Kings
+3AKKK;1685;Three Kings
+2AKKK;1686;Three Kings
+JKKKQ;1687;Three Kings
+KKKQT;1688;Three Kings
+9KKKQ;1689;Three Kings
+8KKKQ;1690;Three Kings
+7KKKQ;1691;Three Kings
+6KKKQ;1692;Three Kings
+5KKKQ;1693;Three Kings
+4KKKQ;1694;Three Kings
+3KKKQ;1695;Three Kings
+2KKKQ;1696;Three Kings
+JKKKT;1697;Three Kings
+9JKKK;1698;Three Kings
+8JKKK;1699;Three Kings
+7JKKK;1700;Three Kings
+6JKKK;1701;Three Kings
+5JKKK;1702;Three Kings
+4JKKK;1703;Three Kings
+3JKKK;1704;Three Kings
+2JKKK;1705;Three Kings
+9KKKT;1706;Three Kings
+8KKKT;1707;Three Kings
+7KKKT;1708;Three Kings
+6KKKT;1709;Three Kings
+5KKKT;1710;Three Kings
+4KKKT;1711;Three Kings
+3KKKT;1712;Three Kings
+2KKKT;1713;Three Kings
+89KKK;1714;Three Kings
+79KKK;1715;Three Kings
+69KKK;1716;Three Kings
+59KKK;1717;Three Kings
+49KKK;1718;Three Kings
+39KKK;1719;Three Kings
+29KKK;1720;Three Kings
+78KKK;1721;Three Kings
+68KKK;1722;Three Kings
+58KKK;1723;Three Kings
+48KKK;1724;Three Kings
+38KKK;1725;Three Kings
+28KKK;1726;Three Kings
+67KKK;1727;Three Kings
+57KKK;1728;Three Kings
+47KKK;1729;Three Kings
+37KKK;1730;Three Kings
+27KKK;1731;Three Kings
+56KKK;1732;Three Kings
+46KKK;1733;Three Kings
+36KKK;1734;Three Kings
+26KKK;1735;Three Kings
+45KKK;1736;Three Kings
+35KKK;1737;Three Kings
+25KKK;1738;Three Kings
+34KKK;1739;Three Kings
+24KKK;1740;Three Kings
+23KKK;1741;Three Kings
+AKQQQ;1742;Three Queens
+AJQQQ;1743;Three Queens
+AQQQT;1744;Three Queens
+9AQQQ;1745;Three Queens
+8AQQQ;1746;Three Queens
+7AQQQ;1747;Three Queens
+6AQQQ;1748;Three Queens
+5AQQQ;1749;Three Queens
+4AQQQ;1750;Three Queens
+3AQQQ;1751;Three Queens
+2AQQQ;1752;Three Queens
+JKQQQ;1753;Three Queens
+KQQQT;1754;Three Queens
+9KQQQ;1755;Three Queens
+8KQQQ;1756;Three Queens
+7KQQQ;1757;Three Queens
+6KQQQ;1758;Three Queens
+5KQQQ;1759;Three Queens
+4KQQQ;1760;Three Queens
+3KQQQ;1761;Three Queens
+2KQQQ;1762;Three Queens
+JQQQT;1763;Three Queens
+9JQQQ;1764;Three Queens
+8JQQQ;1765;Three Queens
+7JQQQ;1766;Three Queens
+6JQQQ;1767;Three Queens
+5JQQQ;1768;Three Queens
+4JQQQ;1769;Three Queens
+3JQQQ;1770;Three Queens
+2JQQQ;1771;Three Queens
+9QQQT;1772;Three Queens
+8QQQT;1773;Three Queens
+7QQQT;1774;Three Queens
+6QQQT;1775;Three Queens
+5QQQT;1776;Three Queens
+4QQQT;1777;Three Queens
+3QQQT;1778;Three Queens
+2QQQT;1779;Three Queens
+89QQQ;1780;Three Queens
+79QQQ;1781;Three Queens
+69QQQ;1782;Three Queens
+59QQQ;1783;Three Queens
+49QQQ;1784;Three Queens
+39QQQ;1785;Three Queens
+29QQQ;1786;Three Queens
+78QQQ;1787;Three Queens
+68QQQ;1788;Three Queens
+58QQQ;1789;Three Queens
+48QQQ;1790;Three Queens
+38QQQ;1791;Three Queens
+28QQQ;1792;Three Queens
+67QQQ;1793;Three Queens
+57QQQ;1794;Three Queens
+47QQQ;1795;Three Queens
+37QQQ;1796;Three Queens
+27QQQ;1797;Three Queens
+56QQQ;1798;Three Queens
+46QQQ;1799;Three Queens
+36QQQ;1800;Three Queens
+26QQQ;1801;Three Queens
+45QQQ;1802;Three Queens
+35QQQ;1803;Three Queens
+25QQQ;1804;Three Queens
+34QQQ;1805;Three Queens
+24QQQ;1806;Three Queens
+23QQQ;1807;Three Queens
+AJJJK;1808;Three Jacks
+AJJJQ;1809;Three Jacks
+AJJJT;1810;Three Jacks
+9AJJJ;1811;Three Jacks
+8AJJJ;1812;Three Jacks
+7AJJJ;1813;Three Jacks
+6AJJJ;1814;Three Jacks
+5AJJJ;1815;Three Jacks
+4AJJJ;1816;Three Jacks
+3AJJJ;1817;Three Jacks
+2AJJJ;1818;Three Jacks
+JJJKQ;1819;Three Jacks
+JJJKT;1820;Three Jacks
+9JJJK;1821;Three Jacks
+8JJJK;1822;Three Jacks
+7JJJK;1823;Three Jacks
+6JJJK;1824;Three Jacks
+5JJJK;1825;Three Jacks
+4JJJK;1826;Three Jacks
+3JJJK;1827;Three Jacks
+2JJJK;1828;Three Jacks
+JJJQT;1829;Three Jacks
+9JJJQ;1830;Three Jacks
+8JJJQ;1831;Three Jacks
+7JJJQ;1832;Three Jacks
+6JJJQ;1833;Three Jacks
+5JJJQ;1834;Three Jacks
+4JJJQ;1835;Three Jacks
+3JJJQ;1836;Three Jacks
+2JJJQ;1837;Three Jacks
+9JJJT;1838;Three Jacks
+8JJJT;1839;Three Jacks
+7JJJT;1840;Three Jacks
+6JJJT;1841;Three Jacks
+5JJJT;1842;Three Jacks
+4JJJT;1843;Three Jacks
+3JJJT;1844;Three Jacks
+2JJJT;1845;Three Jacks
+89JJJ;1846;Three Jacks
+79JJJ;1847;Three Jacks
+69JJJ;1848;Three Jacks
+59JJJ;1849;Three Jacks
+49JJJ;1850;Three Jacks
+39JJJ;1851;Three Jacks
+29JJJ;1852;Three Jacks
+78JJJ;1853;Three Jacks
+68JJJ;1854;Three Jacks
+58JJJ;1855;Three Jacks
+48JJJ;1856;Three Jacks
+38JJJ;1857;Three Jacks
+28JJJ;1858;Three Jacks
+67JJJ;1859;Three Jacks
+57JJJ;1860;Three Jacks
+47JJJ;1861;Three Jacks
+37JJJ;1862;Three Jacks
+27JJJ;1863;Three Jacks
+56JJJ;1864;Three Jacks
+46JJJ;1865;Three Jacks
+36JJJ;1866;Three Jacks
+26JJJ;1867;Three Jacks
+45JJJ;1868;Three Jacks
+35JJJ;1869;Three Jacks
+25JJJ;1870;Three Jacks
+34JJJ;1871;Three Jacks
+24JJJ;1872;Three Jacks
+23JJJ;1873;Three Jacks
+AKTTT;1874;Three Tens
+AQTTT;1875;Three Tens
+AJTTT;1876;Three Tens
+9ATTT;1877;Three Tens
+8ATTT;1878;Three Tens
+7ATTT;1879;Three Tens
+6ATTT;1880;Three Tens
+5ATTT;1881;Three Tens
+4ATTT;1882;Three Tens
+3ATTT;1883;Three Tens
+2ATTT;1884;Three Tens
+KQTTT;1885;Three Tens
+JKTTT;1886;Three Tens
+9KTTT;1887;Three Tens
+8KTTT;1888;Three Tens
+7KTTT;1889;Three Tens
+6KTTT;1890;Three Tens
+5KTTT;1891;Three Tens
+4KTTT;1892;Three Tens
+3KTTT;1893;Three Tens
+2KTTT;1894;Three Tens
+JQTTT;1895;Three Tens
+9QTTT;1896;Three Tens
+8QTTT;1897;Three Tens
+7QTTT;1898;Three Tens
+6QTTT;1899;Three Tens
+5QTTT;1900;Three Tens
+4QTTT;1901;Three Tens
+3QTTT;1902;Three Tens
+2QTTT;1903;Three Tens
+9JTTT;1904;Three Tens
+8JTTT;1905;Three Tens
+7JTTT;1906;Three Tens
+6JTTT;1907;Three Tens
+5JTTT;1908;Three Tens
+4JTTT;1909;Three Tens
+3JTTT;1910;Three Tens
+2JTTT;1911;Three Tens
+89TTT;1912;Three Tens
+79TTT;1913;Three Tens
+69TTT;1914;Three Tens
+59TTT;1915;Three Tens
+49TTT;1916;Three Tens
+39TTT;1917;Three Tens
+29TTT;1918;Three Tens
+78TTT;1919;Three Tens
+68TTT;1920;Three Tens
+58TTT;1921;Three Tens
+48TTT;1922;Three Tens
+38TTT;1923;Three Tens
+28TTT;1924;Three Tens
+67TTT;1925;Three Tens
+57TTT;1926;Three Tens
+47TTT;1927;Three Tens
+37TTT;1928;Three Tens
+27TTT;1929;Three Tens
+56TTT;1930;Three Tens
+46TTT;1931;Three Tens
+36TTT;1932;Three Tens
+26TTT;1933;Three Tens
+45TTT;1934;Three Tens
+35TTT;1935;Three Tens
+25TTT;1936;Three Tens
+34TTT;1937;Three Tens
+24TTT;1938;Three Tens
+23TTT;1939;Three Tens
+999AK;1940;Three Nines
+999AQ;1941;Three Nines
+999AJ;1942;Three Nines
+999AT;1943;Three Nines
+8999A;1944;Three Nines
+7999A;1945;Three Nines
+6999A;1946;Three Nines
+5999A;1947;Three Nines
+4999A;1948;Three Nines
+3999A;1949;Three Nines
+2999A;1950;Three Nines
+999KQ;1951;Three Nines
+999JK;1952;Three Nines
+999KT;1953;Three Nines
+8999K;1954;Three Nines
+7999K;1955;Three Nines
+6999K;1956;Three Nines
+5999K;1957;Three Nines
+4999K;1958;Three Nines
+3999K;1959;Three Nines
+2999K;1960;Three Nines
+999JQ;1961;Three Nines
+999QT;1962;Three Nines
+8999Q;1963;Three Nines
+7999Q;1964;Three Nines
+6999Q;1965;Three Nines
+5999Q;1966;Three Nines
+4999Q;1967;Three Nines
+3999Q;1968;Three Nines
+2999Q;1969;Three Nines
+999JT;1970;Three Nines
+8999J;1971;Three Nines
+7999J;1972;Three Nines
+6999J;1973;Three Nines
+5999J;1974;Three Nines
+4999J;1975;Three Nines
+3999J;1976;Three Nines
+2999J;1977;Three Nines
+8999T;1978;Three Nines
+7999T;1979;Three Nines
+6999T;1980;Three Nines
+5999T;1981;Three Nines
+4999T;1982;Three Nines
+3999T;1983;Three Nines
+2999T;1984;Three Nines
+78999;1985;Three Nines
+68999;1986;Three Nines
+58999;1987;Three Nines
+48999;1988;Three Nines
+38999;1989;Three Nines
+28999;1990;Three Nines
+67999;1991;Three Nines
+57999;1992;Three Nines
+47999;1993;Three Nines
+37999;1994;Three Nines
+27999;1995;Three Nines
+56999;1996;Three Nines
+46999;1997;Three Nines
+36999;1998;Three Nines
+26999;1999;Three Nines
+45999;2000;Three Nines
+35999;2001;Three Nines
+25999;2002;Three Nines
+34999;2003;Three Nines
+24999;2004;Three Nines
+23999;2005;Three Nines
+888AK;2006;Three Eights
+888AQ;2007;Three Eights
+888AJ;2008;Three Eights
+888AT;2009;Three Eights
+8889A;2010;Three Eights
+7888A;2011;Three Eights
+6888A;2012;Three Eights
+5888A;2013;Three Eights
+4888A;2014;Three Eights
+3888A;2015;Three Eights
+2888A;2016;Three Eights
+888KQ;2017;Three Eights
+888JK;2018;Three Eights
+888KT;2019;Three Eights
+8889K;2020;Three Eights
+7888K;2021;Three Eights
+6888K;2022;Three Eights
+5888K;2023;Three Eights
+4888K;2024;Three Eights
+3888K;2025;Three Eights
+2888K;2026;Three Eights
+888JQ;2027;Three Eights
+888QT;2028;Three Eights
+8889Q;2029;Three Eights
+7888Q;2030;Three Eights
+6888Q;2031;Three Eights
+5888Q;2032;Three Eights
+4888Q;2033;Three Eights
+3888Q;2034;Three Eights
+2888Q;2035;Three Eights
+888JT;2036;Three Eights
+8889J;2037;Three Eights
+7888J;2038;Three Eights
+6888J;2039;Three Eights
+5888J;2040;Three Eights
+4888J;2041;Three Eights
+3888J;2042;Three Eights
+2888J;2043;Three Eights
+8889T;2044;Three Eights
+7888T;2045;Three Eights
+6888T;2046;Three Eights
+5888T;2047;Three Eights
+4888T;2048;Three Eights
+3888T;2049;Three Eights
+2888T;2050;Three Eights
+78889;2051;Three Eights
+68889;2052;Three Eights
+58889;2053;Three Eights
+48889;2054;Three Eights
+38889;2055;Three Eights
+28889;2056;Three Eights
+67888;2057;Three Eights
+57888;2058;Three Eights
+47888;2059;Three Eights
+37888;2060;Three Eights
+27888;2061;Three Eights
+56888;2062;Three Eights
+46888;2063;Three Eights
+36888;2064;Three Eights
+26888;2065;Three Eights
+45888;2066;Three Eights
+35888;2067;Three Eights
+25888;2068;Three Eights
+34888;2069;Three Eights
+24888;2070;Three Eights
+23888;2071;Three Eights
+777AK;2072;Three Sevens
+777AQ;2073;Three Sevens
+777AJ;2074;Three Sevens
+777AT;2075;Three Sevens
+7779A;2076;Three Sevens
+7778A;2077;Three Sevens
+6777A;2078;Three Sevens
+5777A;2079;Three Sevens
+4777A;2080;Three Sevens
+3777A;2081;Three Sevens
+2777A;2082;Three Sevens
+777KQ;2083;Three Sevens
+777JK;2084;Three Sevens
+777KT;2085;Three Sevens
+7779K;2086;Three Sevens
+7778K;2087;Three Sevens
+6777K;2088;Three Sevens
+5777K;2089;Three Sevens
+4777K;2090;Three Sevens
+3777K;2091;Three Sevens
+2777K;2092;Three Sevens
+777JQ;2093;Three Sevens
+777QT;2094;Three Sevens
+7779Q;2095;Three Sevens
+7778Q;2096;Three Sevens
+6777Q;2097;Three Sevens
+5777Q;2098;Three Sevens
+4777Q;2099;Three Sevens
+3777Q;2100;Three Sevens
+2777Q;2101;Three Sevens
+777JT;2102;Three Sevens
+7779J;2103;Three Sevens
+7778J;2104;Three Sevens
+6777J;2105;Three Sevens
+5777J;2106;Three Sevens
+4777J;2107;Three Sevens
+3777J;2108;Three Sevens
+2777J;2109;Three Sevens
+7779T;2110;Three Sevens
+7778T;2111;Three Sevens
+6777T;2112;Three Sevens
+5777T;2113;Three Sevens
+4777T;2114;Three Sevens
+3777T;2115;Three Sevens
+2777T;2116;Three Sevens
+77789;2117;Three Sevens
+67779;2118;Three Sevens
+57779;2119;Three Sevens
+47779;2120;Three Sevens
+37779;2121;Three Sevens
+27779;2122;Three Sevens
+67778;2123;Three Sevens
+57778;2124;Three Sevens
+47778;2125;Three Sevens
+37778;2126;Three Sevens
+27778;2127;Three Sevens
+56777;2128;Three Sevens
+46777;2129;Three Sevens
+36777;2130;Three Sevens
+26777;2131;Three Sevens
+45777;2132;Three Sevens
+35777;2133;Three Sevens
+25777;2134;Three Sevens
+34777;2135;Three Sevens
+24777;2136;Three Sevens
+23777;2137;Three Sevens
+666AK;2138;Three Sixes
+666AQ;2139;Three Sixes
+666AJ;2140;Three Sixes
+666AT;2141;Three Sixes
+6669A;2142;Three Sixes
+6668A;2143;Three Sixes
+6667A;2144;Three Sixes
+5666A;2145;Three Sixes
+4666A;2146;Three Sixes
+3666A;2147;Three Sixes
+2666A;2148;Three Sixes
+666KQ;2149;Three Sixes
+666JK;2150;Three Sixes
+666KT;2151;Three Sixes
+6669K;2152;Three Sixes
+6668K;2153;Three Sixes
+6667K;2154;Three Sixes
+5666K;2155;Three Sixes
+4666K;2156;Three Sixes
+3666K;2157;Three Sixes
+2666K;2158;Three Sixes
+666JQ;2159;Three Sixes
+666QT;2160;Three Sixes
+6669Q;2161;Three Sixes
+6668Q;2162;Three Sixes
+6667Q;2163;Three Sixes
+5666Q;2164;Three Sixes
+4666Q;2165;Three Sixes
+3666Q;2166;Three Sixes
+2666Q;2167;Three Sixes
+666JT;2168;Three Sixes
+6669J;2169;Three Sixes
+6668J;2170;Three Sixes
+6667J;2171;Three Sixes
+5666J;2172;Three Sixes
+4666J;2173;Three Sixes
+3666J;2174;Three Sixes
+2666J;2175;Three Sixes
+6669T;2176;Three Sixes
+6668T;2177;Three Sixes
+6667T;2178;Three Sixes
+5666T;2179;Three Sixes
+4666T;2180;Three Sixes
+3666T;2181;Three Sixes
+2666T;2182;Three Sixes
+66689;2183;Three Sixes
+66679;2184;Three Sixes
+56669;2185;Three Sixes
+46669;2186;Three Sixes
+36669;2187;Three Sixes
+26669;2188;Three Sixes
+66678;2189;Three Sixes
+56668;2190;Three Sixes
+46668;2191;Three Sixes
+36668;2192;Three Sixes
+26668;2193;Three Sixes
+56667;2194;Three Sixes
+46667;2195;Three Sixes
+36667;2196;Three Sixes
+26667;2197;Three Sixes
+45666;2198;Three Sixes
+35666;2199;Three Sixes
+25666;2200;Three Sixes
+34666;2201;Three Sixes
+24666;2202;Three Sixes
+23666;2203;Three Sixes
+555AK;2204;Three Fives
+555AQ;2205;Three Fives
+555AJ;2206;Three Fives
+555AT;2207;Three Fives
+5559A;2208;Three Fives
+5558A;2209;Three Fives
+5557A;2210;Three Fives
+5556A;2211;Three Fives
+4555A;2212;Three Fives
+3555A;2213;Three Fives
+2555A;2214;Three Fives
+555KQ;2215;Three Fives
+555JK;2216;Three Fives
+555KT;2217;Three Fives
+5559K;2218;Three Fives
+5558K;2219;Three Fives
+5557K;2220;Three Fives
+5556K;2221;Three Fives
+4555K;2222;Three Fives
+3555K;2223;Three Fives
+2555K;2224;Three Fives
+555JQ;2225;Three Fives
+555QT;2226;Three Fives
+5559Q;2227;Three Fives
+5558Q;2228;Three Fives
+5557Q;2229;Three Fives
+5556Q;2230;Three Fives
+4555Q;2231;Three Fives
+3555Q;2232;Three Fives
+2555Q;2233;Three Fives
+555JT;2234;Three Fives
+5559J;2235;Three Fives
+5558J;2236;Three Fives
+5557J;2237;Three Fives
+5556J;2238;Three Fives
+4555J;2239;Three Fives
+3555J;2240;Three Fives
+2555J;2241;Three Fives
+5559T;2242;Three Fives
+5558T;2243;Three Fives
+5557T;2244;Three Fives
+5556T;2245;Three Fives
+4555T;2246;Three Fives
+3555T;2247;Three Fives
+2555T;2248;Three Fives
+55589;2249;Three Fives
+55579;2250;Three Fives
+55569;2251;Three Fives
+45559;2252;Three Fives
+35559;2253;Three Fives
+25559;2254;Three Fives
+55578;2255;Three Fives
+55568;2256;Three Fives
+45558;2257;Three Fives
+35558;2258;Three Fives
+25558;2259;Three Fives
+55567;2260;Three Fives
+45557;2261;Three Fives
+35557;2262;Three Fives
+25557;2263;Three Fives
+45556;2264;Three Fives
+35556;2265;Three Fives
+25556;2266;Three Fives
+34555;2267;Three Fives
+24555;2268;Three Fives
+23555;2269;Three Fives
+444AK;2270;Three Fours
+444AQ;2271;Three Fours
+444AJ;2272;Three Fours
+444AT;2273;Three Fours
+4449A;2274;Three Fours
+4448A;2275;Three Fours
+4447A;2276;Three Fours
+4446A;2277;Three Fours
+4445A;2278;Three Fours
+3444A;2279;Three Fours
+2444A;2280;Three Fours
+444KQ;2281;Three Fours
+444JK;2282;Three Fours
+444KT;2283;Three Fours
+4449K;2284;Three Fours
+4448K;2285;Three Fours
+4447K;2286;Three Fours
+4446K;2287;Three Fours
+4445K;2288;Three Fours
+3444K;2289;Three Fours
+2444K;2290;Three Fours
+444JQ;2291;Three Fours
+444QT;2292;Three Fours
+4449Q;2293;Three Fours
+4448Q;2294;Three Fours
+4447Q;2295;Three Fours
+4446Q;2296;Three Fours
+4445Q;2297;Three Fours
+3444Q;2298;Three Fours
+2444Q;2299;Three Fours
+444JT;2300;Three Fours
+4449J;2301;Three Fours
+4448J;2302;Three Fours
+4447J;2303;Three Fours
+4446J;2304;Three Fours
+4445J;2305;Three Fours
+3444J;2306;Three Fours
+2444J;2307;Three Fours
+4449T;2308;Three Fours
+4448T;2309;Three Fours
+4447T;2310;Three Fours
+4446T;2311;Three Fours
+4445T;2312;Three Fours
+3444T;2313;Three Fours
+2444T;2314;Three Fours
+44489;2315;Three Fours
+44479;2316;Three Fours
+44469;2317;Three Fours
+44459;2318;Three Fours
+34449;2319;Three Fours
+24449;2320;Three Fours
+44478;2321;Three Fours
+44468;2322;Three Fours
+44458;2323;Three Fours
+34448;2324;Three Fours
+24448;2325;Three Fours
+44467;2326;Three Fours
+44457;2327;Three Fours
+34447;2328;Three Fours
+24447;2329;Three Fours
+44456;2330;Three Fours
+34446;2331;Three Fours
+24446;2332;Three Fours
+34445;2333;Three Fours
+24445;2334;Three Fours
+23444;2335;Three Fours
+333AK;2336;Three Treys
+333AQ;2337;Three Treys
+333AJ;2338;Three Treys
+333AT;2339;Three Treys
+3339A;2340;Three Treys
+3338A;2341;Three Treys
+3337A;2342;Three Treys
+3336A;2343;Three Treys
+3335A;2344;Three Treys
+3334A;2345;Three Treys
+2333A;2346;Three Treys
+333KQ;2347;Three Treys
+333JK;2348;Three Treys
+333KT;2349;Three Treys
+3339K;2350;Three Treys
+3338K;2351;Three Treys
+3337K;2352;Three Treys
+3336K;2353;Three Treys
+3335K;2354;Three Treys
+3334K;2355;Three Treys
+2333K;2356;Three Treys
+333JQ;2357;Three Treys
+333QT;2358;Three Treys
+3339Q;2359;Three Treys
+3338Q;2360;Three Treys
+3337Q;2361;Three Treys
+3336Q;2362;Three Treys
+3335Q;2363;Three Treys
+3334Q;2364;Three Treys
+2333Q;2365;Three Treys
+333JT;2366;Three Treys
+3339J;2367;Three Treys
+3338J;2368;Three Treys
+3337J;2369;Three Treys
+3336J;2370;Three Treys
+3335J;2371;Three Treys
+3334J;2372;Three Treys
+2333J;2373;Three Treys
+3339T;2374;Three Treys
+3338T;2375;Three Treys
+3337T;2376;Three Treys
+3336T;2377;Three Treys
+3335T;2378;Three Treys
+3334T;2379;Three Treys
+2333T;2380;Three Treys
+33389;2381;Three Treys
+33379;2382;Three Treys
+33369;2383;Three Treys
+33359;2384;Three Treys
+33349;2385;Three Treys
+23339;2386;Three Treys
+33378;2387;Three Treys
+33368;2388;Three Treys
+33358;2389;Three Treys
+33348;2390;Three Treys
+23338;2391;Three Treys
+33367;2392;Three Treys
+33357;2393;Three Treys
+33347;2394;Three Treys
+23337;2395;Three Treys
+33356;2396;Three Treys
+33346;2397;Three Treys
+23336;2398;Three Treys
+33345;2399;Three Treys
+23335;2400;Three Treys
+23334;2401;Three Treys
+222AK;2402;Three Deuces
+222AQ;2403;Three Deuces
+222AJ;2404;Three Deuces
+222AT;2405;Three Deuces
+2229A;2406;Three Deuces
+2228A;2407;Three Deuces
+2227A;2408;Three Deuces
+2226A;2409;Three Deuces
+2225A;2410;Three Deuces
+2224A;2411;Three Deuces
+2223A;2412;Three Deuces
+222KQ;2413;Three Deuces
+222JK;2414;Three Deuces
+222KT;2415;Three Deuces
+2229K;2416;Three Deuces
+2228K;2417;Three Deuces
+2227K;2418;Three Deuces
+2226K;2419;Three Deuces
+2225K;2420;Three Deuces
+2224K;2421;Three Deuces
+2223K;2422;Three Deuces
+222JQ;2423;Three Deuces
+222QT;2424;Three Deuces
+2229Q;2425;Three Deuces
+2228Q;2426;Three Deuces
+2227Q;2427;Three Deuces
+2226Q;2428;Three Deuces
+2225Q;2429;Three Deuces
+2224Q;2430;Three Deuces
+2223Q;2431;Three Deuces
+222JT;2432;Three Deuces
+2229J;2433;Three Deuces
+2228J;2434;Three Deuces
+2227J;2435;Three Deuces
+2226J;2436;Three Deuces
+2225J;2437;Three Deuces
+2224J;2438;Three Deuces
+2223J;2439;Three Deuces
+2229T;2440;Three Deuces
+2228T;2441;Three Deuces
+2227T;2442;Three Deuces
+2226T;2443;Three Deuces
+2225T;2444;Three Deuces
+2224T;2445;Three Deuces
+2223T;2446;Three Deuces
+22289;2447;Three Deuces
+22279;2448;Three Deuces
+22269;2449;Three Deuces
+22259;2450;Three Deuces
+22249;2451;Three Deuces
+22239;2452;Three Deuces
+22278;2453;Three Deuces
+22268;2454;Three Deuces
+22258;2455;Three Deuces
+22248;2456;Three Deuces
+22238;2457;Three Deuces
+22267;2458;Three Deuces
+22257;2459;Three Deuces
+22247;2460;Three Deuces
+22237;2461;Three Deuces
+22256;2462;Three Deuces
+22246;2463;Three Deuces
+22236;2464;Three Deuces
+22245;2465;Three Deuces
+22235;2466;Three Deuces
+22234;2467;Three Deuces
+AAKKQ;2468;Aces and Kings
+AAJKK;2469;Aces and Kings
+AAKKT;2470;Aces and Kings
+9AAKK;2471;Aces and Kings
+8AAKK;2472;Aces and Kings
+7AAKK;2473;Aces and Kings
+6AAKK;2474;Aces and Kings
+5AAKK;2475;Aces and Kings
+4AAKK;2476;Aces and Kings
+3AAKK;2477;Aces and Kings
+2AAKK;2478;Aces and Kings
+AAKQQ;2479;Aces and Queens
+AAJQQ;2480;Aces and Queens
+AAQQT;2481;Aces and Queens
+9AAQQ;2482;Aces and Queens
+8AAQQ;2483;Aces and Queens
+7AAQQ;2484;Aces and Queens
+6AAQQ;2485;Aces and Queens
+5AAQQ;2486;Aces and Queens
+4AAQQ;2487;Aces and Queens
+3AAQQ;2488;Aces and Queens
+2AAQQ;2489;Aces and Queens
+AAJJK;2490;Aces and Jacks
+AAJJQ;2491;Aces and Jacks
+AAJJT;2492;Aces and Jacks
+9AAJJ;2493;Aces and Jacks
+8AAJJ;2494;Aces and Jacks
+7AAJJ;2495;Aces and Jacks
+6AAJJ;2496;Aces and Jacks
+5AAJJ;2497;Aces and Jacks
+4AAJJ;2498;Aces and Jacks
+3AAJJ;2499;Aces and Jacks
+2AAJJ;2500;Aces and Jacks
+AAKTT;2501;Aces and Tens
+AAQTT;2502;Aces and Tens
+AAJTT;2503;Aces and Tens
+9AATT;2504;Aces and Tens
+8AATT;2505;Aces and Tens
+7AATT;2506;Aces and Tens
+6AATT;2507;Aces and Tens
+5AATT;2508;Aces and Tens
+4AATT;2509;Aces and Tens
+3AATT;2510;Aces and Tens
+2AATT;2511;Aces and Tens
+99AAK;2512;Aces and Nines
+99AAQ;2513;Aces and Nines
+99AAJ;2514;Aces and Nines
+99AAT;2515;Aces and Nines
+899AA;2516;Aces and Nines
+799AA;2517;Aces and Nines
+699AA;2518;Aces and Nines
+599AA;2519;Aces and Nines
+499AA;2520;Aces and Nines
+399AA;2521;Aces and Nines
+299AA;2522;Aces and Nines
+88AAK;2523;Aces and Eights
+88AAQ;2524;Aces and Eights
+88AAJ;2525;Aces and Eights
+88AAT;2526;Aces and Eights
+889AA;2527;Aces and Eights
+788AA;2528;Aces and Eights
+688AA;2529;Aces and Eights
+588AA;2530;Aces and Eights
+488AA;2531;Aces and Eights
+388AA;2532;Aces and Eights
+288AA;2533;Aces and Eights
+77AAK;2534;Aces and Sevens
+77AAQ;2535;Aces and Sevens
+77AAJ;2536;Aces and Sevens
+77AAT;2537;Aces and Sevens
+779AA;2538;Aces and Sevens
+778AA;2539;Aces and Sevens
+677AA;2540;Aces and Sevens
+577AA;2541;Aces and Sevens
+477AA;2542;Aces and Sevens
+377AA;2543;Aces and Sevens
+277AA;2544;Aces and Sevens
+66AAK;2545;Aces and Sixes
+66AAQ;2546;Aces and Sixes
+66AAJ;2547;Aces and Sixes
+66AAT;2548;Aces and Sixes
+669AA;2549;Aces and Sixes
+668AA;2550;Aces and Sixes
+667AA;2551;Aces and Sixes
+566AA;2552;Aces and Sixes
+466AA;2553;Aces and Sixes
+366AA;2554;Aces and Sixes
+266AA;2555;Aces and Sixes
+55AAK;2556;Aces and Fives
+55AAQ;2557;Aces and Fives
+55AAJ;2558;Aces and Fives
+55AAT;2559;Aces and Fives
+559AA;2560;Aces and Fives
+558AA;2561;Aces and Fives
+557AA;2562;Aces and Fives
+556AA;2563;Aces and Fives
+455AA;2564;Aces and Fives
+355AA;2565;Aces and Fives
+255AA;2566;Aces and Fives
+44AAK;2567;Aces and Fours
+44AAQ;2568;Aces and Fours
+44AAJ;2569;Aces and Fours
+44AAT;2570;Aces and Fours
+449AA;2571;Aces and Fours
+448AA;2572;Aces and Fours
+447AA;2573;Aces and Fours
+446AA;2574;Aces and Fours
+445AA;2575;Aces and Fours
+344AA;2576;Aces and Fours
+244AA;2577;Aces and Fours
+33AAK;2578;Aces and Treys
+33AAQ;2579;Aces and Treys
+33AAJ;2580;Aces and Treys
+33AAT;2581;Aces and Treys
+339AA;2582;Aces and Treys
+338AA;2583;Aces and Treys
+337AA;2584;Aces and Treys
+336AA;2585;Aces and Treys
+335AA;2586;Aces and Treys
+334AA;2587;Aces and Treys
+233AA;2588;Aces and Treys
+22AAK;2589;Aces and Deuces
+22AAQ;2590;Aces and Deuces
+22AAJ;2591;Aces and Deuces
+22AAT;2592;Aces and Deuces
+229AA;2593;Aces and Deuces
+228AA;2594;Aces and Deuces
+227AA;2595;Aces and Deuces
+226AA;2596;Aces and Deuces
+225AA;2597;Aces and Deuces
+224AA;2598;Aces and Deuces
+223AA;2599;Aces and Deuces
+AKKQQ;2600;Kings and Queens
+JKKQQ;2601;Kings and Queens
+KKQQT;2602;Kings and Queens
+9KKQQ;2603;Kings and Queens
+8KKQQ;2604;Kings and Queens
+7KKQQ;2605;Kings and Queens
+6KKQQ;2606;Kings and Queens
+5KKQQ;2607;Kings and Queens
+4KKQQ;2608;Kings and Queens
+3KKQQ;2609;Kings and Queens
+2KKQQ;2610;Kings and Queens
+AJJKK;2611;Kings and Jacks
+JJKKQ;2612;Kings and Jacks
+JJKKT;2613;Kings and Jacks
+9JJKK;2614;Kings and Jacks
+8JJKK;2615;Kings and Jacks
+7JJKK;2616;Kings and Jacks
+6JJKK;2617;Kings and Jacks
+5JJKK;2618;Kings and Jacks
+4JJKK;2619;Kings and Jacks
+3JJKK;2620;Kings and Jacks
+2JJKK;2621;Kings and Jacks
+AKKTT;2622;Kings and Tens
+KKQTT;2623;Kings and Tens
+JKKTT;2624;Kings and Tens
+9KKTT;2625;Kings and Tens
+8KKTT;2626;Kings and Tens
+7KKTT;2627;Kings and Tens
+6KKTT;2628;Kings and Tens
+5KKTT;2629;Kings and Tens
+4KKTT;2630;Kings and Tens
+3KKTT;2631;Kings and Tens
+2KKTT;2632;Kings and Tens
+99AKK;2633;Kings and Nines
+99KKQ;2634;Kings and Nines
+99JKK;2635;Kings and Nines
+99KKT;2636;Kings and Nines
+899KK;2637;Kings and Nines
+799KK;2638;Kings and Nines
+699KK;2639;Kings and Nines
+599KK;2640;Kings and Nines
+499KK;2641;Kings and Nines
+399KK;2642;Kings and Nines
+299KK;2643;Kings and Nines
+88AKK;2644;Kings and Eights
+88KKQ;2645;Kings and Eights
+88JKK;2646;Kings and Eights
+88KKT;2647;Kings and Eights
+889KK;2648;Kings and Eights
+788KK;2649;Kings and Eights
+688KK;2650;Kings and Eights
+588KK;2651;Kings and Eights
+488KK;2652;Kings and Eights
+388KK;2653;Kings and Eights
+288KK;2654;Kings and Eights
+77AKK;2655;Kings and Sevens
+77KKQ;2656;Kings and Sevens
+77JKK;2657;Kings and Sevens
+77KKT;2658;Kings and Sevens
+779KK;2659;Kings and Sevens
+778KK;2660;Kings and Sevens
+677KK;2661;Kings and Sevens
+577KK;2662;Kings and Sevens
+477KK;2663;Kings and Sevens
+377KK;2664;Kings and Sevens
+277KK;2665;Kings and Sevens
+66AKK;2666;Kings and Sixes
+66KKQ;2667;Kings and Sixes
+66JKK;2668;Kings and Sixes
+66KKT;2669;Kings and Sixes
+669KK;2670;Kings and Sixes
+668KK;2671;Kings and Sixes
+667KK;2672;Kings and Sixes
+566KK;2673;Kings and Sixes
+466KK;2674;Kings and Sixes
+366KK;2675;Kings and Sixes
+266KK;2676;Kings and Sixes
+55AKK;2677;Kings and Fives
+55KKQ;2678;Kings and Fives
+55JKK;2679;Kings and Fives
+55KKT;2680;Kings and Fives
+559KK;2681;Kings and Fives
+558KK;2682;Kings and Fives
+557KK;2683;Kings and Fives
+556KK;2684;Kings and Fives
+455KK;2685;Kings and Fives
+355KK;2686;Kings and Fives
+255KK;2687;Kings and Fives
+44AKK;2688;Kings and Fours
+44KKQ;2689;Kings and Fours
+44JKK;2690;Kings and Fours
+44KKT;2691;Kings and Fours
+449KK;2692;Kings and Fours
+448KK;2693;Kings and Fours
+447KK;2694;Kings and Fours
+446KK;2695;Kings and Fours
+445KK;2696;Kings and Fours
+344KK;2697;Kings and Fours
+244KK;2698;Kings and Fours
+33AKK;2699;Kings and Treys
+33KKQ;2700;Kings and Treys
+33JKK;2701;Kings and Treys
+33KKT;2702;Kings and Treys
+339KK;2703;Kings and Treys
+338KK;2704;Kings and Treys
+337KK;2705;Kings and Treys
+336KK;2706;Kings and Treys
+335KK;2707;Kings and Treys
+334KK;2708;Kings and Treys
+233KK;2709;Kings and Treys
+22AKK;2710;Kings and Deuces
+22KKQ;2711;Kings and Deuces
+22JKK;2712;Kings and Deuces
+22KKT;2713;Kings and Deuces
+229KK;2714;Kings and Deuces
+228KK;2715;Kings and Deuces
+227KK;2716;Kings and Deuces
+226KK;2717;Kings and Deuces
+225KK;2718;Kings and Deuces
+224KK;2719;Kings and Deuces
+223KK;2720;Kings and Deuces
+AJJQQ;2721;Queens and Jacks
+JJKQQ;2722;Queens and Jacks
+JJQQT;2723;Queens and Jacks
+9JJQQ;2724;Queens and Jacks
+8JJQQ;2725;Queens and Jacks
+7JJQQ;2726;Queens and Jacks
+6JJQQ;2727;Queens and Jacks
+5JJQQ;2728;Queens and Jacks
+4JJQQ;2729;Queens and Jacks
+3JJQQ;2730;Queens and Jacks
+2JJQQ;2731;Queens and Jacks
+AQQTT;2732;Queens and Tens
+KQQTT;2733;Queens and Tens
+JQQTT;2734;Queens and Tens
+9QQTT;2735;Queens and Tens
+8QQTT;2736;Queens and Tens
+7QQTT;2737;Queens and Tens
+6QQTT;2738;Queens and Tens
+5QQTT;2739;Queens and Tens
+4QQTT;2740;Queens and Tens
+3QQTT;2741;Queens and Tens
+2QQTT;2742;Queens and Tens
+99AQQ;2743;Queens and Nines
+99KQQ;2744;Queens and Nines
+99JQQ;2745;Queens and Nines
+99QQT;2746;Queens and Nines
+899QQ;2747;Queens and Nines
+799QQ;2748;Queens and Nines
+699QQ;2749;Queens and Nines
+599QQ;2750;Queens and Nines
+499QQ;2751;Queens and Nines
+399QQ;2752;Queens and Nines
+299QQ;2753;Queens and Nines
+88AQQ;2754;Queens and Eights
+88KQQ;2755;Queens and Eights
+88JQQ;2756;Queens and Eights
+88QQT;2757;Queens and Eights
+889QQ;2758;Queens and Eights
+788QQ;2759;Queens and Eights
+688QQ;2760;Queens and Eights
+588QQ;2761;Queens and Eights
+488QQ;2762;Queens and Eights
+388QQ;2763;Queens and Eights
+288QQ;2764;Queens and Eights
+77AQQ;2765;Queens and Sevens
+77KQQ;2766;Queens and Sevens
+77JQQ;2767;Queens and Sevens
+77QQT;2768;Queens and Sevens
+779QQ;2769;Queens and Sevens
+778QQ;2770;Queens and Sevens
+677QQ;2771;Queens and Sevens
+577QQ;2772;Queens and Sevens
+477QQ;2773;Queens and Sevens
+377QQ;2774;Queens and Sevens
+277QQ;2775;Queens and Sevens
+66AQQ;2776;Queens and Sixes
+66KQQ;2777;Queens and Sixes
+66JQQ;2778;Queens and Sixes
+66QQT;2779;Queens and Sixes
+669QQ;2780;Queens and Sixes
+668QQ;2781;Queens and Sixes
+667QQ;2782;Queens and Sixes
+566QQ;2783;Queens and Sixes
+466QQ;2784;Queens and Sixes
+366QQ;2785;Queens and Sixes
+266QQ;2786;Queens and Sixes
+55AQQ;2787;Queens and Fives
+55KQQ;2788;Queens and Fives
+55JQQ;2789;Queens and Fives
+55QQT;2790;Queens and Fives
+559QQ;2791;Queens and Fives
+558QQ;2792;Queens and Fives
+557QQ;2793;Queens and Fives
+556QQ;2794;Queens and Fives
+455QQ;2795;Queens and Fives
+355QQ;2796;Queens and Fives
+255QQ;2797;Queens and Fives
+44AQQ;2798;Queens and Fours
+44KQQ;2799;Queens and Fours
+44JQQ;2800;Queens and Fours
+44QQT;2801;Queens and Fours
+449QQ;2802;Queens and Fours
+448QQ;2803;Queens and Fours
+447QQ;2804;Queens and Fours
+446QQ;2805;Queens and Fours
+445QQ;2806;Queens and Fours
+344QQ;2807;Queens and Fours
+244QQ;2808;Queens and Fours
+33AQQ;2809;Queens and Treys
+33KQQ;2810;Queens and Treys
+33JQQ;2811;Queens and Treys
+33QQT;2812;Queens and Treys
+339QQ;2813;Queens and Treys
+338QQ;2814;Queens and Treys
+337QQ;2815;Queens and Treys
+336QQ;2816;Queens and Treys
+335QQ;2817;Queens and Treys
+334QQ;2818;Queens and Treys
+233QQ;2819;Queens and Treys
+22AQQ;2820;Queens and Deuces
+22KQQ;2821;Queens and Deuces
+22JQQ;2822;Queens and Deuces
+22QQT;2823;Queens and Deuces
+229QQ;2824;Queens and Deuces
+228QQ;2825;Queens and Deuces
+227QQ;2826;Queens and Deuces
+226QQ;2827;Queens and Deuces
+225QQ;2828;Queens and Deuces
+224QQ;2829;Queens and Deuces
+223QQ;2830;Queens and Deuces
+AJJTT;2831;Jacks and Tens
+JJKTT;2832;Jacks and Tens
+JJQTT;2833;Jacks and Tens
+9JJTT;2834;Jacks and Tens
+8JJTT;2835;Jacks and Tens
+7JJTT;2836;Jacks and Tens
+6JJTT;2837;Jacks and Tens
+5JJTT;2838;Jacks and Tens
+4JJTT;2839;Jacks and Tens
+3JJTT;2840;Jacks and Tens
+2JJTT;2841;Jacks and Tens
+99AJJ;2842;Jacks and Nines
+99JJK;2843;Jacks and Nines
+99JJQ;2844;Jacks and Nines
+99JJT;2845;Jacks and Nines
+899JJ;2846;Jacks and Nines
+799JJ;2847;Jacks and Nines
+699JJ;2848;Jacks and Nines
+599JJ;2849;Jacks and Nines
+499JJ;2850;Jacks and Nines
+399JJ;2851;Jacks and Nines
+299JJ;2852;Jacks and Nines
+88AJJ;2853;Jacks and Eights
+88JJK;2854;Jacks and Eights
+88JJQ;2855;Jacks and Eights
+88JJT;2856;Jacks and Eights
+889JJ;2857;Jacks and Eights
+788JJ;2858;Jacks and Eights
+688JJ;2859;Jacks and Eights
+588JJ;2860;Jacks and Eights
+488JJ;2861;Jacks and Eights
+388JJ;2862;Jacks and Eights
+288JJ;2863;Jacks and Eights
+77AJJ;2864;Jacks and Sevens
+77JJK;2865;Jacks and Sevens
+77JJQ;2866;Jacks and Sevens
+77JJT;2867;Jacks and Sevens
+779JJ;2868;Jacks and Sevens
+778JJ;2869;Jacks and Sevens
+677JJ;2870;Jacks and Sevens
+577JJ;2871;Jacks and Sevens
+477JJ;2872;Jacks and Sevens
+377JJ;2873;Jacks and Sevens
+277JJ;2874;Jacks and Sevens
+66AJJ;2875;Jacks and Sixes
+66JJK;2876;Jacks and Sixes
+66JJQ;2877;Jacks and Sixes
+66JJT;2878;Jacks and Sixes
+669JJ;2879;Jacks and Sixes
+668JJ;2880;Jacks and Sixes
+667JJ;2881;Jacks and Sixes
+566JJ;2882;Jacks and Sixes
+466JJ;2883;Jacks and Sixes
+366JJ;2884;Jacks and Sixes
+266JJ;2885;Jacks and Sixes
+55AJJ;2886;Jacks and Fives
+55JJK;2887;Jacks and Fives
+55JJQ;2888;Jacks and Fives
+55JJT;2889;Jacks and Fives
+559JJ;2890;Jacks and Fives
+558JJ;2891;Jacks and Fives
+557JJ;2892;Jacks and Fives
+556JJ;2893;Jacks and Fives
+455JJ;2894;Jacks and Fives
+355JJ;2895;Jacks and Fives
+255JJ;2896;Jacks and Fives
+44AJJ;2897;Jacks and Fours
+44JJK;2898;Jacks and Fours
+44JJQ;2899;Jacks and Fours
+44JJT;2900;Jacks and Fours
+449JJ;2901;Jacks and Fours
+448JJ;2902;Jacks and Fours
+447JJ;2903;Jacks and Fours
+446JJ;2904;Jacks and Fours
+445JJ;2905;Jacks and Fours
+344JJ;2906;Jacks and Fours
+244JJ;2907;Jacks and Fours
+33AJJ;2908;Jacks and Treys
+33JJK;2909;Jacks and Treys
+33JJQ;2910;Jacks and Treys
+33JJT;2911;Jacks and Treys
+339JJ;2912;Jacks and Treys
+338JJ;2913;Jacks and Treys
+337JJ;2914;Jacks and Treys
+336JJ;2915;Jacks and Treys
+335JJ;2916;Jacks and Treys
+334JJ;2917;Jacks and Treys
+233JJ;2918;Jacks and Treys
+22AJJ;2919;Jacks and Deuces
+22JJK;2920;Jacks and Deuces
+22JJQ;2921;Jacks and Deuces
+22JJT;2922;Jacks and Deuces
+229JJ;2923;Jacks and Deuces
+228JJ;2924;Jacks and Deuces
+227JJ;2925;Jacks and Deuces
+226JJ;2926;Jacks and Deuces
+225JJ;2927;Jacks and Deuces
+224JJ;2928;Jacks and Deuces
+223JJ;2929;Jacks and Deuces
+99ATT;2930;Tens and Nines
+99KTT;2931;Tens and Nines
+99QTT;2932;Tens and Nines
+99JTT;2933;Tens and Nines
+899TT;2934;Tens and Nines
+799TT;2935;Tens and Nines
+699TT;2936;Tens and Nines
+599TT;2937;Tens and Nines
+499TT;2938;Tens and Nines
+399TT;2939;Tens and Nines
+299TT;2940;Tens and Nines
+88ATT;2941;Tens and Eights
+88KTT;2942;Tens and Eights
+88QTT;2943;Tens and Eights
+88JTT;2944;Tens and Eights
+889TT;2945;Tens and Eights
+788TT;2946;Tens and Eights
+688TT;2947;Tens and Eights
+588TT;2948;Tens and Eights
+488TT;2949;Tens and Eights
+388TT;2950;Tens and Eights
+288TT;2951;Tens and Eights
+77ATT;2952;Tens and Sevens
+77KTT;2953;Tens and Sevens
+77QTT;2954;Tens and Sevens
+77JTT;2955;Tens and Sevens
+779TT;2956;Tens and Sevens
+778TT;2957;Tens and Sevens
+677TT;2958;Tens and Sevens
+577TT;2959;Tens and Sevens
+477TT;2960;Tens and Sevens
+377TT;2961;Tens and Sevens
+277TT;2962;Tens and Sevens
+66ATT;2963;Tens and Sixes
+66KTT;2964;Tens and Sixes
+66QTT;2965;Tens and Sixes
+66JTT;2966;Tens and Sixes
+669TT;2967;Tens and Sixes
+668TT;2968;Tens and Sixes
+667TT;2969;Tens and Sixes
+566TT;2970;Tens and Sixes
+466TT;2971;Tens and Sixes
+366TT;2972;Tens and Sixes
+266TT;2973;Tens and Sixes
+55ATT;2974;Tens and Fives
+55KTT;2975;Tens and Fives
+55QTT;2976;Tens and Fives
+55JTT;2977;Tens and Fives
+559TT;2978;Tens and Fives
+558TT;2979;Tens and Fives
+557TT;2980;Tens and Fives
+556TT;2981;Tens and Fives
+455TT;2982;Tens and Fives
+355TT;2983;Tens and Fives
+255TT;2984;Tens and Fives
+44ATT;2985;Tens and Fours
+44KTT;2986;Tens and Fours
+44QTT;2987;Tens and Fours
+44JTT;2988;Tens and Fours
+449TT;2989;Tens and Fours
+448TT;2990;Tens and Fours
+447TT;2991;Tens and Fours
+446TT;2992;Tens and Fours
+445TT;2993;Tens and Fours
+344TT;2994;Tens and Fours
+244TT;2995;Tens and Fours
+33ATT;2996;Tens and Treys
+33KTT;2997;Tens and Treys
+33QTT;2998;Tens and Treys
+33JTT;2999;Tens and Treys
+339TT;3000;Tens and Treys
+338TT;3001;Tens and Treys
+337TT;3002;Tens and Treys
+336TT;3003;Tens and Treys
+335TT;3004;Tens and Treys
+334TT;3005;Tens and Treys
+233TT;3006;Tens and Treys
+22ATT;3007;Tens and Deuces
+22KTT;3008;Tens and Deuces
+22QTT;3009;Tens and Deuces
+22JTT;3010;Tens and Deuces
+229TT;3011;Tens and Deuces
+228TT;3012;Tens and Deuces
+227TT;3013;Tens and Deuces
+226TT;3014;Tens and Deuces
+225TT;3015;Tens and Deuces
+224TT;3016;Tens and Deuces
+223TT;3017;Tens and Deuces
+8899A;3018;Nines and Eights
+8899K;3019;Nines and Eights
+8899Q;3020;Nines and Eights
+8899J;3021;Nines and Eights
+8899T;3022;Nines and Eights
+78899;3023;Nines and Eights
+68899;3024;Nines and Eights
+58899;3025;Nines and Eights
+48899;3026;Nines and Eights
+38899;3027;Nines and Eights
+28899;3028;Nines and Eights
+7799A;3029;Nines and Sevens
+7799K;3030;Nines and Sevens
+7799Q;3031;Nines and Sevens
+7799J;3032;Nines and Sevens
+7799T;3033;Nines and Sevens
+77899;3034;Nines and Sevens
+67799;3035;Nines and Sevens
+57799;3036;Nines and Sevens
+47799;3037;Nines and Sevens
+37799;3038;Nines and Sevens
+27799;3039;Nines and Sevens
+6699A;3040;Nines and Sixes
+6699K;3041;Nines and Sixes
+6699Q;3042;Nines and Sixes
+6699J;3043;Nines and Sixes
+6699T;3044;Nines and Sixes
+66899;3045;Nines and Sixes
+66799;3046;Nines and Sixes
+56699;3047;Nines and Sixes
+46699;3048;Nines and Sixes
+36699;3049;Nines and Sixes
+26699;3050;Nines and Sixes
+5599A;3051;Nines and Fives
+5599K;3052;Nines and Fives
+5599Q;3053;Nines and Fives
+5599J;3054;Nines and Fives
+5599T;3055;Nines and Fives
+55899;3056;Nines and Fives
+55799;3057;Nines and Fives
+55699;3058;Nines and Fives
+45599;3059;Nines and Fives
+35599;3060;Nines and Fives
+25599;3061;Nines and Fives
+4499A;3062;Nines and Fours
+4499K;3063;Nines and Fours
+4499Q;3064;Nines and Fours
+4499J;3065;Nines and Fours
+4499T;3066;Nines and Fours
+44899;3067;Nines and Fours
+44799;3068;Nines and Fours
+44699;3069;Nines and Fours
+44599;3070;Nines and Fours
+34499;3071;Nines and Fours
+24499;3072;Nines and Fours
+3399A;3073;Nines and Treys
+3399K;3074;Nines and Treys
+3399Q;3075;Nines and Treys
+3399J;3076;Nines and Treys
+3399T;3077;Nines and Treys
+33899;3078;Nines and Treys
+33799;3079;Nines and Treys
+33699;3080;Nines and Treys
+33599;3081;Nines and Treys
+33499;3082;Nines and Treys
+23399;3083;Nines and Treys
+2299A;3084;Nines and Deuces
+2299K;3085;Nines and Deuces
+2299Q;3086;Nines and Deuces
+2299J;3087;Nines and Deuces
+2299T;3088;Nines and Deuces
+22899;3089;Nines and Deuces
+22799;3090;Nines and Deuces
+22699;3091;Nines and Deuces
+22599;3092;Nines and Deuces
+22499;3093;Nines and Deuces
+22399;3094;Nines and Deuces
+7788A;3095;Eights and Sevens
+7788K;3096;Eights and Sevens
+7788Q;3097;Eights and Sevens
+7788J;3098;Eights and Sevens
+7788T;3099;Eights and Sevens
+77889;3100;Eights and Sevens
+67788;3101;Eights and Sevens
+57788;3102;Eights and Sevens
+47788;3103;Eights and Sevens
+37788;3104;Eights and Sevens
+27788;3105;Eights and Sevens
+6688A;3106;Eights and Sixes
+6688K;3107;Eights and Sixes
+6688Q;3108;Eights and Sixes
+6688J;3109;Eights and Sixes
+6688T;3110;Eights and Sixes
+66889;3111;Eights and Sixes
+66788;3112;Eights and Sixes
+56688;3113;Eights and Sixes
+46688;3114;Eights and Sixes
+36688;3115;Eights and Sixes
+26688;3116;Eights and Sixes
+5588A;3117;Eights and Fives
+5588K;3118;Eights and Fives
+5588Q;3119;Eights and Fives
+5588J;3120;Eights and Fives
+5588T;3121;Eights and Fives
+55889;3122;Eights and Fives
+55788;3123;Eights and Fives
+55688;3124;Eights and Fives
+45588;3125;Eights and Fives
+35588;3126;Eights and Fives
+25588;3127;Eights and Fives
+4488A;3128;Eights and Fours
+4488K;3129;Eights and Fours
+4488Q;3130;Eights and Fours
+4488J;3131;Eights and Fours
+4488T;3132;Eights and Fours
+44889;3133;Eights and Fours
+44788;3134;Eights and Fours
+44688;3135;Eights and Fours
+44588;3136;Eights and Fours
+34488;3137;Eights and Fours
+24488;3138;Eights and Fours
+3388A;3139;Eights and Treys
+3388K;3140;Eights and Treys
+3388Q;3141;Eights and Treys
+3388J;3142;Eights and Treys
+3388T;3143;Eights and Treys
+33889;3144;Eights and Treys
+33788;3145;Eights and Treys
+33688;3146;Eights and Treys
+33588;3147;Eights and Treys
+33488;3148;Eights and Treys
+23388;3149;Eights and Treys
+2288A;3150;Eights and Deuces
+2288K;3151;Eights and Deuces
+2288Q;3152;Eights and Deuces
+2288J;3153;Eights and Deuces
+2288T;3154;Eights and Deuces
+22889;3155;Eights and Deuces
+22788;3156;Eights and Deuces
+22688;3157;Eights and Deuces
+22588;3158;Eights and Deuces
+22488;3159;Eights and Deuces
+22388;3160;Eights and Deuces
+6677A;3161;Sevens and Sixes
+6677K;3162;Sevens and Sixes
+6677Q;3163;Sevens and Sixes
+6677J;3164;Sevens and Sixes
+6677T;3165;Sevens and Sixes
+66779;3166;Sevens and Sixes
+66778;3167;Sevens and Sixes
+56677;3168;Sevens and Sixes
+46677;3169;Sevens and Sixes
+36677;3170;Sevens and Sixes
+26677;3171;Sevens and Sixes
+5577A;3172;Sevens and Fives
+5577K;3173;Sevens and Fives
+5577Q;3174;Sevens and Fives
+5577J;3175;Sevens and Fives
+5577T;3176;Sevens and Fives
+55779;3177;Sevens and Fives
+55778;3178;Sevens and Fives
+55677;3179;Sevens and Fives
+45577;3180;Sevens and Fives
+35577;3181;Sevens and Fives
+25577;3182;Sevens and Fives
+4477A;3183;Sevens and Fours
+4477K;3184;Sevens and Fours
+4477Q;3185;Sevens and Fours
+4477J;3186;Sevens and Fours
+4477T;3187;Sevens and Fours
+44779;3188;Sevens and Fours
+44778;3189;Sevens and Fours
+44677;3190;Sevens and Fours
+44577;3191;Sevens and Fours
+34477;3192;Sevens and Fours
+24477;3193;Sevens and Fours
+3377A;3194;Sevens and Treys
+3377K;3195;Sevens and Treys
+3377Q;3196;Sevens and Treys
+3377J;3197;Sevens and Treys
+3377T;3198;Sevens and Treys
+33779;3199;Sevens and Treys
+33778;3200;Sevens and Treys
+33677;3201;Sevens and Treys
+33577;3202;Sevens and Treys
+33477;3203;Sevens and Treys
+23377;3204;Sevens and Treys
+2277A;3205;Sevens and Deuces
+2277K;3206;Sevens and Deuces
+2277Q;3207;Sevens and Deuces
+2277J;3208;Sevens and Deuces
+2277T;3209;Sevens and Deuces
+22779;3210;Sevens and Deuces
+22778;3211;Sevens and Deuces
+22677;3212;Sevens and Deuces
+22577;3213;Sevens and Deuces
+22477;3214;Sevens and Deuces
+22377;3215;Sevens and Deuces
+5566A;3216;Sixes and Fives
+5566K;3217;Sixes and Fives
+5566Q;3218;Sixes and Fives
+5566J;3219;Sixes and Fives
+5566T;3220;Sixes and Fives
+55669;3221;Sixes and Fives
+55668;3222;Sixes and Fives
+55667;3223;Sixes and Fives
+45566;3224;Sixes and Fives
+35566;3225;Sixes and Fives
+25566;3226;Sixes and Fives
+4466A;3227;Sixes and Fours
+4466K;3228;Sixes and Fours
+4466Q;3229;Sixes and Fours
+4466J;3230;Sixes and Fours
+4466T;3231;Sixes and Fours
+44669;3232;Sixes and Fours
+44668;3233;Sixes and Fours
+44667;3234;Sixes and Fours
+44566;3235;Sixes and Fours
+34466;3236;Sixes and Fours
+24466;3237;Sixes and Fours
+3366A;3238;Sixes and Treys
+3366K;3239;Sixes and Treys
+3366Q;3240;Sixes and Treys
+3366J;3241;Sixes and Treys
+3366T;3242;Sixes and Treys
+33669;3243;Sixes and Treys
+33668;3244;Sixes and Treys
+33667;3245;Sixes and Treys
+33566;3246;Sixes and Treys
+33466;3247;Sixes and Treys
+23366;3248;Sixes and Treys
+2266A;3249;Sixes and Deuces
+2266K;3250;Sixes and Deuces
+2266Q;3251;Sixes and Deuces
+2266J;3252;Sixes and Deuces
+2266T;3253;Sixes and Deuces
+22669;3254;Sixes and Deuces
+22668;3255;Sixes and Deuces
+22667;3256;Sixes and Deuces
+22566;3257;Sixes and Deuces
+22466;3258;Sixes and Deuces
+22366;3259;Sixes and Deuces
+4455A;3260;Fives and Fours
+4455K;3261;Fives and Fours
+4455Q;3262;Fives and Fours
+4455J;3263;Fives and Fours
+4455T;3264;Fives and Fours
+44559;3265;Fives and Fours
+44558;3266;Fives and Fours
+44557;3267;Fives and Fours
+44556;3268;Fives and Fours
+34455;3269;Fives and Fours
+24455;3270;Fives and Fours
+3355A;3271;Fives and Treys
+3355K;3272;Fives and Treys
+3355Q;3273;Fives and Treys
+3355J;3274;Fives and Treys
+3355T;3275;Fives and Treys
+33559;3276;Fives and Treys
+33558;3277;Fives and Treys
+33557;3278;Fives and Treys
+33556;3279;Fives and Treys
+33455;3280;Fives and Treys
+23355;3281;Fives and Treys
+2255A;3282;Fives and Deuces
+2255K;3283;Fives and Deuces
+2255Q;3284;Fives and Deuces
+2255J;3285;Fives and Deuces
+2255T;3286;Fives and Deuces
+22559;3287;Fives and Deuces
+22558;3288;Fives and Deuces
+22557;3289;Fives and Deuces
+22556;3290;Fives and Deuces
+22455;3291;Fives and Deuces
+22355;3292;Fives and Deuces
+3344A;3293;Fours and Treys
+3344K;3294;Fours and Treys
+3344Q;3295;Fours and Treys
+3344J;3296;Fours and Treys
+3344T;3297;Fours and Treys
+33449;3298;Fours and Treys
+33448;3299;Fours and Treys
+33447;3300;Fours and Treys
+33446;3301;Fours and Treys
+33445;3302;Fours and Treys
+23344;3303;Fours and Treys
+2244A;3304;Fours and Deuces
+2244K;3305;Fours and Deuces
+2244Q;3306;Fours and Deuces
+2244J;3307;Fours and Deuces
+2244T;3308;Fours and Deuces
+22449;3309;Fours and Deuces
+22448;3310;Fours and Deuces
+22447;3311;Fours and Deuces
+22446;3312;Fours and Deuces
+22445;3313;Fours and Deuces
+22344;3314;Fours and Deuces
+2233A;3315;Treys and Deuces
+2233K;3316;Treys and Deuces
+2233Q;3317;Treys and Deuces
+2233J;3318;Treys and Deuces
+2233T;3319;Treys and Deuces
+22339;3320;Treys and Deuces
+22338;3321;Treys and Deuces
+22337;3322;Treys and Deuces
+22336;3323;Treys and Deuces
+22335;3324;Treys and Deuces
+22334;3325;Treys and Deuces
+AAJKQ;3326;Pair of Aces
+AAKQT;3327;Pair of Aces
+9AAKQ;3328;Pair of Aces
+8AAKQ;3329;Pair of Aces
+7AAKQ;3330;Pair of Aces
+6AAKQ;3331;Pair of Aces
+5AAKQ;3332;Pair of Aces
+4AAKQ;3333;Pair of Aces
+3AAKQ;3334;Pair of Aces
+2AAKQ;3335;Pair of Aces
+AAJKT;3336;Pair of Aces
+9AAJK;3337;Pair of Aces
+8AAJK;3338;Pair of Aces
+7AAJK;3339;Pair of Aces
+6AAJK;3340;Pair of Aces
+5AAJK;3341;Pair of Aces
+4AAJK;3342;Pair of Aces
+3AAJK;3343;Pair of Aces
+2AAJK;3344;Pair of Aces
+9AAKT;3345;Pair of Aces
+8AAKT;3346;Pair of Aces
+7AAKT;3347;Pair of Aces
+6AAKT;3348;Pair of Aces
+5AAKT;3349;Pair of Aces
+4AAKT;3350;Pair of Aces
+3AAKT;3351;Pair of Aces
+2AAKT;3352;Pair of Aces
+89AAK;3353;Pair of Aces
+79AAK;3354;Pair of Aces
+69AAK;3355;Pair of Aces
+59AAK;3356;Pair of Aces
+49AAK;3357;Pair of Aces
+39AAK;3358;Pair of Aces
+29AAK;3359;Pair of Aces
+78AAK;3360;Pair of Aces
+68AAK;3361;Pair of Aces
+58AAK;3362;Pair of Aces
+48AAK;3363;Pair of Aces
+38AAK;3364;Pair of Aces
+28AAK;3365;Pair of Aces
+67AAK;3366;Pair of Aces
+57AAK;3367;Pair of Aces
+47AAK;3368;Pair of Aces
+37AAK;3369;Pair of Aces
+27AAK;3370;Pair of Aces
+56AAK;3371;Pair of Aces
+46AAK;3372;Pair of Aces
+36AAK;3373;Pair of Aces
+26AAK;3374;Pair of Aces
+45AAK;3375;Pair of Aces
+35AAK;3376;Pair of Aces
+25AAK;3377;Pair of Aces
+34AAK;3378;Pair of Aces
+24AAK;3379;Pair of Aces
+23AAK;3380;Pair of Aces
+AAJQT;3381;Pair of Aces
+9AAJQ;3382;Pair of Aces
+8AAJQ;3383;Pair of Aces
+7AAJQ;3384;Pair of Aces
+6AAJQ;3385;Pair of Aces
+5AAJQ;3386;Pair of Aces
+4AAJQ;3387;Pair of Aces
+3AAJQ;3388;Pair of Aces
+2AAJQ;3389;Pair of Aces
+9AAQT;3390;Pair of Aces
+8AAQT;3391;Pair of Aces
+7AAQT;3392;Pair of Aces
+6AAQT;3393;Pair of Aces
+5AAQT;3394;Pair of Aces
+4AAQT;3395;Pair of Aces
+3AAQT;3396;Pair of Aces
+2AAQT;3397;Pair of Aces
+89AAQ;3398;Pair of Aces
+79AAQ;3399;Pair of Aces
+69AAQ;3400;Pair of Aces
+59AAQ;3401;Pair of Aces
+49AAQ;3402;Pair of Aces
+39AAQ;3403;Pair of Aces
+29AAQ;3404;Pair of Aces
+78AAQ;3405;Pair of Aces
+68AAQ;3406;Pair of Aces
+58AAQ;3407;Pair of Aces
+48AAQ;3408;Pair of Aces
+38AAQ;3409;Pair of Aces
+28AAQ;3410;Pair of Aces
+67AAQ;3411;Pair of Aces
+57AAQ;3412;Pair of Aces
+47AAQ;3413;Pair of Aces
+37AAQ;3414;Pair of Aces
+27AAQ;3415;Pair of Aces
+56AAQ;3416;Pair of Aces
+46AAQ;3417;Pair of Aces
+36AAQ;3418;Pair of Aces
+26AAQ;3419;Pair of Aces
+45AAQ;3420;Pair of Aces
+35AAQ;3421;Pair of Aces
+25AAQ;3422;Pair of Aces
+34AAQ;3423;Pair of Aces
+24AAQ;3424;Pair of Aces
+23AAQ;3425;Pair of Aces
+9AAJT;3426;Pair of Aces
+8AAJT;3427;Pair of Aces
+7AAJT;3428;Pair of Aces
+6AAJT;3429;Pair of Aces
+5AAJT;3430;Pair of Aces
+4AAJT;3431;Pair of Aces
+3AAJT;3432;Pair of Aces
+2AAJT;3433;Pair of Aces
+89AAJ;3434;Pair of Aces
+79AAJ;3435;Pair of Aces
+69AAJ;3436;Pair of Aces
+59AAJ;3437;Pair of Aces
+49AAJ;3438;Pair of Aces
+39AAJ;3439;Pair of Aces
+29AAJ;3440;Pair of Aces
+78AAJ;3441;Pair of Aces
+68AAJ;3442;Pair of Aces
+58AAJ;3443;Pair of Aces
+48AAJ;3444;Pair of Aces
+38AAJ;3445;Pair of Aces
+28AAJ;3446;Pair of Aces
+67AAJ;3447;Pair of Aces
+57AAJ;3448;Pair of Aces
+47AAJ;3449;Pair of Aces
+37AAJ;3450;Pair of Aces
+27AAJ;3451;Pair of Aces
+56AAJ;3452;Pair of Aces
+46AAJ;3453;Pair of Aces
+36AAJ;3454;Pair of Aces
+26AAJ;3455;Pair of Aces
+45AAJ;3456;Pair of Aces
+35AAJ;3457;Pair of Aces
+25AAJ;3458;Pair of Aces
+34AAJ;3459;Pair of Aces
+24AAJ;3460;Pair of Aces
+23AAJ;3461;Pair of Aces
+89AAT;3462;Pair of Aces
+79AAT;3463;Pair of Aces
+69AAT;3464;Pair of Aces
+59AAT;3465;Pair of Aces
+49AAT;3466;Pair of Aces
+39AAT;3467;Pair of Aces
+29AAT;3468;Pair of Aces
+78AAT;3469;Pair of Aces
+68AAT;3470;Pair of Aces
+58AAT;3471;Pair of Aces
+48AAT;3472;Pair of Aces
+38AAT;3473;Pair of Aces
+28AAT;3474;Pair of Aces
+67AAT;3475;Pair of Aces
+57AAT;3476;Pair of Aces
+47AAT;3477;Pair of Aces
+37AAT;3478;Pair of Aces
+27AAT;3479;Pair of Aces
+56AAT;3480;Pair of Aces
+46AAT;3481;Pair of Aces
+36AAT;3482;Pair of Aces
+26AAT;3483;Pair of Aces
+45AAT;3484;Pair of Aces
+35AAT;3485;Pair of Aces
+25AAT;3486;Pair of Aces
+34AAT;3487;Pair of Aces
+24AAT;3488;Pair of Aces
+23AAT;3489;Pair of Aces
+789AA;3490;Pair of Aces
+689AA;3491;Pair of Aces
+589AA;3492;Pair of Aces
+489AA;3493;Pair of Aces
+389AA;3494;Pair of Aces
+289AA;3495;Pair of Aces
+679AA;3496;Pair of Aces
+579AA;3497;Pair of Aces
+479AA;3498;Pair of Aces
+379AA;3499;Pair of Aces
+279AA;3500;Pair of Aces
+569AA;3501;Pair of Aces
+469AA;3502;Pair of Aces
+369AA;3503;Pair of Aces
+269AA;3504;Pair of Aces
+459AA;3505;Pair of Aces
+359AA;3506;Pair of Aces
+259AA;3507;Pair of Aces
+349AA;3508;Pair of Aces
+249AA;3509;Pair of Aces
+239AA;3510;Pair of Aces
+678AA;3511;Pair of Aces
+578AA;3512;Pair of Aces
+478AA;3513;Pair of Aces
+378AA;3514;Pair of Aces
+278AA;3515;Pair of Aces
+568AA;3516;Pair of Aces
+468AA;3517;Pair of Aces
+368AA;3518;Pair of Aces
+268AA;3519;Pair of Aces
+458AA;3520;Pair of Aces
+358AA;3521;Pair of Aces
+258AA;3522;Pair of Aces
+348AA;3523;Pair of Aces
+248AA;3524;Pair of Aces
+238AA;3525;Pair of Aces
+567AA;3526;Pair of Aces
+467AA;3527;Pair of Aces
+367AA;3528;Pair of Aces
+267AA;3529;Pair of Aces
+457AA;3530;Pair of Aces
+357AA;3531;Pair of Aces
+257AA;3532;Pair of Aces
+347AA;3533;Pair of Aces
+247AA;3534;Pair of Aces
+237AA;3535;Pair of Aces
+456AA;3536;Pair of Aces
+356AA;3537;Pair of Aces
+256AA;3538;Pair of Aces
+346AA;3539;Pair of Aces
+246AA;3540;Pair of Aces
+236AA;3541;Pair of Aces
+345AA;3542;Pair of Aces
+245AA;3543;Pair of Aces
+235AA;3544;Pair of Aces
+234AA;3545;Pair of Aces
+AJKKQ;3546;Pair of Kings
+AKKQT;3547;Pair of Kings
+9AKKQ;3548;Pair of Kings
+8AKKQ;3549;Pair of Kings
+7AKKQ;3550;Pair of Kings
+6AKKQ;3551;Pair of Kings
+5AKKQ;3552;Pair of Kings
+4AKKQ;3553;Pair of Kings
+3AKKQ;3554;Pair of Kings
+2AKKQ;3555;Pair of Kings
+AJKKT;3556;Pair of Kings
+9AJKK;3557;Pair of Kings
+8AJKK;3558;Pair of Kings
+7AJKK;3559;Pair of Kings
+6AJKK;3560;Pair of Kings
+5AJKK;3561;Pair of Kings
+4AJKK;3562;Pair of Kings
+3AJKK;3563;Pair of Kings
+2AJKK;3564;Pair of Kings
+9AKKT;3565;Pair of Kings
+8AKKT;3566;Pair of Kings
+7AKKT;3567;Pair of Kings
+6AKKT;3568;Pair of Kings
+5AKKT;3569;Pair of Kings
+4AKKT;3570;Pair of Kings
+3AKKT;3571;Pair of Kings
+2AKKT;3572;Pair of Kings
+89AKK;3573;Pair of Kings
+79AKK;3574;Pair of Kings
+69AKK;3575;Pair of Kings
+59AKK;3576;Pair of Kings
+49AKK;3577;Pair of Kings
+39AKK;3578;Pair of Kings
+29AKK;3579;Pair of Kings
+78AKK;3580;Pair of Kings
+68AKK;3581;Pair of Kings
+58AKK;3582;Pair of Kings
+48AKK;3583;Pair of Kings
+38AKK;3584;Pair of Kings
+28AKK;3585;Pair of Kings
+67AKK;3586;Pair of Kings
+57AKK;3587;Pair of Kings
+47AKK;3588;Pair of Kings
+37AKK;3589;Pair of Kings
+27AKK;3590;Pair of Kings
+56AKK;3591;Pair of Kings
+46AKK;3592;Pair of Kings
+36AKK;3593;Pair of Kings
+26AKK;3594;Pair of Kings
+45AKK;3595;Pair of Kings
+35AKK;3596;Pair of Kings
+25AKK;3597;Pair of Kings
+34AKK;3598;Pair of Kings
+24AKK;3599;Pair of Kings
+23AKK;3600;Pair of Kings
+JKKQT;3601;Pair of Kings
+9JKKQ;3602;Pair of Kings
+8JKKQ;3603;Pair of Kings
+7JKKQ;3604;Pair of Kings
+6JKKQ;3605;Pair of Kings
+5JKKQ;3606;Pair of Kings
+4JKKQ;3607;Pair of Kings
+3JKKQ;3608;Pair of Kings
+2JKKQ;3609;Pair of Kings
+9KKQT;3610;Pair of Kings
+8KKQT;3611;Pair of Kings
+7KKQT;3612;Pair of Kings
+6KKQT;3613;Pair of Kings
+5KKQT;3614;Pair of Kings
+4KKQT;3615;Pair of Kings
+3KKQT;3616;Pair of Kings
+2KKQT;3617;Pair of Kings
+89KKQ;3618;Pair of Kings
+79KKQ;3619;Pair of Kings
+69KKQ;3620;Pair of Kings
+59KKQ;3621;Pair of Kings
+49KKQ;3622;Pair of Kings
+39KKQ;3623;Pair of Kings
+29KKQ;3624;Pair of Kings
+78KKQ;3625;Pair of Kings
+68KKQ;3626;Pair of Kings
+58KKQ;3627;Pair of Kings
+48KKQ;3628;Pair of Kings
+38KKQ;3629;Pair of Kings
+28KKQ;3630;Pair of Kings
+67KKQ;3631;Pair of Kings
+57KKQ;3632;Pair of Kings
+47KKQ;3633;Pair of Kings
+37KKQ;3634;Pair of Kings
+27KKQ;3635;Pair of Kings
+56KKQ;3636;Pair of Kings
+46KKQ;3637;Pair of Kings
+36KKQ;3638;Pair of Kings
+26KKQ;3639;Pair of Kings
+45KKQ;3640;Pair of Kings
+35KKQ;3641;Pair of Kings
+25KKQ;3642;Pair of Kings
+34KKQ;3643;Pair of Kings
+24KKQ;3644;Pair of Kings
+23KKQ;3645;Pair of Kings
+9JKKT;3646;Pair of Kings
+8JKKT;3647;Pair of Kings
+7JKKT;3648;Pair of Kings
+6JKKT;3649;Pair of Kings
+5JKKT;3650;Pair of Kings
+4JKKT;3651;Pair of Kings
+3JKKT;3652;Pair of Kings
+2JKKT;3653;Pair of Kings
+89JKK;3654;Pair of Kings
+79JKK;3655;Pair of Kings
+69JKK;3656;Pair of Kings
+59JKK;3657;Pair of Kings
+49JKK;3658;Pair of Kings
+39JKK;3659;Pair of Kings
+29JKK;3660;Pair of Kings
+78JKK;3661;Pair of Kings
+68JKK;3662;Pair of Kings
+58JKK;3663;Pair of Kings
+48JKK;3664;Pair of Kings
+38JKK;3665;Pair of Kings
+28JKK;3666;Pair of Kings
+67JKK;3667;Pair of Kings
+57JKK;3668;Pair of Kings
+47JKK;3669;Pair of Kings
+37JKK;3670;Pair of Kings
+27JKK;3671;Pair of Kings
+56JKK;3672;Pair of Kings
+46JKK;3673;Pair of Kings
+36JKK;3674;Pair of Kings
+26JKK;3675;Pair of Kings
+45JKK;3676;Pair of Kings
+35JKK;3677;Pair of Kings
+25JKK;3678;Pair of Kings
+34JKK;3679;Pair of Kings
+24JKK;3680;Pair of Kings
+23JKK;3681;Pair of Kings
+89KKT;3682;Pair of Kings
+79KKT;3683;Pair of Kings
+69KKT;3684;Pair of Kings
+59KKT;3685;Pair of Kings
+49KKT;3686;Pair of Kings
+39KKT;3687;Pair of Kings
+29KKT;3688;Pair of Kings
+78KKT;3689;Pair of Kings
+68KKT;3690;Pair of Kings
+58KKT;3691;Pair of Kings
+48KKT;3692;Pair of Kings
+38KKT;3693;Pair of Kings
+28KKT;3694;Pair of Kings
+67KKT;3695;Pair of Kings
+57KKT;3696;Pair of Kings
+47KKT;3697;Pair of Kings
+37KKT;3698;Pair of Kings
+27KKT;3699;Pair of Kings
+56KKT;3700;Pair of Kings
+46KKT;3701;Pair of Kings
+36KKT;3702;Pair of Kings
+26KKT;3703;Pair of Kings
+45KKT;3704;Pair of Kings
+35KKT;3705;Pair of Kings
+25KKT;3706;Pair of Kings
+34KKT;3707;Pair of Kings
+24KKT;3708;Pair of Kings
+23KKT;3709;Pair of Kings
+789KK;3710;Pair of Kings
+689KK;3711;Pair of Kings
+589KK;3712;Pair of Kings
+489KK;3713;Pair of Kings
+389KK;3714;Pair of Kings
+289KK;3715;Pair of Kings
+679KK;3716;Pair of Kings
+579KK;3717;Pair of Kings
+479KK;3718;Pair of Kings
+379KK;3719;Pair of Kings
+279KK;3720;Pair of Kings
+569KK;3721;Pair of Kings
+469KK;3722;Pair of Kings
+369KK;3723;Pair of Kings
+269KK;3724;Pair of Kings
+459KK;3725;Pair of Kings
+359KK;3726;Pair of Kings
+259KK;3727;Pair of Kings
+349KK;3728;Pair of Kings
+249KK;3729;Pair of Kings
+239KK;3730;Pair of Kings
+678KK;3731;Pair of Kings
+578KK;3732;Pair of Kings
+478KK;3733;Pair of Kings
+378KK;3734;Pair of Kings
+278KK;3735;Pair of Kings
+568KK;3736;Pair of Kings
+468KK;3737;Pair of Kings
+368KK;3738;Pair of Kings
+268KK;3739;Pair of Kings
+458KK;3740;Pair of Kings
+358KK;3741;Pair of Kings
+258KK;3742;Pair of Kings
+348KK;3743;Pair of Kings
+248KK;3744;Pair of Kings
+238KK;3745;Pair of Kings
+567KK;3746;Pair of Kings
+467KK;3747;Pair of Kings
+367KK;3748;Pair of Kings
+267KK;3749;Pair of Kings
+457KK;3750;Pair of Kings
+357KK;3751;Pair of Kings
+257KK;3752;Pair of Kings
+347KK;3753;Pair of Kings
+247KK;3754;Pair of Kings
+237KK;3755;Pair of Kings
+456KK;3756;Pair of Kings
+356KK;3757;Pair of Kings
+256KK;3758;Pair of Kings
+346KK;3759;Pair of Kings
+246KK;3760;Pair of Kings
+236KK;3761;Pair of Kings
+345KK;3762;Pair of Kings
+245KK;3763;Pair of Kings
+235KK;3764;Pair of Kings
+234KK;3765;Pair of Kings
+AJKQQ;3766;Pair of Queens
+AKQQT;3767;Pair of Queens
+9AKQQ;3768;Pair of Queens
+8AKQQ;3769;Pair of Queens
+7AKQQ;3770;Pair of Queens
+6AKQQ;3771;Pair of Queens
+5AKQQ;3772;Pair of Queens
+4AKQQ;3773;Pair of Queens
+3AKQQ;3774;Pair of Queens
+2AKQQ;3775;Pair of Queens
+AJQQT;3776;Pair of Queens
+9AJQQ;3777;Pair of Queens
+8AJQQ;3778;Pair of Queens
+7AJQQ;3779;Pair of Queens
+6AJQQ;3780;Pair of Queens
+5AJQQ;3781;Pair of Queens
+4AJQQ;3782;Pair of Queens
+3AJQQ;3783;Pair of Queens
+2AJQQ;3784;Pair of Queens
+9AQQT;3785;Pair of Queens
+8AQQT;3786;Pair of Queens
+7AQQT;3787;Pair of Queens
+6AQQT;3788;Pair of Queens
+5AQQT;3789;Pair of Queens
+4AQQT;3790;Pair of Queens
+3AQQT;3791;Pair of Queens
+2AQQT;3792;Pair of Queens
+89AQQ;3793;Pair of Queens
+79AQQ;3794;Pair of Queens
+69AQQ;3795;Pair of Queens
+59AQQ;3796;Pair of Queens
+49AQQ;3797;Pair of Queens
+39AQQ;3798;Pair of Queens
+29AQQ;3799;Pair of Queens
+78AQQ;3800;Pair of Queens
+68AQQ;3801;Pair of Queens
+58AQQ;3802;Pair of Queens
+48AQQ;3803;Pair of Queens
+38AQQ;3804;Pair of Queens
+28AQQ;3805;Pair of Queens
+67AQQ;3806;Pair of Queens
+57AQQ;3807;Pair of Queens
+47AQQ;3808;Pair of Queens
+37AQQ;3809;Pair of Queens
+27AQQ;3810;Pair of Queens
+56AQQ;3811;Pair of Queens
+46AQQ;3812;Pair of Queens
+36AQQ;3813;Pair of Queens
+26AQQ;3814;Pair of Queens
+45AQQ;3815;Pair of Queens
+35AQQ;3816;Pair of Queens
+25AQQ;3817;Pair of Queens
+34AQQ;3818;Pair of Queens
+24AQQ;3819;Pair of Queens
+23AQQ;3820;Pair of Queens
+JKQQT;3821;Pair of Queens
+9JKQQ;3822;Pair of Queens
+8JKQQ;3823;Pair of Queens
+7JKQQ;3824;Pair of Queens
+6JKQQ;3825;Pair of Queens
+5JKQQ;3826;Pair of Queens
+4JKQQ;3827;Pair of Queens
+3JKQQ;3828;Pair of Queens
+2JKQQ;3829;Pair of Queens
+9KQQT;3830;Pair of Queens
+8KQQT;3831;Pair of Queens
+7KQQT;3832;Pair of Queens
+6KQQT;3833;Pair of Queens
+5KQQT;3834;Pair of Queens
+4KQQT;3835;Pair of Queens
+3KQQT;3836;Pair of Queens
+2KQQT;3837;Pair of Queens
+89KQQ;3838;Pair of Queens
+79KQQ;3839;Pair of Queens
+69KQQ;3840;Pair of Queens
+59KQQ;3841;Pair of Queens
+49KQQ;3842;Pair of Queens
+39KQQ;3843;Pair of Queens
+29KQQ;3844;Pair of Queens
+78KQQ;3845;Pair of Queens
+68KQQ;3846;Pair of Queens
+58KQQ;3847;Pair of Queens
+48KQQ;3848;Pair of Queens
+38KQQ;3849;Pair of Queens
+28KQQ;3850;Pair of Queens
+67KQQ;3851;Pair of Queens
+57KQQ;3852;Pair of Queens
+47KQQ;3853;Pair of Queens
+37KQQ;3854;Pair of Queens
+27KQQ;3855;Pair of Queens
+56KQQ;3856;Pair of Queens
+46KQQ;3857;Pair of Queens
+36KQQ;3858;Pair of Queens
+26KQQ;3859;Pair of Queens
+45KQQ;3860;Pair of Queens
+35KQQ;3861;Pair of Queens
+25KQQ;3862;Pair of Queens
+34KQQ;3863;Pair of Queens
+24KQQ;3864;Pair of Queens
+23KQQ;3865;Pair of Queens
+9JQQT;3866;Pair of Queens
+8JQQT;3867;Pair of Queens
+7JQQT;3868;Pair of Queens
+6JQQT;3869;Pair of Queens
+5JQQT;3870;Pair of Queens
+4JQQT;3871;Pair of Queens
+3JQQT;3872;Pair of Queens
+2JQQT;3873;Pair of Queens
+89JQQ;3874;Pair of Queens
+79JQQ;3875;Pair of Queens
+69JQQ;3876;Pair of Queens
+59JQQ;3877;Pair of Queens
+49JQQ;3878;Pair of Queens
+39JQQ;3879;Pair of Queens
+29JQQ;3880;Pair of Queens
+78JQQ;3881;Pair of Queens
+68JQQ;3882;Pair of Queens
+58JQQ;3883;Pair of Queens
+48JQQ;3884;Pair of Queens
+38JQQ;3885;Pair of Queens
+28JQQ;3886;Pair of Queens
+67JQQ;3887;Pair of Queens
+57JQQ;3888;Pair of Queens
+47JQQ;3889;Pair of Queens
+37JQQ;3890;Pair of Queens
+27JQQ;3891;Pair of Queens
+56JQQ;3892;Pair of Queens
+46JQQ;3893;Pair of Queens
+36JQQ;3894;Pair of Queens
+26JQQ;3895;Pair of Queens
+45JQQ;3896;Pair of Queens
+35JQQ;3897;Pair of Queens
+25JQQ;3898;Pair of Queens
+34JQQ;3899;Pair of Queens
+24JQQ;3900;Pair of Queens
+23JQQ;3901;Pair of Queens
+89QQT;3902;Pair of Queens
+79QQT;3903;Pair of Queens
+69QQT;3904;Pair of Queens
+59QQT;3905;Pair of Queens
+49QQT;3906;Pair of Queens
+39QQT;3907;Pair of Queens
+29QQT;3908;Pair of Queens
+78QQT;3909;Pair of Queens
+68QQT;3910;Pair of Queens
+58QQT;3911;Pair of Queens
+48QQT;3912;Pair of Queens
+38QQT;3913;Pair of Queens
+28QQT;3914;Pair of Queens
+67QQT;3915;Pair of Queens
+57QQT;3916;Pair of Queens
+47QQT;3917;Pair of Queens
+37QQT;3918;Pair of Queens
+27QQT;3919;Pair of Queens
+56QQT;3920;Pair of Queens
+46QQT;3921;Pair of Queens
+36QQT;3922;Pair of Queens
+26QQT;3923;Pair of Queens
+45QQT;3924;Pair of Queens
+35QQT;3925;Pair of Queens
+25QQT;3926;Pair of Queens
+34QQT;3927;Pair of Queens
+24QQT;3928;Pair of Queens
+23QQT;3929;Pair of Queens
+789QQ;3930;Pair of Queens
+689QQ;3931;Pair of Queens
+589QQ;3932;Pair of Queens
+489QQ;3933;Pair of Queens
+389QQ;3934;Pair of Queens
+289QQ;3935;Pair of Queens
+679QQ;3936;Pair of Queens
+579QQ;3937;Pair of Queens
+479QQ;3938;Pair of Queens
+379QQ;3939;Pair of Queens
+279QQ;3940;Pair of Queens
+569QQ;3941;Pair of Queens
+469QQ;3942;Pair of Queens
+369QQ;3943;Pair of Queens
+269QQ;3944;Pair of Queens
+459QQ;3945;Pair of Queens
+359QQ;3946;Pair of Queens
+259QQ;3947;Pair of Queens
+349QQ;3948;Pair of Queens
+249QQ;3949;Pair of Queens
+239QQ;3950;Pair of Queens
+678QQ;3951;Pair of Queens
+578QQ;3952;Pair of Queens
+478QQ;3953;Pair of Queens
+378QQ;3954;Pair of Queens
+278QQ;3955;Pair of Queens
+568QQ;3956;Pair of Queens
+468QQ;3957;Pair of Queens
+368QQ;3958;Pair of Queens
+268QQ;3959;Pair of Queens
+458QQ;3960;Pair of Queens
+358QQ;3961;Pair of Queens
+258QQ;3962;Pair of Queens
+348QQ;3963;Pair of Queens
+248QQ;3964;Pair of Queens
+238QQ;3965;Pair of Queens
+567QQ;3966;Pair of Queens
+467QQ;3967;Pair of Queens
+367QQ;3968;Pair of Queens
+267QQ;3969;Pair of Queens
+457QQ;3970;Pair of Queens
+357QQ;3971;Pair of Queens
+257QQ;3972;Pair of Queens
+347QQ;3973;Pair of Queens
+247QQ;3974;Pair of Queens
+237QQ;3975;Pair of Queens
+456QQ;3976;Pair of Queens
+356QQ;3977;Pair of Queens
+256QQ;3978;Pair of Queens
+346QQ;3979;Pair of Queens
+246QQ;3980;Pair of Queens
+236QQ;3981;Pair of Queens
+345QQ;3982;Pair of Queens
+245QQ;3983;Pair of Queens
+235QQ;3984;Pair of Queens
+234QQ;3985;Pair of Queens
+AJJKQ;3986;Pair of Jacks
+AJJKT;3987;Pair of Jacks
+9AJJK;3988;Pair of Jacks
+8AJJK;3989;Pair of Jacks
+7AJJK;3990;Pair of Jacks
+6AJJK;3991;Pair of Jacks
+5AJJK;3992;Pair of Jacks
+4AJJK;3993;Pair of Jacks
+3AJJK;3994;Pair of Jacks
+2AJJK;3995;Pair of Jacks
+AJJQT;3996;Pair of Jacks
+9AJJQ;3997;Pair of Jacks
+8AJJQ;3998;Pair of Jacks
+7AJJQ;3999;Pair of Jacks
+6AJJQ;4000;Pair of Jacks
+5AJJQ;4001;Pair of Jacks
+4AJJQ;4002;Pair of Jacks
+3AJJQ;4003;Pair of Jacks
+2AJJQ;4004;Pair of Jacks
+9AJJT;4005;Pair of Jacks
+8AJJT;4006;Pair of Jacks
+7AJJT;4007;Pair of Jacks
+6AJJT;4008;Pair of Jacks
+5AJJT;4009;Pair of Jacks
+4AJJT;4010;Pair of Jacks
+3AJJT;4011;Pair of Jacks
+2AJJT;4012;Pair of Jacks
+89AJJ;4013;Pair of Jacks
+79AJJ;4014;Pair of Jacks
+69AJJ;4015;Pair of Jacks
+59AJJ;4016;Pair of Jacks
+49AJJ;4017;Pair of Jacks
+39AJJ;4018;Pair of Jacks
+29AJJ;4019;Pair of Jacks
+78AJJ;4020;Pair of Jacks
+68AJJ;4021;Pair of Jacks
+58AJJ;4022;Pair of Jacks
+48AJJ;4023;Pair of Jacks
+38AJJ;4024;Pair of Jacks
+28AJJ;4025;Pair of Jacks
+67AJJ;4026;Pair of Jacks
+57AJJ;4027;Pair of Jacks
+47AJJ;4028;Pair of Jacks
+37AJJ;4029;Pair of Jacks
+27AJJ;4030;Pair of Jacks
+56AJJ;4031;Pair of Jacks
+46AJJ;4032;Pair of Jacks
+36AJJ;4033;Pair of Jacks
+26AJJ;4034;Pair of Jacks
+45AJJ;4035;Pair of Jacks
+35AJJ;4036;Pair of Jacks
+25AJJ;4037;Pair of Jacks
+34AJJ;4038;Pair of Jacks
+24AJJ;4039;Pair of Jacks
+23AJJ;4040;Pair of Jacks
+JJKQT;4041;Pair of Jacks
+9JJKQ;4042;Pair of Jacks
+8JJKQ;4043;Pair of Jacks
+7JJKQ;4044;Pair of Jacks
+6JJKQ;4045;Pair of Jacks
+5JJKQ;4046;Pair of Jacks
+4JJKQ;4047;Pair of Jacks
+3JJKQ;4048;Pair of Jacks
+2JJKQ;4049;Pair of Jacks
+9JJKT;4050;Pair of Jacks
+8JJKT;4051;Pair of Jacks
+7JJKT;4052;Pair of Jacks
+6JJKT;4053;Pair of Jacks
+5JJKT;4054;Pair of Jacks
+4JJKT;4055;Pair of Jacks
+3JJKT;4056;Pair of Jacks
+2JJKT;4057;Pair of Jacks
+89JJK;4058;Pair of Jacks
+79JJK;4059;Pair of Jacks
+69JJK;4060;Pair of Jacks
+59JJK;4061;Pair of Jacks
+49JJK;4062;Pair of Jacks
+39JJK;4063;Pair of Jacks
+29JJK;4064;Pair of Jacks
+78JJK;4065;Pair of Jacks
+68JJK;4066;Pair of Jacks
+58JJK;4067;Pair of Jacks
+48JJK;4068;Pair of Jacks
+38JJK;4069;Pair of Jacks
+28JJK;4070;Pair of Jacks
+67JJK;4071;Pair of Jacks
+57JJK;4072;Pair of Jacks
+47JJK;4073;Pair of Jacks
+37JJK;4074;Pair of Jacks
+27JJK;4075;Pair of Jacks
+56JJK;4076;Pair of Jacks
+46JJK;4077;Pair of Jacks
+36JJK;4078;Pair of Jacks
+26JJK;4079;Pair of Jacks
+45JJK;4080;Pair of Jacks
+35JJK;4081;Pair of Jacks
+25JJK;4082;Pair of Jacks
+34JJK;4083;Pair of Jacks
+24JJK;4084;Pair of Jacks
+23JJK;4085;Pair of Jacks
+9JJQT;4086;Pair of Jacks
+8JJQT;4087;Pair of Jacks
+7JJQT;4088;Pair of Jacks
+6JJQT;4089;Pair of Jacks
+5JJQT;4090;Pair of Jacks
+4JJQT;4091;Pair of Jacks
+3JJQT;4092;Pair of Jacks
+2JJQT;4093;Pair of Jacks
+89JJQ;4094;Pair of Jacks
+79JJQ;4095;Pair of Jacks
+69JJQ;4096;Pair of Jacks
+59JJQ;4097;Pair of Jacks
+49JJQ;4098;Pair of Jacks
+39JJQ;4099;Pair of Jacks
+29JJQ;4100;Pair of Jacks
+78JJQ;4101;Pair of Jacks
+68JJQ;4102;Pair of Jacks
+58JJQ;4103;Pair of Jacks
+48JJQ;4104;Pair of Jacks
+38JJQ;4105;Pair of Jacks
+28JJQ;4106;Pair of Jacks
+67JJQ;4107;Pair of Jacks
+57JJQ;4108;Pair of Jacks
+47JJQ;4109;Pair of Jacks
+37JJQ;4110;Pair of Jacks
+27JJQ;4111;Pair of Jacks
+56JJQ;4112;Pair of Jacks
+46JJQ;4113;Pair of Jacks
+36JJQ;4114;Pair of Jacks
+26JJQ;4115;Pair of Jacks
+45JJQ;4116;Pair of Jacks
+35JJQ;4117;Pair of Jacks
+25JJQ;4118;Pair of Jacks
+34JJQ;4119;Pair of Jacks
+24JJQ;4120;Pair of Jacks
+23JJQ;4121;Pair of Jacks
+89JJT;4122;Pair of Jacks
+79JJT;4123;Pair of Jacks
+69JJT;4124;Pair of Jacks
+59JJT;4125;Pair of Jacks
+49JJT;4126;Pair of Jacks
+39JJT;4127;Pair of Jacks
+29JJT;4128;Pair of Jacks
+78JJT;4129;Pair of Jacks
+68JJT;4130;Pair of Jacks
+58JJT;4131;Pair of Jacks
+48JJT;4132;Pair of Jacks
+38JJT;4133;Pair of Jacks
+28JJT;4134;Pair of Jacks
+67JJT;4135;Pair of Jacks
+57JJT;4136;Pair of Jacks
+47JJT;4137;Pair of Jacks
+37JJT;4138;Pair of Jacks
+27JJT;4139;Pair of Jacks
+56JJT;4140;Pair of Jacks
+46JJT;4141;Pair of Jacks
+36JJT;4142;Pair of Jacks
+26JJT;4143;Pair of Jacks
+45JJT;4144;Pair of Jacks
+35JJT;4145;Pair of Jacks
+25JJT;4146;Pair of Jacks
+34JJT;4147;Pair of Jacks
+24JJT;4148;Pair of Jacks
+23JJT;4149;Pair of Jacks
+789JJ;4150;Pair of Jacks
+689JJ;4151;Pair of Jacks
+589JJ;4152;Pair of Jacks
+489JJ;4153;Pair of Jacks
+389JJ;4154;Pair of Jacks
+289JJ;4155;Pair of Jacks
+679JJ;4156;Pair of Jacks
+579JJ;4157;Pair of Jacks
+479JJ;4158;Pair of Jacks
+379JJ;4159;Pair of Jacks
+279JJ;4160;Pair of Jacks
+569JJ;4161;Pair of Jacks
+469JJ;4162;Pair of Jacks
+369JJ;4163;Pair of Jacks
+269JJ;4164;Pair of Jacks
+459JJ;4165;Pair of Jacks
+359JJ;4166;Pair of Jacks
+259JJ;4167;Pair of Jacks
+349JJ;4168;Pair of Jacks
+249JJ;4169;Pair of Jacks
+239JJ;4170;Pair of Jacks
+678JJ;4171;Pair of Jacks
+578JJ;4172;Pair of Jacks
+478JJ;4173;Pair of Jacks
+378JJ;4174;Pair of Jacks
+278JJ;4175;Pair of Jacks
+568JJ;4176;Pair of Jacks
+468JJ;4177;Pair of Jacks
+368JJ;4178;Pair of Jacks
+268JJ;4179;Pair of Jacks
+458JJ;4180;Pair of Jacks
+358JJ;4181;Pair of Jacks
+258JJ;4182;Pair of Jacks
+348JJ;4183;Pair of Jacks
+248JJ;4184;Pair of Jacks
+238JJ;4185;Pair of Jacks
+567JJ;4186;Pair of Jacks
+467JJ;4187;Pair of Jacks
+367JJ;4188;Pair of Jacks
+267JJ;4189;Pair of Jacks
+457JJ;4190;Pair of Jacks
+357JJ;4191;Pair of Jacks
+257JJ;4192;Pair of Jacks
+347JJ;4193;Pair of Jacks
+247JJ;4194;Pair of Jacks
+237JJ;4195;Pair of Jacks
+456JJ;4196;Pair of Jacks
+356JJ;4197;Pair of Jacks
+256JJ;4198;Pair of Jacks
+346JJ;4199;Pair of Jacks
+246JJ;4200;Pair of Jacks
+236JJ;4201;Pair of Jacks
+345JJ;4202;Pair of Jacks
+245JJ;4203;Pair of Jacks
+235JJ;4204;Pair of Jacks
+234JJ;4205;Pair of Jacks
+AKQTT;4206;Pair of Tens
+AJKTT;4207;Pair of Tens
+9AKTT;4208;Pair of Tens
+8AKTT;4209;Pair of Tens
+7AKTT;4210;Pair of Tens
+6AKTT;4211;Pair of Tens
+5AKTT;4212;Pair of Tens
+4AKTT;4213;Pair of Tens
+3AKTT;4214;Pair of Tens
+2AKTT;4215;Pair of Tens
+AJQTT;4216;Pair of Tens
+9AQTT;4217;Pair of Tens
+8AQTT;4218;Pair of Tens
+7AQTT;4219;Pair of Tens
+6AQTT;4220;Pair of Tens
+5AQTT;4221;Pair of Tens
+4AQTT;4222;Pair of Tens
+3AQTT;4223;Pair of Tens
+2AQTT;4224;Pair of Tens
+9AJTT;4225;Pair of Tens
+8AJTT;4226;Pair of Tens
+7AJTT;4227;Pair of Tens
+6AJTT;4228;Pair of Tens
+5AJTT;4229;Pair of Tens
+4AJTT;4230;Pair of Tens
+3AJTT;4231;Pair of Tens
+2AJTT;4232;Pair of Tens
+89ATT;4233;Pair of Tens
+79ATT;4234;Pair of Tens
+69ATT;4235;Pair of Tens
+59ATT;4236;Pair of Tens
+49ATT;4237;Pair of Tens
+39ATT;4238;Pair of Tens
+29ATT;4239;Pair of Tens
+78ATT;4240;Pair of Tens
+68ATT;4241;Pair of Tens
+58ATT;4242;Pair of Tens
+48ATT;4243;Pair of Tens
+38ATT;4244;Pair of Tens
+28ATT;4245;Pair of Tens
+67ATT;4246;Pair of Tens
+57ATT;4247;Pair of Tens
+47ATT;4248;Pair of Tens
+37ATT;4249;Pair of Tens
+27ATT;4250;Pair of Tens
+56ATT;4251;Pair of Tens
+46ATT;4252;Pair of Tens
+36ATT;4253;Pair of Tens
+26ATT;4254;Pair of Tens
+45ATT;4255;Pair of Tens
+35ATT;4256;Pair of Tens
+25ATT;4257;Pair of Tens
+34ATT;4258;Pair of Tens
+24ATT;4259;Pair of Tens
+23ATT;4260;Pair of Tens
+JKQTT;4261;Pair of Tens
+9KQTT;4262;Pair of Tens
+8KQTT;4263;Pair of Tens
+7KQTT;4264;Pair of Tens
+6KQTT;4265;Pair of Tens
+5KQTT;4266;Pair of Tens
+4KQTT;4267;Pair of Tens
+3KQTT;4268;Pair of Tens
+2KQTT;4269;Pair of Tens
+9JKTT;4270;Pair of Tens
+8JKTT;4271;Pair of Tens
+7JKTT;4272;Pair of Tens
+6JKTT;4273;Pair of Tens
+5JKTT;4274;Pair of Tens
+4JKTT;4275;Pair of Tens
+3JKTT;4276;Pair of Tens
+2JKTT;4277;Pair of Tens
+89KTT;4278;Pair of Tens
+79KTT;4279;Pair of Tens
+69KTT;4280;Pair of Tens
+59KTT;4281;Pair of Tens
+49KTT;4282;Pair of Tens
+39KTT;4283;Pair of Tens
+29KTT;4284;Pair of Tens
+78KTT;4285;Pair of Tens
+68KTT;4286;Pair of Tens
+58KTT;4287;Pair of Tens
+48KTT;4288;Pair of Tens
+38KTT;4289;Pair of Tens
+28KTT;4290;Pair of Tens
+67KTT;4291;Pair of Tens
+57KTT;4292;Pair of Tens
+47KTT;4293;Pair of Tens
+37KTT;4294;Pair of Tens
+27KTT;4295;Pair of Tens
+56KTT;4296;Pair of Tens
+46KTT;4297;Pair of Tens
+36KTT;4298;Pair of Tens
+26KTT;4299;Pair of Tens
+45KTT;4300;Pair of Tens
+35KTT;4301;Pair of Tens
+25KTT;4302;Pair of Tens
+34KTT;4303;Pair of Tens
+24KTT;4304;Pair of Tens
+23KTT;4305;Pair of Tens
+9JQTT;4306;Pair of Tens
+8JQTT;4307;Pair of Tens
+7JQTT;4308;Pair of Tens
+6JQTT;4309;Pair of Tens
+5JQTT;4310;Pair of Tens
+4JQTT;4311;Pair of Tens
+3JQTT;4312;Pair of Tens
+2JQTT;4313;Pair of Tens
+89QTT;4314;Pair of Tens
+79QTT;4315;Pair of Tens
+69QTT;4316;Pair of Tens
+59QTT;4317;Pair of Tens
+49QTT;4318;Pair of Tens
+39QTT;4319;Pair of Tens
+29QTT;4320;Pair of Tens
+78QTT;4321;Pair of Tens
+68QTT;4322;Pair of Tens
+58QTT;4323;Pair of Tens
+48QTT;4324;Pair of Tens
+38QTT;4325;Pair of Tens
+28QTT;4326;Pair of Tens
+67QTT;4327;Pair of Tens
+57QTT;4328;Pair of Tens
+47QTT;4329;Pair of Tens
+37QTT;4330;Pair of Tens
+27QTT;4331;Pair of Tens
+56QTT;4332;Pair of Tens
+46QTT;4333;Pair of Tens
+36QTT;4334;Pair of Tens
+26QTT;4335;Pair of Tens
+45QTT;4336;Pair of Tens
+35QTT;4337;Pair of Tens
+25QTT;4338;Pair of Tens
+34QTT;4339;Pair of Tens
+24QTT;4340;Pair of Tens
+23QTT;4341;Pair of Tens
+89JTT;4342;Pair of Tens
+79JTT;4343;Pair of Tens
+69JTT;4344;Pair of Tens
+59JTT;4345;Pair of Tens
+49JTT;4346;Pair of Tens
+39JTT;4347;Pair of Tens
+29JTT;4348;Pair of Tens
+78JTT;4349;Pair of Tens
+68JTT;4350;Pair of Tens
+58JTT;4351;Pair of Tens
+48JTT;4352;Pair of Tens
+38JTT;4353;Pair of Tens
+28JTT;4354;Pair of Tens
+67JTT;4355;Pair of Tens
+57JTT;4356;Pair of Tens
+47JTT;4357;Pair of Tens
+37JTT;4358;Pair of Tens
+27JTT;4359;Pair of Tens
+56JTT;4360;Pair of Tens
+46JTT;4361;Pair of Tens
+36JTT;4362;Pair of Tens
+26JTT;4363;Pair of Tens
+45JTT;4364;Pair of Tens
+35JTT;4365;Pair of Tens
+25JTT;4366;Pair of Tens
+34JTT;4367;Pair of Tens
+24JTT;4368;Pair of Tens
+23JTT;4369;Pair of Tens
+789TT;4370;Pair of Tens
+689TT;4371;Pair of Tens
+589TT;4372;Pair of Tens
+489TT;4373;Pair of Tens
+389TT;4374;Pair of Tens
+289TT;4375;Pair of Tens
+679TT;4376;Pair of Tens
+579TT;4377;Pair of Tens
+479TT;4378;Pair of Tens
+379TT;4379;Pair of Tens
+279TT;4380;Pair of Tens
+569TT;4381;Pair of Tens
+469TT;4382;Pair of Tens
+369TT;4383;Pair of Tens
+269TT;4384;Pair of Tens
+459TT;4385;Pair of Tens
+359TT;4386;Pair of Tens
+259TT;4387;Pair of Tens
+349TT;4388;Pair of Tens
+249TT;4389;Pair of Tens
+239TT;4390;Pair of Tens
+678TT;4391;Pair of Tens
+578TT;4392;Pair of Tens
+478TT;4393;Pair of Tens
+378TT;4394;Pair of Tens
+278TT;4395;Pair of Tens
+568TT;4396;Pair of Tens
+468TT;4397;Pair of Tens
+368TT;4398;Pair of Tens
+268TT;4399;Pair of Tens
+458TT;4400;Pair of Tens
+358TT;4401;Pair of Tens
+258TT;4402;Pair of Tens
+348TT;4403;Pair of Tens
+248TT;4404;Pair of Tens
+238TT;4405;Pair of Tens
+567TT;4406;Pair of Tens
+467TT;4407;Pair of Tens
+367TT;4408;Pair of Tens
+267TT;4409;Pair of Tens
+457TT;4410;Pair of Tens
+357TT;4411;Pair of Tens
+257TT;4412;Pair of Tens
+347TT;4413;Pair of Tens
+247TT;4414;Pair of Tens
+237TT;4415;Pair of Tens
+456TT;4416;Pair of Tens
+356TT;4417;Pair of Tens
+256TT;4418;Pair of Tens
+346TT;4419;Pair of Tens
+246TT;4420;Pair of Tens
+236TT;4421;Pair of Tens
+345TT;4422;Pair of Tens
+245TT;4423;Pair of Tens
+235TT;4424;Pair of Tens
+234TT;4425;Pair of Tens
+99AKQ;4426;Pair of Nines
+99AJK;4427;Pair of Nines
+99AKT;4428;Pair of Nines
+899AK;4429;Pair of Nines
+799AK;4430;Pair of Nines
+699AK;4431;Pair of Nines
+599AK;4432;Pair of Nines
+499AK;4433;Pair of Nines
+399AK;4434;Pair of Nines
+299AK;4435;Pair of Nines
+99AJQ;4436;Pair of Nines
+99AQT;4437;Pair of Nines
+899AQ;4438;Pair of Nines
+799AQ;4439;Pair of Nines
+699AQ;4440;Pair of Nines
+599AQ;4441;Pair of Nines
+499AQ;4442;Pair of Nines
+399AQ;4443;Pair of Nines
+299AQ;4444;Pair of Nines
+99AJT;4445;Pair of Nines
+899AJ;4446;Pair of Nines
+799AJ;4447;Pair of Nines
+699AJ;4448;Pair of Nines
+599AJ;4449;Pair of Nines
+499AJ;4450;Pair of Nines
+399AJ;4451;Pair of Nines
+299AJ;4452;Pair of Nines
+899AT;4453;Pair of Nines
+799AT;4454;Pair of Nines
+699AT;4455;Pair of Nines
+599AT;4456;Pair of Nines
+499AT;4457;Pair of Nines
+399AT;4458;Pair of Nines
+299AT;4459;Pair of Nines
+7899A;4460;Pair of Nines
+6899A;4461;Pair of Nines
+5899A;4462;Pair of Nines
+4899A;4463;Pair of Nines
+3899A;4464;Pair of Nines
+2899A;4465;Pair of Nines
+6799A;4466;Pair of Nines
+5799A;4467;Pair of Nines
+4799A;4468;Pair of Nines
+3799A;4469;Pair of Nines
+2799A;4470;Pair of Nines
+5699A;4471;Pair of Nines
+4699A;4472;Pair of Nines
+3699A;4473;Pair of Nines
+2699A;4474;Pair of Nines
+4599A;4475;Pair of Nines
+3599A;4476;Pair of Nines
+2599A;4477;Pair of Nines
+3499A;4478;Pair of Nines
+2499A;4479;Pair of Nines
+2399A;4480;Pair of Nines
+99JKQ;4481;Pair of Nines
+99KQT;4482;Pair of Nines
+899KQ;4483;Pair of Nines
+799KQ;4484;Pair of Nines
+699KQ;4485;Pair of Nines
+599KQ;4486;Pair of Nines
+499KQ;4487;Pair of Nines
+399KQ;4488;Pair of Nines
+299KQ;4489;Pair of Nines
+99JKT;4490;Pair of Nines
+899JK;4491;Pair of Nines
+799JK;4492;Pair of Nines
+699JK;4493;Pair of Nines
+599JK;4494;Pair of Nines
+499JK;4495;Pair of Nines
+399JK;4496;Pair of Nines
+299JK;4497;Pair of Nines
+899KT;4498;Pair of Nines
+799KT;4499;Pair of Nines
+699KT;4500;Pair of Nines
+599KT;4501;Pair of Nines
+499KT;4502;Pair of Nines
+399KT;4503;Pair of Nines
+299KT;4504;Pair of Nines
+7899K;4505;Pair of Nines
+6899K;4506;Pair of Nines
+5899K;4507;Pair of Nines
+4899K;4508;Pair of Nines
+3899K;4509;Pair of Nines
+2899K;4510;Pair of Nines
+6799K;4511;Pair of Nines
+5799K;4512;Pair of Nines
+4799K;4513;Pair of Nines
+3799K;4514;Pair of Nines
+2799K;4515;Pair of Nines
+5699K;4516;Pair of Nines
+4699K;4517;Pair of Nines
+3699K;4518;Pair of Nines
+2699K;4519;Pair of Nines
+4599K;4520;Pair of Nines
+3599K;4521;Pair of Nines
+2599K;4522;Pair of Nines
+3499K;4523;Pair of Nines
+2499K;4524;Pair of Nines
+2399K;4525;Pair of Nines
+99JQT;4526;Pair of Nines
+899JQ;4527;Pair of Nines
+799JQ;4528;Pair of Nines
+699JQ;4529;Pair of Nines
+599JQ;4530;Pair of Nines
+499JQ;4531;Pair of Nines
+399JQ;4532;Pair of Nines
+299JQ;4533;Pair of Nines
+899QT;4534;Pair of Nines
+799QT;4535;Pair of Nines
+699QT;4536;Pair of Nines
+599QT;4537;Pair of Nines
+499QT;4538;Pair of Nines
+399QT;4539;Pair of Nines
+299QT;4540;Pair of Nines
+7899Q;4541;Pair of Nines
+6899Q;4542;Pair of Nines
+5899Q;4543;Pair of Nines
+4899Q;4544;Pair of Nines
+3899Q;4545;Pair of Nines
+2899Q;4546;Pair of Nines
+6799Q;4547;Pair of Nines
+5799Q;4548;Pair of Nines
+4799Q;4549;Pair of Nines
+3799Q;4550;Pair of Nines
+2799Q;4551;Pair of Nines
+5699Q;4552;Pair of Nines
+4699Q;4553;Pair of Nines
+3699Q;4554;Pair of Nines
+2699Q;4555;Pair of Nines
+4599Q;4556;Pair of Nines
+3599Q;4557;Pair of Nines
+2599Q;4558;Pair of Nines
+3499Q;4559;Pair of Nines
+2499Q;4560;Pair of Nines
+2399Q;4561;Pair of Nines
+899JT;4562;Pair of Nines
+799JT;4563;Pair of Nines
+699JT;4564;Pair of Nines
+599JT;4565;Pair of Nines
+499JT;4566;Pair of Nines
+399JT;4567;Pair of Nines
+299JT;4568;Pair of Nines
+7899J;4569;Pair of Nines
+6899J;4570;Pair of Nines
+5899J;4571;Pair of Nines
+4899J;4572;Pair of Nines
+3899J;4573;Pair of Nines
+2899J;4574;Pair of Nines
+6799J;4575;Pair of Nines
+5799J;4576;Pair of Nines
+4799J;4577;Pair of Nines
+3799J;4578;Pair of Nines
+2799J;4579;Pair of Nines
+5699J;4580;Pair of Nines
+4699J;4581;Pair of Nines
+3699J;4582;Pair of Nines
+2699J;4583;Pair of Nines
+4599J;4584;Pair of Nines
+3599J;4585;Pair of Nines
+2599J;4586;Pair of Nines
+3499J;4587;Pair of Nines
+2499J;4588;Pair of Nines
+2399J;4589;Pair of Nines
+7899T;4590;Pair of Nines
+6899T;4591;Pair of Nines
+5899T;4592;Pair of Nines
+4899T;4593;Pair of Nines
+3899T;4594;Pair of Nines
+2899T;4595;Pair of Nines
+6799T;4596;Pair of Nines
+5799T;4597;Pair of Nines
+4799T;4598;Pair of Nines
+3799T;4599;Pair of Nines
+2799T;4600;Pair of Nines
+5699T;4601;Pair of Nines
+4699T;4602;Pair of Nines
+3699T;4603;Pair of Nines
+2699T;4604;Pair of Nines
+4599T;4605;Pair of Nines
+3599T;4606;Pair of Nines
+2599T;4607;Pair of Nines
+3499T;4608;Pair of Nines
+2499T;4609;Pair of Nines
+2399T;4610;Pair of Nines
+67899;4611;Pair of Nines
+57899;4612;Pair of Nines
+47899;4613;Pair of Nines
+37899;4614;Pair of Nines
+27899;4615;Pair of Nines
+56899;4616;Pair of Nines
+46899;4617;Pair of Nines
+36899;4618;Pair of Nines
+26899;4619;Pair of Nines
+45899;4620;Pair of Nines
+35899;4621;Pair of Nines
+25899;4622;Pair of Nines
+34899;4623;Pair of Nines
+24899;4624;Pair of Nines
+23899;4625;Pair of Nines
+56799;4626;Pair of Nines
+46799;4627;Pair of Nines
+36799;4628;Pair of Nines
+26799;4629;Pair of Nines
+45799;4630;Pair of Nines
+35799;4631;Pair of Nines
+25799;4632;Pair of Nines
+34799;4633;Pair of Nines
+24799;4634;Pair of Nines
+23799;4635;Pair of Nines
+45699;4636;Pair of Nines
+35699;4637;Pair of Nines
+25699;4638;Pair of Nines
+34699;4639;Pair of Nines
+24699;4640;Pair of Nines
+23699;4641;Pair of Nines
+34599;4642;Pair of Nines
+24599;4643;Pair of Nines
+23599;4644;Pair of Nines
+23499;4645;Pair of Nines
+88AKQ;4646;Pair of Eights
+88AJK;4647;Pair of Eights
+88AKT;4648;Pair of Eights
+889AK;4649;Pair of Eights
+788AK;4650;Pair of Eights
+688AK;4651;Pair of Eights
+588AK;4652;Pair of Eights
+488AK;4653;Pair of Eights
+388AK;4654;Pair of Eights
+288AK;4655;Pair of Eights
+88AJQ;4656;Pair of Eights
+88AQT;4657;Pair of Eights
+889AQ;4658;Pair of Eights
+788AQ;4659;Pair of Eights
+688AQ;4660;Pair of Eights
+588AQ;4661;Pair of Eights
+488AQ;4662;Pair of Eights
+388AQ;4663;Pair of Eights
+288AQ;4664;Pair of Eights
+88AJT;4665;Pair of Eights
+889AJ;4666;Pair of Eights
+788AJ;4667;Pair of Eights
+688AJ;4668;Pair of Eights
+588AJ;4669;Pair of Eights
+488AJ;4670;Pair of Eights
+388AJ;4671;Pair of Eights
+288AJ;4672;Pair of Eights
+889AT;4673;Pair of Eights
+788AT;4674;Pair of Eights
+688AT;4675;Pair of Eights
+588AT;4676;Pair of Eights
+488AT;4677;Pair of Eights
+388AT;4678;Pair of Eights
+288AT;4679;Pair of Eights
+7889A;4680;Pair of Eights
+6889A;4681;Pair of Eights
+5889A;4682;Pair of Eights
+4889A;4683;Pair of Eights
+3889A;4684;Pair of Eights
+2889A;4685;Pair of Eights
+6788A;4686;Pair of Eights
+5788A;4687;Pair of Eights
+4788A;4688;Pair of Eights
+3788A;4689;Pair of Eights
+2788A;4690;Pair of Eights
+5688A;4691;Pair of Eights
+4688A;4692;Pair of Eights
+3688A;4693;Pair of Eights
+2688A;4694;Pair of Eights
+4588A;4695;Pair of Eights
+3588A;4696;Pair of Eights
+2588A;4697;Pair of Eights
+3488A;4698;Pair of Eights
+2488A;4699;Pair of Eights
+2388A;4700;Pair of Eights
+88JKQ;4701;Pair of Eights
+88KQT;4702;Pair of Eights
+889KQ;4703;Pair of Eights
+788KQ;4704;Pair of Eights
+688KQ;4705;Pair of Eights
+588KQ;4706;Pair of Eights
+488KQ;4707;Pair of Eights
+388KQ;4708;Pair of Eights
+288KQ;4709;Pair of Eights
+88JKT;4710;Pair of Eights
+889JK;4711;Pair of Eights
+788JK;4712;Pair of Eights
+688JK;4713;Pair of Eights
+588JK;4714;Pair of Eights
+488JK;4715;Pair of Eights
+388JK;4716;Pair of Eights
+288JK;4717;Pair of Eights
+889KT;4718;Pair of Eights
+788KT;4719;Pair of Eights
+688KT;4720;Pair of Eights
+588KT;4721;Pair of Eights
+488KT;4722;Pair of Eights
+388KT;4723;Pair of Eights
+288KT;4724;Pair of Eights
+7889K;4725;Pair of Eights
+6889K;4726;Pair of Eights
+5889K;4727;Pair of Eights
+4889K;4728;Pair of Eights
+3889K;4729;Pair of Eights
+2889K;4730;Pair of Eights
+6788K;4731;Pair of Eights
+5788K;4732;Pair of Eights
+4788K;4733;Pair of Eights
+3788K;4734;Pair of Eights
+2788K;4735;Pair of Eights
+5688K;4736;Pair of Eights
+4688K;4737;Pair of Eights
+3688K;4738;Pair of Eights
+2688K;4739;Pair of Eights
+4588K;4740;Pair of Eights
+3588K;4741;Pair of Eights
+2588K;4742;Pair of Eights
+3488K;4743;Pair of Eights
+2488K;4744;Pair of Eights
+2388K;4745;Pair of Eights
+88JQT;4746;Pair of Eights
+889JQ;4747;Pair of Eights
+788JQ;4748;Pair of Eights
+688JQ;4749;Pair of Eights
+588JQ;4750;Pair of Eights
+488JQ;4751;Pair of Eights
+388JQ;4752;Pair of Eights
+288JQ;4753;Pair of Eights
+889QT;4754;Pair of Eights
+788QT;4755;Pair of Eights
+688QT;4756;Pair of Eights
+588QT;4757;Pair of Eights
+488QT;4758;Pair of Eights
+388QT;4759;Pair of Eights
+288QT;4760;Pair of Eights
+7889Q;4761;Pair of Eights
+6889Q;4762;Pair of Eights
+5889Q;4763;Pair of Eights
+4889Q;4764;Pair of Eights
+3889Q;4765;Pair of Eights
+2889Q;4766;Pair of Eights
+6788Q;4767;Pair of Eights
+5788Q;4768;Pair of Eights
+4788Q;4769;Pair of Eights
+3788Q;4770;Pair of Eights
+2788Q;4771;Pair of Eights
+5688Q;4772;Pair of Eights
+4688Q;4773;Pair of Eights
+3688Q;4774;Pair of Eights
+2688Q;4775;Pair of Eights
+4588Q;4776;Pair of Eights
+3588Q;4777;Pair of Eights
+2588Q;4778;Pair of Eights
+3488Q;4779;Pair of Eights
+2488Q;4780;Pair of Eights
+2388Q;4781;Pair of Eights
+889JT;4782;Pair of Eights
+788JT;4783;Pair of Eights
+688JT;4784;Pair of Eights
+588JT;4785;Pair of Eights
+488JT;4786;Pair of Eights
+388JT;4787;Pair of Eights
+288JT;4788;Pair of Eights
+7889J;4789;Pair of Eights
+6889J;4790;Pair of Eights
+5889J;4791;Pair of Eights
+4889J;4792;Pair of Eights
+3889J;4793;Pair of Eights
+2889J;4794;Pair of Eights
+6788J;4795;Pair of Eights
+5788J;4796;Pair of Eights
+4788J;4797;Pair of Eights
+3788J;4798;Pair of Eights
+2788J;4799;Pair of Eights
+5688J;4800;Pair of Eights
+4688J;4801;Pair of Eights
+3688J;4802;Pair of Eights
+2688J;4803;Pair of Eights
+4588J;4804;Pair of Eights
+3588J;4805;Pair of Eights
+2588J;4806;Pair of Eights
+3488J;4807;Pair of Eights
+2488J;4808;Pair of Eights
+2388J;4809;Pair of Eights
+7889T;4810;Pair of Eights
+6889T;4811;Pair of Eights
+5889T;4812;Pair of Eights
+4889T;4813;Pair of Eights
+3889T;4814;Pair of Eights
+2889T;4815;Pair of Eights
+6788T;4816;Pair of Eights
+5788T;4817;Pair of Eights
+4788T;4818;Pair of Eights
+3788T;4819;Pair of Eights
+2788T;4820;Pair of Eights
+5688T;4821;Pair of Eights
+4688T;4822;Pair of Eights
+3688T;4823;Pair of Eights
+2688T;4824;Pair of Eights
+4588T;4825;Pair of Eights
+3588T;4826;Pair of Eights
+2588T;4827;Pair of Eights
+3488T;4828;Pair of Eights
+2488T;4829;Pair of Eights
+2388T;4830;Pair of Eights
+67889;4831;Pair of Eights
+57889;4832;Pair of Eights
+47889;4833;Pair of Eights
+37889;4834;Pair of Eights
+27889;4835;Pair of Eights
+56889;4836;Pair of Eights
+46889;4837;Pair of Eights
+36889;4838;Pair of Eights
+26889;4839;Pair of Eights
+45889;4840;Pair of Eights
+35889;4841;Pair of Eights
+25889;4842;Pair of Eights
+34889;4843;Pair of Eights
+24889;4844;Pair of Eights
+23889;4845;Pair of Eights
+56788;4846;Pair of Eights
+46788;4847;Pair of Eights
+36788;4848;Pair of Eights
+26788;4849;Pair of Eights
+45788;4850;Pair of Eights
+35788;4851;Pair of Eights
+25788;4852;Pair of Eights
+34788;4853;Pair of Eights
+24788;4854;Pair of Eights
+23788;4855;Pair of Eights
+45688;4856;Pair of Eights
+35688;4857;Pair of Eights
+25688;4858;Pair of Eights
+34688;4859;Pair of Eights
+24688;4860;Pair of Eights
+23688;4861;Pair of Eights
+34588;4862;Pair of Eights
+24588;4863;Pair of Eights
+23588;4864;Pair of Eights
+23488;4865;Pair of Eights
+77AKQ;4866;Pair of Sevens
+77AJK;4867;Pair of Sevens
+77AKT;4868;Pair of Sevens
+779AK;4869;Pair of Sevens
+778AK;4870;Pair of Sevens
+677AK;4871;Pair of Sevens
+577AK;4872;Pair of Sevens
+477AK;4873;Pair of Sevens
+377AK;4874;Pair of Sevens
+277AK;4875;Pair of Sevens
+77AJQ;4876;Pair of Sevens
+77AQT;4877;Pair of Sevens
+779AQ;4878;Pair of Sevens
+778AQ;4879;Pair of Sevens
+677AQ;4880;Pair of Sevens
+577AQ;4881;Pair of Sevens
+477AQ;4882;Pair of Sevens
+377AQ;4883;Pair of Sevens
+277AQ;4884;Pair of Sevens
+77AJT;4885;Pair of Sevens
+779AJ;4886;Pair of Sevens
+778AJ;4887;Pair of Sevens
+677AJ;4888;Pair of Sevens
+577AJ;4889;Pair of Sevens
+477AJ;4890;Pair of Sevens
+377AJ;4891;Pair of Sevens
+277AJ;4892;Pair of Sevens
+779AT;4893;Pair of Sevens
+778AT;4894;Pair of Sevens
+677AT;4895;Pair of Sevens
+577AT;4896;Pair of Sevens
+477AT;4897;Pair of Sevens
+377AT;4898;Pair of Sevens
+277AT;4899;Pair of Sevens
+7789A;4900;Pair of Sevens
+6779A;4901;Pair of Sevens
+5779A;4902;Pair of Sevens
+4779A;4903;Pair of Sevens
+3779A;4904;Pair of Sevens
+2779A;4905;Pair of Sevens
+6778A;4906;Pair of Sevens
+5778A;4907;Pair of Sevens
+4778A;4908;Pair of Sevens
+3778A;4909;Pair of Sevens
+2778A;4910;Pair of Sevens
+5677A;4911;Pair of Sevens
+4677A;4912;Pair of Sevens
+3677A;4913;Pair of Sevens
+2677A;4914;Pair of Sevens
+4577A;4915;Pair of Sevens
+3577A;4916;Pair of Sevens
+2577A;4917;Pair of Sevens
+3477A;4918;Pair of Sevens
+2477A;4919;Pair of Sevens
+2377A;4920;Pair of Sevens
+77JKQ;4921;Pair of Sevens
+77KQT;4922;Pair of Sevens
+779KQ;4923;Pair of Sevens
+778KQ;4924;Pair of Sevens
+677KQ;4925;Pair of Sevens
+577KQ;4926;Pair of Sevens
+477KQ;4927;Pair of Sevens
+377KQ;4928;Pair of Sevens
+277KQ;4929;Pair of Sevens
+77JKT;4930;Pair of Sevens
+779JK;4931;Pair of Sevens
+778JK;4932;Pair of Sevens
+677JK;4933;Pair of Sevens
+577JK;4934;Pair of Sevens
+477JK;4935;Pair of Sevens
+377JK;4936;Pair of Sevens
+277JK;4937;Pair of Sevens
+779KT;4938;Pair of Sevens
+778KT;4939;Pair of Sevens
+677KT;4940;Pair of Sevens
+577KT;4941;Pair of Sevens
+477KT;4942;Pair of Sevens
+377KT;4943;Pair of Sevens
+277KT;4944;Pair of Sevens
+7789K;4945;Pair of Sevens
+6779K;4946;Pair of Sevens
+5779K;4947;Pair of Sevens
+4779K;4948;Pair of Sevens
+3779K;4949;Pair of Sevens
+2779K;4950;Pair of Sevens
+6778K;4951;Pair of Sevens
+5778K;4952;Pair of Sevens
+4778K;4953;Pair of Sevens
+3778K;4954;Pair of Sevens
+2778K;4955;Pair of Sevens
+5677K;4956;Pair of Sevens
+4677K;4957;Pair of Sevens
+3677K;4958;Pair of Sevens
+2677K;4959;Pair of Sevens
+4577K;4960;Pair of Sevens
+3577K;4961;Pair of Sevens
+2577K;4962;Pair of Sevens
+3477K;4963;Pair of Sevens
+2477K;4964;Pair of Sevens
+2377K;4965;Pair of Sevens
+77JQT;4966;Pair of Sevens
+779JQ;4967;Pair of Sevens
+778JQ;4968;Pair of Sevens
+677JQ;4969;Pair of Sevens
+577JQ;4970;Pair of Sevens
+477JQ;4971;Pair of Sevens
+377JQ;4972;Pair of Sevens
+277JQ;4973;Pair of Sevens
+779QT;4974;Pair of Sevens
+778QT;4975;Pair of Sevens
+677QT;4976;Pair of Sevens
+577QT;4977;Pair of Sevens
+477QT;4978;Pair of Sevens
+377QT;4979;Pair of Sevens
+277QT;4980;Pair of Sevens
+7789Q;4981;Pair of Sevens
+6779Q;4982;Pair of Sevens
+5779Q;4983;Pair of Sevens
+4779Q;4984;Pair of Sevens
+3779Q;4985;Pair of Sevens
+2779Q;4986;Pair of Sevens
+6778Q;4987;Pair of Sevens
+5778Q;4988;Pair of Sevens
+4778Q;4989;Pair of Sevens
+3778Q;4990;Pair of Sevens
+2778Q;4991;Pair of Sevens
+5677Q;4992;Pair of Sevens
+4677Q;4993;Pair of Sevens
+3677Q;4994;Pair of Sevens
+2677Q;4995;Pair of Sevens
+4577Q;4996;Pair of Sevens
+3577Q;4997;Pair of Sevens
+2577Q;4998;Pair of Sevens
+3477Q;4999;Pair of Sevens
+2477Q;5000;Pair of Sevens
+2377Q;5001;Pair of Sevens
+779JT;5002;Pair of Sevens
+778JT;5003;Pair of Sevens
+677JT;5004;Pair of Sevens
+577JT;5005;Pair of Sevens
+477JT;5006;Pair of Sevens
+377JT;5007;Pair of Sevens
+277JT;5008;Pair of Sevens
+7789J;5009;Pair of Sevens
+6779J;5010;Pair of Sevens
+5779J;5011;Pair of Sevens
+4779J;5012;Pair of Sevens
+3779J;5013;Pair of Sevens
+2779J;5014;Pair of Sevens
+6778J;5015;Pair of Sevens
+5778J;5016;Pair of Sevens
+4778J;5017;Pair of Sevens
+3778J;5018;Pair of Sevens
+2778J;5019;Pair of Sevens
+5677J;5020;Pair of Sevens
+4677J;5021;Pair of Sevens
+3677J;5022;Pair of Sevens
+2677J;5023;Pair of Sevens
+4577J;5024;Pair of Sevens
+3577J;5025;Pair of Sevens
+2577J;5026;Pair of Sevens
+3477J;5027;Pair of Sevens
+2477J;5028;Pair of Sevens
+2377J;5029;Pair of Sevens
+7789T;5030;Pair of Sevens
+6779T;5031;Pair of Sevens
+5779T;5032;Pair of Sevens
+4779T;5033;Pair of Sevens
+3779T;5034;Pair of Sevens
+2779T;5035;Pair of Sevens
+6778T;5036;Pair of Sevens
+5778T;5037;Pair of Sevens
+4778T;5038;Pair of Sevens
+3778T;5039;Pair of Sevens
+2778T;5040;Pair of Sevens
+5677T;5041;Pair of Sevens
+4677T;5042;Pair of Sevens
+3677T;5043;Pair of Sevens
+2677T;5044;Pair of Sevens
+4577T;5045;Pair of Sevens
+3577T;5046;Pair of Sevens
+2577T;5047;Pair of Sevens
+3477T;5048;Pair of Sevens
+2477T;5049;Pair of Sevens
+2377T;5050;Pair of Sevens
+67789;5051;Pair of Sevens
+57789;5052;Pair of Sevens
+47789;5053;Pair of Sevens
+37789;5054;Pair of Sevens
+27789;5055;Pair of Sevens
+56779;5056;Pair of Sevens
+46779;5057;Pair of Sevens
+36779;5058;Pair of Sevens
+26779;5059;Pair of Sevens
+45779;5060;Pair of Sevens
+35779;5061;Pair of Sevens
+25779;5062;Pair of Sevens
+34779;5063;Pair of Sevens
+24779;5064;Pair of Sevens
+23779;5065;Pair of Sevens
+56778;5066;Pair of Sevens
+46778;5067;Pair of Sevens
+36778;5068;Pair of Sevens
+26778;5069;Pair of Sevens
+45778;5070;Pair of Sevens
+35778;5071;Pair of Sevens
+25778;5072;Pair of Sevens
+34778;5073;Pair of Sevens
+24778;5074;Pair of Sevens
+23778;5075;Pair of Sevens
+45677;5076;Pair of Sevens
+35677;5077;Pair of Sevens
+25677;5078;Pair of Sevens
+34677;5079;Pair of Sevens
+24677;5080;Pair of Sevens
+23677;5081;Pair of Sevens
+34577;5082;Pair of Sevens
+24577;5083;Pair of Sevens
+23577;5084;Pair of Sevens
+23477;5085;Pair of Sevens
+66AKQ;5086;Pair of Sixes
+66AJK;5087;Pair of Sixes
+66AKT;5088;Pair of Sixes
+669AK;5089;Pair of Sixes
+668AK;5090;Pair of Sixes
+667AK;5091;Pair of Sixes
+566AK;5092;Pair of Sixes
+466AK;5093;Pair of Sixes
+366AK;5094;Pair of Sixes
+266AK;5095;Pair of Sixes
+66AJQ;5096;Pair of Sixes
+66AQT;5097;Pair of Sixes
+669AQ;5098;Pair of Sixes
+668AQ;5099;Pair of Sixes
+667AQ;5100;Pair of Sixes
+566AQ;5101;Pair of Sixes
+466AQ;5102;Pair of Sixes
+366AQ;5103;Pair of Sixes
+266AQ;5104;Pair of Sixes
+66AJT;5105;Pair of Sixes
+669AJ;5106;Pair of Sixes
+668AJ;5107;Pair of Sixes
+667AJ;5108;Pair of Sixes
+566AJ;5109;Pair of Sixes
+466AJ;5110;Pair of Sixes
+366AJ;5111;Pair of Sixes
+266AJ;5112;Pair of Sixes
+669AT;5113;Pair of Sixes
+668AT;5114;Pair of Sixes
+667AT;5115;Pair of Sixes
+566AT;5116;Pair of Sixes
+466AT;5117;Pair of Sixes
+366AT;5118;Pair of Sixes
+266AT;5119;Pair of Sixes
+6689A;5120;Pair of Sixes
+6679A;5121;Pair of Sixes
+5669A;5122;Pair of Sixes
+4669A;5123;Pair of Sixes
+3669A;5124;Pair of Sixes
+2669A;5125;Pair of Sixes
+6678A;5126;Pair of Sixes
+5668A;5127;Pair of Sixes
+4668A;5128;Pair of Sixes
+3668A;5129;Pair of Sixes
+2668A;5130;Pair of Sixes
+5667A;5131;Pair of Sixes
+4667A;5132;Pair of Sixes
+3667A;5133;Pair of Sixes
+2667A;5134;Pair of Sixes
+4566A;5135;Pair of Sixes
+3566A;5136;Pair of Sixes
+2566A;5137;Pair of Sixes
+3466A;5138;Pair of Sixes
+2466A;5139;Pair of Sixes
+2366A;5140;Pair of Sixes
+66JKQ;5141;Pair of Sixes
+66KQT;5142;Pair of Sixes
+669KQ;5143;Pair of Sixes
+668KQ;5144;Pair of Sixes
+667KQ;5145;Pair of Sixes
+566KQ;5146;Pair of Sixes
+466KQ;5147;Pair of Sixes
+366KQ;5148;Pair of Sixes
+266KQ;5149;Pair of Sixes
+66JKT;5150;Pair of Sixes
+669JK;5151;Pair of Sixes
+668JK;5152;Pair of Sixes
+667JK;5153;Pair of Sixes
+566JK;5154;Pair of Sixes
+466JK;5155;Pair of Sixes
+366JK;5156;Pair of Sixes
+266JK;5157;Pair of Sixes
+669KT;5158;Pair of Sixes
+668KT;5159;Pair of Sixes
+667KT;5160;Pair of Sixes
+566KT;5161;Pair of Sixes
+466KT;5162;Pair of Sixes
+366KT;5163;Pair of Sixes
+266KT;5164;Pair of Sixes
+6689K;5165;Pair of Sixes
+6679K;5166;Pair of Sixes
+5669K;5167;Pair of Sixes
+4669K;5168;Pair of Sixes
+3669K;5169;Pair of Sixes
+2669K;5170;Pair of Sixes
+6678K;5171;Pair of Sixes
+5668K;5172;Pair of Sixes
+4668K;5173;Pair of Sixes
+3668K;5174;Pair of Sixes
+2668K;5175;Pair of Sixes
+5667K;5176;Pair of Sixes
+4667K;5177;Pair of Sixes
+3667K;5178;Pair of Sixes
+2667K;5179;Pair of Sixes
+4566K;5180;Pair of Sixes
+3566K;5181;Pair of Sixes
+2566K;5182;Pair of Sixes
+3466K;5183;Pair of Sixes
+2466K;5184;Pair of Sixes
+2366K;5185;Pair of Sixes
+66JQT;5186;Pair of Sixes
+669JQ;5187;Pair of Sixes
+668JQ;5188;Pair of Sixes
+667JQ;5189;Pair of Sixes
+566JQ;5190;Pair of Sixes
+466JQ;5191;Pair of Sixes
+366JQ;5192;Pair of Sixes
+266JQ;5193;Pair of Sixes
+669QT;5194;Pair of Sixes
+668QT;5195;Pair of Sixes
+667QT;5196;Pair of Sixes
+566QT;5197;Pair of Sixes
+466QT;5198;Pair of Sixes
+366QT;5199;Pair of Sixes
+266QT;5200;Pair of Sixes
+6689Q;5201;Pair of Sixes
+6679Q;5202;Pair of Sixes
+5669Q;5203;Pair of Sixes
+4669Q;5204;Pair of Sixes
+3669Q;5205;Pair of Sixes
+2669Q;5206;Pair of Sixes
+6678Q;5207;Pair of Sixes
+5668Q;5208;Pair of Sixes
+4668Q;5209;Pair of Sixes
+3668Q;5210;Pair of Sixes
+2668Q;5211;Pair of Sixes
+5667Q;5212;Pair of Sixes
+4667Q;5213;Pair of Sixes
+3667Q;5214;Pair of Sixes
+2667Q;5215;Pair of Sixes
+4566Q;5216;Pair of Sixes
+3566Q;5217;Pair of Sixes
+2566Q;5218;Pair of Sixes
+3466Q;5219;Pair of Sixes
+2466Q;5220;Pair of Sixes
+2366Q;5221;Pair of Sixes
+669JT;5222;Pair of Sixes
+668JT;5223;Pair of Sixes
+667JT;5224;Pair of Sixes
+566JT;5225;Pair of Sixes
+466JT;5226;Pair of Sixes
+366JT;5227;Pair of Sixes
+266JT;5228;Pair of Sixes
+6689J;5229;Pair of Sixes
+6679J;5230;Pair of Sixes
+5669J;5231;Pair of Sixes
+4669J;5232;Pair of Sixes
+3669J;5233;Pair of Sixes
+2669J;5234;Pair of Sixes
+6678J;5235;Pair of Sixes
+5668J;5236;Pair of Sixes
+4668J;5237;Pair of Sixes
+3668J;5238;Pair of Sixes
+2668J;5239;Pair of Sixes
+5667J;5240;Pair of Sixes
+4667J;5241;Pair of Sixes
+3667J;5242;Pair of Sixes
+2667J;5243;Pair of Sixes
+4566J;5244;Pair of Sixes
+3566J;5245;Pair of Sixes
+2566J;5246;Pair of Sixes
+3466J;5247;Pair of Sixes
+2466J;5248;Pair of Sixes
+2366J;5249;Pair of Sixes
+6689T;5250;Pair of Sixes
+6679T;5251;Pair of Sixes
+5669T;5252;Pair of Sixes
+4669T;5253;Pair of Sixes
+3669T;5254;Pair of Sixes
+2669T;5255;Pair of Sixes
+6678T;5256;Pair of Sixes
+5668T;5257;Pair of Sixes
+4668T;5258;Pair of Sixes
+3668T;5259;Pair of Sixes
+2668T;5260;Pair of Sixes
+5667T;5261;Pair of Sixes
+4667T;5262;Pair of Sixes
+3667T;5263;Pair of Sixes
+2667T;5264;Pair of Sixes
+4566T;5265;Pair of Sixes
+3566T;5266;Pair of Sixes
+2566T;5267;Pair of Sixes
+3466T;5268;Pair of Sixes
+2466T;5269;Pair of Sixes
+2366T;5270;Pair of Sixes
+66789;5271;Pair of Sixes
+56689;5272;Pair of Sixes
+46689;5273;Pair of Sixes
+36689;5274;Pair of Sixes
+26689;5275;Pair of Sixes
+56679;5276;Pair of Sixes
+46679;5277;Pair of Sixes
+36679;5278;Pair of Sixes
+26679;5279;Pair of Sixes
+45669;5280;Pair of Sixes
+35669;5281;Pair of Sixes
+25669;5282;Pair of Sixes
+34669;5283;Pair of Sixes
+24669;5284;Pair of Sixes
+23669;5285;Pair of Sixes
+56678;5286;Pair of Sixes
+46678;5287;Pair of Sixes
+36678;5288;Pair of Sixes
+26678;5289;Pair of Sixes
+45668;5290;Pair of Sixes
+35668;5291;Pair of Sixes
+25668;5292;Pair of Sixes
+34668;5293;Pair of Sixes
+24668;5294;Pair of Sixes
+23668;5295;Pair of Sixes
+45667;5296;Pair of Sixes
+35667;5297;Pair of Sixes
+25667;5298;Pair of Sixes
+34667;5299;Pair of Sixes
+24667;5300;Pair of Sixes
+23667;5301;Pair of Sixes
+34566;5302;Pair of Sixes
+24566;5303;Pair of Sixes
+23566;5304;Pair of Sixes
+23466;5305;Pair of Sixes
+55AKQ;5306;Pair of Fives
+55AJK;5307;Pair of Fives
+55AKT;5308;Pair of Fives
+559AK;5309;Pair of Fives
+558AK;5310;Pair of Fives
+557AK;5311;Pair of Fives
+556AK;5312;Pair of Fives
+455AK;5313;Pair of Fives
+355AK;5314;Pair of Fives
+255AK;5315;Pair of Fives
+55AJQ;5316;Pair of Fives
+55AQT;5317;Pair of Fives
+559AQ;5318;Pair of Fives
+558AQ;5319;Pair of Fives
+557AQ;5320;Pair of Fives
+556AQ;5321;Pair of Fives
+455AQ;5322;Pair of Fives
+355AQ;5323;Pair of Fives
+255AQ;5324;Pair of Fives
+55AJT;5325;Pair of Fives
+559AJ;5326;Pair of Fives
+558AJ;5327;Pair of Fives
+557AJ;5328;Pair of Fives
+556AJ;5329;Pair of Fives
+455AJ;5330;Pair of Fives
+355AJ;5331;Pair of Fives
+255AJ;5332;Pair of Fives
+559AT;5333;Pair of Fives
+558AT;5334;Pair of Fives
+557AT;5335;Pair of Fives
+556AT;5336;Pair of Fives
+455AT;5337;Pair of Fives
+355AT;5338;Pair of Fives
+255AT;5339;Pair of Fives
+5589A;5340;Pair of Fives
+5579A;5341;Pair of Fives
+5569A;5342;Pair of Fives
+4559A;5343;Pair of Fives
+3559A;5344;Pair of Fives
+2559A;5345;Pair of Fives
+5578A;5346;Pair of Fives
+5568A;5347;Pair of Fives
+4558A;5348;Pair of Fives
+3558A;5349;Pair of Fives
+2558A;5350;Pair of Fives
+5567A;5351;Pair of Fives
+4557A;5352;Pair of Fives
+3557A;5353;Pair of Fives
+2557A;5354;Pair of Fives
+4556A;5355;Pair of Fives
+3556A;5356;Pair of Fives
+2556A;5357;Pair of Fives
+3455A;5358;Pair of Fives
+2455A;5359;Pair of Fives
+2355A;5360;Pair of Fives
+55JKQ;5361;Pair of Fives
+55KQT;5362;Pair of Fives
+559KQ;5363;Pair of Fives
+558KQ;5364;Pair of Fives
+557KQ;5365;Pair of Fives
+556KQ;5366;Pair of Fives
+455KQ;5367;Pair of Fives
+355KQ;5368;Pair of Fives
+255KQ;5369;Pair of Fives
+55JKT;5370;Pair of Fives
+559JK;5371;Pair of Fives
+558JK;5372;Pair of Fives
+557JK;5373;Pair of Fives
+556JK;5374;Pair of Fives
+455JK;5375;Pair of Fives
+355JK;5376;Pair of Fives
+255JK;5377;Pair of Fives
+559KT;5378;Pair of Fives
+558KT;5379;Pair of Fives
+557KT;5380;Pair of Fives
+556KT;5381;Pair of Fives
+455KT;5382;Pair of Fives
+355KT;5383;Pair of Fives
+255KT;5384;Pair of Fives
+5589K;5385;Pair of Fives
+5579K;5386;Pair of Fives
+5569K;5387;Pair of Fives
+4559K;5388;Pair of Fives
+3559K;5389;Pair of Fives
+2559K;5390;Pair of Fives
+5578K;5391;Pair of Fives
+5568K;5392;Pair of Fives
+4558K;5393;Pair of Fives
+3558K;5394;Pair of Fives
+2558K;5395;Pair of Fives
+5567K;5396;Pair of Fives
+4557K;5397;Pair of Fives
+3557K;5398;Pair of Fives
+2557K;5399;Pair of Fives
+4556K;5400;Pair of Fives
+3556K;5401;Pair of Fives
+2556K;5402;Pair of Fives
+3455K;5403;Pair of Fives
+2455K;5404;Pair of Fives
+2355K;5405;Pair of Fives
+55JQT;5406;Pair of Fives
+559JQ;5407;Pair of Fives
+558JQ;5408;Pair of Fives
+557JQ;5409;Pair of Fives
+556JQ;5410;Pair of Fives
+455JQ;5411;Pair of Fives
+355JQ;5412;Pair of Fives
+255JQ;5413;Pair of Fives
+559QT;5414;Pair of Fives
+558QT;5415;Pair of Fives
+557QT;5416;Pair of Fives
+556QT;5417;Pair of Fives
+455QT;5418;Pair of Fives
+355QT;5419;Pair of Fives
+255QT;5420;Pair of Fives
+5589Q;5421;Pair of Fives
+5579Q;5422;Pair of Fives
+5569Q;5423;Pair of Fives
+4559Q;5424;Pair of Fives
+3559Q;5425;Pair of Fives
+2559Q;5426;Pair of Fives
+5578Q;5427;Pair of Fives
+5568Q;5428;Pair of Fives
+4558Q;5429;Pair of Fives
+3558Q;5430;Pair of Fives
+2558Q;5431;Pair of Fives
+5567Q;5432;Pair of Fives
+4557Q;5433;Pair of Fives
+3557Q;5434;Pair of Fives
+2557Q;5435;Pair of Fives
+4556Q;5436;Pair of Fives
+3556Q;5437;Pair of Fives
+2556Q;5438;Pair of Fives
+3455Q;5439;Pair of Fives
+2455Q;5440;Pair of Fives
+2355Q;5441;Pair of Fives
+559JT;5442;Pair of Fives
+558JT;5443;Pair of Fives
+557JT;5444;Pair of Fives
+556JT;5445;Pair of Fives
+455JT;5446;Pair of Fives
+355JT;5447;Pair of Fives
+255JT;5448;Pair of Fives
+5589J;5449;Pair of Fives
+5579J;5450;Pair of Fives
+5569J;5451;Pair of Fives
+4559J;5452;Pair of Fives
+3559J;5453;Pair of Fives
+2559J;5454;Pair of Fives
+5578J;5455;Pair of Fives
+5568J;5456;Pair of Fives
+4558J;5457;Pair of Fives
+3558J;5458;Pair of Fives
+2558J;5459;Pair of Fives
+5567J;5460;Pair of Fives
+4557J;5461;Pair of Fives
+3557J;5462;Pair of Fives
+2557J;5463;Pair of Fives
+4556J;5464;Pair of Fives
+3556J;5465;Pair of Fives
+2556J;5466;Pair of Fives
+3455J;5467;Pair of Fives
+2455J;5468;Pair of Fives
+2355J;5469;Pair of Fives
+5589T;5470;Pair of Fives
+5579T;5471;Pair of Fives
+5569T;5472;Pair of Fives
+4559T;5473;Pair of Fives
+3559T;5474;Pair of Fives
+2559T;5475;Pair of Fives
+5578T;5476;Pair of Fives
+5568T;5477;Pair of Fives
+4558T;5478;Pair of Fives
+3558T;5479;Pair of Fives
+2558T;5480;Pair of Fives
+5567T;5481;Pair of Fives
+4557T;5482;Pair of Fives
+3557T;5483;Pair of Fives
+2557T;5484;Pair of Fives
+4556T;5485;Pair of Fives
+3556T;5486;Pair of Fives
+2556T;5487;Pair of Fives
+3455T;5488;Pair of Fives
+2455T;5489;Pair of Fives
+2355T;5490;Pair of Fives
+55789;5491;Pair of Fives
+55689;5492;Pair of Fives
+45589;5493;Pair of Fives
+35589;5494;Pair of Fives
+25589;5495;Pair of Fives
+55679;5496;Pair of Fives
+45579;5497;Pair of Fives
+35579;5498;Pair of Fives
+25579;5499;Pair of Fives
+45569;5500;Pair of Fives
+35569;5501;Pair of Fives
+25569;5502;Pair of Fives
+34559;5503;Pair of Fives
+24559;5504;Pair of Fives
+23559;5505;Pair of Fives
+55678;5506;Pair of Fives
+45578;5507;Pair of Fives
+35578;5508;Pair of Fives
+25578;5509;Pair of Fives
+45568;5510;Pair of Fives
+35568;5511;Pair of Fives
+25568;5512;Pair of Fives
+34558;5513;Pair of Fives
+24558;5514;Pair of Fives
+23558;5515;Pair of Fives
+45567;5516;Pair of Fives
+35567;5517;Pair of Fives
+25567;5518;Pair of Fives
+34557;5519;Pair of Fives
+24557;5520;Pair of Fives
+23557;5521;Pair of Fives
+34556;5522;Pair of Fives
+24556;5523;Pair of Fives
+23556;5524;Pair of Fives
+23455;5525;Pair of Fives
+44AKQ;5526;Pair of Fours
+44AJK;5527;Pair of Fours
+44AKT;5528;Pair of Fours
+449AK;5529;Pair of Fours
+448AK;5530;Pair of Fours
+447AK;5531;Pair of Fours
+446AK;5532;Pair of Fours
+445AK;5533;Pair of Fours
+344AK;5534;Pair of Fours
+244AK;5535;Pair of Fours
+44AJQ;5536;Pair of Fours
+44AQT;5537;Pair of Fours
+449AQ;5538;Pair of Fours
+448AQ;5539;Pair of Fours
+447AQ;5540;Pair of Fours
+446AQ;5541;Pair of Fours
+445AQ;5542;Pair of Fours
+344AQ;5543;Pair of Fours
+244AQ;5544;Pair of Fours
+44AJT;5545;Pair of Fours
+449AJ;5546;Pair of Fours
+448AJ;5547;Pair of Fours
+447AJ;5548;Pair of Fours
+446AJ;5549;Pair of Fours
+445AJ;5550;Pair of Fours
+344AJ;5551;Pair of Fours
+244AJ;5552;Pair of Fours
+449AT;5553;Pair of Fours
+448AT;5554;Pair of Fours
+447AT;5555;Pair of Fours
+446AT;5556;Pair of Fours
+445AT;5557;Pair of Fours
+344AT;5558;Pair of Fours
+244AT;5559;Pair of Fours
+4489A;5560;Pair of Fours
+4479A;5561;Pair of Fours
+4469A;5562;Pair of Fours
+4459A;5563;Pair of Fours
+3449A;5564;Pair of Fours
+2449A;5565;Pair of Fours
+4478A;5566;Pair of Fours
+4468A;5567;Pair of Fours
+4458A;5568;Pair of Fours
+3448A;5569;Pair of Fours
+2448A;5570;Pair of Fours
+4467A;5571;Pair of Fours
+4457A;5572;Pair of Fours
+3447A;5573;Pair of Fours
+2447A;5574;Pair of Fours
+4456A;5575;Pair of Fours
+3446A;5576;Pair of Fours
+2446A;5577;Pair of Fours
+3445A;5578;Pair of Fours
+2445A;5579;Pair of Fours
+2344A;5580;Pair of Fours
+44JKQ;5581;Pair of Fours
+44KQT;5582;Pair of Fours
+449KQ;5583;Pair of Fours
+448KQ;5584;Pair of Fours
+447KQ;5585;Pair of Fours
+446KQ;5586;Pair of Fours
+445KQ;5587;Pair of Fours
+344KQ;5588;Pair of Fours
+244KQ;5589;Pair of Fours
+44JKT;5590;Pair of Fours
+449JK;5591;Pair of Fours
+448JK;5592;Pair of Fours
+447JK;5593;Pair of Fours
+446JK;5594;Pair of Fours
+445JK;5595;Pair of Fours
+344JK;5596;Pair of Fours
+244JK;5597;Pair of Fours
+449KT;5598;Pair of Fours
+448KT;5599;Pair of Fours
+447KT;5600;Pair of Fours
+446KT;5601;Pair of Fours
+445KT;5602;Pair of Fours
+344KT;5603;Pair of Fours
+244KT;5604;Pair of Fours
+4489K;5605;Pair of Fours
+4479K;5606;Pair of Fours
+4469K;5607;Pair of Fours
+4459K;5608;Pair of Fours
+3449K;5609;Pair of Fours
+2449K;5610;Pair of Fours
+4478K;5611;Pair of Fours
+4468K;5612;Pair of Fours
+4458K;5613;Pair of Fours
+3448K;5614;Pair of Fours
+2448K;5615;Pair of Fours
+4467K;5616;Pair of Fours
+4457K;5617;Pair of Fours
+3447K;5618;Pair of Fours
+2447K;5619;Pair of Fours
+4456K;5620;Pair of Fours
+3446K;5621;Pair of Fours
+2446K;5622;Pair of Fours
+3445K;5623;Pair of Fours
+2445K;5624;Pair of Fours
+2344K;5625;Pair of Fours
+44JQT;5626;Pair of Fours
+449JQ;5627;Pair of Fours
+448JQ;5628;Pair of Fours
+447JQ;5629;Pair of Fours
+446JQ;5630;Pair of Fours
+445JQ;5631;Pair of Fours
+344JQ;5632;Pair of Fours
+244JQ;5633;Pair of Fours
+449QT;5634;Pair of Fours
+448QT;5635;Pair of Fours
+447QT;5636;Pair of Fours
+446QT;5637;Pair of Fours
+445QT;5638;Pair of Fours
+344QT;5639;Pair of Fours
+244QT;5640;Pair of Fours
+4489Q;5641;Pair of Fours
+4479Q;5642;Pair of Fours
+4469Q;5643;Pair of Fours
+4459Q;5644;Pair of Fours
+3449Q;5645;Pair of Fours
+2449Q;5646;Pair of Fours
+4478Q;5647;Pair of Fours
+4468Q;5648;Pair of Fours
+4458Q;5649;Pair of Fours
+3448Q;5650;Pair of Fours
+2448Q;5651;Pair of Fours
+4467Q;5652;Pair of Fours
+4457Q;5653;Pair of Fours
+3447Q;5654;Pair of Fours
+2447Q;5655;Pair of Fours
+4456Q;5656;Pair of Fours
+3446Q;5657;Pair of Fours
+2446Q;5658;Pair of Fours
+3445Q;5659;Pair of Fours
+2445Q;5660;Pair of Fours
+2344Q;5661;Pair of Fours
+449JT;5662;Pair of Fours
+448JT;5663;Pair of Fours
+447JT;5664;Pair of Fours
+446JT;5665;Pair of Fours
+445JT;5666;Pair of Fours
+344JT;5667;Pair of Fours
+244JT;5668;Pair of Fours
+4489J;5669;Pair of Fours
+4479J;5670;Pair of Fours
+4469J;5671;Pair of Fours
+4459J;5672;Pair of Fours
+3449J;5673;Pair of Fours
+2449J;5674;Pair of Fours
+4478J;5675;Pair of Fours
+4468J;5676;Pair of Fours
+4458J;5677;Pair of Fours
+3448J;5678;Pair of Fours
+2448J;5679;Pair of Fours
+4467J;5680;Pair of Fours
+4457J;5681;Pair of Fours
+3447J;5682;Pair of Fours
+2447J;5683;Pair of Fours
+4456J;5684;Pair of Fours
+3446J;5685;Pair of Fours
+2446J;5686;Pair of Fours
+3445J;5687;Pair of Fours
+2445J;5688;Pair of Fours
+2344J;5689;Pair of Fours
+4489T;5690;Pair of Fours
+4479T;5691;Pair of Fours
+4469T;5692;Pair of Fours
+4459T;5693;Pair of Fours
+3449T;5694;Pair of Fours
+2449T;5695;Pair of Fours
+4478T;5696;Pair of Fours
+4468T;5697;Pair of Fours
+4458T;5698;Pair of Fours
+3448T;5699;Pair of Fours
+2448T;5700;Pair of Fours
+4467T;5701;Pair of Fours
+4457T;5702;Pair of Fours
+3447T;5703;Pair of Fours
+2447T;5704;Pair of Fours
+4456T;5705;Pair of Fours
+3446T;5706;Pair of Fours
+2446T;5707;Pair of Fours
+3445T;5708;Pair of Fours
+2445T;5709;Pair of Fours
+2344T;5710;Pair of Fours
+44789;5711;Pair of Fours
+44689;5712;Pair of Fours
+44589;5713;Pair of Fours
+34489;5714;Pair of Fours
+24489;5715;Pair of Fours
+44679;5716;Pair of Fours
+44579;5717;Pair of Fours
+34479;5718;Pair of Fours
+24479;5719;Pair of Fours
+44569;5720;Pair of Fours
+34469;5721;Pair of Fours
+24469;5722;Pair of Fours
+34459;5723;Pair of Fours
+24459;5724;Pair of Fours
+23449;5725;Pair of Fours
+44678;5726;Pair of Fours
+44578;5727;Pair of Fours
+34478;5728;Pair of Fours
+24478;5729;Pair of Fours
+44568;5730;Pair of Fours
+34468;5731;Pair of Fours
+24468;5732;Pair of Fours
+34458;5733;Pair of Fours
+24458;5734;Pair of Fours
+23448;5735;Pair of Fours
+44567;5736;Pair of Fours
+34467;5737;Pair of Fours
+24467;5738;Pair of Fours
+34457;5739;Pair of Fours
+24457;5740;Pair of Fours
+23447;5741;Pair of Fours
+34456;5742;Pair of Fours
+24456;5743;Pair of Fours
+23446;5744;Pair of Fours
+23445;5745;Pair of Fours
+33AKQ;5746;Pair of Treys
+33AJK;5747;Pair of Treys
+33AKT;5748;Pair of Treys
+339AK;5749;Pair of Treys
+338AK;5750;Pair of Treys
+337AK;5751;Pair of Treys
+336AK;5752;Pair of Treys
+335AK;5753;Pair of Treys
+334AK;5754;Pair of Treys
+233AK;5755;Pair of Treys
+33AJQ;5756;Pair of Treys
+33AQT;5757;Pair of Treys
+339AQ;5758;Pair of Treys
+338AQ;5759;Pair of Treys
+337AQ;5760;Pair of Treys
+336AQ;5761;Pair of Treys
+335AQ;5762;Pair of Treys
+334AQ;5763;Pair of Treys
+233AQ;5764;Pair of Treys
+33AJT;5765;Pair of Treys
+339AJ;5766;Pair of Treys
+338AJ;5767;Pair of Treys
+337AJ;5768;Pair of Treys
+336AJ;5769;Pair of Treys
+335AJ;5770;Pair of Treys
+334AJ;5771;Pair of Treys
+233AJ;5772;Pair of Treys
+339AT;5773;Pair of Treys
+338AT;5774;Pair of Treys
+337AT;5775;Pair of Treys
+336AT;5776;Pair of Treys
+335AT;5777;Pair of Treys
+334AT;5778;Pair of Treys
+233AT;5779;Pair of Treys
+3389A;5780;Pair of Treys
+3379A;5781;Pair of Treys
+3369A;5782;Pair of Treys
+3359A;5783;Pair of Treys
+3349A;5784;Pair of Treys
+2339A;5785;Pair of Treys
+3378A;5786;Pair of Treys
+3368A;5787;Pair of Treys
+3358A;5788;Pair of Treys
+3348A;5789;Pair of Treys
+2338A;5790;Pair of Treys
+3367A;5791;Pair of Treys
+3357A;5792;Pair of Treys
+3347A;5793;Pair of Treys
+2337A;5794;Pair of Treys
+3356A;5795;Pair of Treys
+3346A;5796;Pair of Treys
+2336A;5797;Pair of Treys
+3345A;5798;Pair of Treys
+2335A;5799;Pair of Treys
+2334A;5800;Pair of Treys
+33JKQ;5801;Pair of Treys
+33KQT;5802;Pair of Treys
+339KQ;5803;Pair of Treys
+338KQ;5804;Pair of Treys
+337KQ;5805;Pair of Treys
+336KQ;5806;Pair of Treys
+335KQ;5807;Pair of Treys
+334KQ;5808;Pair of Treys
+233KQ;5809;Pair of Treys
+33JKT;5810;Pair of Treys
+339JK;5811;Pair of Treys
+338JK;5812;Pair of Treys
+337JK;5813;Pair of Treys
+336JK;5814;Pair of Treys
+335JK;5815;Pair of Treys
+334JK;5816;Pair of Treys
+233JK;5817;Pair of Treys
+339KT;5818;Pair of Treys
+338KT;5819;Pair of Treys
+337KT;5820;Pair of Treys
+336KT;5821;Pair of Treys
+335KT;5822;Pair of Treys
+334KT;5823;Pair of Treys
+233KT;5824;Pair of Treys
+3389K;5825;Pair of Treys
+3379K;5826;Pair of Treys
+3369K;5827;Pair of Treys
+3359K;5828;Pair of Treys
+3349K;5829;Pair of Treys
+2339K;5830;Pair of Treys
+3378K;5831;Pair of Treys
+3368K;5832;Pair of Treys
+3358K;5833;Pair of Treys
+3348K;5834;Pair of Treys
+2338K;5835;Pair of Treys
+3367K;5836;Pair of Treys
+3357K;5837;Pair of Treys
+3347K;5838;Pair of Treys
+2337K;5839;Pair of Treys
+3356K;5840;Pair of Treys
+3346K;5841;Pair of Treys
+2336K;5842;Pair of Treys
+3345K;5843;Pair of Treys
+2335K;5844;Pair of Treys
+2334K;5845;Pair of Treys
+33JQT;5846;Pair of Treys
+339JQ;5847;Pair of Treys
+338JQ;5848;Pair of Treys
+337JQ;5849;Pair of Treys
+336JQ;5850;Pair of Treys
+335JQ;5851;Pair of Treys
+334JQ;5852;Pair of Treys
+233JQ;5853;Pair of Treys
+339QT;5854;Pair of Treys
+338QT;5855;Pair of Treys
+337QT;5856;Pair of Treys
+336QT;5857;Pair of Treys
+335QT;5858;Pair of Treys
+334QT;5859;Pair of Treys
+233QT;5860;Pair of Treys
+3389Q;5861;Pair of Treys
+3379Q;5862;Pair of Treys
+3369Q;5863;Pair of Treys
+3359Q;5864;Pair of Treys
+3349Q;5865;Pair of Treys
+2339Q;5866;Pair of Treys
+3378Q;5867;Pair of Treys
+3368Q;5868;Pair of Treys
+3358Q;5869;Pair of Treys
+3348Q;5870;Pair of Treys
+2338Q;5871;Pair of Treys
+3367Q;5872;Pair of Treys
+3357Q;5873;Pair of Treys
+3347Q;5874;Pair of Treys
+2337Q;5875;Pair of Treys
+3356Q;5876;Pair of Treys
+3346Q;5877;Pair of Treys
+2336Q;5878;Pair of Treys
+3345Q;5879;Pair of Treys
+2335Q;5880;Pair of Treys
+2334Q;5881;Pair of Treys
+339JT;5882;Pair of Treys
+338JT;5883;Pair of Treys
+337JT;5884;Pair of Treys
+336JT;5885;Pair of Treys
+335JT;5886;Pair of Treys
+334JT;5887;Pair of Treys
+233JT;5888;Pair of Treys
+3389J;5889;Pair of Treys
+3379J;5890;Pair of Treys
+3369J;5891;Pair of Treys
+3359J;5892;Pair of Treys
+3349J;5893;Pair of Treys
+2339J;5894;Pair of Treys
+3378J;5895;Pair of Treys
+3368J;5896;Pair of Treys
+3358J;5897;Pair of Treys
+3348J;5898;Pair of Treys
+2338J;5899;Pair of Treys
+3367J;5900;Pair of Treys
+3357J;5901;Pair of Treys
+3347J;5902;Pair of Treys
+2337J;5903;Pair of Treys
+3356J;5904;Pair of Treys
+3346J;5905;Pair of Treys
+2336J;5906;Pair of Treys
+3345J;5907;Pair of Treys
+2335J;5908;Pair of Treys
+2334J;5909;Pair of Treys
+3389T;5910;Pair of Treys
+3379T;5911;Pair of Treys
+3369T;5912;Pair of Treys
+3359T;5913;Pair of Treys
+3349T;5914;Pair of Treys
+2339T;5915;Pair of Treys
+3378T;5916;Pair of Treys
+3368T;5917;Pair of Treys
+3358T;5918;Pair of Treys
+3348T;5919;Pair of Treys
+2338T;5920;Pair of Treys
+3367T;5921;Pair of Treys
+3357T;5922;Pair of Treys
+3347T;5923;Pair of Treys
+2337T;5924;Pair of Treys
+3356T;5925;Pair of Treys
+3346T;5926;Pair of Treys
+2336T;5927;Pair of Treys
+3345T;5928;Pair of Treys
+2335T;5929;Pair of Treys
+2334T;5930;Pair of Treys
+33789;5931;Pair of Treys
+33689;5932;Pair of Treys
+33589;5933;Pair of Treys
+33489;5934;Pair of Treys
+23389;5935;Pair of Treys
+33679;5936;Pair of Treys
+33579;5937;Pair of Treys
+33479;5938;Pair of Treys
+23379;5939;Pair of Treys
+33569;5940;Pair of Treys
+33469;5941;Pair of Treys
+23369;5942;Pair of Treys
+33459;5943;Pair of Treys
+23359;5944;Pair of Treys
+23349;5945;Pair of Treys
+33678;5946;Pair of Treys
+33578;5947;Pair of Treys
+33478;5948;Pair of Treys
+23378;5949;Pair of Treys
+33568;5950;Pair of Treys
+33468;5951;Pair of Treys
+23368;5952;Pair of Treys
+33458;5953;Pair of Treys
+23358;5954;Pair of Treys
+23348;5955;Pair of Treys
+33567;5956;Pair of Treys
+33467;5957;Pair of Treys
+23367;5958;Pair of Treys
+33457;5959;Pair of Treys
+23357;5960;Pair of Treys
+23347;5961;Pair of Treys
+33456;5962;Pair of Treys
+23356;5963;Pair of Treys
+23346;5964;Pair of Treys
+23345;5965;Pair of Treys
+22AKQ;5966;Pair of Deuces
+22AJK;5967;Pair of Deuces
+22AKT;5968;Pair of Deuces
+229AK;5969;Pair of Deuces
+228AK;5970;Pair of Deuces
+227AK;5971;Pair of Deuces
+226AK;5972;Pair of Deuces
+225AK;5973;Pair of Deuces
+224AK;5974;Pair of Deuces
+223AK;5975;Pair of Deuces
+22AJQ;5976;Pair of Deuces
+22AQT;5977;Pair of Deuces
+229AQ;5978;Pair of Deuces
+228AQ;5979;Pair of Deuces
+227AQ;5980;Pair of Deuces
+226AQ;5981;Pair of Deuces
+225AQ;5982;Pair of Deuces
+224AQ;5983;Pair of Deuces
+223AQ;5984;Pair of Deuces
+22AJT;5985;Pair of Deuces
+229AJ;5986;Pair of Deuces
+228AJ;5987;Pair of Deuces
+227AJ;5988;Pair of Deuces
+226AJ;5989;Pair of Deuces
+225AJ;5990;Pair of Deuces
+224AJ;5991;Pair of Deuces
+223AJ;5992;Pair of Deuces
+229AT;5993;Pair of Deuces
+228AT;5994;Pair of Deuces
+227AT;5995;Pair of Deuces
+226AT;5996;Pair of Deuces
+225AT;5997;Pair of Deuces
+224AT;5998;Pair of Deuces
+223AT;5999;Pair of Deuces
+2289A;6000;Pair of Deuces
+2279A;6001;Pair of Deuces
+2269A;6002;Pair of Deuces
+2259A;6003;Pair of Deuces
+2249A;6004;Pair of Deuces
+2239A;6005;Pair of Deuces
+2278A;6006;Pair of Deuces
+2268A;6007;Pair of Deuces
+2258A;6008;Pair of Deuces
+2248A;6009;Pair of Deuces
+2238A;6010;Pair of Deuces
+2267A;6011;Pair of Deuces
+2257A;6012;Pair of Deuces
+2247A;6013;Pair of Deuces
+2237A;6014;Pair of Deuces
+2256A;6015;Pair of Deuces
+2246A;6016;Pair of Deuces
+2236A;6017;Pair of Deuces
+2245A;6018;Pair of Deuces
+2235A;6019;Pair of Deuces
+2234A;6020;Pair of Deuces
+22JKQ;6021;Pair of Deuces
+22KQT;6022;Pair of Deuces
+229KQ;6023;Pair of Deuces
+228KQ;6024;Pair of Deuces
+227KQ;6025;Pair of Deuces
+226KQ;6026;Pair of Deuces
+225KQ;6027;Pair of Deuces
+224KQ;6028;Pair of Deuces
+223KQ;6029;Pair of Deuces
+22JKT;6030;Pair of Deuces
+229JK;6031;Pair of Deuces
+228JK;6032;Pair of Deuces
+227JK;6033;Pair of Deuces
+226JK;6034;Pair of Deuces
+225JK;6035;Pair of Deuces
+224JK;6036;Pair of Deuces
+223JK;6037;Pair of Deuces
+229KT;6038;Pair of Deuces
+228KT;6039;Pair of Deuces
+227KT;6040;Pair of Deuces
+226KT;6041;Pair of Deuces
+225KT;6042;Pair of Deuces
+224KT;6043;Pair of Deuces
+223KT;6044;Pair of Deuces
+2289K;6045;Pair of Deuces
+2279K;6046;Pair of Deuces
+2269K;6047;Pair of Deuces
+2259K;6048;Pair of Deuces
+2249K;6049;Pair of Deuces
+2239K;6050;Pair of Deuces
+2278K;6051;Pair of Deuces
+2268K;6052;Pair of Deuces
+2258K;6053;Pair of Deuces
+2248K;6054;Pair of Deuces
+2238K;6055;Pair of Deuces
+2267K;6056;Pair of Deuces
+2257K;6057;Pair of Deuces
+2247K;6058;Pair of Deuces
+2237K;6059;Pair of Deuces
+2256K;6060;Pair of Deuces
+2246K;6061;Pair of Deuces
+2236K;6062;Pair of Deuces
+2245K;6063;Pair of Deuces
+2235K;6064;Pair of Deuces
+2234K;6065;Pair of Deuces
+22JQT;6066;Pair of Deuces
+229JQ;6067;Pair of Deuces
+228JQ;6068;Pair of Deuces
+227JQ;6069;Pair of Deuces
+226JQ;6070;Pair of Deuces
+225JQ;6071;Pair of Deuces
+224JQ;6072;Pair of Deuces
+223JQ;6073;Pair of Deuces
+229QT;6074;Pair of Deuces
+228QT;6075;Pair of Deuces
+227QT;6076;Pair of Deuces
+226QT;6077;Pair of Deuces
+225QT;6078;Pair of Deuces
+224QT;6079;Pair of Deuces
+223QT;6080;Pair of Deuces
+2289Q;6081;Pair of Deuces
+2279Q;6082;Pair of Deuces
+2269Q;6083;Pair of Deuces
+2259Q;6084;Pair of Deuces
+2249Q;6085;Pair of Deuces
+2239Q;6086;Pair of Deuces
+2278Q;6087;Pair of Deuces
+2268Q;6088;Pair of Deuces
+2258Q;6089;Pair of Deuces
+2248Q;6090;Pair of Deuces
+2238Q;6091;Pair of Deuces
+2267Q;6092;Pair of Deuces
+2257Q;6093;Pair of Deuces
+2247Q;6094;Pair of Deuces
+2237Q;6095;Pair of Deuces
+2256Q;6096;Pair of Deuces
+2246Q;6097;Pair of Deuces
+2236Q;6098;Pair of Deuces
+2245Q;6099;Pair of Deuces
+2235Q;6100;Pair of Deuces
+2234Q;6101;Pair of Deuces
+229JT;6102;Pair of Deuces
+228JT;6103;Pair of Deuces
+227JT;6104;Pair of Deuces
+226JT;6105;Pair of Deuces
+225JT;6106;Pair of Deuces
+224JT;6107;Pair of Deuces
+223JT;6108;Pair of Deuces
+2289J;6109;Pair of Deuces
+2279J;6110;Pair of Deuces
+2269J;6111;Pair of Deuces
+2259J;6112;Pair of Deuces
+2249J;6113;Pair of Deuces
+2239J;6114;Pair of Deuces
+2278J;6115;Pair of Deuces
+2268J;6116;Pair of Deuces
+2258J;6117;Pair of Deuces
+2248J;6118;Pair of Deuces
+2238J;6119;Pair of Deuces
+2267J;6120;Pair of Deuces
+2257J;6121;Pair of Deuces
+2247J;6122;Pair of Deuces
+2237J;6123;Pair of Deuces
+2256J;6124;Pair of Deuces
+2246J;6125;Pair of Deuces
+2236J;6126;Pair of Deuces
+2245J;6127;Pair of Deuces
+2235J;6128;Pair of Deuces
+2234J;6129;Pair of Deuces
+2289T;6130;Pair of Deuces
+2279T;6131;Pair of Deuces
+2269T;6132;Pair of Deuces
+2259T;6133;Pair of Deuces
+2249T;6134;Pair of Deuces
+2239T;6135;Pair of Deuces
+2278T;6136;Pair of Deuces
+2268T;6137;Pair of Deuces
+2258T;6138;Pair of Deuces
+2248T;6139;Pair of Deuces
+2238T;6140;Pair of Deuces
+2267T;6141;Pair of Deuces
+2257T;6142;Pair of Deuces
+2247T;6143;Pair of Deuces
+2237T;6144;Pair of Deuces
+2256T;6145;Pair of Deuces
+2246T;6146;Pair of Deuces
+2236T;6147;Pair of Deuces
+2245T;6148;Pair of Deuces
+2235T;6149;Pair of Deuces
+2234T;6150;Pair of Deuces
+22789;6151;Pair of Deuces
+22689;6152;Pair of Deuces
+22589;6153;Pair of Deuces
+22489;6154;Pair of Deuces
+22389;6155;Pair of Deuces
+22679;6156;Pair of Deuces
+22579;6157;Pair of Deuces
+22479;6158;Pair of Deuces
+22379;6159;Pair of Deuces
+22569;6160;Pair of Deuces
+22469;6161;Pair of Deuces
+22369;6162;Pair of Deuces
+22459;6163;Pair of Deuces
+22359;6164;Pair of Deuces
+22349;6165;Pair of Deuces
+22678;6166;Pair of Deuces
+22578;6167;Pair of Deuces
+22478;6168;Pair of Deuces
+22378;6169;Pair of Deuces
+22568;6170;Pair of Deuces
+22468;6171;Pair of Deuces
+22368;6172;Pair of Deuces
+22458;6173;Pair of Deuces
+22358;6174;Pair of Deuces
+22348;6175;Pair of Deuces
+22567;6176;Pair of Deuces
+22467;6177;Pair of Deuces
+22367;6178;Pair of Deuces
+22457;6179;Pair of Deuces
+22357;6180;Pair of Deuces
+22347;6181;Pair of Deuces
+22456;6182;Pair of Deuces
+22356;6183;Pair of Deuces
+22346;6184;Pair of Deuces
+22345;6185;Pair of Deuces
+9AJKQ;6186;Ace-High
+8AJKQ;6187;Ace-High
+7AJKQ;6188;Ace-High
+6AJKQ;6189;Ace-High
+5AJKQ;6190;Ace-High
+4AJKQ;6191;Ace-High
+3AJKQ;6192;Ace-High
+2AJKQ;6193;Ace-High
+9AKQT;6194;Ace-High
+8AKQT;6195;Ace-High
+7AKQT;6196;Ace-High
+6AKQT;6197;Ace-High
+5AKQT;6198;Ace-High
+4AKQT;6199;Ace-High
+3AKQT;6200;Ace-High
+2AKQT;6201;Ace-High
+89AKQ;6202;Ace-High
+79AKQ;6203;Ace-High
+69AKQ;6204;Ace-High
+59AKQ;6205;Ace-High
+49AKQ;6206;Ace-High
+39AKQ;6207;Ace-High
+29AKQ;6208;Ace-High
+78AKQ;6209;Ace-High
+68AKQ;6210;Ace-High
+58AKQ;6211;Ace-High
+48AKQ;6212;Ace-High
+38AKQ;6213;Ace-High
+28AKQ;6214;Ace-High
+67AKQ;6215;Ace-High
+57AKQ;6216;Ace-High
+47AKQ;6217;Ace-High
+37AKQ;6218;Ace-High
+27AKQ;6219;Ace-High
+56AKQ;6220;Ace-High
+46AKQ;6221;Ace-High
+36AKQ;6222;Ace-High
+26AKQ;6223;Ace-High
+45AKQ;6224;Ace-High
+35AKQ;6225;Ace-High
+25AKQ;6226;Ace-High
+34AKQ;6227;Ace-High
+24AKQ;6228;Ace-High
+23AKQ;6229;Ace-High
+9AJKT;6230;Ace-High
+8AJKT;6231;Ace-High
+7AJKT;6232;Ace-High
+6AJKT;6233;Ace-High
+5AJKT;6234;Ace-High
+4AJKT;6235;Ace-High
+3AJKT;6236;Ace-High
+2AJKT;6237;Ace-High
+89AJK;6238;Ace-High
+79AJK;6239;Ace-High
+69AJK;6240;Ace-High
+59AJK;6241;Ace-High
+49AJK;6242;Ace-High
+39AJK;6243;Ace-High
+29AJK;6244;Ace-High
+78AJK;6245;Ace-High
+68AJK;6246;Ace-High
+58AJK;6247;Ace-High
+48AJK;6248;Ace-High
+38AJK;6249;Ace-High
+28AJK;6250;Ace-High
+67AJK;6251;Ace-High
+57AJK;6252;Ace-High
+47AJK;6253;Ace-High
+37AJK;6254;Ace-High
+27AJK;6255;Ace-High
+56AJK;6256;Ace-High
+46AJK;6257;Ace-High
+36AJK;6258;Ace-High
+26AJK;6259;Ace-High
+45AJK;6260;Ace-High
+35AJK;6261;Ace-High
+25AJK;6262;Ace-High
+34AJK;6263;Ace-High
+24AJK;6264;Ace-High
+23AJK;6265;Ace-High
+89AKT;6266;Ace-High
+79AKT;6267;Ace-High
+69AKT;6268;Ace-High
+59AKT;6269;Ace-High
+49AKT;6270;Ace-High
+39AKT;6271;Ace-High
+29AKT;6272;Ace-High
+78AKT;6273;Ace-High
+68AKT;6274;Ace-High
+58AKT;6275;Ace-High
+48AKT;6276;Ace-High
+38AKT;6277;Ace-High
+28AKT;6278;Ace-High
+67AKT;6279;Ace-High
+57AKT;6280;Ace-High
+47AKT;6281;Ace-High
+37AKT;6282;Ace-High
+27AKT;6283;Ace-High
+56AKT;6284;Ace-High
+46AKT;6285;Ace-High
+36AKT;6286;Ace-High
+26AKT;6287;Ace-High
+45AKT;6288;Ace-High
+35AKT;6289;Ace-High
+25AKT;6290;Ace-High
+34AKT;6291;Ace-High
+24AKT;6292;Ace-High
+23AKT;6293;Ace-High
+789AK;6294;Ace-High
+689AK;6295;Ace-High
+589AK;6296;Ace-High
+489AK;6297;Ace-High
+389AK;6298;Ace-High
+289AK;6299;Ace-High
+679AK;6300;Ace-High
+579AK;6301;Ace-High
+479AK;6302;Ace-High
+379AK;6303;Ace-High
+279AK;6304;Ace-High
+569AK;6305;Ace-High
+469AK;6306;Ace-High
+369AK;6307;Ace-High
+269AK;6308;Ace-High
+459AK;6309;Ace-High
+359AK;6310;Ace-High
+259AK;6311;Ace-High
+349AK;6312;Ace-High
+249AK;6313;Ace-High
+239AK;6314;Ace-High
+678AK;6315;Ace-High
+578AK;6316;Ace-High
+478AK;6317;Ace-High
+378AK;6318;Ace-High
+278AK;6319;Ace-High
+568AK;6320;Ace-High
+468AK;6321;Ace-High
+368AK;6322;Ace-High
+268AK;6323;Ace-High
+458AK;6324;Ace-High
+358AK;6325;Ace-High
+258AK;6326;Ace-High
+348AK;6327;Ace-High
+248AK;6328;Ace-High
+238AK;6329;Ace-High
+567AK;6330;Ace-High
+467AK;6331;Ace-High
+367AK;6332;Ace-High
+267AK;6333;Ace-High
+457AK;6334;Ace-High
+357AK;6335;Ace-High
+257AK;6336;Ace-High
+347AK;6337;Ace-High
+247AK;6338;Ace-High
+237AK;6339;Ace-High
+456AK;6340;Ace-High
+356AK;6341;Ace-High
+256AK;6342;Ace-High
+346AK;6343;Ace-High
+246AK;6344;Ace-High
+236AK;6345;Ace-High
+345AK;6346;Ace-High
+245AK;6347;Ace-High
+235AK;6348;Ace-High
+234AK;6349;Ace-High
+9AJQT;6350;Ace-High
+8AJQT;6351;Ace-High
+7AJQT;6352;Ace-High
+6AJQT;6353;Ace-High
+5AJQT;6354;Ace-High
+4AJQT;6355;Ace-High
+3AJQT;6356;Ace-High
+2AJQT;6357;Ace-High
+89AJQ;6358;Ace-High
+79AJQ;6359;Ace-High
+69AJQ;6360;Ace-High
+59AJQ;6361;Ace-High
+49AJQ;6362;Ace-High
+39AJQ;6363;Ace-High
+29AJQ;6364;Ace-High
+78AJQ;6365;Ace-High
+68AJQ;6366;Ace-High
+58AJQ;6367;Ace-High
+48AJQ;6368;Ace-High
+38AJQ;6369;Ace-High
+28AJQ;6370;Ace-High
+67AJQ;6371;Ace-High
+57AJQ;6372;Ace-High
+47AJQ;6373;Ace-High
+37AJQ;6374;Ace-High
+27AJQ;6375;Ace-High
+56AJQ;6376;Ace-High
+46AJQ;6377;Ace-High
+36AJQ;6378;Ace-High
+26AJQ;6379;Ace-High
+45AJQ;6380;Ace-High
+35AJQ;6381;Ace-High
+25AJQ;6382;Ace-High
+34AJQ;6383;Ace-High
+24AJQ;6384;Ace-High
+23AJQ;6385;Ace-High
+89AQT;6386;Ace-High
+79AQT;6387;Ace-High
+69AQT;6388;Ace-High
+59AQT;6389;Ace-High
+49AQT;6390;Ace-High
+39AQT;6391;Ace-High
+29AQT;6392;Ace-High
+78AQT;6393;Ace-High
+68AQT;6394;Ace-High
+58AQT;6395;Ace-High
+48AQT;6396;Ace-High
+38AQT;6397;Ace-High
+28AQT;6398;Ace-High
+67AQT;6399;Ace-High
+57AQT;6400;Ace-High
+47AQT;6401;Ace-High
+37AQT;6402;Ace-High
+27AQT;6403;Ace-High
+56AQT;6404;Ace-High
+46AQT;6405;Ace-High
+36AQT;6406;Ace-High
+26AQT;6407;Ace-High
+45AQT;6408;Ace-High
+35AQT;6409;Ace-High
+25AQT;6410;Ace-High
+34AQT;6411;Ace-High
+24AQT;6412;Ace-High
+23AQT;6413;Ace-High
+789AQ;6414;Ace-High
+689AQ;6415;Ace-High
+589AQ;6416;Ace-High
+489AQ;6417;Ace-High
+389AQ;6418;Ace-High
+289AQ;6419;Ace-High
+679AQ;6420;Ace-High
+579AQ;6421;Ace-High
+479AQ;6422;Ace-High
+379AQ;6423;Ace-High
+279AQ;6424;Ace-High
+569AQ;6425;Ace-High
+469AQ;6426;Ace-High
+369AQ;6427;Ace-High
+269AQ;6428;Ace-High
+459AQ;6429;Ace-High
+359AQ;6430;Ace-High
+259AQ;6431;Ace-High
+349AQ;6432;Ace-High
+249AQ;6433;Ace-High
+239AQ;6434;Ace-High
+678AQ;6435;Ace-High
+578AQ;6436;Ace-High
+478AQ;6437;Ace-High
+378AQ;6438;Ace-High
+278AQ;6439;Ace-High
+568AQ;6440;Ace-High
+468AQ;6441;Ace-High
+368AQ;6442;Ace-High
+268AQ;6443;Ace-High
+458AQ;6444;Ace-High
+358AQ;6445;Ace-High
+258AQ;6446;Ace-High
+348AQ;6447;Ace-High
+248AQ;6448;Ace-High
+238AQ;6449;Ace-High
+567AQ;6450;Ace-High
+467AQ;6451;Ace-High
+367AQ;6452;Ace-High
+267AQ;6453;Ace-High
+457AQ;6454;Ace-High
+357AQ;6455;Ace-High
+257AQ;6456;Ace-High
+347AQ;6457;Ace-High
+247AQ;6458;Ace-High
+237AQ;6459;Ace-High
+456AQ;6460;Ace-High
+356AQ;6461;Ace-High
+256AQ;6462;Ace-High
+346AQ;6463;Ace-High
+246AQ;6464;Ace-High
+236AQ;6465;Ace-High
+345AQ;6466;Ace-High
+245AQ;6467;Ace-High
+235AQ;6468;Ace-High
+234AQ;6469;Ace-High
+89AJT;6470;Ace-High
+79AJT;6471;Ace-High
+69AJT;6472;Ace-High
+59AJT;6473;Ace-High
+49AJT;6474;Ace-High
+39AJT;6475;Ace-High
+29AJT;6476;Ace-High
+78AJT;6477;Ace-High
+68AJT;6478;Ace-High
+58AJT;6479;Ace-High
+48AJT;6480;Ace-High
+38AJT;6481;Ace-High
+28AJT;6482;Ace-High
+67AJT;6483;Ace-High
+57AJT;6484;Ace-High
+47AJT;6485;Ace-High
+37AJT;6486;Ace-High
+27AJT;6487;Ace-High
+56AJT;6488;Ace-High
+46AJT;6489;Ace-High
+36AJT;6490;Ace-High
+26AJT;6491;Ace-High
+45AJT;6492;Ace-High
+35AJT;6493;Ace-High
+25AJT;6494;Ace-High
+34AJT;6495;Ace-High
+24AJT;6496;Ace-High
+23AJT;6497;Ace-High
+789AJ;6498;Ace-High
+689AJ;6499;Ace-High
+589AJ;6500;Ace-High
+489AJ;6501;Ace-High
+389AJ;6502;Ace-High
+289AJ;6503;Ace-High
+679AJ;6504;Ace-High
+579AJ;6505;Ace-High
+479AJ;6506;Ace-High
+379AJ;6507;Ace-High
+279AJ;6508;Ace-High
+569AJ;6509;Ace-High
+469AJ;6510;Ace-High
+369AJ;6511;Ace-High
+269AJ;6512;Ace-High
+459AJ;6513;Ace-High
+359AJ;6514;Ace-High
+259AJ;6515;Ace-High
+349AJ;6516;Ace-High
+249AJ;6517;Ace-High
+239AJ;6518;Ace-High
+678AJ;6519;Ace-High
+578AJ;6520;Ace-High
+478AJ;6521;Ace-High
+378AJ;6522;Ace-High
+278AJ;6523;Ace-High
+568AJ;6524;Ace-High
+468AJ;6525;Ace-High
+368AJ;6526;Ace-High
+268AJ;6527;Ace-High
+458AJ;6528;Ace-High
+358AJ;6529;Ace-High
+258AJ;6530;Ace-High
+348AJ;6531;Ace-High
+248AJ;6532;Ace-High
+238AJ;6533;Ace-High
+567AJ;6534;Ace-High
+467AJ;6535;Ace-High
+367AJ;6536;Ace-High
+267AJ;6537;Ace-High
+457AJ;6538;Ace-High
+357AJ;6539;Ace-High
+257AJ;6540;Ace-High
+347AJ;6541;Ace-High
+247AJ;6542;Ace-High
+237AJ;6543;Ace-High
+456AJ;6544;Ace-High
+356AJ;6545;Ace-High
+256AJ;6546;Ace-High
+346AJ;6547;Ace-High
+246AJ;6548;Ace-High
+236AJ;6549;Ace-High
+345AJ;6550;Ace-High
+245AJ;6551;Ace-High
+235AJ;6552;Ace-High
+234AJ;6553;Ace-High
+789AT;6554;Ace-High
+689AT;6555;Ace-High
+589AT;6556;Ace-High
+489AT;6557;Ace-High
+389AT;6558;Ace-High
+289AT;6559;Ace-High
+679AT;6560;Ace-High
+579AT;6561;Ace-High
+479AT;6562;Ace-High
+379AT;6563;Ace-High
+279AT;6564;Ace-High
+569AT;6565;Ace-High
+469AT;6566;Ace-High
+369AT;6567;Ace-High
+269AT;6568;Ace-High
+459AT;6569;Ace-High
+359AT;6570;Ace-High
+259AT;6571;Ace-High
+349AT;6572;Ace-High
+249AT;6573;Ace-High
+239AT;6574;Ace-High
+678AT;6575;Ace-High
+578AT;6576;Ace-High
+478AT;6577;Ace-High
+378AT;6578;Ace-High
+278AT;6579;Ace-High
+568AT;6580;Ace-High
+468AT;6581;Ace-High
+368AT;6582;Ace-High
+268AT;6583;Ace-High
+458AT;6584;Ace-High
+358AT;6585;Ace-High
+258AT;6586;Ace-High
+348AT;6587;Ace-High
+248AT;6588;Ace-High
+238AT;6589;Ace-High
+567AT;6590;Ace-High
+467AT;6591;Ace-High
+367AT;6592;Ace-High
+267AT;6593;Ace-High
+457AT;6594;Ace-High
+357AT;6595;Ace-High
+257AT;6596;Ace-High
+347AT;6597;Ace-High
+247AT;6598;Ace-High
+237AT;6599;Ace-High
+456AT;6600;Ace-High
+356AT;6601;Ace-High
+256AT;6602;Ace-High
+346AT;6603;Ace-High
+246AT;6604;Ace-High
+236AT;6605;Ace-High
+345AT;6606;Ace-High
+245AT;6607;Ace-High
+235AT;6608;Ace-High
+234AT;6609;Ace-High
+6789A;6610;Ace-High
+5789A;6611;Ace-High
+4789A;6612;Ace-High
+3789A;6613;Ace-High
+2789A;6614;Ace-High
+5689A;6615;Ace-High
+4689A;6616;Ace-High
+3689A;6617;Ace-High
+2689A;6618;Ace-High
+4589A;6619;Ace-High
+3589A;6620;Ace-High
+2589A;6621;Ace-High
+3489A;6622;Ace-High
+2489A;6623;Ace-High
+2389A;6624;Ace-High
+5679A;6625;Ace-High
+4679A;6626;Ace-High
+3679A;6627;Ace-High
+2679A;6628;Ace-High
+4579A;6629;Ace-High
+3579A;6630;Ace-High
+2579A;6631;Ace-High
+3479A;6632;Ace-High
+2479A;6633;Ace-High
+2379A;6634;Ace-High
+4569A;6635;Ace-High
+3569A;6636;Ace-High
+2569A;6637;Ace-High
+3469A;6638;Ace-High
+2469A;6639;Ace-High
+2369A;6640;Ace-High
+3459A;6641;Ace-High
+2459A;6642;Ace-High
+2359A;6643;Ace-High
+2349A;6644;Ace-High
+5678A;6645;Ace-High
+4678A;6646;Ace-High
+3678A;6647;Ace-High
+2678A;6648;Ace-High
+4578A;6649;Ace-High
+3578A;6650;Ace-High
+2578A;6651;Ace-High
+3478A;6652;Ace-High
+2478A;6653;Ace-High
+2378A;6654;Ace-High
+4568A;6655;Ace-High
+3568A;6656;Ace-High
+2568A;6657;Ace-High
+3468A;6658;Ace-High
+2468A;6659;Ace-High
+2368A;6660;Ace-High
+3458A;6661;Ace-High
+2458A;6662;Ace-High
+2358A;6663;Ace-High
+2348A;6664;Ace-High
+4567A;6665;Ace-High
+3567A;6666;Ace-High
+2567A;6667;Ace-High
+3467A;6668;Ace-High
+2467A;6669;Ace-High
+2367A;6670;Ace-High
+3457A;6671;Ace-High
+2457A;6672;Ace-High
+2357A;6673;Ace-High
+2347A;6674;Ace-High
+3456A;6675;Ace-High
+2456A;6676;Ace-High
+2356A;6677;Ace-High
+2346A;6678;Ace-High
+8JKQT;6679;King-High
+7JKQT;6680;King-High
+6JKQT;6681;King-High
+5JKQT;6682;King-High
+4JKQT;6683;King-High
+3JKQT;6684;King-High
+2JKQT;6685;King-High
+89JKQ;6686;King-High
+79JKQ;6687;King-High
+69JKQ;6688;King-High
+59JKQ;6689;King-High
+49JKQ;6690;King-High
+39JKQ;6691;King-High
+29JKQ;6692;King-High
+78JKQ;6693;King-High
+68JKQ;6694;King-High
+58JKQ;6695;King-High
+48JKQ;6696;King-High
+38JKQ;6697;King-High
+28JKQ;6698;King-High
+67JKQ;6699;King-High
+57JKQ;6700;King-High
+47JKQ;6701;King-High
+37JKQ;6702;King-High
+27JKQ;6703;King-High
+56JKQ;6704;King-High
+46JKQ;6705;King-High
+36JKQ;6706;King-High
+26JKQ;6707;King-High
+45JKQ;6708;King-High
+35JKQ;6709;King-High
+25JKQ;6710;King-High
+34JKQ;6711;King-High
+24JKQ;6712;King-High
+23JKQ;6713;King-High
+89KQT;6714;King-High
+79KQT;6715;King-High
+69KQT;6716;King-High
+59KQT;6717;King-High
+49KQT;6718;King-High
+39KQT;6719;King-High
+29KQT;6720;King-High
+78KQT;6721;King-High
+68KQT;6722;King-High
+58KQT;6723;King-High
+48KQT;6724;King-High
+38KQT;6725;King-High
+28KQT;6726;King-High
+67KQT;6727;King-High
+57KQT;6728;King-High
+47KQT;6729;King-High
+37KQT;6730;King-High
+27KQT;6731;King-High
+56KQT;6732;King-High
+46KQT;6733;King-High
+36KQT;6734;King-High
+26KQT;6735;King-High
+45KQT;6736;King-High
+35KQT;6737;King-High
+25KQT;6738;King-High
+34KQT;6739;King-High
+24KQT;6740;King-High
+23KQT;6741;King-High
+789KQ;6742;King-High
+689KQ;6743;King-High
+589KQ;6744;King-High
+489KQ;6745;King-High
+389KQ;6746;King-High
+289KQ;6747;King-High
+679KQ;6748;King-High
+579KQ;6749;King-High
+479KQ;6750;King-High
+379KQ;6751;King-High
+279KQ;6752;King-High
+569KQ;6753;King-High
+469KQ;6754;King-High
+369KQ;6755;King-High
+269KQ;6756;King-High
+459KQ;6757;King-High
+359KQ;6758;King-High
+259KQ;6759;King-High
+349KQ;6760;King-High
+249KQ;6761;King-High
+239KQ;6762;King-High
+678KQ;6763;King-High
+578KQ;6764;King-High
+478KQ;6765;King-High
+378KQ;6766;King-High
+278KQ;6767;King-High
+568KQ;6768;King-High
+468KQ;6769;King-High
+368KQ;6770;King-High
+268KQ;6771;King-High
+458KQ;6772;King-High
+358KQ;6773;King-High
+258KQ;6774;King-High
+348KQ;6775;King-High
+248KQ;6776;King-High
+238KQ;6777;King-High
+567KQ;6778;King-High
+467KQ;6779;King-High
+367KQ;6780;King-High
+267KQ;6781;King-High
+457KQ;6782;King-High
+357KQ;6783;King-High
+257KQ;6784;King-High
+347KQ;6785;King-High
+247KQ;6786;King-High
+237KQ;6787;King-High
+456KQ;6788;King-High
+356KQ;6789;King-High
+256KQ;6790;King-High
+346KQ;6791;King-High
+246KQ;6792;King-High
+236KQ;6793;King-High
+345KQ;6794;King-High
+245KQ;6795;King-High
+235KQ;6796;King-High
+234KQ;6797;King-High
+89JKT;6798;King-High
+79JKT;6799;King-High
+69JKT;6800;King-High
+59JKT;6801;King-High
+49JKT;6802;King-High
+39JKT;6803;King-High
+29JKT;6804;King-High
+78JKT;6805;King-High
+68JKT;6806;King-High
+58JKT;6807;King-High
+48JKT;6808;King-High
+38JKT;6809;King-High
+28JKT;6810;King-High
+67JKT;6811;King-High
+57JKT;6812;King-High
+47JKT;6813;King-High
+37JKT;6814;King-High
+27JKT;6815;King-High
+56JKT;6816;King-High
+46JKT;6817;King-High
+36JKT;6818;King-High
+26JKT;6819;King-High
+45JKT;6820;King-High
+35JKT;6821;King-High
+25JKT;6822;King-High
+34JKT;6823;King-High
+24JKT;6824;King-High
+23JKT;6825;King-High
+789JK;6826;King-High
+689JK;6827;King-High
+589JK;6828;King-High
+489JK;6829;King-High
+389JK;6830;King-High
+289JK;6831;King-High
+679JK;6832;King-High
+579JK;6833;King-High
+479JK;6834;King-High
+379JK;6835;King-High
+279JK;6836;King-High
+569JK;6837;King-High
+469JK;6838;King-High
+369JK;6839;King-High
+269JK;6840;King-High
+459JK;6841;King-High
+359JK;6842;King-High
+259JK;6843;King-High
+349JK;6844;King-High
+249JK;6845;King-High
+239JK;6846;King-High
+678JK;6847;King-High
+578JK;6848;King-High
+478JK;6849;King-High
+378JK;6850;King-High
+278JK;6851;King-High
+568JK;6852;King-High
+468JK;6853;King-High
+368JK;6854;King-High
+268JK;6855;King-High
+458JK;6856;King-High
+358JK;6857;King-High
+258JK;6858;King-High
+348JK;6859;King-High
+248JK;6860;King-High
+238JK;6861;King-High
+567JK;6862;King-High
+467JK;6863;King-High
+367JK;6864;King-High
+267JK;6865;King-High
+457JK;6866;King-High
+357JK;6867;King-High
+257JK;6868;King-High
+347JK;6869;King-High
+247JK;6870;King-High
+237JK;6871;King-High
+456JK;6872;King-High
+356JK;6873;King-High
+256JK;6874;King-High
+346JK;6875;King-High
+246JK;6876;King-High
+236JK;6877;King-High
+345JK;6878;King-High
+245JK;6879;King-High
+235JK;6880;King-High
+234JK;6881;King-High
+789KT;6882;King-High
+689KT;6883;King-High
+589KT;6884;King-High
+489KT;6885;King-High
+389KT;6886;King-High
+289KT;6887;King-High
+679KT;6888;King-High
+579KT;6889;King-High
+479KT;6890;King-High
+379KT;6891;King-High
+279KT;6892;King-High
+569KT;6893;King-High
+469KT;6894;King-High
+369KT;6895;King-High
+269KT;6896;King-High
+459KT;6897;King-High
+359KT;6898;King-High
+259KT;6899;King-High
+349KT;6900;King-High
+249KT;6901;King-High
+239KT;6902;King-High
+678KT;6903;King-High
+578KT;6904;King-High
+478KT;6905;King-High
+378KT;6906;King-High
+278KT;6907;King-High
+568KT;6908;King-High
+468KT;6909;King-High
+368KT;6910;King-High
+268KT;6911;King-High
+458KT;6912;King-High
+358KT;6913;King-High
+258KT;6914;King-High
+348KT;6915;King-High
+248KT;6916;King-High
+238KT;6917;King-High
+567KT;6918;King-High
+467KT;6919;King-High
+367KT;6920;King-High
+267KT;6921;King-High
+457KT;6922;King-High
+357KT;6923;King-High
+257KT;6924;King-High
+347KT;6925;King-High
+247KT;6926;King-High
+237KT;6927;King-High
+456KT;6928;King-High
+356KT;6929;King-High
+256KT;6930;King-High
+346KT;6931;King-High
+246KT;6932;King-High
+236KT;6933;King-High
+345KT;6934;King-High
+245KT;6935;King-High
+235KT;6936;King-High
+234KT;6937;King-High
+6789K;6938;King-High
+5789K;6939;King-High
+4789K;6940;King-High
+3789K;6941;King-High
+2789K;6942;King-High
+5689K;6943;King-High
+4689K;6944;King-High
+3689K;6945;King-High
+2689K;6946;King-High
+4589K;6947;King-High
+3589K;6948;King-High
+2589K;6949;King-High
+3489K;6950;King-High
+2489K;6951;King-High
+2389K;6952;King-High
+5679K;6953;King-High
+4679K;6954;King-High
+3679K;6955;King-High
+2679K;6956;King-High
+4579K;6957;King-High
+3579K;6958;King-High
+2579K;6959;King-High
+3479K;6960;King-High
+2479K;6961;King-High
+2379K;6962;King-High
+4569K;6963;King-High
+3569K;6964;King-High
+2569K;6965;King-High
+3469K;6966;King-High
+2469K;6967;King-High
+2369K;6968;King-High
+3459K;6969;King-High
+2459K;6970;King-High
+2359K;6971;King-High
+2349K;6972;King-High
+5678K;6973;King-High
+4678K;6974;King-High
+3678K;6975;King-High
+2678K;6976;King-High
+4578K;6977;King-High
+3578K;6978;King-High
+2578K;6979;King-High
+3478K;6980;King-High
+2478K;6981;King-High
+2378K;6982;King-High
+4568K;6983;King-High
+3568K;6984;King-High
+2568K;6985;King-High
+3468K;6986;King-High
+2468K;6987;King-High
+2368K;6988;King-High
+3458K;6989;King-High
+2458K;6990;King-High
+2358K;6991;King-High
+2348K;6992;King-High
+4567K;6993;King-High
+3567K;6994;King-High
+2567K;6995;King-High
+3467K;6996;King-High
+2467K;6997;King-High
+2367K;6998;King-High
+3457K;6999;King-High
+2457K;7000;King-High
+2357K;7001;King-High
+2347K;7002;King-High
+3456K;7003;King-High
+2456K;7004;King-High
+2356K;7005;King-High
+2346K;7006;King-High
+2345K;7007;King-High
+79JQT;7008;Queen-High
+69JQT;7009;Queen-High
+59JQT;7010;Queen-High
+49JQT;7011;Queen-High
+39JQT;7012;Queen-High
+29JQT;7013;Queen-High
+78JQT;7014;Queen-High
+68JQT;7015;Queen-High
+58JQT;7016;Queen-High
+48JQT;7017;Queen-High
+38JQT;7018;Queen-High
+28JQT;7019;Queen-High
+67JQT;7020;Queen-High
+57JQT;7021;Queen-High
+47JQT;7022;Queen-High
+37JQT;7023;Queen-High
+27JQT;7024;Queen-High
+56JQT;7025;Queen-High
+46JQT;7026;Queen-High
+36JQT;7027;Queen-High
+26JQT;7028;Queen-High
+45JQT;7029;Queen-High
+35JQT;7030;Queen-High
+25JQT;7031;Queen-High
+34JQT;7032;Queen-High
+24JQT;7033;Queen-High
+23JQT;7034;Queen-High
+789JQ;7035;Queen-High
+689JQ;7036;Queen-High
+589JQ;7037;Queen-High
+489JQ;7038;Queen-High
+389JQ;7039;Queen-High
+289JQ;7040;Queen-High
+679JQ;7041;Queen-High
+579JQ;7042;Queen-High
+479JQ;7043;Queen-High
+379JQ;7044;Queen-High
+279JQ;7045;Queen-High
+569JQ;7046;Queen-High
+469JQ;7047;Queen-High
+369JQ;7048;Queen-High
+269JQ;7049;Queen-High
+459JQ;7050;Queen-High
+359JQ;7051;Queen-High
+259JQ;7052;Queen-High
+349JQ;7053;Queen-High
+249JQ;7054;Queen-High
+239JQ;7055;Queen-High
+678JQ;7056;Queen-High
+578JQ;7057;Queen-High
+478JQ;7058;Queen-High
+378JQ;7059;Queen-High
+278JQ;7060;Queen-High
+568JQ;7061;Queen-High
+468JQ;7062;Queen-High
+368JQ;7063;Queen-High
+268JQ;7064;Queen-High
+458JQ;7065;Queen-High
+358JQ;7066;Queen-High
+258JQ;7067;Queen-High
+348JQ;7068;Queen-High
+248JQ;7069;Queen-High
+238JQ;7070;Queen-High
+567JQ;7071;Queen-High
+467JQ;7072;Queen-High
+367JQ;7073;Queen-High
+267JQ;7074;Queen-High
+457JQ;7075;Queen-High
+357JQ;7076;Queen-High
+257JQ;7077;Queen-High
+347JQ;7078;Queen-High
+247JQ;7079;Queen-High
+237JQ;7080;Queen-High
+456JQ;7081;Queen-High
+356JQ;7082;Queen-High
+256JQ;7083;Queen-High
+346JQ;7084;Queen-High
+246JQ;7085;Queen-High
+236JQ;7086;Queen-High
+345JQ;7087;Queen-High
+245JQ;7088;Queen-High
+235JQ;7089;Queen-High
+234JQ;7090;Queen-High
+789QT;7091;Queen-High
+689QT;7092;Queen-High
+589QT;7093;Queen-High
+489QT;7094;Queen-High
+389QT;7095;Queen-High
+289QT;7096;Queen-High
+679QT;7097;Queen-High
+579QT;7098;Queen-High
+479QT;7099;Queen-High
+379QT;7100;Queen-High
+279QT;7101;Queen-High
+569QT;7102;Queen-High
+469QT;7103;Queen-High
+369QT;7104;Queen-High
+269QT;7105;Queen-High
+459QT;7106;Queen-High
+359QT;7107;Queen-High
+259QT;7108;Queen-High
+349QT;7109;Queen-High
+249QT;7110;Queen-High
+239QT;7111;Queen-High
+678QT;7112;Queen-High
+578QT;7113;Queen-High
+478QT;7114;Queen-High
+378QT;7115;Queen-High
+278QT;7116;Queen-High
+568QT;7117;Queen-High
+468QT;7118;Queen-High
+368QT;7119;Queen-High
+268QT;7120;Queen-High
+458QT;7121;Queen-High
+358QT;7122;Queen-High
+258QT;7123;Queen-High
+348QT;7124;Queen-High
+248QT;7125;Queen-High
+238QT;7126;Queen-High
+567QT;7127;Queen-High
+467QT;7128;Queen-High
+367QT;7129;Queen-High
+267QT;7130;Queen-High
+457QT;7131;Queen-High
+357QT;7132;Queen-High
+257QT;7133;Queen-High
+347QT;7134;Queen-High
+247QT;7135;Queen-High
+237QT;7136;Queen-High
+456QT;7137;Queen-High
+356QT;7138;Queen-High
+256QT;7139;Queen-High
+346QT;7140;Queen-High
+246QT;7141;Queen-High
+236QT;7142;Queen-High
+345QT;7143;Queen-High
+245QT;7144;Queen-High
+235QT;7145;Queen-High
+234QT;7146;Queen-High
+6789Q;7147;Queen-High
+5789Q;7148;Queen-High
+4789Q;7149;Queen-High
+3789Q;7150;Queen-High
+2789Q;7151;Queen-High
+5689Q;7152;Queen-High
+4689Q;7153;Queen-High
+3689Q;7154;Queen-High
+2689Q;7155;Queen-High
+4589Q;7156;Queen-High
+3589Q;7157;Queen-High
+2589Q;7158;Queen-High
+3489Q;7159;Queen-High
+2489Q;7160;Queen-High
+2389Q;7161;Queen-High
+5679Q;7162;Queen-High
+4679Q;7163;Queen-High
+3679Q;7164;Queen-High
+2679Q;7165;Queen-High
+4579Q;7166;Queen-High
+3579Q;7167;Queen-High
+2579Q;7168;Queen-High
+3479Q;7169;Queen-High
+2479Q;7170;Queen-High
+2379Q;7171;Queen-High
+4569Q;7172;Queen-High
+3569Q;7173;Queen-High
+2569Q;7174;Queen-High
+3469Q;7175;Queen-High
+2469Q;7176;Queen-High
+2369Q;7177;Queen-High
+3459Q;7178;Queen-High
+2459Q;7179;Queen-High
+2359Q;7180;Queen-High
+2349Q;7181;Queen-High
+5678Q;7182;Queen-High
+4678Q;7183;Queen-High
+3678Q;7184;Queen-High
+2678Q;7185;Queen-High
+4578Q;7186;Queen-High
+3578Q;7187;Queen-High
+2578Q;7188;Queen-High
+3478Q;7189;Queen-High
+2478Q;7190;Queen-High
+2378Q;7191;Queen-High
+4568Q;7192;Queen-High
+3568Q;7193;Queen-High
+2568Q;7194;Queen-High
+3468Q;7195;Queen-High
+2468Q;7196;Queen-High
+2368Q;7197;Queen-High
+3458Q;7198;Queen-High
+2458Q;7199;Queen-High
+2358Q;7200;Queen-High
+2348Q;7201;Queen-High
+4567Q;7202;Queen-High
+3567Q;7203;Queen-High
+2567Q;7204;Queen-High
+3467Q;7205;Queen-High
+2467Q;7206;Queen-High
+2367Q;7207;Queen-High
+3457Q;7208;Queen-High
+2457Q;7209;Queen-High
+2357Q;7210;Queen-High
+2347Q;7211;Queen-High
+3456Q;7212;Queen-High
+2456Q;7213;Queen-High
+2356Q;7214;Queen-High
+2346Q;7215;Queen-High
+2345Q;7216;Queen-High
+689JT;7217;Jack-High
+589JT;7218;Jack-High
+489JT;7219;Jack-High
+389JT;7220;Jack-High
+289JT;7221;Jack-High
+679JT;7222;Jack-High
+579JT;7223;Jack-High
+479JT;7224;Jack-High
+379JT;7225;Jack-High
+279JT;7226;Jack-High
+569JT;7227;Jack-High
+469JT;7228;Jack-High
+369JT;7229;Jack-High
+269JT;7230;Jack-High
+459JT;7231;Jack-High
+359JT;7232;Jack-High
+259JT;7233;Jack-High
+349JT;7234;Jack-High
+249JT;7235;Jack-High
+239JT;7236;Jack-High
+678JT;7237;Jack-High
+578JT;7238;Jack-High
+478JT;7239;Jack-High
+378JT;7240;Jack-High
+278JT;7241;Jack-High
+568JT;7242;Jack-High
+468JT;7243;Jack-High
+368JT;7244;Jack-High
+268JT;7245;Jack-High
+458JT;7246;Jack-High
+358JT;7247;Jack-High
+258JT;7248;Jack-High
+348JT;7249;Jack-High
+248JT;7250;Jack-High
+238JT;7251;Jack-High
+567JT;7252;Jack-High
+467JT;7253;Jack-High
+367JT;7254;Jack-High
+267JT;7255;Jack-High
+457JT;7256;Jack-High
+357JT;7257;Jack-High
+257JT;7258;Jack-High
+347JT;7259;Jack-High
+247JT;7260;Jack-High
+237JT;7261;Jack-High
+456JT;7262;Jack-High
+356JT;7263;Jack-High
+256JT;7264;Jack-High
+346JT;7265;Jack-High
+246JT;7266;Jack-High
+236JT;7267;Jack-High
+345JT;7268;Jack-High
+245JT;7269;Jack-High
+235JT;7270;Jack-High
+234JT;7271;Jack-High
+6789J;7272;Jack-High
+5789J;7273;Jack-High
+4789J;7274;Jack-High
+3789J;7275;Jack-High
+2789J;7276;Jack-High
+5689J;7277;Jack-High
+4689J;7278;Jack-High
+3689J;7279;Jack-High
+2689J;7280;Jack-High
+4589J;7281;Jack-High
+3589J;7282;Jack-High
+2589J;7283;Jack-High
+3489J;7284;Jack-High
+2489J;7285;Jack-High
+2389J;7286;Jack-High
+5679J;7287;Jack-High
+4679J;7288;Jack-High
+3679J;7289;Jack-High
+2679J;7290;Jack-High
+4579J;7291;Jack-High
+3579J;7292;Jack-High
+2579J;7293;Jack-High
+3479J;7294;Jack-High
+2479J;7295;Jack-High
+2379J;7296;Jack-High
+4569J;7297;Jack-High
+3569J;7298;Jack-High
+2569J;7299;Jack-High
+3469J;7300;Jack-High
+2469J;7301;Jack-High
+2369J;7302;Jack-High
+3459J;7303;Jack-High
+2459J;7304;Jack-High
+2359J;7305;Jack-High
+2349J;7306;Jack-High
+5678J;7307;Jack-High
+4678J;7308;Jack-High
+3678J;7309;Jack-High
+2678J;7310;Jack-High
+4578J;7311;Jack-High
+3578J;7312;Jack-High
+2578J;7313;Jack-High
+3478J;7314;Jack-High
+2478J;7315;Jack-High
+2378J;7316;Jack-High
+4568J;7317;Jack-High
+3568J;7318;Jack-High
+2568J;7319;Jack-High
+3468J;7320;Jack-High
+2468J;7321;Jack-High
+2368J;7322;Jack-High
+3458J;7323;Jack-High
+2458J;7324;Jack-High
+2358J;7325;Jack-High
+2348J;7326;Jack-High
+4567J;7327;Jack-High
+3567J;7328;Jack-High
+2567J;7329;Jack-High
+3467J;7330;Jack-High
+2467J;7331;Jack-High
+2367J;7332;Jack-High
+3457J;7333;Jack-High
+2457J;7334;Jack-High
+2357J;7335;Jack-High
+2347J;7336;Jack-High
+3456J;7337;Jack-High
+2456J;7338;Jack-High
+2356J;7339;Jack-High
+2346J;7340;Jack-High
+2345J;7341;Jack-High
+5789T;7342;Ten-High
+4789T;7343;Ten-High
+3789T;7344;Ten-High
+2789T;7345;Ten-High
+5689T;7346;Ten-High
+4689T;7347;Ten-High
+3689T;7348;Ten-High
+2689T;7349;Ten-High
+4589T;7350;Ten-High
+3589T;7351;Ten-High
+2589T;7352;Ten-High
+3489T;7353;Ten-High
+2489T;7354;Ten-High
+2389T;7355;Ten-High
+5679T;7356;Ten-High
+4679T;7357;Ten-High
+3679T;7358;Ten-High
+2679T;7359;Ten-High
+4579T;7360;Ten-High
+3579T;7361;Ten-High
+2579T;7362;Ten-High
+3479T;7363;Ten-High
+2479T;7364;Ten-High
+2379T;7365;Ten-High
+4569T;7366;Ten-High
+3569T;7367;Ten-High
+2569T;7368;Ten-High
+3469T;7369;Ten-High
+2469T;7370;Ten-High
+2369T;7371;Ten-High
+3459T;7372;Ten-High
+2459T;7373;Ten-High
+2359T;7374;Ten-High
+2349T;7375;Ten-High
+5678T;7376;Ten-High
+4678T;7377;Ten-High
+3678T;7378;Ten-High
+2678T;7379;Ten-High
+4578T;7380;Ten-High
+3578T;7381;Ten-High
+2578T;7382;Ten-High
+3478T;7383;Ten-High
+2478T;7384;Ten-High
+2378T;7385;Ten-High
+4568T;7386;Ten-High
+3568T;7387;Ten-High
+2568T;7388;Ten-High
+3468T;7389;Ten-High
+2468T;7390;Ten-High
+2368T;7391;Ten-High
+3458T;7392;Ten-High
+2458T;7393;Ten-High
+2358T;7394;Ten-High
+2348T;7395;Ten-High
+4567T;7396;Ten-High
+3567T;7397;Ten-High
+2567T;7398;Ten-High
+3467T;7399;Ten-High
+2467T;7400;Ten-High
+2367T;7401;Ten-High
+3457T;7402;Ten-High
+2457T;7403;Ten-High
+2357T;7404;Ten-High
+2347T;7405;Ten-High
+3456T;7406;Ten-High
+2456T;7407;Ten-High
+2356T;7408;Ten-High
+2346T;7409;Ten-High
+2345T;7410;Ten-High
+46789;7411;Nine-High
+36789;7412;Nine-High
+26789;7413;Nine-High
+45789;7414;Nine-High
+35789;7415;Nine-High
+25789;7416;Nine-High
+34789;7417;Nine-High
+24789;7418;Nine-High
+23789;7419;Nine-High
+45689;7420;Nine-High
+35689;7421;Nine-High
+25689;7422;Nine-High
+34689;7423;Nine-High
+24689;7424;Nine-High
+23689;7425;Nine-High
+34589;7426;Nine-High
+24589;7427;Nine-High
+23589;7428;Nine-High
+23489;7429;Nine-High
+45679;7430;Nine-High
+35679;7431;Nine-High
+25679;7432;Nine-High
+34679;7433;Nine-High
+24679;7434;Nine-High
+23679;7435;Nine-High
+34579;7436;Nine-High
+24579;7437;Nine-High
+23579;7438;Nine-High
+23479;7439;Nine-High
+34569;7440;Nine-High
+24569;7441;Nine-High
+23569;7442;Nine-High
+23469;7443;Nine-High
+23459;7444;Nine-High
+35678;7445;Eight-High
+25678;7446;Eight-High
+34678;7447;Eight-High
+24678;7448;Eight-High
+23678;7449;Eight-High
+34578;7450;Eight-High
+24578;7451;Eight-High
+23578;7452;Eight-High
+23478;7453;Eight-High
+34568;7454;Eight-High
+24568;7455;Eight-High
+23568;7456;Eight-High
+23468;7457;Eight-High
+23458;7458;Eight-High
+24567;7459;Seven-High
+23567;7460;Seven-High
+23467;7461;Seven-High
+23457;7462;Seven-High
