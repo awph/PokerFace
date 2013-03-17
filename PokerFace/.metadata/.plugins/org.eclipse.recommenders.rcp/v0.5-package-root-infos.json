@@ -7,21 +7,8 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "f56383db77ae9502e6ca617e57d55ee73d631c46",
-    "jarFileModificationDate": "2012-09-20T09:58:46.054+02:00",
-    "location": "C:\\Soft\\java\\jre\\lib\\ext\\sunec.jar",
-    "javaRuntime": true
-  },
-  {
-    "symbolicName": "jre",
-    "version": {
-      "major": 1,
-      "minor": 0,
-      "micro": 0,
-      "qualifier": ""
-    },
-    "jarFileFingerprint": "b44a09b019925253268e23192c164ff621ff2932",
-    "jarFileModificationDate": "2012-09-20T09:58:55.044+02:00",
+    "jarFileFingerprint": "23e83d875419762c0f2ff297992e14dde6593a31",
+    "jarFileModificationDate": "2013-01-28T14:26:44.538+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\rt.jar",
     "javaRuntime": true
   },
@@ -33,8 +20,21 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "acba57835f18f9baca84e63b54b010b7bcddc96f",
-    "jarFileModificationDate": "2012-09-20T09:58:45.604+02:00",
+    "jarFileFingerprint": "c4c7923b11e98bc8d1d32bfd2ff6363d212ead80",
+    "jarFileModificationDate": "2013-01-28T14:26:42.305+01:00",
+    "location": "C:\\Soft\\java\\jre\\lib\\ext\\sunec.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "14a816fe223bd2763f3000b132cb48013c1c7fb0",
+    "jarFileModificationDate": "2013-01-28T14:26:42.283+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\ext\\jaccess.jar",
     "javaRuntime": true
   },
@@ -46,8 +46,8 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "9c65be66b7d064aa969eed550ce6bca0c930fd4c",
-    "jarFileModificationDate": "2012-09-20T09:58:46.254+02:00",
+    "jarFileFingerprint": "f831655c50b92c41e366442d09511ea84270c45e",
+    "jarFileModificationDate": "2013-01-28T14:26:42.380+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\jce.jar",
     "javaRuntime": true
   },
@@ -59,8 +59,8 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "f6734262725d0c84f5e43cdeab419da9b80b299c",
-    "jarFileModificationDate": "2012-09-20T09:58:46.264+02:00",
+    "jarFileFingerprint": "db40bdf56758dd65cf109836063e1eb7c603888c",
+    "jarFileModificationDate": "2013-01-28T14:26:42.382+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\jfr.jar",
     "javaRuntime": true
   },
@@ -72,8 +72,8 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "2bad7bafb33c65f78f00999c4a8d9ab9728c21b4",
-    "jarFileModificationDate": "2012-09-20T09:58:46.064+02:00",
+    "jarFileFingerprint": "565df41f8aaa6dceaacc765dde6bec4572c06eed",
+    "jarFileModificationDate": "2013-01-28T14:26:42.308+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\ext\\sunjce_provider.jar",
     "javaRuntime": true
   },
@@ -85,8 +85,8 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "70ea78a4a4d90afbeb4160e9be437f61401f4129",
-    "jarFileModificationDate": "2012-09-20T09:58:55.224+02:00",
+    "jarFileFingerprint": "3e75ab5e3cc89e4060f50d86aff7c8bd0e16cf00",
+    "jarFileModificationDate": "2013-01-28T14:26:44.613+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\charsets.jar",
     "javaRuntime": true
   },
@@ -98,8 +98,8 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "9e97dada90c0f9e6531a349d8afaac488f6ff9cc",
-    "jarFileModificationDate": "2012-09-20T09:58:45.254+02:00",
+    "jarFileFingerprint": "890947da04f2c417e475dc332bf1f810c245093c",
+    "jarFileModificationDate": "2013-01-28T14:26:42.236+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\ext\\access-bridge-64.jar",
     "javaRuntime": true
   },
@@ -111,8 +111,8 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "70020954a878f151d863091253774186b91b4ac2",
-    "jarFileModificationDate": "2012-09-20T09:58:46.074+02:00",
+    "jarFileFingerprint": "a3d1a9689f1c8e36ab64fb669df92076771c42f2",
+    "jarFileModificationDate": "2013-01-28T14:26:42.340+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\ext\\sunmscapi.jar",
     "javaRuntime": true
   },
@@ -125,7 +125,7 @@
       "qualifier": "v20090501071000"
     },
     "jarFileFingerprint": "254c9660266e1177c94b1a9ba05f6f757e7fb85a",
-    "jarFileModificationDate": "2012-06-14T13:41:16+02:00",
+    "jarFileModificationDate": "2012-09-20T09:30:58+01:00",
     "location": "C:\\Soft\\eclipse\\plugins\\org.hamcrest.core_1.1.0.v20090501071000.jar",
     "javaRuntime": false
   },
@@ -137,36 +137,10 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "5d128a70e24c25e7106978ecb9962434b06356b8",
-    "jarFileModificationDate": "2012-09-20T09:58:45.604+02:00",
+    "jarFileFingerprint": "899ef742a79f8a2d04f6e264eb6a74110204ede5",
+    "jarFileModificationDate": "2013-01-28T14:26:42.245+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\ext\\dnsns.jar",
     "javaRuntime": true
-  },
-  {
-    "symbolicName": "HmTimes",
-    "version": {
-      "major": -1,
-      "minor": -1,
-      "micro": -1,
-      "qualifier": ""
-    },
-    "jarFileFingerprint": "34c89b2d980a01abd287fe09c1aa9c2224cec00a",
-    "jarFileModificationDate": "2013-03-06T16:05:11.325+01:00",
-    "location": "C:\\Users\\cyrille.savy\\Desktop\\java\\dreamteam\\WCoursJavaM\\PCours\\Deploy\\ext\\HmTimes.jar",
-    "javaRuntime": false
-  },
-  {
-    "symbolicName": "jxl",
-    "version": {
-      "major": -1,
-      "minor": -1,
-      "micro": -1,
-      "qualifier": ""
-    },
-    "jarFileFingerprint": "7faf62e0697f7a88954622dfe8c8de33ed142ac7",
-    "jarFileModificationDate": "2013-03-06T16:05:11.442+01:00",
-    "location": "C:\\Users\\cyrille.savy\\Desktop\\java\\dreamteam\\WCoursJavaM\\PCours\\Deploy\\ext\\jxl.jar",
-    "javaRuntime": false
   },
   {
     "symbolicName": "jre",
@@ -176,8 +150,8 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "d67f302f916616348e4d6938898f02d0f97c784b",
-    "jarFileModificationDate": "2012-09-20T09:58:46.574+02:00",
+    "jarFileFingerprint": "f791fe49ee9f241e20753364efb79d28e6c67eba",
+    "jarFileModificationDate": "2013-01-28T14:26:42.435+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\resources.jar",
     "javaRuntime": true
   },
@@ -189,8 +163,8 @@
       "micro": -1,
       "qualifier": ""
     },
-    "jarFileFingerprint": "f7cf82c2c188e805e53a5525e2c1e055237770c6",
-    "jarFileModificationDate": "2012-04-28T19:20:00+02:00",
+    "jarFileFingerprint": "365907cf1e488e967f1d3e923d0111b36d930ee6",
+    "jarFileModificationDate": "2012-05-26T11:46:30+01:00",
     "location": "C:\\Soft\\eclipse\\plugins\\org.junit_4.10.0.v4_10_0_v20120426-0900\\junit.jar",
     "javaRuntime": false
   },
@@ -202,8 +176,21 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "3a4349a332a6de893e4ad297421bd405fa0825f5",
-    "jarFileModificationDate": "2012-09-20T09:58:46.074+02:00",
+    "jarFileFingerprint": "01babbef30bda72abfc92094958246e23c1a9e57",
+    "jarFileModificationDate": "2013-01-28T14:26:44.886+01:00",
+    "location": "C:\\Soft\\java\\jre\\lib\\ext\\localedata.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "fe587c5ea7c6a6e7323ea685f72bb4ff73a67809",
+    "jarFileModificationDate": "2013-01-28T14:26:42.342+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\ext\\zipfs.jar",
     "javaRuntime": true
   },
@@ -215,34 +202,8 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "dc85787a60ac1c9379a7f0e1c78b3005bec8dfbc",
-    "jarFileModificationDate": "2012-09-20T09:58:55.884+02:00",
-    "location": "C:\\Soft\\java\\jre\\lib\\ext\\localedata.jar",
-    "javaRuntime": true
-  },
-  {
-    "symbolicName": "clavier",
-    "version": {
-      "major": -1,
-      "minor": -1,
-      "micro": -1,
-      "qualifier": ""
-    },
-    "jarFileFingerprint": "d7b16145dccaee47d2f07ebbdb2b907c2fb0e762",
-    "jarFileModificationDate": "2013-03-06T16:05:11.405+01:00",
-    "location": "C:\\Users\\cyrille.savy\\Desktop\\java\\dreamteam\\WCoursJavaM\\PCours\\Deploy\\ext\\clavier.jar",
-    "javaRuntime": false
-  },
-  {
-    "symbolicName": "jre",
-    "version": {
-      "major": 1,
-      "minor": 0,
-      "micro": 0,
-      "qualifier": ""
-    },
-    "jarFileFingerprint": "ce6fd58818145ee4ea57eea327419057d179b068",
-    "jarFileModificationDate": "2012-09-20T09:58:55.794+02:00",
+    "jarFileFingerprint": "7693a8b190c0d1cc8312dae4e641f1e066403dda",
+    "jarFileModificationDate": "2013-01-28T14:26:44.849+01:00",
     "location": "C:\\Soft\\java\\jre\\lib\\jsse.jar",
     "javaRuntime": true
   }

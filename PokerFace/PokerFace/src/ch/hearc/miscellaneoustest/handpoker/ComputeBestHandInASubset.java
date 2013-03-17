@@ -58,15 +58,11 @@ public class ComputeBestHandInASubset
 					indexLastValueTaken = i;
 					hand[indexCurrentHand] = available_characters[i];
 					available_characters[i] = EMPTY;
-				}
-				else
-				{
-					continue;
-				}
 
-				searchHighestHand(0, indexCurrentHand + 1, hand);
+					searchHighestHand(0, indexCurrentHand + 1, hand);
 
-				available_characters[indexLastValueTaken] = hand[indexCurrentHand];
+					available_characters[indexLastValueTaken] = hand[indexCurrentHand];
+				}
 			}
 		}
 		else

@@ -57,6 +57,7 @@ public class UseHandPokerMap
 			String bestHand = new ComputeBestHandInASubset(hand).getHighestHand();
 			HandsPokerValue hpv = hpm.getHand(bestHand);
 			System.out.println(bestHand + " -> " + hpv.getRank() + " " + hpv.getHandName());
+			System.out.println();
 		}
 	}
 

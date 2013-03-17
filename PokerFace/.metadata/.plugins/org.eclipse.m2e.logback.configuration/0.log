@@ -668,3 +668,8 @@ org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.a
 2013-03-08 11:46:23,800 [Worker-22] INFO  o.a.c.httpclient.HttpMethodDirector - Retrying request
 2013-03-08 11:46:24,815 [Worker-22] INFO  o.a.c.httpclient.HttpMethodDirector - I/O exception (java.net.ConnectException) caught when processing request: Connection refused: connect
 2013-03-08 11:46:24,815 [Worker-22] INFO  o.a.c.httpclient.HttpMethodDirector - Retrying request
+2013-03-16 16:35:05,293 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2013-03-16 16:35:06,324 [pool-6-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2013-03-16 20:24:00,949 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2013-03-17 18:53:48,086 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2013-03-17 19:05:43,988 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8

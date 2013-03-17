@@ -1,8 +1,8 @@
 {
-  "C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ème Année\\Modules\\2241-Langages_et_Frameworks\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src": {
-    "location": "C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ème Année\\Modules\\2241-Langages_et_Frameworks\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src",
+  "C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ï¿½me Annï¿½e\\Modules\\2241-Langages_et_Frameworks\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src": {
+    "location": "C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ï¿½me Annï¿½e\\Modules\\2241-Langages_et_Frameworks\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src",
     "status": "UNRESOLVED",
-    "error": "No class path info available for \u0027C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ème Année\\Modules\\2241-Langages_et_Frameworks\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src\u0027. Skipped."
+    "error": "No class path info available for \u0027C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ï¿½me Annï¿½e\\Modules\\2241-Langages_et_Frameworks\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src\u0027. Skipped."
   },
   "C:\\Soft\\java\\DreamTeam\\WCoursJavaM\\PCours\\src": {
     "location": "C:\\Soft\\java\\DreamTeam\\WCoursJavaM\\PCours\\src",
@@ -29,10 +29,10 @@
     "status": "UNRESOLVED",
     "error": "No class path info available for \u0027C:\\Users\\cyriaque.skrapits\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src\u0027. Skipped."
   },
-  "C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ème Année\\Modules\\2241-Langages_et_Frameworks\\Java\\WCoursJavaM\\PCours\\src": {
-    "location": "C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ème Année\\Modules\\2241-Langages_et_Frameworks\\Java\\WCoursJavaM\\PCours\\src",
+  "C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ï¿½me Annï¿½e\\Modules\\2241-Langages_et_Frameworks\\Java\\WCoursJavaM\\PCours\\src": {
+    "location": "C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ï¿½me Annï¿½e\\Modules\\2241-Langages_et_Frameworks\\Java\\WCoursJavaM\\PCours\\src",
     "status": "UNRESOLVED",
-    "error": "No class path info available for \u0027C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ème Année\\Modules\\2241-Langages_et_Frameworks\\Java\\WCoursJavaM\\PCours\\src\u0027. Skipped."
+    "error": "No class path info available for \u0027C:\\Users\\Diego.Antognin\\Dropbox\\Divers\\HES\\2ï¿½me Annï¿½e\\Modules\\2241-Langages_et_Frameworks\\Java\\WCoursJavaM\\PCours\\src\u0027. Skipped."
   },
   "C:\\Users\\adrian.moll\\Documents\\HE-ARC\\Niveau 2\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src": {
     "location": "C:\\Users\\adrian.moll\\Documents\\HE-ARC\\Niveau 2\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src",
@@ -43,5 +43,10 @@
     "location": "C:\\Users\\cyrille.savy\\Desktop\\java\\dreamteam\\WCoursJavaM\\PCours\\src",
     "status": "UNRESOLVED",
     "error": "No class path info available for \u0027C:\\Users\\cyrille.savy\\Desktop\\java\\dreamteam\\WCoursJavaM\\PCours\\src\u0027. Skipped."
+  },
+  "C:\\Users\\Diego\\12-p2-java-eq7\\PokerFace\\PokerFace\\src": {
+    "location": "C:\\Users\\Diego\\12-p2-java-eq7\\PokerFace\\PokerFace\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Diego\\12-p2-java-eq7\\PokerFace\\PokerFace\\src\u0027. Skipped."
   }
 }
