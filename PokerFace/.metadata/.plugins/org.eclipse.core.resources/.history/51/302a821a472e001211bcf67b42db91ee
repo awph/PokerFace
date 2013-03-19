@@ -1,0 +1,34 @@
+
+package ch.hearc.coursjava.poo.derivation.animal;
+
+
+
+public class useAnimal
+	{
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	public static void main(String[] args)
+		{
+		main();
+		}
+
+	public static void main()
+		{
+		Animal animal = new Animal("Gérard");
+		System.out.println(animal);
+
+		Mamifere mamifere = new Mamifere("Albert", 37);
+		System.out.println(mamifere);
+
+		Chat chat = new Chat("Norbert", 10);
+		System.out.println(chat);
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	}
+

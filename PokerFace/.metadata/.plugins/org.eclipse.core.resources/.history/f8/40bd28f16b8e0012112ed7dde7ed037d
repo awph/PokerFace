@@ -1,0 +1,43 @@
+
+package ch.hearc.miscellaneoustest.handpoker;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public class UseHandPokerMap
+{
+	private static final int	NB_SIMULATION	= 1000;
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	public static void main(String[] args)
+	{
+		main();
+	}
+
+	public static void main()
+	{
+		Map<String,Integer> map = new HashMap<String,Integer>();
+
+		for(int i = 0; i < NB_SIMULATION; ++i)
+		{
+			String[] hand = new String[7];
+			for(int j = 0; j < 7; ++j)
+			{
+				hand[j] = values[(int)(Math.random() * (values.length))];
+			}
+			Arrays.sort(hand);
+			//System.out.println(Arrays.toString(hand));
+
+			System.out.println(new ComputeBestHandInASubset(values).getHighestHand());
+		}
+	}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+}

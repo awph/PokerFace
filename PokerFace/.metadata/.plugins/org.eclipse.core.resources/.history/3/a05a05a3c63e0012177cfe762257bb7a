@@ -1,0 +1,67 @@
+
+package ch.hearc.coursjava.poo.derivation.form;
+
+
+
+public class Carre extends Form
+	{
+
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+	public Carre(String nom, double cote)
+		{
+		super(nom);
+		this.cote = cote;
+		}
+
+	public Carre(Carre source)
+		{
+		super(source);
+		this.cote = source.cote;
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	@Override
+	public double aire()
+		{
+		// TODO Auto-generated method stub
+		return 0;
+		}
+
+	@Override
+	public double perimetre()
+		{
+		// TODO Auto-generated method stub
+		return 0;
+		}
+
+	@Override
+	public Carre cloneOf()
+		{
+		return new Carre(this);
+		}
+
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+
+	//input
+	private double cote;
+	}
+

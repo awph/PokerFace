@@ -1,0 +1,88 @@
+
+package ch.hearc.coursjava.poo.derivation.animal;
+
+public class Animal
+	{
+
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+
+	public Animal(String nom)
+		{
+		this.nom = nom;
+		}
+
+	public Animal(Animal source)
+		{
+		this(source.nom); // this à la première ligne (contrainte). Copie superficielle autorisée car inaltérable.
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	public Animal cloneOf()
+		{
+		return new Animal(this);
+		}
+
+	public String nomClasse()
+		{
+		return Animal.class.getSimpleName();
+		}
+
+	@Override
+	public String toString()
+		{
+		return nom + " " + nomClasse();
+		}
+
+	/*------------------------------*\
+	|*				Is				*|
+	\*------------------------------*/
+
+	public boolean isEgal(Animal animal2)
+		{
+		return this.nom.equals(animal2.nom);
+		}
+
+	@Override
+	public boolean equals(Object objet)
+		{
+		// TODO Auto-generated method stub
+		if (objet instanceof Animal) {
+			return super.equals(objet);
+			}
+		}
+
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+
+	public void setNom(String nom)
+		{
+		this.nom = nom;
+		}
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
+	public String getNom()
+		{
+		return this.nom;
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+
+	// Input
+	private String nom;
+
+	}

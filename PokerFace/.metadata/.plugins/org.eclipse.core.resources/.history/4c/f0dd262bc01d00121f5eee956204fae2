@@ -1,0 +1,42 @@
+
+package ch.hearc.coursjava.kitbase.excel;
+
+import ch.hearc.coursjava.kitbase.tools.MathTools;
+
+public class Histogramme
+	{
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	/**
+	 * Exemple :
+	 * xMin = 3, xMax = 4
+	 * Output[0] = nbApparition de 3
+	 * Output[1] = nbApparition de 4
+	 * @param xMin
+	 * @param xMax
+	 * @param nbTime
+	 * @return
+	 */
+	public static int[] create(int xMin, int xMax, int nbTime)
+		{
+		int[] stat = new int[xMax - xMin + 1];
+		if (xMin < 0)
+			{
+			System.out.println("Entrer un xMin positif!");
+			return stat;
+			}
+		for(int i = 0; i < nbTime; i++)
+			{
+			stat[MathTools.randomNumber(xMin, xMax) - xMin]++;
+			}
+		return stat;
+		}
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	}

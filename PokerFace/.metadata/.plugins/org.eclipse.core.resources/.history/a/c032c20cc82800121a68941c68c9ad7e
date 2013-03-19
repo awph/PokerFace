@@ -1,0 +1,49 @@
+
+package ch.hearc.coursjava.poo.derivation.times;
+
+
+
+public class HmsmTimes extends HmsTimes
+	{
+	
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+
+	public HmsmTimes(int heure, int minute, int seconde, int miliseconde)
+		{
+		super(heure, minute, seconde);
+		this.miliseconde = miliseconde;
+		}
+		
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+	
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+	
+	public void set(int heure, int minute, int seconde, int miliseconde)
+		{
+		set(heure, minute, seconde);
+		this.miliseconde = miliseconde
+		}
+	
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+	
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+	
+	// Input / OutPut
+	private int miliseconde;
+	
+	}
+

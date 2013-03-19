@@ -1,0 +1,69 @@
+
+package ch.hearc.coursjava.poo.derivation.form;
+
+public class Cercle extends Form
+	{
+	
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+	public Cercle(String nom, double rayon)
+		{
+		super(nom);
+		this.rayon = rayon;
+		}
+	
+	public Cercle(Cercle source)
+		{
+		super(source);
+		this.rayon = source.rayon;
+		}
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+	
+	@Override
+	public double aire()
+		{
+		return rayon * rayon * Math.PI;
+		}
+	
+	@Override
+	public double perimetre()
+		{
+		return 2 * rayon * Math.PI;
+		}
+	
+	@Override
+	public Form cloneOf()
+		{
+		// TODO Auto-generated method stub
+		return null;
+		}
+	
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+	
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+	
+	public double getRayon()
+		{
+		return this.rayon;
+		}
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+	
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+	
+	//input
+	private double rayon;
+	
+	}

@@ -1,0 +1,18 @@
+INDEX VERSION 1.126+C:\Users\Diego\12-p2-java-eq7\PokerFace\.metadata\.plugins\org.eclipse.jdt.core
+3989029837.index
+42449213.index
+105208418.index
+2091636697.index
+2337497028.index
+4174204247.index
+1455561172.index
+1420110269.index
+3683878059.index
+3030411839.index
+1076047249.index
+1681162172.index
+557163278.index
+2543652850.index
+361813459.index
+3889766839.index
+1552741977.index

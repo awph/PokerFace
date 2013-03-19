@@ -1,0 +1,68 @@
+
+package ch.hearc.miscellaneoustest.handpoker;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public class UseComputeProba
+{
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	public static void main(String[] args)
+	{
+		main();
+	}
+
+	public static void main()
+	{
+		String[] cards = { "Ap", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "Tp", "Jp", "Qp", "Kp",
+				"At", "2t", "3t", "4t", "5t", "6t", "7t", "8t", "9t", "Tt", "Jt", "Qt", "Kt",
+				"Ac", "2c", "3c", "4c", "5c", "6c", "7c", "8c", "9c", "Tc", "Jc", "Qc", "Kc",
+				"AC", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "TC", "JC", "QC", "KC"};
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+
+		map.put("A", 0);
+		map.put("2", 0);
+		map.put("3", 0);
+		map.put("4", 0);
+		map.put("5", 0);
+		map.put("6", 0);
+		map.put("7", 0);
+		map.put("8", 0);
+		map.put("9", 0);
+		map.put("T", 0);
+		map.put("J", 0);
+		map.put("Q", 0);
+		map.put("K", 0);
+
+		for(int i = 0; i < NB_SIMULATION; ++i)
+		{
+			String[] hand = new String[NB_CARDS_IN_BOARD];
+			for(int j = 0; j < NB_CARDS_IN_BOARD; ++j)
+			{
+				do
+				{
+					hand[j] = keys[(int)(Math.random() * (keys.length))];
+				} while(map.get(hand[j]) > 4);
+			}
+
+			System.out.print("CARDS : ");
+			System.out.println(Arrays.toString(hand));
+			System.out.print("BEST : ");
+			HandsPokerMap hpm = HandsPokerMap.getInstance();
+			String bestHand = new ComputeBestHandInASubset(hand).getHighestHand();
+			HandsPokerValue hpv = hpm.getHand(bestHand);
+			System.out.println(bestHand + " -> " + hpv.getRank() + " " + hpv.getHandName());
+			System.out.println();
+		}
+	}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+}

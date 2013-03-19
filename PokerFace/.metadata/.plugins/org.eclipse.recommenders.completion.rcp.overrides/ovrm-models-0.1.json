@@ -1,0 +1,13 @@
+{
+  "C:\\Users\\cyriaque.skrapits\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src": {
+    "location": "C:\\Users\\cyriaque.skrapits\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\cyriaque.skrapits\\Java\\DreamTeam\\WCoursJavaM\\PCours\\src\u0027. Skipped."
+  },
+  "C:\\Soft\\java\\jre\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:ovrm:1.0.0",
+    "location": "C:\\Soft\\java\\jre\\lib\\rt.jar",
+    "status": "RESOLVED",
+    "error": "Could not transfer artifact jre:jre:zip:ovrm:1.0.0 from/to remote-models (http://download.eclipse.org/recommenders/models/juno/): Error transferring file: Connection refused: no further information to http://download.eclipse.org/recommenders/models/juno/jre/jre/1.0.0/jre-1.0.0-ovrm.zip"
+  }
+}

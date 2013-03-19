@@ -1,0 +1,64 @@
+
+package ch.hearc.coursjava.poo.derivation.form;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class Dessin implements Iterable<Form>
+	{
+	
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+	
+	private Dessin(List<Form> listeForm)
+		{
+		this.listeForm = listeForm;
+		}
+	
+	public Dessin()
+		{
+		this(new ArrayList<Form>());
+		}
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+	
+	@Override
+	public Iterator<Form> iterator()
+		{
+		return listeForm.iterator();
+		}
+	
+	public double sumAire()
+		{
+		
+		}
+	
+	public double sumPerimetre()
+		{
+		
+		}
+	
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+	
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+	
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+	
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+	
+	//input
+	private List<Form> listeForm;
+	
+	}

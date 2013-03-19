@@ -1,0 +1,51 @@
+package ch.hearc.coursjava.poo.complexe;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class ComplexeTest
+	{
+
+	/*------------------------------------------------------------------*\
+	 |*							Constructeurs							*|
+	 \*------------------------------------------------------------------*/
+
+	@Before
+	public void before()
+		{
+		// rien
+		}
+
+	@After
+	public void after()
+		{
+		// rien
+		}
+
+	/*------------------------------------------------------------------*\
+	 |*							Methodes Public							*|
+	 \*-----------------------------------------------------------------*/
+
+	@Test
+	public void testGetter()
+		{
+		Complexe z = new Complexe(12,15);
+		// TODO
+		assertTrue(false);
+		}
+
+	@Test
+	public void testXXX()
+		{
+		// TODO
+		assertTrue(false);
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	}

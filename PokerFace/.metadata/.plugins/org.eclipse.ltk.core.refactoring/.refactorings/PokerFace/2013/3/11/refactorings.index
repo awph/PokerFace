@@ -1,0 +1,6 @@
+1363448295697	Rename type 'HandPokerMap'
+1363453556889	Rename local variable 'maxString'
+1363459794405	Rename type 'BruteForce'
+1363459887912	Rename field 'map'
+1363459909530	Rename field 'AVAILABLE_CHAR'
+1363460135565	Rename method 'getHighestHandValue'

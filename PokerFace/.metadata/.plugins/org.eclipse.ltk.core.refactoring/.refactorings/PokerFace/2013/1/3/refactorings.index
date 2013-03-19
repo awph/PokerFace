@@ -1,0 +1,12 @@
+1358320056651	Delete element
+1358324430934	Rename type 'JFrameUseBoutonTournant'
+1358328381057	Extract method 'resizeManagement'
+1358331114077	Extract method 'ralentirAnimation'
+1358331512970	Rename method 'animer'
+1358331667196	Extract method 'stepAnimation'
+1358332119267	Rename method 'animerTimer'
+1358332148278	Rename field 'timer'
+1358449295660	Rename type 'MainFrame'
+1358449481113	Rename type 'UseMainFrame'
+1358450418092	Rename field 'NB_BUTTONS'
+1358457345925	Rename field 'button'

@@ -1,0 +1,60 @@
+
+package ch.hearc.coursjava.gui.j2d.image;
+
+import java.awt.BorderLayout;
+
+import ch.hearc.coursjava.gui.j2d.salleconference.JPanelControl;
+import ch.hearc.coursjava.gui.j2d.salleconference.JPanelSalleConference;
+
+
+
+public class JFrameImage
+	{
+	
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+	public JFrameSalleConference()
+		{
+		geometrie();
+		control();
+		apparence();
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	private void control()
+		{
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		}
+
+	private void geometrie()
+		{
+		salleConference = new JPanelSalleConference();
+		control = new JPanelControl(salleConference);
+
+		this.setLayout(new BorderLayout());
+		this.add(salleConference, BorderLayout.CENTER);
+		this.add(control, BorderLayout.SOUTH);
+		}
+
+	private void apparence()
+		{
+		setSize(800, 600);
+		setTitle("Salle Conference");
+		setLocation(30, 30);
+		setResizable(true);
+		this.setVisible(true);
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+	}
+

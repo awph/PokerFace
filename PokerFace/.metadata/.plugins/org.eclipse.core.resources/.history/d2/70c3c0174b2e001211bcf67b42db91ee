@@ -1,0 +1,73 @@
+
+package ch.hearc.coursjava.poo.derivation.animal;
+
+
+
+public class Chat extends Mamifere
+	{
+
+
+
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+
+	public Chat(String nom)
+		{
+		super(nom, TEMPERATURE_SANG);
+		}
+
+	public Chat(Chat source)
+		{
+		super(source);
+		
+		// Rien à copier.
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	@Override
+	public String nomClasse()
+		{
+		return super.nomClasse() + " " + Chat.class.getSimpleName();
+		}
+
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	/**
+	 * Tous les chats instanciés après l'appel de cette méthode auront la nouvelle température.
+	 * Les chats instanciés avant l'appel de cette méthode auront l'ancienne température.
+	 */
+	public static void setTemperatureSang(int temperature)
+		{
+		Chat.TEMPERATURE_SANG = temperature;
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	private static int TEMPERATURE_SANG = 36;
+
+	}
+

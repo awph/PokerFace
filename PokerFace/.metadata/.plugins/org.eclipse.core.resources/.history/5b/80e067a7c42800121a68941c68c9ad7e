@@ -1,0 +1,60 @@
+
+package ch.hearc.coursjava.poo.derivation.times;
+
+import ch.hearc.coursjava.moo.heritage.simple.HmTimes;
+
+
+
+public class HmsTimes extends HmTimes
+	{
+
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+
+	public HmsTimes(int heure, int minute, int seconde)
+		{
+		// Construction de la classe parente
+		super(heure, minute); //Contrainte : à la premiere ligne
+		// Construction de nous
+		this.seconde = seconde;
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	@Override
+	public String toString()
+		{
+		// TODO Auto-generated method stub
+		return super.toString() + "s " + seconde;
+		}
+
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+
+	//Input / Output
+	private int seconde;
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+
+
+	}
+
