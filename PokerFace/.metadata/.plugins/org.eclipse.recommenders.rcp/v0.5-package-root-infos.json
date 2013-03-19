@@ -176,9 +176,9 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "01babbef30bda72abfc92094958246e23c1a9e57",
-    "jarFileModificationDate": "2013-01-28T14:26:44.886+01:00",
-    "location": "C:\\Soft\\java\\jre\\lib\\ext\\localedata.jar",
+    "jarFileFingerprint": "fe587c5ea7c6a6e7323ea685f72bb4ff73a67809",
+    "jarFileModificationDate": "2013-01-28T14:26:42.342+01:00",
+    "location": "C:\\Soft\\java\\jre\\lib\\ext\\zipfs.jar",
     "javaRuntime": true
   },
   {
@@ -189,9 +189,9 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "fe587c5ea7c6a6e7323ea685f72bb4ff73a67809",
-    "jarFileModificationDate": "2013-01-28T14:26:42.342+01:00",
-    "location": "C:\\Soft\\java\\jre\\lib\\ext\\zipfs.jar",
+    "jarFileFingerprint": "01babbef30bda72abfc92094958246e23c1a9e57",
+    "jarFileModificationDate": "2013-01-28T14:26:44.886+01:00",
+    "location": "C:\\Soft\\java\\jre\\lib\\ext\\localedata.jar",
     "javaRuntime": true
   },
   {

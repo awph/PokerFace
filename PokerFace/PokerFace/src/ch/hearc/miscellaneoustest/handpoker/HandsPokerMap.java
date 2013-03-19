@@ -16,8 +16,8 @@ public class HandsPokerMap
 
 	private static final String				FILENAME		= "pokerHands.txt";
 	private static final String				SEPARATOR		= ";";
-	private static final int				INDEX_KEY		= 0;
-	private static final int				INDEX_RANK		= 1;
+	private static final int				INDEX_KEY		= 1;
+	private static final int				INDEX_RANK		= 0;
 	private static final int				INDEX_HAND_NAME	= 2;
 	private static HandsPokerMap			instance;
 
