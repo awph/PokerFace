@@ -1,2 +1,0 @@
-java -cp .;./*;ext/* -verbose:gc ch.hearc.coursjava.kitbase.garbage.UseGarbage
-pause
