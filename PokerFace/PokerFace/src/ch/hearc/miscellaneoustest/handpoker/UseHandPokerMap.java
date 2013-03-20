@@ -1,13 +1,12 @@
 
 package ch.hearc.miscellaneoustest.handpoker;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class UseHandPokerMap
 {
-	private static final int	NB_SIMULATION		= 10;
+	private static final int	NB_SIMULATION		= 1;
 	private static final int	NB_CARDS_IN_BOARD	= 7;
 
 	/*------------------------------------------------------------------*\
@@ -50,14 +49,16 @@ public class UseHandPokerMap
 				} while(map.get(hand[j]) > 4);
 			}
 
-			System.out.print("CARDS : ");
-			System.out.println(Arrays.toString(hand));
-			System.out.print("BEST : ");
+//			System.out.print("CARDS : ");
+//			System.out.println(Arrays.toString(hand));
+//			System.out.print("BEST : ");
 			HandsPokerMap hpm = HandsPokerMap.getInstance();
 			String bestHand = new ComputeBestHandInASubset(hand).getHighestHand();
 			HandsPokerValue hpv = hpm.getHand(bestHand);
-			System.out.println(bestHand + " -> " + hpv.getRank() + " " + hpv.getHandName());
-			System.out.println();
+//			System.out.println(bestHand + " -> " + hpv.getRank() + " " + hpv.getHandName());
+//			System.out.println();
+			//hpm.getOuts("67T", "44");
+			hpm.getOuts("84J", "9T");
 		}
 	}
 

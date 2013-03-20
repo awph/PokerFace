@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +30,10 @@ public class HandsPokerMap
 
 	public HandsPokerValue getHand(String key)
 	{
+        char[] chars = key.toCharArray();
+        Arrays.sort(chars);
+        key = new String(chars);
+
 		try
 		{
 			return hands.get(key);
@@ -38,6 +43,74 @@ public class HandsPokerMap
 			return null;
 		}
 	}
+
+	public Map<String, HandsPokerValue> getOuts(String board, String pocket)
+	{
+		String[] keys = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K" };
+
+		Map<String, HandsPokerValue> out = new HashMap<String, HandsPokerValue>();
+		int rank = getHand(pocket + board).getRank();
+
+		for(int i = 0; i < keys.length; ++i)
+		{
+			String newHandString = new ComputeBestHandInASubset((pocket + board + keys[i]).split("")).getHighestHand();
+			HandsPokerValue newHand = getHand(newHandString);
+
+			if (newHand.getRank() < rank && !newHand.getHandName().equals(getHand(pocket + board).getHandName()))
+			{
+				System.out.println(keys[i] + "->" + newHand.getRank() + " --> " + rank);
+				//out.put(hand.getKey(), new HandsPokerValue(hand.getValue()));
+				//System.out.println(keys[i]);
+			}
+
+		}
+
+		//		Map<String, HandsPokerValue> out = new HashMap<String, HandsPokerValue>();
+		//		int rank = getHand(cards).getRank();
+		//		//String regex = "";
+		//		//Pattern pattern = Pattern.compile("^(?=.*[" + cards + "]{3,})(?=.*[[^\1]&&" + cards + "]{3,})(?=.*[[^\1\2]&&" + cards + "]{3,})(?=.*[[^\1\2\3]&&" + cards + "]{3,})(?=.*[[^\1\2\3\4]&&" + cards + "]{3,}).*$");
+		//		//pattern.matcher(/*hand*/).matches();
+		//		String board = cards.replaceFirst(String.valueOf(pocket.charAt(0)), "");
+		//		board = board.replaceFirst(String.valueOf(pocket.charAt(1)), "");
+		//
+		//		Set<Entry<String, HandsPokerValue>> handsSet = hands.entrySet();
+		//		for(Entry<String, HandsPokerValue> hand:handsSet)
+		//		{
+		//			if (rank < hand.getValue().getRank()) // "<" car notre main actuel ne fait pas mieux quelle même
+		//			{
+		//				if (hand.getKey().contains(String.valueOf(pocket.charAt(0))))
+		//				{
+		//					if (hand.getKey().contains(String.valueOf(pocket.charAt(1))))
+		//					{
+		//						if (hand.getKey().contains(String.valueOf(cards.charAt(0))) || hand.getKey().contains(String.valueOf(cards.charAt(1))) || hand.getKey().contains(String.valueOf(cards.charAt(2))))
+		//						{
+		//							out.put(hand.getKey(), new HandsPokerValue(hand.getValue()));
+		//							System.out.println(hand.getKey());
+		//						}
+		//					}
+		//				}
+		//			}
+		//		}
+		//
+		//		System.out.println(out.size());
+
+		return out;
+	}
+
+	//	private boolean contains3(String cards, String key)
+	//	{
+	//		int i = 0;
+	//		for(char c:cards.toCharArray())
+	//		{
+	//			if (key.contains(String.valueOf(c)))
+	//			{
+	//				key.replaceFirst(String.valueOf(c), "");
+	//				if (++i >= 3) { return true; }
+	//			}
+	//		}
+	//
+	//		return false;
+	//	}
 
 	/*------------------------------*\
 	|*			  Static			*|

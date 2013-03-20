@@ -160,12 +160,12 @@ public class ComputeProba
 					}
 
 					StringBuilder temp = new StringBuilder("");
-
-					//String[] handTemp
+/*
+					String[] handTemp
 					for(int i = 0;i < handTemp.length; ++i)
 						{
 
-						}
+						}*/
 				}
 			}
 		}

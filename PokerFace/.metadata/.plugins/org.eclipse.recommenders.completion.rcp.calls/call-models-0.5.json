@@ -48,5 +48,15 @@
     "location": "C:\\Users\\Diego\\12-p2-java-eq7\\PokerFace\\PokerFace\\src",
     "status": "UNRESOLVED",
     "error": "No class path info available for \u0027C:\\Users\\Diego\\12-p2-java-eq7\\PokerFace\\PokerFace\\src\u0027. Skipped."
+  },
+  "C:\\Soft\\java\\jdk\\jre\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Soft\\java\\jdk\\jre\\lib\\rt.jar",
+    "status": "RESOLVED"
+  },
+  "D:\\Dropbox\\HE-Arc\\02-INF2dlm-a\\Projet P2 Java\\_PokerFace\\PokerFace\\src": {
+    "location": "D:\\Dropbox\\HE-Arc\\02-INF2dlm-a\\Projet P2 Java\\_PokerFace\\PokerFace\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Dropbox\\HE-Arc\\02-INF2dlm-a\\Projet P2 Java\\_PokerFace\\PokerFace\\src\u0027. Skipped."
   }
 }

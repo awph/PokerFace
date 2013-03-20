@@ -20,6 +20,11 @@ public class HandsPokerValue implements Comparable<HandsPokerValue>
 		this.handName = handName;
 	}
 
+	public HandsPokerValue(HandsPokerValue handsPokerValue)
+	{
+		this(handsPokerValue.rank, handsPokerValue.handName);
+	}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
