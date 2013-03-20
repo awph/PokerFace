@@ -4,6 +4,10 @@ package ch.hearc.miscellaneoustest.handpoker;
 import java.util.HashMap;
 import java.util.Map;
 
+import ch.hearc.miscellaneoustest.handpoker.cards.Card;
+import ch.hearc.miscellaneoustest.handpoker.cards.CardColor;
+import ch.hearc.miscellaneoustest.handpoker.cards.CardValue;
+
 public class UseHandPokerMap
 {
 	private static final int	NB_SIMULATION		= 1;
@@ -20,6 +24,14 @@ public class UseHandPokerMap
 
 	public static void main()
 	{
+		Deck d = new Deck();
+		System.out.println(d);
+		d.remove(new Card(CardValue.Ace,CardColor.Clubs));
+		System.out.println(d);
+		d.add(new Card(CardValue.Ace,CardColor.Clubs));
+		System.out.println(d);
+		d.add(new Card(CardValue.Ace,CardColor.Clubs));
+
 		String[] keys = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K" };
 
 		Map<String, Integer> map = new HashMap<String, Integer>();
