@@ -1,5 +1,7 @@
 
-package ch.hearc.miscellaneoustest.handpoker;
+package ch.hearc.miscellaneoustest.handpoker.subset;
+
+import java.util.Iterator;
 
 import ch.hearc.miscellaneoustest.handpoker.cards.Card;
 import ch.hearc.miscellaneoustest.handpoker.cards.CardColor;
@@ -7,10 +9,6 @@ import ch.hearc.miscellaneoustest.handpoker.cards.CardValue;
 
 public class Deck extends CardSubset
 {
-	/*------------------------------------------------------------------*\
-	|*							Attributs Private						*|
-	\*------------------------------------------------------------------*/
-
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
@@ -80,43 +78,21 @@ public class Deck extends CardSubset
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	//	@Override
-	//	public void remove(Card c)
-	//	{
-	//		cards.remove(c);
-	//	}
-	//
-	//	@Override
-	//	public void add(Card c)
-	//	{
-	//		cards.add(c);
-	//	}
+	public Card getNewCard()
+	{
+		int key = (int)(Math.random() * (size()));
+		Card c = null;
+		int i = 0;
 
-	//	@Override
-	//	public String toString()
-	//	{
-	//		Iterator<Card> it = cards.iterator();
-	//
-	//		StringBuilder stringBuilder = new StringBuilder("");
-	//
-	//		while(it.hasNext())
-	//		{
-	//			stringBuilder.append(it.next());
-	//			stringBuilder.append("");
-	//		}
-	//		return stringBuilder.toString();
-	//	}
+		Iterator<Card> it = this.iterator();
+		while(it.hasNext() && i++ <= key)
+		{
+			c = it.next();
+		}
 
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
+		remove(c);
 
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
-	/*------------------------------------------------------------------*\
-	|*							Methodes Private						*|
-	\*------------------------------------------------------------------*/
+		return c;
+	}
 
 }

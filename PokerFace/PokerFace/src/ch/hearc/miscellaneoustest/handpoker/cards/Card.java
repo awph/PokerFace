@@ -25,22 +25,13 @@ public class Card implements Comparable<Card>
 		this(card.value, card.color);
 	}
 
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
 	@Override
 	public int compareTo(Card o)
 	{
-		//		if (value.getIntValue() == o.value.getIntValue())
-		//		{
-		//			return 0;
-		//		}
-		//		else if (value.getIntValue() > o.value.getIntValue())
-		//		{
-		//			return 1;
-		//		}
-		//		else
-		//		{
-		//			return -1;
-		//		}
-
 		if (value.getStringValue().equals(o.value.getStringValue()))
 		{
 			return ((Integer)(color.getIntValue())).compareTo(o.color.getIntValue()); // Color compare for TreeSet
@@ -50,10 +41,6 @@ public class Card implements Comparable<Card>
 			return value.getStringValue().compareTo(o.value.getStringValue());
 		}
 	}
-
-	/*------------------------------------------------------------------*\
-	|*							Methodes Public							*|
-	\*------------------------------------------------------------------*/
 
 	@Override
 	public String toString()

@@ -5,11 +5,14 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import ch.hearc.miscellaneoustest.handpoker.cards.Card;
+import ch.hearc.miscellaneoustest.handpoker.subset.Board;
+import ch.hearc.miscellaneoustest.handpoker.subset.Deck;
+import ch.hearc.miscellaneoustest.handpoker.subset.Hand;
+import ch.hearc.miscellaneoustest.handpoker.subset.Pocket;
 
 public class HandsPokerMap
 {
@@ -32,13 +35,9 @@ public class HandsPokerMap
 
 	public HandsPokerValue getHand(String key)
 	{
-		char[] chars = key.toCharArray();
-		Arrays.sort(chars);
-		key = new String(chars);
-
 		try
 		{
-			return hands.get(key);
+			return hands.get(new String(key.toCharArray()));
 		}
 		catch (NullPointerException e)
 		{
@@ -46,14 +45,11 @@ public class HandsPokerMap
 		}
 	}
 
-	public HandsPokerValue getHand(CardSubset cardSubset)
+	public synchronized HandsPokerValue getHand(Hand hand)
 	{
-		char[] key = cardSubset.getKey().toCharArray();
-		Arrays.sort(key); //TODO: test si nescaire
-
 		try
 		{
-			return hands.get(String.valueOf(key));
+			return hands.get(hand.getKey());
 		}
 		catch (NullPointerException e)
 		{
@@ -61,14 +57,27 @@ public class HandsPokerMap
 		}
 	}
 
-	public Map<String, HandsPokerValue> getOuts(CardSubset board, CardSubset pocket)
+	public Map<String, HandsPokerValue> getOuts(Board board, Pocket pocket)
 	{
 		Deck deck = new Deck();
 		deck.sub(board);
 		deck.sub(pocket);
 
+		Hand hand = new Hand();
+
+		for(Card c:board)
+		{
+			hand.add(c);
+		}
+
+		for(Card c:pocket)
+		{
+			hand.add(c);
+		}
+
 		Map<String, HandsPokerValue> out = new HashMap<String, HandsPokerValue>();
-		int rank = getHand(CardSubset.union(pocket, board)).getRank();
+		//int rank = getHand(CardSubset.union(pocket, board)).getRank();
+		int rank = getHand(hand).getRank();
 
 		for(Card card:deck)
 		{

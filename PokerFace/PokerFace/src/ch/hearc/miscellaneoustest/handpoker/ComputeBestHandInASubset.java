@@ -1,7 +1,13 @@
 
 package ch.hearc.miscellaneoustest.handpoker;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import ch.hearc.miscellaneoustest.handpoker.cards.Card;
+import ch.hearc.miscellaneoustest.handpoker.subset.CardSubset;
+import ch.hearc.miscellaneoustest.handpoker.subset.Hand;
 
 public class ComputeBestHandInASubset
 {
@@ -11,35 +17,48 @@ public class ComputeBestHandInASubset
 
 	//Poker with 5 cards
 	private static final int			LENGTH_HAND		= 5;
-	private static final String			EMPTY			= "";
 	private static final HandsPokerMap	HANDS_POKER_MAP	= HandsPokerMap.getInstance();
 
-	private String[]					available_characters;
-	private String						highestHand;
+	private Hand						highestHand;
+	private CardSubset					allCards;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public ComputeBestHandInASubset(String[] actualHand)
+	/**
+	 * Size minimum 5
+	 */
+	public ComputeBestHandInASubset(CardSubset actualHand)
 	{
-		highestHand = "";
-		available_characters = new String[actualHand.length];
-
-		for(int i = 0; i < actualHand.length; ++i)
+		if (actualHand.size() < 5)
 		{
-			available_characters[i] = new String(actualHand[i]);
+			System.err.println("Size Error");//TODO : Find a better way to do it
 		}
+
+		allCards = actualHand;
 	}
 
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
 
-	public String getHighestHand()
+	public Hand getHighestHand()
 	{
-		String[] hand = new String[LENGTH_HAND];
-		searchHighestHand(0, 0, hand);
+		List<Card> currentHand = new LinkedList<Card>();
+		List<Card> subset = new ArrayList<Card>();
+
+		for(int i = 0; i < 5; ++i)
+		{
+			currentHand.add(null);
+		}
+
+		for(Card c:allCards)
+		{
+			subset.add(c);
+		}
+
+		searchHighestHand(0, 0, currentHand, subset, null);
 		return highestHand;
 	}
 
@@ -47,45 +66,38 @@ public class ComputeBestHandInASubset
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
-	private void searchHighestHand(int indexLastValueTaken, int indexCurrentHand, String[] hand)
+	private void searchHighestHand(int indexLastValueTaken, int indexCurrentHand, List<Card> currentHand, List<Card> subset, Card busyCard)
 	{
 		if (indexCurrentHand < LENGTH_HAND)
 		{
-			for(int i = 0; i < available_characters.length; ++i)
+			for(int i = 0; i < subset.size(); ++i)
 			{
-				if (available_characters[i] != EMPTY)
+				if (subset.get(i) != busyCard)
 				{
 					indexLastValueTaken = i;
-					hand[indexCurrentHand] = available_characters[i];
-					available_characters[i] = EMPTY;
+					busyCard = subset.get(i);
+					currentHand.set(indexCurrentHand, busyCard);
 
-					searchHighestHand(0, indexCurrentHand + 1, hand);
+					searchHighestHand(0, indexCurrentHand + 1, currentHand, subset, busyCard);
 
-					available_characters[indexLastValueTaken] = hand[indexCurrentHand];
+					subset.set(indexLastValueTaken, currentHand.get(indexCurrentHand));
 				}
 			}
 		}
 		else
 		{
-			String[] handOrdered = new String[hand.length];
-			for(int i = 0; i < LENGTH_HAND; ++i)
-			{
-				handOrdered[i] = hand[i];
-			}
+			Hand hand = new Hand();
 
-			Arrays.sort(handOrdered);
-
-			StringBuilder handStr = new StringBuilder("");
-			for(int i = 0; i < LENGTH_HAND; ++i)
+			for(Card c:currentHand)
 			{
-				handStr.append(handOrdered[i]);
+				hand.add(c);
 			}
 
 			try
 			{
-				if (HANDS_POKER_MAP.getHand(handStr.toString()).compareTo(HANDS_POKER_MAP.getHand(highestHand)) > 0)
+				if (HANDS_POKER_MAP.getHand(hand).compareTo(HANDS_POKER_MAP.getHand(highestHand)) > 0)
 				{
-					highestHand = handStr.toString();
+					highestHand = hand;
 				}
 			}
 			catch (NullPointerException e)

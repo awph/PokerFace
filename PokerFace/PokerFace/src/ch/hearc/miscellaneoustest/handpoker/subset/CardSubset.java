@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneoustest.handpoker;
+package ch.hearc.miscellaneoustest.handpoker.subset;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -24,48 +24,9 @@ public class CardSubset implements Iterable<Card>
 		cards = new TreeSet<Card>();
 	}
 
-	/*------------------------------------------------------------------*\
-	|*							Methodes Public							*|
-	\*------------------------------------------------------------------*/
-
-	public void add(Card c)
-	{
-		cards.add(c);
-		//		sort();
-	}
-
-	public void remove(Card c)
-	{
-		cards.remove(c);
-		//		sort();
-	}
-
-	@Override
-	public String toString()
-	{
-		StringBuilder stringBuilder = new StringBuilder("");
-
-		for(Card c:cards)
-		{
-			stringBuilder.append(c);
-		}
-
-		return stringBuilder.toString();
-	}
-
-	public String getKey()
-	{
-		if (!isHand()) { return null; }
-		//TODO: some color
-		StringBuilder stringBuilder = new StringBuilder("");
-
-		for(Card c:cards)
-		{
-			stringBuilder.append(c.getValue().getStringValue());
-		}
-
-		return stringBuilder.toString();
-	}
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
 
 	public static CardSubset union(CardSubset subset1, CardSubset subset2)
 	{
@@ -82,6 +43,39 @@ public class CardSubset implements Iterable<Card>
 		}
 
 		return out;
+	}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	public void add(Card c)
+	{
+		cards.add(c);
+	}
+
+	public void remove(Card c)
+	{
+		try
+		{
+			cards.remove(c);
+		}
+		catch (NullPointerException e)
+		{
+		}
+	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder stringBuilder = new StringBuilder("");
+
+		for(Card c:cards)
+		{
+			stringBuilder.append(c);
+		}
+
+		return stringBuilder.toString();
 	}
 
 	public void sub(CardSubset subset2)
@@ -102,32 +96,5 @@ public class CardSubset implements Iterable<Card>
 	{
 		return cards.size();
 	}
-
-	/*------------------------------*\
-	|*				Is				*|
-	\*------------------------------*/
-
-	public boolean isHand()
-	{
-		return cards.size() == 5;
-	}
-
-	/*------------------------------------------------------------------*\
-	|*							Methodes Private						*|
-	\*------------------------------------------------------------------*/
-
-	//	private void sort()
-	//	{
-	//		Collections.
-	//		Collections.sort(cards, new Comparator<Card>()
-	//		{
-	//
-	//			@Override
-	//			public int compare(Card c1, Card c2)
-	//			{
-	//				return c1.getValue().getStringValue().compareTo(c2.getValue().getStringValue());
-	//			}
-	//		});
-	//	}
 
 }
