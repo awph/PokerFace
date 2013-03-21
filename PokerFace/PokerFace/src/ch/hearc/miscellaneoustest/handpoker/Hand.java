@@ -1,49 +1,34 @@
 
-package ch.hearc.miscellaneoustest.handpoker.cards;
+package ch.hearc.miscellaneoustest.handpoker;
 
-public enum CardColor
+
+public class Hand extends CardSubset
 {
-	Diamonds("\u2666", 1), Hearts("\u2665", 2), Spades("\u2660", 3), Clubs("\u2663", 4);
-
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-
-	private String	valueString;
-	private int		valueInt;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	private CardColor(String valString, int valInt)
-	{
-		valueString = valString;
-		valueInt = valInt;
-	}
+	//TODO: max 5, prendre methode de cardesubset
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	@Override
-	public String toString()
-	{
-		return valueString;
-	}
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
 
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
 
-	public int getIntValue()
-	{
-		return valueInt;
-	}
-
-	public String getStringValue()
-	{
-		return valueString;
-	}
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
 
 }
+

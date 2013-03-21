@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import ch.hearc.miscellaneoustest.handpoker.cards.Card;
+
 public class HandsPokerMap
 {
 	/*------------------------------------------------------------------*\
@@ -30,9 +32,9 @@ public class HandsPokerMap
 
 	public HandsPokerValue getHand(String key)
 	{
-        char[] chars = key.toCharArray();
-        Arrays.sort(chars);
-        key = new String(chars);
+		char[] chars = key.toCharArray();
+		Arrays.sort(chars);
+		key = new String(chars);
 
 		try
 		{
@@ -44,26 +46,50 @@ public class HandsPokerMap
 		}
 	}
 
-	public Map<String, HandsPokerValue> getOuts(String board, String pocket)
+	public HandsPokerValue getHand(CardSubset cardSubset)
 	{
-		String[] keys = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K" };
+		char[] key = cardSubset.getKey().toCharArray();
+		Arrays.sort(key); //TODO: test si nescaire
+
+		try
+		{
+			return hands.get(String.valueOf(key));
+		}
+		catch (NullPointerException e)
+		{
+			return null;
+		}
+	}
+
+	public Map<String, HandsPokerValue> getOuts(CardSubset board, CardSubset pocket)
+	{
+		Deck deck = new Deck();
+		deck.sub(board);
+		deck.sub(pocket);
 
 		Map<String, HandsPokerValue> out = new HashMap<String, HandsPokerValue>();
-		int rank = getHand(pocket + board).getRank();
+		int rank = getHand(CardSubset.union(pocket, board)).getRank();
 
-		for(int i = 0; i < keys.length; ++i)
+		for(Card card:deck)
 		{
-			String newHandString = new ComputeBestHandInASubset((pocket + board + keys[i]).split("")).getHighestHand();
-			HandsPokerValue newHand = getHand(newHandString);
-
-			if (newHand.getRank() < rank && !newHand.getHandName().equals(getHand(pocket + board).getHandName()))
+			for(int i = 0; i < board.size(); ++i)
 			{
-				System.out.println(keys[i] + "->" + newHand.getRank() + " --> " + rank);
-				//out.put(hand.getKey(), new HandsPokerValue(hand.getValue()));
-				//System.out.println(keys[i]);
 			}
-
 		}
+
+		//		for(int i = 0; i < keys.length; ++i)
+		//		{
+		//			String newHandString = new ComputeBestHandInASubset((pocket + board + keys[i]).split("")).getHighestHand();
+		//			HandsPokerValue newHand = getHand(newHandString);
+		//
+		//			if (newHand.getRank() < rank && !newHand.getHandName().equals(getHand(pocket + board).getHandName()))
+		//			{
+		//				System.out.println(keys[i] + "->" + newHand.getRank() + " --> " + rank);
+		//				//out.put(hand.getKey(), new HandsPokerValue(hand.getValue()));
+		//				//System.out.println(keys[i]);
+		//			}
+		//
+		//		}
 
 		//		Map<String, HandsPokerValue> out = new HashMap<String, HandsPokerValue>();
 		//		int rank = getHand(cards).getRank();
@@ -76,7 +102,7 @@ public class HandsPokerMap
 		//		Set<Entry<String, HandsPokerValue>> handsSet = hands.entrySet();
 		//		for(Entry<String, HandsPokerValue> hand:handsSet)
 		//		{
-		//			if (rank < hand.getValue().getRank()) // "<" car notre main actuel ne fait pas mieux quelle même
+		//			if (rank < hand.getValue().getRank()) // "<" car notre main actuel ne fait pas mieux quelle mï¿½me
 		//			{
 		//				if (hand.getKey().contains(String.valueOf(pocket.charAt(0))))
 		//				{

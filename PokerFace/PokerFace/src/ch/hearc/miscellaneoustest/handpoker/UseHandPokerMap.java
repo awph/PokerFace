@@ -70,7 +70,8 @@ public class UseHandPokerMap
 //			System.out.println(bestHand + " -> " + hpv.getRank() + " " + hpv.getHandName());
 //			System.out.println();
 			//hpm.getOuts("67T", "44");
-			hpm.getOuts("84J", "9T");
+
+//			hpm.getOuts("84J", "9T");
 		}
 	}
 
