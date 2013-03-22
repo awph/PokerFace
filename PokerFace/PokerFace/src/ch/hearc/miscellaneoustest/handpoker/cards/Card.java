@@ -68,6 +68,12 @@ public class Card implements Comparable<Card>
 		return (value.getStringValue() + color.getStringValue()).hashCode();
 	}
 
+	public Card cloneOf()
+	{
+		return new Card(this);
+	}
+
+
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/

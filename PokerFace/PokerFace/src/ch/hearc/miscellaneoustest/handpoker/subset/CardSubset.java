@@ -24,6 +24,15 @@ public class CardSubset implements Iterable<Card>
 		cards = new TreeSet<Card>();
 	}
 
+	public CardSubset(CardSubset cardSubsetSource)
+	{
+		this();
+		for(Card card:cardSubsetSource)
+		{
+			add(card.cloneOf());
+		}
+	}
+
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
@@ -65,6 +74,24 @@ public class CardSubset implements Iterable<Card>
 		}
 	}
 
+	public void sub(CardSubset subset2)
+	{
+		for(Card card:subset2.cards)
+		{
+			remove(card); //TODO: error si card n'existe pas
+		}
+	}
+
+	public int size()
+	{
+		return cards.size();
+	}
+
+	public CardSubset cloneOf()
+	{
+		return new CardSubset(this);
+	}
+
 	@Override
 	public String toString()
 	{
@@ -78,23 +105,10 @@ public class CardSubset implements Iterable<Card>
 		return stringBuilder.toString();
 	}
 
-	public void sub(CardSubset subset2)
-	{
-		for(Card card:subset2.cards)
-		{
-			remove(card); //TODO: error si card n'existe pas
-		}
-	}
-
 	@Override
 	public Iterator<Card> iterator()
 	{
 		return cards.iterator();
-	}
-
-	public int size()
-	{
-		return cards.size();
 	}
 
 }

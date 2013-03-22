@@ -10,6 +10,7 @@ import java.util.Map;
 
 import ch.hearc.miscellaneoustest.handpoker.cards.Card;
 import ch.hearc.miscellaneoustest.handpoker.subset.Board;
+import ch.hearc.miscellaneoustest.handpoker.subset.CardSubset;
 import ch.hearc.miscellaneoustest.handpoker.subset.Deck;
 import ch.hearc.miscellaneoustest.handpoker.subset.Hand;
 import ch.hearc.miscellaneoustest.handpoker.subset.Pocket;
@@ -45,7 +46,7 @@ public class HandsPokerMap
 		}
 	}
 
-	public synchronized HandsPokerValue getHand(Hand hand)
+	public HandsPokerValue getHand(Hand hand)
 	{
 		try
 		{
@@ -57,7 +58,7 @@ public class HandsPokerMap
 		}
 	}
 
-	public Map<String, HandsPokerValue> getOuts(Board board, Pocket pocket)
+	public CardSubset getOuts(Board board, Pocket pocket)
 	{
 		Deck deck = new Deck();
 		deck.sub(board);
@@ -75,83 +76,46 @@ public class HandsPokerMap
 			hand.add(c);
 		}
 
-		Map<String, HandsPokerValue> out = new HashMap<String, HandsPokerValue>();
-		//int rank = getHand(CardSubset.union(pocket, board)).getRank();
-		int rank = getHand(hand).getRank();
+		CardSubset outs = new CardSubset();
+		int handRank = getHand(hand).getRank();
+		String handType = getHand(hand).getHandName();
 
 		for(Card card:deck)
 		{
-			for(int i = 0; i < board.size(); ++i)
+			//TODO: mettre une value sur le nom de la main
+			//TODO: enlever les kicker des suites ouvertes
+			CardSubset cardSubsetTemp = hand.cloneOf();
+			cardSubsetTemp.add(card);
+			Hand newHand = new ComputeBestHandInASubset(cardSubsetTemp).getHighestHand();
+			int newHandRank = getHand(newHand).getRank();
+			String newHandType = getHand(newHand).getHandName();
+
+			Board newBoard = board.cloneOf();
+			newBoard.add(card);
+			int newBoardRank = getHand(newBoard.getKey(deck)).getRank();
+			String newBoardType = getHand(newBoard.getKey(deck)).getHandName();
+
+			// Is the new hand better than the old one?
+			boolean handImproved = newHandRank < handRank && !handType.equals(newHandType);
+
+			// Is the new hand better than the new board? (elimine the kicker)
+			boolean handStrongerThanBoard = newHandRank < newBoardRank && !newHandType.equals(newBoardType);
+
+			// If the hand improved then we have an out
+			if (handImproved && handStrongerThanBoard)
 			{
+				outs.add(card);
 			}
 		}
 
-		//		for(int i = 0; i < keys.length; ++i)
-		//		{
-		//			String newHandString = new ComputeBestHandInASubset((pocket + board + keys[i]).split("")).getHighestHand();
-		//			HandsPokerValue newHand = getHand(newHandString);
-		//
-		//			if (newHand.getRank() < rank && !newHand.getHandName().equals(getHand(pocket + board).getHandName()))
-		//			{
-		//				System.out.println(keys[i] + "->" + newHand.getRank() + " --> " + rank);
-		//				//out.put(hand.getKey(), new HandsPokerValue(hand.getValue()));
-		//				//System.out.println(keys[i]);
-		//			}
-		//
-		//		}
-
-		//		Map<String, HandsPokerValue> out = new HashMap<String, HandsPokerValue>();
-		//		int rank = getHand(cards).getRank();
-		//		//String regex = "";
-		//		//Pattern pattern = Pattern.compile("^(?=.*[" + cards + "]{3,})(?=.*[[^\1]&&" + cards + "]{3,})(?=.*[[^\1\2]&&" + cards + "]{3,})(?=.*[[^\1\2\3]&&" + cards + "]{3,})(?=.*[[^\1\2\3\4]&&" + cards + "]{3,}).*$");
-		//		//pattern.matcher(/*hand*/).matches();
-		//		String board = cards.replaceFirst(String.valueOf(pocket.charAt(0)), "");
-		//		board = board.replaceFirst(String.valueOf(pocket.charAt(1)), "");
-		//
-		//		Set<Entry<String, HandsPokerValue>> handsSet = hands.entrySet();
-		//		for(Entry<String, HandsPokerValue> hand:handsSet)
-		//		{
-		//			if (rank < hand.getValue().getRank()) // "<" car notre main actuel ne fait pas mieux quelle m�me
-		//			{
-		//				if (hand.getKey().contains(String.valueOf(pocket.charAt(0))))
-		//				{
-		//					if (hand.getKey().contains(String.valueOf(pocket.charAt(1))))
-		//					{
-		//						if (hand.getKey().contains(String.valueOf(cards.charAt(0))) || hand.getKey().contains(String.valueOf(cards.charAt(1))) || hand.getKey().contains(String.valueOf(cards.charAt(2))))
-		//						{
-		//							out.put(hand.getKey(), new HandsPokerValue(hand.getValue()));
-		//							System.out.println(hand.getKey());
-		//						}
-		//					}
-		//				}
-		//			}
-		//		}
-		//
-		//		System.out.println(out.size());
-
-		return out;
+		return outs;
 	}
-
-	//	private boolean contains3(String cards, String key)
-	//	{
-	//		int i = 0;
-	//		for(char c:cards.toCharArray())
-	//		{
-	//			if (key.contains(String.valueOf(c)))
-	//			{
-	//				key.replaceFirst(String.valueOf(c), "");
-	//				if (++i >= 3) { return true; }
-	//			}
-	//		}
-	//
-	//		return false;
-	//	}
 
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
 
-	public static HandsPokerMap getInstance()
+	public synchronized static HandsPokerMap getInstance()
 	{
 		if (instance == null)
 		{
