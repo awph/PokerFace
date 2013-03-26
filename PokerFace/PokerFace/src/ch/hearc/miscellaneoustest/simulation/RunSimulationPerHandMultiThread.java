@@ -2,7 +2,7 @@
 package ch.hearc.miscellaneoustest.simulation;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
 
 import ch.hearc.miscellaneoustest.handpoker.ComputeBestHandInASubset;
 import ch.hearc.miscellaneoustest.handpoker.HandsPokerMap;
@@ -14,7 +14,7 @@ import ch.hearc.miscellaneoustest.handpoker.subset.Deck;
 import ch.hearc.miscellaneoustest.handpoker.subset.Hand;
 import ch.hearc.miscellaneoustest.handpoker.subset.Pocket;
 
-public class RunSimulationPerHand
+public class RunSimulationPerHandMultiThread
 {
 	private static final int	NB_SIMULATION		= 10000;
 	private static final int	NB_CARDS_IN_BOARD	= 5;
@@ -24,14 +24,14 @@ public class RunSimulationPerHand
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args) throws IOException, InterruptedException
 	{
 		main();
 	}
 
-	public static void main() throws IOException
+	public static void main() throws IOException, InterruptedException
 	{
-		Map<String, Data> charts = Method.createHashMap();
+		ConcurrentMap<String, Data> charts = Method.createConcurrentHashMap();
 
 		Card[] value = { new Card(CardValue.Ace, CardColor.Clubs), new Card(CardValue.Two, CardColor.Clubs), new Card(CardValue.Three, CardColor.Clubs), new Card(CardValue.Four, CardColor.Clubs), new Card(CardValue.Five, CardColor.Clubs), new Card(CardValue.Six, CardColor.Clubs),
 				new Card(CardValue.Seven, CardColor.Clubs), new Card(CardValue.Eight, CardColor.Clubs), new Card(CardValue.Nine, CardColor.Clubs), new Card(CardValue.Ten, CardColor.Clubs), new Card(CardValue.Jack, CardColor.Clubs), new Card(CardValue.Queen, CardColor.Clubs),
@@ -61,7 +61,31 @@ public class RunSimulationPerHand
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
-	private static void runSimu(Map<String, Data> charts, Card c1, Card c2, boolean same)
+	private static void runSimu(final ConcurrentMap<String, Data> charts, final Card c1, final Card c2, final boolean same) throws InterruptedException
+	{
+		final int nbCore = Runtime.getRuntime().availableProcessors();
+		Thread[] t = new Thread[nbCore];
+
+		for(int i = 0; i < nbCore; ++i)
+		{
+			t[i] = new Thread(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					simPerThread(charts, c1, c2, same,NB_SIMULATION/nbCore);
+				}
+			});
+			t[i].start();
+		}
+
+		for(int i = 0;i < nbCore;++i)
+		{
+			t[i].join();
+		}
+	}
+
+	private static void simPerThread(ConcurrentMap<String, Data> charts, Card c1, Card c2, boolean same,int nbSimulation)
 	{
 		Pocket[] handPlayers = new Pocket[NB_PLAYER];
 		Hand[] bestHandPlayers = new Hand[NB_PLAYER];
@@ -70,9 +94,8 @@ public class RunSimulationPerHand
 		handPlayers[0].add(c1);
 		handPlayers[0].add(c2);
 
-		for(int i = 0; i < NB_SIMULATION; ++i)
+		for(int i = 0; i < nbSimulation; ++i)
 		{
-
 			Deck d = new Deck();
 			d.remove(c1, true);
 			d.remove(c2, true);
