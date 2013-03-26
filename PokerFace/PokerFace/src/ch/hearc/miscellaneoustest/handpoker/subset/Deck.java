@@ -95,4 +95,20 @@ public class Deck extends CardSubset
 		return c;
 	}
 
+	//A SUPPRIMER DANS LA VERSION FINALE
+	public void remove(Card c, boolean b)
+	{
+		Iterator<Card> it = this.iterator();
+
+		while(it.hasNext())
+		{
+			Card temp = it.next();
+			if (temp.equals(c))
+			{
+				remove(temp);
+				break;
+			}
+		}
+	}
+
 }

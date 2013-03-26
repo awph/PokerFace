@@ -58,6 +58,11 @@ public class CardSubset implements Iterable<Card>
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	public Card[] getArray()
+	{
+		return cards.toArray(new Card[0]);
+	}
+
 	public void add(Card c)
 	{
 		cards.add(c);

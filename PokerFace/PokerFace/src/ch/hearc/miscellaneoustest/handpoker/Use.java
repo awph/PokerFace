@@ -5,16 +5,10 @@ import ch.hearc.miscellaneoustest.handpoker.cards.Card;
 import ch.hearc.miscellaneoustest.handpoker.cards.CardColor;
 import ch.hearc.miscellaneoustest.handpoker.cards.CardValue;
 import ch.hearc.miscellaneoustest.handpoker.subset.Board;
-import ch.hearc.miscellaneoustest.handpoker.subset.CardSubset;
-import ch.hearc.miscellaneoustest.handpoker.subset.Deck;
-import ch.hearc.miscellaneoustest.handpoker.subset.Hand;
 import ch.hearc.miscellaneoustest.handpoker.subset.Pocket;
 
 public class Use
 {
-	private static final int	NB_SIMULATION		= 10;
-	private static final int	NB_CARDS_IN_BOARD	= 7;
-
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
@@ -26,27 +20,6 @@ public class Use
 
 	public static void main()
 	{
-		for(int i = 0; i < NB_SIMULATION; ++i)
-		{
-			Deck d = new Deck();
-			CardSubset subset = new CardSubset();
-
-			for(int j = 0; j < NB_CARDS_IN_BOARD; ++j)
-			{
-				subset.add(d.getNewCard());
-			}
-
-			//			System.out.print("CARDS : ");
-			//			System.out.println(subset);
-			//			System.out.print("BEST : ");
-			HandsPokerMap hpm = HandsPokerMap.getInstance();
-			d.getNewCard();
-			Hand bestHand = new ComputeBestHandInASubset(subset).getHighestHand();
-			HandsPokerValue hpv = hpm.getHand(bestHand);
-			//			System.out.println(bestHand + " -> " + hpv.getRank() + " " + hpv.getHandName());
-
-		}
-
 		testOuts();
 	}
 
