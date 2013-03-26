@@ -71,10 +71,6 @@ public class RunSimulationPerHand
 		{
 
 			Deck d = new Deck();
-			if (c1.getValue().getIntValue() == c2.getValue().getIntValue())
-			{
-				System.out.println("TTTT");
-			}
 			d.remove(c1, true);
 			d.remove(c2, true);
 			CardSubset subset = new CardSubset();
