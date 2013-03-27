@@ -19,7 +19,7 @@ public class RunSimulationPerHandMultiThread
 	private static final int	NB_SIMULATION		= 10000;
 	private static final int	NB_CARDS_IN_BOARD	= 5;
 	private static final int	NB_PLAYER			= 2;
-
+	private static int t = 0;
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
@@ -35,19 +35,21 @@ public class RunSimulationPerHandMultiThread
 
 		Card[] value = { new Card(CardValue.Ace, CardColor.Clubs), new Card(CardValue.Two, CardColor.Clubs), new Card(CardValue.Three, CardColor.Clubs), new Card(CardValue.Four, CardColor.Clubs), new Card(CardValue.Five, CardColor.Clubs), new Card(CardValue.Six, CardColor.Clubs),
 				new Card(CardValue.Seven, CardColor.Clubs), new Card(CardValue.Eight, CardColor.Clubs), new Card(CardValue.Nine, CardColor.Clubs), new Card(CardValue.Ten, CardColor.Clubs), new Card(CardValue.Jack, CardColor.Clubs), new Card(CardValue.Queen, CardColor.Clubs),
-				new Card(CardValue.King, CardColor.Clubs), new Card(CardValue.Ace, CardColor.Spades), new Card(CardValue.Two, CardColor.Spades), new Card(CardValue.Three, CardColor.Spades), new Card(CardValue.Four, CardColor.Spades), new Card(CardValue.Five, CardColor.Spades),
+				new Card(CardValue.King, CardColor.Clubs)};
+
+		Card[] value2 = {new Card(CardValue.Ace, CardColor.Spades), new Card(CardValue.Two, CardColor.Spades), new Card(CardValue.Three, CardColor.Spades), new Card(CardValue.Four, CardColor.Spades), new Card(CardValue.Five, CardColor.Spades),
 				new Card(CardValue.Six, CardColor.Spades), new Card(CardValue.Seven, CardColor.Spades), new Card(CardValue.Eight, CardColor.Spades), new Card(CardValue.Nine, CardColor.Spades), new Card(CardValue.Ten, CardColor.Spades), new Card(CardValue.Jack, CardColor.Spades),
 				new Card(CardValue.Queen, CardColor.Spades), new Card(CardValue.King, CardColor.Spades) };
 
 		long start = System.currentTimeMillis();
-		for(int a = 0; a < value.length - 1; ++a)
+		for(int a = 0; a < value.length; ++a)
 		{
-			for(int b = a + 1; b < value.length; ++b)
+			for(int b = a; b < value.length; ++b)
 			{
-				runSimu(charts, value[a], value[b], false);
-				if (!value[a].getValue().equals(value[b].getValue()))
+				runSimu(charts, value[a], value2[b], false);
+				if (!value[a].getValue().equals(value2[b].getValue()))
 				{
-					runSimu(charts, value[a], value[b], true);
+					runSimu(charts, value[a], value2[b], true);
 				}
 			}
 		}
