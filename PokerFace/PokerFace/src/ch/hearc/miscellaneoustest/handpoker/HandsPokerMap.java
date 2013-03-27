@@ -48,14 +48,7 @@ public class HandsPokerMap
 
 	public HandsPokerValue getHand(Hand hand)
 	{
-		try
-		{
-			return hands.get(hand.getKey());
-		}
-		catch (NullPointerException e)
-		{
-			return null;
-		}
+		return hands.get(hand.getKey());
 	}
 
 	public CardSubset getOuts(Board board, Pocket pocket)

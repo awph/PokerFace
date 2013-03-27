@@ -18,8 +18,8 @@ public class RunSimulationPerHandMultiThread
 {
 	private static final int	NB_SIMULATION		= 10000;
 	private static final int	NB_CARDS_IN_BOARD	= 5;
-	private static final int	NB_PLAYER			= 2;
-	private static int t = 0;
+	private static final int	NB_PLAYER			= 9;
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/

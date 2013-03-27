@@ -83,7 +83,7 @@ public class ComputeBestHandInASubset
 								hand.add(c);
 							}
 
-							if (HANDS_POKER_MAP.getHand(hand).compareTo(HANDS_POKER_MAP.getHand(highestHand)) > 0)
+							if (highestHand == null || HANDS_POKER_MAP.getHand(hand).compareTo(HANDS_POKER_MAP.getHand(highestHand)) > 0)
 							{
 								highestHand = hand;
 							}
