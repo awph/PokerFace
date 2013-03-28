@@ -1,11 +1,12 @@
 
-package ch.hearc.miscellaneoustest.handpoker.subset;
+package ch.hearc.miscellaneoustest.simulation;
 
 import java.util.Iterator;
 
 import ch.hearc.miscellaneoustest.handpoker.cards.Card;
 import ch.hearc.miscellaneoustest.handpoker.cards.CardColor;
 import ch.hearc.miscellaneoustest.handpoker.cards.CardValue;
+import ch.hearc.miscellaneoustest.handpoker.subset.CardSubset;
 
 public class Deck extends CardSubset
 {
@@ -93,6 +94,22 @@ public class Deck extends CardSubset
 		remove(c);
 
 		return c;
+	}
+
+	//A SUPPRIMER DANS LA VERSION FINALE
+	public void remove(Card c, boolean b)
+	{
+		Iterator<Card> it = this.iterator();
+
+		while(it.hasNext())
+		{
+			Card temp = it.next();
+			if (temp.equals(c))
+			{
+				remove(temp);
+				break;
+			}
+		}
 	}
 
 }
