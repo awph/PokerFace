@@ -20,7 +20,7 @@ public class Method
 		Set<Entry<String, Data>> entry = map.entrySet();
 		for(Entry<String, Data> l:entry)
 		{
-			System.out.println(l.getKey() + "\t:\t" + l.getValue() + "%");
+			System.out.println(l.getKey() + "\t:\t" + l.getValue());
 		}
 	}
 
@@ -29,7 +29,7 @@ public class Method
 		Set<Entry<String, Data>> entry = map.entrySet();
 		for(Entry<String, Data> l:entry)
 		{
-			System.out.println(l.getKey() + "\t:\t" + l.getValue() + "%");
+			System.out.println(l.getKey() + "\t:\t" + l.getValue());
 		}
 	}
 

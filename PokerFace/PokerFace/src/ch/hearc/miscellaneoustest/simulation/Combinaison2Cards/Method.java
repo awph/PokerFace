@@ -4,6 +4,7 @@ package ch.hearc.miscellaneoustest.simulation.Combinaison2Cards;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -14,12 +15,13 @@ public class Method
 {
 	public static void displayMap(ConcurrentMap<String, Data> map)
 	{
+		DecimalFormat df = new DecimalFormat("#.##");
 		for(Entry<String, Data> l:map.entrySet())
 		{
 			System.out.println(l.getKey() + ":");
 			for(Entry<String, Integer> l2:l.getValue().getEntrySet())
 			{
-				System.out.println("\t -> " + l2.getKey() + " : " + /*(double)l2.getValue() / (double)*/l.getValue().getTotal()/* * 100 + "%"*/);
+				System.out.println("\t-> " + l2.getKey() + " : " + df.format((double)l2.getValue() / (double)l.getValue().getTotal()* 100));
 			}
 		}
 	}

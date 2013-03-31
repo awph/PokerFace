@@ -1,6 +1,8 @@
 
 package ch.hearc.miscellaneoustest.simulation.WinLose2Cards;
 
+import java.text.DecimalFormat;
+
 
 public class Data
 {
@@ -28,6 +30,7 @@ public class Data
 	public void addWin()
 	{
 		nbWin++;
+		nbTime++;
 	}
 
 	public void addTime()
@@ -38,7 +41,8 @@ public class Data
 	@Override
 	public String toString()
 	{
-		return String.valueOf((double)nbWin/(double)nbTime*100);
+		DecimalFormat df = new DecimalFormat("#.##");
+		return String.valueOf(df.format((double)nbWin/(double)nbTime*100));
 	}
 
 }
