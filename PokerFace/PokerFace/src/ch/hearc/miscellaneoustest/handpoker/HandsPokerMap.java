@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import ch.hearc.miscellaneoustest.handpoker.cards.Card;
@@ -71,28 +72,71 @@ public class HandsPokerMap
 
 		CardSubset outs = new CardSubset();
 		int handRank = getHand(hand).getRank();
-		String handType = getHand(hand).getHandName();
+		HandType handType = getHand(hand).getHandType();
 
 		for(Card card:deck)
 		{
 			//TODO: mettre une value sur le nom de la main
 			//TODO: enlever les kicker des suites ouvertes
+			//TODO:si sur les 4 cartes on complete la sute par le bas, ce n'est pas un out
 			CardSubset cardSubsetTemp = hand.cloneOf();
 			cardSubsetTemp.add(card);
 			Hand newHand = new ComputeBestHandInASubset(cardSubsetTemp).getHighestHand();
 			int newHandRank = getHand(newHand).getRank();
-			String newHandType = getHand(newHand).getHandName();
+			HandType newHandType = getHand(newHand).getHandType();
 
 			Board newBoard = board.cloneOf();
 			newBoard.add(card);
 			int newBoardRank = getHand(newBoard.getKey(deck)).getRank();
-			String newBoardType = getHand(newBoard.getKey(deck)).getHandName();
+			HandType newBoardType = getHand(newBoard.getKey(deck)).getHandType();
 
 			// Is the new hand better than the old one?
-			boolean handImproved = newHandRank < handRank && !handType.equals(newHandType);
+			boolean handImproved = newHandRank < handRank && newHandType.getIntValue() > handType.getIntValue();
 
-			// Is the new hand better than the new board? (elimine the kicker)
-			boolean handStrongerThanBoard = newHandRank < newBoardRank && !newHandType.equals(newBoardType);
+			// Is the new hand better than the new board? (eliminate the kickers)
+			boolean handStrongerThanBoard = newHandType.getIntValue() > newBoardType.getIntValue();
+
+			if (handType == HandType.OnePair)
+			{
+				handStrongerThanBoard = newHandType.getIntValue() - newBoardType.getIntValue() > 1; // We want a three of a kind minimum
+			}
+
+			if (handType == HandType.HighCard && newHandType == HandType.OnePair)
+			{
+				if (handStrongerThanBoard) // Pair with a pocket card
+				{
+					int i = 0;
+					Iterator<Card> iterator = board.iterator();
+					while(iterator.hasNext())
+					{
+						Iterator<Card> pocketIterator = pocket.iterator();
+						Card boardCard = iterator.next();
+						while(pocketIterator.hasNext())
+						{
+							if (boardCard.getValue().getIntValue() > pocketIterator.next().getValue().getIntValue()) // when the pocket is lower than the board
+							{
+								i++;
+								break;
+							}
+						}
+					}
+					if (i == 3)
+					{
+						handStrongerThanBoard = true;
+					}
+					else
+					{
+						iterator = newBoard.iterator();
+						while(iterator.hasNext())
+						{
+							if (iterator.next().getValue().getIntValue() > card.getValue().getIntValue())
+							{
+								handStrongerThanBoard = false;
+							}
+						}
+					}
+				}
+			}
 
 			// If the hand improved then we have an out
 			if (handImproved && handStrongerThanBoard)
@@ -136,7 +180,7 @@ public class HandsPokerMap
 			{
 				String[] values = line.split(SEPARATOR);
 
-				hands.put(values[INDEX_KEY], new HandsPokerValue(Integer.valueOf(values[INDEX_RANK]), values[INDEX_HAND_NAME]));
+				hands.put(values[INDEX_KEY], new HandsPokerValue(Integer.valueOf(values[INDEX_RANK]), values[INDEX_HAND_NAME], values[INDEX_HAND_NAME]));
 			}
 
 			br.close();
