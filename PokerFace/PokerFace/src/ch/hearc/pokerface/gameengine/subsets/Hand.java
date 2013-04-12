@@ -3,6 +3,8 @@ package ch.hearc.pokerface.gameengine.subsets;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.cards.CardColor;
+import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
+import ch.hearc.pokerface.gameengine.compute.HandsPokerValue;
 
 public class Hand extends CardSubset
 {
@@ -52,5 +54,11 @@ public class Hand extends CardSubset
 			stringBuilder.append("s");
 		}
 		return stringBuilder.toString();
+	}
+
+	public HandsPokerValue getHandsPokerValue()
+	{
+		HandsPokerMap hps = HandsPokerMap.getInstance();
+		return hps.getHand(this);
 	}
 }

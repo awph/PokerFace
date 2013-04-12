@@ -27,7 +27,5 @@ public class Pocket extends CardSubset
 			super.add(c);
 		}
 	}
-
-
 }
 

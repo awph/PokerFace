@@ -22,14 +22,27 @@ public class HandsPokerMap
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private static final String				FILENAME		= "pokerHands.txt";
-	private static final String				SEPARATOR		= ";";
-	private static final int				INDEX_KEY		= 1;
-	private static final int				INDEX_RANK		= 0;
-	private static final int				INDEX_HAND_NAME	= 2;
+	private static final String				FILENAME				= "pokerHands.txt";
+	private static final String				SEPARATOR				= ";";
+	private static final int				INDEX_RANK				= 0;
+	private static final int				INDEX_KEY				= 1;
+	private static final int				INDEX_SHORT_HAND_NAME	= 2;
+	private static final int				INDEX_HAND_NAME			= 3;
+
 	private static HandsPokerMap			instance;
 
 	private Map<String, HandsPokerValue>	hands;
+
+
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+
+	private HandsPokerMap()
+	{
+		hands = new HashMap<String, HandsPokerValue>();
+		fill();
+	}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
@@ -37,14 +50,7 @@ public class HandsPokerMap
 
 	public HandsPokerValue getHand(String key)
 	{
-		try
-		{
-			return hands.get(new String(key.toCharArray()));
-		}
-		catch (NullPointerException e)
-		{
-			return null;
-		}
+		return hands.get(key);
 	}
 
 	public HandsPokerValue getHand(Hand hand)
@@ -180,7 +186,7 @@ public class HandsPokerMap
 			{
 				String[] values = line.split(SEPARATOR);
 
-				hands.put(values[INDEX_KEY], new HandsPokerValue(Integer.valueOf(values[INDEX_RANK]), values[INDEX_HAND_NAME], values[INDEX_HAND_NAME]));
+				hands.put(values[INDEX_KEY], new HandsPokerValue(Integer.valueOf(values[INDEX_RANK]), values[INDEX_HAND_NAME], values[INDEX_SHORT_HAND_NAME]));
 			}
 
 			br.close();
@@ -194,16 +200,5 @@ public class HandsPokerMap
 		{
 			System.err.println("Error during reading file !");
 		}
-
-	}
-
-	/*------------------------------------------------------------------*\
-	|*							Constructeurs							*|
-	\*------------------------------------------------------------------*/
-
-	private HandsPokerMap()
-	{
-		hands = new HashMap<String, HandsPokerValue>();
-		fill();
 	}
 }

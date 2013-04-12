@@ -73,7 +73,6 @@ public class Card implements Comparable<Card>
 		return new Card(this);
 	}
 
-
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
@@ -88,4 +87,27 @@ public class Card implements Comparable<Card>
 		return color;
 	}
 
+	public String getId()
+	{
+		StringBuilder sb = new StringBuilder(value.getStringValue());
+
+		if(color == CardColor.Clubs)
+		{
+			sb.append("c");
+		}
+		else if(color == CardColor.Diamonds)
+		{
+			sb.append("d");
+		}
+		else if(color == CardColor.Hearts)
+		{
+			sb.append("h");
+		}
+		else
+		{
+			sb.append("s");
+		}
+
+		return sb.toString();
+	}
 }

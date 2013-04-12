@@ -83,7 +83,7 @@ public class CardSubset implements Iterable<Card>
 	{
 		for(Card card:subset2.cards)
 		{
-			remove(card); //TODO: error si card n'existe pas
+			remove(card);
 		}
 	}
 

@@ -3,6 +3,7 @@ package ch.hearc.pokerface.gameengine.subsets;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
+import ch.hearc.pokerface.gameengine.compute.HandsPokerValue;
 
 public class Board extends CardSubset
 {
@@ -92,5 +93,11 @@ public class Board extends CardSubset
 			}
 		}
 		return null;//TODO: make getRank au lieu de getKey
+	}
+
+	public HandsPokerValue getHandsPokerValue(String key)
+	{
+		HandsPokerMap hps = HandsPokerMap.getInstance();
+		return hps.getHand(key);
 	}
 }

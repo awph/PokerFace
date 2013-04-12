@@ -31,8 +31,10 @@ public class ComputeBestHand
 		{
 			System.err.println("Size Error");//TODO : Find a better way to do it
 		}
-
-		allCards = actualHand;
+		else
+		{
+			allCards = actualHand;
+		}
 	}
 
 	/*------------------------------*\
