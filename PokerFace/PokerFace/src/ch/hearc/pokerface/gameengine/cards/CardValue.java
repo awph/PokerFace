@@ -1,10 +1,9 @@
 
-package ch.hearc.miscellaneoustest.handpoker;
+package ch.hearc.pokerface.gameengine.cards;
 
-
-public enum HandType
+public enum CardValue
 {
-	HighCard("HC", 1), OnePair("1P", 2), TwoPair("2P", 3), ThreeOfKind("3K", 4), Straight("S", 5), Flush("F", 6), FullHouse("FH", 7), FourOfKind("4K", 8), StraightFlush("SF", 9);
+	Two("2", 1), Three("3", 2), Four("4", 3), Five("5", 4), Six("6", 5), Seven("7", 6), Eight("8", 7), Nine("9", 8), Ten("T", 9), Jack("J", 10), Queen("Q", 11), King("K", 12), Ace("A", 13);
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -17,7 +16,7 @@ public enum HandType
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	private HandType(String valString, int valInt)
+	private CardValue(String valString, int valInt)
 	{
 		valueString = valString;
 		valueInt = valInt;
@@ -47,4 +46,3 @@ public enum HandType
 		return valueString;
 	}
 }
-

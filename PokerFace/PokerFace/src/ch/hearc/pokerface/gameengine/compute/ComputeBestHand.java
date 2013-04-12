@@ -1,11 +1,11 @@
 
-package ch.hearc.miscellaneoustest.handpoker;
+package ch.hearc.pokerface.gameengine.compute;
 
-import ch.hearc.miscellaneoustest.handpoker.cards.Card;
-import ch.hearc.miscellaneoustest.handpoker.subset.CardSubset;
-import ch.hearc.miscellaneoustest.handpoker.subset.Hand;
+import ch.hearc.pokerface.gameengine.cards.Card;
+import ch.hearc.pokerface.gameengine.subsets.CardSubset;
+import ch.hearc.pokerface.gameengine.subsets.Hand;
 
-public class ComputeBestHandInASubset
+public class ComputeBestHand
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -25,7 +25,7 @@ public class ComputeBestHandInASubset
 	/**
 	 * Size minimum 5
 	 */
-	public ComputeBestHandInASubset(CardSubset actualHand)
+	public ComputeBestHand(CardSubset actualHand)
 	{
 		if (actualHand.size() < LENGTH_HAND)
 		{

@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneoustest.handpoker;
+package ch.hearc.pokerface.gameengine.compute;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -9,12 +9,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import ch.hearc.miscellaneoustest.handpoker.cards.Card;
-import ch.hearc.miscellaneoustest.handpoker.subset.Board;
-import ch.hearc.miscellaneoustest.handpoker.subset.CardSubset;
-import ch.hearc.miscellaneoustest.handpoker.subset.Deck;
-import ch.hearc.miscellaneoustest.handpoker.subset.Hand;
-import ch.hearc.miscellaneoustest.handpoker.subset.Pocket;
+import ch.hearc.pokerface.gameengine.cards.Card;
+import ch.hearc.pokerface.gameengine.subsets.Board;
+import ch.hearc.pokerface.gameengine.subsets.CardSubset;
+import ch.hearc.pokerface.gameengine.subsets.Deck;
+import ch.hearc.pokerface.gameengine.subsets.Hand;
+import ch.hearc.pokerface.gameengine.subsets.Pocket;
 
 public class HandsPokerMap
 {
@@ -81,7 +81,7 @@ public class HandsPokerMap
 			//TODO:si sur les 4 cartes on complete la sute par le bas, ce n'est pas un out
 			CardSubset cardSubsetTemp = hand.cloneOf();
 			cardSubsetTemp.add(card);
-			Hand newHand = new ComputeBestHandInASubset(cardSubsetTemp).getHighestHand();
+			Hand newHand = new ComputeBestHand(cardSubsetTemp).getHighestHand();
 			int newHandRank = getHand(newHand).getRank();
 			HandType newHandType = getHand(newHand).getHandType();
 

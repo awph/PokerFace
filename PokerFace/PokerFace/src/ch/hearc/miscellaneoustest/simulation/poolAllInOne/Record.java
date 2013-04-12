@@ -1,7 +1,7 @@
 
 package ch.hearc.miscellaneoustest.simulation.poolAllInOne;
 
-import ch.hearc.miscellaneoustest.handpoker.cards.Card;
+import ch.hearc.pokerface.gameengine.cards.Card;
 
 
 public class Record

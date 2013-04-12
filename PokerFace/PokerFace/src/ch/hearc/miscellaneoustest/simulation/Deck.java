@@ -3,10 +3,10 @@ package ch.hearc.miscellaneoustest.simulation;
 
 import java.util.Iterator;
 
-import ch.hearc.miscellaneoustest.handpoker.cards.Card;
-import ch.hearc.miscellaneoustest.handpoker.cards.CardColor;
-import ch.hearc.miscellaneoustest.handpoker.cards.CardValue;
-import ch.hearc.miscellaneoustest.handpoker.subset.CardSubset;
+import ch.hearc.pokerface.gameengine.cards.Card;
+import ch.hearc.pokerface.gameengine.cards.CardColor;
+import ch.hearc.pokerface.gameengine.cards.CardValue;
+import ch.hearc.pokerface.gameengine.subsets.CardSubset;
 
 public class Deck extends CardSubset
 {

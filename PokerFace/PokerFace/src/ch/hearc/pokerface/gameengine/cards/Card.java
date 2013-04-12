@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneoustest.handpoker.cards;
+package ch.hearc.pokerface.gameengine.cards;
 
 public class Card implements Comparable<Card>
 {

@@ -1,8 +1,9 @@
 
-package ch.hearc.miscellaneoustest.handpoker;
+package ch.hearc.pokerface.gameengine.compute;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class HandsPokerValue implements Comparable<HandsPokerValue>
 {

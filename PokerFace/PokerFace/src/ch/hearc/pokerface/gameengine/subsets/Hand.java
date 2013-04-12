@@ -1,8 +1,8 @@
 
-package ch.hearc.miscellaneoustest.handpoker.subset;
+package ch.hearc.pokerface.gameengine.subsets;
 
-import ch.hearc.miscellaneoustest.handpoker.cards.Card;
-import ch.hearc.miscellaneoustest.handpoker.cards.CardColor;
+import ch.hearc.pokerface.gameengine.cards.Card;
+import ch.hearc.pokerface.gameengine.cards.CardColor;
 
 public class Hand extends CardSubset
 {

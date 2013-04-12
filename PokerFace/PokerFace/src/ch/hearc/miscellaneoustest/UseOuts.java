@@ -1,13 +1,14 @@
 
-package ch.hearc.miscellaneoustest.handpoker;
+package ch.hearc.miscellaneoustest;
 
-import ch.hearc.miscellaneoustest.handpoker.cards.Card;
-import ch.hearc.miscellaneoustest.handpoker.cards.CardColor;
-import ch.hearc.miscellaneoustest.handpoker.cards.CardValue;
-import ch.hearc.miscellaneoustest.handpoker.subset.Board;
-import ch.hearc.miscellaneoustest.handpoker.subset.Pocket;
+import ch.hearc.pokerface.gameengine.cards.Card;
+import ch.hearc.pokerface.gameengine.cards.CardColor;
+import ch.hearc.pokerface.gameengine.cards.CardValue;
+import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
+import ch.hearc.pokerface.gameengine.subsets.Board;
+import ch.hearc.pokerface.gameengine.subsets.Pocket;
 
-public class Use
+public class UseOuts
 {
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|

@@ -4,16 +4,16 @@ package ch.hearc.miscellaneoustest.simulation.Combinaison2Cards;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentMap;
 
-import ch.hearc.miscellaneoustest.handpoker.ComputeBestHandInASubset;
-import ch.hearc.miscellaneoustest.handpoker.HandsPokerMap;
-import ch.hearc.miscellaneoustest.handpoker.cards.Card;
-import ch.hearc.miscellaneoustest.handpoker.cards.CardColor;
-import ch.hearc.miscellaneoustest.handpoker.cards.CardValue;
-import ch.hearc.miscellaneoustest.handpoker.subset.Board;
-import ch.hearc.miscellaneoustest.handpoker.subset.CardSubset;
-import ch.hearc.miscellaneoustest.handpoker.subset.Hand;
-import ch.hearc.miscellaneoustest.handpoker.subset.Pocket;
 import ch.hearc.miscellaneoustest.simulation.Deck;
+import ch.hearc.pokerface.gameengine.cards.Card;
+import ch.hearc.pokerface.gameengine.cards.CardColor;
+import ch.hearc.pokerface.gameengine.cards.CardValue;
+import ch.hearc.pokerface.gameengine.compute.ComputeBestHand;
+import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
+import ch.hearc.pokerface.gameengine.subsets.Board;
+import ch.hearc.pokerface.gameengine.subsets.CardSubset;
+import ch.hearc.pokerface.gameengine.subsets.Hand;
+import ch.hearc.pokerface.gameengine.subsets.Pocket;
 
 
 public class SimStat2CardsCombinaison
@@ -130,7 +130,7 @@ public class SimStat2CardsCombinaison
 				board.add(d.getNewCard());
 			}
 
-			bestHandPlayer = new ComputeBestHandInASubset(CardSubset.union(handPlayers, board)).getHighestHand();
+			bestHandPlayer = new ComputeBestHand(CardSubset.union(handPlayers, board)).getHighestHand();
 
 			data.addTime(hpm.getHand(bestHandPlayer).getHandName());
 		}

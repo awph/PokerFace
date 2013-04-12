@@ -1,9 +1,9 @@
 
-package ch.hearc.miscellaneoustest.handpoker.cards;
+package ch.hearc.pokerface.gameengine.cards;
 
-public enum CardValue
+public enum CardColor
 {
-	Two("2", 1), Three("3", 2), Four("4", 3), Five("5", 4), Six("6", 5), Seven("7", 6), Eight("8", 7), Nine("9", 8), Ten("T", 9), Jack("J", 10), Queen("Q", 11), King("K", 12), Ace("A", 13);
+	Diamonds("\u2666", 1), Hearts("\u2665", 2), Spades("\u2660", 3), Clubs("\u2663", 4);
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -16,7 +16,7 @@ public enum CardValue
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	private CardValue(String valString, int valInt)
+	private CardColor(String valString, int valInt)
 	{
 		valueString = valString;
 		valueInt = valInt;
@@ -45,4 +45,5 @@ public enum CardValue
 	{
 		return valueString;
 	}
+
 }

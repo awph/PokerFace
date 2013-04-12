@@ -1,9 +1,10 @@
 
-package ch.hearc.miscellaneoustest.handpoker.cards;
+package ch.hearc.pokerface.gameengine.compute;
 
-public enum CardColor
+
+public enum HandType
 {
-	Diamonds("\u2666", 1), Hearts("\u2665", 2), Spades("\u2660", 3), Clubs("\u2663", 4);
+	HighCard("HC", 1), OnePair("1P", 2), TwoPair("2P", 3), ThreeOfKind("3K", 4), Straight("S", 5), Flush("F", 6), FullHouse("FH", 7), FourOfKind("4K", 8), StraightFlush("SF", 9);
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -16,7 +17,7 @@ public enum CardColor
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	private CardColor(String valString, int valInt)
+	private HandType(String valString, int valInt)
 	{
 		valueString = valString;
 		valueInt = valInt;
@@ -45,5 +46,5 @@ public enum CardColor
 	{
 		return valueString;
 	}
-
 }
+

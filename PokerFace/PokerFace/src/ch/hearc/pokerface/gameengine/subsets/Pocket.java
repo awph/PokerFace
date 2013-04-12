@@ -1,7 +1,7 @@
 
-package ch.hearc.miscellaneoustest.handpoker.subset;
+package ch.hearc.pokerface.gameengine.subsets;
 
-import ch.hearc.miscellaneoustest.handpoker.cards.Card;
+import ch.hearc.pokerface.gameengine.cards.Card;
 
 
 public class Pocket extends CardSubset
