@@ -75,6 +75,11 @@ public class HandsPokerValue implements Comparable<HandsPokerValue>
 		return this.handName;
 	}
 
+	public String getShortHandName()
+	{
+		return this.handType.getStringValue();
+	}
+
 	public HandType getHandType()
 	{
 		return this.handType;

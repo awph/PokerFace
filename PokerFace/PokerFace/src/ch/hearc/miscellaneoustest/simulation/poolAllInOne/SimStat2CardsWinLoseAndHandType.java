@@ -18,6 +18,7 @@ import ch.hearc.pokerface.gameengine.cards.CardValue;
 import ch.hearc.pokerface.gameengine.compute.ComputeBestHand;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerValue;
+import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.subsets.Board;
 import ch.hearc.pokerface.gameengine.subsets.CardSubset;
 import ch.hearc.pokerface.gameengine.subsets.Hand;
@@ -25,7 +26,7 @@ import ch.hearc.pokerface.gameengine.subsets.Pocket;
 
 public class SimStat2CardsWinLoseAndHandType
 {
-	private static final int					NB_SIMULATION		= 1000000000;
+	private static final int					NB_SIMULATION		= 1000;
 	private static final int					NB_CARDS_IN_BOARD	= 5;
 	private static final int					NB_TOT_PLAYERS		= 2;
 	private static final int					NB_CORE				= Runtime.getRuntime().availableProcessors();
@@ -89,7 +90,13 @@ public class SimStat2CardsWinLoseAndHandType
 
 		System.out.println("Time : " + (System.currentTimeMillis() - start)/1000.0 + "sec");
 
-		Method.displayMap(charts);
+		XMLWriter xmlw = new XMLWriter(charts, NB_TOT_PLAYERS, StateType.PreFlopState, "file");
+		xmlw.write();
+		/*Pocket p = new Pocket();
+		p.add(new Card(CardValue.Eight,CardColor.Clubs));
+		p.add(new Card(CardValue.Nine,CardColor.Hearts));
+		System.out.println(Statistics.getPreFlopValues(p, 2));*/
+		//Method.displayMap(charts);
 		//Method.writeMap(charts, "Stats2Cards_WinLose.txt");
 	}
 
@@ -168,7 +175,7 @@ public class SimStat2CardsWinLoseAndHandType
 				{
 					data.addWin();
 				}
-				data.addTime(bestHandHumanPlayer.getHandName());
+				data.addTime(bestHandHumanPlayer.getShortHandName());
 			}
 			return null;
 		}

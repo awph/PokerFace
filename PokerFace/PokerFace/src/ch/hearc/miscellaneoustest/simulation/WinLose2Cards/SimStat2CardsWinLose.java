@@ -18,7 +18,7 @@ import ch.hearc.pokerface.gameengine.subsets.Pocket;
 
 public class SimStat2CardsWinLose
 {
-	private static final int					NB_SIMULATION		= 10000;
+	private static final int					NB_SIMULATION		= 1000;
 	private static final int					NB_CARDS_IN_BOARD	= 5;
 	private static final int					NB_TOT_PLAYERS		= 2;
 	private static final int					NB_CORE				= Runtime.getRuntime().availableProcessors();

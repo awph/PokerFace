@@ -52,6 +52,11 @@ public class Data
 		return map.entrySet();
 	}
 
+	public double getWin()
+	{
+		return (double)nbWin / (double)nbTime * 100;
+	}
+
 	public int getTotal()
 	{
 		return nbTime;
@@ -70,7 +75,7 @@ public class Data
 		builder.append(this.map);
 		builder.append("]");
 		DecimalFormat df = new DecimalFormat("#.##");
-		return String.valueOf(df.format((double)nbWin / (double)nbTime * 100)) + "\n" + builder.toString();
+		return String.valueOf(df.format(getWin()) + "\n" + builder.toString());
 	}
 
 }
