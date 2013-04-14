@@ -1,32 +1,22 @@
 
 package ch.hearc.pokerface.gameengine.gamecore.state;
 
+import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
+
 
 public abstract class State
 {
 	/*------------------------------------------------------------------*\
-	|*							Attributs Private						*|
-	\*------------------------------------------------------------------*/
-
-	/*------------------------------------------------------------------*\
-	|*							Constructeurs							*|
-	\*------------------------------------------------------------------*/
-
-	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
-
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
 	/*------------------------------------------------------------------*\
-	|*							Methodes Private						*|
+	|*							Methodes Abstract						*|
 	\*------------------------------------------------------------------*/
 
+	public abstract void nextSate(GameEngine ge);
+	public abstract void nextPlayer(GameEngine ge);
+	public abstract void addCads(GameEngine ge);
+	public abstract void bet(GameEngine ge);
 }
 
