@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneoustest.simulation.WinLose2Cards;
+package ch.hearc.miscellaneoustest.simulation.common;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 

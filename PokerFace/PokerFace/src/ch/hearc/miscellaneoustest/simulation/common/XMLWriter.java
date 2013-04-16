@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneoustest.simulation.poolAllInOne;
+package ch.hearc.miscellaneoustest.simulation.common;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -19,6 +19,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
+import ch.hearc.pokerface.gameengine.statistics.simulation.Data;
 
 public class XMLWriter
 {
@@ -28,7 +29,7 @@ public class XMLWriter
 
 	private ConcurrentMap<String, Data>	map;
 	private int							nbPlayer;
-	private StateType						phaseName;
+	private StateType					phaseName;
 	private String						filename;
 
 	/*------------------------------------------------------------------*\
@@ -86,10 +87,10 @@ public class XMLWriter
 				pocket.setAttributeNode(pocketAttr);
 
 				Data d = l.getValue();
-				double tot = d.getTotal();
+				double tot = d.getNbTime();
 
 				Element e = doc.createElement("Win");
-				e.appendChild(doc.createTextNode(df.format(d.getWin())));
+				e.appendChild(doc.createTextNode(df.format(d.getWinPercentage())));
 				pocket.appendChild(e);
 
 				Set<Entry<String, Integer>> entry2 = d.getEntrySet();
@@ -97,7 +98,7 @@ public class XMLWriter
 				{
 					//We can't begin with a number, so we have to reverse the order of the letters
 					Element elem = doc.createElement(new StringBuffer(l2.getKey()).reverse().toString());
-					elem.appendChild(doc.createTextNode(df.format(l2.getValue()/tot*100.0)));
+					elem.appendChild(doc.createTextNode(df.format(l2.getValue() / tot * 100.0)));
 					pocket.appendChild(elem);
 				}
 			}
@@ -106,7 +107,7 @@ public class XMLWriter
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File(filename+".xml"));
+			StreamResult result = new StreamResult(new File(filename + ".xml"));
 
 			transformer.transform(source, result);
 		}

@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneoustest.simulation.poolAllInOne;
+package ch.hearc.miscellaneoustest.simulation.preflop;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -11,7 +11,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import ch.hearc.miscellaneoustest.simulation.Deck;
+import ch.hearc.miscellaneoustest.simulation.common.Method;
+import ch.hearc.miscellaneoustest.simulation.common.Record;
+import ch.hearc.miscellaneoustest.simulation.common.XMLWriter;
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.cards.CardColor;
 import ch.hearc.pokerface.gameengine.cards.CardValue;
@@ -19,12 +21,14 @@ import ch.hearc.pokerface.gameengine.compute.ComputeBestHand;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerValue;
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
+import ch.hearc.pokerface.gameengine.statistics.simulation.Data;
 import ch.hearc.pokerface.gameengine.subsets.Board;
 import ch.hearc.pokerface.gameengine.subsets.CardSubset;
+import ch.hearc.pokerface.gameengine.subsets.Deck;
 import ch.hearc.pokerface.gameengine.subsets.Hand;
 import ch.hearc.pokerface.gameengine.subsets.Pocket;
 
-public class SimStat2CardsWinLoseAndHandType
+public class UsePreFlopSim
 {
 	private static final int					NB_SIMULATION		= 1000;
 	private static final int					NB_CARDS_IN_BOARD	= 5;
@@ -140,8 +144,8 @@ public class SimStat2CardsWinLoseAndHandType
 			for(int i = 0; i < NB_SIMULATION; ++i)
 			{
 				Deck d = new Deck();
-				d.remove(c1, true);
-				d.remove(c2, true);
+				d.removeByValue(c1);
+				d.removeByValue(c2);
 				Board board = new Board();
 
 				for(int j = 1; j < NB_TOT_PLAYERS; ++j)//Start at 1, because first hand was generated

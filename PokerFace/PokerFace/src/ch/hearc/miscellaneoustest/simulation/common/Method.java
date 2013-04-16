@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneoustest.simulation.poolAllInOne;
+package ch.hearc.miscellaneoustest.simulation.common;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -11,6 +11,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+
+import ch.hearc.pokerface.gameengine.statistics.simulation.Data;
 
 
 public class Method

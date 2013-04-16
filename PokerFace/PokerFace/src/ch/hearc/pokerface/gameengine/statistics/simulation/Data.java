@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneoustest.simulation.poolAllInOne;
+package ch.hearc.pokerface.gameengine.statistics.simulation;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -41,30 +41,20 @@ public class Data
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public void addTime(String key)
-	{
-		nbTime++;
-		map.put(key, map.get(key) + 1);
-	}
 
-	public Set<Entry<String, Integer>> getEntrySet()
+	public void union(Data d2)
 	{
-		return map.entrySet();
-	}
-
-	public double getWin()
-	{
-		return (double)nbWin / (double)nbTime * 100;
-	}
-
-	public int getTotal()
-	{
-		return nbTime;
-	}
-
-	public void addWin()
-	{
-		nbWin++;
+		nbWin += d2.getNumberOfWin();
+		nbTime += d2.getNbTime();
+		map.put("SF",map.get("SF")+d2.map.get("SF"));
+		map.put("4K",map.get("4K")+d2.map.get("4K"));
+		map.put("FH",map.get("FH")+d2.map.get("FH"));
+		map.put("F",map.get("F")+d2.map.get("F"));
+		map.put("S",map.get("S")+d2.map.get("S"));
+		map.put("3K",map.get("3K")+d2.map.get("3K"));
+		map.put("2P",map.get("2P")+d2.map.get("2P"));
+		map.put("1P",map.get("1P")+d2.map.get("1P"));
+		map.put("HC",map.get("HC")+d2.map.get("HC"));
 	}
 
 	@Override
@@ -75,7 +65,46 @@ public class Data
 		builder.append(this.map);
 		builder.append("]");
 		DecimalFormat df = new DecimalFormat("#.##");
-		return String.valueOf(df.format(getWin()) + "\n" + builder.toString());
+		return String.valueOf(df.format(getWinPercentage()) + "\n" + builder.toString());
 	}
 
+	public void addTime(String key)
+	{
+		nbTime++;
+		map.put(key, map.get(key) + 1);
+	}
+
+	public void addWin()
+	{
+		nbWin++;
+	}
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
+	public Set<Entry<String, Integer>> getEntrySet()
+	{
+		return map.entrySet();
+	}
+
+	public Map<String, Integer> getMap()
+	{
+		return map;
+	}
+
+	public int getNumberOfWin()
+	{
+		return nbWin;
+	}
+
+	public double getWinPercentage()
+	{
+		return (double)nbWin / (double)nbTime * 100;
+	}
+
+	public int getNbTime()
+	{
+		return nbTime;
+	}
 }

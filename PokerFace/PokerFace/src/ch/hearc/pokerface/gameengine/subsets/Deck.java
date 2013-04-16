@@ -74,9 +74,38 @@ public class Deck extends CardSubset
 		add(new Card(CardValue.King, CardColor.Spades));
 	}
 
+	public Deck(Deck d)
+	{
+		super();
+
+		for(Card c:d)
+		{
+			add(c.cloneOf());
+		}
+	}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
+
+	public void removeByValue(Card c)
+	{
+		Iterator<Card> it = this.iterator();
+
+		while(it.hasNext())
+		{
+			Card temp = it.next();
+			if (temp.equals(c))
+			{
+				remove(temp);
+				break;
+			}
+		}
+	}
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
 
 	public Card getNewCard()
 	{
@@ -94,5 +123,4 @@ public class Deck extends CardSubset
 
 		return c;
 	}
-
 }
