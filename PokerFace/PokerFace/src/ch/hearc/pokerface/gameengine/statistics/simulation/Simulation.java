@@ -121,8 +121,7 @@ public class Simulation
 
 		Map<String,Integer> map = d.getMap();
 		double nbTime = d.getNbTime();
-
-		return new StatisticValue(d.getWinPercentage(), map.get("SF")/nbTime*100, map.get("4K")/nbTime*100, map.get("FH")/nbTime*100, map.get("F")/nbTime*100, map.get("S")/nbTime*100, map.get("3K")/nbTime*100, map.get("2P")/nbTime*100, map.get("1P")/nbTime*100, map.get("HC")/nbTime*100);
+		return new StatisticValue(d.getWinPercentage(),d.getTiePercentage(),d.getLossPercentage(),d.getAverageOpponantWinner(), map.get("SF")/nbTime*100, map.get("4K")/nbTime*100, map.get("FH")/nbTime*100, map.get("F")/nbTime*100, map.get("S")/nbTime*100, map.get("3K")/nbTime*100, map.get("2P")/nbTime*100, map.get("1P")/nbTime*100, map.get("HC")/nbTime*100);
 	}
 
 	private Callable<Void> simulatorCallable(final int index)
@@ -138,6 +137,10 @@ public class Simulation
 				playersPocket[0] = pocket;
 
 				HandsPokerMap hpm = HandsPokerMap.getInstance();
+
+				int nbOpponantWinner = 0;
+				int resultHandComparaison = 0;
+				int stateOfHumanPlayer = 1;//1 -> win, 0 -> tie, -1 -> lose
 
 				for(int i = 0; i < NB_SIMULATION_PER_THREAD; ++i)
 				{
@@ -161,20 +164,41 @@ public class Simulation
 						bestHandPlayers[j] = new ComputeBestHand(CardSubset.union(playersPocket[j], b)).getHighestHand();
 					}
 
-					boolean isHumanPlayerBest = true;
 					HandsPokerValue bestHandHumanPlayer = hpm.getHand(bestHandPlayers[0]);
-
-					for(int j = 1; isHumanPlayerBest && j < nbPlayer; ++j)
+					nbOpponantWinner = 0;
+					resultHandComparaison = 0;
+					stateOfHumanPlayer = 1;//1 -> win, 0 -> tie, -1 -> lose
+					for(int j = 1;j < nbPlayer; ++j)
 					{
-						if (hpm.getHand(bestHandPlayers[j]).compareTo(bestHandHumanPlayer) > 0)
+						resultHandComparaison = hpm.getHand(bestHandPlayers[j]).compareTo(bestHandHumanPlayer);
+						if (resultHandComparaison > 0)//Lose
 						{
-							isHumanPlayerBest = false;
+							stateOfHumanPlayer = -1;
+							nbOpponantWinner++;
+						}
+						else if(resultHandComparaison == 0 && stateOfHumanPlayer != -1)//Tie
+						{
+							stateOfHumanPlayer = 0;
+							nbOpponantWinner++;
 						}
 					}
 
-					if (isHumanPlayerBest)//The human player has the best hand
+					if (stateOfHumanPlayer == 1)//The human player has the best hand
 					{
 						datas[index].addWin();
+					}
+					else if(stateOfHumanPlayer == 0)
+					{
+						datas[index].addTie();
+					}
+					else
+					{
+						datas[index].addLoss();
+					}
+
+					if (stateOfHumanPlayer != 1)
+					{
+						datas[index].addWinnerOpponant(nbOpponantWinner);
 					}
 					datas[index].addTime(bestHandHumanPlayer.getShortHandName());
 				}

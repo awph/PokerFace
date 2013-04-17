@@ -14,7 +14,10 @@ public class Data
 	\*------------------------------------------------------------------*/
 
 	private int						nbWin;
+	private int						nbTie;
+	private int						nbLoss;
 	private int						nbTime;
+	private int						nbOpponantWinner;
 	private Map<String, Integer>	map;
 
 	/*------------------------------------------------------------------*\
@@ -24,7 +27,10 @@ public class Data
 	public Data()
 	{
 		nbWin = 0;
+		nbTie = 0;
+		nbLoss = 0;
 		nbTime = 0;
+		nbOpponantWinner = 0;
 		map = new HashMap<String, Integer>();
 		map.put("SF", 0);
 		map.put("4K", 0);
@@ -41,20 +47,22 @@ public class Data
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-
 	public void union(Data d2)
 	{
 		nbWin += d2.getNumberOfWin();
+		nbLoss += d2.getNumberOfLoss();
+		nbTie += d2.getNumberOfTie();
 		nbTime += d2.getNbTime();
-		map.put("SF",map.get("SF")+d2.map.get("SF"));
-		map.put("4K",map.get("4K")+d2.map.get("4K"));
-		map.put("FH",map.get("FH")+d2.map.get("FH"));
-		map.put("F",map.get("F")+d2.map.get("F"));
-		map.put("S",map.get("S")+d2.map.get("S"));
-		map.put("3K",map.get("3K")+d2.map.get("3K"));
-		map.put("2P",map.get("2P")+d2.map.get("2P"));
-		map.put("1P",map.get("1P")+d2.map.get("1P"));
-		map.put("HC",map.get("HC")+d2.map.get("HC"));
+		nbOpponantWinner += d2.getOpponantWinner();
+		map.put("SF", map.get("SF") + d2.map.get("SF"));
+		map.put("4K", map.get("4K") + d2.map.get("4K"));
+		map.put("FH", map.get("FH") + d2.map.get("FH"));
+		map.put("F", map.get("F") + d2.map.get("F"));
+		map.put("S", map.get("S") + d2.map.get("S"));
+		map.put("3K", map.get("3K") + d2.map.get("3K"));
+		map.put("2P", map.get("2P") + d2.map.get("2P"));
+		map.put("1P", map.get("1P") + d2.map.get("1P"));
+		map.put("HC", map.get("HC") + d2.map.get("HC"));
 	}
 
 	@Override
@@ -79,6 +87,21 @@ public class Data
 		nbWin++;
 	}
 
+	public void addLoss()
+	{
+		nbLoss++;
+	}
+
+	public void addTie()
+	{
+		nbTie++;
+	}
+
+	public void addWinnerOpponant(int n)
+	{
+		nbOpponantWinner += n;
+	}
+
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
@@ -98,13 +121,43 @@ public class Data
 		return nbWin;
 	}
 
-	public double getWinPercentage()
+	public int getNumberOfLoss()
 	{
-		return (double)nbWin / (double)nbTime * 100;
+		return nbLoss;
+	}
+
+	public int getNumberOfTie()
+	{
+		return nbTie;
 	}
 
 	public int getNbTime()
 	{
 		return nbTime;
+	}
+
+	public int getOpponantWinner()
+	{
+		return nbOpponantWinner;
+	}
+
+	public double getWinPercentage()
+	{
+		return (double)nbWin / (double)nbTime * 100;
+	}
+
+	public double getLossPercentage()
+	{
+		return (double)nbLoss / (double)nbTime * 100;
+	}
+
+	public double getTiePercentage()
+	{
+		return (double)nbTie / (double)nbTime * 100;
+	}
+
+	public double getAverageOpponantWinner()
+	{
+		return (double)nbOpponantWinner / (double)nbTime;
 	}
 }

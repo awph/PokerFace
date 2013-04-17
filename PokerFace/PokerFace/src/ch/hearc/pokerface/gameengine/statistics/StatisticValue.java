@@ -9,6 +9,9 @@ public class StatisticValue
 	\*------------------------------------------------------------------*/
 
 	private double win;
+	private double tie;
+	private double loss;
+	private double nbOpponantWinner;
 	private double straightFlush;
 	private double fourOfKind;
 	private double fullHouse;
@@ -25,6 +28,9 @@ public class StatisticValue
 
 	/**
 	 * @param win			value in percent of win
+	 * @param tie			value in percent of tie
+	 * @param loss			value in percent of loss
+	 * @param nbOpponantWinner	average of opponant winners
 	 * @param straightFlush value in percent of having a straight flush
 	 * @param fourOfKind	value in percent of having a 4 of a kind
 	 * @param fullHouse		value in percent of having a full house
@@ -35,9 +41,12 @@ public class StatisticValue
 	 * @param onePair		value in percent of having a 1
 	 * @param highCard		value in percent of having n highCard
 	 */
-	public StatisticValue(double win, double straightFlush, double fourOfKind, double fullHouse, double flush, double straight, double threeOfKind, double twoPairs, double onePair, double highCard)
+	public StatisticValue(double win,double tie,double loss,double nbOpponantWinner, double straightFlush, double fourOfKind, double fullHouse, double flush, double straight, double threeOfKind, double twoPairs, double onePair, double highCard)
 	{
 		this.win = win;
+		this.tie = tie;
+		this.loss = loss;
+		this.nbOpponantWinner = nbOpponantWinner;
 		this.straightFlush = straightFlush;
 		this.fourOfKind = fourOfKind;
 		this.fullHouse = fullHouse;
@@ -53,24 +62,18 @@ public class StatisticValue
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-
-
-
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
-	public double getWin()
-	{
-		return this.win;
-	}
-
 	@Override
 	public String toString()
 	{
 		StringBuilder builder = new StringBuilder();
 		builder.append("Win : ");
 		builder.append(this.win);
+		builder.append("\nTie : ");
+		builder.append(this.tie);
+		builder.append("\nLoss : ");
+		builder.append(this.loss);
+		builder.append("\nAvarage opponant winners : ");
+		builder.append(this.nbOpponantWinner);
 		builder.append("\nStraightFlush : ");
 		builder.append(this.straightFlush);
 		builder.append("\nFourOfKind : ");
@@ -90,6 +93,30 @@ public class StatisticValue
 		builder.append("\nHighCard : ");
 		builder.append(this.highCard);
 		return builder.toString();
+	}
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
+	public double getWin()
+	{
+		return win;
+	}
+
+	public double getTie()
+	{
+		return tie;
+	}
+
+	public double getLoss()
+	{
+		return loss;
+	}
+
+	public double getNbOpponantWinner()
+	{
+		return nbOpponantWinner;
 	}
 
 	public double getStraightFlush()
