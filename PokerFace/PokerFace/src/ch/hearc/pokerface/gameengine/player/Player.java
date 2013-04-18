@@ -19,6 +19,7 @@ public class Player
 	private Pocket		pocket;
 	private GameEngine	gameEngine;
 	private Profile		profile;
+	private Role role;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -63,7 +64,7 @@ public class Player
 
 	public void check()
 	{
-		gameEngine.bet();
+
 	}
 
 	public void bet(int amount)
@@ -102,6 +103,11 @@ public class Player
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
+
+	public void setRole(Role r)
+	{
+		role = r;
+	}
 
 	/*------------------------------*\
 	|*				Get				*|

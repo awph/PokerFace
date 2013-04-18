@@ -8,6 +8,12 @@ import ch.hearc.pokerface.gameengine.compute.HandsPokerValue;
 public class Board extends CardSubset
 {
 	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+
+	public static final int NUMBER_CARDS = 5;
+
+	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
@@ -32,7 +38,7 @@ public class Board extends CardSubset
 	@Override
 	public void add(Card c)
 	{
-		if (size() < 5)
+		if (size() < NUMBER_CARDS)
 		{
 			super.add(c);
 		}
