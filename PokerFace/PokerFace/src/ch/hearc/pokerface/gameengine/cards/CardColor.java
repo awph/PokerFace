@@ -45,5 +45,4 @@ public enum CardColor
 	{
 		return valueString;
 	}
-
 }

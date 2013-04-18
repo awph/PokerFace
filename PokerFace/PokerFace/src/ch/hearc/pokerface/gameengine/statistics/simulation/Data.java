@@ -158,6 +158,6 @@ public class Data
 
 	public double getAverageOpponantWinner()
 	{
-		return (double)nbOpponantWinner / (double)nbTime;
+		return nbOpponantWinner / ((double)nbLoss + (double)nbTie);
 	}
 }
