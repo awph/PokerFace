@@ -8,9 +8,9 @@ public class Pot
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private int betTotal;
-	private int turnTotal;
-	private int bet;
+	private int stateTotal;//Somme des enchères de l'état
+	private int turnTotal;//Somme total du tour
+	private int bet;//Somme minimale pour que le joueur puisse continuer à jouer
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -18,30 +18,42 @@ public class Pot
 
 	public Pot()
 	{
-
+		stateTotal = turnTotal = bet = 0;
 	}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public void addBet(int amount)
+	public void nextState()
 	{
-		bet += amount;
+		turnTotal += stateTotal;
+		stateTotal = bet = 0;
 	}
 
-	public void addBetTotal(int amount)
+	public void addStateTotal(int amount)
 	{
-		betTotal += amount;
+		if(amount > bet)
+		{
+			bet = amount;
+		}
+		stateTotal += amount;
+	}
+
+	public int nextTurn()
+	{
+		int total = turnTotal + stateTotal;
+		bet = turnTotal = stateTotal = 0;
+		return total;
 	}
 
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
 
-	public int getBetTotal()
+	public int getStateTotal()
 	{
-		return betTotal;
+		return stateTotal;
 	}
 
 	public int getTurnTotal()
