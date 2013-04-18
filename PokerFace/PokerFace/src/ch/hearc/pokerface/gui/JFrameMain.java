@@ -89,9 +89,6 @@ public class JFrameMain extends JFrame
 		/**
 		 * Adds
 		 */
-		/*BufferedImage myPicture = ImageIO.read(new File("D:\\f.jpg"));
-		JLabel picLabel = new JLabel(new ImageIcon( myPicture ));
-		panelTest.add( picLabel );*/
 
 		add(panelProfile, "panelProfile");
 		add(panelGameBoard, "panelGameBoard");
@@ -101,9 +98,9 @@ public class JFrameMain extends JFrame
 	private void control()
 	{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 		addWindowListener(new WindowAdapter()
 		{
-
 			@Override
 			public void windowClosing(WindowEvent arg0)
 			{

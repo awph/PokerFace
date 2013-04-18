@@ -35,7 +35,7 @@ public class JPanelProfile extends JPanel
 
 		geometry();
 		control();
-		apparence();
+		appearance();
 	}
 
 	/*------------------------------------------------------------------*\
@@ -100,7 +100,7 @@ public class JPanelProfile extends JPanel
 		});*/
 	}
 
-	private void apparence()
+	private void appearance()
 	{
 		setBackground(Color.GREEN);
 	}

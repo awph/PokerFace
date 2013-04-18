@@ -17,8 +17,6 @@ public class UseJFrameMain
 	public static void main()
 	{
 		new JFrameMain();
-
-
 	}
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
