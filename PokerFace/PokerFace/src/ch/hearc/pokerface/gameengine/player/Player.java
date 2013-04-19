@@ -47,6 +47,11 @@ public class Player
 		this.pocket = new Pocket();
 	}
 
+	public void endBettingState()
+	{
+		this.betSpending = 0;
+	}
+
 	public void giveMoney(int money)
 	{
 		turnSpending += money;//bankroll += money;
@@ -54,6 +59,8 @@ public class Player
 
 	public void takeMoney(int money)
 	{
+		turnSpending += money;
+		betSpending += money;
 		bankroll -= money;
 	}
 
@@ -64,23 +71,51 @@ public class Player
 
 	public void check()
 	{
-		gameEngine.bet(0);
+		if (betSpending == gameEngine.getPot().getStateTotal())
+		{
+			gameEngine.bet(0);
+		}
+		else
+		{
+			call();
+		}
 	}
 
 	public void bet(int amount)
 	{
-		gameEngine.bet(amount);
+		if (amount < bankroll)
+		{
+			gameEngine.bet(amount);
+		}
+		else
+		{
+			allIn();
+		}
 	}
 
 	public void call()
 	{
-		gameEngine.bet((gameEngine.getPot().getBet() - betSpending)); //TODO:
-
+		int amount = (gameEngine.getPot().getBet() - betSpending);
+		if (amount < bankroll)
+		{
+			gameEngine.bet(amount);
+		}
+		else
+		{
+			allIn();
+		}
 	}
 
 	public void raise(int amount)
 	{
-		gameEngine.bet(amount);
+		if (amount < bankroll)
+		{
+			gameEngine.bet(amount);
+		}
+		else
+		{
+			allIn();
+		}
 	}
 
 	/**
@@ -105,7 +140,7 @@ public class Player
 
 	public void removeTurningSpend(int amount)
 	{
-		turnSpending = (turnSpending - amount > 0) ? turnSpending-amount:0;
+		turnSpending = (turnSpending - amount > 0) ? turnSpending - amount : 0;
 	}
 
 	/*------------------------------*\

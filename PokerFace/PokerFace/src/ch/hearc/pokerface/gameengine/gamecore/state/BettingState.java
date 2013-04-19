@@ -24,6 +24,7 @@ public class BettingState extends State
 	@Override
 	public void bet(GameEngine ge)
 	{
+		//TODO: je sais pas ou mettre, mais il faut pas oublier que lors du bettingState, quand oldState == preflop, la petite et la grande blind mise automatiquement.
 		try
 		{
 			boolean allChecked = false;
@@ -34,7 +35,7 @@ public class BettingState extends State
 				int nbAllinPlayer = 0;
 				for(int j = 0; j < nbUnfoldedPlayer; ++j)
 				{
-					if(ge.getCurrentPlayer().getBankroll() != 0)//If all in
+					if (ge.getCurrentPlayer().getBankroll() != 0)//If all in
 					{
 						wait();
 					}
@@ -45,13 +46,15 @@ public class BettingState extends State
 
 					ge.changeCurrentPlayer();
 				}
-				allChecked = (ge.getPot().getBet() == betSpend || (nbUnfoldedPlayer-nbAllinPlayer) <= 1);
+				allChecked = (ge.getPot().getBet() == betSpend || (nbUnfoldedPlayer - nbAllinPlayer) <= 1);
 			}
 		}
 		catch (InterruptedException e)
 		{
 			e.printStackTrace();
 		}
+
+		//TODO: appeler endBettingState pour tous les joueurs.
 	}
 
 	@Override
