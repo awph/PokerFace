@@ -47,6 +47,10 @@ public class Pot
 		return total;
 	}
 
+	public void removeAmount(int amount)
+	{
+		turnTotal -= amount;
+	}
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/

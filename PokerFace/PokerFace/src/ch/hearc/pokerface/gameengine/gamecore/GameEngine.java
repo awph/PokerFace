@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.TreeMap;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
@@ -22,6 +24,7 @@ import ch.hearc.pokerface.gameengine.subsets.Board;
 import ch.hearc.pokerface.gameengine.subsets.CardSubset;
 import ch.hearc.pokerface.gameengine.subsets.Deck;
 import ch.hearc.pokerface.tools.Pair;
+import ch.hearc.pokerface.tools.Triple;
 
 public class GameEngine
 {
@@ -114,27 +117,36 @@ public class GameEngine
 
 		Collections.sort(handsValues);
 
-		Map<Integer, Pair<Integer,List<Player>>> playerSortByRank = new TreeMap<Integer, Pair<Integer,List<Player>>>();
+		//Map<Rank,Triple<groupPot,SumBets,List<Player>>>
+		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
 
 		for(Pair<HandsPokerValue, Player> pair:handsValues)
 		{
 			int rank = pair.getKey().getRank();
 			if (playerSortByRank.get(rank) == null)
 			{
-				playerSortByRank.put(rank, new Pair<Integer,List<Player>>(0,new ArrayList<Player>()));
+				playerSortByRank.put(rank, new Triple<Integer, Integer, List<Player>>(0, 0, new ArrayList<Player>()));
 			}
-			Pair<Integer,List<Player>> contentMap = playerSortByRank.get(rank);
-			if(pair.getValue().getTurnSpending() > contentMap.getKey())
-			{
-				contentMap.setKey(pair.getValue().getTurnSpending());
-			}
+			Triple<Integer, Integer, List<Player>> triple = playerSortByRank.get(rank);
+			int playerTurnSpends = pair.getValue().getTurnSpending();
 
-			contentMap.getValue().add(pair.getValue());
-			playerSortByRank.put(rank, contentMap);
+			triple.setKeyT(triple.getKey() + playerTurnSpends);
+			triple.setValue1(triple.getValue1() + playerTurnSpends);
+			triple.getValue2().add(pair.getValue());
+			playerSortByRank.put(rank, triple);
 		}
 
+		//We transform it to array
+		Set<Entry<Integer, Triple<Integer, Integer, List<Player>>>> entrySet = playerSortByRank.entrySet();
+		Triple<Integer, Integer, List<Player>>[] triples = new Triple[entrySet.size()];
+		int i = 0;
+		for(Entry<Integer, Triple<Integer, Integer, List<Player>>> entry:entrySet)
+		{
+			Triple<Integer, Integer, List<Player>> triple = entry.getValue();
+			triples[i++] = new Triple<Integer, Integer, List<Player>>(triple.getKey(),triple.getValue1(),triple.getValue2());
+		}
 
-
+		divideUpPot(triples);
 	}
 
 	public Card drawCard()
@@ -214,6 +226,29 @@ public class GameEngine
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
+
+	/**
+	 *
+	 * @param triples Triple<groupPot,SumBets,List<Player>>
+	 */
+	private void divideUpPot(Triple<Integer, Integer, List<Player>>[] triples)
+	{
+		for(int i = 0; i < triples.length; ++i)
+		{
+			int min = 0;
+			for(Player p:triples[i].getValue2())
+			{
+				triples[i].setKeyT(triples[i].getKey() + p.getTurnSpending());
+				min = (p.getTurnSpending() > min) ? p.getTurnSpending() : min;
+			}
+
+			for(int j = i + 1; j < triples.length; ++j)
+			{
+
+			}
+		}
+
+	}
 
 	private void initialize()
 	{
