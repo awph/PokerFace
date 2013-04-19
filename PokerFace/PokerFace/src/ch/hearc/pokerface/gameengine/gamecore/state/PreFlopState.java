@@ -3,60 +3,40 @@ package ch.hearc.pokerface.gameengine.gamecore.state;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 
-
 public class PreFlopState extends State
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	/*------------------------------------------------------------------*\
-	|*							Constructeurs							*|
-	\*------------------------------------------------------------------*/
+	private final static int	NB_CARD_PREFLOP	= 2;
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
 	@Override
-	public void nextSate(GameEngine ge)
-	{
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void nextPlayer(GameEngine ge)
-	{
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void addCads(GameEngine ge)
 	{
-		// TODO Auto-generated method stub
-
+		int nbPlayer = ge.getNbPlayers();
+		for(int i = 0; i < nbPlayer; ++i)
+		{
+			for(int j = 0; j < NB_CARD_PREFLOP; ++j)
+			{
+				ge.getCurrentPlayer().addCard(ge.drawCard());
+			}
+			ge.changeCurrentPlayer();
+		}
 	}
 
 	@Override
 	public void bet(GameEngine ge)
 	{
-		// TODO Auto-generated method stub
-
 	}
 
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
-
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
-	/*------------------------------------------------------------------*\
-	|*							Methodes Private						*|
-	\*------------------------------------------------------------------*/
-
+	@Override
+	public void nextSate(GameEngine ge)
+	{
+		ge.setState(new BettingState());
+	}
 }
-

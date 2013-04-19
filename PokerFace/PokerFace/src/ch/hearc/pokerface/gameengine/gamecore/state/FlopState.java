@@ -3,60 +3,36 @@ package ch.hearc.pokerface.gameengine.gamecore.state;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 
-
 public class FlopState extends State
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	/*------------------------------------------------------------------*\
-	|*							Constructeurs							*|
-	\*------------------------------------------------------------------*/
+	private final static int	NB_CARD_FLOP	= 3;
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
 	@Override
-	public void nextSate(GameEngine ge)
-	{
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void nextPlayer(GameEngine ge)
-	{
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void addCads(GameEngine ge)
 	{
-		// TODO Auto-generated method stub
-
+		for(int i = 0; i < NB_CARD_FLOP; ++i)
+		{
+			ge.getBoard().add(ge.drawCard());
+		}
 	}
 
 	@Override
 	public void bet(GameEngine ge)
 	{
-		// TODO Auto-generated method stub
 
 	}
 
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
+	@Override
+	public void nextSate(GameEngine ge)
+	{
 
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
-	/*------------------------------------------------------------------*\
-	|*							Methodes Private						*|
-	\*------------------------------------------------------------------*/
-
+	}
 }
-

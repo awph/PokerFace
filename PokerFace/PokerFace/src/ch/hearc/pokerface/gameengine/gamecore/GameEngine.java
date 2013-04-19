@@ -81,14 +81,17 @@ public class GameEngine
 		{
 			state.addCads(this);
 			state.bet(this);
-			state.nextPlayer(this);
 			state.nextSate(this);
 		}
 	}
 
-	public void changeCurrentPlayer()
+	public int changeCurrentPlayer()
 	{
-		indexPlayer = (indexPlayer < (players.size() - 1)) ? indexPlayer + 1 : 0;
+		do
+		{
+			indexPlayer = (indexPlayer < (players.size() - 1)) ? indexPlayer + 1 : 0;
+		} while(getCurrentPlayer().isFolded());
+		return indexPlayer;
 	}
 
 	public void showdown()
@@ -138,6 +141,16 @@ public class GameEngine
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+
+	public int getUnfoldedPlayer()
+	{
+		int out = 0;
+		for(Player p:players)
+		{
+			out += (p.isFolded()) ? 0 : 1;
+		}
+		return out;
+	}
 
 	public Board getBoard()
 	{
