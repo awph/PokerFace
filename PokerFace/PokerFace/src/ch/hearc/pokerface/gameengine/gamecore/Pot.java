@@ -18,12 +18,17 @@ public class Pot
 
 	public Pot()
 	{
-		stateTotal = turnTotal = bet = 0;
+		initialize();
 	}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
+
+	public void initialize()
+	{
+		stateTotal = turnTotal = bet = 0;
+	}
 
 	public void nextState()
 	{

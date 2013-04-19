@@ -49,7 +49,7 @@ public class Player
 
 	public void giveMoney(int money)
 	{
-		bankroll += money;
+		turnSpending += money;//bankroll += money;
 	}
 
 	public void takeMoney(int money)
@@ -101,6 +101,11 @@ public class Player
 	public void addCard(Card card)
 	{
 		pocket.add(card);
+	}
+
+	public void removeTurningSpend(int amount)
+	{
+		turnSpending = (turnSpending - amount > 0) ? turnSpending-amount:0;
 	}
 
 	/*------------------------------*\

@@ -55,7 +55,7 @@ public class Triple<T,U,V> implements Comparable<Triple<T,U,V>>
 	|*				Set				*|
 	\*------------------------------*/
 
-	public void setKeyT(T t)
+	public void setKey(T t)
 	{
 		this.t = t;
 	}

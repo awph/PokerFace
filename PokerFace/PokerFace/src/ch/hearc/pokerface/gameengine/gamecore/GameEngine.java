@@ -130,7 +130,7 @@ public class GameEngine
 			Triple<Integer, Integer, List<Player>> triple = playerSortByRank.get(rank);
 			int playerTurnSpends = pair.getValue().getTurnSpending();
 
-			triple.setKeyT(triple.getKey() + playerTurnSpends);
+			triple.setKey(triple.getKey() + playerTurnSpends);
 			triple.setValue1(triple.getValue1() + playerTurnSpends);
 			triple.getValue2().add(pair.getValue());
 			playerSortByRank.put(rank, triple);
@@ -238,20 +238,51 @@ public class GameEngine
 			int min = 0;
 			for(Player p:triples[i].getValue2())
 			{
-				triples[i].setKeyT(triples[i].getKey() + p.getTurnSpending());
-				min = (p.getTurnSpending() > min) ? p.getTurnSpending() : min;
+				triples[i].setKey(triples[i].getKey() + p.getTurnSpending());
+				min = (p.getTurnSpending() < min) ? p.getTurnSpending() : min;
 			}
 
-			for(int j = i + 1; j < triples.length; ++j)
+			for(int j = i; j < triples.length; ++j)
 			{
-
+				for(Player p:triples[i].getValue2())
+				{
+					if(p.getTurnSpending() > min)
+					{
+						p.removeTurningSpend(min);
+						triples[i].setKey(triples[i].getKey() + min);
+					}
+					else
+					{
+						triples[i].setKey(triples[i].getKey() + p.getTurnSpending());
+						p.removeTurningSpend(min);
+					}
+				}
 			}
 		}
 
+		for(int i = 0; i < triples.length; ++i)
+		{
+			for(Player p:triples[i].getValue2())
+			{
+				int moneyGiven = triples[i].getKey()*p.getTurnSpending();
+				int rest = moneyGiven % triples[i].getValue1();
+				moneyGiven /= triples[i].getValue1();
+				pot.removeAmount(moneyGiven);
+				p.giveMoney(moneyGiven);
+			}
+		}
+
+		//If there is some money in the pot after the split, we distribute it to the winners at the left of the dealer
+		//The amount must be under nbPlayer
+		/*while(pot.getTurnTotal() != 0)
+		{
+			//TODO
+		}*/
 	}
 
 	private void initialize()
 	{
+		pot.initialize();
 		oldState = null;
 		setState(new PreFlopState());
 		board = new Board();
