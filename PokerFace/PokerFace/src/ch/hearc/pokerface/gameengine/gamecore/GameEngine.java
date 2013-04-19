@@ -2,7 +2,10 @@
 package ch.hearc.pokerface.gameengine.gamecore;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.compute.ComputeBestHand;
@@ -18,6 +21,7 @@ import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gameengine.subsets.Board;
 import ch.hearc.pokerface.gameengine.subsets.CardSubset;
 import ch.hearc.pokerface.gameengine.subsets.Deck;
+import ch.hearc.pokerface.tools.Pair;
 
 public class GameEngine
 {
@@ -96,7 +100,7 @@ public class GameEngine
 
 	public void showdown()
 	{
-		HandsPokerValue[] handsPokerValues = new HandsPokerValue[players.size()];
+		List<Pair<HandsPokerValue, Player>> handsValues = new ArrayList<Pair<HandsPokerValue, Player>>();
 
 		for(int i = 0; i < players.size(); ++i)
 		{
@@ -104,11 +108,33 @@ public class GameEngine
 			if (!player.isFolded())
 			{
 				ComputeBestHand computeBestHand = new ComputeBestHand(CardSubset.union(player.getPocket(), board));
-				handsPokerValues[i] = handsPokerMap.getHand(computeBestHand.getHighestHand());
+				handsValues.add(new Pair<HandsPokerValue, Player>(handsPokerMap.getHand(computeBestHand.getHighestHand()), player));
 			}
 		}
 
-		//TODO
+		Collections.sort(handsValues);
+
+		Map<Integer, Pair<Integer,List<Player>>> playerSortByRank = new TreeMap<Integer, Pair<Integer,List<Player>>>();
+
+		for(Pair<HandsPokerValue, Player> pair:handsValues)
+		{
+			int rank = pair.getKey().getRank();
+			if (playerSortByRank.get(rank) == null)
+			{
+				playerSortByRank.put(rank, new Pair<Integer,List<Player>>(0,new ArrayList<Player>()));
+			}
+			Pair<Integer,List<Player>> contentMap = playerSortByRank.get(rank);
+			if(pair.getValue().getTurnSpending() > contentMap.getKey())
+			{
+				contentMap.setKey(pair.getValue().getTurnSpending());
+			}
+
+			contentMap.getValue().add(pair.getValue());
+			playerSortByRank.put(rank, contentMap);
+		}
+
+
+
 	}
 
 	public Card drawCard()
@@ -134,8 +160,7 @@ public class GameEngine
 	{
 		//TODO: SoundEngine play sound here
 		pot.addStateTotal(amount);
-
-		//state.bet(this);
+		notify();
 	}
 
 	/*------------------------------*\
@@ -210,10 +235,5 @@ public class GameEngine
 			players.get(indexBigBlind).bet(bigBlind);
 		}
 		indexPlayer = ((indexBigBlind + 1) < (players.size() - 1)) ? indexBigBlind + 1 : 0;
-	}
-
-	private void divideUpPot()
-	{
-
 	}
 }

@@ -31,12 +31,21 @@ public class BettingState extends State
 			{
 				int betSpend = ge.getPot().getBet();
 				int nbUnfoldedPlayer = ge.getUnfoldedPlayer();
+				int nbAllinPlayer = 0;
 				for(int j = 0; j < nbUnfoldedPlayer; ++j)
 				{
-					wait();
+					if(ge.getCurrentPlayer().getBankroll() != 0)//If all in
+					{
+						wait();
+					}
+					else
+					{
+						++nbAllinPlayer;
+					}
+
 					ge.changeCurrentPlayer();
 				}
-				allChecked = (ge.getPot().getBet() == betSpend);
+				allChecked = (ge.getPot().getBet() == betSpend || (nbUnfoldedPlayer-nbAllinPlayer) <= 1);
 			}
 		}
 		catch (InterruptedException e)

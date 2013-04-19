@@ -116,7 +116,7 @@ public class Player
 	|*				Get				*|
 	\*------------------------------*/
 
-	public int getBankrool()
+	public int getBankroll()
 	{
 		return this.bankroll;
 	}
