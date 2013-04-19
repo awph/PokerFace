@@ -54,7 +54,8 @@ public class Player
 
 	public void giveMoney(int money)
 	{
-		turnSpending += money;//bankroll += money;
+		turnSpending += money;//TODO remove this line when simulation for divideUp is done
+		bankroll += money;
 	}
 
 	public void takeMoney(int money)

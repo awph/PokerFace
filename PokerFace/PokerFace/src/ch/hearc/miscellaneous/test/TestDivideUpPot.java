@@ -56,12 +56,7 @@ public class TestDivideUpPot
 		pot.nextState();
 		showdown();
 
-		System.out.println(board);
-		for(Player p:players)
-		{
-			System.out.println(p.getPocket());
-			System.out.println(p.getTurnSpending());
-		}
+		showSlitPot();
 
 		//CAS 2
 		players = new ArrayList<Player>();
@@ -80,12 +75,7 @@ public class TestDivideUpPot
 		pot.nextState();
 		showdown();
 
-		System.out.println(board);
-		for(Player p:players)
-		{
-			System.out.println(p.getPocket());
-			System.out.println(p.getTurnSpending());
-		}
+		showSlitPot();
 
 		//CAS 3
 		players = new ArrayList<Player>();
@@ -104,15 +94,24 @@ public class TestDivideUpPot
 		pot.nextState();
 		showdown();
 
-		System.out.println(board);
-		for(Player p:players)
-		{
-			System.out.println(p.getPocket());
-			System.out.println(p.getTurnSpending());
-		}
+		showSlitPot();
 	}
 
-	public static Player createPlayer(int money, Card c1, Card c2)
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	private static void showSlitPot()
+	{
+		System.out.println("Board : " + board);
+		for(Player p:players)
+		{
+			System.out.println(p.getPocket() + " gagne " + p.getTurnSpending());
+		}
+		System.out.println();
+	}
+
+	private static Player createPlayer(int money, Card c1, Card c2)
 	{
 		Player p = new Player(null, 0);
 		p.giveMoney(money);
@@ -121,10 +120,11 @@ public class TestDivideUpPot
 		return p;
 	}
 
-	public static void showdown()
+	private static void showdown()
 	{
 		List<Pair<HandsPokerValue, Player>> handsValues = new ArrayList<Pair<HandsPokerValue, Player>>();
 
+		//Compte the value of each player's hand
 		for(int i = 0; i < players.size(); ++i)
 		{
 			Player player = players.get(i);
@@ -140,6 +140,7 @@ public class TestDivideUpPot
 		//Map<Rank,Triple<groupPot,SumBets,List<Player>>>
 		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
 
+		//Groupe all players by ranking and if they are an equality, there woulb be n players in the same group
 		for(Pair<HandsPokerValue, Player> pair:handsValues)
 		{
 			int rank = pair.getKey().getRank();
@@ -148,10 +149,6 @@ public class TestDivideUpPot
 				playerSortByRank.put(rank, new Triple<Integer, Integer, List<Player>>(0, 0, new ArrayList<Player>()));
 			}
 			Triple<Integer, Integer, List<Player>> triple = playerSortByRank.get(rank);
-			/*int playerTurnSpends = pair.getValue().getTurnSpending();
-
-			triple.setKey(triple.getKey() + playerTurnSpends);
-			triple.setValue1(triple.getValue1() + playerTurnSpends);*/
 			triple.getValue2().add(pair.getValue());
 			playerSortByRank.put(rank, triple);
 		}
@@ -177,6 +174,7 @@ public class TestDivideUpPot
 	{
 		for(int i = 0; i < triples.length; ++i)
 		{
+			//Find the min bet of the group
 			int min = triples[i].getValue2().get(0).getTurnSpending();
 			for(Player p:triples[i].getValue2())
 			{
@@ -188,6 +186,7 @@ public class TestDivideUpPot
 				p.giveMoney(givenMoney);
 			}
 
+			//Decrease the min found to all next players and add each bet to the groupPot
 			for(int j = i + 1; j < triples.length; ++j)
 			{
 				for(Player p:triples[j].getValue2())
@@ -206,6 +205,7 @@ public class TestDivideUpPot
 			}
 		}
 
+		//We know now which money each player has to receive, so we process
 		for(int i = 0; i < triples.length; ++i)
 		{
 			for(Player p:triples[i].getValue2())
@@ -219,20 +219,23 @@ public class TestDivideUpPot
 				}
 			}
 		}
+
+		/*There might be a rest if the pot is not divisible. In this case, we take
+		the rest and distribute it between all the first group of winners, $ per $*/
 		int rest = pot.getTurnTotal();
 		pot.removeAmount(rest);
 
-		System.out.println("Reste : " + rest);
-
-		//If there is some money in the pot after the split, we distribute it to the winners at the left of the dealer
-		//The amount must be under nbPlayer
-		/*while(pot.getTurnTotal() != 0)
+		do
 		{
-			//TODO
-		}*/
+			for(Player p:triples[0].getValue2())
+			{
+				if (rest > 0)
+				{
+					p.giveMoney(1);
+					--rest;
+				}
+			}
+		} while(rest != 0);
 	}
-	/*------------------------------------------------------------------*\
-	|*							Methodes Private						*|
-	\*------------------------------------------------------------------*/
 
 }

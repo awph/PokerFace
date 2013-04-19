@@ -55,7 +55,6 @@ public class GameEngine
 
 	public GameEngine(int smallBlind, int nbPlayer, Profile profile, int bankroll)
 	{
-		isFinished = false;
 		pot = new Pot();
 		soundEngine = new SoundEngine();
 		futureBoard = new Card[Board.NUMBER_CARDS];
@@ -101,54 +100,6 @@ public class GameEngine
 		return indexPlayer;
 	}
 
-	public void showdown()
-	{
-		List<Pair<HandsPokerValue, Player>> handsValues = new ArrayList<Pair<HandsPokerValue, Player>>();
-
-		for(int i = 0; i < players.size(); ++i)
-		{
-			Player player = players.get(i);
-			if (!player.isFolded())
-			{
-				ComputeBestHand computeBestHand = new ComputeBestHand(CardSubset.union(player.getPocket(), board));
-				handsValues.add(new Pair<HandsPokerValue, Player>(handsPokerMap.getHand(computeBestHand.getHighestHand()), player));
-			}
-		}
-
-		Collections.sort(handsValues);
-
-		//Map<Rank,Triple<groupPot,SumBets,List<Player>>>
-		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
-
-		for(Pair<HandsPokerValue, Player> pair:handsValues)
-		{
-			int rank = pair.getKey().getRank();
-			if (playerSortByRank.get(rank) == null)
-			{
-				playerSortByRank.put(rank, new Triple<Integer, Integer, List<Player>>(0, 0, new ArrayList<Player>()));
-			}
-			Triple<Integer, Integer, List<Player>> triple = playerSortByRank.get(rank);
-			int playerTurnSpends = pair.getValue().getTurnSpending();
-
-			triple.setKey(triple.getKey() + playerTurnSpends);
-			triple.setValue1(triple.getValue1() + playerTurnSpends);
-			triple.getValue2().add(pair.getValue());
-			playerSortByRank.put(rank, triple);
-		}
-
-		//We transform it to array
-		Set<Entry<Integer, Triple<Integer, Integer, List<Player>>>> entrySet = playerSortByRank.entrySet();
-		Triple<Integer, Integer, List<Player>>[] triples = new Triple[entrySet.size()];
-		int i = 0;
-		for(Entry<Integer, Triple<Integer, Integer, List<Player>>> entry:entrySet)
-		{
-			Triple<Integer, Integer, List<Player>> triple = entry.getValue();
-			triples[i++] = new Triple<Integer, Integer, List<Player>>(triple.getKey(),triple.getValue1(),triple.getValue2());
-		}
-
-		divideUpPot(triples);
-	}
-
 	public Card drawCard()
 	{
 		if (magicIndex++ < 0)
@@ -173,6 +124,52 @@ public class GameEngine
 		//TODO: SoundEngine play sound here
 		pot.addStateTotal(amount);
 		notify();
+	}
+
+	public void showdown()
+	{
+		List<Pair<HandsPokerValue, Player>> handsValues = new ArrayList<Pair<HandsPokerValue, Player>>();
+
+		//Compte the value of each player's hand
+		for(int i = 0; i < players.size(); ++i)
+		{
+			Player player = players.get(i);
+			if (!player.isFolded())
+			{
+				ComputeBestHand computeBestHand = new ComputeBestHand(CardSubset.union(player.getPocket(), board));
+				handsValues.add(new Pair<HandsPokerValue, Player>(handsPokerMap.getHand(computeBestHand.getHighestHand()), player));
+			}
+		}
+
+		Collections.sort(handsValues);
+
+		//Map<Rank,Triple<groupPot,SumBets,List<Player>>>
+		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
+
+		//Groupe all players by ranking and if they are an equality, there woulb be n players in the same group
+		for(Pair<HandsPokerValue, Player> pair:handsValues)
+		{
+			int rank = pair.getKey().getRank();
+			if (playerSortByRank.get(rank) == null)
+			{
+				playerSortByRank.put(rank, new Triple<Integer, Integer, List<Player>>(0, 0, new ArrayList<Player>()));
+			}
+			Triple<Integer, Integer, List<Player>> triple = playerSortByRank.get(rank);
+			triple.getValue2().add(pair.getValue());
+			playerSortByRank.put(rank, triple);
+		}
+
+		//We transform it to array
+		Set<Entry<Integer, Triple<Integer, Integer, List<Player>>>> entrySet = playerSortByRank.entrySet();
+		Triple<Integer, Integer, List<Player>>[] triples = new Triple[entrySet.size()];
+		int i = 0;
+		for(Entry<Integer, Triple<Integer, Integer, List<Player>>> entry:entrySet)
+		{
+			Triple<Integer, Integer, List<Player>> triple = entry.getValue();
+			triples[i++] = new Triple<Integer, Integer, List<Player>>(triple.getKey(), triple.getValue1(), triple.getValue2());
+		}
+
+		divideUpPot(triples);
 	}
 
 	/*------------------------------*\
@@ -228,28 +225,34 @@ public class GameEngine
 	\*------------------------------------------------------------------*/
 
 	/**
-	 *
-	 * @param triples Triple<groupPot,SumBets,List<Player>>
+	 * @param triples
+	 *            Triple<groupPot,SumBets,List<Player>>
 	 */
 	private void divideUpPot(Triple<Integer, Integer, List<Player>>[] triples)
 	{
 		for(int i = 0; i < triples.length; ++i)
 		{
-			int min = 0;
+			//Find the min bet of the group
+			int min = triples[i].getValue2().get(0).getTurnSpending();
 			for(Player p:triples[i].getValue2())
 			{
-				triples[i].setKey(triples[i].getKey() + p.getTurnSpending());
 				min = (p.getTurnSpending() < min) ? p.getTurnSpending() : min;
+				triples[i].setKey(triples[i].getKey() + p.getTurnSpending());
+				triples[i].setValue1(triples[i].getValue1() + p.getTurnSpending());
+				int givenMoney = p.getTurnSpending();
+				p.removeTurningSpend(givenMoney);
+				p.giveMoney(givenMoney);
 			}
 
-			for(int j = i; j < triples.length; ++j)
+			//Decrease the min found to all next players and add each bet to the groupPot
+			for(int j = i + 1; j < triples.length; ++j)
 			{
-				for(Player p:triples[i].getValue2())
+				for(Player p:triples[j].getValue2())
 				{
-					if(p.getTurnSpending() > min)
+					if (p.getTurnSpending() >= min)
 					{
-						p.removeTurningSpend(min);
-						triples[i].setKey(triples[i].getKey() + min);
+						p.removeTurningSpend(min * triples[i].getValue2().size());
+						triples[i].setKey(triples[i].getKey() + min * triples[i].getValue2().size());
 					}
 					else
 					{
@@ -260,46 +263,72 @@ public class GameEngine
 			}
 		}
 
+		//We know now which money each player has to receive, so we process
 		for(int i = 0; i < triples.length; ++i)
 		{
 			for(Player p:triples[i].getValue2())
 			{
-				int moneyGiven = triples[i].getKey()*p.getTurnSpending();
-				int rest = moneyGiven % triples[i].getValue1();
-				moneyGiven /= triples[i].getValue1();
-				pot.removeAmount(moneyGiven);
-				p.giveMoney(moneyGiven);
+				int moneyGiven = triples[i].getKey() * p.getTurnSpending();
+				if (moneyGiven != 0 && triples[i].getValue1() != 0)
+				{
+					moneyGiven /= triples[i].getValue1();
+					pot.removeAmount(moneyGiven);
+					p.giveMoney(moneyGiven - p.getTurnSpending());
+				}
 			}
 		}
 
-		//If there is some money in the pot after the split, we distribute it to the winners at the left of the dealer
-		//The amount must be under nbPlayer
-		/*while(pot.getTurnTotal() != 0)
+		/*There might be a rest if the pot is not divisible. In this case, we take
+		the rest and distribute it between all the first group of winners, $ per $*/
+		int rest = pot.getTurnTotal();
+		pot.removeAmount(rest);
+
+		do
 		{
-			//TODO
-		}*/
+			for(Player p:triples[0].getValue2())
+			{
+				if (rest > 0)
+				{
+					p.giveMoney(1);
+					--rest;
+				}
+			}
+		} while(rest != 0);
+	}
+
+	private int getNextIndex(int val)
+	{
+		return (val < (players.size() - 1)) ? val + 1 : 0;
 	}
 
 	private void initialize()
 	{
+		isFinished = false;
 		pot.initialize();
 		oldState = null;
+
 		setState(new PreFlopState());
 		board = new Board();
 		deck = new Deck();
+
 		magicIndex = -2 * players.size();
 		players.get(indexDealer).setRole(Role.Nothing);
-		indexDealer = (indexDealer < (players.size() - 1)) ? indexDealer + 1 : 0;
+		indexDealer = getNextIndex(indexDealer);
 		players.get(indexDealer).setRole(Role.Dealer);
-		int indexSmallBlind = ((indexDealer + 1) < (players.size() - 1)) ? indexDealer + 1 : 0;
-		int indexBigBlind = ((indexSmallBlind + 1) < (players.size() - 1)) ? indexSmallBlind + 1 : 0;
+
+		int indexSmallBlind = getNextIndex(indexDealer + 1);
+		int indexBigBlind = getNextIndex(indexSmallBlind + 1);
+
 		players.get(indexSmallBlind).setRole(Role.SmallBlind);
 		players.get(indexSmallBlind).bet(smallBlind);
+
+		//If there are 2 players, there is no small blind !
 		if (players.size() > 2)
 		{
 			players.get(indexBigBlind).setRole(Role.BigBlind);
 			players.get(indexBigBlind).bet(bigBlind);
 		}
-		indexPlayer = ((indexBigBlind + 1) < (players.size() - 1)) ? indexBigBlind + 1 : 0;
+
+		indexPlayer = getNextIndex(indexBigBlind + 1);
 	}
 }
