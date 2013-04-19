@@ -127,6 +127,14 @@ public class GameEngine
 		}
 	}
 
+	public void bet(int amount)
+	{
+		//TODO: SoundEngine play sound here
+		pot.addStateTotal(amount);
+
+		//state.bet(this);
+	}
+
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/

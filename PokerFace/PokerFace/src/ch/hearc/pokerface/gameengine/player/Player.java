@@ -12,14 +12,14 @@ public class Player
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private int			bankrool;
+	private int			bankroll;
 	private int			turnSpending;
 	private boolean		folded;
 	private int			betSpending;
 	private Pocket		pocket;
 	private GameEngine	gameEngine;
 	private Profile		profile;
-	private Role role;
+	private Role		role;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -28,7 +28,7 @@ public class Player
 	public Player(Profile profile, int bankroll)
 	{
 		this.profile = profile;
-		this.bankrool = bankroll;
+		this.bankroll = bankroll;
 		this.turnSpending = 0;
 		this.folded = false;
 		this.betSpending = 0;
@@ -49,36 +49,38 @@ public class Player
 
 	public void giveMoney(int money)
 	{
-
+		bankroll += money;
 	}
 
 	public void takeMoney(int money)
 	{
-
+		bankroll -= money;
 	}
 
 	public void allIn()
 	{
-
+		gameEngine.bet(bankroll);
 	}
 
 	public void check()
 	{
-
+		gameEngine.bet(0);
 	}
 
 	public void bet(int amount)
 	{
-
+		gameEngine.bet(amount);
 	}
 
 	public void call()
 	{
+		gameEngine.bet((gameEngine.getPot().getBet() - betSpending)); //TODO:
+
 	}
 
 	public void raise(int amount)
 	{
-
+		gameEngine.bet(amount);
 	}
 
 	/**
@@ -87,6 +89,7 @@ public class Player
 	public void fold()
 	{
 		folded = true;
+		gameEngine.bet(-1);
 	}
 
 	/**
@@ -115,7 +118,7 @@ public class Player
 
 	public int getBankrool()
 	{
-		return this.bankrool;
+		return this.bankroll;
 	}
 
 	public int getTurnSpending()
@@ -141,9 +144,4 @@ public class Player
 	{
 		return this.folded;
 	}
-
-	/*------------------------------------------------------------------*\
-	|*							Methodes Private						*|
-	\*------------------------------------------------------------------*/
-
 }
