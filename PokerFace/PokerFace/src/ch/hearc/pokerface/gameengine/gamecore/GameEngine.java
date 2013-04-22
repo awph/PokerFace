@@ -104,6 +104,7 @@ public class GameEngine
 	{
 		if (magicIndex++ < 0)
 		{
+			Card card = deck.getNewCard();
 			if (magicIndex == 0)
 			{
 				for(int i = 0; i < Board.NUMBER_CARDS; ++i)
@@ -111,7 +112,7 @@ public class GameEngine
 					futureBoard[i] = deck.getNewCard();
 				}
 			}
-			return deck.getNewCard();
+			return card;
 		}
 		else
 		{
