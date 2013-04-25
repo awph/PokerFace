@@ -12,6 +12,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import ch.hearc.pokerface.gameengine.compute.HandType;
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 
 public class XMLReader
@@ -63,14 +64,14 @@ public class XMLReader
 						Element e = (Element)nlPocket.item(k);
 
 						String key = e.getAttribute("id");
-						/*StatisticValue sv = new StatisticValue(Double.valueOf(e.getElementsByTagName("Win").item(0).getTextContent()), Double.valueOf(e.getElementsByTagName(new StringBuilder(HandType.StraightFlush.getStringValue()).reverse().toString()).item(0).getTextContent()), Double.valueOf(e
+						StatisticValue sv = new StatisticValue(Double.valueOf(e.getElementsByTagName("Win").item(0).getTextContent()),Double.valueOf(e.getElementsByTagName("Tie").item(0).getTextContent()),Double.valueOf(e.getElementsByTagName("Loss").item(0).getTextContent()),Double.valueOf(e.getElementsByTagName("nbOpponantWinners").item(0).getTextContent()), Double.valueOf(e.getElementsByTagName(new StringBuilder(HandType.StraightFlush.getStringValue()).reverse().toString()).item(0).getTextContent()), Double.valueOf(e
 								.getElementsByTagName(new StringBuilder(HandType.FourOfKind.getStringValue()).reverse().toString()).item(0).getTextContent()),
 								Double.valueOf(e.getElementsByTagName(new StringBuilder(HandType.FullHouse.getStringValue()).reverse().toString()).item(0).getTextContent()), Double.valueOf(e.getElementsByTagName(new StringBuilder(HandType.Flush.getStringValue()).reverse().toString()).item(0)
 										.getTextContent()), Double.valueOf(e.getElementsByTagName(new StringBuilder(HandType.Straight.getStringValue()).reverse().toString()).item(0).getTextContent()), Double.valueOf(e
 										.getElementsByTagName(new StringBuilder(HandType.ThreeOfKind.getStringValue()).reverse().toString()).item(0).getTextContent()), Double.valueOf(e.getElementsByTagName(new StringBuilder(HandType.TwoPair.getStringValue()).reverse().toString()).item(0)
 										.getTextContent()), Double.valueOf(e.getElementsByTagName(new StringBuilder(HandType.OnePair.getStringValue()).reverse().toString()).item(0).getTextContent()), Double.valueOf(e
 										.getElementsByTagName(new StringBuilder(HandType.HighCard.getStringValue()).reverse().toString()).item(0).getTextContent()));
-						map.put(key, sv);*/
+						map.put(key, sv);
 					}
 
 					out[i].put(StateType.valueOf(ePhase.getAttribute("id")), map);

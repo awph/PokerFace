@@ -5,7 +5,6 @@ import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.cards.CardColor;
 import ch.hearc.pokerface.gameengine.cards.CardValue;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
-import ch.hearc.pokerface.gameengine.statistics.Statistics;
 import ch.hearc.pokerface.gameengine.subsets.Board;
 import ch.hearc.pokerface.gameengine.subsets.Pocket;
 
@@ -31,19 +30,7 @@ public class UseOuts
 
 	private static void testOuts()
 	{
-		Pocket p = new Pocket();
-		p.add(new Card(CardValue.Ace,CardColor.Clubs));
-		p.add(new Card(CardValue.Ace,CardColor.Hearts));
-
-		Board b = new Board();
-		b.add(new Card(CardValue.Eight,CardColor.Spades));
-		b.add(new Card(CardValue.Queen,CardColor.Hearts));
-		b.add(new Card(CardValue.Four,CardColor.Diamonds));
-
-		System.out.println(p + " " + b);
-		System.out.println(Statistics.getFlopOrTurnOrRiverValues(p, b, 9));
-
-				HandsPokerMap hpm = HandsPokerMap.getInstance();
+		HandsPokerMap hpm = HandsPokerMap.getInstance();
 		{
 			Pocket pocket = new Pocket();
 			pocket.add(new Card(CardValue.Four, CardColor.Spades));
