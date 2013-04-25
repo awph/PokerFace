@@ -1,37 +1,41 @@
 
-package ch.hearc.pokerface.gui.gamescreen.table;
+package ch.hearc.pokerface.gameengine.player.profile;
 
-import javax.swing.Box;
-import javax.swing.JPanel;
-
-import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
-import ch.hearc.pokerface.gui.gamescreen.table.board.GameInformation;
-
-
-public class JPanelGameArea extends JPanel
+/*
+ * Singleton class
+ */
+public final class ActiveProfile
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
+	private static volatile ActiveProfile instance = null;
 
-	private GameInformation gameInformation;
+	// Inputs / Outputs
+	private Profile profile;
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-	public JPanelGameArea(GameInformation gameInformation, int nbPlayers)
+
+	/*
+	 * @return The only instance of the class
+	 */
+	public final static ActiveProfile getInstance()
 	{
-		Box box = Box.createVerticalBox();
-		Box playerBox = Box.createHorizontalBox();
-		this.gameInformation = gameInformation;
-		for(int i = 0; i < nbPlayers; ++i)
+		if (ActiveProfile.instance == null)
 		{
-			playerBox.add(new PlayerComponent("Player " + i, 10000));
-			playerBox.add(Box.createHorizontalStrut(15));
+			synchronized(ActiveProfile.class) {
+				if (ActiveProfile.instance == null)
+				{
+					ActiveProfile.instance = new ActiveProfile();
+				}
+			}
 		}
-		box.add(playerBox);
-		box.add(Box.createVerticalStrut(50));
-		box.add(gameInformation);
-		add(box);
+		return ActiveProfile.instance;
+	}
+
+	private ActiveProfile()
+	{
 
 	}
 	/*------------------------------------------------------------------*\
@@ -42,10 +46,18 @@ public class JPanelGameArea extends JPanel
 	|*				Set				*|
 	\*------------------------------*/
 
+	public void setProfile(Profile profile)
+	{
+		this.profile = profile;
+	}
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
 
+	public Profile getProfile()
+	{
+		return this.profile;
+	}
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/

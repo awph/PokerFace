@@ -2,7 +2,6 @@
 package ch.hearc.pokerface.gui.menuscreens;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.Box;
@@ -49,10 +48,15 @@ public class JPanelProfile extends JPanel
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+	public JFrameMain getMainFrame()
+	{
+		return mainFrame;
+	}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
+
 
 	private void refreshProfileList()
 	{
@@ -67,7 +71,7 @@ public class JPanelProfile extends JPanel
 		Box insideBox = Box.createVerticalBox();
 
 		insideBox.add(Box.createVerticalGlue());
-		insideBox.add(new ProfileListContainer(new ArrayList<Profile>()));
+		insideBox.add(new ProfileListContainer(new ArrayList<Profile>(),this));
 		insideBox.add(Box.createVerticalGlue());
 
 		outsideBox.add(Box.createHorizontalGlue());
@@ -79,29 +83,10 @@ public class JPanelProfile extends JPanel
 
 	private void control()
 	{
-
-		/*selectProfileButton.addActionListener(new ActionListener()
-		{
-
-			@Override
-			public void actionPerformed(ActionEvent event)
-			{
-				JPanelProfile.this.mainFrame.setCard("panelMainMenu");
-			}
-		});
-		backButton.addActionListener(new ActionListener()
-		{
-
-			@Override
-			public void actionPerformed(ActionEvent event)
-			{
-				JPanelProfile.this.mainFrame.previousCard();
-			}
-		});*/
 	}
 
 	private void appearance()
 	{
-		setBackground(Color.GREEN);
+		//setBackground(Color.GREEN);
 	}
 }

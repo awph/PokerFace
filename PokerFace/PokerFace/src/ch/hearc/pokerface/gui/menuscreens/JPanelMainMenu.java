@@ -1,14 +1,17 @@
 
 package ch.hearc.pokerface.gui.menuscreens;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import ch.hearc.pokerface.gui.JFrameMain;
+import ch.hearc.pokerface.gui.options.JPanelTopBar;
 
 
 public class JPanelMainMenu extends JPanel
@@ -19,9 +22,12 @@ public class JPanelMainMenu extends JPanel
 	\*------------------------------------------------------------------*/
 
 	private JButton	backButton;
-	private JButton	selectProfileButton;
+	private JButton	playButton;
 	private JFrameMain mainFrame;
+	private JPanelTopBar topBarPanel;
 
+	//Tools
+	private JPanel panelCenter;
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
@@ -29,6 +35,7 @@ public class JPanelMainMenu extends JPanel
 	public JPanelMainMenu(JFrameMain mainFrame)
 	{
 		this.mainFrame = mainFrame;
+
 		geometry();
 		control();
 		appearance();
@@ -46,27 +53,35 @@ public class JPanelMainMenu extends JPanel
 	|*				Get				*|
 	\*------------------------------*/
 
+	public JPanelTopBar getTopBar()
+	{
+		return topBarPanel;
+	}
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
 	private void geometry()
 	{
-		setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
+		panelCenter = new JPanel();
+		panelCenter.setLayout(new BoxLayout(panelCenter,BoxLayout.X_AXIS));
 
+		playButton = new JButton("Play");
 		backButton = new JButton("Back");
-		selectProfileButton = new JButton("Select men");
+
+		topBarPanel = new JPanelTopBar(this);
 	}
 
 	private void control()
 	{
-		selectProfileButton.addActionListener(new ActionListener()
+		playButton.addActionListener(new ActionListener()
 		{
 
 			@Override
 			public void actionPerformed(ActionEvent event)
 			{
-				JPanelMainMenu.this.mainFrame.setCard("panelProfile");
+				JPanelMainMenu.this.mainFrame.setCard("panelGameBoard");
 			}
 		});
 		backButton.addActionListener(new ActionListener()
@@ -75,16 +90,30 @@ public class JPanelMainMenu extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent event)
 			{
-				JPanelMainMenu.this.mainFrame.previousCard();
+				JPanelMainMenu.this.mainFrame.setCard("panelProfile");
 			}
 		});
 	}
 
 	private void appearance()
 	{
-		add(backButton);
-		add(selectProfileButton);
+		Box insideBox = Box.createVerticalBox();
+		panelCenter.add(Box.createHorizontalGlue());
+
+		insideBox.add(playButton);
+		insideBox.add(backButton);
+
+		panelCenter.add(insideBox);
+		panelCenter.add(Box.createHorizontalGlue());
+		add(panelCenter, BorderLayout.CENTER);
+		add(topBarPanel,BorderLayout.NORTH);
 	}
+
+	public void refreshProfile()
+	{
+		topBarPanel.refreshProfile();
+	}
+
 
 }
 

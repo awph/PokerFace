@@ -2,18 +2,21 @@
 package ch.hearc.pokerface.gui;
 
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.SplashScreen;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
@@ -37,7 +40,8 @@ public class JFrameMain extends JFrame
 
 	public JFrameMain()
 	{
-		//createSplashScreen(); TODO il faut introduire un fichier manifest pour lancer le splash screen
+		//createSplashScreen(); //TODO il faut introduire un fichier manifest pour lancer le splash screen
+    	//setBackgroundImage();
 
 		geometry();
 		control();
@@ -48,16 +52,31 @@ public class JFrameMain extends JFrame
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	// CARD MANIPULATIONS
 	public void setCard(String card)
 	{
+		switch(card)
+		{
+			case "panelMainMenu" :
+				panelMainMenu.refreshProfile();
+				break;
+			case "panelGameBoard" :
+				panelGameBoard.refresh();
+				break;
+		}
 		layout.show(this.getContentPane(), card);
 	}
 
-	public void previousCard()
+	public void previousCard() //TODO ne fonctionne pas correctement
 	{
 		layout.previous(this.getContentPane());
 	}
 
+	public void switchToMainMenu()
+	{
+		panelMainMenu.refreshProfile(); // TODO ajouter dans le switch du setCard
+		setCard("panelMainMenu");
+	}
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -66,6 +85,10 @@ public class JFrameMain extends JFrame
 	|*				Get				*|
 	\*------------------------------*/
 
+	public JPanelProfile getProfilePanel()
+	{
+		return panelProfile;
+	}
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
@@ -84,11 +107,11 @@ public class JFrameMain extends JFrame
 		 */
 		panelProfile = new JPanelProfile(this);
 		panelGameBoard = new JPanelGameBoard(this);
-		panelMainMenu = new JPanelMainMenu(this);
 
 		/**
 		 * Adds
 		 */
+		panelMainMenu = new JPanelMainMenu(this);
 
 		add(panelProfile, "panelProfile");
 		add(panelGameBoard, "panelGameBoard");
@@ -108,10 +131,6 @@ public class JFrameMain extends JFrame
 				try
 				{
 					List<Profile> list = new ArrayList<Profile>();
-					list.add(new Profile("prout", 1));
-					list.add(new Profile("prout", 2));
-					list.add(new Profile("prout", 3));
-					list.add(new Profile("prout", 4));
 					FileOutputStream fileOut = new FileOutputStream("D:\\profiles.dat");
 					ObjectOutputStream out = new ObjectOutputStream(fileOut);
 					out.writeObject(list);
@@ -128,14 +147,23 @@ public class JFrameMain extends JFrame
 
 	private void appearance()
 	{
-		setSize(800, 600);
+		setSize(1024, 768);
 		setTitle("Po-po-po-pokerface po-po-pokerface");
 		setLocation(30, 30);
 		setResizable(true);
-		getContentPane().setBackground(Color.GREEN);
+		//getContentPane().setBackground(Color.GREEN);
 		layout.show(this.getContentPane(), "panelProfile");
-		setBackground(Color.GREEN);
+
 		this.setVisible(true);
+	}
+
+	private void setBackgroundImage()
+	{
+		try {
+    		this.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/table/background.png")))));
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
 	}
 
 	private void createSplashScreen()
@@ -171,4 +199,5 @@ public class JFrameMain extends JFrame
 	{
 		g.drawString("Prout" + i, 120, 150);
 	}
+
 }
