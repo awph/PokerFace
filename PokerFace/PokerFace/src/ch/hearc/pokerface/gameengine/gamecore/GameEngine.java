@@ -20,6 +20,7 @@ import ch.hearc.pokerface.gameengine.player.AI;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gameengine.player.Role;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
+import ch.hearc.pokerface.gameengine.statistics.Statistics;
 import ch.hearc.pokerface.gameengine.subsets.Board;
 import ch.hearc.pokerface.gameengine.subsets.CardSubset;
 import ch.hearc.pokerface.gameengine.subsets.Deck;
@@ -111,11 +112,22 @@ public class GameEngine
 				{
 					futureBoard[i] = deck.getNewCard();
 				}
+				//We run the simulation for the state FLOP, we're currently at the end of the state PREFLOP.
+				//So, we have all the betting state to compute these values
+				runSimulationPlayer(Statistics.NUMBER_CARDS_FLOP);
 			}
 			return card;
 		}
 		else
 		{
+			if (magicIndex - 1 == 2)
+			{
+				runSimulationPlayer(Statistics.NUMBER_CARDS_TURN);
+			}
+			else if (magicIndex - 1 == 3)
+			{
+				runSimulationPlayer(Statistics.NUMBER_CARDS_RIVER);
+			}
 			return futureBoard[magicIndex - 1];
 		}
 	}
@@ -331,5 +343,20 @@ public class GameEngine
 		}
 
 		indexPlayer = getNextIndex(indexBigBlind + 1);
+	}
+
+	private void runSimulationPlayer(int nbCardInBoard)
+	{
+		int lastPlayer = indexPlayer;
+		int i = lastPlayer;
+		do
+		{
+			i = getNextIndex(i);
+			Player player = players.get(i);
+			if (!player.isFolded())
+			{
+				Statistics.getFlopTurnRiverValues(player, player.getPocket(), futureBoard, nbCardInBoard);
+			}
+		} while(i != lastPlayer);
 	}
 }

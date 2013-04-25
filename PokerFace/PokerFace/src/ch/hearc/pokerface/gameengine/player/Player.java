@@ -1,25 +1,36 @@
 
 package ch.hearc.pokerface.gameengine.player;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
+import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
+import ch.hearc.pokerface.gameengine.statistics.StatisticValue;
+import ch.hearc.pokerface.gameengine.statistics.Statistics;
 import ch.hearc.pokerface.gameengine.subsets.Pocket;
+import ch.hearc.pokerface.tools.Pair;
 
-public class Player
+public class Player implements Observer
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private int			bankroll;
-	private int			turnSpending;
-	private boolean		folded;
-	private int			betSpending;
-	private Pocket		pocket;
-	private GameEngine	gameEngine;
-	private Profile		profile;
-	private Role		role;
+	private int				bankroll;
+	private int				turnSpending;
+	private boolean			folded;
+	private int				betSpending;
+	private Pocket			pocket;
+	private GameEngine		gameEngine;
+	private Profile			profile;
+	private Role			role;
+	private StatisticValue	svPreFlop;
+	private StatisticValue	svFlop;
+	private StatisticValue	svTurn;
+	private StatisticValue	svRiver;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -45,6 +56,10 @@ public class Player
 		this.folded = false;
 		this.betSpending = 0;
 		this.pocket = new Pocket();
+		svPreFlop = null;
+		svFlop = null;
+		svTurn = null;
+		svRiver = null;
 	}
 
 	public void endBettingState()
@@ -137,11 +152,35 @@ public class Player
 	public void addCard(Card card)
 	{
 		pocket.add(card);
+		if (pocket.size() == 2)
+		{
+			svPreFlop = Statistics.getPreFlopValues(pocket, 2);//gameEngine.getNbPlayers());
+		}
 	}
 
 	public void removeTurningSpend(int amount)
 	{
 		turnSpending = (turnSpending - amount > 0) ? turnSpending - amount : 0;
+	}
+
+	@Override
+	public void update(Observable o, Object arg)
+	{
+		Pair<StateType, StatisticValue> response = (Pair<StateType, StatisticValue>)arg;
+		StateType stateType = response.getKey();
+
+		if (stateType == StateType.FlopState)
+		{
+			svFlop = response.getValue();
+		}
+		else if (stateType == StateType.TurnState)
+		{
+			svTurn = response.getValue();
+		}
+		else
+		{
+			svRiver = response.getValue();
+		}
 	}
 
 	/*------------------------------*\
@@ -156,6 +195,26 @@ public class Player
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+
+	public StatisticValue getPreFlopValues()
+	{
+		return svPreFlop;
+	}
+
+	public StatisticValue getFlopValues()
+	{
+		return svFlop;
+	}
+
+	public StatisticValue getTurnValues()
+	{
+		return svTurn;
+	}
+
+	public StatisticValue getRiverValues()
+	{
+		return svRiver;
+	}
 
 	public int getBankroll()
 	{

@@ -4,6 +4,7 @@ package ch.hearc.pokerface.gameengine.statistics.simulation;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -14,14 +15,16 @@ import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.compute.ComputeBestHand;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerValue;
+import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.statistics.StatisticValue;
 import ch.hearc.pokerface.gameengine.subsets.Board;
 import ch.hearc.pokerface.gameengine.subsets.CardSubset;
 import ch.hearc.pokerface.gameengine.subsets.Deck;
 import ch.hearc.pokerface.gameengine.subsets.Hand;
 import ch.hearc.pokerface.gameengine.subsets.Pocket;
+import ch.hearc.pokerface.tools.Pair;
 
-public class Simulation
+public class Simulation extends Observable implements Runnable
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -34,6 +37,7 @@ public class Simulation
 	private final int						nbPlayer;
 	private final Deck						deck;
 	private final int						nbCardBoard;
+	private final StateType					stateType;
 
 	/*------------------------------*\
 	|*			  Static			*|
@@ -49,25 +53,44 @@ public class Simulation
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public Simulation(Pocket p, Board b, int nbPlayer)
+	public Simulation(Pocket p, Card[] cards, int nbPlayer, int nbCardBoard)
 	{
 		this.pocket = p;
-		this.board = b;
+
+		this.board = new Board();
+		for(int i = 0; i < nbCardBoard; ++i)
+		{
+			board.add(cards[i]);
+		}
+
 		this.nbPlayer = nbPlayer;
 		this.deck = new Deck();
 		this.datas = new Data[NB_CORE];
-		this.nbCardBoard = b.size();
+		this.nbCardBoard = nbCardBoard;
+
+		if(nbCardBoard == 3)
+		{
+			stateType = StateType.FlopState;
+		}
+		else if (nbCardBoard == 4)
+		{
+			stateType = StateType.TurnState;
+		}
+		else
+		{
+			stateType = StateType.RiverState;
+		}
 
 		for(int i = 0; i < NB_CORE; ++i)
 		{
 			datas[i] = new Data();
 		}
 
-		for(Card c:p)
+		for(Card c:pocket)
 		{
 			deck.removeByValue(c);
 		}
-		for(Card c:b)
+		for(Card c:board)
 		{
 			deck.removeByValue(c);
 		}
@@ -77,7 +100,8 @@ public class Simulation
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public StatisticValue run()
+	@Override
+	public void run()
 	{
 		List<Future<Void>> futures = new LinkedList<Future<Void>>();
 
@@ -104,7 +128,10 @@ public class Simulation
 
 		EXECUTOR_SERVICE.shutdown();
 
-		return joinDatas();
+		Pair<StateType,StatisticValue> response = new Pair<StateType, StatisticValue>(stateType,joinDatas());
+
+		setChanged();
+		notifyObservers(response);
 	}
 
 	/*------------------------------------------------------------------*\
@@ -119,9 +146,10 @@ public class Simulation
 			d.union(datas[2]);
 		}
 
-		Map<String,Integer> map = d.getMap();
+		Map<String, Integer> map = d.getMap();
 		double nbTime = d.getNbTime();
-		return new StatisticValue(d.getWinPercentage(),d.getTiePercentage(),d.getLossPercentage(),d.getAverageOpponantWinner(), map.get("SF")/nbTime*100, map.get("4K")/nbTime*100, map.get("FH")/nbTime*100, map.get("F")/nbTime*100, map.get("S")/nbTime*100, map.get("3K")/nbTime*100, map.get("2P")/nbTime*100, map.get("1P")/nbTime*100, map.get("HC")/nbTime*100);
+		return new StatisticValue(d.getWinPercentage(), d.getTiePercentage(), d.getLossPercentage(), d.getAverageOpponantWinner(), map.get("SF") / nbTime * 100, map.get("4K") / nbTime * 100, map.get("FH") / nbTime * 100, map.get("F") / nbTime * 100, map.get("S") / nbTime * 100, map.get("3K")
+				/ nbTime * 100, map.get("2P") / nbTime * 100, map.get("1P") / nbTime * 100, map.get("HC") / nbTime * 100);
 	}
 
 	private Callable<Void> simulatorCallable(final int index)
@@ -168,7 +196,7 @@ public class Simulation
 					nbOpponantWinner = 0;
 					resultHandComparaison = 0;
 					stateOfHumanPlayer = 1;//1 -> win, 0 -> tie, -1 -> lose
-					for(int j = 1;j < nbPlayer; ++j)
+					for(int j = 1; j < nbPlayer; ++j)
 					{
 						resultHandComparaison = hpm.getHand(bestHandPlayers[j]).compareTo(bestHandHumanPlayer);
 						if (resultHandComparaison > 0)//Lose
@@ -176,7 +204,7 @@ public class Simulation
 							stateOfHumanPlayer = -1;
 							nbOpponantWinner++;
 						}
-						else if(resultHandComparaison == 0 && stateOfHumanPlayer != -1)//Tie
+						else if (resultHandComparaison == 0 && stateOfHumanPlayer != -1)//Tie
 						{
 							stateOfHumanPlayer = 0;
 							nbOpponantWinner++;
@@ -187,7 +215,7 @@ public class Simulation
 					{
 						datas[index].addWin();
 					}
-					else if(stateOfHumanPlayer == 0)
+					else if (stateOfHumanPlayer == 0)
 					{
 						datas[index].addTie();
 					}
