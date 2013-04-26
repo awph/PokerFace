@@ -63,7 +63,6 @@ public class JPanelGameBoard extends JPanel
 	public void start(GameEngine gameEngine)
 	{
 		this.gameEngine = gameEngine;
-		gameEngine.run();
 		refresh();
 
 		gameArea = new JPanelGameArea(gameEngine);
@@ -74,6 +73,7 @@ public class JPanelGameBoard extends JPanel
 
 		jsp.setDividerSize(0);
 		add(jsp, BorderLayout.CENTER);
+		gameEngine.run();
 	}
 
 	/*------------------------------*\
