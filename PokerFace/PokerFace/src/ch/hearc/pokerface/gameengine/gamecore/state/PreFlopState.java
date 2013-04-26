@@ -37,6 +37,8 @@ public class PreFlopState extends State
 	@Override
 	public void nextSate(GameEngine ge)
 	{
+		ge.updateGUI();
+		ge.setOldState(StateType.PreFlopState);
 		ge.setState(new BettingState());
 	}
 }

@@ -51,12 +51,17 @@ public class JPanelGameControl extends JPanel
 
 		boolean isHumanPlayerTurn = false;
 
-		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.isFolded());
+		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer());
 
 		betRaiseButton.setEnabled(isHumanPlayerTurn);
 		checkCallButton.setEnabled(isHumanPlayerTurn);
 		foldButton.setEnabled(isHumanPlayerTurn);
 		allinButton.setEnabled(isHumanPlayerTurn);
+
+		if (isHumanPlayerTurn)
+		{
+			System.out.println(humanPlayer.getFlopValues());
+		}
 	}
 
 	/*------------------------------*\
@@ -96,8 +101,12 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX).allIn();
-				notify();
+				Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
+				synchronized (humanPlayer)
+				{
+					humanPlayer.allIn();
+					humanPlayer.notify();
+				}
 			}
 		});
 
@@ -108,15 +117,18 @@ public class JPanelGameControl extends JPanel
 			public void actionPerformed(ActionEvent e)
 			{
 				Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
-				if (humanPlayer.getCallValue() == 0)
+				synchronized (humanPlayer)
 				{
-					humanPlayer.bet(moneySlider.getValue());
+					if (humanPlayer.getCallValue() == 0)
+					{
+						humanPlayer.bet(moneySlider.getValue());
+					}
+					else
+					{
+						humanPlayer.raise(moneySlider.getValue());
+					}
+					humanPlayer.notify();
 				}
-				else
-				{
-					humanPlayer.raise(moneySlider.getValue());
-				}
-				notify();
 			}
 		});
 
@@ -127,15 +139,18 @@ public class JPanelGameControl extends JPanel
 			public void actionPerformed(ActionEvent e)
 			{
 				Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
-				if (humanPlayer.getCallValue() == 0)
+				synchronized (humanPlayer)
 				{
-					humanPlayer.check();
+					if (humanPlayer.getCallValue() == 0)
+					{
+						humanPlayer.check();
+					}
+					else
+					{
+						humanPlayer.call();
+					}
+					humanPlayer.notify();
 				}
-				else
-				{
-					humanPlayer.call();
-				}
-				notify();
 			}
 		});
 
@@ -145,8 +160,12 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX).fold();
-				notify();
+				Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
+				synchronized (humanPlayer)
+				{
+					humanPlayer.fold();
+					humanPlayer.notify();
+				}
 			}
 		});
 	}

@@ -24,6 +24,7 @@ public class TurnState extends State
 	@Override
 	public void nextSate(GameEngine ge)
 	{
-
+		ge.setOldState(StateType.TurnState);
+		ge.setState(new BettingState());
 	}
 }

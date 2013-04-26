@@ -45,8 +45,8 @@ public class BettingState extends State
 					{
 						++nbAllinPlayer;
 					}
-					ge.updateGUI();
 					ge.changeCurrentPlayer();
+					ge.updateGUI();
 				}
 				allChecked = (ge.getPot().getBet() == betSpend || (nbUnfoldedPlayer - nbAllinPlayer) <= 1);
 			}

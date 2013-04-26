@@ -150,10 +150,6 @@ public class GameEngine
 		pot.addStateTotal(amount);
 		//TODO: SoundEngine play sound here
 		pot.addStateTotal(amount);
-		if (oldState != null)
-		{
-			notify();
-		}
 	}
 
 	public void showdown()
@@ -258,6 +254,11 @@ public class GameEngine
 	public void setState(State s)
 	{
 		state = s;
+	}
+
+	public void setOldState(StateType oldState)
+	{
+		this.oldState = oldState;
 	}
 
 	/*------------------------------------------------------------------*\

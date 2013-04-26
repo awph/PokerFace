@@ -24,6 +24,7 @@ public class RiverState extends State
 	@Override
 	public void nextSate(GameEngine ge)
 	{
-
+		ge.setOldState(StateType.RiverState);
+		ge.setState(new BettingState());
 	}
 }

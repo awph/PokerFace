@@ -60,7 +60,7 @@ public class JPanelGameBoard extends JPanel
 		jsp.setDividerLocation(getHeight() / 3 * 2);
 	}
 
-	public void start(GameEngine gameEngine)
+	public void start(final GameEngine gameEngine)
 	{
 		this.gameEngine = gameEngine;
 		refresh();
@@ -73,7 +73,16 @@ public class JPanelGameBoard extends JPanel
 
 		jsp.setDividerSize(0);
 		add(jsp, BorderLayout.CENTER);
-		gameEngine.run();
+		Thread t = new Thread(new Runnable()
+		{
+
+			@Override
+			public void run()
+			{
+				gameEngine.run();
+			}
+		});
+		t.start();
 	}
 
 	/*------------------------------*\

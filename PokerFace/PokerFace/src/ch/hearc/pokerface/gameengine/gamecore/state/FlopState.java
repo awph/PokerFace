@@ -33,6 +33,7 @@ public class FlopState extends State
 	@Override
 	public void nextSate(GameEngine ge)
 	{
-
+		ge.setOldState(StateType.FlopState);
+		ge.setState(new BettingState());
 	}
 }

@@ -35,8 +35,8 @@ public class AI extends Player
 	@Override
 	public void doAction()
 	{
-		System.out.println(pocket);
-		//bet(getCallValue());
+		System.out.println("IA : " + pocket);
+		bet(getCallValue());
 		//level1();
 	}
 

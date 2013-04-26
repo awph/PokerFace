@@ -46,14 +46,15 @@ public class PlayerComponent extends JPanel
 		if (player.isDead())
 		{
 			//TODO Grisé
-			card1 = new CardComponent("NO CARD");
-			card2 = new CardComponent("NO MOTHER FUCKING CARD");
+			card1.setText("NO CARD");
+			card2.setText("NO MOTHER FUCKING CARD");
 		}
 		else
 		{
-			card1 = new CardComponent(player.getPocket().getArray()[0].getId());
-			card2 = new CardComponent(player.getPocket().getArray()[1].getId());
+			card1.setText(player.getPocket().getArray()[0].getId());
+			card2.setText(player.getPocket().getArray()[1].getId());
 		}
+		money.setText(Integer.toString(player.getBankroll()));
 	}
 
 	/*------------------------------*\

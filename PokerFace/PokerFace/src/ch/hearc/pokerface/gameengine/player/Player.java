@@ -55,7 +55,11 @@ public class Player implements Observer
 
 	public void doAction() throws InterruptedException
 	{
-		wait();
+		System.out.println("Player : " + pocket);
+		synchronized (this)
+		{
+			wait();
+		}
 	}
 
 	public void newTurn()
@@ -155,6 +159,7 @@ public class Player implements Observer
 	{
 		dead = true;
 	}
+
 	/**
 	 * Add new card to the player's pocker
 	 *
@@ -210,7 +215,7 @@ public class Player implements Observer
 
 	public int getCallValue()
 	{
-		return gameEngine.getPot().getBet()-betSpending;
+		return gameEngine.getPot().getBet() - betSpending;
 	}
 
 	public Profile getProfile()
