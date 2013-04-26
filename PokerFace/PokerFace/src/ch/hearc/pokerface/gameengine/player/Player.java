@@ -208,6 +208,11 @@ public class Player implements Observer
 	|*				Get				*|
 	\*------------------------------*/
 
+	public int getCallValue()
+	{
+		return gameEngine.getPot().getBet()-betSpending;
+	}
+
 	public Profile getProfile()
 	{
 		return profile;

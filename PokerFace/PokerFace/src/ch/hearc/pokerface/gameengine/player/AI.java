@@ -32,9 +32,8 @@ public class AI extends Player
 		//Level 1
 		Pot pot = gameEngine.getPot();
 
-		int call = pot.getBet()-betSpending;
-		Odds potOdds = new Odds(call,pot.getTurnTotal()+call);
-
+		Odds potOdds = new Odds(getCallValue(),pot.getTurnTotal()+getCallValue());
+		//Odds pokerOdds = new Odds()
 	}
 }
 
