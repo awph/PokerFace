@@ -8,6 +8,16 @@ import ch.hearc.pokerface.gameengine.cards.CardColor;
 public class Pocket extends CardSubset
 {
 	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	public final static int NUMBER_OF_CARDS = 2;
+
+	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
@@ -43,7 +53,7 @@ public class Pocket extends CardSubset
 	@Override
 	public void add(Card c)
 	{
-		if (size() < 2)
+		if (size() < NUMBER_OF_CARDS)
 		{
 			super.add(c);
 		}
