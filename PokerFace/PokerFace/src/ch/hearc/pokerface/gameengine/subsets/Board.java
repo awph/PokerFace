@@ -2,6 +2,7 @@
 package ch.hearc.pokerface.gameengine.subsets;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
+import ch.hearc.pokerface.gameengine.cards.CardColor;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerValue;
 
@@ -11,7 +12,7 @@ public class Board extends CardSubset
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	public static final int NUMBER_CARDS = 5;
+	public static final int	NUMBER_CARDS	= 5;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -52,10 +53,31 @@ public class Board extends CardSubset
 
 	public String getKey(Deck deck)
 	{
-		if (size() != 4)
+		if (size() < 4)
 		{
-			System.err.println("Board != 4");
+			System.err.println("Board < 4");
 			return null;
+		}
+		else if (size() == NUMBER_CARDS)
+		{
+			StringBuilder key = new StringBuilder("");
+
+			CardColor color = this.iterator().next().getColor();
+			boolean sameColor = true;
+			for(Card c:this)
+			{
+				if (c.getColor() != color)
+				{
+					sameColor = false;
+				}
+				key.append(c.getValue().getStringValue());
+			}
+
+			if (sameColor)
+			{
+				key.append("s");
+			}
+			return key.toString();
 		}
 		Board boardTemp = this.cloneOf();
 		HandsPokerMap handsPokerMap = HandsPokerMap.getInstance();
@@ -98,7 +120,7 @@ public class Board extends CardSubset
 				return key.toString();
 			}
 		}
-		return null;//TODO: make getRank au lieu de getKey
+		return null;
 	}
 
 	public HandsPokerValue getHandsPokerValue(String key)
