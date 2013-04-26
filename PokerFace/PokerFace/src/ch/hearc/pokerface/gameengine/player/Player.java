@@ -19,18 +19,19 @@ public class Player implements Observer
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private int				bankroll;
-	private int				turnSpending;
-	private boolean			folded;
-	private int				betSpending;
-	private Pocket			pocket;
-	private GameEngine		gameEngine;
-	private Profile			profile;
-	private Role			role;
-	private StatisticValue	svPreFlop;
-	private StatisticValue	svFlop;
-	private StatisticValue	svTurn;
-	private StatisticValue	svRiver;
+	protected int				bankroll;
+	protected int				turnSpending;
+	protected boolean			folded;
+	protected int				betSpending;
+	protected Pocket			pocket;
+	protected Profile			profile;
+	protected Role				role;
+	protected GameEngine		gameEngine;
+	protected StatisticValue	svPreFlop;
+	protected StatisticValue	svFlop;
+	protected StatisticValue	svTurn;
+	protected StatisticValue	svRiver;
+	protected boolean			dead;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -38,6 +39,7 @@ public class Player implements Observer
 
 	public Player(Profile profile, int bankroll, GameEngine gameEngine)
 	{
+		this.dead = false;
 		this.gameEngine = gameEngine;
 		this.profile = profile;
 		this.bankroll = bankroll;
@@ -50,6 +52,11 @@ public class Player implements Observer
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
+
+	public void doAction() throws InterruptedException
+	{
+		wait();
+	}
 
 	public void newTurn()
 	{
@@ -144,6 +151,10 @@ public class Player implements Observer
 		gameEngine.bet(-1);
 	}
 
+	public void kill()
+	{
+		dead = true;
+	}
 	/**
 	 * Add new card to the player's pocker
 	 *
@@ -249,5 +260,10 @@ public class Player implements Observer
 	public boolean isFolded()
 	{
 		return this.folded;
+	}
+
+	public boolean isDead()
+	{
+		return this.dead;
 	}
 }

@@ -37,7 +37,9 @@ public class BettingState extends State
 				{
 					if (ge.getCurrentPlayer().getBankroll() != 0)//If all in
 					{
-						wait();
+						//If player -> wait()
+						//Else IA compute
+						ge.getCurrentPlayer().doAction();
 					}
 					else
 					{

@@ -138,10 +138,6 @@ public class GameEngine
 		players.get(indexPlayer).takeMoney(amount);
 		//TODO: SoundEngine play sound here
 		pot.addStateTotal(amount);
-		if(oldState != null)
-		{
-			notify();
-		}
 	}
 
 	public void showdown()
@@ -313,7 +309,20 @@ public class GameEngine
 			}
 		} while(rest != 0);
 
+		List<Player> playersToKill = new ArrayList<Player>();
+		for(Player p:players)
+		{
+			if(p.getBankroll() <= 0)
+			{
+				p.kill();
+				playersToKill.add(p);
+			}
+		}
 
+		for(Player p:playersToKill)
+		{
+			players.remove(p);
+		}
 	}
 
 	private int getNextIndex(int val)
