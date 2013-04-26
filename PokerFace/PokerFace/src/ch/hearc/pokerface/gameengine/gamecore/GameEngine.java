@@ -148,8 +148,6 @@ public class GameEngine
 		players.get(indexPlayer).takeMoney(amount);
 		//TODO: SoundEngine play sound here
 		pot.addStateTotal(amount);
-		//TODO: SoundEngine play sound here
-		pot.addStateTotal(amount);
 	}
 
 	public void showdown()

@@ -19,6 +19,7 @@ public class PlayerComponent extends JPanel
 	private Player			player;
 	private CardComponent	card1;
 	private CardComponent	card2;
+	private JLabel			role;	//TEMP
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -27,10 +28,12 @@ public class PlayerComponent extends JPanel
 	public PlayerComponent(Player player)
 	{
 		this.player = player;
-		this.name = new JLabel(player.getProfile().getName());
-		this.money = new JLabel(Integer.toString(player.getBankroll()));
+		name = new JLabel(player.getProfile().getName());
+		money = new JLabel(Integer.toString(player.getBankroll()));
 		card1 = new CardComponent("NO CARD");
 		card2 = new CardComponent("NO MOTHER FUCKING CARD");
+
+		role = new JLabel(player.getRole().toString());
 
 		geometry();
 		control();
@@ -55,6 +58,7 @@ public class PlayerComponent extends JPanel
 			card2.setText(player.getPocket().getArray()[1].getId());
 		}
 		money.setText(Integer.toString(player.getBankroll()));
+		role.setText(player.getRole().toString());
 	}
 
 	/*------------------------------*\
@@ -76,6 +80,7 @@ public class PlayerComponent extends JPanel
 		box.add(money);
 		box.add(card1);
 		box.add(card2);
+		box.add(role);
 		add(box);
 	}
 

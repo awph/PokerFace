@@ -39,6 +39,7 @@ public class Player implements Observer
 
 	public Player(Profile profile, int bankroll, GameEngine gameEngine)
 	{
+		setRole(Role.Nothing);
 		this.dead = false;
 		this.gameEngine = gameEngine;
 		this.profile = profile;
@@ -212,6 +213,11 @@ public class Player implements Observer
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+
+	public Role getRole()
+	{
+		return role;
+	}
 
 	public int getCallValue()
 	{

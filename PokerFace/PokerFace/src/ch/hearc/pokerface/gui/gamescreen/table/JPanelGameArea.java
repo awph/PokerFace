@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Box;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
@@ -20,6 +21,7 @@ public class JPanelGameArea extends JPanel
 	private List<PlayerComponent>	playerComponents;
 	private GameEngine				gameEngine;
 	//TODO BOARDPANEL
+	private JLabel					board;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -42,6 +44,8 @@ public class JPanelGameArea extends JPanel
 		box.add(playerBox);
 		box.add(Box.createVerticalStrut(50));
 		//box.add(); //TODO BOARDPANEL
+		board = new JLabel();
+		box.add(board);
 		add(box);
 
 	}
@@ -49,7 +53,10 @@ public class JPanelGameArea extends JPanel
 	public void updateGUI()
 	{
 		//TODO BOARDPANEL.updateGUI()
-		for(PlayerComponent playerComponent : playerComponents)
+		board.setText(gameEngine.getBoard().toString());
+
+		add(board);
+		for(PlayerComponent playerComponent:playerComponents)
 		{
 			playerComponent.updateGUI();
 		}
