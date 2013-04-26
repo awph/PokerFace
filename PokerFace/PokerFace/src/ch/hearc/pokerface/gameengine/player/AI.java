@@ -13,7 +13,6 @@ public class AI extends Player
 	public AI(Profile profile, int bankroll)
 	{
 		super(profile, bankroll);
-		// TODO Auto-generated constructor stub
 	}
 
 	/*------------------------------------------------------------------*\

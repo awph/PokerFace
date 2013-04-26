@@ -134,6 +134,7 @@ public class GameEngine
 
 	public void bet(int amount)
 	{
+		players.get(indexPlayer).takeMoney(amount);
 		//TODO: SoundEngine play sound here
 		pot.addStateTotal(amount);
 		notify();

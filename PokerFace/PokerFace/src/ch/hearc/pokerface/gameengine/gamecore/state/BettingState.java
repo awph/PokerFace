@@ -2,6 +2,7 @@
 package ch.hearc.pokerface.gameengine.gamecore.state;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
+import ch.hearc.pokerface.gameengine.player.Player;
 
 public class BettingState extends State
 {
@@ -24,7 +25,6 @@ public class BettingState extends State
 	@Override
 	public void bet(GameEngine ge)
 	{
-		//TODO: je sais pas ou mettre, mais il faut pas oublier que lors du bettingState, quand oldState == preflop, la petite et la grande blind mise automatiquement.
 		try
 		{
 			boolean allChecked = false;
@@ -54,7 +54,14 @@ public class BettingState extends State
 			e.printStackTrace();
 		}
 
-		//TODO: appeler endBettingState pour tous les joueurs.
+		Player firstPlayer = ge.getCurrentPlayer();
+		Player currentPlayer = firstPlayer;
+		do
+		{
+			currentPlayer.endBettingState();
+			currentPlayer = ge.getCurrentPlayer();
+		} while(currentPlayer != firstPlayer);
+
 	}
 
 	@Override

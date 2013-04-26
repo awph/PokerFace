@@ -154,7 +154,7 @@ public class Player implements Observer
 		pocket.add(card);
 		if (pocket.size() == 2)
 		{
-			svPreFlop = Statistics.getPreFlopValues(pocket, 2);//gameEngine.getNbPlayers());
+			svPreFlop = Statistics.getPreFlopValues(pocket, 2);//gameEngine.getNbPlayers());//TODO
 		}
 	}
 

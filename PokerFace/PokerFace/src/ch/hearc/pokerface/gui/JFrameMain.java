@@ -41,7 +41,7 @@ public class JFrameMain extends JFrame
 	public JFrameMain()
 	{
 		//createSplashScreen(); //TODO il faut introduire un fichier manifest pour lancer le splash screen
-    	//setBackgroundImage();
+		//setBackgroundImage();
 
 		geometry();
 		control();
@@ -57,10 +57,10 @@ public class JFrameMain extends JFrame
 	{
 		switch(card)
 		{
-			case "panelMainMenu" :
+			case "panelMainMenu":
 				panelMainMenu.refreshProfile();
 				break;
-			case "panelGameBoard" :
+			case "panelGameBoard":
 				panelGameBoard.refresh();
 				break;
 		}
@@ -77,6 +77,7 @@ public class JFrameMain extends JFrame
 		panelMainMenu.refreshProfile(); // TODO ajouter dans le switch du setCard
 		setCard("panelMainMenu");
 	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -89,6 +90,7 @@ public class JFrameMain extends JFrame
 	{
 		return panelProfile;
 	}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
@@ -159,11 +161,14 @@ public class JFrameMain extends JFrame
 
 	private void setBackgroundImage()
 	{
-		try {
-    		this.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/table/background.png")))));
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
+		try
+		{
+			this.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/table/background.png")))));
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	private void createSplashScreen()
