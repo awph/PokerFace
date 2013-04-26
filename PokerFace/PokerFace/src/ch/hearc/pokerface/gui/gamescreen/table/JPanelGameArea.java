@@ -33,7 +33,7 @@ public class JPanelGameArea extends JPanel
 		Box box = Box.createVerticalBox();
 		Box playerBox = Box.createHorizontalBox();
 
-		for(Player player:gameEngine.getPlayers())
+		for(Player player:this.gameEngine.getPlayers())
 		{
 			playerComponents.add(new PlayerComponent(player));
 			playerBox.add(playerComponents.get(playerComponents.size() - 1));
@@ -49,7 +49,10 @@ public class JPanelGameArea extends JPanel
 	public void updateGUI()
 	{
 		//TODO BOARDPANEL.updateGUI()
-		//TODO FOREACH PLAYERCOMPONENTS.updateGUI()
+		for(PlayerComponent playerComponent : playerComponents)
+		{
+			playerComponent.updateGUI();
+		}
 	}
 
 	/*------------------------------------------------------------------*\

@@ -46,6 +46,8 @@ public class PlayerComponent extends JPanel
 		if (player.isDead())
 		{
 			//TODO Grisé
+			card1 = new CardComponent("NO CARD");
+			card2 = new CardComponent("NO MOTHER FUCKING CARD");
 		}
 		else
 		{
