@@ -81,7 +81,7 @@ public class GameEngine
 		for(int i = 1; i < nbPlayer; ++i)
 		{
 			//TODO get a random profile
-			players.add(new AI(profile, bankroll, this));
+			players.add(new AI(new Profile("IA-" + i, 1), bankroll, this));
 		}
 		indexPlayer = (int)(Math.random() * nbPlayer);
 		indexDealer = getPreviousIndex(indexPlayer);
@@ -107,7 +107,7 @@ public class GameEngine
 	{
 		do
 		{
-			indexPlayer = (indexPlayer < (players.size() - 1)) ? indexPlayer + 1 : 0;
+			indexPlayer = getNextIndex(indexPlayer);
 		} while(getCurrentPlayer().isFolded());
 		return indexPlayer;
 	}
@@ -375,8 +375,8 @@ public class GameEngine
 		indexDealer = getNextIndex(indexDealer);
 		players.get(indexDealer).setRole(Role.Dealer);
 
-		int indexSmallBlind = getNextIndex(indexDealer + 1);
-		int indexBigBlind = getNextIndex(indexSmallBlind + 1);
+		int indexSmallBlind = getNextIndex(indexDealer);
+		int indexBigBlind = getNextIndex(indexSmallBlind);
 
 		players.get(indexSmallBlind).setRole(Role.SmallBlind);
 		players.get(indexSmallBlind).bet(smallBlind);
@@ -388,7 +388,7 @@ public class GameEngine
 			players.get(indexBigBlind).bet(bigBlind);
 		}
 
-		indexPlayer = getNextIndex(indexBigBlind + 1);
+		indexPlayer = getNextIndex(indexBigBlind);
 	}
 
 	private void runSimulationPlayer(int nbCardInBoard)

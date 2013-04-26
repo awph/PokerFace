@@ -97,7 +97,6 @@ public class JPanelGameControl extends JPanel
 	{
 		allinButton.addActionListener(new ActionListener()
 		{
-
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
