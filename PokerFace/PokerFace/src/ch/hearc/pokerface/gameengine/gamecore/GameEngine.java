@@ -24,6 +24,7 @@ import ch.hearc.pokerface.gameengine.statistics.Statistics;
 import ch.hearc.pokerface.gameengine.subsets.Board;
 import ch.hearc.pokerface.gameengine.subsets.CardSubset;
 import ch.hearc.pokerface.gameengine.subsets.Deck;
+import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
 import ch.hearc.pokerface.tools.Pair;
 import ch.hearc.pokerface.tools.Triple;
 
@@ -48,14 +49,23 @@ public class GameEngine
 	private Card[]			futureBoard;
 	private int				magicIndex;
 	private int				indexDealer;
+	private JPanelGameBoard panelGameBoard;
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	public static final int	HUMAN_PLAYER_INDEX	= 0;
 
 	// initialize to nbPlayer*(-2) and incremented each draw of card. After the players have received theirs cards, we use it to define the correct card in the variable futureBoard to get
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public GameEngine(int smallBlind, int nbPlayer, Profile profile, int bankroll)
+	public GameEngine(int smallBlind, int nbPlayer, Profile profile, int bankroll, JPanelGameBoard panelGameBoard)
 	{
+		this.panelGameBoard = panelGameBoard;
+
 		pot = new Pot();
 		soundEngine = new SoundEngine();
 		futureBoard = new Card[Board.NUMBER_CARDS];
@@ -65,13 +75,13 @@ public class GameEngine
 		bigBlind = 2 * smallBlind;
 
 		players = new ArrayList<Player>();
-		players.add(new Player(profile, bankroll,this));
-		profile.setCapital(profile.getCapital()-bankroll);
+		players.add(new Player(profile, bankroll, this));
+		profile.setCapital(profile.getCapital() - bankroll);
 
 		for(int i = 1; i < nbPlayer; ++i)
 		{
 			//TODO get a random profile
-			players.add(new AI(profile, bankroll,this));
+			players.add(new AI(profile, bankroll, this));
 		}
 		indexPlayer = (int)(Math.random() * nbPlayer);
 		indexDealer = getPreviousIndex(indexPlayer);
@@ -138,6 +148,12 @@ public class GameEngine
 		players.get(indexPlayer).takeMoney(amount);
 		//TODO: SoundEngine play sound here
 		pot.addStateTotal(amount);
+		//TODO: SoundEngine play sound here
+		pot.addStateTotal(amount);
+		if (oldState != null)
+		{
+			notify();
+		}
 	}
 
 	public void showdown()
@@ -223,6 +239,11 @@ public class GameEngine
 	public Pot getPot()
 	{
 		return pot;
+	}
+
+	public List<Player> getPlayers()
+	{
+		return players;
 	}
 
 	/*------------------------------*\
@@ -312,7 +333,7 @@ public class GameEngine
 		List<Player> playersToKill = new ArrayList<Player>();
 		for(Player p:players)
 		{
-			if(p.getBankroll() <= 0)
+			if (p.getBankroll() <= 0)
 			{
 				p.kill();
 				playersToKill.add(p);
@@ -332,7 +353,7 @@ public class GameEngine
 
 	private int getPreviousIndex(int val)
 	{
-		return (val == 0) ? getNbPlayers()-1 : val - 1;
+		return (val == 0) ? getNbPlayers() - 1 : val - 1;
 	}
 
 	private void initialize()

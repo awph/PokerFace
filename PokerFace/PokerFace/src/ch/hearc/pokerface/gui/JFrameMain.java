@@ -18,6 +18,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
+import ch.hearc.pokerface.gameengine.player.profile.ActiveProfile;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
 import ch.hearc.pokerface.gui.menuscreens.JPanelMainMenu;
@@ -61,8 +63,7 @@ public class JFrameMain extends JFrame
 				panelMainMenu.refreshProfile();
 				break;
 			case "panelGameBoard":
-				panelGameBoard.start();
-				panelGameBoard.refresh();
+				panelGameBoard.start(new GameEngine(10, 4, ActiveProfile.getInstance().getProfile(), 5000, panelGameBoard)); //TODO get from option pane
 				break;
 		}
 		layout.show(this.getContentPane(), card);

@@ -3,21 +3,23 @@ package ch.hearc.pokerface.gui.gamescreen.card;
 
 import javax.swing.JLabel;
 
-
 public class CardComponent extends JLabel
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	private String value;
+	private String	value;
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-public CardComponent(String cardValue)
-{
-	super(cardValue);
-	value = cardValue;
-}
+
+	public CardComponent(String cardValue)
+	{
+		super(cardValue);
+		value = cardValue;
+	}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
@@ -35,4 +37,3 @@ public CardComponent(String cardValue)
 	\*------------------------------------------------------------------*/
 
 }
-

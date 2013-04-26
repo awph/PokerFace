@@ -13,23 +13,24 @@ public class PlayerComponent extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	private JLabel name;
-	private JLabel money;
-	private Player player;
-	private CardComponent card1;
-	private CardComponent card2;
+
+	private JLabel			name;
+	private JLabel			money;
+	private Player			player;
+	private CardComponent	card1;
+	private CardComponent	card2;
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+
 	public PlayerComponent(Player player)
 	{
 		this.player = player;
 		this.name = new JLabel(player.getProfile().getName());
-		this.money = new JLabel(player.getBankroll() + "");
-
-		//TODO player.getPocket().getArray(), au début sera null
-		card1 = new CardComponent("AsPique");
-		card2 = new CardComponent("AsTrefle");
+		this.money = new JLabel(Integer.toString(player.getBankroll()));
+		card1 = new CardComponent("NO CARD");
+		card2 = new CardComponent("NO MOTHER FUCKING CARD");
 
 		geometry();
 		control();
@@ -39,25 +40,20 @@ public class PlayerComponent extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
-	private void geometry()
-	{
-		Box box = Box.createVerticalBox();
-		box.add(name);
-		box.add(money);
-		box.add(card1);
-		box.add(card2);
-		add(box);
-	}
-	private void control()
-	{
-		// TODO Auto-generated method stub
 
-	}
-	private void appearance()
+	public void updateGUI()
 	{
-		// TODO Auto-generated method stub
-
+		if (player.isDead())
+		{
+			//TODO Grisé
+		}
+		else
+		{
+			card1 = new CardComponent(player.getPocket().getArray()[0].getId());
+			card2 = new CardComponent(player.getPocket().getArray()[1].getId());
+		}
 	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -69,5 +65,27 @@ public class PlayerComponent extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
+
+	private void geometry()
+	{
+		Box box = Box.createVerticalBox();
+		box.add(name);
+		box.add(money);
+		box.add(card1);
+		box.add(card2);
+		add(box);
+	}
+
+	private void control()
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	private void appearance()
+	{
+		// TODO Auto-generated method stub
+
+	}
 
 }

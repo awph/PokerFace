@@ -9,11 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
-import ch.hearc.pokerface.gameengine.player.profile.ActiveProfile;
 import ch.hearc.pokerface.gui.JFrameMain;
 import ch.hearc.pokerface.gui.gamescreen.table.JPanelGameArea;
 import ch.hearc.pokerface.gui.gamescreen.table.JPanelGameControl;
-
 
 public class JPanelGameBoard extends JPanel
 {
@@ -22,21 +20,18 @@ public class JPanelGameBoard extends JPanel
 	\*------------------------------------------------------------------*/
 
 	//Inputs
-	private JFrameMain frameMain;
+	private JFrameMain			frameMain;
 
 	//Content
-	private JPanelGameArea gameArea;
-	private JPanelGameControl gameControl;
+	private JPanelGameArea		gameArea;
+	private JPanelGameControl	gameControl;
 
 	//Tools
-	private JSplitPane jsp;
+	private JSplitPane			jsp;
 
 	//Game
-	private int smallBlind = 5;
-	private int bigBling = 10;
-	private int nbPlayer = 10;
-	private int bankroll = 5000;
-	private GameEngine gameEngine;
+	protected GameEngine		gameEngine;
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
@@ -52,15 +47,34 @@ public class JPanelGameBoard extends JPanel
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public void refresh()
+	public void updateGUI()
 	{
-		jsp.setDividerLocation(getHeight()/3 * 2);
+		//TODO: here update all component in this view
+		gameArea.updateGUI();
+		gameControl.updateGUI();
 	}
 
-	public void start()
+	public void refresh()
 	{
-		gameEngine = new GameEngine(smallBlind, nbPlayer, ActiveProfile.getInstance().getProfile(), bankroll);
+		jsp.setDividerLocation(getHeight() / 3 * 2);
 	}
+
+	public void start(GameEngine gameEngine)
+	{
+		this.gameEngine = gameEngine;
+
+		refresh();
+
+		gameArea = new JPanelGameArea(gameEngine);
+		gameControl = new JPanelGameControl(gameEngine);
+
+		jsp.add(gameArea);
+		jsp.add(gameControl);
+
+		jsp.setDividerSize(0);
+		add(jsp, BorderLayout.CENTER);
+	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -75,14 +89,8 @@ public class JPanelGameBoard extends JPanel
 
 	private void geometry()
 	{
-		GameInformation gameInformation = new GameInformation();
 
-		int nbPlayers = 5;
-
-		gameArea = new JPanelGameArea(gameInformation, nbPlayers);
-		gameControl = new JPanelGameControl(gameInformation);
-
-		jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT,gameArea,gameControl);
+		jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		//TODO : add Top Bar to Jsp
 		setLayout(new BorderLayout());
 	}
@@ -101,8 +109,5 @@ public class JPanelGameBoard extends JPanel
 
 	private void appearance()
 	{
-		jsp.setDividerSize(0);
-		add(jsp, BorderLayout.CENTER);
 	}
 }
-

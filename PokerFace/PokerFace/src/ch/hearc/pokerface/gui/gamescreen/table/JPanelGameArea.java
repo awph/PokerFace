@@ -1,12 +1,15 @@
 
 package ch.hearc.pokerface.gui.gamescreen.table;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.Box;
 import javax.swing.JPanel;
 
+import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
+import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
-import ch.hearc.pokerface.gui.gamescreen.table.board.GameInformation;
-
 
 public class JPanelGameArea extends JPanel
 {
@@ -14,26 +17,41 @@ public class JPanelGameArea extends JPanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private GameInformation gameInformation;
+	private List<PlayerComponent>	playerComponents;
+	private GameEngine				gameEngine;
+	//TODO BOARDPANEL
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-	public JPanelGameArea(GameInformation gameInformation, int nbPlayers)
+
+	public JPanelGameArea(GameEngine gameEngine)
 	{
+		this.gameEngine = gameEngine;
+		playerComponents = new ArrayList<PlayerComponent>();
+
 		Box box = Box.createVerticalBox();
 		Box playerBox = Box.createHorizontalBox();
-		this.gameInformation = gameInformation;
-		for(int i = 0; i < nbPlayers; ++i)
+
+		for(Player player:gameEngine.getPlayers())
 		{
-			playerBox.add(new PlayerComponent("Player " + i, 10000));
+			playerComponents.add(new PlayerComponent(player));
+			playerBox.add(playerComponents.get(playerComponents.size() - 1));
 			playerBox.add(Box.createHorizontalStrut(15));
 		}
 		box.add(playerBox);
 		box.add(Box.createVerticalStrut(50));
-		box.add(gameInformation);
+		//box.add(); //TODO BOARDPANEL
 		add(box);
 
 	}
+
+	public void updateGUI()
+	{
+		//TODO BOARDPANEL.updateGUI()
+		//TODO FOREACH PLAYERCOMPONENTS.updateGUI()
+	}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
@@ -51,4 +69,3 @@ public class JPanelGameArea extends JPanel
 	\*------------------------------------------------------------------*/
 
 }
-
