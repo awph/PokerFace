@@ -246,6 +246,11 @@ public class GameEngine
 		return players;
 	}
 
+	public void updateGUI()
+	{
+		panelGameBoard.updateGUI();
+	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/

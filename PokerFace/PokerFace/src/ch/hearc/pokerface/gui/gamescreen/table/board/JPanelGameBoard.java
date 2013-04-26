@@ -49,6 +49,7 @@ public class JPanelGameBoard extends JPanel
 
 	public void updateGUI()
 	{
+		System.out.println("updateGUI");
 		//TODO: here update all component in this view
 		gameArea.updateGUI();
 		gameControl.updateGUI();
@@ -62,7 +63,7 @@ public class JPanelGameBoard extends JPanel
 	public void start(GameEngine gameEngine)
 	{
 		this.gameEngine = gameEngine;
-
+		gameEngine.run();
 		refresh();
 
 		gameArea = new JPanelGameArea(gameEngine);
