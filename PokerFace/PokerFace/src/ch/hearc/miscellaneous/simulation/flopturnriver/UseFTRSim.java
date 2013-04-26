@@ -33,7 +33,7 @@ public class UseFTRSim
 
 	public static void main() throws IOException, InterruptedException
 	{
-		Player player = new Player(null, 0);
+		Player player = new Player(null, 0, null);
 		player.addCard(new Card(CardValue.Three, CardColor.Clubs));
 		player.addCard(new Card(CardValue.Seven, CardColor.Hearts));
 

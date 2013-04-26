@@ -113,7 +113,7 @@ public class TestDivideUpPot
 
 	private static Player createPlayer(int money, Card c1, Card c2)
 	{
-		Player p = new Player(null, 0);
+		Player p = new Player(null, 0, null);
 		p.giveMoney(money);
 		p.addCard(c1);
 		p.addCard(c2);

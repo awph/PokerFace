@@ -1,6 +1,7 @@
 
 package ch.hearc.pokerface.gameengine.player;
 
+import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 
 
@@ -10,9 +11,9 @@ public class AI extends Player
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	public AI(Profile profile, int bankroll)
+	public AI(Profile profile, int bankroll, GameEngine gameEngine)
 	{
-		super(profile, bankroll);
+		super(profile, bankroll, gameEngine);
 	}
 
 	/*------------------------------------------------------------------*\

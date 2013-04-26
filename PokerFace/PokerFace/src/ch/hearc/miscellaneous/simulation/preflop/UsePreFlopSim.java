@@ -25,7 +25,7 @@ public class UsePreFlopSim
 		p.add(new Card(CardValue.Three,CardColor.Clubs));
 		p.add(new Card(CardValue.Seven,CardColor.Hearts));
 
-		Player player = new Player(null,0);
+		Player player = new Player(null,0, null);
 		player.addCard(new Card(CardValue.Three,CardColor.Clubs));
 
 		long start = System.currentTimeMillis();

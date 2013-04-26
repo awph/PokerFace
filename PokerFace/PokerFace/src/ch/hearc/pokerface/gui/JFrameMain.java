@@ -61,6 +61,7 @@ public class JFrameMain extends JFrame
 				panelMainMenu.refreshProfile();
 				break;
 			case "panelGameBoard":
+				panelGameBoard.start();
 				panelGameBoard.refresh();
 				break;
 		}

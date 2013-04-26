@@ -5,6 +5,7 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.gamescreen.card.CardComponent;
 
 public class PlayerComponent extends JPanel
@@ -14,16 +15,19 @@ public class PlayerComponent extends JPanel
 	\*------------------------------------------------------------------*/
 	private JLabel name;
 	private JLabel money;
-
+	private Player player;
 	private CardComponent card1;
 	private CardComponent card2;
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-	public PlayerComponent(String name, double money)
+	public PlayerComponent(Player player)
 	{
-		this.name = new JLabel(name);
-		this.money = new JLabel(money + "");
+		this.player = player;
+		this.name = new JLabel(player.getProfile().getName());
+		this.money = new JLabel(player.getBankroll() + "");
+
+		//TODO player.getPocket().getArray(), au début sera null
 		card1 = new CardComponent("AsPique");
 		card2 = new CardComponent("AsTrefle");
 

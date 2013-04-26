@@ -65,15 +65,16 @@ public class GameEngine
 		bigBlind = 2 * smallBlind;
 
 		players = new ArrayList<Player>();
-		players.add(new Player(profile, bankroll));
+		players.add(new Player(profile, bankroll,this));
+		profile.setCapital(profile.getCapital()-bankroll);
 
 		for(int i = 1; i < nbPlayer; ++i)
 		{
 			//TODO get a random profile
-			players.add(new AI(profile, bankroll));
+			players.add(new AI(profile, bankroll,this));
 		}
-		indexPlayer = (int)Math.random() * nbPlayer;
-		indexDealer = indexPlayer - 1;
+		indexPlayer = (int)(Math.random() * nbPlayer);
+		indexDealer = getPreviousIndex(indexPlayer);
 
 		initialize();
 	}
@@ -137,7 +138,10 @@ public class GameEngine
 		players.get(indexPlayer).takeMoney(amount);
 		//TODO: SoundEngine play sound here
 		pot.addStateTotal(amount);
-		notify();
+		if(oldState != null)
+		{
+			notify();
+		}
 	}
 
 	public void showdown()
@@ -308,11 +312,18 @@ public class GameEngine
 				}
 			}
 		} while(rest != 0);
+
+
 	}
 
 	private int getNextIndex(int val)
 	{
 		return (val < (players.size() - 1)) ? val + 1 : 0;
+	}
+
+	private int getPreviousIndex(int val)
+	{
+		return (val == 0) ? getNbPlayers()-1 : val - 1;
 	}
 
 	private void initialize()

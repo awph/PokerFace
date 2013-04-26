@@ -36,8 +36,9 @@ public class Player implements Observer
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public Player(Profile profile, int bankroll)
+	public Player(Profile profile, int bankroll, GameEngine gameEngine)
 	{
+		this.gameEngine = gameEngine;
 		this.profile = profile;
 		this.bankroll = bankroll;
 		this.turnSpending = 0;
@@ -195,6 +196,11 @@ public class Player implements Observer
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+
+	public Profile getProfile()
+	{
+		return profile;
+	}
 
 	public StatisticValue getPreFlopValues()
 	{
