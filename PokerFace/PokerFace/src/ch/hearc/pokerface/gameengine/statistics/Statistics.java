@@ -75,8 +75,7 @@ public class Statistics
 		new Thread(river).start();
 	}
 
-	//public static int getOuts(Pocket pocket, Board board)
-	public static CardSubset getOuts(Pocket pocket, Board board)
+	public static int getOuts(Pocket pocket, Board board)
 	{
 		//if (board.size() < 3 || board.size() > 4) { return 0; } //TODO uncomment
 
@@ -250,6 +249,6 @@ public class Statistics
 			}
 		}
 
-		return outs;
+		return outs.size();
 	}
 }

@@ -11,6 +11,7 @@ import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gameengine.statistics.Odds;
 import ch.hearc.pokerface.gameengine.statistics.Statistics;
 import ch.hearc.pokerface.gameengine.subsets.CardSubset;
+import ch.hearc.pokerface.gameengine.subsets.Deck;
 import ch.hearc.pokerface.gameengine.subsets.Pocket;
 
 public class AI extends Player
@@ -36,13 +37,12 @@ public class AI extends Player
 	public void doAction()
 	{
 		System.out.println(profile.getName() + " plays with " + getCallValue());
-		bet(getCallValue());
-		//level1();
+		level1();
 	}
 
 	private void level1()
 	{
-		if (getCallValue() == 0)
+		if (getCallValue() == 0 || gameEngine.getUnorderedBoard().length == 0)//PreFlop state
 		{
 			bet(0);
 			System.out.println("AI : 0");
@@ -51,8 +51,8 @@ public class AI extends Player
 		{
 			Pot pot = gameEngine.getPot();
 			Odds potOdds = new Odds(getCallValue(), pot.getTurnTotal() + getCallValue());
-			int nbCardsInDeck = gameEngine.getNbPlayers() * Pocket.NUMBER_OF_CARDS - gameEngine.getBoard().size();
-			int nbOuts = Statistics.getOuts(pocket, gameEngine.getBoard()).size();//TODO retourne un int
+			int nbCardsInDeck = Deck.NB_CARD_DECK - gameEngine.getNbPlayers() * Pocket.NUMBER_OF_CARDS - gameEngine.getUnorderedBoard().length;
+			int nbOuts = Statistics.getOuts(pocket, gameEngine.getBoard());
 			Odds pokerOdds = new Odds(nbOuts, nbCardsInDeck - nbOuts);
 
 			if (gameEngine.getOldState() == StateType.RiverState)
