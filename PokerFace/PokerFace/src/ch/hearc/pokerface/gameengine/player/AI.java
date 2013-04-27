@@ -42,10 +42,25 @@ public class AI extends Player
 
 	private void level1()
 	{
-		if (getCallValue() == 0 || gameEngine.getUnorderedBoard().length == 0)//PreFlop state
+		if (getCallValue() == 0)
 		{
 			bet(0);
 			System.out.println("AI : 0");
+		}
+		else if (gameEngine.getUnorderedBoard().length == 0)//PreFlop state
+		{
+			double win = svPreFlop.getWin();
+			int rand = (int)(Math.random() * 100);
+			if (rand < win)
+			{
+				bet(getCallValue());
+				System.out.println("AI : " + getCallValue());
+			}
+			else
+			{
+				fold();
+				System.out.println("AI couché");
+			}
 		}
 		else
 		{
@@ -58,6 +73,7 @@ public class AI extends Player
 			if (gameEngine.getOldState() == StateType.RiverState)
 			{
 				HandsPokerValue handsPokerValue = HandsPokerMap.getInstance().getHand(new ComputeBestHand(CardSubset.union(pocket, gameEngine.getBoard())).getHighestHand());
+				//Définir ce qu'est une bonne main
 			}
 			else
 			{
