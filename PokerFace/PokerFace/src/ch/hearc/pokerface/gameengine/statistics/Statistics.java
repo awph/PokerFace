@@ -47,7 +47,6 @@ public class Statistics
 
 	public static StatisticValue getPreFlopValues(Pocket p, int nbPlayer)
 	{
-		nbPlayer = 2;//TODO enlever
 		return maps[nbPlayer - XMLReader.NB_MIN_PLAYER].get(StateType.PreFlopState).get(p.getKey());
 	}
 
