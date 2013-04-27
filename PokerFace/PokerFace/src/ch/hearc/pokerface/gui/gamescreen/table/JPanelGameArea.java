@@ -1,6 +1,7 @@
 
 package ch.hearc.pokerface.gui.gamescreen.table;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +9,10 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
+import ch.hearc.pokerface.gameengine.statistics.StatisticValue;
 import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
 
 public class JPanelGameArea extends JPanel
@@ -19,9 +22,14 @@ public class JPanelGameArea extends JPanel
 	\*------------------------------------------------------------------*/
 
 	private List<PlayerComponent>	playerComponents;
+	private Player					humanPlayer;
 	private GameEngine				gameEngine;
 	//TODO BOARDPANEL
 	private JLabel					board;
+	private JLabel					statsPF;
+	private JLabel					statsF;
+	private JLabel					statsT;
+	private JLabel					statsR;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -31,6 +39,12 @@ public class JPanelGameArea extends JPanel
 	{
 		this.gameEngine = gameEngine;
 		playerComponents = new ArrayList<PlayerComponent>();
+
+		board = new JLabel();
+		statsPF = new JLabel();
+		statsF = new JLabel();
+		statsT = new JLabel();
+		statsR = new JLabel();
 
 		Box box = Box.createVerticalBox();
 		Box playerBox = Box.createHorizontalBox();
@@ -44,18 +58,61 @@ public class JPanelGameArea extends JPanel
 		box.add(playerBox);
 		box.add(Box.createVerticalStrut(50));
 		//box.add(); //TODO BOARDPANEL
-		board = new JLabel();
+
 		box.add(board);
+		Box boxStats = Box.createHorizontalBox();
+		boxStats.add(statsPF);
+		boxStats.add(Box.createHorizontalStrut(15));
+		boxStats.add(statsF);
+		boxStats.add(Box.createHorizontalStrut(15));
+		boxStats.add(statsT);
+		boxStats.add(Box.createHorizontalStrut(15));
+		boxStats.add(statsR);
+		box.add(boxStats);
 		add(box);
+
+		final Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
+		Thread t = new Thread(new Runnable()
+		{
+
+			@Override
+			public void run()
+			{
+				StatisticValue pf = humanPlayer.getPreFlopValues();
+				StatisticValue f = humanPlayer.getFlopValues();
+				StatisticValue t = humanPlayer.getTurnValues();
+				StatisticValue r = humanPlayer.getRiverValues();
+				while(pf == null || f == null || t == null || r == null)
+				{
+					pf = humanPlayer.getPreFlopValues();
+					f = humanPlayer.getFlopValues();
+					t = humanPlayer.getTurnValues();
+					r = humanPlayer.getRiverValues();
+
+					writeStat(pf, statsPF, "PreFlop");
+					writeStat(f, statsF, "Flop");
+					writeStat(t, statsT, "Turn");
+					writeStat(r, statsR, "River");
+
+					updateUI();
+				}
+			}
+		});
+		t.start();
 
 	}
 
 	public void updateGUI()
 	{
 		//TODO BOARDPANEL.updateGUI()
-		board.setText(gameEngine.getBoard().toString());
+		Card[] cards = gameEngine.getUnorderedBoard();
+		board.setText("");
 
-		add(board);
+		for(Card c:cards)
+		{
+			board.setText(board.getText() + " " + c.toString());
+		}
+
 		for(PlayerComponent playerComponent:playerComponents)
 		{
 			playerComponent.updateGUI();
@@ -78,4 +135,31 @@ public class JPanelGameArea extends JPanel
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
+	private void writeStat(StatisticValue sv, JLabel lbl, String title)
+	{
+		if (sv != null)
+		{
+			DecimalFormat df = new DecimalFormat("#.##");
+			StringBuilder str = new StringBuilder("<html><body>");
+			str.append(title);
+			str.append("<br/>");
+			str.append("Win&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getWin()) + "%<br/>");
+			str.append("Loss&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getLoss()) + "%<br/>");
+			str.append("Tie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getTie()) + "%<br/>");
+			str.append("nbAO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getNbOpponantWinner()) + "<br/>");
+			str.append("SF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getStraightFlush()) + "%<br/>");
+			str.append("4K&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getFourOfKind()) + "%<br/>");
+			str.append("FH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getFullHouse()) + "%<br/>");
+			str.append("F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getFlush()) + "%<br/>");
+			str.append("Straight&nbsp;&nbsp;&nbsp;: " + df.format(sv.getStraight()) + "%<br/>");
+			str.append("3K&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getThreeOfKind()) + "%<br/>");
+			str.append("2P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getTwoPairs()) + "%<br/>");
+			str.append("1P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getOnePair()) + "%<br/>");
+			str.append("HC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " + df.format(sv.getHighCard()) + "%<br/>");
+			str.append("</body></html>");
+
+			lbl.setText(str.toString());
+
+		}
+	}
 }

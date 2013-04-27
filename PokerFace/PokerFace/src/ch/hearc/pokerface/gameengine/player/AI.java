@@ -35,7 +35,7 @@ public class AI extends Player
 	@Override
 	public void doAction()
 	{
-		System.out.println("IA : " + pocket);
+		System.out.println(profile.getName() + " plays with " + getCallValue());
 		bet(getCallValue());
 		//level1();
 	}
@@ -45,6 +45,7 @@ public class AI extends Player
 		if (getCallValue() == 0)
 		{
 			bet(0);
+			System.out.println("AI : 0");
 		}
 		else
 		{
@@ -63,10 +64,12 @@ public class AI extends Player
 				if (pokerOdds.compareTo(potOdds) == 1)
 				{
 					bet(getCallValue());
+					System.out.println("AI : " + getCallValue());
 				}
 				else
 				{
 					fold();
+					System.out.println("AI couché");
 				}
 			}
 

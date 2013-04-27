@@ -37,6 +37,10 @@ public class GameEngine
 	private StateType		oldState;
 	private State			state;
 	private int				indexPlayer;
+	private int				indexDealer;
+	private int				indexSmallBlind;
+	private int				indexBigBlind;
+	private int				magicIndex;
 	private boolean			isFinished;
 	private Pot				pot;
 	private Board			board;
@@ -47,9 +51,7 @@ public class GameEngine
 	private int				smallBlind;
 	private int				bigBlind;
 	private Card[]			futureBoard;
-	private int				magicIndex;
-	private int				indexDealer;
-	private JPanelGameBoard panelGameBoard;
+	private JPanelGameBoard	panelGameBoard;
 
 	/*------------------------------*\
 	|*			  Static			*|
@@ -145,9 +147,20 @@ public class GameEngine
 
 	public void bet(int amount)
 	{
-		players.get(indexPlayer).takeMoney(amount);
-		//TODO: SoundEngine play sound here
-		pot.addStateTotal(amount);
+		bet(amount, indexPlayer);
+	}
+
+	public void betSmallBlind()
+	{
+		bet(smallBlind, indexSmallBlind);
+	}
+
+	public void betBigBlind()
+	{
+		if (indexBigBlind >= 0)
+		{
+			bet(bigBlind, indexBigBlind);
+		}
 	}
 
 	public void showdown()
@@ -194,11 +207,22 @@ public class GameEngine
 		}
 
 		divideUpPot(triples);
+		initialize();
 	}
 
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+
+	public int getSmallBlind()
+	{
+		return smallBlind;
+	}
+
+	public int getBigBlind()
+	{
+		return bigBlind;
+	}
 
 	public int getUnfoldedPlayer()
 	{
@@ -213,6 +237,31 @@ public class GameEngine
 	public Board getBoard()
 	{
 		return board;
+	}
+
+	public Card[] getUnorderedBoard()
+	{
+		int nbCards = 0;
+		//TODO : Find a better way to do it
+		if(oldState == StateType.FlopState)
+		{
+			nbCards = Statistics.NUMBER_CARDS_FLOP;
+		}
+		else if(oldState == StateType.TurnState)
+		{
+			nbCards = Statistics.NUMBER_CARDS_TURN;
+		}
+		else if(oldState == StateType.RiverState)
+		{
+			nbCards = Statistics.NUMBER_CARDS_RIVER;
+		}
+
+		Card[] cards = new Card[nbCards];
+		for(int i = 0;i < nbCards; ++i)
+		{
+			cards[i] = futureBoard[i];
+		}
+		return cards;
 	}
 
 	public Player getCurrentPlayer()
@@ -251,6 +300,7 @@ public class GameEngine
 
 	public void setState(State s)
 	{
+		pot.nextState();
 		state = s;
 	}
 
@@ -262,6 +312,13 @@ public class GameEngine
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
+
+	private void bet(int amount, int index)
+	{
+		players.get(index).takeMoney(amount);
+		//TODO: SoundEngine play sound here
+		pot.addStateTotal(amount);
+	}
 
 	/**
 	 * @param triples
@@ -375,17 +432,18 @@ public class GameEngine
 		indexDealer = getNextIndex(indexDealer);
 		players.get(indexDealer).setRole(Role.Dealer);
 
-		int indexSmallBlind = getNextIndex(indexDealer);
-		int indexBigBlind = getNextIndex(indexSmallBlind);
+		indexSmallBlind = getNextIndex(indexDealer);
+		indexBigBlind = -1;
 
-		players.get(indexSmallBlind).setRole(Role.SmallBlind);
-		players.get(indexSmallBlind).bet(smallBlind);
+		Player smallBlindPlayer = players.get(indexSmallBlind);
+		smallBlindPlayer.setRole(Role.SmallBlind);
 
 		//If there are 2 players, there is no small blind !
 		if (players.size() > 2)
 		{
-			players.get(indexBigBlind).setRole(Role.BigBlind);
-			players.get(indexBigBlind).bet(bigBlind);
+			indexBigBlind = getNextIndex(indexSmallBlind);
+			Player bigBlindPlayer = players.get(indexBigBlind);
+			bigBlindPlayer.setRole(Role.BigBlind);
 		}
 
 		indexPlayer = getNextIndex(indexBigBlind);

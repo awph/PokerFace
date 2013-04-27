@@ -54,8 +54,8 @@ public class PlayerComponent extends JPanel
 		}
 		else
 		{
-			card1.setText(player.getPocket().getArray()[0].getId());
-			card2.setText(player.getPocket().getArray()[1].getId());
+			card1.setText(player.getPocket().getArray()[0].toString());
+			card2.setText(player.getPocket().getArray()[1].toString());
 		}
 		money.setText(Integer.toString(player.getBankroll()));
 		role.setText(player.getRole().toString());

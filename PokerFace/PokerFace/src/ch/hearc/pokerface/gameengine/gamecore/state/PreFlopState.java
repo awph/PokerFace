@@ -27,6 +27,7 @@ public class PreFlopState extends State
 			}
 			ge.changeCurrentPlayer();
 		}
+		ge.updateGUI();
 	}
 
 	@Override

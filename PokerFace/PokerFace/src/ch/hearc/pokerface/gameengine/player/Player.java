@@ -56,11 +56,11 @@ public class Player implements Observer
 
 	public void doAction() throws InterruptedException
 	{
-		System.out.println("Player : " + pocket);
 		synchronized (this)
 		{
 			wait();
 		}
+		System.out.println(profile.getName() + " plays with " + betSpending);
 	}
 
 	public void newTurn()
@@ -82,7 +82,6 @@ public class Player implements Observer
 
 	public void giveMoney(int money)
 	{
-		turnSpending += money;//TODO remove this line when simulation for divideUp is done
 		bankroll += money;
 	}
 
@@ -100,7 +99,7 @@ public class Player implements Observer
 
 	public void check()
 	{
-		if (betSpending == gameEngine.getPot().getStateTotal())
+		if (betSpending == gameEngine.getPot().getBet())
 		{
 			gameEngine.bet(0);
 		}
@@ -153,7 +152,6 @@ public class Player implements Observer
 	public void fold()
 	{
 		folded = true;
-		gameEngine.bet(-1);
 	}
 
 	public void kill()
@@ -172,7 +170,7 @@ public class Player implements Observer
 		pocket.add(card);
 		if (pocket.size() == 2)
 		{
-			svPreFlop = Statistics.getPreFlopValues(pocket, 2);//gameEngine.getNbPlayers());//TODO
+			svPreFlop = Statistics.getPreFlopValues(pocket,gameEngine.getNbPlayers());
 		}
 	}
 

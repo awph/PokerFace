@@ -57,11 +57,6 @@ public class JPanelGameControl extends JPanel
 		checkCallButton.setEnabled(isHumanPlayerTurn);
 		foldButton.setEnabled(isHumanPlayerTurn);
 		allinButton.setEnabled(isHumanPlayerTurn);
-
-		if (isHumanPlayerTurn)
-		{
-			System.out.println(humanPlayer.getFlopValues());
-		}
 	}
 
 	/*------------------------------*\
@@ -118,14 +113,15 @@ public class JPanelGameControl extends JPanel
 				Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
 				synchronized (humanPlayer)
 				{
-					if (humanPlayer.getCallValue() == 0)
+					/*if (humanPlayer.getCallValue() == 0)
 					{
 						humanPlayer.bet(moneySlider.getValue());
 					}
 					else
 					{
 						humanPlayer.raise(moneySlider.getValue());
-					}
+					}*/
+					humanPlayer.bet(gameEngine.getPot().getBet()+gameEngine.getBigBlind());
 					humanPlayer.notify();
 				}
 			}
@@ -140,14 +136,7 @@ public class JPanelGameControl extends JPanel
 				Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
 				synchronized (humanPlayer)
 				{
-					if (humanPlayer.getCallValue() == 0)
-					{
-						humanPlayer.check();
-					}
-					else
-					{
-						humanPlayer.call();
-					}
+					humanPlayer.check();
 					humanPlayer.notify();
 				}
 			}

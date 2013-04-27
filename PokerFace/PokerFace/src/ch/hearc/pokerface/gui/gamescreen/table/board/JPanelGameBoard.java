@@ -49,7 +49,7 @@ public class JPanelGameBoard extends JPanel
 
 	public void updateGUI()
 	{
-		System.out.println("updateGUI");
+		//ystem.out.println("updateGUI");
 		//TODO: here update all component in this view
 		gameArea.updateGUI();
 		gameControl.updateGUI();

@@ -10,7 +10,7 @@ public class BettingState extends State
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private final static int	NB_TURN_MAX	= 4;
+	private final static int	NB_TURN_MAX	= 3;
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
@@ -25,30 +25,41 @@ public class BettingState extends State
 	@Override
 	public void bet(GameEngine ge)
 	{
+		if(ge.getOldState() == StateType.PreFlopState)
+		{
+			ge.betSmallBlind();
+			ge.betBigBlind();
+		}
 		try
 		{
 			boolean allChecked = false;
+			int betSpend = 0;
+			int nbAllinPlayer = 0;
+			int nbUnfoldedPlayer = 0;
 			for(int i = 0; i < NB_TURN_MAX && !allChecked; ++i)
 			{
-				int betSpend = ge.getPot().getBet();
-				int nbUnfoldedPlayer = ge.getUnfoldedPlayer();
-				int nbAllinPlayer = 0;
+				ge.updateGUI();
+				nbUnfoldedPlayer = ge.getUnfoldedPlayer();
 				for(int j = 0; j < nbUnfoldedPlayer; ++j)
 				{
-					if (ge.getCurrentPlayer().getBankroll() != 0)//If all in
+					betSpend = ge.getPot().getBet();
+					Player player = ge.getCurrentPlayer();
+					if (player.getBankroll() != 0)//If not all in
 					{
 						//If player -> wait()
-						//Else IA compute
-						ge.getCurrentPlayer().doAction();
+						//Else IA computes
+						player.doAction();
 					}
 					else
 					{
 						++nbAllinPlayer;
 					}
+					ge.updateGUI();
 					ge.changeCurrentPlayer();
 					ge.updateGUI();
 				}
 				allChecked = (ge.getPot().getBet() == betSpend || (nbUnfoldedPlayer - nbAllinPlayer) <= 1);
+				ge.updateGUI();
 			}
 		}
 		catch (InterruptedException e)
@@ -61,9 +72,8 @@ public class BettingState extends State
 		do
 		{
 			currentPlayer.endBettingState();
-			currentPlayer = ge.getCurrentPlayer();
+			currentPlayer = ge.getPlayers().get(ge.changeCurrentPlayer());
 		} while(currentPlayer != firstPlayer);
-
 	}
 
 	@Override
@@ -85,7 +95,7 @@ public class BettingState extends State
 
 			case RiverState:
 				ge.showdown();
-				ge.setState(null);
+				ge.setState(new PreFlopState());
 				break;
 
 			default:

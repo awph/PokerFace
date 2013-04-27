@@ -68,7 +68,7 @@ public class Simulation extends Observable implements Runnable
 		this.datas = new Data[NB_CORE];
 		this.nbCardBoard = nbCardBoard;
 
-		if(nbCardBoard == 3)
+		if (nbCardBoard == 3)
 		{
 			stateType = StateType.FlopState;
 		}
@@ -107,7 +107,10 @@ public class Simulation extends Observable implements Runnable
 
 		for(int i = 0; i < NB_CORE; ++i)
 		{
-			futures.add(EXECUTOR_SERVICE.submit(simulatorCallable(i)));
+			synchronized (EXECUTOR_SERVICE)
+			{
+				futures.add(EXECUTOR_SERVICE.submit(simulatorCallable(i)));
+			}
 		}
 
 		try
@@ -128,7 +131,7 @@ public class Simulation extends Observable implements Runnable
 
 		EXECUTOR_SERVICE.shutdown();
 
-		Pair<StateType,StatisticValue> response = new Pair<StateType, StatisticValue>(stateType,joinDatas());
+		Pair<StateType, StatisticValue> response = new Pair<StateType, StatisticValue>(stateType, joinDatas());
 
 		setChanged();
 		notifyObservers(response);
