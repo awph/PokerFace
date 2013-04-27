@@ -82,7 +82,7 @@ public class JPanelGameArea extends JPanel
 				StatisticValue f = humanPlayer.getFlopValues();
 				StatisticValue t = humanPlayer.getTurnValues();
 				StatisticValue r = humanPlayer.getRiverValues();
-				while(pf == null || f == null || t == null || r == null)
+				while(true)
 				{
 					pf = humanPlayer.getPreFlopValues();
 					f = humanPlayer.getFlopValues();

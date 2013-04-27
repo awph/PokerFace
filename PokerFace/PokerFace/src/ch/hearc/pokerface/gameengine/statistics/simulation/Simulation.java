@@ -129,8 +129,6 @@ public class Simulation extends Observable implements Runnable
 			e.printStackTrace();
 		}
 
-		EXECUTOR_SERVICE.shutdown();
-
 		Pair<StateType, StatisticValue> response = new Pair<StateType, StatisticValue>(stateType, joinDatas());
 
 		setChanged();

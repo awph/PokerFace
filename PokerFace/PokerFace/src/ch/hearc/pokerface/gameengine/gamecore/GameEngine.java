@@ -243,21 +243,21 @@ public class GameEngine
 	{
 		int nbCards = 0;
 		//TODO : Find a better way to do it
-		if(oldState == StateType.FlopState)
+		if (oldState == StateType.FlopState)
 		{
 			nbCards = Statistics.NUMBER_CARDS_FLOP;
 		}
-		else if(oldState == StateType.TurnState)
+		else if (oldState == StateType.TurnState)
 		{
 			nbCards = Statistics.NUMBER_CARDS_TURN;
 		}
-		else if(oldState == StateType.RiverState)
+		else if (oldState == StateType.RiverState)
 		{
 			nbCards = Statistics.NUMBER_CARDS_RIVER;
 		}
 
 		Card[] cards = new Card[nbCards];
-		for(int i = 0;i < nbCards; ++i)
+		for(int i = 0; i < nbCards; ++i)
 		{
 			cards[i] = futureBoard[i];
 		}
@@ -447,6 +447,11 @@ public class GameEngine
 		}
 
 		indexPlayer = getNextIndex(indexBigBlind);
+
+		for(Player p:players)
+		{
+			p.newTurn();
+		}
 	}
 
 	private void runSimulationPlayer(int nbCardInBoard)
