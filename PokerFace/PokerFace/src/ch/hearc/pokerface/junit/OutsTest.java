@@ -47,7 +47,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Seven, CardColor.Diamonds));
 		board.add(new Card(CardValue.Ten, CardColor.Spades));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 2;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -66,7 +66,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Two, CardColor.Diamonds));
 		board.add(new Card(CardValue.Jack, CardColor.Clubs));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 3;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -85,7 +85,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Nine, CardColor.Hearts));
 		board.add(new Card(CardValue.Ace, CardColor.Diamonds));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 4;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -104,7 +104,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Ace, CardColor.Spades));
 		board.add(new Card(CardValue.Jack, CardColor.Diamonds));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 4;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -123,7 +123,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Three, CardColor.Clubs));
 		board.add(new Card(CardValue.Four, CardColor.Spades));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 5;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -142,7 +142,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Jack, CardColor.Diamonds));
 		board.add(new Card(CardValue.Ace, CardColor.Clubs));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 6;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -161,7 +161,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Two, CardColor.Hearts));
 		board.add(new Card(CardValue.Eight, CardColor.Hearts));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 6;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -180,7 +180,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Queen, CardColor.Hearts));
 		board.add(new Card(CardValue.Two, CardColor.Spades));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 7;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -199,7 +199,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Eight, CardColor.Diamonds));
 		board.add(new Card(CardValue.Jack, CardColor.Hearts));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 8;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -219,7 +219,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Six, CardColor.Diamonds));
 		board.add(new Card(CardValue.Queen, CardColor.Clubs));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 8;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -238,7 +238,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Five, CardColor.Spades));
 		board.add(new Card(CardValue.Seven, CardColor.Hearts));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 9;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -257,7 +257,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Jack, CardColor.Clubs));
 		board.add(new Card(CardValue.Six, CardColor.Diamonds));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 10;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -276,7 +276,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Two, CardColor.Clubs));
 		board.add(new Card(CardValue.Ten, CardColor.Hearts));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 12;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -295,7 +295,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Queen, CardColor.Hearts));
 		board.add(new Card(CardValue.Three, CardColor.Hearts));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 15;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -314,7 +314,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Queen, CardColor.Diamonds));
 		board.add(new Card(CardValue.King, CardColor.Spades));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 15;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -333,7 +333,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Ten, CardColor.Hearts));
 		board.add(new Card(CardValue.Jack, CardColor.Clubs));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 4;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
@@ -352,7 +352,7 @@ public class OutsTest
 		board.add(new Card(CardValue.Six, CardColor.Hearts));
 		board.add(new Card(CardValue.Two, CardColor.Diamonds));
 
-		int nbOuts = Statistics.getOuts(pocket, board).size();
+		int nbOuts = Statistics.getOuts(pocket, board);
 		int nbOutsTheoretic = 4;
 
 		assertTrue(nbOuts == nbOutsTheoretic);
