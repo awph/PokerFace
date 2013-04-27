@@ -1,9 +1,11 @@
 
 package ch.hearc.pokerface.gameengine.statistics;
 
-import java.util.HashMap;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.compute.ComputeBestHand;
@@ -75,6 +77,8 @@ public class Statistics
 	//public static int getOuts(Pocket pocket, Board board)
 	public static CardSubset getOuts(Pocket pocket, Board board)
 	{
+		//if (board.size() < 3 || board.size() > 4) { return 0; } //TODO uncomment
+
 		HandsPokerMap hpm = HandsPokerMap.getInstance();
 
 		Deck deck = new Deck();
@@ -93,99 +97,158 @@ public class Statistics
 			visibleCards.add(c);
 		}
 
-		Map<Card, HandType> outs = new HashMap<Card, HandType>();
-		Hand hand = new ComputeBestHand(visibleCards).getHighestHand();
-		int handRank = hpm.getHand(hand).getRank();
-		HandType handType = hpm.getHand(hand).getHandType();
-		HandType highestHandType = handType;
+		CardSubset outs = new CardSubset();
+		Hand currentHand = new ComputeBestHand(visibleCards).getHighestHand();
+		int currentHandRank = hpm.getHand(currentHand).getRank();
+		HandType currentHandType = hpm.getHand(currentHand).getHandType();
+		HandType highestHandType = currentHandType;
+		HandType highestBoardType = HandType.HighCard;
 
 		for(Card card:deck)
 		{
-			//TODO: enlever les kicker des suites ouvertes, si sur les 4 cartes on complete la sute par le bas, ce n'est pas un out
-			CardSubset cardSubsetTemp = visibleCards.cloneOf();
-			cardSubsetTemp.add(card);
-			Hand newHand = new ComputeBestHand(cardSubsetTemp).getHighestHand();
+			CardSubset futureVisibleCards = visibleCards.cloneOf();
+			futureVisibleCards.add(card);
+
+			Hand newHand = new ComputeBestHand(futureVisibleCards).getHighestHand();
 			int newHandRank = hpm.getHand(newHand).getRank();
 			HandType newHandType = hpm.getHand(newHand).getHandType();
 
+			highestHandType = (newHandType.getIntValue() > highestHandType.getIntValue()) ? newHandType : highestHandType;
+
 			Board newBoard = board.cloneOf();
 			newBoard.add(card);
-			int newBoardRank = hpm.getHand(newBoard.getKey(deck)).getRank();
 			HandType newBoardType = hpm.getHand(newBoard.getKey(deck)).getHandType();
 
+			highestBoardType = (newBoardType.getIntValue() > highestBoardType.getIntValue()) ? newBoardType : highestBoardType;
+
 			// Is the new hand better than the old one?
-			boolean handImproved = newHandRank < handRank && newHandType.getIntValue() > handType.getIntValue();
+			boolean handImproved = newHandRank < currentHandRank && newHandType.getIntValue() > currentHandType.getIntValue();
 
 			// Is the new hand better than the new board? (eliminate the kickers)
 			boolean handStrongerThanBoard = newHandType.getIntValue() > newBoardType.getIntValue();
 
-			if (handType == HandType.OnePair)
+			if (currentHandType == HandType.OnePair && handImproved && handStrongerThanBoard)
 			{
-				handStrongerThanBoard = newHandType.getIntValue() - newBoardType.getIntValue() > 1; // We want a three of a kind minimum
+				handStrongerThanBoard = (newHandType.getIntValue() >= HandType.ThreeOfKind.getIntValue());// We want a three of a kind minimum
 			}
 
-			if (handType == HandType.HighCard && newHandType == HandType.OnePair)
+			boolean outEnoughStrong = true;
+			if (newHandType.getIntValue() == HandType.OnePair.getIntValue() && handImproved && handStrongerThanBoard)
 			{
-				if (handStrongerThanBoard) // Pair with a pocket card
+				outEnoughStrong = false;
+			}
+
+			if (newHandType.getIntValue() == HandType.Straight.getIntValue() && handImproved && handStrongerThanBoard && outEnoughStrong)
+			{
+				Set<Card> boardSortByCardValue = new TreeSet<Card>(new Comparator<Card>()
 				{
-					int i = 0;
-					Iterator<Card> iterator = board.iterator();
-					while(iterator.hasNext())
+					@Override
+					public int compare(Card card1, Card card2)
 					{
-						Iterator<Card> pocketIterator = pocket.iterator();
-						Card boardCard = iterator.next();
-						while(pocketIterator.hasNext())
+						if (card1.getValue().equals(card2.getValue()))
 						{
-							if (boardCard.getValue().getIntValue() > pocketIterator.next().getValue().getIntValue()) // when the pocket is lower than the board
-							{
-								i++;
-								break;
-							}
+							return ((Integer)(card1.getColor().getIntValue())).compareTo(card2.getColor().getIntValue());
+						}
+						else
+						{
+							return card1.getValue().compareTo(card2.getValue());
 						}
 					}
-					if (i == 3)
+				});
+
+				for(Card c:newBoard)
+				{
+					boardSortByCardValue.add(c);
+				}
+
+				Iterator<Card> boardIterator = boardSortByCardValue.iterator();
+				Card boardCard = boardIterator.next();
+				int cardValue = boardCard.getValue().getIntValue();
+				boolean isOpenStraight = true;
+				while(boardIterator.hasNext())
+				{
+					boardCard = boardIterator.next();
+					if (boardCard.getValue().getIntValue() == cardValue + 1)
 					{
-						handStrongerThanBoard = true;
+						cardValue++;
 					}
 					else
 					{
-						iterator = newBoard.iterator();
-						while(iterator.hasNext())
+						isOpenStraight = false;
+					}
+				}
+				if (isOpenStraight)
+				{
+					Iterator<Card> pocketIterator = pocket.iterator();
+					while(pocketIterator.hasNext())
+					{
+						Card pocketCard = pocketIterator.next();
+						if (pocketCard.getValue().getIntValue() == cardValue + 1)
 						{
-							if (iterator.next().getValue().getIntValue() > card.getValue().getIntValue())
-							{
-								handStrongerThanBoard = false;
-							}
+							outEnoughStrong = true;
+							break; //On complete la suite par le haut
+						}
+						else
+						{
+							outEnoughStrong = false;
 						}
 					}
 				}
 			}
 
-			boolean outEnoughStrong = true;
-			if (newHandType.getIntValue() < highestHandType.getIntValue() - 2 && highestHandType.getIntValue() > HandType.TwoPair.getIntValue())
-			{
-				outEnoughStrong = false;
-			}
-
-			highestHandType = (newHandType.getIntValue() > highestHandType.getIntValue()) ? newHandType : highestHandType;
-
 			// If the hand improved then we have an out
 			if (handImproved && handStrongerThanBoard && outEnoughStrong)
 			{
-				outs.put(card, newHandType);
+				outs.add(card);
 			}
 		}
 
-		CardSubset myOuts = new CardSubset();
-		for(Card card:outs.keySet())
+		if (highestBoardType.getIntValue() <= HandType.OnePair.getIntValue() && highestHandType.getIntValue() <= HandType.Straight.getIntValue())
 		{
-			HandType type =  outs.get(card);
-		//	if (!(type.getIntValue() < highestHandType.getIntValue() - 2 && highestHandType.getIntValue() > HandType.TwoPair.getIntValue()))
-			//{
-				myOuts.add(card);
-			//}
+			// Counting overcard
+			Iterator<Card> pocketIterator = pocket.iterator();
+			while(pocketIterator.hasNext())
+			{
+				boolean isAnOvercard = true;
+				Iterator<Card> boardIterator = board.iterator();
+				Card pocketCard = pocketIterator.next();
+				while(boardIterator.hasNext() && isAnOvercard)
+				{
+					Card boardCard = boardIterator.next();
+					if (pocketCard.getValue().getIntValue() < boardCard.getValue().getIntValue())
+					{
+						isAnOvercard = false;
+					}
+				}
+				if (isAnOvercard)
+				{
+					for(Card card:deck)
+					{
+						if (card.getValue().getIntValue() == pocketCard.getValue().getIntValue())
+						{
+							outs.add(card);
+						}
+					}
+				}
+			}
 		}
 
-		return myOuts;
+		if (outs.size() == 0)
+		{
+			Iterator<Card> pocketIterator = pocket.iterator();
+			while(pocketIterator.hasNext())
+			{
+				Card pocketCard = pocketIterator.next();
+				for(Card card:deck)
+				{
+					if (card.getValue().getIntValue() == pocketCard.getValue().getIntValue())
+					{
+						outs.add(card);
+					}
+				}
+			}
+		}
+
+		return outs;
 	}
 }
