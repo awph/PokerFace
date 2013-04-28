@@ -1,6 +1,8 @@
 
 package ch.hearc.pokerface.gameengine.gamecore.state;
 
+import java.util.List;
+
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
 
@@ -25,46 +27,52 @@ public class BettingState extends State
 	@Override
 	public void bet(GameEngine ge)
 	{
-		if(ge.getOldState() == StateType.PreFlopState)
+		if (ge.getOldState() == StateType.PreFlopState)
 		{
 			ge.betSmallBlind();
 			ge.betBigBlind();
 		}
-		try
+
+		boolean allChecked = false;
+		int betSpend = 0;
+		int nbAllinPlayer = 0;
+		int nbUnfoldedPlayer = 0;
+		for(int i = 0; i < NB_TURN_MAX && !allChecked; ++i)
 		{
-			boolean allChecked = false;
-			int betSpend = 0;
-			int nbAllinPlayer = 0;
-			int nbUnfoldedPlayer = 0;
-			for(int i = 0; i < NB_TURN_MAX && !allChecked; ++i)
+			ge.updateGUI();
+			nbUnfoldedPlayer = ge.getUnfoldedPlayer();
+			betSpend = ge.getPot().getBet();
+			for(int j = 0; j < nbUnfoldedPlayer; ++j)
 			{
-				ge.updateGUI();
-				nbUnfoldedPlayer = ge.getUnfoldedPlayer();
-				for(int j = 0; j < nbUnfoldedPlayer; ++j)
+				Player player = ge.getCurrentPlayer();
+				if (player.getBankroll() != 0)//If not all in
 				{
-					betSpend = ge.getPot().getBet();
-					Player player = ge.getCurrentPlayer();
-					if (player.getBankroll() != 0)//If not all in
-					{
-						//If player -> wait()
-						//Else IA computes
-						player.doAction();
-					}
-					else
-					{
-						++nbAllinPlayer;
-					}
-					ge.updateGUI();
-					ge.changeCurrentPlayer();
-					ge.updateGUI();
+					//If player -> wait()
+					//Else IA computes
+					player.doAction();
 				}
-				allChecked = (ge.getPot().getBet() == betSpend || (nbUnfoldedPlayer - nbAllinPlayer) <= 1);
+				else
+				{
+					++nbAllinPlayer;
+				}
 				ge.updateGUI();
+				ge.changeCurrentPlayer();
+				ge.updateGUI();
+				betSpend = ge.getPot().getBet();
 			}
-		}
-		catch (InterruptedException e)
-		{
-			e.printStackTrace();
+
+			List<Player> players = ge.getPlayers();
+			allChecked = true;
+			for(Player p:players)
+			{
+				//If the player isn't folded and his bet = betSpend or has all in
+				if (p.isFolded() || (p.getBetSpending() < betSpend && p.getBankroll() != 0))
+				{
+					allChecked = false;
+				}
+			}
+			allChecked = (allChecked || (nbUnfoldedPlayer - nbAllinPlayer) <= 1);
+			ge.updateGUI();
 		}
 
 		Player firstPlayer = ge.getCurrentPlayer();

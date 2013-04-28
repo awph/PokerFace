@@ -30,6 +30,7 @@ public class JPanelGameArea extends JPanel
 	private JLabel					statsF;
 	private JLabel					statsT;
 	private JLabel					statsR;
+	private JLabel					pot;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -45,6 +46,7 @@ public class JPanelGameArea extends JPanel
 		statsF = new JLabel();
 		statsT = new JLabel();
 		statsR = new JLabel();
+		pot = new JLabel();
 
 		Box box = Box.createVerticalBox();
 		Box playerBox = Box.createHorizontalBox();
@@ -55,6 +57,9 @@ public class JPanelGameArea extends JPanel
 			playerBox.add(playerComponents.get(playerComponents.size() - 1));
 			playerBox.add(Box.createHorizontalStrut(15));
 		}
+		pot = new JLabel("");
+		playerBox.add(pot);
+
 		box.add(playerBox);
 		box.add(Box.createVerticalStrut(50));
 		//box.add(); //TODO BOARDPANEL
@@ -71,10 +76,9 @@ public class JPanelGameArea extends JPanel
 		box.add(boxStats);
 		add(box);
 
-		final Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
+		final Player humanPlayer = GameEngine.HUMAN_PLAYER;
 		Thread t = new Thread(new Runnable()
 		{
-
 			@Override
 			public void run()
 			{
@@ -117,6 +121,8 @@ public class JPanelGameArea extends JPanel
 		{
 			playerComponent.updateGUI();
 		}
+
+		pot.setText("<html><body>Bet : " + gameEngine.getPot().getBet() + "<br/>StateSpend : " + gameEngine.getPot().getStateTotal() + "<br/>TotalSpend : " + gameEngine.getPot().getTurnTotal() + "</body></html>");
 	}
 
 	/*------------------------------------------------------------------*\

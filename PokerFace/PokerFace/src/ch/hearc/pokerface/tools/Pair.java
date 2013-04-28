@@ -28,7 +28,7 @@ public class Pair<T,U> implements Comparable<Pair<T,U>>
 	@Override
 	public int compareTo(Pair<T, U> o)
 	{
-		return this == null ? (o == null ? 0 : 1) : ((Comparable<T>)t).compareTo(o.t);
+		return this == null ? (o == null ? 0 : 1) : ((Comparable<T>)o.t).compareTo(t);
 	}
 
 	/*------------------------------*\

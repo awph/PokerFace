@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
@@ -45,14 +46,26 @@ public class JPanelGameControl extends JPanel
 
 	public void updateGUI()
 	{
-		Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
+		Player humanPlayer = GameEngine.HUMAN_PLAYER;
 		moneySlider.setMaximum(humanPlayer.getBankroll());
 		moneySlider.setMinimum(humanPlayer.getCallValue());
 
 		boolean isHumanPlayerTurn = false;
-
-		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer());
-
+		if (!gameEngine.getIsFinished())
+		{
+			isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer());
+		}
+		else
+		{
+			if(!humanPlayer.isDead())
+			{
+				JOptionPane.showMessageDialog(null, "Motherfucker you're soooooooooooooooo good !", "YEAH", JOptionPane.INFORMATION_MESSAGE);
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Fuck you off little pussy ! You're to bad, fucking noooooooob", "LOOOOOOOOOSER", JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
 		betRaiseButton.setEnabled(isHumanPlayerTurn);
 		checkCallButton.setEnabled(isHumanPlayerTurn);
 		foldButton.setEnabled(isHumanPlayerTurn);
@@ -95,7 +108,7 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
+				Player humanPlayer = GameEngine.HUMAN_PLAYER;
 				synchronized (humanPlayer)
 				{
 					humanPlayer.allIn();
@@ -110,18 +123,18 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
+				Player humanPlayer = GameEngine.HUMAN_PLAYER;
 				synchronized (humanPlayer)
 				{
-					/*if (humanPlayer.getCallValue() == 0)
+					//TODO : Slider
+					if (gameEngine.getPot().getBet() == 0)
 					{
-						humanPlayer.bet(moneySlider.getValue());
+						humanPlayer.bet(gameEngine.getBigBlind());
 					}
 					else
 					{
-						humanPlayer.raise(moneySlider.getValue());
-					}*/
-					humanPlayer.bet(gameEngine.getPot().getBet()+gameEngine.getBigBlind());
+						humanPlayer.raise(gameEngine.getPot().getBet() + gameEngine.getBigBlind());
+					}
 					humanPlayer.notify();
 				}
 			}
@@ -133,7 +146,7 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
+				Player humanPlayer = GameEngine.HUMAN_PLAYER;
 				synchronized (humanPlayer)
 				{
 					humanPlayer.check();
@@ -148,7 +161,7 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				Player humanPlayer = gameEngine.getPlayers().get(GameEngine.HUMAN_PLAYER_INDEX);
+				Player humanPlayer = GameEngine.HUMAN_PLAYER;
 				synchronized (humanPlayer)
 				{
 					humanPlayer.fold();

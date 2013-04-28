@@ -1,6 +1,8 @@
 
 package ch.hearc.pokerface.gui.gamescreen.player;
 
+import java.awt.Color;
+
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -46,16 +48,23 @@ public class PlayerComponent extends JPanel
 
 	public void updateGUI()
 	{
-		if (player.isDead())
+		try
 		{
-			//TODO Grisé
-			card1.setText("NO CARD");
-			card2.setText("NO MOTHER FUCKING CARD");
+		card1.setText(player.getPocket().getArray()[0].toString());
+		card2.setText(player.getPocket().getArray()[1].toString());
+		}
+		catch(Exception e)
+		{
+			//e.printStackTrace();
+		}
+
+		if(player.isFolded() || player.isDead())
+		{
+			setBackground(Color.red);
 		}
 		else
 		{
-			card1.setText(player.getPocket().getArray()[0].toString());
-			card2.setText(player.getPocket().getArray()[1].toString());
+			setBackground(null);
 		}
 		money.setText(Integer.toString(player.getBankroll()));
 		role.setText(player.getRole().toString());

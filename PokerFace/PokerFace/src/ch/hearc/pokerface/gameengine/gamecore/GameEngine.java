@@ -34,30 +34,32 @@ public class GameEngine
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private StateType		oldState;
-	private State			state;
-	private int				indexPlayer;
-	private int				indexDealer;
-	private int				indexSmallBlind;
-	private int				indexBigBlind;
-	private int				magicIndex;
-	private boolean			isFinished;
-	private Pot				pot;
-	private Board			board;
-	private List<Player>	players;
-	private Deck			deck;
-	private SoundEngine		soundEngine;
-	private HandsPokerMap	handsPokerMap;
-	private int				smallBlind;
-	private int				bigBlind;
-	private Card[]			futureBoard;
-	private JPanelGameBoard	panelGameBoard;
+	private StateType			oldState;
+	private State				state;
+	private int					indexPlayer;
+	private int					indexDealer;
+	private int					indexSmallBlind;
+	private int					indexBigBlind;
+	private int					magicIndex;
+	private int					nbTurn;
+	private boolean				isFinished;
+	private Pot					pot;
+	private Board				board;
+	private List<Player>		players;
+	private Deck				deck;
+	private SoundEngine			soundEngine;
+	private HandsPokerMap		handsPokerMap;
+	private int					smallBlind;
+	private int					bigBlind;
+	private Card[]				futureBoard;
+	private JPanelGameBoard		panelGameBoard;
 
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
 
-	public static final int	HUMAN_PLAYER_INDEX	= 0;
+	public static Player		HUMAN_PLAYER;
+	private static final int	NB_TURN_BEFORE_CHANGE_BLIND	= 8;
 
 	// initialize to nbPlayer*(-2) and incremented each draw of card. After the players have received theirs cards, we use it to define the correct card in the variable futureBoard to get
 	/*------------------------------------------------------------------*\
@@ -68,6 +70,7 @@ public class GameEngine
 	{
 		this.panelGameBoard = panelGameBoard;
 
+		nbTurn = 0;
 		pot = new Pot();
 		soundEngine = new SoundEngine();
 		futureBoard = new Card[Board.NUMBER_CARDS];
@@ -80,13 +83,15 @@ public class GameEngine
 		players.add(new Player(profile, bankroll, this));
 		profile.setCapital(profile.getCapital() - bankroll);
 
+		HUMAN_PLAYER = players.get(0);
+
 		for(int i = 1; i < nbPlayer; ++i)
 		{
 			//TODO get a random profile
 			players.add(new AI(new Profile("IA-" + i, 1), bankroll, this));
 		}
 		indexPlayer = (int)(Math.random() * nbPlayer);
-		indexDealer = getPreviousIndex(indexPlayer);
+		indexDealer = 1;//getPreviousIndex(indexPlayer);
 
 		initialize();
 	}
@@ -97,6 +102,7 @@ public class GameEngine
 
 	public void run()
 	{
+		panelGameBoard.updateGUI();
 		while(!isFinished)
 		{
 			state.addCads(this);
@@ -153,13 +159,15 @@ public class GameEngine
 	public void betSmallBlind()
 	{
 		bet(smallBlind, indexSmallBlind);
+		pot.setBlindBet(smallBlind);
 	}
 
 	public void betBigBlind()
 	{
-		if (indexBigBlind >= 0)
+		if (players.size() >= 2)
 		{
 			bet(bigBlind, indexBigBlind);
+			pot.setBlindBet(bigBlind);
 		}
 	}
 
@@ -168,9 +176,8 @@ public class GameEngine
 		List<Pair<HandsPokerValue, Player>> handsValues = new ArrayList<Pair<HandsPokerValue, Player>>();
 
 		//Compte the value of each player's hand
-		for(int i = 0; i < players.size(); ++i)
+		for(Player player:players)
 		{
-			Player player = players.get(i);
 			if (!player.isFolded())
 			{
 				ComputeBestHand computeBestHand = new ComputeBestHand(CardSubset.union(player.getPocket(), board));
@@ -180,6 +187,12 @@ public class GameEngine
 
 		Collections.sort(handsValues);
 
+		int bestRank = handsValues.get(0).getKey().getRank();
+		for(Pair<HandsPokerValue, Player> pair:handsValues)
+		{
+			Player p = pair.getValue();
+			System.out.println((pair.getKey().getRank() == bestRank ? "Winner : " : "Loser : ") + p.getProfile().getName() + " with " + p.getPocket().toString() + " -> " + pair.getKey().getHandName());
+		}
 		//Map<Rank,Triple<groupPot,SumBets,List<Player>>>
 		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
 
@@ -208,11 +221,22 @@ public class GameEngine
 
 		divideUpPot(triples);
 		initialize();
+		panelGameBoard.updateGUI();
+	}
+
+	public void updateGUI()
+	{
+		panelGameBoard.updateGUI();
 	}
 
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+
+	public boolean getIsFinished()
+	{
+		return isFinished;
+	}
 
 	public int getSmallBlind()
 	{
@@ -289,11 +313,6 @@ public class GameEngine
 		return players;
 	}
 
-	public void updateGUI()
-	{
-		panelGameBoard.updateGUI();
-	}
-
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -307,6 +326,27 @@ public class GameEngine
 	public void setOldState(StateType oldState)
 	{
 		this.oldState = oldState;
+		StringBuilder sb = new StringBuilder();
+
+		if (this.oldState == StateType.FlopState)
+		{
+			sb.append("Flop : ");
+		}
+		else if (this.oldState == StateType.TurnState)
+		{
+			sb.append("Turn : ");
+		}
+		else if (this.oldState == StateType.RiverState)
+		{
+			sb.append("River :");
+		}
+
+		Card[] cards = getUnorderedBoard();
+		for(Card c:cards)
+		{
+			sb.append(c.toString());
+		}
+		System.out.println(sb.toString());
 	}
 
 	/*------------------------------------------------------------------*\
@@ -330,21 +370,21 @@ public class GameEngine
 		{
 			//Find the min bet of the group
 			int min = triples[i].getValue2().get(0).getTurnSpending();
-			for(Player p:triples[i].getValue2())
+
+			for(int j = 0; j < triples[i].getValue2().size(); ++j)
 			{
+				Player p = triples[i].getValue2().get(j);
 				min = (p.getTurnSpending() < min) ? p.getTurnSpending() : min;
 				triples[i].setKey(triples[i].getKey() + p.getTurnSpending());
 				triples[i].setValue1(triples[i].getValue1() + p.getTurnSpending());
-				int givenMoney = p.getTurnSpending();
-				p.removeTurningSpend(givenMoney);
-				p.giveMoney(givenMoney);
 			}
 
 			//Decrease the min found to all next players and add each bet to the groupPot
 			for(int j = i + 1; j < triples.length; ++j)
 			{
-				for(Player p:triples[j].getValue2())
+				for(int k = 0; k < triples[j].getValue2().size(); ++k)
 				{
+					Player p = triples[j].getValue2().get(k);
 					if (p.getTurnSpending() >= min)
 					{
 						p.removeTurningSpend(min * triples[i].getValue2().size());
@@ -359,17 +399,27 @@ public class GameEngine
 			}
 		}
 
+		int nbPlayer = 0;
+		for(Triple<Integer, Integer, List<Player>> triple:triples)
+		{
+			nbPlayer += triple.getValue2().size();
+		}
+
+		int[] winValues = new int[nbPlayer];
+
 		//We know now which money each player has to receive, so we process
 		for(int i = 0; i < triples.length; ++i)
 		{
-			for(Player p:triples[i].getValue2())
+			for(int j = 0; j < triples[i].getValue2().size(); ++j)
 			{
+				Player p = triples[i].getValue2().get(j);
 				int moneyGiven = triples[i].getKey() * p.getTurnSpending();
 				if (moneyGiven != 0 && triples[i].getValue1() != 0)
 				{
 					moneyGiven /= triples[i].getValue1();
 					pot.removeAmount(moneyGiven);
-					p.giveMoney(moneyGiven - p.getTurnSpending());
+					p.giveMoney(moneyGiven);
+					winValues[i] += moneyGiven;
 				}
 			}
 		}
@@ -379,23 +429,37 @@ public class GameEngine
 		int rest = pot.getTurnTotal();
 		pot.removeAmount(rest);
 
-		do
+		while(rest != 0)
 		{
-			for(Player p:triples[0].getValue2())
+			for(int i = 0; i < triples[0].getValue2().size(); ++i)
 			{
+				Player p = triples[0].getValue2().get(i);
 				if (rest > 0)
 				{
 					p.giveMoney(1);
+					winValues[i] += 1;
 					--rest;
 				}
 			}
-		} while(rest != 0);
+		}
+
+		int indexWinValues = 0;
+		for(Triple<Integer, Integer, List<Player>> triple:triples)
+		{
+			List<Player> players = triple.getValue2();
+			for(Player p:players)
+			{
+				System.out.println(p.getProfile().getName() + " wins " + winValues[indexWinValues++] + "$");
+			}
+		}
 
 		List<Player> playersToKill = new ArrayList<Player>();
-		for(Player p:players)
+		for(int i = 0; i < players.size(); ++i)
 		{
+			Player p = players.get(i);
 			if (p.getBankroll() <= 0)
 			{
+				System.out.println(p.getProfile().getName() + " sits out.");
 				p.kill();
 				playersToKill.add(p);
 			}
@@ -419,38 +483,53 @@ public class GameEngine
 
 	private void initialize()
 	{
-		isFinished = false;
-		pot.initialize();
-		oldState = null;
-
-		setState(new PreFlopState());
-		board = new Board();
-		deck = new Deck();
-
-		magicIndex = -2 * players.size();
-		players.get(indexDealer).setRole(Role.Nothing);
-		indexDealer = getNextIndex(indexDealer);
-		players.get(indexDealer).setRole(Role.Dealer);
-
-		indexSmallBlind = getNextIndex(indexDealer);
-		indexBigBlind = -1;
-
-		Player smallBlindPlayer = players.get(indexSmallBlind);
-		smallBlindPlayer.setRole(Role.SmallBlind);
-
-		//If there are 2 players, there is no small blind !
-		if (players.size() > 2)
-		{
-			indexBigBlind = getNextIndex(indexSmallBlind);
-			Player bigBlindPlayer = players.get(indexBigBlind);
-			bigBlindPlayer.setRole(Role.BigBlind);
-		}
-
-		indexPlayer = getNextIndex(indexBigBlind);
-
 		for(Player p:players)
 		{
 			p.newTurn();
+		}
+		isFinished = players.size() == 1;
+		if (!isFinished)
+		{
+			if (++nbTurn % NB_TURN_BEFORE_CHANGE_BLIND == 0)
+			{
+				smallBlind *= 2;
+				bigBlind *= 2;
+			}
+
+			isFinished = false;
+			pot.initialize();
+			oldState = null;
+
+			setState(new PreFlopState());
+			board = new Board();
+			deck = new Deck();
+
+			magicIndex = -2 * players.size();
+
+			//We avoid error when we remove a player
+			if (indexDealer < players.size())
+			{
+				players.get(indexDealer).setRole(Role.Nothing);
+			}
+
+			indexDealer = getNextIndex(indexDealer);
+			players.get(indexDealer).setRole(Role.Dealer);
+
+			indexSmallBlind = getNextIndex(indexDealer);
+			indexBigBlind = -1;
+
+			Player smallBlindPlayer = players.get(indexSmallBlind);
+			smallBlindPlayer.setRole(Role.SmallBlind);
+
+			//If there are 2 players, there is no small blind !
+			if (players.size() > 2)
+			{
+				indexBigBlind = getNextIndex(indexSmallBlind);
+				Player bigBlindPlayer = players.get(indexBigBlind);
+				bigBlindPlayer.setRole(Role.BigBlind);
+			}
+
+			indexPlayer = getNextIndex(indexBigBlind);
 		}
 	}
 

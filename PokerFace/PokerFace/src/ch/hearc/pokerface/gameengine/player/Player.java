@@ -37,54 +37,93 @@ public class Player implements Observer
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Constructor
+	 *
+	 * @param profile
+	 *            : The player's profile
+	 * @param bankroll
+	 *            : The value of the bankrool
+	 * @param gameEngine
+	 *            : The GameEngine
+	 */
 	public Player(Profile profile, int bankroll, GameEngine gameEngine)
 	{
-		setRole(Role.Nothing);
-		this.dead = false;
-		this.gameEngine = gameEngine;
 		this.profile = profile;
 		this.bankroll = bankroll;
-		this.turnSpending = 0;
-		this.folded = false;
-		this.betSpending = 0;
-		this.pocket = new Pocket();
+		this.gameEngine = gameEngine;
+
+		newTurn();
 	}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public void doAction() throws InterruptedException
+	/**
+	 * Wait an action triggered by the GUI with notifiy
+	 *
+	 * @throws InterruptedException
+	 */
+	public void doAction()
 	{
-		synchronized (this)
+		try
 		{
-			wait();
+			synchronized (this)
+			{
+				wait();
+			}
 		}
-		System.out.println(profile.getName() + " plays with " + betSpending);
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
+	/**
+	 * Initialize all the values for a new turn
+	 */
 	public void newTurn()
 	{
-		this.turnSpending = 0;
-		this.folded = false;
-		this.betSpending = 0;
 		this.pocket = new Pocket();
+		setRole(Role.Nothing);
+
+		this.turnSpending = 0;
+		this.betSpending = 0;
+		this.folded = false;
+		this.dead = false;
+
 		svPreFlop = null;
 		svFlop = null;
 		svTurn = null;
 		svRiver = null;
 	}
 
+	/**
+	 * Set the betSpend to zero
+	 */
 	public void endBettingState()
 	{
 		this.betSpending = 0;
 	}
 
+	/**
+	 * Add money to the player's bankroll
+	 *
+	 * @param money
+	 *            : Money to give
+	 */
 	public void giveMoney(int money)
 	{
 		bankroll += money;
 	}
 
+	/**
+	 * Take money from the player's bankrool
+	 *
+	 * @param money
+	 *            : Money to take
+	 */
 	public void takeMoney(int money)
 	{
 		turnSpending += money;
@@ -94,6 +133,8 @@ public class Player implements Observer
 
 	public void allIn()
 	{
+		call();
+		System.out.println(profile.getName() + " all in with " + bankroll + "$");
 		gameEngine.bet(bankroll);
 	}
 
@@ -101,6 +142,7 @@ public class Player implements Observer
 	{
 		if (betSpending == gameEngine.getPot().getBet())
 		{
+			System.out.println(profile.getName() + " checks");
 			gameEngine.bet(0);
 		}
 		else
@@ -113,6 +155,7 @@ public class Player implements Observer
 	{
 		if (amount < bankroll)
 		{
+			System.out.println(profile.getName() + " bets " + amount + "$");
 			gameEngine.bet(amount);
 		}
 		else
@@ -123,37 +166,32 @@ public class Player implements Observer
 
 	public void call()
 	{
-		int amount = (gameEngine.getPot().getBet() - betSpending);
-		if (amount < bankroll)
+		int callValue = getCallValue();
+		if (callValue != 0)
 		{
-			gameEngine.bet(amount);
+			System.out.println(profile.getName() + " calls " + callValue + "$");
 		}
-		else
-		{
-			allIn();
-		}
+		gameEngine.bet(callValue);
 	}
 
 	public void raise(int amount)
 	{
-		if (amount < bankroll)
-		{
-			gameEngine.bet(amount);
-		}
-		else
-		{
-			allIn();
-		}
+		call();
+		bet(amount - getCallValue());
 	}
 
 	/**
-	 * The the folded attribut to true when the player folds
+	 * The folded attribut to true when the player folds
 	 */
 	public void fold()
 	{
+		System.out.println(profile.getName() + " folds.");
 		folded = true;
 	}
 
+	/**
+	 * The player has a bankroll empty, so he's ejected of the board. Set the attribut dead to true
+	 */
 	public void kill()
 	{
 		dead = true;
@@ -163,22 +201,31 @@ public class Player implements Observer
 	 * Add new card to the player's pocker
 	 *
 	 * @param card
-	 *            the new card
+	 *            : the new card
 	 */
 	public void addCard(Card card)
 	{
 		pocket.add(card);
-		if (pocket.size() == 2)
+		if (pocket.size() == Pocket.NUMBER_OF_CARDS)
 		{
-			svPreFlop = Statistics.getPreFlopValues(pocket,gameEngine.getNbPlayers());
+			svPreFlop = Statistics.getPreFlopValues(pocket, gameEngine.getNbPlayers());
 		}
 	}
 
+	/**
+	 * Remove the amount to the player's turningSpend
+	 *
+	 * @param amount
+	 *            : Money to take
+	 */
 	public void removeTurningSpend(int amount)
 	{
 		turnSpending = (turnSpending - amount > 0) ? turnSpending - amount : 0;
 	}
 
+	/**
+	 * Observer use for the pattern Observer
+	 */
 	@Override
 	public void update(Observable o, Object arg)
 	{
@@ -203,6 +250,12 @@ public class Player implements Observer
 	|*				Set				*|
 	\*------------------------------*/
 
+	/**
+	 * Set the role of the player
+	 *
+	 * @param r
+	 *            : The role
+	 */
 	public void setRole(Role r)
 	{
 		role = r;
@@ -212,14 +265,14 @@ public class Player implements Observer
 	|*				Get				*|
 	\*------------------------------*/
 
-	public Role getRole()
-	{
-		return role;
-	}
-
 	public int getCallValue()
 	{
 		return gameEngine.getPot().getBet() - betSpending;
+	}
+
+	public Role getRole()
+	{
+		return role;
 	}
 
 	public Profile getProfile()

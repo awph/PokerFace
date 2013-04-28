@@ -36,16 +36,15 @@ public class AI extends Player
 	@Override
 	public void doAction()
 	{
-		System.out.println(profile.getName() + " plays with " + getCallValue());
-		level1();
+		check();
+		//level1();
 	}
 
 	private void level1()
 	{
 		if (getCallValue() == 0)
 		{
-			bet(0);
-			System.out.println("AI : 0");
+			check();
 		}
 		else if (gameEngine.getUnorderedBoard().length == 0)//PreFlop state
 		{
@@ -53,13 +52,11 @@ public class AI extends Player
 			int rand = (int)(Math.random() * 100);
 			if (rand < win)
 			{
-				bet(getCallValue());
-				System.out.println("AI : " + getCallValue());
+				call();
 			}
 			else
 			{
 				fold();
-				System.out.println("AI couché");
 			}
 		}
 		else
@@ -73,32 +70,20 @@ public class AI extends Player
 			if (gameEngine.getOldState() == StateType.RiverState)
 			{
 				HandsPokerValue handsPokerValue = HandsPokerMap.getInstance().getHand(new ComputeBestHand(CardSubset.union(pocket, gameEngine.getBoard())).getHighestHand());
-				//Définir ce qu'est une bonne main
+				//TODO : Définir ce qu'est une bonne main
 			}
 			else
 			{
 				if (pokerOdds.compareTo(potOdds) == 1)
 				{
-					bet(getCallValue());
-					System.out.println("AI : " + getCallValue());
+					call();
 				}
 				else
 				{
 					fold();
-					System.out.println("AI couché");
 				}
 			}
 
 		}
-	}
-
-	private void level2()
-	{
-
-	}
-
-	private void level3()
-	{
-
 	}
 }

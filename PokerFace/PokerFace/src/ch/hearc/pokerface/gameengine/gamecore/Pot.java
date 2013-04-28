@@ -1,16 +1,15 @@
 
 package ch.hearc.pokerface.gameengine.gamecore;
 
-
 public class Pot
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private int stateTotal;//Somme des enchères de l'état
-	private int turnTotal;//Somme total du tour
-	private int bet;//Somme minimale pour que le joueur puisse continuer à jouer
+	private int	stateTotal;	//Somme des enchères de l'état
+	private int	turnTotal;	//Somme total du tour
+	private int	bet;		//Somme minimale pour que le joueur puisse continuer à jouer
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -25,6 +24,19 @@ public class Pot
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append("Bet : ");
+		builder.append(this.bet);
+		builder.append("\nStateTotal : ");
+		builder.append(this.stateTotal);
+		builder.append("\nTurnTotal : ");
+		builder.append(this.turnTotal);
+		return builder.toString();
+	}
+
 	public void initialize()
 	{
 		stateTotal = turnTotal = bet = 0;
@@ -38,9 +50,9 @@ public class Pot
 
 	public void addStateTotal(int amount)
 	{
-		if(amount > bet)
+		if (amount > bet)
 		{
-			bet = amount;
+			bet += amount;
 		}
 		stateTotal += amount;
 	}
@@ -56,6 +68,7 @@ public class Pot
 	{
 		turnTotal -= amount;
 	}
+
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
@@ -74,5 +87,14 @@ public class Pot
 	{
 		return bet;
 	}
-}
 
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+
+	public void setBlindBet(int bet)
+	{
+		this.bet = bet;
+	}
+
+}
