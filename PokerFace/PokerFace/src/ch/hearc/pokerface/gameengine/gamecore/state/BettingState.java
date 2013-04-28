@@ -102,8 +102,8 @@ public class BettingState extends State
 				break;
 
 			case RiverState:
-				ge.showdown();
 				ge.setState(new PreFlopState());
+				ge.showdown();
 				break;
 
 			default:

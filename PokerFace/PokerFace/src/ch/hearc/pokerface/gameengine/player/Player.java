@@ -86,7 +86,7 @@ public class Player implements Observer
 	public void newTurn()
 	{
 		this.pocket = new Pocket();
-		setRole(Role.Nothing);
+		role = Role.Nothing;
 
 		this.turnSpending = 0;
 		this.betSpending = 0;
@@ -131,6 +131,9 @@ public class Player implements Observer
 		bankroll -= money;
 	}
 
+	/**
+	 * The player calls first and then bet all his bankroll
+	 */
 	public void allIn()
 	{
 		call();
@@ -138,6 +141,9 @@ public class Player implements Observer
 		gameEngine.bet(bankroll);
 	}
 
+	/**
+	 * Player checks (bet 0)
+	 */
 	public void check()
 	{
 		if (betSpending == gameEngine.getPot().getBet())
@@ -151,6 +157,10 @@ public class Player implements Observer
 		}
 	}
 
+	/**
+	 * The player bets the amount
+	 * @param amount : Amount to bet
+	 */
 	public void bet(int amount)
 	{
 		if (amount < bankroll)
@@ -164,6 +174,9 @@ public class Player implements Observer
 		}
 	}
 
+	/**
+	 * The player pays the amount to continue the game
+	 */
 	public void call()
 	{
 		int callValue = getCallValue();
@@ -174,6 +187,10 @@ public class Player implements Observer
 		gameEngine.bet(callValue);
 	}
 
+	/**
+	 * The player raise, first he calls and then he bets
+	 * @param amount : Money for the raise (call + bet)
+	 */
 	public void raise(int amount)
 	{
 		call();
@@ -194,6 +211,7 @@ public class Player implements Observer
 	 */
 	public void kill()
 	{
+		role = Role.Nothing;
 		dead = true;
 	}
 

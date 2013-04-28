@@ -91,7 +91,7 @@ public class GameEngine
 			players.add(new AI(new Profile("IA-" + i, 1), bankroll, this));
 		}
 		indexPlayer = (int)(Math.random() * nbPlayer);
-		indexDealer = 1;//getPreviousIndex(indexPlayer);
+		indexDealer = 2;//getPreviousIndex(indexPlayer);
 
 		initialize();
 	}
@@ -102,7 +102,6 @@ public class GameEngine
 
 	public void run()
 	{
-		panelGameBoard.updateGUI();
 		while(!isFinished)
 		{
 			state.addCads(this);
@@ -197,8 +196,10 @@ public class GameEngine
 		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
 
 		//Groupe all players by ranking and if they are an equality, there woulb be n players in the same group
-		for(Pair<HandsPokerValue, Player> pair:handsValues)
+		for(int i = 0; i < handsValues.size(); ++i)
 		{
+			Pair<HandsPokerValue, Player> pair = handsValues.get(i);
+
 			int rank = pair.getKey().getRank();
 			if (playerSortByRank.get(rank) == null)
 			{
@@ -319,7 +320,7 @@ public class GameEngine
 
 	public void setState(State s)
 	{
-		pot.nextState();
+		getPot().nextState();
 		state = s;
 	}
 
@@ -387,8 +388,8 @@ public class GameEngine
 					Player p = triples[j].getValue2().get(k);
 					if (p.getTurnSpending() >= min)
 					{
-						p.removeTurningSpend(min * triples[i].getValue2().size());
-						triples[i].setKey(triples[i].getKey() + min * triples[i].getValue2().size());
+						p.removeTurningSpend(min);
+						triples[i].setKey(triples[i].getKey() + min);
 					}
 					else
 					{
@@ -505,12 +506,6 @@ public class GameEngine
 			deck = new Deck();
 
 			magicIndex = -2 * players.size();
-
-			//We avoid error when we remove a player
-			if (indexDealer < players.size())
-			{
-				players.get(indexDealer).setRole(Role.Nothing);
-			}
 
 			indexDealer = getNextIndex(indexDealer);
 			players.get(indexDealer).setRole(Role.Dealer);
