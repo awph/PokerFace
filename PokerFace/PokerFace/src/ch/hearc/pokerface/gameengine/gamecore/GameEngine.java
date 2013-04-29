@@ -406,6 +406,10 @@ public class GameEngine
 		{
 			state = "River";
 		}
+		else
+		{
+			state = "Preflop";
+		}
 
 		Card[] cards = getUnorderedBoard();
 		for(Card c:cards)
