@@ -37,17 +37,27 @@ public class Pot
 		return builder.toString();
 	}
 
+	/**
+	 * Initialize total of the state,turn and the bet
+	 */
 	public void initialize()
 	{
 		stateTotal = turnTotal = bet = 0;
 	}
 
+	/**
+	 * Add the stateTotal to the turnTotal and reinitilized stateTotal and bet
+	 */
 	public void nextState()
 	{
 		turnTotal += stateTotal;
 		stateTotal = bet = 0;
 	}
 
+	/**
+	 * Add the amount to the total of the state, update the current bet if necessary
+	 * @param amount
+	 */
 	public void addStateTotal(int amount)
 	{
 		if (amount > bet)
@@ -57,13 +67,10 @@ public class Pot
 		stateTotal += amount;
 	}
 
-	public int nextTurn()
-	{
-		int total = turnTotal + stateTotal;
-		bet = turnTotal = stateTotal = 0;
-		return total;
-	}
-
+	/**
+	 * Remove the amount of the turnTotal
+	 * @param amount
+	 */
 	public void removeAmount(int amount)
 	{
 		turnTotal -= amount;

@@ -41,16 +41,6 @@ public class HandsPokerMap
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public HandsPokerValue getHand(String key)
-	{
-		return hands.get(key);
-	}
-
-	public HandsPokerValue getHand(Hand hand)
-	{
-		return hands.get(hand.getKey());
-	}
-
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
@@ -64,10 +54,27 @@ public class HandsPokerMap
 		return instance;
 	}
 
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
+	public HandsPokerValue getHand(String key)
+	{
+		return hands.get(key);
+	}
+
+	public HandsPokerValue getHand(Hand hand)
+	{
+		return hands.get(hand.getKey());
+	}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Fill the map with the file which contains all the possibile hands
+	 */
 	private void fill()
 	{
 		FileReader fr;
@@ -95,7 +102,7 @@ public class HandsPokerMap
 		}
 		catch (IOException e)
 		{
-			System.err.println("Error during reading file !");
+			System.err.println("Error during the reading process !");
 		}
 	}
 }

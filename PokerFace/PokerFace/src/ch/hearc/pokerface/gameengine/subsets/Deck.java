@@ -27,6 +27,7 @@ public class Deck extends CardSubset
 	{
 		super();
 
+		//Add all the card in the Poker
 		add(new Card(CardValue.Ace, CardColor.Clubs));
 		add(new Card(CardValue.Two, CardColor.Clubs));
 		add(new Card(CardValue.Three, CardColor.Clubs));
@@ -98,6 +99,10 @@ public class Deck extends CardSubset
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Remove a card by its value and not its reference
+	 * @param c : Card
+	 */
 	public void removeByValue(Card c)
 	{
 		Iterator<Card> it = this.iterator();

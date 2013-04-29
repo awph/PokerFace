@@ -139,6 +139,9 @@ public class Simulation extends Observable implements Runnable
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Combine all the datas in one
+	 */
 	private StatisticValue joinDatas()
 	{
 		Data d = datas[0];

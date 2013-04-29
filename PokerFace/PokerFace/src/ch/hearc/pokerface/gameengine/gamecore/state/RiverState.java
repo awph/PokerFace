@@ -18,7 +18,7 @@ public class RiverState extends State
 	@Override
 	public void bet(GameEngine ge)
 	{
-
+		//Nothing
 	}
 
 	@Override

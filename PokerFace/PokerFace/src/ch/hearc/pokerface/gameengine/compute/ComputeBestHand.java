@@ -51,6 +51,9 @@ public class ComputeBestHand
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Search the highest hand in the cardSubset
+	 */
 	private void searchHighestHand()
 	{
 		Card[] currentHand = new Card[LENGTH_HAND];
@@ -62,6 +65,7 @@ public class ComputeBestHand
 			subset[h++] = c;
 		}
 
+		//We test all the possibilities
 		for(int i = 0; i < subset.length - 4; ++i)
 		{
 			for(int j = i + 1; j < subset.length - 3; ++j)
@@ -84,12 +88,10 @@ public class ComputeBestHand
 							{
 								hand.add(c);
 							}
-
 							if (highestHand == null || HANDS_POKER_MAP.getHand(hand).compareTo(HANDS_POKER_MAP.getHand(highestHand)) > 0)
 							{
 								highestHand = hand;
 							}
-
 						}
 					}
 				}

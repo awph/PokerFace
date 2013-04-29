@@ -30,6 +30,19 @@ public class Pocket extends CardSubset
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	@Override
+	public void add(Card c)
+	{
+		if (size() < NUMBER_OF_CARDS)
+		{
+			super.add(c);
+		}
+	}
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
 	public String getKey()
 	{
 		StringBuilder stringBuilder = new StringBuilder("");
@@ -48,15 +61,6 @@ public class Pocket extends CardSubset
 		stringBuilder.append((sameColor) ? "s" : "o");
 
 		return stringBuilder.toString();
-	}
-
-	@Override
-	public void add(Card c)
-	{
-		if (size() < NUMBER_OF_CARDS)
-		{
-			super.add(c);
-		}
 	}
 }
 

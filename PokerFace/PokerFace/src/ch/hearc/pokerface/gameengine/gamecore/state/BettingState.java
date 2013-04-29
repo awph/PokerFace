@@ -23,7 +23,7 @@ public class BettingState extends State
 	@Override
 	public void addCads(GameEngine ge)
 	{
-
+		//Nothing
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class BettingState extends State
 		do
 		{
 			ge.updateGUI();
-			if (!postSmallBlind && !postBigBlind)
+			if (!postSmallBlind && !postBigBlind)//In this case, if everybody checks, the big blind can play twice
 			{
 				firstBetProcessing(ge, ge.getCurrentPlayer());
 			}
@@ -74,9 +74,10 @@ public class BettingState extends State
 				break;
 
 			case RiverState:
-				ge.setState(new PreFlopState());
+				//Each time, it's a new instance of BettingState, so we must reinitialize the static attributes
 				postBigBlind = false;
 				postSmallBlind = false;
+				ge.setState(new PreFlopState());
 				ge.showdown();
 				break;
 
@@ -159,6 +160,7 @@ public class BettingState extends State
 
 			isThePlayerTheLastRaisePlayer = player == ge.getLastRaisePlayer();
 
+			//If everybody checks, the big blind can play twice
 			if (isThePlayerTheLastRaisePlayer && player.getRole() == Role.BigBlind)
 			{
 				hasBigBlindToPlayTwice = true;

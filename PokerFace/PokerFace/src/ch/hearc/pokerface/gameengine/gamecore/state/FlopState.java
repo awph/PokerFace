@@ -27,7 +27,7 @@ public class FlopState extends State
 	@Override
 	public void bet(GameEngine ge)
 	{
-
+		//Nothing
 	}
 
 	@Override

@@ -47,6 +47,10 @@ public class Data
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Add another data to the current one
+	 * @param d2 : Other data
+	 */
 	public void union(Data d2)
 	{
 		nbWin += d2.getNumberOfWin();

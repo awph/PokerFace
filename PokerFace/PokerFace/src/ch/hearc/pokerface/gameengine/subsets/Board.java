@@ -4,7 +4,6 @@ package ch.hearc.pokerface.gameengine.subsets;
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.cards.CardColor;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
-import ch.hearc.pokerface.gameengine.compute.HandsPokerValue;
 
 public class Board extends CardSubset
 {
@@ -50,6 +49,10 @@ public class Board extends CardSubset
 	{
 		return new Board(this);
 	}
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
 
 	public String getKey(Deck deck)
 	{
@@ -121,11 +124,5 @@ public class Board extends CardSubset
 			}
 		}
 		return null;
-	}
-
-	public HandsPokerValue getHandsPokerValue(String key)
-	{
-		HandsPokerMap hps = HandsPokerMap.getInstance();
-		return hps.getHand(key);
 	}
 }

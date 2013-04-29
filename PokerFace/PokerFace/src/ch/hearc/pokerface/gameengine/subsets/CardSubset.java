@@ -37,6 +37,11 @@ public class CardSubset implements Iterable<Card>
 	|*			  Static			*|
 	\*------------------------------*/
 
+	/**
+	 * Mix two cardSubsets
+	 * @param subset1 : First cardSubset
+	 * @param subset2 : Second cardSubet
+	 */
 	public static CardSubset union(CardSubset subset1, CardSubset subset2)
 	{
 		CardSubset out = new CardSubset();
@@ -58,16 +63,19 @@ public class CardSubset implements Iterable<Card>
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public Card[] getArray()
-	{
-		return cards.toArray(new Card[0]);
-	}
-
+	/**
+	 * Add a card to the cardSubset
+	 * @param c : Card
+	 */
 	public void add(Card c)
 	{
 		cards.add(c);
 	}
 
+	/**
+	 * Remove a card to the cardSubset
+	 * @param c : Card
+	 */
 	public void remove(Card c)
 	{
 		try
@@ -79,6 +87,10 @@ public class CardSubset implements Iterable<Card>
 		}
 	}
 
+	/**
+	 * Remove all the value from a cardSubset to the current one
+	 * @param subset2 : The cardSubset which contains all the cards which have to be removed
+	 */
 	public void sub(CardSubset subset2)
 	{
 		for(Card card:subset2.cards)
@@ -116,4 +128,12 @@ public class CardSubset implements Iterable<Card>
 		return cards.iterator();
 	}
 
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
+	public Card[] getArray()
+	{
+		return cards.toArray(new Card[0]);
+	}
 }

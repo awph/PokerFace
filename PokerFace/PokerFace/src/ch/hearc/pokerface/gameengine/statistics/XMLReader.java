@@ -28,6 +28,10 @@ public class XMLReader
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Get all the values in the XML file
+	 * @param filename : Filename
+	 */
 	public static Map<StateType, Map<String, StatisticValue>>[] getXMLValue(String filename)
 	{
 		Map<StateType, Map<String, StatisticValue>>[] out = new Map[NB_MAX_PLAYER];
@@ -80,22 +84,9 @@ public class XMLReader
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			System.err.println("Problem during the reading process !");
 		}
 
 		return out;
 	}
-
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
-
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
-	/*------------------------------------------------------------------*\
-	|*							Methodes Private						*|
-	\*------------------------------------------------------------------*/
-
 }
