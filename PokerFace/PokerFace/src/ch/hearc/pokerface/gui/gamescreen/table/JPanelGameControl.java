@@ -63,7 +63,7 @@ public class JPanelGameControl extends JPanel
 			}
 			else
 			{
-				JOptionPane.showMessageDialog(null, "Fuck you off little pussy ! You're to bad, fucking noooooooob", "LOOOOOOOOOSER", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Fuck you off little pussy ! You're too bad, fucking noooooooob", "LOOOOOOOOOSER", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 		betRaiseButton.setEnabled(isHumanPlayerTurn);

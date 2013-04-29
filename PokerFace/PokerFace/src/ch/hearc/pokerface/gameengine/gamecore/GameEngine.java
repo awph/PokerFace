@@ -91,7 +91,7 @@ public class GameEngine
 			players.add(new AI(new Profile("IA-" + i, 1), bankroll, this));
 		}
 		indexPlayer = (int)(Math.random() * nbPlayer);
-		indexDealer = 2;//getPreviousIndex(indexPlayer);
+		indexDealer = getPreviousIndex(indexPlayer);
 
 		initialize();
 	}
@@ -157,17 +157,19 @@ public class GameEngine
 
 	public void betSmallBlind()
 	{
-		bet(smallBlind, indexSmallBlind);
-		pot.setBlindBet(smallBlind);
+		if (players.size() > 2)
+		{
+			System.out.println(players.get(indexPlayer).getProfile().getName() + " posts small blind (" + smallBlind + "$)");
+			bet(smallBlind, indexSmallBlind);
+			pot.setBlindBet(smallBlind);
+		}
 	}
 
 	public void betBigBlind()
 	{
-		if (players.size() >= 2)
-		{
-			bet(bigBlind, indexBigBlind);
-			pot.setBlindBet(bigBlind);
-		}
+		System.out.println(players.get(indexPlayer).getProfile().getName() + " posts big blind (" + bigBlind + "$)");
+		bet(bigBlind, indexBigBlind);
+		pot.setBlindBet(bigBlind);
 	}
 
 	public void showdown()
@@ -195,7 +197,7 @@ public class GameEngine
 		//Map<Rank,Triple<groupPot,SumBets,List<Player>>>
 		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
 
-		//Groupe all players by ranking and if they are an equality, there woulb be n players in the same group
+		//Groupe all players by ranking and if they is an equality, there would be n players in the same group
 		for(int i = 0; i < handsValues.size(); ++i)
 		{
 			Pair<HandsPokerValue, Player> pair = handsValues.get(i);
@@ -230,6 +232,10 @@ public class GameEngine
 		panelGameBoard.updateGUI();
 	}
 
+	public void setNewState()
+	{
+		indexPlayer = getNextIndex(indexDealer);
+	}
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
@@ -255,6 +261,16 @@ public class GameEngine
 		for(Player p:players)
 		{
 			out += (p.isFolded()) ? 0 : 1;
+		}
+		return out;
+	}
+
+	public int getAllInPlayer()
+	{
+		int out = 0;
+		for(Player p:players)
+		{
+			out += (p.getBankroll() == 0) ? 1 : 0;
 		}
 		return out;
 	}
@@ -510,21 +526,25 @@ public class GameEngine
 			indexDealer = getNextIndex(indexDealer);
 			players.get(indexDealer).setRole(Role.Dealer);
 
-			indexSmallBlind = getNextIndex(indexDealer);
-			indexBigBlind = -1;
-
-			Player smallBlindPlayer = players.get(indexSmallBlind);
-			smallBlindPlayer.setRole(Role.SmallBlind);
-
 			//If there are 2 players, there is no small blind !
 			if (players.size() > 2)
 			{
+				indexSmallBlind = getNextIndex(indexDealer);
+				indexPlayer = indexSmallBlind;
+				Player smallBlindPlayer = players.get(indexSmallBlind);
+				smallBlindPlayer.setRole(Role.SmallBlind);
+
 				indexBigBlind = getNextIndex(indexSmallBlind);
-				Player bigBlindPlayer = players.get(indexBigBlind);
-				bigBlindPlayer.setRole(Role.BigBlind);
+			}
+			else
+			{
+				indexSmallBlind = -1;
+				indexBigBlind = getNextIndex(indexDealer);
+				indexPlayer = indexBigBlind;
 			}
 
-			indexPlayer = getNextIndex(indexBigBlind);
+			Player bigBlindPlayer = players.get(indexBigBlind);
+			bigBlindPlayer.setRole(Role.BigBlind);
 		}
 	}
 
