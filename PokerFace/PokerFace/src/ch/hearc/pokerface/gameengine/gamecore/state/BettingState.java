@@ -13,7 +13,8 @@ public class BettingState extends State
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private final static int	NB_TURN_MAX	= 3;
+	private static boolean	postSmallBlind	= false;
+	private static boolean	postBigBlind	= false;
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
@@ -28,43 +29,24 @@ public class BettingState extends State
 	@Override
 	public void bet(GameEngine ge)
 	{
-		int nbTurnMax = NB_TURN_MAX;
-		boolean allChecked = false;
-		//Chaque tour on commence par la smallBlind. Au premier tour, c'est à la big blind de terminer le tour, donc BB joue 2x
-		ge.updateGUI();
-		if (ge.getOldState() == StateType.PreFlopState)
+		do
 		{
-			betFirstTurn(ge);
-
-			--nbTurnMax;
-			allChecked = true;
-			int nbUnfoldedPlayer = ge.getUnfoldedPlayer();
-			int nbAllInPlayer = ge.getAllInPlayer();
-
-			if (nbAllInPlayer != nbUnfoldedPlayer)
+			ge.updateGUI();
+			if (!postSmallBlind && !postBigBlind)
 			{
-				List<Player> players = ge.getPlayers();
-				for(Player p:players)
-				{
-					//If the player isn't folded and his bet = betSpend or has all in
-					if (p.isFolded() || (p.getBetSpending() < ge.getPot().getBet() && p.getBankroll() != 0))
-					{
-						allChecked = false;
-					}
-				}
-				allChecked = (allChecked || (nbUnfoldedPlayer - nbAllInPlayer) <= 1);
+				firstBetProcessing(ge, ge.getCurrentPlayer());
 			}
-		}
-		ge.updateGUI();
-		if (!allChecked)
-		{
-			betNormalTurn(ge,nbTurnMax);
-		}
+			else
+			{
+				normalBetProcessing(ge, ge.getCurrentPlayer());
+			}
+			ge.updateGUI();
+		} while(!allChecked(ge));
 
-		ge.updateGUI();
 		ge.setNewState();
 		ge.updateGUI();
 
+		//Reinitialise the player's bet
 		Player firstPlayer = ge.getCurrentPlayer();
 		Player currentPlayer = firstPlayer;
 		do
@@ -93,6 +75,8 @@ public class BettingState extends State
 
 			case RiverState:
 				ge.setState(new PreFlopState());
+				postBigBlind = false;
+				postSmallBlind = false;
 				ge.showdown();
 				break;
 
@@ -105,74 +89,59 @@ public class BettingState extends State
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
-	private void betNormalTurn(GameEngine ge,int nbTurnMax)
+	private boolean allChecked(GameEngine ge)
 	{
-		boolean allChecked = false;
-		int betSpend = 0;
-		int nbAllinPlayer = 0;
-		int nbUnfoldedPlayer = 0;
+		boolean allChecked = true;
+		int nbUnfoldedPlayer = ge.getUnfoldedPlayer();
+		int nbAllInPlayer = ge.getAllInPlayer();
 
-		for(int i = 0; i < nbTurnMax && !allChecked; ++i)
+		if (nbAllInPlayer != nbUnfoldedPlayer)
 		{
-			ge.updateGUI();
-			nbUnfoldedPlayer = ge.getUnfoldedPlayer();
-			betSpend = ge.getPot().getBet();
-
-			for(int j = 0; j < nbUnfoldedPlayer; ++j)
+			List<Player> players = ge.getPlayers();
+			for(Player p:players)
 			{
-				Player player = ge.getCurrentPlayer();
-
-				if (player.getBankroll() != 0)//If not all in
+				//If the player isn't folded and his bet = betSpend or has all in
+				if (p.isFolded() || (p.getBetSpending() < ge.getPot().getBet() && p.getBankroll() != 0))
 				{
-					//If player -> wait()
-					//Else IA computes
-					player.doAction();
+					allChecked = false;
 				}
-				else
-				{
-					++nbAllinPlayer;
-				}
-
-				ge.updateGUI();
-				ge.changeCurrentPlayer();
-				ge.updateGUI();
-				betSpend = ge.getPot().getBet();
 			}
-
-			allChecked = true;
-			if (nbAllinPlayer != nbUnfoldedPlayer)
-			{
-				List<Player> players = ge.getPlayers();
-				for(Player p:players)
-				{
-					//If the player isn't folded and his bet = betSpend or has all in
-					if (p.isFolded() || (p.getBetSpending() < betSpend && p.getBankroll() != 0))
-					{
-						allChecked = false;
-					}
-				}
-				allChecked = (allChecked || (nbUnfoldedPlayer - nbAllinPlayer) <= 1);
-			}
+			allChecked = (allChecked || (nbUnfoldedPlayer - nbAllInPlayer) <= 1);
 		}
+
+		return allChecked;
 	}
 
-	private void betFirstTurn(GameEngine ge)
+	private void normalBetProcessing(GameEngine ge, Player player)
 	{
-		boolean postSmallBlind = false;
-		boolean postBigBlind = false;
-		int nbUnfoldedPlayer = ge.getUnfoldedPlayer() + 2;//BB & SB play twice
-
-		for(int j = 0; j < nbUnfoldedPlayer; ++j)
+		ge.setIndexLastRaise(player);//If he checks, he's considered as the last player who has "raised"
+		do
 		{
+			if (player.getBankroll() != 0)//If not all in
+			{
+				//If player -> wait()
+				//Else IA computes
+				player.doAction();
+			}
 			ge.updateGUI();
-			Player player = ge.getCurrentPlayer();
+			ge.changeCurrentPlayer();
+			player = ge.getCurrentPlayer();
+			ge.updateGUI();
+		}while(player != ge.getLastRaisePlayer());
+	}
 
-			if (!postSmallBlind && player.getRole() == Role.SmallBlind)
+	private void firstBetProcessing(GameEngine ge, Player player)
+	{
+		boolean hasBigBlindToPlayTwice = false;
+		boolean isThePlayerTheLastRaisePlayer = false;
+		while(!isThePlayerTheLastRaisePlayer)
+		{
+			if (!postSmallBlind)
 			{
 				ge.betSmallBlind();
 				postSmallBlind = true;
 			}
-			else if (!postBigBlind && player.getRole() == Role.BigBlind)
+			else if (!postBigBlind)
 			{
 				ge.betBigBlind();
 				postBigBlind = true;
@@ -183,10 +152,22 @@ public class BettingState extends State
 				//Else IA computes
 				player.doAction();
 			}
-
 			ge.updateGUI();
 			ge.changeCurrentPlayer();
+			player = ge.getCurrentPlayer();
+			ge.updateGUI();
+
+			isThePlayerTheLastRaisePlayer = player == ge.getLastRaisePlayer();
+
+			if (isThePlayerTheLastRaisePlayer && player.getRole() == Role.BigBlind)
+			{
+				hasBigBlindToPlayTwice = true;
+				isThePlayerTheLastRaisePlayer = false;
+			}
+			else if(hasBigBlindToPlayTwice)
+			{
+				isThePlayerTheLastRaisePlayer = true;
+			}
 		}
 	}
-
 }

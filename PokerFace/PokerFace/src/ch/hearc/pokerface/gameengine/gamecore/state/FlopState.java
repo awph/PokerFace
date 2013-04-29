@@ -20,7 +20,7 @@ public class FlopState extends State
 	{
 		for(int i = 0; i < NB_CARD_FLOP; ++i)
 		{
-			ge.getBoard().add(ge.drawCard());
+			ge.addToBoard(ge.drawCard());
 		}
 	}
 

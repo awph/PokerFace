@@ -40,6 +40,7 @@ public class GameEngine
 	private int					indexDealer;
 	private int					indexSmallBlind;
 	private int					indexBigBlind;
+	private int					indexLastRaise;
 	private int					magicIndex;
 	private int					nbTurn;
 	private boolean				isFinished;
@@ -159,7 +160,8 @@ public class GameEngine
 	{
 		if (players.size() > 2)
 		{
-			System.out.println(players.get(indexPlayer).getProfile().getName() + " posts small blind (" + smallBlind + "$)");
+			logPlayerAction(getCurrentPlayer(),"posts small blind" ,smallBlind,"bet");
+			indexLastRaise = indexSmallBlind;
 			bet(smallBlind, indexSmallBlind);
 			pot.setBlindBet(smallBlind);
 		}
@@ -167,7 +169,8 @@ public class GameEngine
 
 	public void betBigBlind()
 	{
-		System.out.println(players.get(indexPlayer).getProfile().getName() + " posts big blind (" + bigBlind + "$)");
+		logPlayerAction(getCurrentPlayer(),"posts big blind" ,bigBlind,"bet");
+		indexLastRaise = indexBigBlind;
 		bet(bigBlind, indexBigBlind);
 		pot.setBlindBet(bigBlind);
 	}
@@ -192,7 +195,7 @@ public class GameEngine
 		for(Pair<HandsPokerValue, Player> pair:handsValues)
 		{
 			Player p = pair.getValue();
-			System.out.println((pair.getKey().getRank() == bestRank ? "Winner : " : "Loser : ") + p.getProfile().getName() + " with " + p.getPocket().toString() + " -> " + pair.getKey().getHandName());
+			logPlayerFinalResult((pair.getKey().getRank() == bestRank ? "Winner" : "Loser"), p, pair.getKey().getHandName());
 		}
 		//Map<Rank,Triple<groupPot,SumBets,List<Player>>>
 		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
@@ -234,7 +237,35 @@ public class GameEngine
 
 	public void setNewState()
 	{
+		indexLastRaise = -1;
 		indexPlayer = getNextIndex(indexDealer);
+	}
+
+	public void addToBoard(Card card)
+	{
+		board.add(card);
+	}
+
+	public void logPlayerAction(Player player,String action, int amount, String sound)
+	{
+		System.out.println(player.getProfile().getName() + " " + action + " " + ((amount != -1) ? amount + "$":""));
+		//TODO play the sound
+	}
+
+	public void logPlayerAction(Player player,String action, String sound)
+	{
+		logPlayerAction(player, action, -1, sound);
+	}
+
+	public void logBoard(String state, String cards)
+	{
+		System.out.println("---- " + state + " ----");
+		System.out.println(cards);
+	}
+
+	public void logPlayerFinalResult(String rank, Player player, String handName)
+	{
+		System.out.println(rank + " : " + player.getProfile().getName() + " with " + player.getPocket().toString() + " -> " + handName);
 	}
 	/*------------------------------*\
 	|*				Get				*|
@@ -253,6 +284,11 @@ public class GameEngine
 	public int getBigBlind()
 	{
 		return bigBlind;
+	}
+
+	public Board getBoard()
+	{
+		return board;
 	}
 
 	public int getUnfoldedPlayer()
@@ -275,15 +311,10 @@ public class GameEngine
 		return out;
 	}
 
-	public Board getBoard()
-	{
-		return board;
-	}
-
 	public Card[] getUnorderedBoard()
 	{
 		int nbCards = 0;
-		//TODO : Find a better way to do it
+
 		if (oldState == StateType.FlopState)
 		{
 			nbCards = Statistics.NUMBER_CARDS_FLOP;
@@ -330,9 +361,26 @@ public class GameEngine
 		return players;
 	}
 
+	public Player getLastRaisePlayer()
+	{
+		if (indexLastRaise < 0 || indexLastRaise >= players.size())
+		{
+			return null;
+		}
+		else
+		{
+			return players.get(indexLastRaise);
+		}
+	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
+
+	public void setIndexLastRaise(Player p)
+	{
+		indexLastRaise = players.indexOf(p);
+	}
 
 	public void setState(State s)
 	{
@@ -343,19 +391,20 @@ public class GameEngine
 	public void setOldState(StateType oldState)
 	{
 		this.oldState = oldState;
+		String state="";
 		StringBuilder sb = new StringBuilder();
 
 		if (this.oldState == StateType.FlopState)
 		{
-			sb.append("Flop : ");
+			state = "Flop";
 		}
 		else if (this.oldState == StateType.TurnState)
 		{
-			sb.append("Turn : ");
+			state = "Turn";
 		}
 		else if (this.oldState == StateType.RiverState)
 		{
-			sb.append("River :");
+			state = "River";
 		}
 
 		Card[] cards = getUnorderedBoard();
@@ -363,7 +412,8 @@ public class GameEngine
 		{
 			sb.append(c.toString());
 		}
-		System.out.println(sb.toString());
+
+		logBoard(state,sb.toString());
 	}
 
 	/*------------------------------------------------------------------*\
@@ -373,7 +423,6 @@ public class GameEngine
 	private void bet(int amount, int index)
 	{
 		players.get(index).takeMoney(amount);
-		//TODO: SoundEngine play sound here
 		pot.addStateTotal(amount);
 	}
 
@@ -466,7 +515,7 @@ public class GameEngine
 			List<Player> players = triple.getValue2();
 			for(Player p:players)
 			{
-				System.out.println(p.getProfile().getName() + " wins " + winValues[indexWinValues++] + "$");
+				logPlayerAction(p,"wins",winValues[indexWinValues++],"win");
 			}
 		}
 
@@ -476,7 +525,7 @@ public class GameEngine
 			Player p = players.get(i);
 			if (p.getBankroll() <= 0)
 			{
-				System.out.println(p.getProfile().getName() + " sits out.");
+				logPlayerAction(p,"sits out.","fold");
 				p.kill();
 				playersToKill.add(p);
 			}
@@ -542,6 +591,7 @@ public class GameEngine
 				indexBigBlind = getNextIndex(indexDealer);
 				indexPlayer = indexBigBlind;
 			}
+			indexLastRaise = -1;
 
 			Player bigBlindPlayer = players.get(indexBigBlind);
 			bigBlindPlayer.setRole(Role.BigBlind);

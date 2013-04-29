@@ -136,8 +136,8 @@ public class Player implements Observer
 	 */
 	public void allIn()
 	{
-		call();
-		System.out.println(profile.getName() + " all in with " + bankroll + "$");
+		gameEngine.bet(getCallValue());
+		gameEngine.logPlayerAction(this,"all in with",bankroll,"allin");
 		gameEngine.bet(bankroll);
 	}
 
@@ -148,7 +148,7 @@ public class Player implements Observer
 	{
 		if (betSpending == gameEngine.getPot().getBet())
 		{
-			System.out.println(profile.getName() + " checks");
+			gameEngine.logPlayerAction(this,"checks","check");
 			gameEngine.bet(0);
 		}
 		else
@@ -165,13 +165,14 @@ public class Player implements Observer
 	{
 		if (amount < bankroll)
 		{
-			System.out.println(profile.getName() + " bets " + amount + "$");
+			gameEngine.logPlayerAction(this,"bets",amount,"bet");
 			gameEngine.bet(amount);
 		}
 		else
 		{
 			allIn();
 		}
+		gameEngine.setIndexLastRaise(this);//Notifiy that we've just raised
 	}
 
 	/**
@@ -182,7 +183,7 @@ public class Player implements Observer
 		int callValue = getCallValue();
 		if (callValue != 0)
 		{
-			System.out.println(profile.getName() + " calls " + callValue + "$");
+			gameEngine.logPlayerAction(this,"calls",callValue,"call");
 		}
 		gameEngine.bet(callValue);
 	}
@@ -193,8 +194,11 @@ public class Player implements Observer
 	 */
 	public void raise(int amount)
 	{
-		call();
-		bet(amount - getCallValue());
+		int callValue = getCallValue();
+		gameEngine.bet(callValue);
+		gameEngine.logPlayerAction(this, "raises",amount - callValue, "raise");
+		gameEngine.bet(amount - callValue);
+		gameEngine.setIndexLastRaise(this);//Notifiy that we've just raised
 	}
 
 	/**
@@ -202,7 +206,7 @@ public class Player implements Observer
 	 */
 	public void fold()
 	{
-		System.out.println(profile.getName() + " folds.");
+		gameEngine.logPlayerAction(this,"folds","fold");
 		folded = true;
 	}
 
