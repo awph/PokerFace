@@ -58,14 +58,16 @@ public class XMLReader
 				out[i] = new HashMap<StateType, Map<String,StatisticValue>>();
 				Map<String, StatisticValue> map = new HashMap<String, StatisticValue>();
 
+				Element eNbPlayer = (Element) nlNbPlayer.item(i);
+
 				for(int j = 0;j < nlNbPhase.getLength(); ++j)
 				{
-					NodeList nlPocket = doc.getElementsByTagName("Pocket");
+					NodeList nlPocket = eNbPlayer.getElementsByTagName("Pocket");
 					Element ePhase = (Element) nlNbPhase.item(j);
 
 					for(int k = 0; k < nlPocket.getLength(); ++k)
 					{
-						Element e = (Element)nlPocket.item(k);
+						Element e = (Element) nlPocket.item(k);
 
 						String key = e.getAttribute("id");
 						StatisticValue sv = new StatisticValue(Double.valueOf(e.getElementsByTagName("Win").item(0).getTextContent()),Double.valueOf(e.getElementsByTagName("Tie").item(0).getTextContent()),Double.valueOf(e.getElementsByTagName("Loss").item(0).getTextContent()),Double.valueOf(e.getElementsByTagName("nbOpponantWinners").item(0).getTextContent()), Double.valueOf(e.getElementsByTagName(new StringBuilder(HandType.StraightFlush.getStringValue()).reverse().toString()).item(0).getTextContent()), Double.valueOf(e
@@ -77,7 +79,6 @@ public class XMLReader
 										.getElementsByTagName(new StringBuilder(HandType.HighCard.getStringValue()).reverse().toString()).item(0).getTextContent()));
 						map.put(key, sv);
 					}
-
 					out[i].put(StateType.valueOf(ePhase.getAttribute("id")), map);
 				}
 			}
