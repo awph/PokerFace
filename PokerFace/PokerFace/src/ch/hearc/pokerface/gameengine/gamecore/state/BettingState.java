@@ -115,7 +115,11 @@ public class BettingState extends State
 
 	private void normalBetProcessing(GameEngine ge, Player player)
 	{
-		ge.setIndexLastRaise(player);//If he checks, he's considered as the last player who has "raised"
+		//If he checks, he's considered as the last player who has "raised"
+		if(ge.getPot().getBet() == 0)
+		{
+			ge.setIndexLastRaise(player);
+		}
 		do
 		{
 			if (player.getBankroll() != 0)//If not all in
@@ -135,8 +139,10 @@ public class BettingState extends State
 	{
 		boolean hasBigBlindToPlayTwice = false;
 		boolean isThePlayerTheLastRaisePlayer = false;
+		int nbDecision = 2;
 		while(!isThePlayerTheLastRaisePlayer)
 		{
+			++nbDecision;
 			if (!postSmallBlind)
 			{
 				ge.betSmallBlind();

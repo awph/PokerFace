@@ -153,26 +153,45 @@ public class GameEngine
 
 	public void bet(int amount)
 	{
-		bet(amount, indexPlayer);
+		Player player = players.get(indexPlayer);
+
+		if (amount > pot.getBet())
+		{
+			indexLastRaise = indexPlayer;
+			int value = amount - player.getCallValue();
+
+			//When we raise, we have to add the amount-callValue to the bet
+			if (oldState == StateType.PreFlopState && (player.getRole() == Role.BigBlind || player.getRole() == Role.SmallBlind) || value == pot.getBet())
+			{
+				pot.setBet(pot.getBet() + value);
+			}
+			else
+			{
+				pot.setBet(value);
+			}
+		}
+
+		player.takeMoney(amount);
+		pot.addStateTotal(amount);
 	}
 
 	public void betSmallBlind()
 	{
 		if (players.size() > 2)
 		{
-			logPlayerAction(getCurrentPlayer(),"posts small blind" ,smallBlind,"bet");
+			logPlayerAction(getCurrentPlayer(), "posts small blind", smallBlind, "bet");
+			players.get(indexSmallBlind).takeMoney(smallBlind);
 			indexLastRaise = indexSmallBlind;
-			bet(smallBlind, indexSmallBlind);
-			pot.setBlindBet(smallBlind);
+			pot.addBlind(smallBlind);
 		}
 	}
 
 	public void betBigBlind()
 	{
-		logPlayerAction(getCurrentPlayer(),"posts big blind" ,bigBlind,"bet");
+		logPlayerAction(getCurrentPlayer(), "posts big blind", bigBlind, "bet");
+		players.get(indexBigBlind).takeMoney(bigBlind);
 		indexLastRaise = indexBigBlind;
-		bet(bigBlind, indexBigBlind);
-		pot.setBlindBet(bigBlind);
+		pot.addBlind(bigBlind);
 	}
 
 	public void showdown()
@@ -246,13 +265,13 @@ public class GameEngine
 		board.add(card);
 	}
 
-	public void logPlayerAction(Player player,String action, int amount, String sound)
+	public void logPlayerAction(Player player, String action, int amount, String sound)
 	{
-		System.out.println(player.getProfile().getName() + " " + action + " " + ((amount != -1) ? amount + "$":""));
+		System.out.println(player.getProfile().getName() + " " + action + " " + ((amount != -1) ? amount + "$" : ""));
 		//TODO play the sound
 	}
 
-	public void logPlayerAction(Player player,String action, String sound)
+	public void logPlayerAction(Player player, String action, String sound)
 	{
 		logPlayerAction(player, action, -1, sound);
 	}
@@ -267,6 +286,7 @@ public class GameEngine
 	{
 		System.out.println(rank + " : " + player.getProfile().getName() + " with " + player.getPocket().toString() + " -> " + handName);
 	}
+
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
@@ -391,7 +411,7 @@ public class GameEngine
 	public void setOldState(StateType oldState)
 	{
 		this.oldState = oldState;
-		String state="";
+		String state = "";
 		StringBuilder sb = new StringBuilder();
 
 		if (this.oldState == StateType.FlopState)
@@ -417,18 +437,12 @@ public class GameEngine
 			sb.append(c.toString());
 		}
 
-		logBoard(state,sb.toString());
+		logBoard(state, sb.toString());
 	}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
-
-	private void bet(int amount, int index)
-	{
-		players.get(index).takeMoney(amount);
-		pot.addStateTotal(amount);
-	}
 
 	/**
 	 * @param triples
@@ -519,7 +533,7 @@ public class GameEngine
 			List<Player> players = triple.getValue2();
 			for(Player p:players)
 			{
-				logPlayerAction(p,"wins",winValues[indexWinValues++],"win");
+				logPlayerAction(p, "wins", winValues[indexWinValues++], "win");
 			}
 		}
 
@@ -529,7 +543,7 @@ public class GameEngine
 			Player p = players.get(i);
 			if (p.getBankroll() <= 0)
 			{
-				logPlayerAction(p,"sits out.","fold");
+				logPlayerAction(p, "sits out.", "fold");
 				p.kill();
 				playersToKill.add(p);
 			}

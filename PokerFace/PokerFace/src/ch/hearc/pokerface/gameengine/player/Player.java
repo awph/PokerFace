@@ -136,7 +136,6 @@ public class Player implements Observer
 	 */
 	public void allIn()
 	{
-		gameEngine.bet(getCallValue());
 		gameEngine.logPlayerAction(this,"all in with",bankroll,"allin");
 		gameEngine.bet(bankroll);
 	}
@@ -194,10 +193,8 @@ public class Player implements Observer
 	 */
 	public void raise(int amount)
 	{
-		int callValue = getCallValue();
-		gameEngine.bet(callValue);
-		gameEngine.logPlayerAction(this, "raises",amount - callValue, "raise");
-		gameEngine.bet(amount - callValue);
+		gameEngine.logPlayerAction(this, "raises",amount, "raise");
+		gameEngine.bet(amount);
 		gameEngine.setIndexLastRaise(this);//Notifiy that we've just raised
 	}
 

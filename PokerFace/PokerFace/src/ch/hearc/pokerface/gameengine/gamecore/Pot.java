@@ -60,11 +60,17 @@ public class Pot
 	 */
 	public void addStateTotal(int amount)
 	{
-		if (amount > bet)
-		{
-			bet += amount;
-		}
 		stateTotal += amount;
+	}
+
+	/**
+	 * Add the blind value to the pot. Little bit different of addStateTotal
+	 * @param blind
+	 */
+	public void addBlind(int blind)
+	{
+		bet = blind;
+		stateTotal += blind;
 	}
 
 	/**
@@ -99,7 +105,7 @@ public class Pot
 	|*				Set				*|
 	\*------------------------------*/
 
-	public void setBlindBet(int bet)
+	public void setBet(int bet)
 	{
 		this.bet = bet;
 	}

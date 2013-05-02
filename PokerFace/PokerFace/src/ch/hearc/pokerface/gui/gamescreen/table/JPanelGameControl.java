@@ -133,7 +133,7 @@ public class JPanelGameControl extends JPanel
 					}
 					else
 					{
-						humanPlayer.raise(gameEngine.getPot().getBet() + gameEngine.getBigBlind());
+						humanPlayer.raise(humanPlayer.getBetSpending() + gameEngine.getBigBlind());
 					}
 					humanPlayer.notify();
 				}
