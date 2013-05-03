@@ -201,5 +201,15 @@ public class UseOuts
 			board.add(new Card(CardValue.Two, CardColor.Diamonds));
 			System.out.println("[" + pocket.toString() + "]\t[" + board.toString() + "]\t" + Statistics.getOuts(pocket, board) + "\t" + Statistics.getOuts(pocket, board) + "\t #4");
 		}
+		{
+			Pocket pocket = new Pocket();
+			pocket.add(new Card(CardValue.Ace, CardColor.Clubs));
+			pocket.add(new Card(CardValue.Ace, CardColor.Diamonds));
+			Board board = new Board();
+			board.add(new Card(CardValue.Ace, CardColor.Spades));
+			board.add(new Card(CardValue.Ace, CardColor.Hearts));
+			board.add(new Card(CardValue.Two, CardColor.Diamonds));
+			System.out.println("[" + pocket.toString() + "]\t[" + board.toString() + "]\t" + Statistics.getOuts(pocket, board).toString() + "\t" + Statistics.getOuts(pocket, board).size() + "\t #4");
+		}
 	}
 }

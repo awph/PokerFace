@@ -73,7 +73,7 @@ public class GameEngine
 
 		nbTurn = 0;
 		pot = new Pot();
-		soundEngine = new SoundEngine();
+		soundEngine = SoundEngine.getInstance();
 		futureBoard = new Card[Board.NUMBER_CARDS];
 		handsPokerMap = HandsPokerMap.getInstance();
 
@@ -290,6 +290,11 @@ public class GameEngine
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+
+	public SoundEngine getSoundEngine()
+	{
+		return soundEngine;
+	}
 
 	public boolean getIsFinished()
 	{
