@@ -7,21 +7,15 @@ import java.awt.SplashScreen;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
-import ch.hearc.pokerface.gameengine.player.profile.ActiveProfile;
-import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
+import ch.hearc.pokerface.gui.menuscreens.JOPTableConfiguration;
 import ch.hearc.pokerface.gui.menuscreens.JPanelMainMenu;
 import ch.hearc.pokerface.gui.menuscreens.JPanelProfile;
 
@@ -63,7 +57,7 @@ public class JFrameMain extends JFrame
 				panelMainMenu.refreshProfile();
 				break;
 			case "panelGameBoard":
-				panelGameBoard.start(new GameEngine(10, 4, ActiveProfile.getInstance().getProfile(), 5000, panelGameBoard)); //TODO get from option pane
+				new JOPTableConfiguration(panelGameBoard);
 				break;
 		}
 		layout.show(this.getContentPane(), card);
@@ -132,7 +126,7 @@ public class JFrameMain extends JFrame
 			public void windowClosing(WindowEvent arg0)
 			{
 				// SERIALIZATION DES PROFILES
-				try
+				/*try
 				{
 					List<Profile> list = new ArrayList<Profile>();
 					FileOutputStream fileOut = new FileOutputStream("D:\\profiles.dat");
@@ -144,7 +138,7 @@ public class JFrameMain extends JFrame
 				catch (IOException i)
 				{
 					i.printStackTrace();
-				}
+				}*/
 			}
 		});
 	}

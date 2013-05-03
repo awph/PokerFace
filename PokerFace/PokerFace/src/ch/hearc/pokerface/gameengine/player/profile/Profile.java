@@ -11,14 +11,30 @@ public class Profile implements Serializable
 	\*------------------------------------------------------------------*/
 	private String	name;
 	private Avatar	avatar;
-	private double	capital;
+	private int	capital;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+
 	public Profile(String name, int avatarId)
 	{
 		this.name = name;
+		try
+		{
+			this.avatar = new Avatar(avatarId);
+		}
+		catch (IOException e)
+		{
+			System.err.println("Problème à l'ouverture de l'avatar!");
+			e.printStackTrace();
+		}
+	}
+
+	public Profile(String name, int avatarId, int capital)
+	{
+		this.name = name;
+		this.capital = capital;
 		try
 		{
 			this.avatar = new Avatar(avatarId);
@@ -56,7 +72,7 @@ public class Profile implements Serializable
 		this.name = name;
 	}
 
-	public void setCapital(double capital)
+	public void setCapital(int capital)
 	{
 		this.capital = capital;
 	}
@@ -75,7 +91,7 @@ public class Profile implements Serializable
 		return this.avatar;
 	}
 
-	public double getCapital()
+	public int getCapital()
 	{
 		return this.capital;
 	}

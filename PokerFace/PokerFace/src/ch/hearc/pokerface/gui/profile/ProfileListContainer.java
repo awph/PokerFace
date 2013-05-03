@@ -178,7 +178,7 @@ public class ProfileListContainer extends Box
 		int n = 10;
 		for(int i = 0; i < n; ++i)
 		{
-			profileComponentList.add(new ProfileComponent(new Profile("Profile " + i, 1),this));
+			profileComponentList.add(new ProfileComponent(new Profile("Profile " + i, 1, 10000),this));
 		}
 	}
 }
