@@ -101,10 +101,13 @@ public class BettingState extends State
 			List<Player> players = ge.getPlayers();
 			for(Player p:players)
 			{
-				//If the player isn't folded and his bet = betSpend or has all in
-				if (p.isFolded() || (p.getBetSpending() < ge.getPot().getBet() && p.getBankroll() != 0))
+				if (!p.isFolded())
 				{
-					allChecked = false;
+					//If the player isn't folded and his bet = betSpend or has all in
+					if ((p.getBetSpending() < ge.getPot().getBet() && p.getBankroll() != 0))
+					{
+						allChecked = false;
+					}
 				}
 			}
 			allChecked = (allChecked || (nbUnfoldedPlayer - nbAllInPlayer) <= 1);
@@ -116,7 +119,7 @@ public class BettingState extends State
 	private void normalBetProcessing(GameEngine ge, Player player)
 	{
 		//If he checks, he's considered as the last player who has "raised"
-		if(ge.getPot().getBet() == 0)
+		if (ge.getPot().getBet() == 0)
 		{
 			ge.setIndexLastRaise(player);
 		}
@@ -132,17 +135,16 @@ public class BettingState extends State
 			ge.changeCurrentPlayer();
 			player = ge.getCurrentPlayer();
 			ge.updateGUI();
-		}while(player != ge.getLastRaisePlayer());
+		} while(player != ge.getLastRaisePlayer());
 	}
 
 	private void firstBetProcessing(GameEngine ge, Player player)
 	{
 		boolean hasBigBlindToPlayTwice = false;
 		boolean isThePlayerTheLastRaisePlayer = false;
-		int nbDecision = 2;
+
 		while(!isThePlayerTheLastRaisePlayer)
 		{
-			++nbDecision;
 			if (!postSmallBlind)
 			{
 				ge.betSmallBlind();
@@ -172,7 +174,7 @@ public class BettingState extends State
 				hasBigBlindToPlayTwice = true;
 				isThePlayerTheLastRaisePlayer = false;
 			}
-			else if(hasBigBlindToPlayTwice)
+			else if (hasBigBlindToPlayTwice)
 			{
 				isThePlayerTheLastRaisePlayer = true;
 			}
