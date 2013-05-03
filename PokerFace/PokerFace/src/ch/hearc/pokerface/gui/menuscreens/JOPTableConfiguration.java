@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
-import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
 
@@ -57,6 +56,9 @@ public class JOPTableConfiguration extends JOptionPane
 			{
 				panelGameBoard.start(new GameEngine(smallBlind, nbPlayers, ActiveProfile.getInstance().getProfile(), startCash, panelGameBoard));
 			}
+			else {
+				JOptionPane.showOptionDialog(null, "Values out of bounds!", "Mother Fucker!", DEFAULT_OPTION, ERROR_MESSAGE, null, null, null);
+			}
 		} while(!checkValues);
 	}
 
@@ -64,7 +66,7 @@ public class JOPTableConfiguration extends JOptionPane
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public static boolean trySwitch() {
+	public static boolean trySwitchToGameBoard() {
 		// TODO : cancel button management (go mainMenu if cancel..)
 		return false;
 	}
@@ -116,7 +118,7 @@ public class JOPTableConfiguration extends JOptionPane
 
 		smallBlindSpinner = new JTextArea(String.valueOf(10));
 
-		((DefaultEditor)nbPlayersSpinner.getEditor()).getTextField().setEditable(false);
+		//((DefaultEditor)nbPlayersSpinner.getEditor()).getTextField().setEditable(false); greys out nbplayerSpinner
 		bankRollTextArea = new JTextArea(String.valueOf(bankRoll));
 
 		panel.add(new JLabel("Blind"));
