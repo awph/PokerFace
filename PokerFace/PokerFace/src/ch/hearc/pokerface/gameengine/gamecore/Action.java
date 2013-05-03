@@ -3,7 +3,7 @@ package ch.hearc.pokerface.gameengine.gamecore;
 
 public enum Action
 {
-	Bet("bets"), Raise("raises"), Fold("sits out"), Call("calls"), Check("checks"), Allin("all in with"), PostSmallBlind("posts small blind"), PostBigBlind("posts big blind"), Winner("Winner"), Loser("Loser");
+	Bet("bets"), Raise("raises"), Fold("sits out"), Call("calls"), Check("checks"), Allin("all in with"), PostSmallBlind("posts small blind"), PostBigBlind("posts big blind"), Winner("Winner"), Loser("Loser"), WinMoney("wins");
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|

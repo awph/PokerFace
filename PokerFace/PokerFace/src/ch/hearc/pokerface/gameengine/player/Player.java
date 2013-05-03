@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
+import ch.hearc.pokerface.gameengine.gamecore.Action;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
@@ -136,7 +137,7 @@ public class Player implements Observer
 	 */
 	public void allIn()
 	{
-		gameEngine.logPlayerAction(this,"all in with",bankroll,"allin");
+		gameEngine.logPlayerAction(this, Action.Allin, bankroll);
 		gameEngine.bet(bankroll);
 	}
 
@@ -147,7 +148,7 @@ public class Player implements Observer
 	{
 		if (betSpending == gameEngine.getPot().getBet())
 		{
-			gameEngine.logPlayerAction(this,"checks","check");
+			gameEngine.logPlayerAction(this, Action.Check);
 			gameEngine.bet(0);
 		}
 		else
@@ -164,7 +165,7 @@ public class Player implements Observer
 	{
 		if (amount < bankroll)
 		{
-			gameEngine.logPlayerAction(this,"bets",amount,"bet");
+			gameEngine.logPlayerAction(this, Action.Bet,amount);
 			gameEngine.bet(amount);
 		}
 		else
@@ -182,7 +183,7 @@ public class Player implements Observer
 		int callValue = getCallValue();
 		if (callValue != 0)
 		{
-			gameEngine.logPlayerAction(this,"calls",callValue,"call");
+			gameEngine.logPlayerAction(this, Action.Call, callValue);
 		}
 		gameEngine.bet(callValue);
 	}
@@ -193,7 +194,7 @@ public class Player implements Observer
 	 */
 	public void raise(int amount)
 	{
-		gameEngine.logPlayerAction(this, "raises",amount, "raise");
+		gameEngine.logPlayerAction(this, Action.Raise, amount);
 		gameEngine.bet(amount);
 		gameEngine.setIndexLastRaise(this);//Notifiy that we've just raised
 	}
@@ -203,7 +204,7 @@ public class Player implements Observer
 	 */
 	public void fold()
 	{
-		gameEngine.logPlayerAction(this,"folds","fold");
+		gameEngine.logPlayerAction(this, Action.Fold);
 		folded = true;
 	}
 

@@ -179,7 +179,7 @@ public class GameEngine
 	{
 		if (players.size() > 2)
 		{
-			logPlayerAction(getCurrentPlayer(), "posts small blind", smallBlind, "bet");
+			logPlayerAction(getCurrentPlayer(), Action.PostSmallBlind, smallBlind);
 			players.get(indexSmallBlind).takeMoney(smallBlind);
 			indexLastRaise = indexSmallBlind;
 			pot.addBlind(smallBlind);
@@ -188,7 +188,7 @@ public class GameEngine
 
 	public void betBigBlind()
 	{
-		logPlayerAction(getCurrentPlayer(), "posts big blind", bigBlind, "bet");
+		logPlayerAction(getCurrentPlayer(), Action.PostBigBlind, bigBlind);
 		players.get(indexBigBlind).takeMoney(bigBlind);
 		indexLastRaise = indexBigBlind;
 		pot.addBlind(bigBlind);
@@ -265,15 +265,15 @@ public class GameEngine
 		board.add(card);
 	}
 
-	public void logPlayerAction(Player player, String action, int amount, String sound)
+	public void logPlayerAction(Player player, Action action, int amount)
 	{
-		System.out.println(player.getProfile().getName() + " " + action + " " + ((amount != -1) ? amount + "$" : ""));
+		System.out.println(player.getProfile().getName() + " " + action.toString() + " " + ((amount != -1) ? amount + "$" : ""));
 		//TODO play the sound
 	}
 
-	public void logPlayerAction(Player player, String action, String sound)
+	public void logPlayerAction(Player player, Action action)
 	{
-		logPlayerAction(player, action, -1, sound);
+		logPlayerAction(player, action, -1);
 	}
 
 	public void logBoard(String state, String cards)
@@ -533,7 +533,7 @@ public class GameEngine
 			List<Player> players = triple.getValue2();
 			for(Player p:players)
 			{
-				logPlayerAction(p, "wins", winValues[indexWinValues++], "win");
+				logPlayerAction(p, Action.WinMoney, winValues[indexWinValues++]);
 			}
 		}
 
@@ -543,7 +543,7 @@ public class GameEngine
 			Player p = players.get(i);
 			if (p.getBankroll() <= 0)
 			{
-				logPlayerAction(p, "sits out.", "fold");
+				logPlayerAction(p, Action.Fold);
 				p.kill();
 				playersToKill.add(p);
 			}
