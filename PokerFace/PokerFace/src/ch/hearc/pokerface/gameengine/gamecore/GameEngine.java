@@ -157,18 +157,7 @@ public class GameEngine
 
 		if (amount > pot.getBet())
 		{
-			indexLastRaise = indexPlayer;
-			int value = amount - player.getCallValue();
-
-			//When we raise, we have to add the amount-callValue to the bet
-			if (oldState == StateType.PreFlopState && (player.getRole() == Role.BigBlind || player.getRole() == Role.SmallBlind) || value == pot.getBet())
-			{
-				pot.setBet(pot.getBet() + value);
-			}
-			else
-			{
-				pot.setBet(value);
-			}
+			pot.setBet(amount);
 		}
 
 		player.takeMoney(amount);
@@ -177,21 +166,14 @@ public class GameEngine
 
 	public void betSmallBlind()
 	{
-		if (players.size() > 2)
-		{
-			logPlayerAction(getCurrentPlayer(), Action.PostSmallBlind, smallBlind);
-			players.get(indexSmallBlind).takeMoney(smallBlind);
-			indexLastRaise = indexSmallBlind;
-			pot.addBlind(smallBlind);
-		}
+		logPlayerAction(getCurrentPlayer(), Action.PostSmallBlind, (smallBlind > players.get(indexSmallBlind).getBankroll()) ? players.get(indexSmallBlind).getBankroll() : smallBlind);
+		players.get(indexSmallBlind).bet((smallBlind > players.get(indexSmallBlind).getBankroll()) ? players.get(indexSmallBlind).getBankroll() : smallBlind);
 	}
 
 	public void betBigBlind()
 	{
-		logPlayerAction(getCurrentPlayer(), Action.PostBigBlind, bigBlind);
-		players.get(indexBigBlind).takeMoney(bigBlind);
-		indexLastRaise = indexBigBlind;
-		pot.addBlind(bigBlind);
+		logPlayerAction(getCurrentPlayer(), Action.PostBigBlind, (bigBlind > players.get(indexBigBlind).getBankroll()) ? players.get(indexBigBlind).getBankroll() : bigBlind);
+		players.get(indexBigBlind).bet((bigBlind > players.get(indexBigBlind).getBankroll()) ? players.get(indexBigBlind).getBankroll() : bigBlind);
 	}
 
 	public void showdown()
@@ -268,7 +250,7 @@ public class GameEngine
 	public void logPlayerAction(Player player, Action action, int amount)
 	{
 		System.out.println(player.getProfile().getName() + " " + action.toString() + " " + ((amount != -1) ? amount + "$" : ""));
-		//TODO play the sound
+		soundEngine.playSound(action);
 	}
 
 	public void logPlayerAction(Player player, Action action)

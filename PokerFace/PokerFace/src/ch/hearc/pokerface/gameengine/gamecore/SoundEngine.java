@@ -12,7 +12,7 @@ public class SoundEngine
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	
+
 	private float				volume;
 	private JSound				check;
 	private JSound				call;
@@ -23,15 +23,15 @@ public class SoundEngine
 	private JSound				lose;
 	private JSound				raise;
 	private JSound				yourturn;
-	
+
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
-	
+
 	private static SoundEngine	instance;
-	
+
 	private static final String	PATH				= "resources/sounds/";
-	
+
 	private static final String	CHECK_FILENAME		= "check.wav";
 	private static final String	CALL_FILENAME		= "call.wav";
 	private static final String	ALLIN_FILENAME		= "allin.wav";
@@ -41,15 +41,15 @@ public class SoundEngine
 	private static final String	LOSE_FILENAME		= "lose.wav";
 	private static final String	RAISE_FILENAME		= "raise.wav";
 	private static final String	YOURTURN_FILENAME	= "yourturn.wav";
-	
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-	
+
 	private SoundEngine()
 	{
 		volume = 1f;
-		
+
 		try
 		{
 			check = new JSound(PATH + CHECK_FILENAME);
@@ -61,7 +61,7 @@ public class SoundEngine
 			//lose = new JSound(PATH + LOSE_PATH);
 			raise = new JSound(PATH + RAISE_FILENAME);
 			yourturn = new JSound(PATH + YOURTURN_FILENAME);
-			
+
 			setVolume(volume);
 		}
 		catch (UnsupportedAudioFileException e)
@@ -73,52 +73,60 @@ public class SoundEngine
 			e.printStackTrace();
 		}
 	}
-	
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
-	
-	public void playSound(Action action)
+
+	public void playSound(final Action action)
 	{
-		switch(action)
+		Thread thread = new Thread(new Runnable()
 		{
-			case Bet:
-			case PostSmallBlind:
-			case PostBigBlind:
-				playBet();
-				break;
-			case Raise:
-				playRaise();
-				break;
-			case Fold:
-				playFold();
-				break;
-			case Call:
-				playCall();
-				break;
-			case Check:
-				playCheck();
-				break;
-			case Allin:
-				playAllin();
-				break;
-			case Winner:
-				playWin();
-				break;
-			case Loser:
-				playLose();
-				break;
-			case YourTurn:
-				playYourTurn();
-			default:
-				break;
-		}
+			public void run()
+			{
+				switch(action)
+				{
+					case Bet:
+					case PostSmallBlind:
+					case PostBigBlind:
+						playBet();
+						break;
+					case Raise:
+						playRaise();
+						break;
+					case Fold:
+						playFold();
+						break;
+					case Call:
+						playCall();
+						break;
+					case Check:
+						playCheck();
+						break;
+					case Allin:
+						playAllin();
+						break;
+					case Winner:
+						playWin();
+						break;
+					case Loser:
+						playLose();
+						break;
+					case YourTurn:
+						playYourTurn();
+					default:
+						break;
+				}
+			}
+		});
+		thread.setPriority(Thread.MAX_PRIORITY);
+		thread.start();
 	}
-	
+
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
-	
+
 	public synchronized static SoundEngine getInstance()
 	{
 		if (instance == null)
@@ -127,11 +135,11 @@ public class SoundEngine
 		}
 		return instance;
 	}
-	
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
-	
+
 	public void setVolume(float volume)
 	{
 		this.volume = volume;
@@ -144,54 +152,54 @@ public class SoundEngine
 		//lose.setVolume(volume);
 		raise.setVolume(volume);
 	}
-	
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
-	
+
 	private void playCheck()
 	{
 		check.play();
 	}
-	
+
 	private void playCall()
 	{
 		call.play();
 	}
-	
+
 	private void playAllin()
 	{
 		allin.play();
 	}
-	
+
 	private void playBet()
 	{
 		bet.play();
 	}
-	
+
 	private void playFold()
 	{
 		fold.play();
 	}
-	
+
 	private void playWin()
 	{
 		//win.play();
 	}
-	
+
 	private void playLose()
 	{
 		//lose.play();
 	}
-	
+
 	private void playRaise()
 	{
 		raise.play();
 	}
-	
+
 	private void playYourTurn()
 	{
 		yourturn.play();
 	}
-	
+
 }

@@ -159,18 +159,34 @@ public class Player implements Observer
 
 	/**
 	 * The player bets the amount
-	 * @param amount : Amount to bet
+	 *
+	 * @param amount
+	 *            : Amount to bet
 	 */
 	public void bet(int amount)
 	{
-		if (amount < bankroll)
+		if ((role == Role.SmallBlind || role == Role.BigBlind) && turnSpending == 0) //First bet (blind)
 		{
-			gameEngine.logPlayerAction(this, Action.Bet,amount);
-			gameEngine.bet(amount);
+			if (amount < bankroll)
+			{
+				gameEngine.bet(amount);
+			}
+			else
+			{
+				gameEngine.bet(bankroll);
+			}
 		}
 		else
 		{
-			allIn();
+			if (amount < bankroll)
+			{
+				gameEngine.logPlayerAction(this, Action.Bet, amount);
+				gameEngine.bet(amount);
+			}
+			else
+			{
+				allIn();
+			}
 		}
 		gameEngine.setIndexLastRaise(this);//Notifiy that we've just raised
 	}
@@ -181,16 +197,22 @@ public class Player implements Observer
 	public void call()
 	{
 		int callValue = getCallValue();
-		if (callValue != 0)
+		if (callValue < bankroll)
 		{
 			gameEngine.logPlayerAction(this, Action.Call, callValue);
+			gameEngine.bet(callValue);
 		}
-		gameEngine.bet(callValue);
+		else
+		{
+			allIn();
+		}
 	}
 
 	/**
 	 * The player raise, first he calls and then he bets
-	 * @param amount : Money for the raise (call + bet)
+	 *
+	 * @param amount
+	 *            : Money for the raise (call + bet)
 	 */
 	public void raise(int amount)
 	{

@@ -145,7 +145,7 @@ public class BettingState extends State
 
 		while(!isThePlayerTheLastRaisePlayer)
 		{
-			if (!postSmallBlind)
+			if (!postSmallBlind && ge.getNbPlayers() > 2)
 			{
 				ge.betSmallBlind();
 				postSmallBlind = true;
