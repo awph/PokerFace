@@ -29,31 +29,39 @@ public class BettingState extends State
 	@Override
 	public void bet(GameEngine ge)
 	{
-		do
+		if (ge.getUnfoldedPlayer() > 1)
 		{
-			ge.updateGUI();
-			if (!postSmallBlind && !postBigBlind)//In this case, if everybody checks, the big blind can play twice
+			do
 			{
-				firstBetProcessing(ge, ge.getCurrentPlayer());
-			}
-			else
-			{
-				normalBetProcessing(ge, ge.getCurrentPlayer());
-			}
+				ge.updateGUI();
+				if (!postSmallBlind && !postBigBlind)//In this case, if everybody checks, the big blind can play twice
+				{
+					firstBetProcessing(ge, ge.getCurrentPlayer());
+				}
+				else
+				{
+					normalBetProcessing(ge, ge.getCurrentPlayer());
+				}
+				ge.updateGUI();
+			} while(!allChecked(ge));
+
+			ge.setNewState();
 			ge.updateGUI();
-		} while(!allChecked(ge));
 
-		ge.setNewState();
-		ge.updateGUI();
-
-		//Reinitialise the player's bet
-		Player firstPlayer = ge.getCurrentPlayer();
-		Player currentPlayer = firstPlayer;
-		do
-		{
-			currentPlayer.endBettingState();
-			currentPlayer = ge.getPlayers().get(ge.changeCurrentPlayer());
-		} while(currentPlayer != firstPlayer);
+			//Reinitialise the player's bet
+			Player firstPlayer = ge.getCurrentPlayer();
+			while(firstPlayer.isFolded())
+			{
+				ge.changeCurrentPlayer();
+				firstPlayer = ge.getCurrentPlayer();
+			}
+			Player currentPlayer = firstPlayer;
+			do
+			{
+				currentPlayer.endBettingState();
+				currentPlayer = ge.getPlayers().get(ge.changeCurrentPlayer());
+			} while(currentPlayer != firstPlayer);
+		}
 	}
 
 	@Override

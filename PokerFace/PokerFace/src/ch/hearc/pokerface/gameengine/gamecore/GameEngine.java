@@ -158,6 +158,7 @@ public class GameEngine
 		if (amount > pot.getBet())
 		{
 			pot.setBet(amount);
+			indexLastRaise = indexPlayer;
 		}
 
 		player.takeMoney(amount);
@@ -228,7 +229,7 @@ public class GameEngine
 
 		divideUpPot(triples);
 		initialize();
-		panelGameBoard.updateGUI();
+		updateGUI();
 	}
 
 	public void updateGUI()
@@ -559,6 +560,7 @@ public class GameEngine
 			p.newTurn();
 		}
 		isFinished = players.size() == 1;
+
 		if (!isFinished)
 		{
 			if (++nbTurn % NB_TURN_BEFORE_CHANGE_BLIND == 0)
