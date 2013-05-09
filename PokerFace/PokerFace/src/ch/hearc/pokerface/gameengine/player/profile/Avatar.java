@@ -27,20 +27,19 @@ public class Avatar extends JLabel
 
 		Image img = ImageIO.read(new File("resources/avatars/" + id + ".jpg"));
 
-		setIcon(new ImageIcon(generateScaledAvatar(img)));
+		setIcon(new ImageIcon(generateScaledBufferedImage(img, AVATAR_SIDE_SIZE / img.getWidth(null))));
 
 		this.id = id;
 	}
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
-	private BufferedImage generateScaledAvatar(Image img)
+	public static BufferedImage generateScaledBufferedImage(Image img, double scale)
 	{
-		final double SCALE = AVATAR_SIDE_SIZE / img.getWidth(null);
-		BufferedImage bi = new BufferedImage((int)(SCALE * img.getWidth(null)), (int)(SCALE * img.getHeight(null)), BufferedImage.TYPE_INT_ARGB);
+		BufferedImage bi = new BufferedImage((int)(scale * img.getWidth(null)), (int)(scale * img.getHeight(null)), BufferedImage.TYPE_INT_ARGB);
 
 		Graphics2D g2dBI = (Graphics2D)bi.getGraphics();
-		g2dBI.scale(SCALE, SCALE);
+		g2dBI.scale(scale, scale);
 		g2dBI.drawImage(img, 0, 0, null);
 		g2dBI.dispose();
 		return bi;

@@ -17,6 +17,7 @@ public class EllipsisLayout implements LayoutManager
 		if (CENTER.equals(name))
 		{
 			parent.setName("Centered");
+			nonEllipseComp++; // Is not an element that goes on the ellipse
 		}
 	}
 
@@ -99,7 +100,7 @@ public class EllipsisLayout implements LayoutManager
 			Component c = parent.getComponent(i);
 			if (c.isVisible())
 			{
-				double angle = 2 * Math.PI * i / n;
+				double angle = 2 * Math.PI * i / (n-nonEllipseComp) + (Math.PI/2);
 
 				// center point of component
 				int x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
@@ -129,4 +130,7 @@ public class EllipsisLayout implements LayoutManager
 	private int					maxComponentWidth	= 0;
 	private int					maxComponentHeight	= 0;
 	public static final String	CENTER				= "Center";
+
+	//Tools
+	private int nonEllipseComp = 0;
 }

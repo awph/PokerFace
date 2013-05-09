@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.gamescreen.card.CardComponent;
+import ch.hearc.pokerface.gui.gamescreen.card.PlayerCard;
 
 public class PlayerComponent extends JPanel
 {
@@ -21,7 +22,7 @@ public class PlayerComponent extends JPanel
 	private Player			player;
 	private CardComponent	card1;
 	private CardComponent	card2;
-	private JLabel			role;	//TEMP
+	private Token			role;	//TEMP
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -32,10 +33,10 @@ public class PlayerComponent extends JPanel
 		this.player = player;
 		name = new JLabel(player.getProfile().getName());
 		money = new JLabel(Integer.toString(player.getBankroll()));
-		card1 = new CardComponent("NO CARD");
-		card2 = new CardComponent("NO MOTHER FUCKING CARD");
+		card1 = new PlayerCard("back");
+		card2 = new PlayerCard("back");
 
-		role = new JLabel(player.getRole().toString());
+		role = new Token(player.getRole().toString());
 
 		geometry();
 		control();
@@ -50,15 +51,16 @@ public class PlayerComponent extends JPanel
 	{
 		try
 		{
-		card1.setText(player.getPocket().getArray()[0].toString());
-		card2.setText(player.getPocket().getArray()[1].toString());
+			// IF Card is not revealed, image is "back.png" (to be set in getId of each card)
+			card1.setCard(player.getPocket().getArray()[0].getId());
+			card2.setCard(player.getPocket().getArray()[1].getId());
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
 			//e.printStackTrace();
 		}
 
-		if(player.isFolded() || player.isDead())
+		if (player.isFolded() || player.isDead())
 		{
 			setBackground(Color.red);
 		}
@@ -67,7 +69,6 @@ public class PlayerComponent extends JPanel
 			setBackground(null);
 		}
 		money.setText(Integer.toString(player.getBankroll()));
-		role.setText(player.getRole().toString());
 	}
 
 	/*------------------------------*\
@@ -87,9 +88,11 @@ public class PlayerComponent extends JPanel
 		Box box = Box.createVerticalBox();
 		box.add(name);
 		box.add(money);
-		box.add(card1);
-		box.add(card2);
-		box.add(role);
+		Box cardsBox = Box.createHorizontalBox();
+		cardsBox.add(card1);
+		cardsBox.add(card2);
+		cardsBox.add(role);
+		box.add(cardsBox);
 		add(box);
 	}
 
