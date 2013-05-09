@@ -1,9 +1,13 @@
 
 package ch.hearc.pokerface.gameengine.player;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import ch.hearc.pokerface.gameengine.gamecore.Action;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.gamecore.Pot;
+import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gameengine.statistics.Odds;
 import ch.hearc.pokerface.gameengine.statistics.StatisticValue;
@@ -24,7 +28,52 @@ public class AI extends Player
 	private final static long	MAXIMUM_TIME_TO_PLAY	= 2000; //ms
 	private final static long	MINIMUM_TIME_TO_PLAY	= 1000;	//ms
 	private final static long	TIME_BETWEEN_EACH_LOOP	= 100;	//ms;
+	//Map<StateType, Map<nbPlayer,minimumRanking>
+	private static final Map<StateType, Map<Integer, Integer>>	GOOD_HAND	= new HashMap<StateType, Map<Integer,Integer>>()
+			{
+				{
+					//TODO Define good hands for each case
+					put(StateType.PreFlopState,new HashMap<Integer, Integer>(2,1));
+					put(StateType.PreFlopState,new HashMap<Integer, Integer>(3,1));
+					put(StateType.PreFlopState,new HashMap<Integer, Integer>(4,1));
+					put(StateType.PreFlopState,new HashMap<Integer, Integer>(5,1));
+					put(StateType.PreFlopState,new HashMap<Integer, Integer>(6,1));
+					put(StateType.PreFlopState,new HashMap<Integer, Integer>(7,1));
+					put(StateType.PreFlopState,new HashMap<Integer, Integer>(8,1));
+					put(StateType.PreFlopState,new HashMap<Integer, Integer>(9,1));
+					put(StateType.PreFlopState,new HashMap<Integer, Integer>(10,1));
 
+					put(StateType.FlopState,new HashMap<Integer, Integer>(2,1));
+					put(StateType.FlopState,new HashMap<Integer, Integer>(3,1));
+					put(StateType.FlopState,new HashMap<Integer, Integer>(4,1));
+					put(StateType.FlopState,new HashMap<Integer, Integer>(5,1));
+					put(StateType.FlopState,new HashMap<Integer, Integer>(6,1));
+					put(StateType.FlopState,new HashMap<Integer, Integer>(7,1));
+					put(StateType.FlopState,new HashMap<Integer, Integer>(8,1));
+					put(StateType.FlopState,new HashMap<Integer, Integer>(9,1));
+					put(StateType.FlopState,new HashMap<Integer, Integer>(10,1));
+
+					put(StateType.TurnState,new HashMap<Integer, Integer>(2,1));
+					put(StateType.TurnState,new HashMap<Integer, Integer>(3,1));
+					put(StateType.TurnState,new HashMap<Integer, Integer>(4,1));
+					put(StateType.TurnState,new HashMap<Integer, Integer>(5,1));
+					put(StateType.TurnState,new HashMap<Integer, Integer>(6,1));
+					put(StateType.TurnState,new HashMap<Integer, Integer>(7,1));
+					put(StateType.TurnState,new HashMap<Integer, Integer>(8,1));
+					put(StateType.TurnState,new HashMap<Integer, Integer>(9,1));
+					put(StateType.TurnState,new HashMap<Integer, Integer>(10,1));
+
+					put(StateType.RiverState,new HashMap<Integer, Integer>(2,1));
+					put(StateType.RiverState,new HashMap<Integer, Integer>(3,1));
+					put(StateType.RiverState,new HashMap<Integer, Integer>(4,1));
+					put(StateType.RiverState,new HashMap<Integer, Integer>(5,1));
+					put(StateType.RiverState,new HashMap<Integer, Integer>(6,1));
+					put(StateType.RiverState,new HashMap<Integer, Integer>(7,1));
+					put(StateType.RiverState,new HashMap<Integer, Integer>(8,1));
+					put(StateType.RiverState,new HashMap<Integer, Integer>(9,1));
+					put(StateType.RiverState,new HashMap<Integer, Integer>(10,1));
+				}
+			};
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
@@ -53,6 +102,26 @@ public class AI extends Player
 		level1();
 	}
 
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+
+	/**
+	 * Compute a percentage with the chance of win
+	 * @param x : Chance of win, [0,1]
+	 */
+	private double getPercentageBankroll(double x)
+	{
+		double max = Math.E/0.3;
+		return Math.pow(Math.E,x)/(1.3-x);
+	}
+
+
+	private void level23()
+	{
+
+	}
+
 	private void level1()
 	{
 		try
@@ -79,7 +148,6 @@ public class AI extends Player
 				if (sv == null)
 				{
 					Thread.sleep(TIME_BETWEEN_EACH_LOOP);
-					System.out.println("wait");
 				}
 			}
 
