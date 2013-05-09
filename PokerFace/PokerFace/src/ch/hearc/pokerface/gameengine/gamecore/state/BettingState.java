@@ -177,7 +177,7 @@ public class BettingState extends State
 			isThePlayerTheLastRaisePlayer = player == ge.getLastRaisePlayer();
 
 			//If everybody checks, the big blind can play twice
-			if (isThePlayerTheLastRaisePlayer && player.getRole() == Role.BigBlind)
+			if (isThePlayerTheLastRaisePlayer && player.getRole() == Role.BigBlind && ge.getUnfoldedPlayer() > 1)
 			{
 				hasBigBlindToPlayTwice = true;
 				isThePlayerTheLastRaisePlayer = false;
