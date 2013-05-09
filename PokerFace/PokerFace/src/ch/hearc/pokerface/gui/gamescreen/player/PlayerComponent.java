@@ -2,10 +2,15 @@
 package ch.hearc.pokerface.gui.gamescreen.player;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.gamescreen.card.CardComponent;
@@ -31,8 +36,26 @@ public class PlayerComponent extends JPanel
 	public PlayerComponent(Player player)
 	{
 		this.player = player;
-		name = new JLabel(player.getProfile().getName());
-		money = new JLabel(Integer.toString(player.getBankroll()));
+
+		//money = new JLabel(Integer.toString(player.getBankroll()));
+
+		try
+		{
+			money = new JLabel(Integer.toString(player.getBankroll()),new ImageIcon(ImageIO.read(new File("resources/coin.png"))),SwingConstants.CENTER);
+			name = new JLabel(player.getProfile().getName(), player.getProfile().getAvatar().getIcon(), SwingConstants.CENTER);
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		money.setHorizontalTextPosition(SwingConstants.LEFT);
+		name.setHorizontalTextPosition(SwingConstants.LEFT);
+
+		name.setForeground(Color.RED);
+		money.setForeground(Color.GREEN);
+
 		card1 = new PlayerCard("back");
 		card2 = new PlayerCard("back");
 
@@ -104,8 +127,7 @@ public class PlayerComponent extends JPanel
 
 	private void appearance()
 	{
-		// TODO Auto-generated method stub
-
+		setOpaque(false);
 	}
 
 }

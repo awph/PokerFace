@@ -21,6 +21,8 @@ public abstract class CardComponent extends JLabel
 
 	public CardComponent(String cardValue)
 	{
+		setOpaque(false);
+
 		try
 		{
 			setIcon(new ImageIcon(ImageIO.read(new File("resources/table/cards/" + cardValue + ".png"))));
