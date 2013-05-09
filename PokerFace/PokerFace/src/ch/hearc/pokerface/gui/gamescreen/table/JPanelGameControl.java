@@ -1,6 +1,7 @@
 
 package ch.hearc.pokerface.gui.gamescreen.table;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -173,6 +174,6 @@ public class JPanelGameControl extends JPanel
 
 	private void appearance()
 	{
-
+		setBackground(Color.BLACK);
 	}
 }

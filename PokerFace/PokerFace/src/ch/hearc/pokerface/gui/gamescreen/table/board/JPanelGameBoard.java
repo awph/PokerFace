@@ -4,6 +4,7 @@ package ch.hearc.pokerface.gui.gamescreen.table.board;
 import java.awt.BorderLayout;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -37,6 +38,7 @@ public class JPanelGameBoard extends JPanel
 	\*------------------------------------------------------------------*/
 	public JPanelGameBoard(JFrameMain frameMain)
 	{
+
 		this.frameMain = frameMain;
 		geometry();
 		control();
@@ -65,14 +67,24 @@ public class JPanelGameBoard extends JPanel
 		this.gameEngine = gameEngine;
 		refresh();
 
-		gameArea = new JPanelGameArea(gameEngine);
+		try
+		{
+			gameArea = new JPanelGameArea(gameEngine);
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		gameControl = new JPanelGameControl(gameEngine);
 
 		jsp.add(gameArea);
 		jsp.add(gameControl);
 
 		jsp.setDividerSize(0);
-		add(jsp, BorderLayout.CENTER);
+		//add(jsp, BorderLayout.CENTER);
+		add(gameArea, BorderLayout.CENTER);
+		add(gameControl,BorderLayout.SOUTH);
 		Thread t = new Thread(new Runnable()
 		{
 

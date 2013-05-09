@@ -1,10 +1,6 @@
 
 package ch.hearc.pokerface.gui;
 
-import java.io.IOException;
-
-import javax.swing.UIManager;
-
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.cards.CardColor;
 import ch.hearc.pokerface.gameengine.cards.CardValue;
@@ -12,6 +8,9 @@ import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
 import ch.hearc.pokerface.gameengine.gamecore.SoundEngine;
 import ch.hearc.pokerface.gameengine.statistics.Statistics;
 import ch.hearc.pokerface.gameengine.subsets.Pocket;
+
+import javax.swing.*;
+import java.io.IOException;
 
 public class UseJFrameMain
 {
@@ -27,7 +26,7 @@ public class UseJFrameMain
 	
 	public static void main()
 	{
-		splashScreenLoading();
+		//splashScreenLoading();
 		
 		new JFrameMain();
 	}

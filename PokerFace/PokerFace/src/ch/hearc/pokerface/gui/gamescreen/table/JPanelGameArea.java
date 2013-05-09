@@ -1,21 +1,28 @@
 
 package ch.hearc.pokerface.gui.gamescreen.table;
 
+import java.awt.BorderLayout;
+import java.io.File;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gameengine.statistics.StatisticValue;
 import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
+import ch.hearc.pokerface.gui.tools.EllipsisLayout;
+import ch.hearc.pokerface.gui.tools.ImagePanel;
 
-public class JPanelGameArea extends JPanel
+public class JPanelGameArea extends ImagePanel
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -36,34 +43,23 @@ public class JPanelGameArea extends JPanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JPanelGameArea(GameEngine gameEngine)
+	public JPanelGameArea(GameEngine gameEngine) throws IOException
 	{
+		super(ImageIO.read(new File("resources/table/background.png")));
+		setDoubleBuffered(true);
+
 		this.gameEngine = gameEngine;
 		playerComponents = new ArrayList<PlayerComponent>();
 
+
+		// BOARD & STATS
 		board = new JLabel();
 		statsPF = new JLabel();
 		statsF = new JLabel();
 		statsT = new JLabel();
 		statsR = new JLabel();
 		pot = new JLabel();
-
-		Box box = Box.createVerticalBox();
-		Box playerBox = Box.createHorizontalBox();
-
-		for(Player player:this.gameEngine.getPlayers())
-		{
-			playerComponents.add(new PlayerComponent(player));
-			playerBox.add(playerComponents.get(playerComponents.size() - 1));
-			playerBox.add(Box.createHorizontalStrut(15));
-		}
-		pot = new JLabel("");
-		playerBox.add(pot);
-
-		box.add(playerBox);
-		box.add(Box.createVerticalStrut(50));
-		//box.add(); //TODO BOARDPANEL
-
+		Box box = Box.createHorizontalBox();
 		box.add(board);
 		Box boxStats = Box.createHorizontalBox();
 		boxStats.add(statsPF);
@@ -74,7 +70,33 @@ public class JPanelGameArea extends JPanel
 		boxStats.add(Box.createHorizontalStrut(15));
 		boxStats.add(statsR);
 		box.add(boxStats);
-		add(box);
+		//
+
+		//JLayeredPane layered = new JLayeredPane(); TESTED not working
+
+
+		setLayout(new BorderLayout());
+
+		JPanel panelPlayer = new JPanel();
+		panelPlayer.setLayout(new EllipsisLayout());
+		panelPlayer.setOpaque(false);
+
+		panelPlayer.setBorder(new EmptyBorder(50, 10, 50, 10)); // inside padding
+
+		for(Player player:this.gameEngine.getPlayers())
+		{
+			playerComponents.add(new PlayerComponent(player));
+
+			panelPlayer.add(playerComponents.get(playerComponents.size() - 1));
+
+		}
+
+		panelPlayer.add(box, EllipsisLayout.CENTER);
+
+		add(panelPlayer, BorderLayout.CENTER);
+
+		//box.add(); //TODO BOARDPANEL
+
 
 		final Player humanPlayer = GameEngine.HUMAN_PLAYER;
 		Thread t = new Thread(new Runnable()
@@ -106,6 +128,12 @@ public class JPanelGameArea extends JPanel
 
 	}
 
+
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
 	public void updateGUI()
 	{
 		//TODO BOARDPANEL.updateGUI()
@@ -124,11 +152,6 @@ public class JPanelGameArea extends JPanel
 
 		pot.setText("<html><body>Bet : " + gameEngine.getPot().getBet() + "<br/>StateSpend : " + gameEngine.getPot().getStateTotal() + "<br/>TotalSpend : " + gameEngine.getPot().getTurnTotal() + "</body></html>");
 	}
-
-	/*------------------------------------------------------------------*\
-	|*							Methodes Public							*|
-	\*------------------------------------------------------------------*/
-
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/

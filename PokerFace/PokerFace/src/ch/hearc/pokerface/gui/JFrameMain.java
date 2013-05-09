@@ -3,16 +3,14 @@ package ch.hearc.pokerface.gui;
 
 import java.awt.CardLayout;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.SplashScreen;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
 import ch.hearc.pokerface.gui.menuscreens.JOPTableConfiguration;
@@ -51,27 +49,15 @@ public class JFrameMain extends JFrame
 	// CARD MANIPULATIONS
 	public void setCard(String card)
 	{
-		switch(card)
+		if (card == "panelMainMenu")
 		{
-			case "panelMainMenu":
-				panelMainMenu.refreshProfile();
-				break;
-			case "panelGameBoard":
-				new JOPTableConfiguration(panelGameBoard);
-				break;
+			panelMainMenu.refreshProfile();
+		}
+		else if (card == "panelGameBoard")
+		{
+			new JOPTableConfiguration(panelGameBoard);
 		}
 		layout.show(this.getContentPane(), card);
-	}
-
-	public void previousCard() //TODO ne fonctionne pas correctement
-	{
-		layout.previous(this.getContentPane());
-	}
-
-	public void switchToMainMenu()
-	{
-		panelMainMenu.refreshProfile(); // TODO ajouter dans le switch du setCard
-		setCard("panelMainMenu");
 	}
 
 	/*------------------------------*\
@@ -126,6 +112,9 @@ public class JFrameMain extends JFrame
 			public void windowClosing(WindowEvent arg0)
 			{
 				// SERIALIZATION DES PROFILES
+
+
+				// A mettre dans une methode private void serializeProfiles()
 				/*try
 				{
 					List<Profile> list = new ArrayList<Profile>();
@@ -145,26 +134,28 @@ public class JFrameMain extends JFrame
 
 	private void appearance()
 	{
-		setSize(1024, 768);
-		setTitle("Po-po-po-pokerface po-po-pokerface");
-		setLocation(30, 30);
+
+		setSize(1200, (int)(1200*0.75));
+		this.addComponentListener(new ComponentAdapter()
+		{
+
+			@Override
+			public void componentResized(ComponentEvent event)
+			{
+
+				Rectangle b = event.getComponent().getBounds();
+				event.getComponent().setBounds(b.x, b.y, b.width, (int)(b.width*0.75));
+			}
+
+		});
+
+		setTitle("\u2666 \u2665 \u2660 \u2663 Pokerface \u2666 \u2665 \u2660 \u2663");
+		//setLocation(30, 30);
 		setResizable(true);
-		//getContentPane().setBackground(Color.GREEN);
+
 		layout.show(this.getContentPane(), "panelProfile");
 
 		this.setVisible(true);
-	}
-
-	private void setBackgroundImage()
-	{
-		try
-		{
-			this.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("resources/table/background.png")))));
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
 	}
 
 	private void createSplashScreen()
