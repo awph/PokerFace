@@ -113,7 +113,6 @@ public class JFrameMain extends JFrame
 			{
 				// SERIALIZATION DES PROFILES
 
-
 				// A mettre dans une methode private void serializeProfiles()
 				/*try
 				{
@@ -135,7 +134,7 @@ public class JFrameMain extends JFrame
 	private void appearance()
 	{
 
-		setSize(1200, (int)(1200*0.75));
+		setSize(1200, (int)(1200 * 0.75));
 		this.addComponentListener(new ComponentAdapter()
 		{
 
@@ -144,7 +143,7 @@ public class JFrameMain extends JFrame
 			{
 
 				Rectangle b = event.getComponent().getBounds();
-				event.getComponent().setBounds(b.x, b.y, b.width, (int)(b.width*0.75));
+				event.getComponent().setBounds(b.x, b.y, b.width, (int)(b.width * 0.75));
 			}
 
 		});

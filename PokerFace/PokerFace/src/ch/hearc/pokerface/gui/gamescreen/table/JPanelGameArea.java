@@ -31,7 +31,8 @@ public class JPanelGameArea extends ImagePanel
 	private List<PlayerComponent>	playerComponents;
 	private Player					humanPlayer;
 	private GameEngine				gameEngine;
-	//TODO BOARDPANEL
+
+	private BoardCardsPanel boardCardsPanel;
 	private JLabel					board;
 	private JLabel					statsPF;
 	private JLabel					statsF;
@@ -53,14 +54,17 @@ public class JPanelGameArea extends ImagePanel
 
 
 		// BOARD & STATS
+		boardCardsPanel = new BoardCardsPanel();
+
 		board = new JLabel();
 		statsPF = new JLabel();
 		statsF = new JLabel();
 		statsT = new JLabel();
 		statsR = new JLabel();
 		pot = new JLabel();
-		Box box = Box.createHorizontalBox();
-		box.add(board);
+		Box box = Box.createVerticalBox();
+		box.add(boardCardsPanel);
+		box.add(pot);
 		Box boxStats = Box.createHorizontalBox();
 		boxStats.add(statsPF);
 		boxStats.add(Box.createHorizontalStrut(15));
@@ -69,11 +73,8 @@ public class JPanelGameArea extends ImagePanel
 		boxStats.add(statsT);
 		boxStats.add(Box.createHorizontalStrut(15));
 		boxStats.add(statsR);
-		box.add(boxStats);
+		//box.add(boxStats);
 		//
-
-		//JLayeredPane layered = new JLayeredPane(); TESTED not working
-
 
 		setLayout(new BorderLayout());
 
@@ -94,9 +95,6 @@ public class JPanelGameArea extends ImagePanel
 		panelPlayer.add(box, EllipsisLayout.CENTER);
 
 		add(panelPlayer, BorderLayout.CENTER);
-
-		//box.add(); //TODO BOARDPANEL
-
 
 		final Player humanPlayer = GameEngine.HUMAN_PLAYER;
 		Thread t = new Thread(new Runnable()
@@ -138,12 +136,8 @@ public class JPanelGameArea extends ImagePanel
 	{
 		//TODO BOARDPANEL.updateGUI()
 		Card[] cards = gameEngine.getUnorderedBoard();
-		board.setText("");
 
-		for(Card c:cards)
-		{
-			board.setText(board.getText() + " " + c.toString());
-		}
+		boardCardsPanel.setCards(cards);
 
 		for(PlayerComponent playerComponent:playerComponents)
 		{

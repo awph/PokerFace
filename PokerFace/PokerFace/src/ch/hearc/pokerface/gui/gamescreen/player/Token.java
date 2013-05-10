@@ -23,6 +23,19 @@ public class Token extends JLabel
 	{
 
 		this.role = role;
+		setToken(role);
+	}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+
+	public void setToken(String role)
+	{
 		if (!("".equals(role)))
 		{
 			if ("Dealer".equals(role))
@@ -47,26 +60,10 @@ public class Token extends JLabel
 				e.printStackTrace();
 			}
 		}
-	}
-	/*------------------------------------------------------------------*\
-	|*							Methodes Public							*|
-	\*------------------------------------------------------------------*/
-
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
-
-	public void setToken(String role)
-	{
-		try
+		else
 		{
-			setIcon(new ImageIcon(ImageIO.read(new File("resources/table/tokens/" + role + ".png"))));
+			setIcon(null);
 		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-
 	}
 
 	/*------------------------------*\

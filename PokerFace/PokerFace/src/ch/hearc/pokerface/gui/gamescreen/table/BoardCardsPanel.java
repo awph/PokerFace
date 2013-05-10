@@ -1,37 +1,43 @@
 
-package ch.hearc.pokerface.gui.gamescreen.card;
+package ch.hearc.pokerface.gui.gamescreen.table;
 
-import java.io.File;
-import java.io.IOException;
+import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.Box;
+import javax.swing.JPanel;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
+import ch.hearc.pokerface.gui.gamescreen.card.BoardCard;
 
-public abstract class CardComponent extends JLabel
+public class BoardCardsPanel extends JPanel
 {
+
+	private Set<String>	cards;
+	private List<String> newCards;
+	private Box box;
+
+
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	private String	value;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-
-	public CardComponent(Card card)
-	{
-		this(card.getId());
-	}
-
-	public CardComponent(String cardValue)
+	public BoardCardsPanel()
 	{
 		setOpaque(false);
-		value = cardValue;
+		cards = new TreeSet<String>();
+		newCards = new ArrayList<String>();
 
-		setCard(cardValue);
+		setLayout(new BorderLayout());
+		box = Box.createHorizontalBox();
+
+		add(box, BorderLayout.CENTER);
 	}
 
 	/*------------------------------------------------------------------*\
@@ -41,20 +47,30 @@ public abstract class CardComponent extends JLabel
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
-
-	public void setCard(String cardValue)
+	public void setCards(Card[] cardArray)
 	{
-		try
+		if (cardArray.length > cards.size())
 		{
-			setIcon(new ImageIcon(ImageIO.read(new File("resources/table/cards/" + cardValue + ".png"))));
+			for(Card card:cardArray)
+			{
+				if(this.cards.add(card.getId()))
+				{
+					newCards.add(card.getId());
+				}
+			}
 		}
-		catch (IOException e)
+		else if (cardArray.length == 0)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			cards.clear();
+			box.removeAll();
 		}
-	}
 
+		for(String card:this.newCards)
+		{
+			box.add(new BoardCard(card));
+		}
+		newCards.clear();
+	}
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/

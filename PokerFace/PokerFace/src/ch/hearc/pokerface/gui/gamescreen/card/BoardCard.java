@@ -1,15 +1,13 @@
 
 package ch.hearc.pokerface.gui.gamescreen.card;
 
+import ch.hearc.pokerface.gameengine.cards.Card;
+
 
 public class BoardCard extends CardComponent
 {
 
-	public BoardCard(String cardValue)
-	{
-		super(cardValue);
-		// TODO Auto-generated constructor stub
-	}
+
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
@@ -17,7 +15,16 @@ public class BoardCard extends CardComponent
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-
+	public BoardCard(String cardValue)
+	{
+		super(cardValue);
+		// TODO Auto-generated constructor stub
+	}
+	public BoardCard(Card card)
+	{
+		super(card);
+		// TODO Auto-generated constructor stub
+	}
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/

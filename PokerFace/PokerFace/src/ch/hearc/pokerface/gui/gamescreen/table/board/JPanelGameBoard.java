@@ -2,8 +2,6 @@
 package ch.hearc.pokerface.gui.gamescreen.table.board;
 
 import java.awt.BorderLayout;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.io.IOException;
 
 import javax.swing.JPanel;
@@ -51,21 +49,15 @@ public class JPanelGameBoard extends JPanel
 
 	public void updateGUI()
 	{
-		//ystem.out.println("updateGUI");
+
 		//TODO: here update all component in this view
 		gameArea.updateGUI();
 		gameControl.updateGUI();
 	}
 
-	public void refresh()
-	{
-		jsp.setDividerLocation(getHeight() / 3 * 2);
-	}
-
 	public void start(final GameEngine gameEngine)
 	{
 		this.gameEngine = gameEngine;
-		refresh();
 
 		try
 		{
@@ -76,15 +68,11 @@ public class JPanelGameBoard extends JPanel
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		gameControl = new JPanelGameControl(gameEngine);
 
-		jsp.add(gameArea);
-		jsp.add(gameControl);
-
-		jsp.setDividerSize(0);
-		//add(jsp, BorderLayout.CENTER);
 		add(gameArea, BorderLayout.CENTER);
-		add(gameControl,BorderLayout.SOUTH);
+		add(gameControl, BorderLayout.SOUTH);
 		Thread t = new Thread(new Runnable()
 		{
 
@@ -112,21 +100,12 @@ public class JPanelGameBoard extends JPanel
 	private void geometry()
 	{
 
-		jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		//TODO : add Top Bar to Jsp
 		setLayout(new BorderLayout());
 	}
 
 	private void control()
 	{
-		addComponentListener(new ComponentAdapter()
-		{
-			@Override
-			public void componentResized(ComponentEvent arg0)
-			{
-				refresh();
-			}
-		});
+
 	}
 
 	private void appearance()

@@ -61,12 +61,12 @@ public class ImagePanel extends JPanel
 		super.paintComponent(graphics);
 		BufferedImage image = getImage();
 
-		double scaleFactor = Math.min(1d, getScaleFactorToFill(new Dimension(image.getWidth(), image.getHeight()), getSize()));
+		/*double scaleFactor = Math.min(1d, getScaleFactorToFill(new Dimension(image.getWidth(), image.getHeight()), getSize()));
 
 	    int scaleWidth = (int) Math.round(image.getWidth() * scaleFactor);
 	    int scaleHeight = (int) Math.round(image.getHeight() * scaleFactor);
 
-	    //Image scaled = image.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_SMOOTH);
+	    Image scaled = image.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_SMOOTH);*/
 	    Image scaled = image.getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
 
 	    int width = getWidth() - 1;
@@ -90,12 +90,12 @@ public class ImagePanel extends JPanel
 		/**
 		 * Called when properties change
 		 */
+		@Override
 		public void propertyChange(PropertyChangeEvent event)
 		{
 			String property = event.getPropertyName();
 			if (property.equals(IMAGE_PROPERTY))
 			{
-				System.out.println("t");
 				BufferedImage image = getImage();
 				int width = 0;
 				int height = 0;

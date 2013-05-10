@@ -22,12 +22,16 @@ public class PlayerComponent extends JPanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
+	//Tools
+	private Player			player;
+
+	//IO
 	private JLabel			name;
 	private JLabel			money;
-	private Player			player;
+
 	private CardComponent	card1;
 	private CardComponent	card2;
-	private Token			role;	//TEMP
+	private Token			role;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -41,7 +45,7 @@ public class PlayerComponent extends JPanel
 
 		try
 		{
-			money = new JLabel(Integer.toString(player.getBankroll()),new ImageIcon(ImageIO.read(new File("resources/coin.png"))),SwingConstants.CENTER);
+			money = new JLabel(Integer.toString(player.getBankroll()), new ImageIcon(ImageIO.read(new File("resources/coin.png"))), SwingConstants.CENTER);
 			name = new JLabel(player.getProfile().getName(), player.getProfile().getAvatar().getIcon(), SwingConstants.CENTER);
 		}
 		catch (IOException e)
@@ -72,23 +76,26 @@ public class PlayerComponent extends JPanel
 
 	public void updateGUI()
 	{
-		try
+
+		// IF Card is not revealed, image is "back.png" (to be set in getId of each card)
+		if (player.getPocket().getArray().length != 0)
 		{
-			// IF Card is not revealed, image is "back.png" (to be set in getId of each card)
 			card1.setCard(player.getPocket().getArray()[0].getId());
 			card2.setCard(player.getPocket().getArray()[1].getId());
 		}
-		catch (Exception e)
-		{
-			//e.printStackTrace();
-		}
+		role.setToken(player.getRole().toString());
 
 		if (player.isFolded() || player.isDead())
 		{
+			setOpaque(true);
 			setBackground(Color.red);
 		}
 		else
 		{
+			if (isOpaque())
+			{
+				setOpaque(false);
+			}
 			setBackground(null);
 		}
 		money.setText(Integer.toString(player.getBankroll()));
