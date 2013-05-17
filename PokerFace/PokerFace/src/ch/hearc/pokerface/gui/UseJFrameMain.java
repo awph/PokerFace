@@ -45,6 +45,7 @@ public class UseJFrameMain
 		Statistics.getPreFlopValues(p, 2);
 		SoundEngine.getInstance();
 		HandsPokerMap.getInstance();
+
 	}
 
 	private static void setupLookAndFeel()

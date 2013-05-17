@@ -2,10 +2,13 @@
 package ch.hearc.pokerface.gui.gamescreen.table;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -21,6 +24,7 @@ import javax.swing.text.DefaultFormatter;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
+import ch.hearc.pokerface.gui.tools.ImageTools;
 
 public class JPanelGameControl extends JPanel
 {
@@ -126,7 +130,7 @@ public class JPanelGameControl extends JPanel
 
 		moneyTextArea.setMaximumSize(moneyTextArea.getMinimumSize());
 
-		allinButton.setMargin(new Insets(40, 110, 40, 110));
+		allinButton.setMargin(new Insets(10, 10, 10, 10));
 
 		Box boxAll = Box.createHorizontalBox();
 		boxAll.add(moneyTextArea);
@@ -259,5 +263,45 @@ public class JPanelGameControl extends JPanel
 	private void appearance()
 	{
 		setBackground(Color.BLACK);
+		styleButton(checkCallButton);
+		styleButton(foldButton);
+		styleButton(betRaiseButton);
+		styleButton(allinButton);
+	}
+
+	private void styleButton(final JButton button)
+	{
+		button.setHorizontalTextPosition(SwingConstants.CENTER);
+		button.setContentAreaFilled(false);
+		button.setBorder(BorderFactory.createEmptyBorder());
+		button.setForeground(Color.WHITE);
+		try
+		{
+			Font font = Font.createFont(Font.TRUETYPE_FONT, new File("resources/Palacio.ttf"));
+			font = font.deriveFont(20.0f);
+			button.setFont(font);
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		button.setIcon(ImageTools.loadScaledIcon("resources/buttons/pink_button_normal.png", 0.3, false));
+		button.addMouseListener(new java.awt.event.MouseAdapter()
+		{
+			@Override
+			public void mouseEntered(java.awt.event.MouseEvent evt)
+			{
+				button.setIcon(ImageTools.loadScaledIcon("resources/buttons/pink_button_selected.png", 0.3, false));
+
+			}
+
+			@Override
+			public void mouseExited(java.awt.event.MouseEvent evt)
+			{
+				button.setIcon(ImageTools.loadScaledIcon("resources/buttons/pink_button_normal.png", 0.3, false));
+
+			}
+		});
 	}
 }

@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 public class ImagePanel extends JPanel
 {
 	public static final String	IMAGE_PROPERTY		= "ImagePanel.image";
+	public static Image image;
 	private InnerListener		innerListener		= new InnerListener();
 
 	/**
