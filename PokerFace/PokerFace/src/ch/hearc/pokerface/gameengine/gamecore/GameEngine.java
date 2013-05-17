@@ -541,7 +541,7 @@ public class GameEngine
 			Player p = players.get(i);
 			if (p.getBankroll() <= 0)
 			{
-				logPlayerAction(p, Action.Fold);
+				logPlayerAction(p, Action.Leave);
 				p.kill();
 				playersToKill.add(p);
 			}
