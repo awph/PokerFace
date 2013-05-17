@@ -23,7 +23,7 @@ import javax.swing.text.DefaultFormatter;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
-import ch.hearc.pokerface.gui.tools.ImageTools;
+import ch.hearc.pokerface.gui.tools.ImageShop;
 
 public class JPanelGameControl extends JPanel
 {
@@ -116,8 +116,8 @@ public class JPanelGameControl extends JPanel
 		Box box = Box.createVerticalBox();
 		allinButton = new JButton("All in");
 		moneySlider = new JSlider(SwingConstants.HORIZONTAL);
-		betRaiseButton = new JButton("Bet/Raise");
-		checkCallButton = new JButton("Check/Call");
+		betRaiseButton = new JButton();
+		checkCallButton = new JButton();
 		foldButton = new JButton("Fold");
 		moneyTextArea = new JSpinner();
 
@@ -283,20 +283,19 @@ public class JPanelGameControl extends JPanel
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		button.setIcon(ImageTools.loadScaledIcon("resources/buttons/pink_button_normal.png", 0.3, false));
+		button.setIcon(ImageShop.ICON_BUTTON_NORMAL_SCALED);
 		button.addMouseListener(new java.awt.event.MouseAdapter()
 		{
 			@Override
 			public void mouseEntered(java.awt.event.MouseEvent evt)
 			{
-				button.setIcon(ImageTools.loadScaledIcon("resources/buttons/pink_button_selected.png", 0.3, false));
+				button.setIcon(ImageShop.ICON_BUTTON_SELECTED_SCALED);
 			}
 
 			@Override
 			public void mouseExited(java.awt.event.MouseEvent evt)
 			{
-				button.setIcon(ImageTools.loadScaledIcon("resources/buttons/pink_button_normal.png", 0.3, false));
-
+				button.setIcon(ImageShop.ICON_BUTTON_NORMAL_SCALED);
 			}
 		});
 	}

@@ -3,6 +3,7 @@ package ch.hearc.pokerface.gui.menuscreens;
 
 import java.awt.GridLayout;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -12,6 +13,7 @@ import javax.swing.SpinnerNumberModel;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.profile.ActiveProfile;
+import ch.hearc.pokerface.gui.JFrameMain;
 import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
 
 public class JOPTableConfiguration extends JOptionPane
@@ -35,11 +37,18 @@ public class JOPTableConfiguration extends JOptionPane
 	private int					nbPlayers;
 	private int					smallBlind;
 
+	//Inputs
+
+	private JFrame frameMain;
+	private JPanelGameBoard panelGameBoard;
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-	public JOPTableConfiguration(JPanelGameBoard panelGameBoard)
+	public JOPTableConfiguration(JFrameMain frameMain, JPanelGameBoard panelGameBoard)
 	{
+		this.frameMain = frameMain;
+		this.panelGameBoard = panelGameBoard;
 		boolean dialog = false;
 		boolean checkValues = false;
 		do
@@ -104,7 +113,10 @@ public class JOPTableConfiguration extends JOptionPane
 	private boolean showDialog()
 	{
 		String options[] = { "Play", "Cancel" };
-		return (showOptionDialog(null, getPanel(), "Table Configuration", DEFAULT_OPTION, PLAIN_MESSAGE, null, options, null) == 0);
+		boolean okPressed = showOptionDialog(frameMain, getPanel(), "Table Configuration", DEFAULT_OPTION, PLAIN_MESSAGE, null, options, null) == 0;
+		frameMain.toFront();
+		System.out.println("rt");
+		return okPressed;
 	}
 
 	private JPanel getPanel()
