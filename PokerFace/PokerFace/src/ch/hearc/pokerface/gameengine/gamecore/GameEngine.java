@@ -61,7 +61,7 @@ public class GameEngine
 
 	public static Player		HUMAN_PLAYER;
 	private static final int	NB_TURN_BEFORE_CHANGE_BLIND	= 8;
-	private static final long	DELAY_BETWEEN_EACH_TURN = 2000;
+	private static final long	DELAY_BETWEEN_EACH_TURN		= 2000;
 
 	// initialize to nbPlayer*(-2) and incremented each draw of card. After the players have received theirs cards, we use it to define the correct card in the variable futureBoard to get
 	/*------------------------------------------------------------------*\
@@ -134,20 +134,12 @@ public class GameEngine
 				}
 				//We run the simulation for the state FLOP, we're currently at the end of the state PREFLOP.
 				//So, we have all the betting state to compute these values
-				runSimulationPlayer(Statistics.NUMBER_CARDS_FLOP);
+				runSimulationPlayer();
 			}
 			return card;
 		}
 		else
 		{
-			if (magicIndex - 1 == 2)
-			{
-				runSimulationPlayer(Statistics.NUMBER_CARDS_TURN);
-			}
-			else if (magicIndex - 1 == 3)
-			{
-				runSimulationPlayer(Statistics.NUMBER_CARDS_RIVER);
-			}
 			return futureBoard[magicIndex - 1];
 		}
 	}
@@ -220,6 +212,7 @@ public class GameEngine
 
 		//We transform it to array
 		Set<Entry<Integer, Triple<Integer, Integer, List<Player>>>> entrySet = playerSortByRank.entrySet();
+		@SuppressWarnings("unchecked")
 		Triple<Integer, Integer, List<Player>>[] triples = new Triple[entrySet.size()];
 		int i = 0;
 		for(Entry<Integer, Triple<Integer, Integer, List<Player>>> entry:entrySet)
@@ -229,7 +222,7 @@ public class GameEngine
 		}
 
 		//We put the flag hasWon to true for the player(s) who win(s)
-		for(i = 0;i < triples[0].getValue2().size(); ++i)
+		for(i = 0; i < triples[0].getValue2().size(); ++i)
 		{
 			triples[0].getValue2().get(i).win();
 		}
@@ -622,18 +615,24 @@ public class GameEngine
 		}
 	}
 
-	private void runSimulationPlayer(int nbCardInBoard)
+	private void runSimulationPlayer()
 	{
 		int lastPlayer = indexPlayer;
 		int i = lastPlayer;
+		int nbCardInBoard = Statistics.NUMBER_CARDS_FLOP;
 		do
 		{
 			i = getNextIndex(i);
 			Player player = players.get(i);
 			if (!player.isFolded())
 			{
-				Statistics.getFlopTurnRiverValues(player, player.getPocket(), futureBoard, nbCardInBoard);
+				Statistics.getFlopTurnRiverValues(player, player.getPocket(), futureBoard, getNbPlayers(), nbCardInBoard);
 			}
-		} while(i != lastPlayer);
+			if (i == lastPlayer)
+			{
+				i = getNextIndex(i);
+				nbCardInBoard++;
+			}
+		} while(i != lastPlayer && nbCardInBoard <= Statistics.NUMBER_CARDS_RIVER);
 	}
 }

@@ -47,8 +47,11 @@ public class Statistics
 
 	/**
 	 * Return Preflop values
-	 * @param p : Player's pocket
-	 * @param nbPlayer : Number of players
+	 *
+	 * @param p
+	 *            : Player's pocket
+	 * @param nbPlayer
+	 *            : Number of players
 	 */
 	public static StatisticValue getPreFlopValues(Pocket p, int nbPlayer)
 	{
@@ -57,34 +60,32 @@ public class Statistics
 
 	/**
 	 * Return Flop/Turn/River values, depending of the size of the board : 3 -> Flop, 4 -> Tur, 5 -> River
-	 * @param p : Player's pocket
-	 * @param b : Board
-	 * @param nbPlayer : Number of players
+	 *
+	 * @param p
+	 *            : Player's pocket
+	 * @param b
+	 *            : Board
+	 * @param nbPlayer
+	 *            : Number of players
 	 * @return 0 -> Flop, 1 -> Turn, 2 -> River
 	 */
-	public static void getFlopTurnRiverValues(final Player player, final Pocket pocket, final Card[] board, int nbPlayer)
+	public static void getFlopTurnRiverValues(final Player player, final Pocket pocket, final Card[] board, int nbPlayer, int nbCardInBoard)
 	{
-		final Simulation flop = new Simulation(pocket, board, nbPlayer, NUMBER_CARDS_FLOP);
-		final Simulation turn = new Simulation(pocket, board, nbPlayer, NUMBER_CARDS_TURN);
-		final Simulation river = new Simulation(pocket, board, nbPlayer, NUMBER_CARDS_RIVER);
+		final Simulation simulation = new Simulation(pocket, board, nbPlayer, nbCardInBoard);
 
-		flop.addObserver(player);
-		turn.addObserver(player);
-		river.addObserver(player);
+		simulation.addObserver(player);
+		player.addObserver(simulation);
 
-		player.addObserver(flop);
-		player.addObserver(turn);
-		player.addObserver(river);
-
-		new Thread(flop).start();
-		new Thread(turn).start();
-		new Thread(river).start();
+		new Thread(simulation).start();
 	}
 
 	/**
 	 * Return the number of outs
-	 * @param pocket : Player's pocket
-	 * @param board : Board
+	 *
+	 * @param pocket
+	 *            : Player's pocket
+	 * @param board
+	 *            : Board
 	 */
 	public static int getOuts(Pocket pocket, Board board)
 	{
