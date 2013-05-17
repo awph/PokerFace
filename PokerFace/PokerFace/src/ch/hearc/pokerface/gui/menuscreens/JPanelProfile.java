@@ -18,8 +18,7 @@ public class JPanelProfile extends JPanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private JButton	backButton;
-	private JButton	selectProfileButton;
+	private JButton	createProfileButton; // TODO create profile!
 	private JFrameMain mainFrame;
 
 	/*------------------------------------------------------------------*\

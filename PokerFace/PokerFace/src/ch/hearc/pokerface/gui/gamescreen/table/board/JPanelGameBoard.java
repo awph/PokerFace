@@ -5,10 +5,8 @@ import java.awt.BorderLayout;
 import java.io.IOException;
 
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
-import ch.hearc.pokerface.gui.JFrameMain;
 import ch.hearc.pokerface.gui.gamescreen.table.JPanelGameArea;
 import ch.hearc.pokerface.gui.gamescreen.table.JPanelGameControl;
 
@@ -18,15 +16,9 @@ public class JPanelGameBoard extends JPanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	//Inputs
-	private JFrameMain			frameMain;
-
 	//Content
 	private JPanelGameArea		gameArea;
 	private JPanelGameControl	gameControl;
-
-	//Tools
-	private JSplitPane			jsp;
 
 	//Game
 	protected GameEngine		gameEngine;
@@ -34,10 +26,8 @@ public class JPanelGameBoard extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-	public JPanelGameBoard(JFrameMain frameMain)
+	public JPanelGameBoard()
 	{
-
-		this.frameMain = frameMain;
 		geometry();
 		control();
 		appearance();

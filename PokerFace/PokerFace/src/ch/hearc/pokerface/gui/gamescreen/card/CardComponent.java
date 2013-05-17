@@ -15,7 +15,7 @@ public abstract class CardComponent extends JLabel
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	private String	value;
+
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -28,9 +28,6 @@ public abstract class CardComponent extends JLabel
 
 	public CardComponent(String cardValue)
 	{
-		setOpaque(false);
-		value = cardValue;
-
 		setCard(cardValue);
 	}
 

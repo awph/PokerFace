@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 
 public class Token extends JLabel
 {
-	private String	role;
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -22,7 +21,6 @@ public class Token extends JLabel
 	public Token(String role)
 	{
 
-		this.role = role;
 		setToken(role);
 	}
 

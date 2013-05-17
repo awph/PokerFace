@@ -90,7 +90,7 @@ public class JFrameMain extends JFrame
 		 * Instanciations
 		 */
 		panelProfile = new JPanelProfile(this);
-		panelGameBoard = new JPanelGameBoard(this);
+		panelGameBoard = new JPanelGameBoard();
 
 		/**
 		 * Adds

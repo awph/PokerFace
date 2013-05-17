@@ -29,11 +29,10 @@ public class JPanelGameArea extends ImagePanel
 	\*------------------------------------------------------------------*/
 
 	private List<PlayerComponent>	playerComponents;
-	private Player					humanPlayer;
+	//private Player					humanPlayer; ? why is it there
 	private GameEngine				gameEngine;
 
-	private BoardCardsPanel boardCardsPanel;
-	private JLabel					board;
+	private BoardCardsPanel			boardCardsPanel;
 	private JLabel					statsPF;
 	private JLabel					statsF;
 	private JLabel					statsT;
@@ -52,11 +51,9 @@ public class JPanelGameArea extends ImagePanel
 		this.gameEngine = gameEngine;
 		playerComponents = new ArrayList<PlayerComponent>();
 
-
 		// BOARD & STATS
 		boardCardsPanel = new BoardCardsPanel();
 
-		board = new JLabel();
 		statsPF = new JLabel();
 		statsF = new JLabel();
 		statsT = new JLabel();
@@ -126,8 +123,6 @@ public class JPanelGameArea extends ImagePanel
 
 	}
 
-
-
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
@@ -146,6 +141,7 @@ public class JPanelGameArea extends ImagePanel
 
 		pot.setText("<html><body>Bet : " + gameEngine.getPot().getBet() + "<br/>StateSpend : " + gameEngine.getPot().getStateTotal() + "<br/>TotalSpend : " + gameEngine.getPot().getTurnTotal() + "</body></html>");
 	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/

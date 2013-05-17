@@ -43,7 +43,7 @@ public class ImagePanel extends JPanel
 	}
 
 	/**
-	 * Method that return the currently drawn image
+	 * Method that returns the currently drawn image
 	 *
 	 * @return the image
 	 */
@@ -116,6 +116,9 @@ public class ImagePanel extends JPanel
 	|*			  Static			*|
 	\*------------------------------*/
 
+	/*
+	 * Computation of scale factors
+	 */
 
 	public static double getScaleFactor(int iMasterSize, int iTargetSize) {
 

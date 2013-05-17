@@ -2,15 +2,22 @@
 package ch.hearc.pokerface.gui.gamescreen.table;
 
 import java.awt.Color;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JSpinner;
 import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.text.DefaultFormatter;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
@@ -21,6 +28,7 @@ public class JPanelGameControl extends JPanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
+	private JSpinner	moneyTextArea;
 	private JSlider		moneySlider;
 	private JButton		allinButton;
 	private JButton		betRaiseButton;
@@ -48,13 +56,25 @@ public class JPanelGameControl extends JPanel
 	public void updateGUI()
 	{
 		Player humanPlayer = GameEngine.HUMAN_PLAYER;
-		moneySlider.setMaximum(humanPlayer.getBankroll());
-		moneySlider.setMinimum(humanPlayer.getCallValue());
 
+		if (humanPlayer.getCallValue() == 0)
+		{
+			checkCallButton.setText("Check");
+		}
+		else
+		{
+			checkCallButton.setText("Call " + humanPlayer.getCallValue() + "$");
+		}
 		boolean isHumanPlayerTurn = false;
 		if (!gameEngine.getIsFinished())
 		{
 			isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer());
+
+			if (isHumanPlayerTurn)
+			{
+				moneySlider.setMaximum(humanPlayer.getBankroll());
+				moneySlider.setMinimum(humanPlayer.getCallValue());
+			}
 		}
 		else
 		{
@@ -72,6 +92,8 @@ public class JPanelGameControl extends JPanel
 		checkCallButton.setEnabled(isHumanPlayerTurn);
 		foldButton.setEnabled(isHumanPlayerTurn);
 		allinButton.setEnabled(isHumanPlayerTurn);
+		moneySlider.setEnabled(isHumanPlayerTurn);
+		moneyTextArea.setEnabled(isHumanPlayerTurn);
 	}
 
 	/*------------------------------*\
@@ -94,17 +116,77 @@ public class JPanelGameControl extends JPanel
 		betRaiseButton = new JButton("Bet/Raise");
 		checkCallButton = new JButton("Check/Call");
 		foldButton = new JButton("Fold");
+		moneyTextArea = new JSpinner();
 
-		box.add(allinButton);
+		// makes spinner update imediately
+		JComponent comp = moneyTextArea.getEditor();
+		JFormattedTextField field = (JFormattedTextField)comp.getComponent(0);
+		DefaultFormatter formatter = (DefaultFormatter)field.getFormatter();
+		formatter.setCommitsOnValidEdit(true);
+
+		moneyTextArea.setMaximumSize(moneyTextArea.getMinimumSize());
+
+		allinButton.setMargin(new Insets(40, 110, 40, 110));
+
+		Box boxAll = Box.createHorizontalBox();
+		boxAll.add(moneyTextArea);
+		boxAll.add(Box.createHorizontalGlue());
+		boxAll.add(allinButton);
+
+		box.add(boxAll);
+		box.add(Box.createVerticalStrut(5));
 		box.add(moneySlider);
+		box.add(Box.createVerticalStrut(5));
 		box.add(betRaiseButton);
+		box.add(Box.createVerticalStrut(5));
 		box.add(checkCallButton);
+		box.add(Box.createVerticalStrut(5));
 		box.add(foldButton);
 		add(box);
 	}
 
 	private void control()
 	{
+
+		moneyTextArea.addChangeListener(new ChangeListener()
+		{
+
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				if ((int)moneyTextArea.getValue() <= moneySlider.getMaximum() && (int)moneyTextArea.getValue() > moneySlider.getMinimum())
+				{
+					moneySlider.setValue((int)moneyTextArea.getValue());
+				}
+				else
+				{
+					moneyTextArea.setValue(moneySlider.getValue());
+				}
+			}
+		});
+
+		moneySlider.addChangeListener(new ChangeListener()
+		{
+
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				moneyTextArea.setValue(moneySlider.getValue());
+				if (gameEngine.getPot().getBet() == 0)
+				{
+					betRaiseButton.setText("Bet " + moneySlider.getValue() + "$");
+				}
+				else if (moneySlider.getMaximum() == moneySlider.getValue())
+				{
+					betRaiseButton.setText("All-in with " + moneySlider.getValue() + "$");
+				}
+				else
+				{
+					betRaiseButton.setText("Raise " + moneySlider.getValue() + "$");
+				}
+			}
+		});
+
 		allinButton.addActionListener(new ActionListener()
 		{
 			@Override
@@ -128,14 +210,15 @@ public class JPanelGameControl extends JPanel
 				Player humanPlayer = GameEngine.HUMAN_PLAYER;
 				synchronized (humanPlayer)
 				{
-					//TODO : Slider
 					if (gameEngine.getPot().getBet() == 0)
 					{
-						humanPlayer.bet(gameEngine.getBigBlind());
+						//humanPlayer.bet(gameEngine.getBigBlind());
+						humanPlayer.bet(moneySlider.getValue());
 					}
 					else
 					{
-						humanPlayer.raise(humanPlayer.getBetSpending() + gameEngine.getBigBlind());
+						//humanPlayer.raise(humanPlayer.getBetSpending() + gameEngine.getBigBlind());
+						humanPlayer.raise(humanPlayer.getBetSpending() + moneySlider.getValue());
 					}
 					humanPlayer.notify();
 				}
