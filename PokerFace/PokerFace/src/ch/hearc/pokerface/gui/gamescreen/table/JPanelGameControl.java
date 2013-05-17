@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -68,7 +70,9 @@ public class JPanelGameControl extends JPanel
 		{
 			checkCallButton.setText("Call " + humanPlayer.getCallValue() + "$");
 		}
+
 		boolean isHumanPlayerTurn = false;
+
 		if (!gameEngine.getIsFinished())
 		{
 			isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer());
@@ -91,6 +95,7 @@ public class JPanelGameControl extends JPanel
 				JOptionPane.showMessageDialog(null, "Woaw guy, you mastered the entire game !", "You win !", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
+
 		betRaiseButton.setEnabled(isHumanPlayerTurn);
 		checkCallButton.setEnabled(isHumanPlayerTurn);
 		foldButton.setEnabled(isHumanPlayerTurn);
@@ -280,20 +285,19 @@ public class JPanelGameControl extends JPanel
 		}
 		catch (Exception e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		button.setIcon(ImageShop.ICON_BUTTON_NORMAL_SCALED);
-		button.addMouseListener(new java.awt.event.MouseAdapter()
+		button.addMouseListener(new MouseAdapter()
 		{
 			@Override
-			public void mouseEntered(java.awt.event.MouseEvent evt)
+			public void mouseEntered(MouseEvent evt)
 			{
 				button.setIcon(ImageShop.ICON_BUTTON_SELECTED_SCALED);
 			}
 
 			@Override
-			public void mouseExited(java.awt.event.MouseEvent evt)
+			public void mouseExited(MouseEvent evt)
 			{
 				button.setIcon(ImageShop.ICON_BUTTON_NORMAL_SCALED);
 			}

@@ -16,6 +16,7 @@ public abstract class CardComponent extends JLabel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
+	private String	cardValue;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -28,7 +29,8 @@ public abstract class CardComponent extends JLabel
 
 	public CardComponent(String cardValue)
 	{
-		setCard(cardValue);
+		this.cardValue = cardValue;
+		updateImage();
 	}
 
 	/*------------------------------------------------------------------*\
@@ -41,14 +43,10 @@ public abstract class CardComponent extends JLabel
 
 	public void setCard(String cardValue)
 	{
-		try
+		if (!this.cardValue.equals(cardValue))
 		{
-			setIcon(new ImageIcon(ImageIO.read(new File("resources/table/cards/" + cardValue + ".png"))));
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			this.cardValue = cardValue;
+			updateImage();
 		}
 	}
 
@@ -59,5 +57,18 @@ public abstract class CardComponent extends JLabel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
+
+	private void updateImage()
+	{
+		try
+		{
+			setIcon(new ImageIcon(ImageIO.read(new File("resources/table/cards/" + cardValue + ".png"))));//TODO imageShop
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+	}
 
 }

@@ -39,7 +39,6 @@ public class JPanelGameBoard extends JPanel
 
 	public void updateGUI()
 	{
-
 		//TODO: here update all component in this view
 		gameArea.updateGUI();
 		gameControl.updateGUI();
@@ -55,7 +54,6 @@ public class JPanelGameBoard extends JPanel
 		}
 		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

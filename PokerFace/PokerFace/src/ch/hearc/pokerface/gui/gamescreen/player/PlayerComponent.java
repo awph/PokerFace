@@ -50,7 +50,6 @@ public class PlayerComponent extends JPanel
 		}
 		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
