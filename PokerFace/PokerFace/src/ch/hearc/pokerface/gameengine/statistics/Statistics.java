@@ -76,7 +76,9 @@ public class Statistics
 		simulation.addObserver(player);
 		player.addObserver(simulation);
 
-		new Thread(simulation).start();
+		Thread thread = new Thread(simulation);
+		thread.setName("Simulation for " + player.getProfile().getName() + " with " + nbCardInBoard + " cards");
+		thread.start();
 	}
 
 	/**

@@ -94,7 +94,8 @@ public class JPanelGameArea extends ImagePanel
 		add(panelPlayer, BorderLayout.CENTER);
 
 		final Player humanPlayer = GameEngine.HUMAN_PLAYER;
-		Thread t = new Thread(new Runnable()
+		/*
+		Thread thread = new Thread(new Runnable()
 		{
 			@Override
 			public void run()
@@ -119,7 +120,8 @@ public class JPanelGameArea extends ImagePanel
 				}
 			}
 		});
-		t.start();
+		thread.setName("update stats (GUI)");
+		thread.start();*/
 
 	}
 

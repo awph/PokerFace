@@ -63,7 +63,7 @@ public class JPanelGameBoard extends JPanel
 
 		add(gameArea, BorderLayout.CENTER);
 		add(gameControl, BorderLayout.SOUTH);
-		Thread t = new Thread(new Runnable()
+		Thread thread = new Thread(new Runnable()
 		{
 
 			@Override
@@ -72,7 +72,8 @@ public class JPanelGameBoard extends JPanel
 				gameEngine.run();
 			}
 		});
-		t.start();
+		thread.setName("GameEngine");
+		thread.start();
 	}
 
 	/*------------------------------*\
