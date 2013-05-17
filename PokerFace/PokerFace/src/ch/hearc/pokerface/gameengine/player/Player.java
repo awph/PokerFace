@@ -14,7 +14,7 @@ import ch.hearc.pokerface.gameengine.statistics.Statistics;
 import ch.hearc.pokerface.gameengine.subsets.Pocket;
 import ch.hearc.pokerface.tools.Pair;
 
-public class Player implements Observer
+public class Player extends Observable implements Observer
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -68,6 +68,7 @@ public class Player implements Observer
 	 */
 	public void doAction()
 	{
+		stopCurrentSimulation(true);
 		try
 		{
 			synchronized (this)
@@ -78,6 +79,27 @@ public class Player implements Observer
 		catch (Exception e)
 		{
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Stop the simulation of the state. If all = true, stop all the simulation
+	 * @param Current : true -> current simulation, false -> All simulations
+	 */
+	public void stopCurrentSimulation(boolean current)
+	{
+		if(current)
+		{
+	        setChanged();
+			StateType state = gameEngine.getOldState();
+			if(state == StateType.FlopState || state == StateType.TurnState || state == StateType.RiverState)
+			{
+		        notifyObservers(state);
+			}
+		}
+		else
+		{
+			stopAllSimulation();
 		}
 	}
 
@@ -138,6 +160,7 @@ public class Player implements Observer
 	 */
 	public void allIn()
 	{
+		stopAllSimulation();
 		gameEngine.logPlayerAction(this, Action.Allin, bankroll);
 		gameEngine.bet(bankroll);
 	}
@@ -227,6 +250,7 @@ public class Player implements Observer
 	 */
 	public void fold()
 	{
+		stopAllSimulation();
 		gameEngine.logPlayerAction(this, Action.Fold);
 		folded = true;
 	}
@@ -383,5 +407,20 @@ public class Player implements Observer
 	public boolean isDead()
 	{
 		return this.dead;
+	}
+
+	/*------------------------------------------------------------------*\
+	|*						Methodes Protected							*|
+	\*------------------------------------------------------------------*/
+
+	/**
+	 * Stop the current simulation
+	 */
+	protected void stopAllSimulation()
+	{
+		setChanged();
+        notifyObservers(StateType.FlopState);
+        notifyObservers(StateType.TurnState);
+        notifyObservers(StateType.RiverState);
 	}
 }

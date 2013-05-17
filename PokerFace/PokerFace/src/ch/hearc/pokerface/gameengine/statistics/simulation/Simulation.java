@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
+import java.util.Observer;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -24,7 +25,7 @@ import ch.hearc.pokerface.gameengine.subsets.Hand;
 import ch.hearc.pokerface.gameengine.subsets.Pocket;
 import ch.hearc.pokerface.tools.Pair;
 
-public class Simulation extends Observable implements Runnable
+public class Simulation extends Observable implements Runnable, Observer
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -38,7 +39,7 @@ public class Simulation extends Observable implements Runnable
 	private final Deck						deck;
 	private final int						nbCardBoard;
 	private final StateType					stateType;
-
+	private boolean							stillRunSimulation;
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
@@ -56,7 +57,7 @@ public class Simulation extends Observable implements Runnable
 	public Simulation(Pocket p, Card[] cards, int nbPlayer, int nbCardBoard)
 	{
 		this.pocket = p;
-
+		this.stillRunSimulation = true;
 		this.board = new Board();
 		for(int i = 0; i < nbCardBoard; ++i)
 		{
@@ -135,6 +136,16 @@ public class Simulation extends Observable implements Runnable
 		notifyObservers(response);
 	}
 
+	@Override
+	public void update(Observable o, Object arg)
+	{
+		if(stateType == (StateType)arg)
+		{
+			stillRunSimulation = false;
+		}
+
+	}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
@@ -174,7 +185,7 @@ public class Simulation extends Observable implements Runnable
 				int resultHandComparaison = 0;
 				int stateOfHumanPlayer = 1;//1 -> win, 0 -> tie, -1 -> lose
 
-				for(int i = 0; i < NB_SIMULATION_PER_THREAD; ++i)
+				for(int i = 0; i < NB_SIMULATION_PER_THREAD && stillRunSimulation; ++i)
 				{
 					Deck d = new Deck(deck);
 					Board b = new Board(board);

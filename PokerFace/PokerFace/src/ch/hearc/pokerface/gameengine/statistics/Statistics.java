@@ -72,6 +72,10 @@ public class Statistics
 		turn.addObserver(player);
 		river.addObserver(player);
 
+		player.addObserver(flop);
+		player.addObserver(turn);
+		player.addObserver(river);
+
 		new Thread(flop).start();
 		new Thread(turn).start();
 		new Thread(river).start();
