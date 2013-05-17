@@ -2,11 +2,9 @@
 package ch.hearc.pokerface.gui.gamescreen.table;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -24,6 +22,7 @@ import javax.swing.text.DefaultFormatter;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
+import ch.hearc.pokerface.gui.tools.ButtonTools;
 import ch.hearc.pokerface.gui.tools.ImageTools;
 
 public class JPanelGameControl extends JPanel
@@ -277,9 +276,7 @@ public class JPanelGameControl extends JPanel
 		button.setForeground(Color.WHITE);
 		try
 		{
-			Font font = Font.createFont(Font.TRUETYPE_FONT, new File("resources/Palacio.ttf"));
-			font = font.deriveFont(20.0f);
-			button.setFont(font);
+			button.setFont(ButtonTools.getButtonFont());
 		}
 		catch (Exception e)
 		{
@@ -293,7 +290,6 @@ public class JPanelGameControl extends JPanel
 			public void mouseEntered(java.awt.event.MouseEvent evt)
 			{
 				button.setIcon(ImageTools.loadScaledIcon("resources/buttons/pink_button_selected.png", 0.3, false));
-
 			}
 
 			@Override
