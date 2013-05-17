@@ -33,7 +33,7 @@ public class Player implements Observer
 	protected StatisticValue	svTurn;
 	protected StatisticValue	svRiver;
 	protected boolean			dead;
-
+	protected boolean			hasWon;
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
@@ -93,6 +93,7 @@ public class Player implements Observer
 		this.betSpending = 0;
 		this.folded = false;
 		this.dead = false;
+		this.hasWon = false;
 
 		svPreFlop = null;
 		svFlop = null;
@@ -237,6 +238,14 @@ public class Player implements Observer
 	{
 		role = Role.Nothing;
 		dead = true;
+	}
+
+	/**
+	 * The player has won the turn !
+	 */
+	public void win()
+	{
+		hasWon = true;
 	}
 
 	/**
