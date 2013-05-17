@@ -1,15 +1,9 @@
 
 package ch.hearc.pokerface.gui;
 
-import java.awt.BorderLayout;
-import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.WindowConstants;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.cards.CardColor;
@@ -35,36 +29,8 @@ public class UseJFrameMain
 	{
 		splashScreenLoading();
 
-		final JFrame fullscreenFrame = new JFrameMain();
-		/*try
-		{
-			FullscreenSample.main(null);
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-
-		GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(fullscreenFrame);
-
+		new JFrameMain();
 	}
-	private final static class FullscreenSample {
-
-	 	public static final void main(final String[] args) throws Exception {
-	 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
-	 		final JFrame fullscreenFrame = new JFrame();
-	 		fullscreenFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-	 		fullscreenFrame.setUndecorated(true);
-	 		fullscreenFrame.setResizable(false);
-	 		fullscreenFrame.add(new JLabel("Press ALT+F4 to exit fullscreen.", SwingConstants.CENTER), BorderLayout.SOUTH);
-	 		fullscreenFrame.validate();
-
-	 		GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(fullscreenFrame);
-	 	}
-
-	 }
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/

@@ -114,8 +114,8 @@ public class JOPTableConfiguration extends JOptionPane
 	{
 		String options[] = { "Play", "Cancel" };
 		boolean okPressed = showOptionDialog(frameMain, getPanel(), "Table Configuration", DEFAULT_OPTION, PLAIN_MESSAGE, null, options, null) == 0;
-		frameMain.toFront();
-		System.out.println("rt");
+		//frameMain.toFront();
+		//System.out.println("rt");
 		return okPressed;
 	}
 

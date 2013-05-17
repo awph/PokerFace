@@ -3,6 +3,7 @@ package ch.hearc.pokerface.gui;
 
 import java.awt.CardLayout;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.SplashScreen;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -53,6 +54,7 @@ public class JFrameMain extends JFrame
 		else if (card == "panelGameBoard")
 		{
 			new JOPTableConfiguration(this, panelGameBoard);
+			setFullscreen();
 		}
 		layout.show(this.getContentPane(), card);
 	}
@@ -65,6 +67,7 @@ public class JFrameMain extends JFrame
 	|*				Get				*|
 	\*------------------------------*/
 
+
 	public JPanelProfile getProfilePanel()
 	{
 		return panelProfile;
@@ -73,6 +76,15 @@ public class JFrameMain extends JFrame
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
+
+	private void setFullscreen()
+	{
+		setVisible(false);
+		dispose();
+		setUndecorated(true);
+		GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(this);
+		setVisible(true);
+	}
 
 	private void geometry()
 	{
@@ -130,28 +142,17 @@ public class JFrameMain extends JFrame
 
 	private void appearance()
 	{
-		setAlwaysOnTop(true);
-		//setSize(1200, (int)(1200 * 0.75));
-		/*this.addComponentListener(new ComponentAdapter()
-		{
 
-			@Override
-			public void componentResized(ComponentEvent event)
-			{
+		setSize(1200, (int)(1200 * 0.75));
 
-				Rectangle b = event.getComponent().getBounds();
-				event.getComponent().setBounds(b.x, b.y, b.width, (int)(b.width * 0.75));
-			}
-
-		});*/
 
 		setTitle("\u2666 \u2665 \u2660 \u2663 Pokerface \u2663 \u2660 \u2665 \u2666");
-		//setLocation(30, 30);
+
 		setResizable(false);
-		setUndecorated(true);
 
 		layout.show(this.getContentPane(), "panelProfile");
 
+		//setUndecorated(true);
 		this.setVisible(true);
 		validate();
 	}
