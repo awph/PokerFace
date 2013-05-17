@@ -58,13 +58,14 @@ public class JPanelGameControl extends JPanel
 		}
 		else
 		{
-			if(!humanPlayer.isDead())
+			if (humanPlayer.isDead())
 			{
-				JOptionPane.showMessageDialog(null, "Motherfucker you're soooooooooooooooo good !", "YEAH", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Sorry buddy, you didn't get so much luck !", "You lose !", JOptionPane.INFORMATION_MESSAGE);
+
 			}
 			else
 			{
-				JOptionPane.showMessageDialog(null, "Fuck you off little pussy ! You're too bad, fucking noooooooob", "LOOOOOOOOOSER", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Woaw guy, you mastered the entire game !", "You win !", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 		betRaiseButton.setEnabled(isHumanPlayerTurn);

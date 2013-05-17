@@ -148,7 +148,7 @@ public class JFrameMain extends JFrame
 
 		});
 
-		setTitle("\u2666 \u2665 \u2660 \u2663 Pokerface \u2666 \u2665 \u2660 \u2663");
+		setTitle("\u2666 \u2665 \u2660 \u2663 Pokerface \u2663 \u2660 \u2665 \u2666");
 		//setLocation(30, 30);
 		setResizable(true);
 
