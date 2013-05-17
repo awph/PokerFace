@@ -61,7 +61,7 @@ public class GameEngine
 
 	public static Player		HUMAN_PLAYER;
 	private static final int	NB_TURN_BEFORE_CHANGE_BLIND	= 8;
-	private static final long	DELAY_BETWEEN_EACH_TURN		= 2000;
+	private static final long	DELAY_BETWEEN_EACH_TURN		= 3000;
 
 	// initialize to nbPlayer*(-2) and incremented each draw of card. After the players have received theirs cards, we use it to define the correct card in the variable futureBoard to get
 	/*------------------------------------------------------------------*\
