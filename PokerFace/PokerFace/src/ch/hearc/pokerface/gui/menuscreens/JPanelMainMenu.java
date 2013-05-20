@@ -4,36 +4,41 @@ package ch.hearc.pokerface.gui.menuscreens;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import ch.hearc.pokerface.gui.JFrameMain;
+import ch.hearc.pokerface.gui.gamescreen.table.JPanelGameControl;
 import ch.hearc.pokerface.gui.options.JPanelTopBar;
+import ch.hearc.pokerface.gui.tools.ImagePanel;
 
-
-public class JPanelMainMenu extends JPanel
+public class JPanelMainMenu extends ImagePanel
 {
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private JButton	backButton;
-	private JButton	playButton;
-	private JFrameMain mainFrame;
-	private JPanelTopBar topBarPanel;
+	private JButton			backButton;
+	private JButton			playButton;
+	private JFrameMain		mainFrame;
+	private JPanelTopBar	topBarPanel = JPanelTopBar.getInstance();
 
 	//Tools
-	private JPanel panelCenter;
+	private JPanel			panelCenter;
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JPanelMainMenu(JFrameMain mainFrame)
+	public JPanelMainMenu(JFrameMain mainFrame) throws Exception
 	{
+		super(ImageIO.read(new File("resources/background.jpg")));
 		this.mainFrame = mainFrame;
 
 		geometry();
@@ -57,6 +62,7 @@ public class JPanelMainMenu extends JPanel
 	{
 		return topBarPanel;
 	}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
@@ -65,12 +71,15 @@ public class JPanelMainMenu extends JPanel
 	{
 		setLayout(new BorderLayout());
 		panelCenter = new JPanel();
-		panelCenter.setLayout(new BoxLayout(panelCenter,BoxLayout.X_AXIS));
+		panelCenter.setLayout(new BoxLayout(panelCenter, BoxLayout.X_AXIS));
 
 		playButton = new JButton("Play");
 		backButton = new JButton("Back");
 
-		topBarPanel = new JPanelTopBar(this);
+		JPanelGameControl.styleButton(playButton);
+		JPanelGameControl.styleButton(backButton);
+
+		panelCenter.setOpaque(false);
 	}
 
 	private void control()
@@ -100,21 +109,25 @@ public class JPanelMainMenu extends JPanel
 		Box insideBox = Box.createVerticalBox();
 		panelCenter.add(Box.createHorizontalGlue());
 
-		insideBox.add(playButton);
-		insideBox.add(backButton);
+		Box playBox = Box.createHorizontalBox();
+		Box backBox = Box.createHorizontalBox();
+
+		playBox.add(Box.createHorizontalGlue());
+		playBox.add(playButton);
+		playBox.add(Box.createHorizontalGlue());
+
+		backBox.add(Box.createHorizontalGlue());
+		backBox.add(backButton);
+		backBox.add(Box.createHorizontalGlue());
+
+		insideBox.add(playBox);
+		insideBox.add(backBox);
 
 		panelCenter.add(insideBox);
 		panelCenter.add(Box.createHorizontalGlue());
+
 		add(panelCenter, BorderLayout.CENTER);
-		add(topBarPanel,BorderLayout.NORTH);
+		add(topBarPanel, BorderLayout.NORTH);
 	}
-
-	public void refreshProfile()
-	{
-		topBarPanel.refreshProfile();
-	}
-
 
 }
-
-

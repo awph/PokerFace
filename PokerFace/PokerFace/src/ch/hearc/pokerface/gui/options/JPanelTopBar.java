@@ -1,47 +1,75 @@
 
 package ch.hearc.pokerface.gui.options;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
+import javax.swing.Timer;
 
-import ch.hearc.pokerface.gameengine.player.profile.ActiveProfile;
+import ch.hearc.pokerface.gameengine.player.profile.Profile;
 
-
-public class JPanelTopBar extends JPanel
+public final class JPanelTopBar extends JPanel
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
+	private static volatile JPanelTopBar	instance	= null;
 
-	//Tools
-	private JLabel testLabel;
+	// Inputs / Outputs
+	private JLabel							testLabel;
+	private JLabel							clockLabel;
+	private SimpleDateFormat ft;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JPanelTopBar(JPanel parentPanel) // TODO rendre SINGLETON!
+	/*
+	 * @return The only instance of the class
+	 */
+	public final static JPanelTopBar getInstance()
 	{
-		setMaximumSize(new Dimension(200,parentPanel.getHeight()));
-		setBorder(BorderFactory.createSoftBevelBorder(BevelBorder.RAISED, Color.GRAY, Color.BLACK));
+		if (JPanelTopBar.instance == null)
+		{
+			synchronized (JPanelTopBar.class)
+			{
+				if (JPanelTopBar.instance == null)
+				{
+					JPanelTopBar.instance = new JPanelTopBar();
+				}
+			}
+		}
+		return JPanelTopBar.instance;
+	}
 
+	private JPanelTopBar()
+	{
 
-		testLabel = new JLabel("");
-		add(testLabel);
+		setLayout(new BorderLayout());
+		testLabel = new JLabel();
+		clockLabel = new JLabel();
+
+		add(testLabel, BorderLayout.WEST);
+		add(clockLabel, BorderLayout.EAST);
+
+		ft = new SimpleDateFormat("HH:mm:ss");
+
+		Timer t = new Timer(1000, updateClockAction);
+		t.start();
 	}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public void refreshProfile()
+	public void refreshProfile(Profile profile)
 	{
-		testLabel.setText(ActiveProfile.getInstance().getProfile().getName());
+		testLabel.setText(profile.getName());
 	}
 
 	/*------------------------------*\
@@ -55,6 +83,9 @@ public class JPanelTopBar extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
-
+	private ActionListener updateClockAction = new ActionListener() {
+		  public void actionPerformed(ActionEvent e) {
+			  clockLabel.setText(ft.format(new Date()));
+		    }
+		};
 }
-

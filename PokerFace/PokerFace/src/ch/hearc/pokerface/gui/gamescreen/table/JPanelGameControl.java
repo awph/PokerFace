@@ -273,7 +273,7 @@ public class JPanelGameControl extends JPanel
 		styleButton(allinButton);
 	}
 
-	private void styleButton(final JButton button)
+	public static void styleButton(final JButton button)
 	{
 		button.setHorizontalTextPosition(SwingConstants.CENTER);
 		button.setContentAreaFilled(false);

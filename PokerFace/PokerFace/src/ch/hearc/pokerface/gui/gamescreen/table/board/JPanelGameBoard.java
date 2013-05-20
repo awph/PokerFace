@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gui.gamescreen.table.JPanelGameArea;
 import ch.hearc.pokerface.gui.gamescreen.table.JPanelGameControl;
+import ch.hearc.pokerface.gui.options.JPanelTopBar;
 
 public class JPanelGameBoard extends JPanel
 {
@@ -19,6 +20,7 @@ public class JPanelGameBoard extends JPanel
 	//Content
 	private JPanelGameArea		gameArea;
 	private JPanelGameControl	gameControl;
+	private final JPanelTopBar		panelTopBar = JPanelTopBar.getInstance();
 
 	//Game
 	protected GameEngine		gameEngine;
@@ -59,8 +61,10 @@ public class JPanelGameBoard extends JPanel
 
 		gameControl = new JPanelGameControl(gameEngine);
 
+		add(panelTopBar, BorderLayout.NORTH);
 		add(gameArea, BorderLayout.CENTER);
 		add(gameControl, BorderLayout.SOUTH);
+
 		Thread thread = new Thread(new Runnable()
 		{
 

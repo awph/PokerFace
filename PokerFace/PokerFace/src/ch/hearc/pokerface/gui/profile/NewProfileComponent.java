@@ -1,40 +1,45 @@
 
 package ch.hearc.pokerface.gui.profile;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
-import ch.hearc.pokerface.gameengine.player.profile.ActiveProfile;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
-import ch.hearc.pokerface.gui.options.JPanelTopBar;
 
-public class ProfileComponent extends Box
+public class NewProfileComponent extends Box
 {
+
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	private Profile						profile;
-	private final int					HORIZONTAL_GAP	= 10;
-	private final ProfileListContainer	parent;
 
+	private JButton okButton;
+	private ProfileListContainer parent;
+	private JTextField nameProfile;
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-	public ProfileComponent(Profile profile, ProfileListContainer parent)
+
+	public NewProfileComponent(ProfileListContainer parent)
 	{
 		super(BoxLayout.X_AXIS);
-		this.profile = profile;
+
 		this.parent = parent;
+
+		setBorder(BorderFactory.createStrokeBorder(new BasicStroke(1)));
 
 		geometry();
 		control();
 	}
-
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
@@ -50,39 +55,30 @@ public class ProfileComponent extends Box
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
-
 	private void geometry()
 	{
-		add(new JLabel("   ")); // horizontal strut behaves wierd
+		okButton = new JButton("ok");
 
-		JLabel nameProfile = new JLabel(profile.getName());
+		nameProfile = new JTextField("Name",5);
 		nameProfile.setForeground(Color.RED);
+		nameProfile.setMaximumSize(new Dimension(200, 50));
 
 		add(nameProfile);
 		add(Box.createHorizontalGlue());
-		JLabel capital = new JLabel(Integer.toString(profile.getCapital()));
-		capital.setForeground(Color.YELLOW);
-		add(capital);
-		add(Box.createHorizontalGlue());
-		add(profile.getAvatar());
-		add(new JLabel("   "));
+		add(okButton);
 	}
-
 	private void control()
 	{
-		addMouseListener(new MouseAdapter()
+		okButton.addActionListener(new ActionListener()
 		{
 
 			@Override
-			public void mouseClicked(MouseEvent e)
+			public void actionPerformed(ActionEvent e)
 			{
 
-				ActiveProfile.getInstance().setProfile(ProfileComponent.this.profile);
-				JPanelTopBar.getInstance().refreshProfile(ProfileComponent.this.profile);
-
-				parent.getProfilePanel().getMainFrame().setCard("panelMainMenu");
+				NewProfileComponent.this.parent.addProfileFromNew(new Profile(nameProfile.getText(),1,10000),NewProfileComponent.this);
 			}
 		});
 	}
-
 }
+

@@ -1,12 +1,12 @@
 
 package ch.hearc.pokerface.gui.profile;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -22,16 +22,16 @@ public class ProfileListContainer extends Box
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	private List<ProfileComponent>	profileComponentList;
-	private List<Component>			profileReferenceList;
-	private final int				VERTICAL_GAP	= 10;
+	private LinkedList<Box>		profileComponentList;
+	private List<Component>		profileReferenceList;
+	private final int			VERTICAL_GAP	= 10;
 
 	// Tools
-	private JButton					downArrow;
-	private JButton					upArrow;
-	private int						currentIndex;			// Profile displayed at the top of the list
+	private JButton				downArrow;
+	private JButton				upArrow;
+	private int					currentIndex;			// Profile displayed at the top of the list
 
-	private final JPanelProfile profilePanel;
+	private final JPanelProfile	profilePanel;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -41,9 +41,9 @@ public class ProfileListContainer extends Box
 		super(BoxLayout.Y_AXIS);
 		this.profilePanel = profilePanel;
 
-		currentIndex = 1;
+		currentIndex = 0;
 
-		profileComponentList = new ArrayList<ProfileComponent>();
+		profileComponentList = new LinkedList<Box>();
 		profileReferenceList = new ArrayList<Component>();
 
 		fillProfileListTest();
@@ -57,6 +57,31 @@ public class ProfileListContainer extends Box
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	public void createNewProfile()
+	{
+		removeProfiles();
+
+		currentIndex = 0;
+		profileComponentList.addFirst(new NewProfileComponent(this));
+
+		addProfilesToBox();
+		repaint();
+		revalidate();
+	}
+
+	public void addProfileFromNew(Profile profile, NewProfileComponent npc)
+	{
+		removeProfiles();
+
+		currentIndex = 0;
+		profileComponentList.remove(npc);
+		profileComponentList.addFirst(new ProfileComponent(profile, this));
+
+		addProfilesToBox();
+		repaint();
+		revalidate();
+	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -69,6 +94,7 @@ public class ProfileListContainer extends Box
 	{
 		return profilePanel;
 	}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
@@ -81,7 +107,7 @@ public class ProfileListContainer extends Box
 			@Override
 			public void actionPerformed(ActionEvent ae)
 			{
-				if (currentIndex > 1)
+				if (currentIndex >= 1)
 				{
 					currentIndex--;
 				}
@@ -117,27 +143,28 @@ public class ProfileListContainer extends Box
 	private void refreshProfiles()
 	{
 		removeProfiles();
-		addProfiles();
+		addProfilesToBox();
 
 		repaint();
 		revalidate();
 	}
 
-	private void addProfiles()
+	private void addProfilesToBox()
 	{
 
-		for(int i = currentIndex, j=2; i < currentIndex + 3; ++i, j=j+2)
+		for(int i = currentIndex, j = 2; i < currentIndex + 3; i++, j = j + 2)
 		{
-			profileReferenceList.add(add(profileComponentList.get(i),j));
+			profileReferenceList.add(add(profileComponentList.get(i), j));
 			Box vStrutBox = Box.createHorizontalBox();
 			vStrutBox.add(createVerticalStrut(VERTICAL_GAP));
-			profileReferenceList.add(add(vStrutBox,j+1));
+			profileReferenceList.add(add(vStrutBox, j + 1));
 		}
 	}
 
 	private void appearance()
 	{
-		setBorder(BorderFactory.createStrokeBorder(new BasicStroke(5)));
+		//TitledBorder titledBorder = BorderFactory.createTitledBorder(null, " Text 1    Text 2", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, Color.RED);
+		setBorder(BorderFactory.createLineBorder(Color.RED));
 	}
 
 	private void geometry()
@@ -165,7 +192,7 @@ public class ProfileListContainer extends Box
 		add(upArrowBox);
 		add(vStrutBox);
 
-		addProfiles();
+		addProfilesToBox();
 
 		Box downArrowBox = Box.createHorizontalBox();
 		downArrowBox.add(createHorizontalGlue());
@@ -176,9 +203,10 @@ public class ProfileListContainer extends Box
 	private void fillProfileListTest()
 	{
 		int n = 10;
-		for(int i = 0; i < n; ++i)
+		for(int i = 0; i < n; i++)
 		{
-			profileComponentList.add(new ProfileComponent(new Profile("Profile " + i, 1, 10000),this));
+			profileComponentList.add(new ProfileComponent(new Profile("Profile " + i, 1, 10000), this));
 		}
 	}
+
 }

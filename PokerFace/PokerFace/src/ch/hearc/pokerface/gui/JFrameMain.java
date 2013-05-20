@@ -33,7 +33,6 @@ public class JFrameMain extends JFrame
 	public JFrameMain()
 	{
 		//createSplashScreen(); //TODO il faut introduire un fichier manifest pour lancer le splash screen
-		//setBackgroundImage();
 
 		geometry();
 		control();
@@ -47,11 +46,8 @@ public class JFrameMain extends JFrame
 	// CARD MANIPULATIONS
 	public void setCard(String card)
 	{
-		if (card == "panelMainMenu")
-		{
-			panelMainMenu.refreshProfile();
-		}
-		else if (card == "panelGameBoard")
+
+		if (card == "panelGameBoard")
 		{
 			new JOPTableConfiguration(this, panelGameBoard);
 			setFullscreen();
@@ -81,7 +77,7 @@ public class JFrameMain extends JFrame
 	{
 		setVisible(false);
 		dispose();
-		setUndecorated(true);
+		//setUndecorated(true); // TODO Disable for test purposes
 		GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(this);
 		setVisible(true);
 	}
@@ -98,13 +94,21 @@ public class JFrameMain extends JFrame
 		/**
 		 * Instanciations
 		 */
-		panelProfile = new JPanelProfile(this);
+		try
+		{
+			panelProfile = new JPanelProfile(this);
+			panelMainMenu = new JPanelMainMenu(this);
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		panelGameBoard = new JPanelGameBoard();
 
 		/**
 		 * Adds
 		 */
-		panelMainMenu = new JPanelMainMenu(this);
 
 		add(panelProfile, "panelProfile");
 		add(panelGameBoard, "panelGameBoard");
