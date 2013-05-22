@@ -22,7 +22,7 @@ public class Avatar extends JLabel
 	{
 		super();
 
-		setIcon(ImageTools.loadScaledIcon("resources/avatars/" + id + ".jpg", 0.1, false));
+		setIcon(ImageTools.loadScaledIcon("resources/avatars/" + id + ".png", 1, false));
 
 		this.id = id;
 	}

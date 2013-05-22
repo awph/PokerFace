@@ -49,7 +49,12 @@ public class JFrameMain extends JFrame
 
 		if (card == "panelGameBoard")
 		{
-			new JOPTableConfiguration(this, panelGameBoard);
+			JOPTableConfiguration tableConfig = new JOPTableConfiguration(this, panelGameBoard);
+			if (!tableConfig.switchToGame())
+			{
+				return; // Abort the process of switching to gameBoard
+			}
+
 			setFullscreen();
 		}
 		layout.show(this.getContentPane(), card);

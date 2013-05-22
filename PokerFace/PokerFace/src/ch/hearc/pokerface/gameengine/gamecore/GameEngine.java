@@ -20,6 +20,7 @@ import ch.hearc.pokerface.gameengine.player.AI;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gameengine.player.Role;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
+import ch.hearc.pokerface.gameengine.player.profile.tools.AIProfileGenerator;
 import ch.hearc.pokerface.gameengine.statistics.Statistics;
 import ch.hearc.pokerface.gameengine.subsets.Board;
 import ch.hearc.pokerface.gameengine.subsets.CardSubset;
@@ -90,7 +91,7 @@ public class GameEngine
 		for(int i = 1; i < nbPlayer; ++i)
 		{
 			//TODO get a random profile
-			players.add(new AI(new Profile("IA-" + i, 1), bankroll, this));
+			players.add(new AI(AIProfileGenerator.fetchAIProfile(), bankroll, this));
 		}
 		indexPlayer = (int)(Math.random() * nbPlayer);
 		indexDealer = getPreviousIndex(indexPlayer);

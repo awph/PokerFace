@@ -49,26 +49,6 @@ public class JOPTableConfiguration extends JOptionPane
 	{
 		this.frameMain = frameMain;
 		this.panelGameBoard = panelGameBoard;
-		boolean dialog = false;
-		boolean checkValues = false;
-		do
-		{
-			dialog = showDialog();
-			checkValues = checkValues();
-
-			if (!dialog)
-			{
-				return;
-			}
-
-			else if (checkValues)
-			{
-				panelGameBoard.start(new GameEngine(smallBlind, nbPlayers, ActiveProfile.getInstance().getProfile(), startCash, panelGameBoard));
-			}
-			else {
-				JOptionPane.showOptionDialog(null, "Values out of bounds!", "Mother Fucker!", DEFAULT_OPTION, ERROR_MESSAGE, null, null, null);
-			}
-		} while(!checkValues);
 	}
 
 	/*------------------------------------------------------------------*\
@@ -79,6 +59,36 @@ public class JOPTableConfiguration extends JOptionPane
 		// TODO : cancel button management (go mainMenu if cancel..)
 		return false;
 	}
+
+
+	public boolean switchToGame()
+	{
+
+		boolean dialog = false;
+		boolean checkValues = false;
+		boolean isCanceled = false;
+		do
+		{
+			dialog = showDialog();
+			checkValues = checkValues();
+
+			if (!dialog)
+			{
+
+				isCanceled = true;
+			}
+
+			else if (checkValues)
+			{
+				panelGameBoard.start(new GameEngine(smallBlind, nbPlayers, ActiveProfile.getInstance().getProfile(), startCash, panelGameBoard));
+			}
+			else {
+				JOptionPane.showOptionDialog(null, "Values out of bounds!", "Mother Fucker!", DEFAULT_OPTION, ERROR_MESSAGE, null, null, null);
+			}
+		} while(!checkValues && !isCanceled);
+		return !isCanceled;
+	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -113,10 +123,7 @@ public class JOPTableConfiguration extends JOptionPane
 	private boolean showDialog()
 	{
 		String options[] = { "Play", "Cancel" };
-		boolean okPressed = showOptionDialog(frameMain, getPanel(), "Table Configuration", DEFAULT_OPTION, PLAIN_MESSAGE, null, options, null) == 0;
-		//frameMain.toFront();
-		//System.out.println("rt");
-		return okPressed;
+		return showOptionDialog(frameMain, getPanel(), "Table Configuration", DEFAULT_OPTION, PLAIN_MESSAGE, null, options, null) == 0;
 	}
 
 	private JPanel getPanel()
@@ -142,4 +149,5 @@ public class JOPTableConfiguration extends JOptionPane
 
 		return panel;
 	}
+
 }

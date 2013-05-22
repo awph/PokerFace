@@ -19,7 +19,6 @@ public class ProfileComponent extends Box
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 	private Profile						profile;
-	private final int					HORIZONTAL_GAP	= 10;
 	private final ProfileListContainer	parent;
 
 	/*------------------------------------------------------------------*\
