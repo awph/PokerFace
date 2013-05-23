@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -164,7 +163,9 @@ public class ProfileListContainer extends Box
 	private void appearance()
 	{
 		//TitledBorder titledBorder = BorderFactory.createTitledBorder(null, " Text 1    Text 2", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, Color.RED);
-		setBorder(BorderFactory.createLineBorder(Color.RED));
+		//setBorder(BorderFactory.createLineBorder(Color.RED));
+		setBackground(new Color(25, 25, 25, 150));
+		setOpaque(true);
 	}
 
 	private void geometry()
