@@ -90,7 +90,6 @@ public class GameEngine
 
 		for(int i = 1; i < nbPlayer; ++i)
 		{
-			//TODO get a random profile
 			players.add(new AI(AIProfileGenerator.fetchAIProfile(), bankroll, this));
 		}
 		indexPlayer = (int)(Math.random() * nbPlayer);
