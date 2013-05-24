@@ -289,6 +289,11 @@ public class GameEngine
 	|*				Get				*|
 	\*------------------------------*/
 
+	public int getNbTurn()
+	{
+		return nbTurn;
+	}
+
 	public SoundEngine getSoundEngine()
 	{
 		return soundEngine;
