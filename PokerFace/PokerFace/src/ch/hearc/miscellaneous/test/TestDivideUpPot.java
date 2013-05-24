@@ -52,7 +52,7 @@ public class TestDivideUpPot
 		board.add(new Card(CardValue.Eight, CardColor.Spades));
 
 		pot = new Pot();
-		pot.addStateTotal(750);
+		pot.addStateTotalAndSetBet(750);
 		pot.nextState();
 		showdown();
 
@@ -71,7 +71,7 @@ public class TestDivideUpPot
 		board.add(new Card(CardValue.Eight, CardColor.Spades));
 
 		pot = new Pot();
-		pot.addStateTotal(600);
+		pot.addStateTotalAndSetBet(600);
 		pot.nextState();
 		showdown();
 
@@ -90,7 +90,7 @@ public class TestDivideUpPot
 		board.add(new Card(CardValue.Eight, CardColor.Spades));
 
 		pot = new Pot();
-		pot.addStateTotal(900);
+		pot.addStateTotalAndSetBet(900);
 		pot.nextState();
 		showdown();
 

@@ -33,7 +33,6 @@ public class BettingState extends State
 		{
 			do
 			{
-				ge.updateGUI();
 				if (!postSmallBlind && !postBigBlind)//In this case, if everybody checks, the big blind can play twice
 				{
 					firstBetProcessing(ge, ge.getCurrentPlayer());
@@ -42,11 +41,9 @@ public class BettingState extends State
 				{
 					normalBetProcessing(ge, ge.getCurrentPlayer());
 				}
-				ge.updateGUI();
 			} while(!allChecked(ge));
 
 			ge.setNewState();
-			ge.updateGUI();
 
 			//Reinitialise the player's bet
 			Player firstPlayer = ge.getCurrentPlayer();
@@ -64,6 +61,7 @@ public class BettingState extends State
 		}
 	}
 
+	@SuppressWarnings("incomplete-switch")
 	@Override
 	public void nextSate(GameEngine ge)
 	{
@@ -88,9 +86,6 @@ public class BettingState extends State
 				ge.setState(new PreFlopState());
 				ge.showdown();
 				break;
-
-			default:
-				break;
 		}
 	}
 
@@ -112,7 +107,7 @@ public class BettingState extends State
 				if (!p.isFolded())
 				{
 					//If the player isn't folded and his bet = betSpend or has all in
-					if ((p.getBetSpending() < ge.getPot().getBet() && p.getBankroll() != 0))
+					if ((p.getBetSpending() < ge.getBet() && p.getBankroll() != 0))
 					{
 						allChecked = false;
 					}
@@ -127,7 +122,7 @@ public class BettingState extends State
 	private void normalBetProcessing(GameEngine ge, Player player)
 	{
 		//If he checks, he's considered as the last player who has "raised"
-		if (ge.getPot().getBet() == 0)
+		if (ge.getBet() == 0)
 		{
 			ge.setIndexLastRaise(player);
 		}
@@ -139,10 +134,8 @@ public class BettingState extends State
 				//Else IA computes
 				player.doAction();
 			}
-			ge.updateGUI();
 			ge.changeCurrentPlayer();
 			player = ge.getCurrentPlayer();
-			ge.updateGUI();
 		} while(player != ge.getLastRaisePlayer());
 	}
 
@@ -155,12 +148,12 @@ public class BettingState extends State
 		{
 			if (!postSmallBlind && ge.getNbPlayers() > 2)
 			{
-				ge.betSmallBlind();
+				player.betSmallBlind();
 				postSmallBlind = true;
 			}
 			else if (!postBigBlind)
 			{
-				ge.betBigBlind();
+				player.betBigBlind();
 				postBigBlind = true;
 			}
 			else if (player.getBankroll() != 0)//If not all in
@@ -169,10 +162,8 @@ public class BettingState extends State
 				//Else IA computes
 				player.doAction();
 			}
-			ge.updateGUI();
 			ge.changeCurrentPlayer();
 			player = ge.getCurrentPlayer();
-			ge.updateGUI();
 
 			isThePlayerTheLastRaisePlayer = player == ge.getLastRaisePlayer();
 

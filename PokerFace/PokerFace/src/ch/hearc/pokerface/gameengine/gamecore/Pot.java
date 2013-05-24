@@ -7,7 +7,7 @@ public class Pot
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private int	stateTotal;	//Somme des enchères de l'état
+	private int	stateTotal; //Somme des enchères de l'état
 	private int	turnTotal;	//Somme total du tour
 	private int	bet;		//Somme minimale pour que le joueur puisse continuer à jouer
 
@@ -56,25 +56,27 @@ public class Pot
 
 	/**
 	 * Add the amount to the total of the state, update the current bet if necessary
+	 *
 	 * @param amount
 	 */
-	public void addStateTotal(int amount)
+	public void addStateTotalAndSetBet(int amount)
 	{
+		if (amount > bet)
+		{
+			bet = amount;
+		}
+		stateTotal += amount;
+	}
+
+	public void addStateTotalAndAddBet(int amount)
+	{
+		bet += amount;
 		stateTotal += amount;
 	}
 
 	/**
-	 * Add the blind value to the pot. Little bit different of addStateTotal
-	 * @param blind
-	 */
-	public void addBlind(int blind)
-	{
-		bet = blind;
-		stateTotal += blind;
-	}
-
-	/**
 	 * Remove the amount of the turnTotal
+	 *
 	 * @param amount
 	 */
 	public void removeAmount(int amount)
@@ -100,14 +102,4 @@ public class Pot
 	{
 		return bet;
 	}
-
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
-
-	public void setBet(int bet)
-	{
-		this.bet = bet;
-	}
-
 }

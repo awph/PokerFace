@@ -5,7 +5,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
-import ch.hearc.pokerface.gameengine.gamecore.Action;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
@@ -34,6 +33,7 @@ public class Player extends Observable implements Observer
 	protected StatisticValue	svRiver;
 	protected boolean			dead;
 	protected boolean			hasWon;
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
@@ -68,6 +68,7 @@ public class Player extends Observable implements Observer
 	 */
 	public void doAction()
 	{
+		gameEngine.updateGUI();
 		stopCurrentSimulation(true);
 		try
 		{
@@ -79,27 +80,6 @@ public class Player extends Observable implements Observer
 		catch (Exception e)
 		{
 			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Stop the simulation of the state. If all = true, stop all the simulation
-	 * @param Current : true -> current simulation, false -> All simulations
-	 */
-	public void stopCurrentSimulation(boolean current)
-	{
-		if(current)
-		{
-	        setChanged();
-			StateType state = gameEngine.getOldState();
-			if(state == StateType.FlopState || state == StateType.TurnState || state == StateType.RiverState)
-			{
-		        notifyObservers(state);
-			}
-		}
-		else
-		{
-			stopAllSimulation();
 		}
 	}
 
@@ -161,8 +141,7 @@ public class Player extends Observable implements Observer
 	public void allIn()
 	{
 		stopAllSimulation();
-		gameEngine.logPlayerAction(this, Action.Allin, bankroll);
-		gameEngine.bet(bankroll);
+		gameEngine.allin(this);
 	}
 
 	/**
@@ -170,15 +149,7 @@ public class Player extends Observable implements Observer
 	 */
 	public void check()
 	{
-		if (betSpending == gameEngine.getPot().getBet())
-		{
-			gameEngine.logPlayerAction(this, Action.Check);
-			gameEngine.bet(0);
-		}
-		else
-		{
-			call();
-		}
+		gameEngine.check(this);
 	}
 
 	/**
@@ -189,30 +160,17 @@ public class Player extends Observable implements Observer
 	 */
 	public void bet(int amount)
 	{
-		if ((role == Role.SmallBlind || role == Role.BigBlind) && turnSpending == 0) //First bet (blind)
-		{
-			if (amount < bankroll)
-			{
-				gameEngine.bet(amount);
-			}
-			else
-			{
-				gameEngine.bet(bankroll);
-			}
-		}
-		else
-		{
-			if (amount < bankroll)
-			{
-				gameEngine.logPlayerAction(this, Action.Bet, amount);
-				gameEngine.bet(amount);
-			}
-			else
-			{
-				allIn();
-			}
-		}
-		gameEngine.setIndexLastRaise(this);//Notifiy that we've just raised
+		gameEngine.bet(this, amount);
+	}
+
+	public void betSmallBlind()
+	{
+		gameEngine.betBlind(this,true);
+	}
+
+	public void betBigBlind()
+	{
+		gameEngine.betBlind(this,false);
 	}
 
 	/**
@@ -220,29 +178,18 @@ public class Player extends Observable implements Observer
 	 */
 	public void call()
 	{
-		int callValue = getCallValue();
-		if (callValue < bankroll)
-		{
-			gameEngine.logPlayerAction(this, Action.Call, callValue);
-			gameEngine.bet(callValue);
-		}
-		else
-		{
-			allIn();
-		}
+		gameEngine.call(this);
 	}
 
 	/**
-	 * The player raise, first he calls and then he bets
+	 * The player raises, the call value will be automaticly computed
 	 *
 	 * @param amount
-	 *            : Money for the raise (call + bet)
+	 *            : Money for the raise (bet)
 	 */
 	public void raise(int amount)
 	{
-		gameEngine.logPlayerAction(this, Action.Raise, amount);
-		gameEngine.bet(amount);
-		gameEngine.setIndexLastRaise(this);//Notifiy that we've just raised
+		gameEngine.raise(this, amount);
 	}
 
 	/**
@@ -251,7 +198,7 @@ public class Player extends Observable implements Observer
 	public void fold()
 	{
 		stopAllSimulation();
-		gameEngine.logPlayerAction(this, Action.Fold);
+		gameEngine.fold(this);
 		folded = true;
 	}
 
@@ -301,6 +248,7 @@ public class Player extends Observable implements Observer
 	/**
 	 * Observer use for the pattern Observer
 	 */
+	@SuppressWarnings({ "unchecked" })
 	@Override
 	public void update(Observable o, Object arg)
 	{
@@ -347,7 +295,7 @@ public class Player extends Observable implements Observer
 
 	public int getCallValue()
 	{
-		return gameEngine.getPot().getBet() - betSpending;
+		return gameEngine.getBet() - betSpending;
 	}
 
 	public Role getRole()
@@ -419,13 +367,36 @@ public class Player extends Observable implements Observer
 	\*------------------------------------------------------------------*/
 
 	/**
+	 * Stop the simulation of the state. If all = true, stop all the simulation
+	 *
+	 * @param Current
+	 *            : true -> current simulation, false -> All simulations
+	 */
+	protected void stopCurrentSimulation(boolean current)
+	{
+		if (current)
+		{
+			setChanged();
+			StateType state = gameEngine.getOldState();
+			if (state == StateType.FlopState || state == StateType.TurnState || state == StateType.RiverState)
+			{
+				notifyObservers(state);
+			}
+		}
+		else
+		{
+			stopAllSimulation();
+		}
+	}
+
+	/**
 	 * Stop the current simulation
 	 */
 	protected void stopAllSimulation()
 	{
 		setChanged();
-        notifyObservers(StateType.FlopState);
-        notifyObservers(StateType.TurnState);
-        notifyObservers(StateType.RiverState);
+		notifyObservers(StateType.FlopState);
+		notifyObservers(StateType.TurnState);
+		notifyObservers(StateType.RiverState);
 	}
 }

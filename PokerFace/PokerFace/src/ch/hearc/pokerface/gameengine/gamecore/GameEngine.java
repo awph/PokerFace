@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.compute.ComputeBestHand;
@@ -149,30 +150,113 @@ public class GameEngine
 		}
 	}
 
-	public void bet(int amount)
+	public void bet(Player player, int amount)
 	{
-		Player player = players.get(indexPlayer);
-
-		if (amount > pot.getBet())
+		if (amount >= player.getBankroll())
 		{
-			pot.setBet(amount);
-			indexLastRaise = indexPlayer;
+			allin(player);
+		}
+		else
+		{
+			logPlayerAction(player, Action.Bet, amount);
+			player.takeMoney(amount);
+			pot.addStateTotalAndSetBet(amount);
+			setIndexLastRaise(player);
+			updateGUI();
+		}
+	}
+
+	public void raise(Player player, int amount)
+	{
+		if (amount >= player.getBankroll())
+		{
+			allin(player);
+		}
+		else
+		{
+			logPlayerAction(player, Action.Raise, amount);
+			int callValue = player.getCallValue();
+			player.takeMoney(amount);
+			pot.addStateTotalAndSetBet(callValue);
+			pot.addStateTotalAndAddBet(amount-callValue);
+			updateGUI();
+			setIndexLastRaise(player);
+		}
+	}
+
+	public void check(Player player)
+	{
+		if (player.getCallValue() != 0)
+		{
+			call(player);
+		}
+		else
+		{
+			logPlayerAction(player, Action.Check);
+			updateGUI();
+		}
+	}
+
+	public void call(Player player)
+	{
+		int amount = player.getCallValue();
+		if (amount >= player.getBankroll())
+		{
+			allin(player);
+		}
+		else
+		{
+			logPlayerAction(player, Action.Call, amount);
+			player.takeMoney(amount);
+			pot.addStateTotalAndSetBet(amount);
+			updateGUI();
+		}
+	}
+
+	public void allin(Player player)
+	{
+		int amount = player.getBankroll();
+		logPlayerAction(player, Action.Allin, amount);
+		player.takeMoney(amount);
+		pot.addStateTotalAndSetBet(amount);
+		updateGUI();
+		setIndexLastRaise(player);
+	}
+
+	public void fold(Player player)
+	{
+		logPlayerAction(player, Action.Fold);
+		updateGUI();
+	}
+
+	public void betBlind(Player player, boolean isSmall)
+	{
+		int blind;
+		Action action;
+
+		if (isSmall)
+		{
+			blind = smallBlind;
+			action = Action.PostSmallBlind;
+		}
+		else
+		{
+			blind = bigBlind;
+			action = Action.PostBigBlind;
 		}
 
-		player.takeMoney(amount);
-		pot.addStateTotal(amount);
-	}
-
-	public void betSmallBlind()
-	{
-		logPlayerAction(getCurrentPlayer(), Action.PostSmallBlind, (smallBlind > players.get(indexSmallBlind).getBankroll()) ? players.get(indexSmallBlind).getBankroll() : smallBlind);
-		players.get(indexSmallBlind).bet((smallBlind > players.get(indexSmallBlind).getBankroll()) ? players.get(indexSmallBlind).getBankroll() : smallBlind);
-	}
-
-	public void betBigBlind()
-	{
-		logPlayerAction(getCurrentPlayer(), Action.PostBigBlind, (bigBlind > players.get(indexBigBlind).getBankroll()) ? players.get(indexBigBlind).getBankroll() : bigBlind);
-		players.get(indexBigBlind).bet((bigBlind > players.get(indexBigBlind).getBankroll()) ? players.get(indexBigBlind).getBankroll() : bigBlind);
+		if (player.getBankroll() < blind)
+		{
+			allin(player);
+		}
+		else
+		{
+			logPlayerAction(player, action, blind);
+			player.takeMoney(blind);
+			pot.addStateTotalAndSetBet(blind);
+			updateGUI();
+			setIndexLastRaise(player);
+		}
 	}
 
 	public void showdown()
@@ -242,9 +326,9 @@ public class GameEngine
 		{
 			e.printStackTrace();
 		}
-
-		initialize();
+		isFinished = players.size() == 1;
 		updateGUI();
+		initialize();
 	}
 
 	public void updateGUI()
@@ -261,28 +345,6 @@ public class GameEngine
 	public void addToBoard(Card card)
 	{
 		board.add(card);
-	}
-
-	public void logPlayerAction(Player player, Action action, int amount)
-	{
-		log(player.getProfile().getName() + " " + action.toString() + " " + ((amount != -1) ? amount + "$" : ""));
-		soundEngine.playSound(action);
-	}
-
-	public void logPlayerAction(Player player, Action action)
-	{
-		logPlayerAction(player, action, -1);
-	}
-
-	public void logBoard(String state, String cards)
-	{
-		log("---- " + state + " ----");
-		log(cards);
-	}
-
-	public void logPlayerFinalResult(String rank, Player player, String handName)
-	{
-		log(rank + " : " + player.getProfile().getName() + " with " + player.getPocket().toString() + " -> " + handName);
 	}
 
 	/*------------------------------*\
@@ -379,9 +441,31 @@ public class GameEngine
 		return oldState;
 	}
 
-	public Pot getPot()
+	public int getStateTotal()
 	{
-		return pot;
+		return pot.getStateTotal();
+	}
+
+	public int getTurnTotal()
+	{
+		return pot.getTurnTotal();
+	}
+
+	public int getBet()
+	{
+		return pot.getBet();
+	}
+
+	public int getRaiseValue()
+	{
+		if (getBet() == 0)
+		{
+			return bigBlind;
+		}
+		else
+		{
+			return players.get(indexPlayer).getCallValue() + getBet();
+		}
 	}
 
 	public List<Player> getPlayers()
@@ -417,7 +501,7 @@ public class GameEngine
 
 	public void setState(State s)
 	{
-		getPot().nextState();
+		pot.nextState();
 		state = s;
 	}
 
@@ -584,7 +668,6 @@ public class GameEngine
 		{
 			p.newTurn();
 		}
-		isFinished = players.size() == 1;
 
 		if (!isFinished)
 		{
@@ -651,15 +734,53 @@ public class GameEngine
 		} while(i != lastPlayer && nbCardInBoard <= Statistics.NUMBER_CARDS_RIVER);
 	}
 
-	private void log(String message)
+	private void log(final String message)
 	{
 		if (logger != null)
 		{
-			logger.append(message + "\n");
+			try
+			{
+				//Necessary error because we modifiy the GUI in another thread than AWT-Q-EVENT
+				SwingUtilities.invokeLater(new Runnable()
+				{
+					@Override
+					public void run()
+					{
+						logger.append(message + "\n");
+					}
+				});
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+
 		}
 		else
 		{
 			System.out.println(message);
 		}
+	}
+
+	private void logPlayerAction(Player player, Action action, int amount)
+	{
+		log(player.getProfile().getName() + " " + action.toString() + " " + ((amount != -1) ? amount + "$" : ""));
+		soundEngine.playSound(action);
+	}
+
+	private void logPlayerAction(Player player, Action action)
+	{
+		logPlayerAction(player, action, -1);
+	}
+
+	private void logBoard(String state, String cards)
+	{
+		log("---- " + state + " ----");
+		log(cards);
+	}
+
+	private void logPlayerFinalResult(String rank, Player player, String handName)
+	{
+		log(rank + " : " + player.getProfile().getName() + " with " + player.getPocket().toString() + " -> " + handName);
 	}
 }

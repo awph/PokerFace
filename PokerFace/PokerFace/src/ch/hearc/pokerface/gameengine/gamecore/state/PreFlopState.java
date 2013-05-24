@@ -27,7 +27,6 @@ public class PreFlopState extends State
 			}
 			ge.changeCurrentPlayer();
 		}
-		ge.updateGUI();
 	}
 
 	@Override
@@ -39,7 +38,6 @@ public class PreFlopState extends State
 	@Override
 	public void nextSate(GameEngine ge)
 	{
-		ge.updateGUI();//The player(s) can now see their cards
 		ge.setOldState(StateType.PreFlopState);
 		ge.setState(new BettingState());
 	}

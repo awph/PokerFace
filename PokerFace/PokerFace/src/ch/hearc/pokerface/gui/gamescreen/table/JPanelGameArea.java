@@ -141,7 +141,7 @@ public class JPanelGameArea extends ImagePanel
 			playerComponent.updateGUI();
 		}
 
-		pot.setText("<html><body>Bet : " + gameEngine.getPot().getBet() + "<br/>StateSpend : " + gameEngine.getPot().getStateTotal() + "<br/>TotalSpend : " + gameEngine.getPot().getTurnTotal() + "</body></html>");
+		pot.setText("<html><body>Bet : " + gameEngine.getBet() + "<br/>StateSpend : " + gameEngine.getStateTotal() + "<br/>TotalSpend : " + gameEngine.getTurnTotal() + "</body></html>");
 	}
 
 	/*------------------------------*\

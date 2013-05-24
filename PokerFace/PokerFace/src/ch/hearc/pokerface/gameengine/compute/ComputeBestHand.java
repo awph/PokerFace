@@ -29,7 +29,7 @@ public class ComputeBestHand
 	{
 		if (actualHand.size() < LENGTH_HAND)
 		{
-			System.err.println("Size Error");//TODO : Find a better way to do it
+			System.err.println("Size Error");
 		}
 		else
 		{

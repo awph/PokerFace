@@ -6,7 +6,6 @@ import java.util.Map;
 
 import ch.hearc.pokerface.gameengine.gamecore.Action;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
-import ch.hearc.pokerface.gameengine.gamecore.Pot;
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gameengine.statistics.Odds;
@@ -26,57 +25,56 @@ public class AI extends Player
 	|*			  Static			*|
 	\*------------------------------*/
 
-	private final static int									MIN_COEF_RAISE			= 1;
-	private final static int									MAX_COEF_RAISE			= 5;
-	private final static long									MAXIMUM_TIME_TO_PLAY	= 2000; //ms
-	private final static long									MINIMUM_TIME_TO_PLAY	= 1000; //ms
+	private final static int									MIN_COEF_RAISE	= 1;
+	private final static int									MAX_COEF_RAISE	= 5;
+	private final static long									TIME_TO_PLAY	= 1000; //ms
 
 	//Map<StateType, Map<nbPlayer,minimumRanking>
-	private static final Map<StateType, Map<Integer, Integer>>	GOOD_HAND				= new HashMap<StateType, Map<Integer, Integer>>()
-																						{
-																							{
-																								//TODO Define good hands for each case
-																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(2, 1));
-																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(3, 1));
-																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(4, 1));
-																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(5, 1));
-																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(6, 1));
-																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(7, 1));
-																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(8, 1));
-																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(9, 1));
-																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(10, 1));
+	private static final Map<StateType, Map<Integer, Integer>>	GOOD_HAND		= new HashMap<StateType, Map<Integer, Integer>>()
+																				{
+																					{
+																						//TODO Define good hands for each case
+																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(2, 1));
+																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(3, 1));
+																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(4, 1));
+																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(5, 1));
+																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(6, 1));
+																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(7, 1));
+																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(8, 1));
+																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(9, 1));
+																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(10, 1));
 
-																								put(StateType.FlopState, new HashMap<Integer, Integer>(2, 1));
-																								put(StateType.FlopState, new HashMap<Integer, Integer>(3, 1));
-																								put(StateType.FlopState, new HashMap<Integer, Integer>(4, 1));
-																								put(StateType.FlopState, new HashMap<Integer, Integer>(5, 1));
-																								put(StateType.FlopState, new HashMap<Integer, Integer>(6, 1));
-																								put(StateType.FlopState, new HashMap<Integer, Integer>(7, 1));
-																								put(StateType.FlopState, new HashMap<Integer, Integer>(8, 1));
-																								put(StateType.FlopState, new HashMap<Integer, Integer>(9, 1));
-																								put(StateType.FlopState, new HashMap<Integer, Integer>(10, 1));
+																						put(StateType.FlopState, new HashMap<Integer, Integer>(2, 1));
+																						put(StateType.FlopState, new HashMap<Integer, Integer>(3, 1));
+																						put(StateType.FlopState, new HashMap<Integer, Integer>(4, 1));
+																						put(StateType.FlopState, new HashMap<Integer, Integer>(5, 1));
+																						put(StateType.FlopState, new HashMap<Integer, Integer>(6, 1));
+																						put(StateType.FlopState, new HashMap<Integer, Integer>(7, 1));
+																						put(StateType.FlopState, new HashMap<Integer, Integer>(8, 1));
+																						put(StateType.FlopState, new HashMap<Integer, Integer>(9, 1));
+																						put(StateType.FlopState, new HashMap<Integer, Integer>(10, 1));
 
-																								put(StateType.TurnState, new HashMap<Integer, Integer>(2, 1));
-																								put(StateType.TurnState, new HashMap<Integer, Integer>(3, 1));
-																								put(StateType.TurnState, new HashMap<Integer, Integer>(4, 1));
-																								put(StateType.TurnState, new HashMap<Integer, Integer>(5, 1));
-																								put(StateType.TurnState, new HashMap<Integer, Integer>(6, 1));
-																								put(StateType.TurnState, new HashMap<Integer, Integer>(7, 1));
-																								put(StateType.TurnState, new HashMap<Integer, Integer>(8, 1));
-																								put(StateType.TurnState, new HashMap<Integer, Integer>(9, 1));
-																								put(StateType.TurnState, new HashMap<Integer, Integer>(10, 1));
+																						put(StateType.TurnState, new HashMap<Integer, Integer>(2, 1));
+																						put(StateType.TurnState, new HashMap<Integer, Integer>(3, 1));
+																						put(StateType.TurnState, new HashMap<Integer, Integer>(4, 1));
+																						put(StateType.TurnState, new HashMap<Integer, Integer>(5, 1));
+																						put(StateType.TurnState, new HashMap<Integer, Integer>(6, 1));
+																						put(StateType.TurnState, new HashMap<Integer, Integer>(7, 1));
+																						put(StateType.TurnState, new HashMap<Integer, Integer>(8, 1));
+																						put(StateType.TurnState, new HashMap<Integer, Integer>(9, 1));
+																						put(StateType.TurnState, new HashMap<Integer, Integer>(10, 1));
 
-																								put(StateType.RiverState, new HashMap<Integer, Integer>(2, 1));
-																								put(StateType.RiverState, new HashMap<Integer, Integer>(3, 1));
-																								put(StateType.RiverState, new HashMap<Integer, Integer>(4, 1));
-																								put(StateType.RiverState, new HashMap<Integer, Integer>(5, 1));
-																								put(StateType.RiverState, new HashMap<Integer, Integer>(6, 1));
-																								put(StateType.RiverState, new HashMap<Integer, Integer>(7, 1));
-																								put(StateType.RiverState, new HashMap<Integer, Integer>(8, 1));
-																								put(StateType.RiverState, new HashMap<Integer, Integer>(9, 1));
-																								put(StateType.RiverState, new HashMap<Integer, Integer>(10, 1));
-																							}
-																						};
+																						put(StateType.RiverState, new HashMap<Integer, Integer>(2, 1));
+																						put(StateType.RiverState, new HashMap<Integer, Integer>(3, 1));
+																						put(StateType.RiverState, new HashMap<Integer, Integer>(4, 1));
+																						put(StateType.RiverState, new HashMap<Integer, Integer>(5, 1));
+																						put(StateType.RiverState, new HashMap<Integer, Integer>(6, 1));
+																						put(StateType.RiverState, new HashMap<Integer, Integer>(7, 1));
+																						put(StateType.RiverState, new HashMap<Integer, Integer>(8, 1));
+																						put(StateType.RiverState, new HashMap<Integer, Integer>(9, 1));
+																						put(StateType.RiverState, new HashMap<Integer, Integer>(10, 1));
+																					}
+																				};
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -95,9 +93,11 @@ public class AI extends Player
 	@Override
 	public void doAction()
 	{
+		gameEngine.updateGUI();
 		stopCurrentSimulation(true);
 		//level1();
 		level23();
+		//check();
 		nbTurnBet++;
 	}
 
@@ -165,18 +165,15 @@ public class AI extends Player
 			{
 				case PreFlopState:
 					double valueHand = Statistics.getChanceHandValuePreFlop(pocket, gameEngine.getNbPlayers());
-					double callValue = getChanceCallValue(valueHand / 100.0, (double)gameEngine.getPot().getBet() / (double)bankroll);
-					//System.out.println(pocket + " VH : " + valueHand);
-					//System.out.println("CV : " + callValue);
+					double callValue = getChanceCallValue(valueHand / 100.0, (double)gameEngine.getBet() / (double)bankroll);
+
 					if (valueHand <= 20.0)
 					{
 						action = Action.Fold;
 					}
 					else if (valueHand < 70.0)
 					{
-						double r = Math.random() * 100.0;
-						System.out.println("\t" + r);
-						if (r > callValue)
+						if (Math.random() * 100.0 > callValue)
 						{
 							action = Action.Fold;
 						}
@@ -191,7 +188,7 @@ public class AI extends Player
 						{
 							callValue /= (Math.pow(nbTurnBet, 2) + 1);
 						}
-						//System.out.println("CV : " + callValue);
+
 						if (Math.random() * 100.0 > callValue)
 						{
 							action = Action.Call;
@@ -199,24 +196,27 @@ public class AI extends Player
 						else
 						{
 							int coef = MIN_COEF_RAISE + (int)(Math.random() * MAX_COEF_RAISE);
-							raiseAmount = coef * gameEngine.getBigBlind() + getCallValue();
+							raiseAmount = coef * gameEngine.getRaiseValue();
 							action = Action.Raise;
 						}
 					}
 
 					break;
 				case FlopState:
+					action = Action.Fold;
 					break;
 				case TurnState:
+					action = Action.Fold;
 					break;
 				case RiverState:
+					action = Action.Fold;
 					break;
 			}
 
 			long delta = System.currentTimeMillis() - start;
-			if (delta < MINIMUM_TIME_TO_PLAY)
+			if (delta < TIME_TO_PLAY)
 			{
-				Thread.sleep(MINIMUM_TIME_TO_PLAY - delta);
+				Thread.sleep(TIME_TO_PLAY - delta);
 			}
 
 			switch(action)
@@ -245,7 +245,7 @@ public class AI extends Player
 		}
 	}
 
-	@SuppressWarnings("incomplete-switch")
+	@SuppressWarnings({ "incomplete-switch", "unused" })
 	private void level1()
 	{
 		try
@@ -273,7 +273,7 @@ public class AI extends Player
 			{
 				action = Action.Check;
 			}
-			else if (gameEngine.getUnorderedBoard().length == 0)//PreFlop
+			else if (gameEngine.getOldState() == StateType.PreFlopState)
 			{
 				double win = sv.getWin();
 				int rand = (int)(Math.random() * 100);
@@ -288,8 +288,7 @@ public class AI extends Player
 			}
 			else
 			{
-				Pot pot = gameEngine.getPot();
-				Odds potOdds = new Odds(getCallValue(), pot.getStateTotal() + pot.getTurnTotal() + getCallValue());
+				Odds potOdds = new Odds(getCallValue(), gameEngine.getStateTotal() + gameEngine.getTurnTotal() + getCallValue());
 				int nbCardsInDeck = Deck.NB_CARD_DECK - gameEngine.getNbPlayers() * Pocket.NUMBER_OF_CARDS - gameEngine.getUnorderedBoard().length;
 				int nbOuts = Statistics.getOuts(pocket, gameEngine.getBoard());
 				Odds pokerOdds = new Odds(nbOuts, nbCardsInDeck - nbOuts);
@@ -305,9 +304,9 @@ public class AI extends Player
 			}
 
 			long delta = System.currentTimeMillis() - start;
-			if (delta < MINIMUM_TIME_TO_PLAY)
+			if (delta < TIME_TO_PLAY)
 			{
-				Thread.sleep(MINIMUM_TIME_TO_PLAY - delta);
+				Thread.sleep(TIME_TO_PLAY - delta);
 			}
 			switch(action)
 			{
@@ -318,7 +317,14 @@ public class AI extends Player
 					check();
 					break;
 				case Fold:
-					fold();
+					if (getCallValue() == 0)
+					{
+						check();
+					}
+					else
+					{
+						fold();
+					}
 					break;
 			}
 		}
