@@ -66,6 +66,8 @@ public class NewProfileComponent extends Box
 		add(nameProfile);
 		add(Box.createHorizontalGlue());
 		add(okButton);
+
+		nameProfile.requestFocus();
 	}
 	private void control()
 	{

@@ -340,6 +340,11 @@ public class Player extends Observable implements Observer
 	|*				Get				*|
 	\*------------------------------*/
 
+	public boolean getHasWon()
+	{
+		return hasWon;
+	}
+
 	public int getCallValue()
 	{
 		return gameEngine.getPot().getBet() - betSpending;

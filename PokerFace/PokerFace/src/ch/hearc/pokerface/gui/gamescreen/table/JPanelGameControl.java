@@ -2,21 +2,26 @@
 package ch.hearc.pokerface.gui.gamescreen.table;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -25,7 +30,7 @@ import javax.swing.text.DefaultFormatter;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
-import ch.hearc.pokerface.gui.tools.ImageShop;
+import ch.hearc.pokerface.gui.tools.JPanelGlue;
 
 public class JPanelGameControl extends JPanel
 {
@@ -33,13 +38,17 @@ public class JPanelGameControl extends JPanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private JSpinner	moneyTextArea;
+	//Tools
+	private JSpinner	moneySpinner;
 	private JSlider		moneySlider;
 	private JButton		allinButton;
 	private JButton		betRaiseButton;
 	private JButton		checkCallButton;
 	private JButton		foldButton;
 
+	private JTextArea	loggerTextArea;
+
+	//IO
 	private GameEngine	gameEngine;
 
 	/*------------------------------------------------------------------*\
@@ -87,12 +96,20 @@ public class JPanelGameControl extends JPanel
 		{
 			if (humanPlayer.isDead())
 			{
-				JOptionPane.showMessageDialog(null, "Sorry buddy, you didn't get so much luck !", "You lose !", JOptionPane.INFORMATION_MESSAGE);
+				String winnerName = null;
+				for(Player ia:gameEngine.getPlayers())
+				{
+					if (ia.getHasWon())
+					{
+						winnerName = ia.getProfile().getName();
+					}
+				}
+				JOptionPane.showMessageDialog(null, winnerName + " won !", "You lose !", JOptionPane.INFORMATION_MESSAGE);
 
 			}
 			else
 			{
-				JOptionPane.showMessageDialog(null, "Woaw guy, you mastered the entire game !", "You win !", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "You win this game !", "You win !", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 
@@ -101,7 +118,7 @@ public class JPanelGameControl extends JPanel
 		foldButton.setEnabled(isHumanPlayerTurn);
 		allinButton.setEnabled(isHumanPlayerTurn);
 		moneySlider.setEnabled(isHumanPlayerTurn);
-		moneyTextArea.setEnabled(isHumanPlayerTurn);
+		moneySpinner.setEnabled(isHumanPlayerTurn);
 	}
 
 	/*------------------------------*\
@@ -118,57 +135,85 @@ public class JPanelGameControl extends JPanel
 
 	private void geometry()
 	{
-		Box box = Box.createVerticalBox();
+
 		allinButton = new JButton("All in");
-		moneySlider = new JSlider(SwingConstants.HORIZONTAL);
+		moneySlider = new JSlider(SwingConstants.VERTICAL);
 		betRaiseButton = new JButton();
 		checkCallButton = new JButton();
 		foldButton = new JButton("Fold");
-		moneyTextArea = new JSpinner();
+		moneySpinner = new JSpinner();
+		loggerTextArea = new JTextArea();
+
+		loggerTextArea.setMaximumSize(loggerTextArea.getPreferredSize());
+		loggerTextArea.setAutoscrolls(false);
+		loggerTextArea.setEditable(false);
+		gameEngine.setLogger(loggerTextArea);
+
+		JScrollPane scrollPane = new JScrollPane(loggerTextArea, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setPreferredSize(new Dimension(200, 60));
+
+		scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener()
+		{
+			public void adjustmentValueChanged(AdjustmentEvent e)
+			{
+				e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+			}
+		});
 
 		// makes spinner update imediately
-		JComponent comp = moneyTextArea.getEditor();
+		JComponent comp = moneySpinner.getEditor();
 		JFormattedTextField field = (JFormattedTextField)comp.getComponent(0);
 		DefaultFormatter formatter = (DefaultFormatter)field.getFormatter();
 		formatter.setCommitsOnValidEdit(true);
 
-		moneyTextArea.setMaximumSize(moneyTextArea.getMinimumSize());
+		moneySpinner.setMaximumSize(new Dimension(30, 20));
 
 		allinButton.setMargin(new Insets(10, 10, 10, 10));
 
-		Box boxAll = Box.createHorizontalBox();
-		boxAll.add(moneyTextArea);
-		boxAll.add(Box.createHorizontalGlue());
-		boxAll.add(allinButton);
+		GridLayout layout = new GridLayout(1, 4);
+		setLayout(layout);
 
-		box.add(boxAll);
-		box.add(Box.createVerticalStrut(5));
-		box.add(moneySlider);
-		box.add(Box.createVerticalStrut(5));
-		box.add(betRaiseButton);
-		box.add(Box.createVerticalStrut(5));
-		box.add(checkCallButton);
-		box.add(Box.createVerticalStrut(5));
-		box.add(foldButton);
-		add(box);
+		Box boxButtons = Box.createVerticalBox();
+		boxButtons.add(allinButton);
+		boxButtons.add(Box.createVerticalStrut(5));
+		boxButtons.add(betRaiseButton);
+		boxButtons.add(Box.createVerticalStrut(5));
+		boxButtons.add(checkCallButton);
+		boxButtons.add(Box.createVerticalStrut(5));
+		boxButtons.add(foldButton);
+
+		Box spinnerBox = Box.createVerticalBox();
+		spinnerBox.add(moneySpinner);
+		spinnerBox.add(Box.createVerticalGlue());
+
+		Box boxControls = Box.createHorizontalBox();
+		boxControls.add(spinnerBox);
+		boxControls.add(moneySlider);
+		boxControls.add(boxButtons);
+
+		Box containerBox = Box.createHorizontalBox();
+		containerBox.add(boxControls);
+		containerBox.add(new JPanelGlue(BoxLayout.X_AXIS));
+		containerBox.add(scrollPane);
+		add(containerBox);
 	}
 
 	private void control()
 	{
 
-		moneyTextArea.addChangeListener(new ChangeListener()
+		moneySpinner.addChangeListener(new ChangeListener()
 		{
 
 			@Override
 			public void stateChanged(ChangeEvent e)
 			{
-				if ((int)moneyTextArea.getValue() <= moneySlider.getMaximum() && (int)moneyTextArea.getValue() > moneySlider.getMinimum())
+				if ((int)moneySpinner.getValue() <= moneySlider.getMaximum() && (int)moneySpinner.getValue() > moneySlider.getMinimum())
 				{
-					moneySlider.setValue((int)moneyTextArea.getValue());
+					moneySlider.setValue((int)moneySpinner.getValue());
 				}
 				else
 				{
-					moneyTextArea.setValue(moneySlider.getValue());
+					moneySpinner.setValue(moneySlider.getValue());
 				}
 			}
 		});
@@ -179,7 +224,7 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void stateChanged(ChangeEvent arg0)
 			{
-				moneyTextArea.setValue(moneySlider.getValue());
+				moneySpinner.setValue(moneySlider.getValue());
 				if (gameEngine.getPot().getBet() == 0)
 				{
 					betRaiseButton.setText("Bet " + moneySlider.getValue() + "$");
@@ -267,40 +312,10 @@ public class JPanelGameControl extends JPanel
 	private void appearance()
 	{
 		setBackground(Color.BLACK);
-		styleButton(checkCallButton);
-		styleButton(foldButton);
-		styleButton(betRaiseButton);
-		styleButton(allinButton);
+		ButtonTools.setStyleToButton(checkCallButton, "turquoise");
+		ButtonTools.setStyleToButton(foldButton, "red");
+		ButtonTools.setStyleToButton(betRaiseButton, "green");
+		ButtonTools.setStyleToButton(allinButton, "gold");
 	}
 
-	public static void styleButton(final JButton button)
-	{
-		button.setHorizontalTextPosition(SwingConstants.CENTER);
-		button.setContentAreaFilled(false);
-		button.setBorder(BorderFactory.createEmptyBorder());
-		button.setForeground(Color.WHITE);
-		try
-		{
-			button.setFont(ButtonTools.getButtonFont());
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		button.setIcon(ImageShop.ICON_BUTTON_NORMAL_SCALED);
-		button.addMouseListener(new MouseAdapter()
-		{
-			@Override
-			public void mouseEntered(MouseEvent evt)
-			{
-				button.setIcon(ImageShop.ICON_BUTTON_SELECTED_SCALED);
-			}
-
-			@Override
-			public void mouseExited(MouseEvent evt)
-			{
-				button.setIcon(ImageShop.ICON_BUTTON_NORMAL_SCALED);
-			}
-		});
-	}
 }

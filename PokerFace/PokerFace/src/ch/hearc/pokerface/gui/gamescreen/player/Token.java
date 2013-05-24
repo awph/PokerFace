@@ -1,12 +1,9 @@
 
 package ch.hearc.pokerface.gui.gamescreen.player;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import ch.hearc.pokerface.gui.tools.ImageShop;
 
 public class Token extends JLabel
 {
@@ -38,25 +35,17 @@ public class Token extends JLabel
 		{
 			if ("Dealer".equals(role))
 			{
-				role = "d";
+				setIcon(ImageShop.ICON_TOKEN_D_SCALED);
 			}
 			else if ("Small Blind".equals(role))
 			{
-				role = "sb";
+				setIcon(ImageShop.ICON_TOKEN_SB_SCALED);
 			}
 			else if ("Big Blind".equals(role))
 			{
-				role = "bb";
+				setIcon(ImageShop.ICON_TOKEN_BB_SCALED);
 			}
 
-			try
-			{
-				setIcon(new ImageIcon(ImageIO.read(new File("resources/table/tokens/" + role + ".png"))));
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		else
 		{

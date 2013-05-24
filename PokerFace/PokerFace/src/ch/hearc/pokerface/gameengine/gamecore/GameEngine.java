@@ -9,6 +9,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
 
+import javax.swing.JTextArea;
+
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.compute.ComputeBestHand;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
@@ -56,6 +58,8 @@ public class GameEngine
 	private Card[]				futureBoard;
 	private JPanelGameBoard		panelGameBoard;
 
+	private JTextArea			logger;
+
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
@@ -72,6 +76,7 @@ public class GameEngine
 	public GameEngine(int smallBlind, int nbPlayer, Profile profile, int bankroll, JPanelGameBoard panelGameBoard)
 	{
 		this.panelGameBoard = panelGameBoard;
+		logger = null;
 
 		nbTurn = 0;
 		pot = new Pot();
@@ -260,7 +265,7 @@ public class GameEngine
 
 	public void logPlayerAction(Player player, Action action, int amount)
 	{
-		System.out.println(player.getProfile().getName() + " " + action.toString() + " " + ((amount != -1) ? amount + "$" : ""));
+		log(player.getProfile().getName() + " " + action.toString() + " " + ((amount != -1) ? amount + "$" : ""));
 		soundEngine.playSound(action);
 	}
 
@@ -271,13 +276,13 @@ public class GameEngine
 
 	public void logBoard(String state, String cards)
 	{
-		System.out.println("---- " + state + " ----");
-		System.out.println(cards);
+		log("---- " + state + " ----");
+		log(cards);
 	}
 
 	public void logPlayerFinalResult(String rank, Player player, String handName)
 	{
-		System.out.println(rank + " : " + player.getProfile().getName() + " with " + player.getPocket().toString() + " -> " + handName);
+		log(rank + " : " + player.getProfile().getName() + " with " + player.getPocket().toString() + " -> " + handName);
 	}
 
 	/*------------------------------*\
@@ -394,6 +399,11 @@ public class GameEngine
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
+
+	public void setLogger(JTextArea logger)
+	{
+		this.logger = logger;
+	}
 
 	public void setIndexLastRaise(Player p)
 	{
@@ -634,5 +644,17 @@ public class GameEngine
 				nbCardInBoard++;
 			}
 		} while(i != lastPlayer && nbCardInBoard <= Statistics.NUMBER_CARDS_RIVER);
+	}
+
+	private void log(String message)
+	{
+		if (logger != null)
+		{
+			logger.append(message + "\n");
+		}
+		else
+		{
+			System.out.println(message);
+		}
 	}
 }

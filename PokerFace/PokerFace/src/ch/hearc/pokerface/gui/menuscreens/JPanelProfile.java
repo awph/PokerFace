@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gui.JFrameMain;
-import ch.hearc.pokerface.gui.gamescreen.table.JPanelGameControl;
 import ch.hearc.pokerface.gui.profile.ProfileListContainer;
+import ch.hearc.pokerface.gui.tools.ButtonTools;
 import ch.hearc.pokerface.gui.tools.ImagePanel;
 import ch.hearc.pokerface.gui.tools.JPanelGlue;
 
@@ -71,9 +71,10 @@ public class JPanelProfile extends ImagePanel
 
 		container = new ProfileListContainer(new ArrayList<Profile>(),this);
 		createProfileButton = new JButton("Create profile");
-		JPanelGameControl.styleButton(createProfileButton);
+		ButtonTools.setStyleToButton(createProfileButton, "pink");
 
 		setLayout(new BorderLayout());
+
 		Box outsideBox = Box.createHorizontalBox();
 		Box insideBox = Box.createVerticalBox();
 

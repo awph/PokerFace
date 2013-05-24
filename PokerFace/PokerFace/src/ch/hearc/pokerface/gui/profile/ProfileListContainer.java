@@ -61,7 +61,9 @@ public class ProfileListContainer extends Box
 		removeProfiles();
 
 		currentIndex = 0;
-		profileComponentList.addFirst(new NewProfileComponent(this));
+
+		NewProfileComponent newProfile = new NewProfileComponent(this);
+		profileComponentList.addFirst(newProfile);
 
 		addProfilesToBox();
 		repaint();

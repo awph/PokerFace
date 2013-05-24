@@ -86,8 +86,10 @@ public class PlayerComponent extends JPanel
 
 		if (player.isFolded() || player.isDead())
 		{
-			setOpaque(true);
-			setBackground(Color.red);
+			//setOpaque(true);
+			//setBackground(Color.red);
+			card1.setCard("back");
+			card2.setCard("back");
 		}
 		else
 		{

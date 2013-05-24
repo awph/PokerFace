@@ -13,8 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import ch.hearc.pokerface.gui.JFrameMain;
-import ch.hearc.pokerface.gui.gamescreen.table.JPanelGameControl;
 import ch.hearc.pokerface.gui.options.JPanelTopBar;
+import ch.hearc.pokerface.gui.tools.ButtonTools;
 import ch.hearc.pokerface.gui.tools.ImagePanel;
 
 public class JPanelMainMenu extends ImagePanel
@@ -73,11 +73,11 @@ public class JPanelMainMenu extends ImagePanel
 		panelCenter = new JPanel();
 		panelCenter.setLayout(new BoxLayout(panelCenter, BoxLayout.X_AXIS));
 
-		playButton = new JButton("Play");
-		backButton = new JButton("Back");
+		playButton = new JButton("PLAY");
+		backButton = new JButton("BACK");
 
-		JPanelGameControl.styleButton(playButton);
-		JPanelGameControl.styleButton(backButton);
+		ButtonTools.setStyleToButton(playButton, "blue");
+		ButtonTools.setStyleToButton(backButton, "blue");
 
 		panelCenter.setOpaque(false);
 	}

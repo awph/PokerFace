@@ -20,7 +20,7 @@ public class JPanelGameBoard extends JPanel
 	//Content
 	private JPanelGameArea		gameArea;
 	private JPanelGameControl	gameControl;
-	private final JPanelTopBar		panelTopBar = JPanelTopBar.getInstance();
+	private final JPanelTopBar	panelTopBar	= JPanelTopBar.getInstance();
 
 	//Game
 	protected GameEngine		gameEngine;
