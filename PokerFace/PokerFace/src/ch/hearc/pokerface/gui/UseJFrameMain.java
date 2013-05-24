@@ -5,13 +5,9 @@ import java.io.IOException;
 
 import javax.swing.UIManager;
 
-import ch.hearc.pokerface.gameengine.cards.Card;
-import ch.hearc.pokerface.gameengine.cards.CardColor;
-import ch.hearc.pokerface.gameengine.cards.CardValue;
 import ch.hearc.pokerface.gameengine.compute.HandsPokerMap;
 import ch.hearc.pokerface.gameengine.gamecore.SoundEngine;
 import ch.hearc.pokerface.gameengine.statistics.Statistics;
-import ch.hearc.pokerface.gameengine.subsets.Pocket;
 
 public class UseJFrameMain
 {
@@ -37,11 +33,7 @@ public class UseJFrameMain
 
 	private static void splashScreenLoading()
 	{
-		Pocket p = new Pocket();
-		p.add(new Card(CardValue.Ace, CardColor.Spades));
-		p.add(new Card(CardValue.Ace, CardColor.Diamonds));
-
-		Statistics.getPreFlopValues(p, 2);
+		Statistics.initialize();
 		SoundEngine.getInstance();
 		HandsPokerMap.getInstance();
 

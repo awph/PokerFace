@@ -2,8 +2,10 @@
 package ch.hearc.pokerface.gameengine.statistics;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -28,7 +30,7 @@ public class Statistics
 
 	private final static String											FILENAME_XML		= "preflop_values";
 	private final static Map<StateType, Map<String, StatisticValue>>[]	maps				= XMLReader.getXMLValue(FILENAME_XML);
-
+	private static Map<String, Double>[]								chanceOfCall;
 	public final static int												NUMBER_CARDS_FLOP	= 3;
 	public final static int												NUMBER_CARDS_TURN	= 4;
 	public final static int												NUMBER_CARDS_RIVER	= 5;
@@ -41,9 +43,46 @@ public class Statistics
 	|*			  Static			*|
 	\*------------------------------*/
 
+	public static void initialize()
+	{
+		chanceOfCall = new HashMap[maps.length];
+
+		for(int i = 0; i < maps.length; ++i)
+		{
+			chanceOfCall[i] = new HashMap<String, Double>();
+			double max = 0;
+			Set<Entry<String, StatisticValue>> entrySet = maps[i].get(StateType.PreFlopState).entrySet();
+			for(Entry<String, StatisticValue> entry:entrySet)
+			{
+				if (entry.getValue().getWin() > max)
+				{
+					max = entry.getValue().getWin();
+				}
+			}
+
+			for(Entry<String, StatisticValue> entry:entrySet)
+			{
+				chanceOfCall[i].put(entry.getKey(), entry.getValue().getWin()/max*100.0);
+			}
+		}
+	}
+
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+
+	/**
+	 * Return the pourcentage to call the bet
+	 *
+	 * @param p
+	 *            : Player's pocket
+	 * @param nbPlayer
+	 *            : Number of players
+	 */
+	public static double getChanceHandValuePreFlop(Pocket p, int nbPlayer)
+	{
+		return chanceOfCall[nbPlayer - XMLReader.NB_MIN_PLAYER].get(p.getKey());
+	}
 
 	/**
 	 * Return Preflop values
@@ -263,4 +302,5 @@ public class Statistics
 
 		return outs.size();
 	}
+
 }

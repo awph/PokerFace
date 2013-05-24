@@ -35,7 +35,7 @@ public class XMLReader
 	public static Map<StateType, Map<String, StatisticValue>>[] getXMLValue(String filename)
 	{
 		@SuppressWarnings("unchecked")
-		Map<StateType, Map<String, StatisticValue>>[] out = new Map[NB_MAX_PLAYER];
+		Map<StateType, Map<String, StatisticValue>>[] out = new Map[NB_MAX_PLAYER-NB_MIN_PLAYER+1];
 
 		for(int i = 0; i < NB_MAX_PLAYER-NB_MIN_PLAYER; ++i)
 		{
