@@ -41,7 +41,7 @@ public class AI extends Player
 																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(8, 1));
 																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(9, 1));
 																								put(StateType.PreFlopState, new HashMap<Integer, Integer>(10, 1));
-	
+
 																								put(StateType.FlopState, new HashMap<Integer, Integer>(2, 1));
 																								put(StateType.FlopState, new HashMap<Integer, Integer>(3, 1));
 																								put(StateType.FlopState, new HashMap<Integer, Integer>(4, 1));
@@ -51,7 +51,7 @@ public class AI extends Player
 																								put(StateType.FlopState, new HashMap<Integer, Integer>(8, 1));
 																								put(StateType.FlopState, new HashMap<Integer, Integer>(9, 1));
 																								put(StateType.FlopState, new HashMap<Integer, Integer>(10, 1));
-	
+
 																								put(StateType.TurnState, new HashMap<Integer, Integer>(2, 1));
 																								put(StateType.TurnState, new HashMap<Integer, Integer>(3, 1));
 																								put(StateType.TurnState, new HashMap<Integer, Integer>(4, 1));
@@ -61,7 +61,7 @@ public class AI extends Player
 																								put(StateType.TurnState, new HashMap<Integer, Integer>(8, 1));
 																								put(StateType.TurnState, new HashMap<Integer, Integer>(9, 1));
 																								put(StateType.TurnState, new HashMap<Integer, Integer>(10, 1));
-	
+
 																								put(StateType.RiverState, new HashMap<Integer, Integer>(2, 1));
 																								put(StateType.RiverState, new HashMap<Integer, Integer>(3, 1));
 																								put(StateType.RiverState, new HashMap<Integer, Integer>(4, 1));
@@ -158,7 +158,7 @@ public class AI extends Player
 			else
 			{
 				Pot pot = gameEngine.getPot();
-				Odds potOdds = new Odds(getCallValue(), pot.getTurnTotal() + getCallValue());
+				Odds potOdds = new Odds(getCallValue(), pot.getStateTotal() + pot.getTurnTotal() + getCallValue());
 				int nbCardsInDeck = Deck.NB_CARD_DECK - gameEngine.getNbPlayers() * Pocket.NUMBER_OF_CARDS - gameEngine.getUnorderedBoard().length;
 				int nbOuts = Statistics.getOuts(pocket, gameEngine.getBoard());
 				Odds pokerOdds = new Odds(nbOuts, nbCardsInDeck - nbOuts);

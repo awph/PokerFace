@@ -24,8 +24,8 @@ public class Odds implements Comparable<Odds>
 		this.favorable = favorable;
 		this.defavorable = defavorable;
 
-		win = favorable / (favorable + defavorable) * 100.0;
-		loss = 100.0 - win;
+		this.win = 1.0/((double)favorable / (double)(favorable + defavorable)+1.0) * 100.0;
+		this.loss = 100.0 - this.win;
 	}
 
 	/*------------------------------------------------------------------*\
@@ -54,7 +54,7 @@ public class Odds implements Comparable<Odds>
 	{
 		StringBuilder builder = new StringBuilder();
 		builder.append("");
-		builder.append(this.defavorable);
+		builder.append(this.favorable);
 		builder.append(" : ");
 		builder.append(this.defavorable);
 		builder.append(" -> Win : ");
