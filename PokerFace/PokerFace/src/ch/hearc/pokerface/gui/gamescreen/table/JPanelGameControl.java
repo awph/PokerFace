@@ -36,7 +36,6 @@ public class JPanelGameControl extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-
 	//Tools
 	private JSpinner	moneySpinner;
 	private JSlider		moneySlider;
@@ -49,6 +48,14 @@ public class JPanelGameControl extends JPanel
 
 	//IO
 	private GameEngine	gameEngine;
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	private static final String	ALL_IN	= "All in";
+	private static final String	FOLD	= "Fold";
+
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -68,7 +75,7 @@ public class JPanelGameControl extends JPanel
 
 	public void updateGUI()
 	{
-		checkCallButton.setEnabled(true);
+		checkCallButton.setEnabled(true); //TODO WTF ???
 		Player humanPlayer = GameEngine.HUMAN_PLAYER;
 		int betRaiseValue = gameEngine.getRaiseValue();
 		try
@@ -94,24 +101,36 @@ public class JPanelGameControl extends JPanel
 		moneySlider.setMaximum(humanPlayer.getBankroll());
 		moneySlider.setValue(betRaiseValue);
 
-
-		if (humanPlayer.getCallValue() == 0)
+		if (!humanPlayer.isFolded())
 		{
-			checkCallButton.setText("Check");
-			betRaiseButton.setText("Bet " + betRaiseValue + "$");
-		}
-		else
-		{
-			if(betRaiseValue <= humanPlayer.getCallValue())
+			if (humanPlayer.getCallValue() == 0)
 			{
-				checkCallButton.setText("All-in with " + betRaiseValue + "$");
-				betRaiseButton.setText("All-in with  " + betRaiseValue + "$");
+				checkCallButton.setText("Check");
+				betRaiseButton.setText("Bet " + betRaiseValue + "$");
 			}
 			else
 			{
-				checkCallButton.setText("Call " + humanPlayer.getCallValue() + "$");
-				betRaiseButton.setText("Raise " + betRaiseValue + "$");
+				if (betRaiseValue <= humanPlayer.getCallValue())
+				{
+					checkCallButton.setText("All-in with " + betRaiseValue + "$");
+					betRaiseButton.setText("All-in with  " + betRaiseValue + "$");
+				}
+				else
+				{
+					checkCallButton.setText("Call " + humanPlayer.getCallValue() + "$");
+					betRaiseButton.setText("Raise " + betRaiseValue + "$");
+				}
 			}
+			allinButton.setText(ALL_IN);
+			foldButton.setText(FOLD);
+		}
+		else
+		{
+
+			allinButton.setText("");
+			betRaiseButton.setText("");
+			checkCallButton.setText("");
+			foldButton.setText("");
 		}
 
 		boolean isHumanPlayerTurn = false;
@@ -161,11 +180,11 @@ public class JPanelGameControl extends JPanel
 	private void geometry()
 	{
 
-		allinButton = new JButton("All in");
+		allinButton = new JButton(ALL_IN);
 		moneySlider = new JSlider(SwingConstants.VERTICAL);
 		betRaiseButton = new JButton();
 		checkCallButton = new JButton();
-		foldButton = new JButton("Fold");
+		foldButton = new JButton(FOLD);
 		moneySpinner = new JSpinner();
 		loggerTextArea = new JTextArea();
 
@@ -267,6 +286,7 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				disableButton();
 				Player humanPlayer = GameEngine.HUMAN_PLAYER;
 				synchronized (humanPlayer)
 				{
@@ -282,6 +302,7 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				disableButton();
 				Player humanPlayer = GameEngine.HUMAN_PLAYER;
 				synchronized (humanPlayer)
 				{
@@ -304,6 +325,7 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				disableButton();
 				Player humanPlayer = GameEngine.HUMAN_PLAYER;
 				synchronized (humanPlayer)
 				{
@@ -319,6 +341,7 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				disableButton();
 				Player humanPlayer = GameEngine.HUMAN_PLAYER;
 				synchronized (humanPlayer)
 				{
@@ -338,4 +361,13 @@ public class JPanelGameControl extends JPanel
 		ButtonTools.setStyleToButton(allinButton, "gold");
 	}
 
+	private void disableButton()
+	{
+		betRaiseButton.setEnabled(false);
+		checkCallButton.setEnabled(false);
+		foldButton.setEnabled(false);
+		allinButton.setEnabled(false);
+		moneySlider.setEnabled(false);
+		moneySpinner.setEnabled(false);
+	}
 }

@@ -2,6 +2,8 @@
 package ch.hearc.pokerface.gui.gamescreen.player;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.io.File;
 import java.io.IOException;
 
@@ -23,15 +25,21 @@ public class PlayerComponent extends JPanel
 	\*------------------------------------------------------------------*/
 
 	//Tools
-	private Player			player;
+	private Player				player;
 
 	//IO
-	private JLabel			name;
-	private JLabel			money;
+	private JLabel				name;
+	private JLabel				money;
 
-	private CardComponent	card1;
-	private CardComponent	card2;
-	private Token			role;
+	private CardComponent		card1;
+	private CardComponent		card2;
+	private Token				role;
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	private static final String	LABEL_FONT_NAME	= "resources/Franklin Gothic Demi Cond.ttf";
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -40,12 +48,11 @@ public class PlayerComponent extends JPanel
 	public PlayerComponent(Player player)
 	{
 		this.player = player;
-
 		//money = new JLabel(Integer.toString(player.getBankroll()));
 
 		try
 		{
-			money = new JLabel(Integer.toString(player.getBankroll()), new ImageIcon(ImageIO.read(new File("resources/coin.png"))), SwingConstants.CENTER);
+			money = new JLabel("$" + Integer.toString(player.getBankroll()), new ImageIcon(ImageIO.read(new File("resources/coin.png"))), SwingConstants.CENTER);
 			name = new JLabel(player.getProfile().getName(), player.getProfile().getAvatar().getIcon(), SwingConstants.CENTER);
 		}
 		catch (IOException e)
@@ -55,9 +62,6 @@ public class PlayerComponent extends JPanel
 
 		money.setHorizontalTextPosition(SwingConstants.LEFT);
 		name.setHorizontalTextPosition(SwingConstants.LEFT);
-
-		name.setForeground(Color.RED);
-		money.setForeground(Color.GREEN);
 
 		card1 = new PlayerCard("back");
 		card2 = new PlayerCard("back");
@@ -75,31 +79,24 @@ public class PlayerComponent extends JPanel
 
 	public void updateGUI()
 	{
-
-		// IF Card is not revealed, image is "back.png" (to be set in getId of each card)
-		if (player.getPocket().getArray().length != 0)
-		{
-			card1.setCard(player.getPocket().getArray()[0].getId());
-			card2.setCard(player.getPocket().getArray()[1].getId());
-		}
-		role.setToken(player.getRole().toString());
-
 		if (player.isFolded() || player.isDead())
 		{
-			//setOpaque(true);
-			//setBackground(Color.red);
-			card1.setCard("back");
-			card2.setCard("back");
+			card1.setCard("folded1");
+			card2.setCard("folded2");
 		}
 		else
 		{
-			if (isOpaque())
+			// IF Card is not revealed, image is "back.png" (to be set in getId of each card)
+			if (player.getPocket().getArray().length != 0)
 			{
-				setOpaque(false);
+				card1.setCard(player.getPocket().getArray()[0].getId());
+				card2.setCard(player.getPocket().getArray()[1].getId());
 			}
-			setBackground(null);
 		}
-		money.setText(Integer.toString(player.getBankroll()));
+
+		role.setToken(player.getRole().toString());
+		money.setText("$" + Integer.toString(player.getBankroll()));
+		getParent().repaint(money.getX(), money.getY(), money.getWidth(), money.getHeight());
 	}
 
 	/*------------------------------*\
@@ -135,7 +132,24 @@ public class PlayerComponent extends JPanel
 
 	private void appearance()
 	{
-		setOpaque(false);
-	}
+		setBackground(new Color(25, 25, 25, 120));
 
+		Font font = name.getFont();
+		try
+		{
+			font = Font.createFont(Font.TRUETYPE_FONT, new File(LABEL_FONT_NAME));
+		}
+		catch (FontFormatException | IOException e)
+		{
+			e.printStackTrace();
+		}
+		font = font.deriveFont(20f);
+		font = font.deriveFont(Font.PLAIN);
+
+		name.setFont(font);
+		money.setFont(font);
+
+		name.setForeground(Color.WHITE);
+		money.setForeground(new Color(255,215,0));
+	}
 }
