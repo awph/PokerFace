@@ -9,6 +9,8 @@ import java.awt.LayoutManager;
 
 /**
  * A layout manager that lays out components along an ellipsis.
+ *
+ * @author Danick Fort, Inspired from Cay Horstmann @ http://www.java2s.com/Code/Java/Swing-JFC/Alayoutmanagerthatlaysoutcomponentsalongacircle.htm
  */
 public class EllipsisLayout implements LayoutManager
 {
@@ -17,7 +19,7 @@ public class EllipsisLayout implements LayoutManager
 		if (CENTER.equals(name))
 		{
 			parent.setName("Centered");
-			nonEllipseComp++; // Is not an element that goes on the ellipse
+			nonEllipseComp++; // Is not an element that goes on the ellipse, used to compute the angle when calculating the position of circle-laid-out components
 		}
 	}
 

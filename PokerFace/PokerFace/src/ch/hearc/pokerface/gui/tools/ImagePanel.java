@@ -26,6 +26,7 @@ public class ImagePanel extends JPanel
 	private Dimension		currentImageDimension;
 	private Image			scaledImage;
 
+	private boolean repaintForced = false;
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
@@ -51,7 +52,7 @@ public class ImagePanel extends JPanel
 	@Override
 	protected void paintComponent(Graphics graphics)
 	{
-		if (!currentImageDimension.equals(getSize()))
+		if (!currentImageDimension.equals(getSize()) || repaintForced)
 		{
 			scaledImage = backgroundImage.getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
 			currentImageDimension = new Dimension(getSize());
@@ -66,5 +67,10 @@ public class ImagePanel extends JPanel
 		{
 			graphics.drawImage(scaledImage, xImagePosition, yImagePosition, this);
 		}
+	}
+
+	protected void setForceRepaint(boolean r)
+	{
+		repaintForced = r;
 	}
 }

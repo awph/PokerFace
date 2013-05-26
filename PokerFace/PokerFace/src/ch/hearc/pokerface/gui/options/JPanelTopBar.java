@@ -25,6 +25,7 @@ import javax.swing.event.ChangeListener;
 
 import ch.hearc.pokerface.gameengine.gamecore.SoundEngine;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
+import ch.hearc.pokerface.gui.JFrameMain;
 import ch.hearc.pokerface.gui.tools.ImageShop;
 
 public final class JPanelTopBar extends JPanel
@@ -35,10 +36,10 @@ public final class JPanelTopBar extends JPanel
 	private static volatile JPanelTopBar	instance	= null;
 
 	// Inputs / Outputs
-	private JLabel 							avatar;
+	private JLabel							avatar;
 	private JLabel							name;
 	private JLabel							bankroll;
-	private JLabel coin;
+	private JLabel							coin;
 	private JLabel							clockLabel;
 	private JLabel							quitApplication;
 	private JLabel							quitGame;
@@ -46,6 +47,8 @@ public final class JPanelTopBar extends JPanel
 	private JSlider							volumeSlider;
 
 	private SimpleDateFormat				ft;
+
+	private JFrameMain						frameMain;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -76,7 +79,7 @@ public final class JPanelTopBar extends JPanel
 		try
 		{
 			//TODO A mettre dans imageshop
-			coin = new JLabel("",new ImageIcon(ImageIO.read(new File("resources/coin.png"))),0);
+			coin = new JLabel("", new ImageIcon(ImageIO.read(new File("resources/coin.png"))), 0);
 		}
 		catch (IOException e)
 		{
@@ -85,13 +88,13 @@ public final class JPanelTopBar extends JPanel
 
 		bankroll = new JLabel();
 		clockLabel = new JLabel();
-		clockLabel.setFont(new Font("Arial",Font.BOLD,18));
-		quitApplication = new JLabel("",ImageShop.ICON_BUTTON_QUIT_APPLICATION,0);
-		quitGame = new JLabel("",ImageShop.ICON_BUTTON_QUIT_GAME,0);
+		clockLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		quitApplication = new JLabel("", ImageShop.ICON_BUTTON_QUIT_APPLICATION, 0);
+		quitGame = new JLabel("", ImageShop.ICON_BUTTON_QUIT_GAME, 0);
 		volumeIcon = new JLabel("\u266B");
-		volumeIcon.setFont(new Font("Arial",Font.BOLD,18));
+		volumeIcon.setFont(new Font("Arial", Font.BOLD, 18));
 
-		volumeSlider = new JSlider(SwingConstants.HORIZONTAL,0,100,50);
+		volumeSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 50);
 		volumeSlider.setPaintLabels(false);
 
 		ft = new SimpleDateFormat("HH:mm:ss");
@@ -118,7 +121,7 @@ public final class JPanelTopBar extends JPanel
 		info.add(quitApplication);
 		info.add(Box.createHorizontalStrut(10));
 
-		setLayout(new GridLayout(1,3));
+		setLayout(new GridLayout(1, 3));
 
 		add(profil);
 		add(options);
@@ -138,6 +141,11 @@ public final class JPanelTopBar extends JPanel
 		name.setText(profile.getName());
 		avatar.setIcon(profile.getAvatar().getIcon());
 		bankroll.setText(profile.getCapital() + " $");
+	}
+
+	public void setFrameMain(JFrameMain frameMain)
+	{
+		this.frameMain = frameMain;
 	}
 
 	/*------------------------------*\
@@ -169,6 +177,10 @@ public final class JPanelTopBar extends JPanel
 			public void mouseClicked(MouseEvent e)
 			{
 				//TODO revenir menu principal
+				if (frameMain != null)
+				{
+					frameMain.gameToMainMenu();
+				}
 			}
 		});
 
@@ -177,7 +189,7 @@ public final class JPanelTopBar extends JPanel
 			@Override
 			public void stateChanged(ChangeEvent arg0)
 			{
-				SoundEngine.getInstance().setVolume((float)(volumeSlider.getValue()/100.0));
+				SoundEngine.getInstance().setVolume((float)(volumeSlider.getValue() / 100.0));
 			}
 		});
 	}

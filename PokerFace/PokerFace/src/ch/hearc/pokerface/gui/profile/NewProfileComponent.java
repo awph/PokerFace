@@ -1,21 +1,21 @@
 
 package ch.hearc.pokerface.gui.profile;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
+import ch.hearc.pokerface.gui.tools.ButtonTools;
+import ch.hearc.pokerface.gui.tools.JPanelGlue;
 
-public class NewProfileComponent extends Box
+public class NewProfileComponent extends ProfileComponentPanel
 {
 
 	/*------------------------------------------------------------------*\
@@ -25,17 +25,16 @@ public class NewProfileComponent extends Box
 	private JButton okButton;
 	private ProfileListContainer parent;
 	private JTextField nameProfile;
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
 	public NewProfileComponent(ProfileListContainer parent)
 	{
-		super(BoxLayout.X_AXIS);
+		super();
 
 		this.parent = parent;
-
-		setBorder(BorderFactory.createStrokeBorder(new BasicStroke(1)));
 
 		geometry();
 		control();
@@ -57,17 +56,26 @@ public class NewProfileComponent extends Box
 	\*------------------------------------------------------------------*/
 	private void geometry()
 	{
-		okButton = new JButton("ok");
+
+		setLayout(new GridLayout());
+		okButton = new JButton("OK");
 
 		nameProfile = new JTextField("Name",5);
 		nameProfile.setForeground(Color.RED);
+		try
+		{
+			nameProfile.setFont(ButtonTools.getButtonFont(false));
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		nameProfile.setMaximumSize(new Dimension(200, 50));
 
 		add(nameProfile);
-		add(Box.createHorizontalGlue());
+		add(new JPanelGlue(BoxLayout.X_AXIS));
 		add(okButton);
 
-		nameProfile.requestFocus();
 	}
 	private void control()
 	{

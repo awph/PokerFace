@@ -34,7 +34,10 @@ public class ImageShop
 	private static final String		NAME_IMAGE_TOKEN_SB				= "table/tokens/sb.png";
 	private static final String		NAME_IMAGE_TOKEN_D				= "table/tokens/d.png";
 
+	private static final String		NAME_IMAGE_COIN					= "coin.png";
+
 	private static final String		NAME_IMAGE_BACKGROUND			= "table/background.png";
+	private static final String		NAME_IMAGE_SPLASH				= "splash.png";
 
 	private static final boolean	IS_BLOQUANT						= true;
 
@@ -42,6 +45,10 @@ public class ImageShop
 	public static final ImageIcon ICON_BUTTON_QUIT_APPLICATION = ImageTools.loadScaledIcon(PATH + NAME_IMAGE_BUTTON_QUIT_APPLICATION, 0.4, IS_BLOQUANT);
 
 	public static final Image		IMAGE_BACKGROUND				= ImageTools.load(PATH + NAME_IMAGE_BACKGROUND, IS_BLOQUANT);
+	public static final Image		IMAGE_SPLASH					= ImageTools.load(PATH + NAME_IMAGE_SPLASH, IS_BLOQUANT);
+
+	public static final Image		IMAGE_COIN						= ImageTools.load(PATH + NAME_IMAGE_COIN, IS_BLOQUANT);
+	public static final ImageIcon	ICON_COIN						= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_COIN, 1, IS_BLOQUANT);
 
 	public static final Image		IMAGE_TOKEN_BB					= ImageTools.load(PATH + NAME_IMAGE_TOKEN_BB, IS_BLOQUANT);
 	public static final Image		IMAGE_TOKEN_SB					= ImageTools.load(PATH + NAME_IMAGE_TOKEN_SB, IS_BLOQUANT);
@@ -86,4 +93,5 @@ public class ImageShop
 
 	public static final ImageIcon	ICON_BUTTON_B_NORMAL_SCALED		= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_BUTTON_B_NORMAL, 0.75, IS_BLOQUANT);
 	public static final ImageIcon	ICON_BUTTON_B_SELECTED_SCALED	= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_BUTTON_B_SELECTED, 0.75, IS_BLOQUANT);
+
 }

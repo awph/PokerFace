@@ -2,9 +2,7 @@
 package ch.hearc.pokerface.gui;
 
 import java.awt.CardLayout;
-import java.awt.Frame;
-import java.awt.Graphics2D;
-import java.awt.SplashScreen;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -14,6 +12,9 @@ import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
 import ch.hearc.pokerface.gui.menuscreens.JOPTableConfiguration;
 import ch.hearc.pokerface.gui.menuscreens.JPanelMainMenu;
 import ch.hearc.pokerface.gui.menuscreens.JPanelProfile;
+import ch.hearc.pokerface.gui.options.JPanelTopBar;
+import ch.hearc.pokerface.gui.tools.ImageShop;
+import ch.hearc.pokerface.gui.tools.SplashWindow;
 
 public class JFrameMain extends JFrame
 {
@@ -32,7 +33,8 @@ public class JFrameMain extends JFrame
 
 	public JFrameMain()
 	{
-		//createSplashScreen(); //TODO il faut introduire un fichier manifest pour lancer le splash screen
+		createSplashScreen(); //TODO il faut introduire un fichier manifest pour lancer le splash screen
+		JPanelTopBar.getInstance().setFrameMain(this);
 
 		geometry();
 		control();
@@ -50,14 +52,18 @@ public class JFrameMain extends JFrame
 		if (card == "panelGameBoard")
 		{
 			JOPTableConfiguration tableConfig = new JOPTableConfiguration(this, panelGameBoard);
-			if (!tableConfig.switchToGame())
-			{
-				return; // Abort the process of switching to gameBoard
+			if (!tableConfig.switchToGame()) { return; // Abort the process of switching to gameBoard
 			}
 
-			setFullscreen();
+			setFullscreen(true);
 		}
 		layout.show(this.getContentPane(), card);
+	}
+
+	public void gameToMainMenu()
+	{
+		setFullscreen(false);
+		setCard("panelMainMenu");
 	}
 
 	/*------------------------------*\
@@ -68,7 +74,6 @@ public class JFrameMain extends JFrame
 	|*				Get				*|
 	\*------------------------------*/
 
-
 	public JPanelProfile getProfilePanel()
 	{
 		return panelProfile;
@@ -78,21 +83,25 @@ public class JFrameMain extends JFrame
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
-	private void setFullscreen()
+	private void setFullscreen(boolean isFullscreened)
 	{
-		setResizable(false);
-				/*setVisible(false);
+		setVisible(false);
 		dispose();
-		//setUndecorated(true); // TODO Disable for test purposes
-		GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(this);
-		setVisible(true);*/
+		setUndecorated(!isUndecorated());
+		if (isFullscreened)
+		{
+			GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(this);
+		}
+		else
+		{
+			GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(null);
+		}
+		setVisible(true);
 	}
 
 	private void geometry()
 	{
-		setExtendedState(Frame.MAXIMIZED_BOTH);
 
-		setUndecorated(true);
 		/**
 		 * Layout
 		 */
@@ -157,7 +166,6 @@ public class JFrameMain extends JFrame
 
 		setSize(1200, (int)(1200 * 0.75));
 
-
 		setTitle("\u2666 \u2665 \u2660 \u2663 Pokerface \u2663 \u2660 \u2665 \u2666");
 
 		setResizable(false);
@@ -171,36 +179,17 @@ public class JFrameMain extends JFrame
 
 	private void createSplashScreen()
 	{
-		final SplashScreen splash = SplashScreen.getSplashScreen();
-		if (splash == null)
+		SplashWindow.splash(ImageShop.IMAGE_SPLASH);
+		try
 		{
-			System.out.println("SplashScreen.getSplashScreen() returned null");
-			return;
+			Thread.sleep(1000);
 		}
-		Graphics2D g = splash.createGraphics();
-		if (g == null)
+		catch (Exception e)
 		{
-			System.out.println("g is null");
-			return;
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		for(int i = 0; i < 100; i++)
-		{
-			renderSplashFrame(g, i);
-			splash.update();
-			try
-			{
-				Thread.sleep(90);
-			}
-			catch (InterruptedException e)
-			{
-			}
-		}
-		splash.close();
-	}
-
-	private void renderSplashFrame(Graphics2D g, int i)
-	{
-		g.drawString("Prout" + i, 120, 150);
+		SplashWindow.disposeSplash();
 	}
 
 }

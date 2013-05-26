@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +24,7 @@ public class ProfileListContainer extends Box
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	private LinkedList<Box>		profileComponentList;
+	private LinkedList<ProfileComponentPanel>		profileComponentList;
 	private List<Component>		profileReferenceList;
 	private final int			VERTICAL_GAP	= 10;
 
@@ -42,7 +45,7 @@ public class ProfileListContainer extends Box
 
 		currentIndex = 0;
 
-		profileComponentList = new LinkedList<Box>();
+		profileComponentList = new LinkedList<ProfileComponentPanel>();
 		profileReferenceList = new ArrayList<Component>();
 
 		fillProfileListTest();
@@ -100,8 +103,48 @@ public class ProfileListContainer extends Box
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
+	private MouseListener arrowListener = new MouseAdapter()
+	{
+
+		@Override
+		public void mouseReleased(MouseEvent e)
+		{
+			profilePanel.repaint();
+			((Component)e.getSource()).setForeground(Color.GREEN);
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e)
+		{
+			profilePanel.repaint();
+			((Component)e.getSource()).setForeground(Color.WHITE); // Color of background when clicking. Cant remove background when clicking, because it is dictated by Look and Feel
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e)
+		{
+			profilePanel.repaint();
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e)
+		{
+
+			profilePanel.repaint();
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent arg0)
+		{
+			profilePanel.repaint();
+		}
+	};
+
 	private void control()
 	{
+		upArrow.addMouseListener(arrowListener);
+		downArrow.addMouseListener(arrowListener);
+
 		upArrow.addActionListener(new ActionListener()
 		{
 
@@ -113,7 +156,6 @@ public class ProfileListContainer extends Box
 					currentIndex--;
 				}
 				refreshProfiles();
-				//System.out.println(currentIndex);
 			}
 		});
 
@@ -128,7 +170,6 @@ public class ProfileListContainer extends Box
 					currentIndex++;
 				}
 				refreshProfiles();
-				//System.out.println(currentIndex);
 			}
 		});
 	}
@@ -153,12 +194,12 @@ public class ProfileListContainer extends Box
 	private void addProfilesToBox()
 	{
 
-		for(int i = currentIndex, j = 2; i < currentIndex + 3; i++, j = j + 2)
+		for(int i = currentIndex, j = 1; i < currentIndex + 3; i++, j = j + 1)
 		{
 			profileReferenceList.add(add(profileComponentList.get(i), j));
 			Box vStrutBox = Box.createHorizontalBox();
-			vStrutBox.add(createVerticalStrut(VERTICAL_GAP));
-			profileReferenceList.add(add(vStrutBox, j + 1));
+			//vStrutBox.add(createVerticalStrut(VERTICAL_GAP));
+			//profileReferenceList.add(add(vStrutBox, j + 1));
 		}
 	}
 
@@ -178,12 +219,14 @@ public class ProfileListContainer extends Box
 		upArrow.setFocusPainted(false);
 		upArrow.setOpaque(false);
 		upArrow.setBorderPainted(false);
+		upArrow.setForeground(Color.GREEN);
 
 		downArrow = new JButton("\u2193");
 		downArrow.setBackground(Color.MAGENTA);
 		downArrow.setOpaque(false);
 		downArrow.setFocusPainted(false);
 		downArrow.setBorderPainted(false);
+		downArrow.setForeground(Color.GREEN);
 
 		Box upArrowBox = Box.createHorizontalBox();
 		upArrowBox.add(createHorizontalGlue());
@@ -193,7 +236,7 @@ public class ProfileListContainer extends Box
 		vStrutBox.add(createVerticalStrut(VERTICAL_GAP));
 
 		add(upArrowBox);
-		add(vStrutBox);
+		//add(vStrutBox);
 
 		addProfilesToBox();
 
