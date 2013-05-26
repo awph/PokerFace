@@ -27,6 +27,7 @@ public class JPanelProfile extends ImagePanel
 	\*------------------------------------------------------------------*/
 
 	private JButton	createProfileButton; // TODO create profile!
+	private JButton quit;
 	private JFrameMain mainFrame;
 
 	private ProfileListContainer container;
@@ -71,6 +72,8 @@ public class JPanelProfile extends ImagePanel
 
 		container = new ProfileListContainer(new ArrayList<Profile>(),this);
 		createProfileButton = new JButton("Create profile");
+		quit = new JButton("Quit");
+		ButtonTools.setStyleToButton(quit, "pink");
 		ButtonTools.setStyleToButton(createProfileButton, "pink");
 
 		setLayout(new BorderLayout());
@@ -81,6 +84,7 @@ public class JPanelProfile extends ImagePanel
 		insideBox.add(Box.createVerticalGlue());
 		insideBox.add(container);
 		insideBox.add(createProfileButton);
+		insideBox.add(quit);
 		insideBox.add(Box.createVerticalGlue());
 
 		outsideBox.add(Box.createHorizontalGlue());
@@ -105,6 +109,16 @@ public class JPanelProfile extends ImagePanel
 			public void actionPerformed(ActionEvent arg0)
 			{
 				container.createNewProfile();
+			}
+		});
+
+		quit.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				System.exit(0);
 			}
 		});
 	}

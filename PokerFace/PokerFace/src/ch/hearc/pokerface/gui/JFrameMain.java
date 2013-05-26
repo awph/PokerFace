@@ -2,8 +2,8 @@
 package ch.hearc.pokerface.gui;
 
 import java.awt.CardLayout;
+import java.awt.Frame;
 import java.awt.Graphics2D;
-import java.awt.GraphicsEnvironment;
 import java.awt.SplashScreen;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -80,16 +80,19 @@ public class JFrameMain extends JFrame
 
 	private void setFullscreen()
 	{
-		setVisible(false);
+		setResizable(false);
+				/*setVisible(false);
 		dispose();
 		//setUndecorated(true); // TODO Disable for test purposes
 		GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(this);
-		setVisible(true);
+		setVisible(true);*/
 	}
 
 	private void geometry()
 	{
+		setExtendedState(Frame.MAXIMIZED_BOTH);
 
+		setUndecorated(true);
 		/**
 		 * Layout
 		 */
