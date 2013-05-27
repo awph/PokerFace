@@ -58,7 +58,7 @@ public class GameEngine
 	private int					bigBlind;
 	private Card[]				futureBoard;
 	private JPanelGameBoard		panelGameBoard;
-
+	private Profile profilePlayer;
 	private JTextArea			logger;
 
 	/*------------------------------*\
@@ -77,6 +77,7 @@ public class GameEngine
 	public GameEngine(int smallBlind, int nbPlayer, Profile profile, int bankroll, JPanelGameBoard panelGameBoard)
 	{
 		this.panelGameBoard = panelGameBoard;
+		this.profilePlayer = profile;
 		logger = null;
 
 		nbTurn = 0;
@@ -107,6 +108,11 @@ public class GameEngine
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
+
+	public void leave()
+	{
+		profilePlayer.setCapital(HUMAN_PLAYER.getBankroll());
+	}
 
 	public void run()
 	{

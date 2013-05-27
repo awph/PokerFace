@@ -63,6 +63,7 @@ public class JFrameMain extends JFrame
 	public void gameToMainMenu()
 	{
 		setFullscreen(false);
+		//TODO appler gameengine.leave();
 		setCard("panelMainMenu");
 	}
 

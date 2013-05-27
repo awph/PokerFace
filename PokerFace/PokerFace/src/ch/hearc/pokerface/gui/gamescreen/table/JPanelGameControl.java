@@ -75,7 +75,6 @@ public class JPanelGameControl extends JPanel
 
 	public void updateGUI()
 	{
-		checkCallButton.setEnabled(true); //TODO WTF ???
 		Player humanPlayer = GameEngine.HUMAN_PLAYER;
 		int betRaiseValue = gameEngine.getRaiseValue();
 		try

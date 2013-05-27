@@ -96,7 +96,7 @@ public class PlayerComponent extends JPanel
 
 		role.setToken(player.getRole().toString());
 		money.setText("$" + Integer.toString(player.getBankroll()));
-		getParent().repaint(money.getX(), money.getY(), money.getWidth(), money.getHeight());
+		getParent().repaint(getX(), getY(), getWidth(), getHeight());
 	}
 
 	/*------------------------------*\
