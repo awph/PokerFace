@@ -3,12 +3,11 @@ package ch.hearc.pokerface.gui.menuscreens;
 
 import java.awt.GridLayout;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
-import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
@@ -27,10 +26,10 @@ public class JOPTableConfiguration extends JOptionPane
 	private static final int	NB_PLAYER_DEFAULT	= 4;
 
 	private static final int	BLIND_MIN			= 10;
-	private static final int	BLIND_DEFAULT		= 10;
+	private static final int	DIVISOR_MIN_BLIND	= 4;
 
-	private JTextArea			bankRollTextArea;
-	private JTextArea			smallBlindSpinner;
+	private JTextField			bankRollTextField;
+	private JTextField			smallBlindTextField;
 	private JSpinner			nbPlayersSpinner;
 
 	private int					startCash;
@@ -39,8 +38,8 @@ public class JOPTableConfiguration extends JOptionPane
 
 	//Inputs
 
-	private JFrame frameMain;
-	private JPanelGameBoard panelGameBoard;
+	private JFrameMain				frameMain;
+	private JPanelGameBoard		panelGameBoard;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -55,15 +54,13 @@ public class JOPTableConfiguration extends JOptionPane
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	public static boolean trySwitchToGameBoard() {
-		// TODO : cancel button management (go mainMenu if cancel..)
+	public static boolean trySwitchToGameBoard()
+	{
 		return false;
 	}
 
-
 	public boolean switchToGame()
 	{
-
 		boolean dialog = false;
 		boolean checkValues = false;
 		boolean isCanceled = false;
@@ -74,17 +71,13 @@ public class JOPTableConfiguration extends JOptionPane
 
 			if (!dialog)
 			{
-
 				isCanceled = true;
 			}
-
 			else if (checkValues)
 			{
-				panelGameBoard.start(new GameEngine(smallBlind, nbPlayers, ActiveProfile.getInstance().getProfile(), startCash, panelGameBoard));
+				panelGameBoard.start(new GameEngine(frameMain,smallBlind, nbPlayers, ActiveProfile.getInstance().getProfile(), startCash, panelGameBoard));
 			}
-			else {
-				JOptionPane.showOptionDialog(null, "Values out of bounds!", "Mother Fucker!", DEFAULT_OPTION, ERROR_MESSAGE, null, null, null);
-			}
+
 		} while(!checkValues && !isCanceled);
 		return !isCanceled;
 	}
@@ -103,21 +96,43 @@ public class JOPTableConfiguration extends JOptionPane
 
 	private boolean checkValues()
 	{
-		try {
-			nbPlayers = Integer.parseInt(nbPlayersSpinner.getValue().toString());
-			smallBlind = Integer.parseInt(smallBlindSpinner.getText());
-			startCash = Integer.parseInt(bankRollTextArea.getText());
-		}
-		catch(Exception e)
+		try
 		{
-			JOptionPane.showOptionDialog(null, "Invalid values!", "Mother Fucker!", DEFAULT_OPTION, ERROR_MESSAGE, null, null, null);
+			nbPlayers = Integer.parseInt(nbPlayersSpinner.getValue().toString());
+			smallBlind = Integer.parseInt(smallBlindTextField.getText());
+			startCash = Integer.parseInt(bankRollTextField.getText());
+		}
+		catch (Exception e)
+		{
+			JOptionPane.showOptionDialog(null, "One or more fields don't contain a number !", "Invalid values !", DEFAULT_OPTION, ERROR_MESSAGE, null, null, null);
+			return false;
 		}
 
-		boolean nbPlayersOk = (nbPlayers >= NB_PLAYER_MIN && nbPlayers <= 10);
-		boolean smallBlindOk = (smallBlind >= BLIND_MIN && smallBlind <= startCash / 4);
-		boolean startCashOk = (startCash <= ActiveProfile.getInstance().getProfile().getCapital());
+		try
+		{
+			if (nbPlayers < NB_PLAYER_MIN || nbPlayers > NB_PLAYER_MAX)
+			{
+				Exception e = new Exception("Values out of bounds for player ! Minimum " + NB_PLAYER_MIN + " and maximum " + NB_PLAYER_MAX);
+				throw e;
+			}
+			if (smallBlind < BLIND_MIN || smallBlind > startCash / DIVISOR_MIN_BLIND)
+			{
+				Exception e = new Exception("Values out of bounds for the blind ! Minimum " + BLIND_MIN + " and maximum " + startCash / DIVISOR_MIN_BLIND);
+				throw e;
+			}
+			if (startCash > ActiveProfile.getInstance().getProfile().getCapital())
+			{
+				Exception e = new Exception("Values out of bounds for the bankroll ! You don't have enough money ! ");
+				throw e;
+			}
+		}
+		catch (Exception e)
+		{
+			JOptionPane.showOptionDialog(null, e.getMessage(), "Invalid values !", DEFAULT_OPTION, ERROR_MESSAGE, null, null, null);
+			return false;
+		}
 
-		return (nbPlayersOk && smallBlindOk && startCashOk);
+		return true;
 	}
 
 	private boolean showDialog()
@@ -134,20 +149,16 @@ public class JOPTableConfiguration extends JOptionPane
 		int bankRoll = (ActiveProfile.getInstance().getProfile().getCapital());
 
 		nbPlayersSpinner = new JSpinner(new SpinnerNumberModel(NB_PLAYER_DEFAULT, NB_PLAYER_MIN, NB_PLAYER_MAX, 1));
-
-		smallBlindSpinner = new JTextArea(String.valueOf(10));
-
-		//((DefaultEditor)nbPlayersSpinner.getEditor()).getTextField().setEditable(false); greys out nbplayerSpinner
-		bankRollTextArea = new JTextArea(String.valueOf(bankRoll));
+		smallBlindTextField = new JTextField(String.valueOf(BLIND_MIN));
+		bankRollTextField = new JTextField(String.valueOf(bankRoll));
 
 		panel.add(new JLabel("Blind"));
-		panel.add(smallBlindSpinner);
+		panel.add(smallBlindTextField);
 		panel.add(new JLabel("Number of players"));
 		panel.add(nbPlayersSpinner);
 		panel.add(new JLabel("Bankroll"));
-		panel.add(bankRollTextArea);
+		panel.add(bankRollTextField);
 
 		return panel;
 	}
-
 }

@@ -28,6 +28,7 @@ import ch.hearc.pokerface.gameengine.statistics.Statistics;
 import ch.hearc.pokerface.gameengine.subsets.Board;
 import ch.hearc.pokerface.gameengine.subsets.CardSubset;
 import ch.hearc.pokerface.gameengine.subsets.Deck;
+import ch.hearc.pokerface.gui.JFrameMain;
 import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
 import ch.hearc.pokerface.tools.Pair;
 import ch.hearc.pokerface.tools.Triple;
@@ -58,9 +59,9 @@ public class GameEngine
 	private int					bigBlind;
 	private Card[]				futureBoard;
 	private JPanelGameBoard		panelGameBoard;
-	private Profile profilePlayer;
+	private Profile				profilePlayer;
 	private JTextArea			logger;
-
+	private JFrameMain	frameMain;
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
@@ -68,14 +69,16 @@ public class GameEngine
 	public static Player		HUMAN_PLAYER;
 	private static final int	NB_TURN_BEFORE_CHANGE_BLIND	= 8;
 	private static final long	DELAY_BETWEEN_EACH_TURN		= 3000;
+	private static final int	NB_SECOND_BEFORE_LEAVING	= 5;
 
 	// initialize to nbPlayer*(-2) and incremented each draw of card. After the players have received theirs cards, we use it to define the correct card in the variable futureBoard to get
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public GameEngine(int smallBlind, int nbPlayer, Profile profile, int bankroll, JPanelGameBoard panelGameBoard)
+	public GameEngine(JFrameMain frame,int smallBlind, int nbPlayer, Profile profile, int bankroll, JPanelGameBoard panelGameBoard)
 	{
+		this.frameMain = frame;
 		this.panelGameBoard = panelGameBoard;
 		this.profilePlayer = profile;
 		logger = null;
@@ -108,6 +111,35 @@ public class GameEngine
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
+
+	public void finishTheGame()
+	{
+		if (HUMAN_PLAYER == players.get(0))
+		{
+			log("YOU WIN !");
+		}
+		else
+		{
+			log("GAME OVER ! " + players.get(0).getProfile().getName() + " won");
+		}
+		log("You will leave the game in " + NB_SECOND_BEFORE_LEAVING + " seconds");
+		int sec = NB_SECOND_BEFORE_LEAVING;
+
+		try
+		{
+			while(sec >= 0)
+			{
+				log(String.valueOf(sec--));
+				Thread.sleep(1000);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		leave();
+		frameMain.gameToMainMenu();
+	}
 
 	public void leave()
 	{
@@ -184,7 +216,7 @@ public class GameEngine
 			int callValue = player.getCallValue();
 			player.takeMoney(amount);
 			pot.addStateTotalAndSetBet(callValue);
-			pot.addStateTotalAndAddBet(amount-callValue);
+			pot.addStateTotalAndAddBet(amount - callValue);
 			updateGUI();
 			setIndexLastRaise(player);
 		}

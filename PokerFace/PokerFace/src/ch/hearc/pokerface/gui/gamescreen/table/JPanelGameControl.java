@@ -14,7 +14,6 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
@@ -146,14 +145,8 @@ public class JPanelGameControl extends JPanel
 		}
 		else
 		{
-			if (humanPlayer.isDead())
-			{
-				JOptionPane.showMessageDialog(null, gameEngine.getPlayers().get(0).getProfile().getName() + " wins !", "You lose !", JOptionPane.INFORMATION_MESSAGE);
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "You win this game !", "You win !", JOptionPane.INFORMATION_MESSAGE);
-			}
+			gameEngine.finishTheGame();
+			gameEngine.leave();
 		}
 
 		betRaiseButton.setEnabled(isHumanPlayerTurn);
@@ -178,7 +171,6 @@ public class JPanelGameControl extends JPanel
 
 	private void geometry()
 	{
-
 		allinButton = new JButton(ALL_IN);
 		moneySlider = new JSlider(SwingConstants.VERTICAL);
 		betRaiseButton = new JButton();

@@ -176,7 +176,6 @@ public final class JPanelTopBar extends JPanel
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				//TODO revenir menu principal
 				if (frameMain != null)
 				{
 					frameMain.gameToMainMenu();
