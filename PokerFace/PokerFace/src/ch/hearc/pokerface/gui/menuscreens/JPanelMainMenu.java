@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import ch.hearc.pokerface.gui.JFrameMain;
@@ -26,6 +27,7 @@ public class JPanelMainMenu extends ImagePanel
 
 	private JButton			backButton;
 	private JButton			playButton;
+	private JButton			aboutButton;
 	private JFrameMain		mainFrame;
 	private JPanelTopBar	topBarPanel = JPanelTopBar.getInstance();
 
@@ -74,9 +76,11 @@ public class JPanelMainMenu extends ImagePanel
 		panelCenter.setLayout(new BoxLayout(panelCenter, BoxLayout.X_AXIS));
 
 		playButton = new JButton("PLAY");
+		aboutButton = new JButton("ABOUT");
 		backButton = new JButton("BACK");
 
 		ButtonTools.setStyleToButton(playButton, "blue");
+		ButtonTools.setStyleToButton(aboutButton, "blue");
 		ButtonTools.setStyleToButton(backButton, "blue");
 
 		panelCenter.setOpaque(false);
@@ -84,6 +88,16 @@ public class JPanelMainMenu extends ImagePanel
 
 	private void control()
 	{
+		aboutButton.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent event)
+			{
+				JOptionPane.showMessageDialog(null, "about", "about", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+
 		playButton.addActionListener(new ActionListener()
 		{
 
@@ -111,16 +125,22 @@ public class JPanelMainMenu extends ImagePanel
 
 		Box playBox = Box.createHorizontalBox();
 		Box backBox = Box.createHorizontalBox();
+		Box aboutBox = Box.createHorizontalBox();
 
 		playBox.add(Box.createHorizontalGlue());
 		playBox.add(playButton);
 		playBox.add(Box.createHorizontalGlue());
+
+		aboutBox.add(Box.createHorizontalGlue());
+		aboutBox.add(aboutButton);
+		aboutBox.add(Box.createHorizontalGlue());
 
 		backBox.add(Box.createHorizontalGlue());
 		backBox.add(backButton);
 		backBox.add(Box.createHorizontalGlue());
 
 		insideBox.add(playBox);
+		insideBox.add(aboutBox);
 		insideBox.add(backBox);
 
 		panelCenter.add(insideBox);

@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -26,6 +27,9 @@ public class PlayerComponent extends JPanel
 
 	//Tools
 	private Player				player;
+
+	private boolean				allinShow;
+	private boolean				isHumanPlayer;
 
 	//IO
 	private JLabel				name;
@@ -77,6 +81,32 @@ public class PlayerComponent extends JPanel
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	public void setHasWonGraphics(boolean b)
+	{
+		if (b)
+		{
+			setBackground(Color.GREEN);
+		}
+		else
+		{
+
+			setBackground(new Color(25, 25, 25, 120));
+		}
+	}
+
+	public void setCurrentlyPlayingGraphics(boolean b)
+	{
+		if (b)
+		{
+			setBorder(BorderFactory.createLineBorder(Color.YELLOW,3));
+		}
+		else
+		{
+			setBorder(BorderFactory.createEmptyBorder());
+		}
+
+	}
+
 	public void updateGUI()
 	{
 		if (player.isFolded() || player.isDead())
@@ -86,11 +116,14 @@ public class PlayerComponent extends JPanel
 		}
 		else
 		{
-			// IF Card is not revealed, image is "back.png" (to be set in getId of each card)
+
 			if (player.getPocket().getArray().length != 0)
 			{
-				card1.setCard(player.getPocket().getArray()[0].getId());
-				card2.setCard(player.getPocket().getArray()[1].getId());
+				//if (allinShow || !(player instanceof AI)) A METTRE DANS VERSION FINALE
+				{
+					card1.setCard(player.getPocket().getArray()[0].getId());
+					card2.setCard(player.getPocket().getArray()[1].getId());
+				}
 			}
 		}
 
@@ -102,10 +135,22 @@ public class PlayerComponent extends JPanel
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
+	/*public void setIsHumanPlayer(boolean b)
+	{
+		isHumanPlayer = b;
+	}*/
 
+	public void setAllinShow(boolean b)
+	{
+		allinShow = b;
+	}
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+	public Player getPlayer()
+	{
+		return player;
+	}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
@@ -152,4 +197,5 @@ public class PlayerComponent extends JPanel
 		name.setForeground(Color.WHITE);
 		money.setForeground(new Color(255, 215, 0));
 	}
+
 }

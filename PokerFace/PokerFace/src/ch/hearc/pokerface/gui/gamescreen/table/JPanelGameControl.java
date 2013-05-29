@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -42,6 +44,8 @@ public class JPanelGameControl extends JPanel
 	private JButton				betRaiseButton;
 	private JButton				checkCallButton;
 	private JButton				foldButton;
+
+	boolean mouseIsInLogger = false;
 
 	private JTextArea			loggerTextArea;
 	private JPanelStatistics	statisticsPanel;
@@ -196,7 +200,10 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void adjustmentValueChanged(AdjustmentEvent e)
 			{
-				e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+				if (!mouseIsInLogger)
+				{
+					e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+				}
 			}
 		});
 
@@ -244,6 +251,21 @@ public class JPanelGameControl extends JPanel
 
 	private void control()
 	{
+		loggerTextArea.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseExited(MouseEvent arg0)
+			{
+				mouseIsInLogger = false;
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0)
+			{
+				mouseIsInLogger = true;
+			}
+		});
+
 		moneySpinner.addChangeListener(new ChangeListener()
 		{
 			@Override

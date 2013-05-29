@@ -94,6 +94,7 @@ public class JPanelGameArea extends ImagePanel
 		add(panelPlayer, BorderLayout.CENTER);
 
 		final Player humanPlayer = GameEngine.HUMAN_PLAYER;
+
 		/*
 		Thread thread = new Thread(new Runnable()
 		{
@@ -136,12 +137,41 @@ public class JPanelGameArea extends ImagePanel
 
 		boardCardsPanel.setCards(cards);
 
+		boolean everyoneAllin = false;
+
+		if (gameEngine.getAllInPlayer() == gameEngine.getUnfoldedPlayer())
+		{
+			everyoneAllin = true;
+		}
+
 		for(PlayerComponent playerComponent:playerComponents)
 		{
 			playerComponent.updateGUI();
+			if (playerComponent.getPlayer() == gameEngine.getCurrentPlayer())
+			{
+				playerComponent.setCurrentlyPlayingGraphics(true);
+			}
+			else
+			{
+				playerComponent.setCurrentlyPlayingGraphics(false);
+			}
+			if (playerComponent.getPlayer().getHasWon())
+			{
+				playerComponent.setHasWonGraphics(true);
+			}
+			else
+			{
+				playerComponent.setHasWonGraphics(false);
+			}
+			if (everyoneAllin)
+			{
+				playerComponent.setAllinShow(true);
+			}
 		}
 
-		pot.setText("<html><body>Bet : " + gameEngine.getBet() + "<br/>StateSpend : " + gameEngine.getStateTotal() + "<br/>TotalSpend : " + gameEngine.getTurnTotal() + "</body></html>");
+		{
+			pot.setText("<html><body>Bet : " + gameEngine.getBet() + "<br/>StateSpend : " + gameEngine.getStateTotal() + "<br/>TotalSpend : " + gameEngine.getTurnTotal() + "</body></html>");
+		}
 	}
 
 	/*------------------------------*\
