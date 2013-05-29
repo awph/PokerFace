@@ -183,7 +183,7 @@ public class JFrameMain extends JFrame
 		SplashWindow.splash(ImageShop.IMAGE_SPLASH);
 		try
 		{
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 		}
 		catch (Exception e)
 		{

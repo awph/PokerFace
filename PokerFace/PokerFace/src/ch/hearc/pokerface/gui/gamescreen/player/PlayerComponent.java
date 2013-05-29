@@ -39,7 +39,7 @@ public class PlayerComponent extends JPanel
 	|*			  Static			*|
 	\*------------------------------*/
 
-	private static final String	LABEL_FONT_NAME	= "resources/Franklin Gothic Demi Cond.ttf";
+	public static final String	FONT	= "resources/Franklin Gothic Demi Cond.ttf";
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -96,7 +96,7 @@ public class PlayerComponent extends JPanel
 
 		role.setToken(player.getRole().toString());
 		money.setText("$" + Integer.toString(player.getBankroll()));
-		getParent().repaint(getX(), getY(), getWidth(), getHeight());
+		getParent().repaint();
 	}
 
 	/*------------------------------*\
@@ -137,7 +137,7 @@ public class PlayerComponent extends JPanel
 		Font font = name.getFont();
 		try
 		{
-			font = Font.createFont(Font.TRUETYPE_FONT, new File(LABEL_FONT_NAME));
+			font = Font.createFont(Font.TRUETYPE_FONT, new File(FONT));
 		}
 		catch (FontFormatException | IOException e)
 		{
@@ -150,6 +150,6 @@ public class PlayerComponent extends JPanel
 		money.setFont(font);
 
 		name.setForeground(Color.WHITE);
-		money.setForeground(new Color(255,215,0));
+		money.setForeground(new Color(255, 215, 0));
 	}
 }

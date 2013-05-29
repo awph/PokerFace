@@ -36,17 +36,18 @@ public class JPanelGameControl extends JPanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 	//Tools
-	private JSpinner	moneySpinner;
-	private JSlider		moneySlider;
-	private JButton		allinButton;
-	private JButton		betRaiseButton;
-	private JButton		checkCallButton;
-	private JButton		foldButton;
+	private JSpinner			moneySpinner;
+	private JSlider				moneySlider;
+	private JButton				allinButton;
+	private JButton				betRaiseButton;
+	private JButton				checkCallButton;
+	private JButton				foldButton;
 
-	private JTextArea	loggerTextArea;
+	private JTextArea			loggerTextArea;
+	private JPanelStatistics	statisticsPanel;
 
 	//IO
-	private GameEngine	gameEngine;
+	private GameEngine			gameEngine;
 
 	/*------------------------------*\
 	|*			  Static			*|
@@ -54,7 +55,6 @@ public class JPanelGameControl extends JPanel
 
 	private static final String	ALL_IN	= "All in";
 	private static final String	FOLD	= "Fold";
-
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -101,6 +101,8 @@ public class JPanelGameControl extends JPanel
 
 		if (!humanPlayer.isFolded())
 		{
+			statisticsPanel.setCurrentState(gameEngine.getOldState());
+
 			if (humanPlayer.getCallValue() == 0)
 			{
 				checkCallButton.setText("Check");
@@ -184,6 +186,8 @@ public class JPanelGameControl extends JPanel
 		loggerTextArea.setEditable(false);
 		gameEngine.setLogger(loggerTextArea);
 
+		statisticsPanel = new JPanelStatistics(GameEngine.HUMAN_PLAYER);
+
 		JScrollPane scrollPane = new JScrollPane(loggerTextArea, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setPreferredSize(new Dimension(200, 60));
 
@@ -235,6 +239,7 @@ public class JPanelGameControl extends JPanel
 
 		add(boxControls);
 		add(scrollPane);
+		add(statisticsPanel);
 	}
 
 	private void control()
