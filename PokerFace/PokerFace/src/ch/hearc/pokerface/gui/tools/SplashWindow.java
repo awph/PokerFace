@@ -26,6 +26,9 @@ public class SplashWindow extends JFrame
 	{
 		super();
 		this.image = image;
+
+		setIconImage(ImageShop.IMAGE_APPICON);
+
 		JLabel label = new JLabel();
 		label.setIcon(new ImageIcon(image));
 		this.add(label);

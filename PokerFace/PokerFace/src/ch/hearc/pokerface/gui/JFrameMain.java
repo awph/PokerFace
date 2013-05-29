@@ -176,6 +176,8 @@ public class JFrameMain extends JFrame
 		//setUndecorated(true);
 		this.setVisible(true);
 		validate();
+
+		setIconImage(ImageShop.IMAGE_APPICON);
 	}
 
 	private void createSplashScreen()
