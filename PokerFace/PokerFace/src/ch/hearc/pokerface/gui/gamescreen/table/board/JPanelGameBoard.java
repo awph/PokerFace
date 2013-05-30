@@ -78,6 +78,20 @@ public class JPanelGameBoard extends JPanel
 		thread.start();
 	}
 
+	public void refreshAllComponents()
+	{
+		if (getComponentCount() != 0)
+		{
+			removeAll();
+
+			add(panelTopBar, BorderLayout.NORTH);
+			add(gameArea, BorderLayout.CENTER);
+			add(gameControl, BorderLayout.SOUTH);
+		}
+		/*gameArea.refreshAllComponents();
+		gameControl.refreshAllComponents();*/
+	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -104,4 +118,5 @@ public class JPanelGameBoard extends JPanel
 	private void appearance()
 	{
 	}
+
 }

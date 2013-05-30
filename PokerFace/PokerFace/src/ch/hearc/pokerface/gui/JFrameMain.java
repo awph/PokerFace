@@ -54,7 +54,9 @@ public class JFrameMain extends JFrame
 			if (!tableConfig.switchToGame()) {
 				return; // Abort the process of switching to gameBoard
 			}
+			// Game is launching
 
+			panelGameBoard.refreshAllComponents();
 			setFullscreen(true);
 		}
 		layout.show(this.getContentPane(), card);
@@ -63,7 +65,7 @@ public class JFrameMain extends JFrame
 	public void gameToMainMenu()
 	{
 		setFullscreen(false);
-		//TODO appler gameengine.leave();
+
 		panelMainMenu.refreshTopBar();
 		setCard("panelMainMenu");
 	}

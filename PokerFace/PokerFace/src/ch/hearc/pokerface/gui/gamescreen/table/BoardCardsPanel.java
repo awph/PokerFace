@@ -16,10 +16,11 @@ import ch.hearc.pokerface.gui.gamescreen.card.BoardCard;
 public class BoardCardsPanel extends JPanel
 {
 
-	private Set<String>	cards;
-	private List<String> newCards;
-	private Box box;
+	private Set<String>		cards;
+	private List<String>	newCards;
+	private Box				box;
 
+	private List<BoardCard>	boardCards;
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -34,8 +35,16 @@ public class BoardCardsPanel extends JPanel
 		cards = new TreeSet<String>();
 		newCards = new ArrayList<String>();
 
+		boardCards = new ArrayList<BoardCard>();
+		initBoardCards();
+
 		setLayout(new BorderLayout());
 		box = Box.createHorizontalBox();
+
+		for(BoardCard card:boardCards)
+		{
+			box.add(card);
+		}
 
 		add(box, BorderLayout.CENTER);
 	}
@@ -44,32 +53,39 @@ public class BoardCardsPanel extends JPanel
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	private void initBoardCards()
+	{
+		for(int i = 0; i < 5; ++i)
+		{
+			boardCards.add(new BoardCard("ghost"));
+		}
+	}
+
+	private void setAllGhost()
+	{
+		for(BoardCard card:boardCards)
+		{
+			card.setCard("ghost");
+		}
+	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
 	public void setCards(Card[] cardArray)
 	{
-		if (cardArray.length > cards.size())
+		int n = cardArray.length;
+		if (n == 0)
 		{
-			for(Card card:cardArray)
+			setAllGhost();
+		}
+		else
+		{
+			for(int i = 0; i < n; ++i)
 			{
-				if(this.cards.add(card.getId()))
-				{
-					newCards.add(card.getId());
-				}
+				boardCards.get(i).setCard(cardArray[i].getId());
 			}
 		}
-		else if (cardArray.length == 0)
-		{
-			cards.clear();
-			box.removeAll();
-		}
-
-		for(String card:this.newCards)
-		{
-			box.add(new BoardCard(card));
-		}
-		newCards.clear();
 	}
 	/*------------------------------*\
 	|*				Get				*|
