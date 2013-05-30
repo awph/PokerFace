@@ -356,6 +356,10 @@ public class GameEngine
 		updateGUI();
 		divideUpPot(triples);
 		isFinished = players.size() == 1;
+		if(isFinished)
+		{
+			indexPlayer = 0;
+		}
 		updateGUI();
 		try
 		{
