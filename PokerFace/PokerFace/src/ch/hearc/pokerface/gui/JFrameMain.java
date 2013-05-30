@@ -59,6 +59,10 @@ public class JFrameMain extends JFrame
 			panelGameBoard.refreshAllComponents();
 			setFullscreen(true);
 		}
+		else if (card == "panelProfile")
+		{
+			panelProfile.refreshProfilesData();
+		}
 		layout.show(this.getContentPane(), card);
 	}
 
@@ -145,22 +149,7 @@ public class JFrameMain extends JFrame
 			@Override
 			public void windowClosing(WindowEvent arg0)
 			{
-				// SERIALIZATION DES PROFILES
-
-				// A mettre dans une methode private void serializeProfiles()
-				/*try
-				{
-					List<Profile> list = new ArrayList<Profile>();
-					FileOutputStream fileOut = new FileOutputStream("D:\\profiles.dat");
-					ObjectOutputStream out = new ObjectOutputStream(fileOut);
-					out.writeObject(list);
-					out.close();
-					fileOut.close();
-				}
-				catch (IOException i)
-				{
-					i.printStackTrace();
-				}*/
+				panelProfile.serializeProfiles();
 			}
 		});
 	}

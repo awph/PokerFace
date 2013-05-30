@@ -42,6 +42,7 @@ public class ImageShop
 	private static final String		NAME_IMAGE_HANDRANKING				= "handranking.png";
 
 	private static final String		NAME_IMAGE_APPICON					= "appicon.png";
+	private static final String		NAME_IMAGE_REMOVEPROFILE			= "remove.png";
 
 	private static final boolean	IS_BLOQUANT							= true;
 
@@ -50,6 +51,9 @@ public class ImageShop
 
 	public static final Image		IMAGE_HANDRANKING					= ImageTools.load(PATH + NAME_IMAGE_HANDRANKING, IS_BLOQUANT);
 	public static final ImageIcon	ICON_HANDRANKING					= ImageTools.loadIcon(PATH + NAME_IMAGE_HANDRANKING, IS_BLOQUANT);
+
+	public static final Image		IMAGE_REMOVEPROFILE					= ImageTools.load(PATH + NAME_IMAGE_REMOVEPROFILE, IS_BLOQUANT);
+	public static final ImageIcon	ICON_REMOVEPROFILE_SCALED			= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_REMOVEPROFILE, 0.1, IS_BLOQUANT);
 
 	public static final Image		IMAGE_BACKGROUND					= ImageTools.load(PATH + NAME_IMAGE_BACKGROUND, IS_BLOQUANT);
 	public static final ImageIcon	ICON_BACKGROUND						= ImageTools.loadIcon(PATH + NAME_IMAGE_BACKGROUND, IS_BLOQUANT);

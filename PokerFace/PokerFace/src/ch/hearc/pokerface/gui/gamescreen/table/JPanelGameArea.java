@@ -2,13 +2,16 @@
 package ch.hearc.pokerface.gui.gamescreen.table;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GridLayout;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -17,6 +20,7 @@ import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
+import ch.hearc.pokerface.gui.tools.ButtonTools;
 import ch.hearc.pokerface.gui.tools.EllipsisLayout;
 import ch.hearc.pokerface.gui.tools.ImagePanel;
 
@@ -30,11 +34,12 @@ public class JPanelGameArea extends ImagePanel
 	private GameEngine				gameEngine;
 
 	private BoardCardsPanel			boardCardsPanel;
-	private JLabel					statsPF;
-	private JLabel					statsF;
-	private JLabel					statsT;
-	private JLabel					statsR;
-	private JLabel					pot;
+
+	private JLabel					potBet;
+	private JLabel					potTurnTotal;
+	private JLabel					potStateTotal;
+
+	private JLabel	currentState;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -51,24 +56,42 @@ public class JPanelGameArea extends ImagePanel
 		// BOARD & STATS
 		boardCardsPanel = new BoardCardsPanel();
 
-		statsPF = new JLabel();
-		statsF = new JLabel();
-		statsT = new JLabel();
-		statsR = new JLabel();
-		pot = new JLabel();
-		Box box = Box.createVerticalBox();
-		box.add(boardCardsPanel);
-		box.add(pot);
-		Box boxStats = Box.createHorizontalBox();
-		boxStats.add(statsPF);
-		boxStats.add(Box.createHorizontalStrut(15));
-		boxStats.add(statsF);
-		boxStats.add(Box.createHorizontalStrut(15));
-		boxStats.add(statsT);
-		boxStats.add(Box.createHorizontalStrut(15));
-		boxStats.add(statsR);
-		//box.add(boxStats);
-		//
+
+		potBet = new JLabel();
+		potStateTotal = new JLabel();
+		potTurnTotal = new JLabel();
+		currentState = new JLabel();
+
+		stylePotLabel(potBet);
+		stylePotLabel(potStateTotal);
+		stylePotLabel(potTurnTotal);
+		stylePotLabel(currentState);
+
+		JPanel panelPot = new JPanel();
+		panelPot.setOpaque(false);
+		panelPot.setLayout(new GridLayout(0,1));
+
+		JPanel currentStatePanel = new JPanel();
+		currentStatePanel.setOpaque(false);
+		currentStatePanel.setLayout(new GridLayout(0,1));
+		currentStatePanel.add(new JLabel());
+
+		currentStatePanel.add(currentState);
+		currentStatePanel.add(new JLabel());
+
+		panelPot.add(potBet);
+		panelPot.add(potTurnTotal);
+		panelPot.add(potStateTotal);
+
+
+		JPanel panelBoard = new JPanel();
+		panelBoard.setOpaque(false);
+		panelBoard.setLayout(new BorderLayout());
+		panelBoard.add(panelPot, BorderLayout.WEST);
+
+		panelBoard.add(boardCardsPanel, BorderLayout.CENTER);
+
+		panelBoard.add(currentStatePanel, BorderLayout.EAST);
 
 		setLayout(new BorderLayout());
 
@@ -86,8 +109,26 @@ public class JPanelGameArea extends ImagePanel
 
 		}
 
-		panelPlayer.add(box, EllipsisLayout.CENTER);
+		panelPlayer.add(panelBoard, EllipsisLayout.CENTER);
 		add(panelPlayer, BorderLayout.CENTER);
+	}
+
+
+	private void stylePotLabel(JLabel potString)
+	{
+		Font font = potString.getFont();
+		try
+		{
+			font = Font.createFont(Font.TRUETYPE_FONT, new File(ButtonTools.BUTTON_FONT_NAME));
+		}
+		catch (FontFormatException | IOException e)
+		{
+			e.printStackTrace();
+		}
+		font = font.deriveFont(25f);
+
+		potString.setForeground(Color.RED); // HTML?
+		potString.setFont(font);
 	}
 
 	/*------------------------------------------------------------------*\
@@ -144,7 +185,30 @@ public class JPanelGameArea extends ImagePanel
 					playerComponent.setAllinShow(true);
 				}
 			}
-			pot.setText("<html><body>Bet : " + gameEngine.getBet() + "<br/>StateSpend : " + gameEngine.getStateTotal() + "<br/>TotalSpend : " + gameEngine.getTurnTotal() + "</body></html>");
+			potBet.setText("Current bet : " + gameEngine.getBet());
+			potTurnTotal.setText("Turn total : " + gameEngine.getTurnTotal());
+			potStateTotal.setText("State total : " + gameEngine.getStateTotal());
+			switch (gameEngine.getOldState())
+			{
+				case BettingState:
+					currentState.setText("Betting");
+					break;
+				case FlopState:
+					currentState.setText("Flop");
+					break;
+				case PreFlopState:
+					currentState.setText("Preflop");
+					break;
+				case RiverState:
+					currentState.setText("River");
+					break;
+				case ShowdownState:
+					currentState.setText("Showdown");
+					break;
+				case TurnState:
+					currentState.setText("Turn");
+					break;
+			}
 		}
 	}
 }

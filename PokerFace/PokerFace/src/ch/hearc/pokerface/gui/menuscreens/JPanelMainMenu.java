@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import ch.hearc.pokerface.gameengine.player.profile.ActiveProfile;
 import ch.hearc.pokerface.gui.JFrameMain;
 import ch.hearc.pokerface.gui.options.JPanelTopBar;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
@@ -59,6 +60,7 @@ public class JPanelMainMenu extends ImagePanel
 
 	public void refreshTopBar()
 	{
+		topBarPanel.refreshProfile(ActiveProfile.getInstance().getProfile());
 		add(topBarPanel,BorderLayout.NORTH);
 	}
 	/*------------------------------*\

@@ -26,7 +26,11 @@ public class ProfileComponent extends ProfileComponentPanel
 
 	// Tools
 	private static final String			FAKE_HORIZONTAL_STRUT	= "   ";
-	private Box boxContainer;
+	private Box							boxContainer;
+
+	private JLabel						deleteButton;
+	private JLabel						alignedAvatar;
+	private JLabel						capital;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -39,6 +43,9 @@ public class ProfileComponent extends ProfileComponentPanel
 		this.profile = profile;
 		this.parent = parent;
 
+		deleteButton = new JLabel(ImageShop.ICON_REMOVEPROFILE_SCALED);
+
+		alignedAvatar = new JLabel(profile.getAvatar().getIcon(), SwingConstants.RIGHT);
 		//setAlignmentX(Component.CENTER_ALIGNMENT);
 		geometry();
 		control();
@@ -62,10 +69,17 @@ public class ProfileComponent extends ProfileComponentPanel
 
 	private void geometry()
 	{
+		Box avatarX = Box.createHorizontalBox();
+		avatarX.setOpaque(false);
+
+		avatarX.add(Box.createHorizontalGlue());
+		avatarX.add(alignedAvatar);
+		avatarX.add(deleteButton);
+
 		setLayout(new GridLayout());
 
 		JLabel nameProfile = new JLabel(profile.getName());
-		JLabel capital = new JLabel(Integer.toString(profile.getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
+		capital = new JLabel(Integer.toString(profile.getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
 
 		nameProfile.setForeground(Color.RED);
 		capital.setForeground(Color.YELLOW);
@@ -77,21 +91,16 @@ public class ProfileComponent extends ProfileComponentPanel
 		}
 		catch (Exception e)
 		{
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
-		//add(new JLabel(FAKE_HORIZONTAL_STRUT));
 		add(nameProfile);
-		//add(Box.createHorizontalGlue());
-		add(capital);
-		//add(Box.createHorizontalGlue());
-		//add(new JPanelGlue(BoxLayout.X_AXIS));
-		JLabel alignedAvatar = new JLabel(profile.getAvatar().getIcon(), SwingConstants.RIGHT);
-		add(alignedAvatar);
-		//add(new JLabel(FAKE_HORIZONTAL_STRUT));
 
-		//add(boxContainer);
+		add(capital);
+
+		add(avatarX);
+		//add(deleteButton);
 	}
 
 	private void control()
@@ -109,6 +118,22 @@ public class ProfileComponent extends ProfileComponentPanel
 				parent.getProfilePanel().getMainFrame().setCard("panelMainMenu");
 			}
 		});
+
+		deleteButton.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mousePressed(MouseEvent arg0)
+			{
+				parent.deleteProfile(ProfileComponent.this, profile);
+			}
+		});
+	}
+
+	public void refreshData()
+	{
+		capital = new JLabel(Integer.toString(profile.getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
+		repaint();
+		revalidate();
 	}
 
 }

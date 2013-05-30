@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.List;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gui.menuscreens.JPanelProfile;
@@ -24,31 +28,35 @@ public class ProfileListContainer extends Box
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	private LinkedList<ProfileComponentPanel>		profileComponentList;
-	private List<Component>		profileReferenceList;
-	private final int			VERTICAL_GAP	= 10;
+	private LinkedList<ProfileComponentPanel>	profileComponentList;
+	private List<Component>						profileReferenceList;
+	private final int							VERTICAL_GAP	= 10;
 
 	// Tools
-	private JButton				downArrow;
-	private JButton				upArrow;
-	private int					currentIndex;			// Profile displayed at the top of the list
+	private JButton								downArrow;
+	private JButton								upArrow;
+	private int									currentIndex;			// Profile displayed at the top of the list
 
-	private final JPanelProfile	profilePanel;
+	private final JPanelProfile					profilePanel;
+
+	private LinkedList<Profile>						profileList;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-	public ProfileListContainer(List<Profile> profileList, JPanelProfile profilePanel)
+	public ProfileListContainer(LinkedList<Profile> profileList, JPanelProfile profilePanel)
 	{
 		super(BoxLayout.Y_AXIS);
 		this.profilePanel = profilePanel;
+
+		this.profileList = profileList;
 
 		currentIndex = 0;
 
 		profileComponentList = new LinkedList<ProfileComponentPanel>();
 		profileReferenceList = new ArrayList<Component>();
 
-		fillProfileListTest();
+		fillProfileList();
 
 		geometry();
 		control();
@@ -58,6 +66,44 @@ public class ProfileListContainer extends Box
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
+
+	public void deleteProfile(ProfileComponent profileComponent, Profile profile)
+	{
+		if (JOptionPane.showConfirmDialog(null, "Confirm deletion of " + profile.getName() + " ?") == 1) { return; }
+
+		removeProfiles();
+		profileComponentList.remove(profileComponent);
+		profileList.remove(profile);
+		addProfilesToBox();
+		repaint();
+		revalidate();
+
+		serializeProfiles();
+
+		getParent().repaint();
+	}
+
+	public void serializeProfiles()
+	{
+		try
+		{
+			/*List<Profile> list = new ArrayList<Profile>();
+			int n = 10;
+			for(int i = 0; i < n; i++)
+			{
+				list.add(new Profile("Profile " + i, 1, 10000));
+			}*/
+			FileOutputStream fileOut = new FileOutputStream("profiles.dat");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(profileList);
+			out.close();
+			fileOut.close();
+		}
+		catch (IOException i)
+		{
+			i.printStackTrace();
+		}
+	}
 
 	public void createNewProfile()
 	{
@@ -80,6 +126,8 @@ public class ProfileListContainer extends Box
 		currentIndex = 0;
 		profileComponentList.remove(npc);
 		profileComponentList.addFirst(new ProfileComponent(profile, this));
+		profileList.addFirst(profile);
+		serializeProfiles();
 
 		addProfilesToBox();
 		repaint();
@@ -103,42 +151,47 @@ public class ProfileListContainer extends Box
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
-	private MouseListener arrowListener = new MouseAdapter()
-	{
+	private MouseListener	arrowListener	= new MouseAdapter()
+											{
 
-		@Override
-		public void mouseReleased(MouseEvent e)
-		{
-			profilePanel.repaint();
-			((Component)e.getSource()).setForeground(Color.GREEN);
-		}
+												@Override
+												public void mouseReleased(MouseEvent e)
+												{
+													profilePanel.repaint();
+													getParent().repaint();
+													((Component)e.getSource()).setForeground(Color.GREEN);
+												}
 
-		@Override
-		public void mousePressed(MouseEvent e)
-		{
-			profilePanel.repaint();
-			((Component)e.getSource()).setForeground(Color.WHITE); // Color of background when clicking. Cant remove background when clicking, because it is dictated by Look and Feel
-		}
+												@Override
+												public void mousePressed(MouseEvent e)
+												{
+													profilePanel.repaint();
+													getParent().repaint();
+													((Component)e.getSource()).setForeground(Color.WHITE); // Color of background when clicking. Cant remove background when clicking, because it is dictated by Look and Feel
+												}
 
-		@Override
-		public void mouseExited(MouseEvent e)
-		{
-			profilePanel.repaint();
-		}
+												@Override
+												public void mouseExited(MouseEvent e)
+												{
+													profilePanel.repaint();
+													getParent().repaint();
+												}
 
-		@Override
-		public void mouseEntered(MouseEvent e)
-		{
+												@Override
+												public void mouseEntered(MouseEvent e)
+												{
 
-			profilePanel.repaint();
-		}
+													profilePanel.repaint();
+													getParent().repaint();
+												}
 
-		@Override
-		public void mouseClicked(MouseEvent arg0)
-		{
-			profilePanel.repaint();
-		}
-	};
+												@Override
+												public void mouseClicked(MouseEvent arg0)
+												{
+													profilePanel.repaint();
+													getParent().repaint();
+												}
+											};
 
 	private void control()
 	{
@@ -196,8 +249,11 @@ public class ProfileListContainer extends Box
 
 		for(int i = currentIndex, j = 1; i < currentIndex + 3; i++, j = j + 1)
 		{
+			if (i < profileComponentList.size())
+			{
 			profileReferenceList.add(add(profileComponentList.get(i), j));
 			Box vStrutBox = Box.createHorizontalBox();
+			}
 			//vStrutBox.add(createVerticalStrut(VERTICAL_GAP));
 			//profileReferenceList.add(add(vStrutBox, j + 1));
 		}
@@ -246,12 +302,21 @@ public class ProfileListContainer extends Box
 		add(downArrowBox);
 	}
 
-	private void fillProfileListTest()
+	private void fillProfileList()
 	{
-		int n = 10;
-		for(int i = 0; i < n; i++)
+		for(Profile profile:profileList)
 		{
-			profileComponentList.add(new ProfileComponent(new Profile("Profile " + i, 1, 10000), this));
+			profileComponentList.add(new ProfileComponent(profile, this));
+		}
+	}
+
+	public void refreshProfilesData()
+	{
+		for(ProfileComponentPanel profileComponent:profileComponentList)
+		{
+			if (profileComponent instanceof ProfileComponent) {
+				((ProfileComponent)profileComponent).refreshData();
+			}
 		}
 	}
 
