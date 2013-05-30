@@ -353,9 +353,10 @@ public class GameEngine
 		{
 			triples[0].getValue2().get(i).win();
 		}
-
+		updateGUI();
 		divideUpPot(triples);
-
+		isFinished = players.size() == 1;
+		updateGUI();
 		try
 		{
 			Thread.sleep(DELAY_BETWEEN_EACH_TURN);
@@ -364,8 +365,6 @@ public class GameEngine
 		{
 			e.printStackTrace();
 		}
-		isFinished = players.size() == 1;
-		updateGUI();
 		initialize();
 	}
 
