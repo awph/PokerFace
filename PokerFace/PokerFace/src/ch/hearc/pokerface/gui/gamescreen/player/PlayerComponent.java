@@ -7,10 +7,8 @@ import java.awt.FontFormatException;
 import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -18,6 +16,8 @@ import javax.swing.SwingConstants;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.gamescreen.card.CardComponent;
 import ch.hearc.pokerface.gui.gamescreen.card.PlayerCard;
+import ch.hearc.pokerface.gui.tools.ButtonTools;
+import ch.hearc.pokerface.gui.tools.ImageShop;
 
 public class PlayerComponent extends JPanel
 {
@@ -34,16 +34,11 @@ public class PlayerComponent extends JPanel
 	//IO
 	private JLabel				name;
 	private JLabel				money;
+	private JLabel				turnSpend;
 
 	private CardComponent		card1;
 	private CardComponent		card2;
 	private Token				role;
-
-	/*------------------------------*\
-	|*			  Static			*|
-	\*------------------------------*/
-
-	public static final String	FONT	= "resources/Franklin Gothic Demi Cond.ttf";
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -54,15 +49,9 @@ public class PlayerComponent extends JPanel
 		this.player = player;
 		//money = new JLabel(Integer.toString(player.getBankroll()));
 
-		try
-		{
-			money = new JLabel("$" + Integer.toString(player.getBankroll()), new ImageIcon(ImageIO.read(new File("resources/coin.png"))), SwingConstants.CENTER);
-			name = new JLabel(player.getProfile().getName(), player.getProfile().getAvatar().getIcon(), SwingConstants.CENTER);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+		money = new JLabel("$" + Integer.toString(player.getBankroll()), ImageShop.ICON_COIN, SwingConstants.CENTER);
+		turnSpend = new JLabel("" + player.getTurnSpending());
+		name = new JLabel(player.getProfile().getName(), player.getProfile().getAvatar().getIcon(), SwingConstants.CENTER);
 
 		money.setHorizontalTextPosition(SwingConstants.LEFT);
 		name.setHorizontalTextPosition(SwingConstants.LEFT);
@@ -129,16 +118,15 @@ public class PlayerComponent extends JPanel
 
 		role.setToken(player.getRole().toString());
 		money.setText("$" + Integer.toString(player.getBankroll()));
+		turnSpend.setText("$" + player.getTurnSpending());
+		//getParent().update(getParent().getGraphics());
+		turnSpend.repaint();
 		getParent().repaint();
 	}
 
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
-	/*public void setIsHumanPlayer(boolean b)
-	{
-		isHumanPlayer = b;
-	}*/
 
 	public void setAllinShow(boolean b)
 	{
@@ -160,7 +148,13 @@ public class PlayerComponent extends JPanel
 	{
 		Box box = Box.createVerticalBox();
 		box.add(name);
-		box.add(money);
+
+		Box moneyAndBetSpendBox = Box.createHorizontalBox();
+		moneyAndBetSpendBox.add(turnSpend);
+		moneyAndBetSpendBox.add(Box.createHorizontalGlue());
+		moneyAndBetSpendBox.add(money);
+
+		box.add(moneyAndBetSpendBox);
 		Box cardsBox = Box.createHorizontalBox();
 		cardsBox.add(card1);
 		cardsBox.add(card2);
@@ -182,7 +176,7 @@ public class PlayerComponent extends JPanel
 		Font font = name.getFont();
 		try
 		{
-			font = Font.createFont(Font.TRUETYPE_FONT, new File(FONT));
+			font = Font.createFont(Font.TRUETYPE_FONT, new File(ButtonTools.BUTTON_FONT_NAME));
 		}
 		catch (FontFormatException | IOException e)
 		{
@@ -193,9 +187,11 @@ public class PlayerComponent extends JPanel
 
 		name.setFont(font);
 		money.setFont(font);
+		turnSpend.setFont(font);
 
 		name.setForeground(Color.WHITE);
 		money.setForeground(new Color(255, 215, 0));
+		turnSpend.setForeground(new Color(39, 181, 73));
 	}
 
 }

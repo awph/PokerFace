@@ -39,6 +39,8 @@ public class ImageShop
 	private static final String		NAME_IMAGE_BACKGROUND				= "table/background.png";
 	private static final String		NAME_IMAGE_SPLASH					= "splash.png";
 
+	private static final String		NAME_IMAGE_HANDRANKING				= "handranking.png";
+
 	private static final String		NAME_IMAGE_APPICON					= "appicon.png";
 
 	private static final boolean	IS_BLOQUANT							= true;
@@ -46,7 +48,11 @@ public class ImageShop
 	public static final ImageIcon	ICON_BUTTON_QUIT_GAME				= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_BUTTON_QUIT_GAME, 0.1, IS_BLOQUANT);
 	public static final ImageIcon	ICON_BUTTON_QUIT_APPLICATION		= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_BUTTON_QUIT_APPLICATION, 0.4, IS_BLOQUANT);
 
+	public static final Image		IMAGE_HANDRANKING					= ImageTools.load(PATH + NAME_IMAGE_HANDRANKING, IS_BLOQUANT);
+	public static final ImageIcon	ICON_HANDRANKING					= ImageTools.loadIcon(PATH + NAME_IMAGE_HANDRANKING, IS_BLOQUANT);
+
 	public static final Image		IMAGE_BACKGROUND					= ImageTools.load(PATH + NAME_IMAGE_BACKGROUND, IS_BLOQUANT);
+	public static final ImageIcon	ICON_BACKGROUND						= ImageTools.loadIcon(PATH + NAME_IMAGE_BACKGROUND, IS_BLOQUANT);
 	public static final Image		IMAGE_SPLASH						= ImageTools.load(PATH + NAME_IMAGE_SPLASH, IS_BLOQUANT);
 
 	public static final Image		IMAGE_COIN							= ImageTools.load(PATH + NAME_IMAGE_COIN, IS_BLOQUANT);

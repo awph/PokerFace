@@ -48,11 +48,11 @@ public class JFrameMain extends JFrame
 	// CARD MANIPULATIONS
 	public void setCard(String card)
 	{
-
 		if (card == "panelGameBoard")
 		{
 			JOPTableConfiguration tableConfig = new JOPTableConfiguration(this, panelGameBoard);
-			if (!tableConfig.switchToGame()) { return; // Abort the process of switching to gameBoard
+			if (!tableConfig.switchToGame()) {
+				return; // Abort the process of switching to gameBoard
 			}
 
 			setFullscreen(true);
@@ -64,6 +64,7 @@ public class JFrameMain extends JFrame
 	{
 		setFullscreen(false);
 		//TODO appler gameengine.leave();
+		panelMainMenu.refreshTopBar();
 		setCard("panelMainMenu");
 	}
 

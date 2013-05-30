@@ -1,6 +1,7 @@
 
 package ch.hearc.pokerface.gui.gamescreen.table;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -16,6 +17,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
@@ -31,6 +33,7 @@ import javax.swing.text.DefaultFormatter;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
+import ch.hearc.pokerface.gui.tools.ImageShop;
 
 public class JPanelGameControl extends JPanel
 {
@@ -217,8 +220,12 @@ public class JPanelGameControl extends JPanel
 		moneySlider.setPreferredSize(new Dimension(60, 150));
 		allinButton.setMargin(new Insets(10, 10, 10, 10));
 
-		GridLayout layout = new GridLayout(1, 4);
-		setLayout(layout);
+
+
+		JPanel handRankingPanel = new JPanel();
+		handRankingPanel.setLayout(new BorderLayout());
+		handRankingPanel.setOpaque(false);
+		handRankingPanel.add(new JLabel(ImageShop.ICON_HANDRANKING), BorderLayout.CENTER);
 
 		Box boxButtons = Box.createVerticalBox();
 		boxButtons.add(Box.createVerticalGlue());
@@ -244,9 +251,21 @@ public class JPanelGameControl extends JPanel
 		boxControls.add(boxButtons);
 		boxControls.add(Box.createHorizontalGlue());
 
-		add(boxControls);
-		add(scrollPane);
-		add(statisticsPanel);
+		setLayout(new BorderLayout());
+
+		JPanel panelGridRight = new JPanel();
+		panelGridRight.setOpaque(false);
+
+		GridLayout gridLayout = new GridLayout(1, 3);
+
+		panelGridRight.setLayout(gridLayout);
+		panelGridRight.add(boxControls);
+		panelGridRight.add(scrollPane);
+		panelGridRight.add(statisticsPanel);
+
+		add(handRankingPanel,BorderLayout.WEST);
+		add(panelGridRight,BorderLayout.CENTER);
+
 	}
 
 	private void control()

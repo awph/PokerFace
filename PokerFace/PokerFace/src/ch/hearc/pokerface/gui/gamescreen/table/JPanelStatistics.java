@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gameengine.statistics.StatisticValue;
-import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
+import ch.hearc.pokerface.gui.tools.ButtonTools;
 
 public class JPanelStatistics extends JPanel
 {
@@ -213,7 +213,7 @@ public class JPanelStatistics extends JPanel
 			Font font = jLabelTitle.getFont();
 			try
 			{
-				font = Font.createFont(Font.TRUETYPE_FONT, new File(PlayerComponent.FONT));
+				font = Font.createFont(Font.TRUETYPE_FONT, new File(ButtonTools.BUTTON_FONT_NAME));
 			}
 			catch (FontFormatException | IOException e)
 			{

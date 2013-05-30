@@ -65,6 +65,11 @@ public class JPanelMainMenu extends ImagePanel
 		return topBarPanel;
 	}
 
+	public void refreshTopBar()
+	{
+		remove(topBarPanel);
+		add(topBarPanel,BorderLayout.NORTH);
+	}
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
@@ -149,5 +154,6 @@ public class JPanelMainMenu extends ImagePanel
 		add(panelCenter, BorderLayout.CENTER);
 		add(topBarPanel, BorderLayout.NORTH);
 	}
+
 
 }
