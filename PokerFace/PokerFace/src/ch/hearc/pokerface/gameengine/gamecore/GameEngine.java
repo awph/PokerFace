@@ -255,8 +255,11 @@ public class GameEngine
 	{
 		int amount = player.getBankroll();
 		logPlayerAction(player, Action.Allin, amount);
+
+		int callValue = player.getCallValue();
 		player.takeMoney(amount);
-		pot.addStateTotalAndSetBet(amount);
+		pot.addStateTotalAndSetBet(callValue);
+		pot.addStateTotalAndAddBet(amount - callValue);
 		updateGUI();
 		setIndexLastRaise(player);
 	}
