@@ -67,13 +67,16 @@ public class JOPTableConfiguration extends JOptionPane
 		do
 		{
 			dialog = showDialog();
-			checkValues = checkValues();
 
 			if (!dialog)
 			{
 				isCanceled = true;
 			}
-			else if (checkValues)
+			else
+			{
+				checkValues = checkValues();
+			}
+			if (checkValues)
 			{
 				panelGameBoard.start(new GameEngine(frameMain,smallBlind, nbPlayers, ActiveProfile.getInstance().getProfile(), startCash, panelGameBoard));
 			}
