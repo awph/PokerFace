@@ -35,15 +35,15 @@ public class Token extends JLabel
 		{
 			if ("Dealer".equals(role))
 			{
-				setIcon(ImageShop.ICON_TOKEN_D_SCALED);
+				setIcon(ImageShop.ICON_TOKEN_D);
 			}
 			else if ("Small Blind".equals(role))
 			{
-				setIcon(ImageShop.ICON_TOKEN_SB_SCALED);
+				setIcon(ImageShop.ICON_TOKEN_SB);
 			}
 			else if ("Big Blind".equals(role))
 			{
-				setIcon(ImageShop.ICON_TOKEN_BB_SCALED);
+				setIcon(ImageShop.ICON_TOKEN_BB);
 			}
 
 		}

@@ -1,7 +1,6 @@
 
 package ch.hearc.pokerface.gui.gamescreen.card;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -62,7 +61,7 @@ public abstract class CardComponent extends JLabel
 	{
 		try
 		{
-			setIcon(new ImageIcon(ImageIO.read(new File("resources/table/cards/" + cardValue + ".png"))));//TODO imageShop
+			setIcon(new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("resources/table/cards/" + cardValue + ".png"))));//TODO imageShop
 		}
 		catch (IOException e)
 		{

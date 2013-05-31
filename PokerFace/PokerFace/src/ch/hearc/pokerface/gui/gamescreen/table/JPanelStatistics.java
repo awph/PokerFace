@@ -28,13 +28,13 @@ public class JPanelStatistics extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-
+	
 	private Player							player;
 	private StateType						currentState;
 	private StatisticValue					statisticValue;
-
+	
 	private JPanelStatisticsItemWinLoseTie	winLoseTieItem;
-
+	
 	private JPanelStatisticsItem			straightFlushItem;
 	private JPanelStatisticsItem			fourOfKindItem;
 	private JPanelStatisticsItem			fullHouseItem;
@@ -44,27 +44,39 @@ public class JPanelStatistics extends JPanel
 	private JPanelStatisticsItem			twoPairsItem;
 	private JPanelStatisticsItem			onePairItem;
 	private JPanelStatisticsItem			highCardItem;
-
+	
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+	
+	public static final Color				PF_GREEN				= new Color(39, 174, 96);
+	public static final Color				PF_RED					= new Color(192, 57, 43);
+	public static final Color				PF_YELLOW				= new Color(241, 196, 15);
+	
+	private static final int				PERCENT_WIDTH_TITLE		= 17;
+	private static final int				PERCENT_WIDTH_GRADIENT	= 60;
+	private static final int				PERCENT_WIDTH_VALUE		= 13;
+	
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-
+	
 	public JPanelStatistics(Player player)
 	{
 		this.player = player;
-
+		
 		geometry();
 		apparence();
 	}
-
+	
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
-
+	
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
-
+	
 	public void setCurrentState(StateType currentState)
 	{
 		if (currentState != StateType.BettingState && currentState != StateType.ShowdownState && (statisticValue == null || this.currentState != currentState))
@@ -74,17 +86,17 @@ public class JPanelStatistics extends JPanel
 		loadNewStatistics();
 		getParent().repaint();
 	}
-
+	
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
-
+	
 	private void geometry()
 	{
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
+		
 		winLoseTieItem = new JPanelStatisticsItemWinLoseTie();
-
+		
 		straightFlushItem = new JPanelStatisticsItem("Straight Flush");
 		fourOfKindItem = new JPanelStatisticsItem("Four Of A Kind");
 		fullHouseItem = new JPanelStatisticsItem("Full House");
@@ -94,7 +106,7 @@ public class JPanelStatistics extends JPanel
 		twoPairsItem = new JPanelStatisticsItem("Two Pairs");
 		onePairItem = new JPanelStatisticsItem("One Pair");
 		highCardItem = new JPanelStatisticsItem("High Card");
-
+		
 		add(winLoseTieItem);
 		add(straightFlushItem);
 		add(fourOfKindItem);
@@ -106,12 +118,12 @@ public class JPanelStatistics extends JPanel
 		add(onePairItem);
 		add(highCardItem);
 	}
-
+	
 	private void apparence()
 	{
 		setBackground(new Color(25, 25, 25, 120));
 	}
-
+	
 	private void loadNewStatistics()
 	{
 		switch(currentState)
@@ -133,13 +145,13 @@ public class JPanelStatistics extends JPanel
 		}
 		refreshStatistics();
 	}
-
+	
 	private void refreshStatistics()
 	{
 		if (statisticValue != null)
 		{
 			winLoseTieItem.setPercents(statisticValue.getWin(), statisticValue.getTie(), statisticValue.getLoss());
-
+			
 			straightFlushItem.setPercent(statisticValue.getStraightFlush());
 			fourOfKindItem.setPercent(statisticValue.getFourOfKind());
 			fullHouseItem.setPercent(statisticValue.getFullHouse());
@@ -151,46 +163,46 @@ public class JPanelStatistics extends JPanel
 			highCardItem.setPercent(statisticValue.getHighCard());
 		}
 	}
-
+	
 	/*------------------------------*\
 	|*			Sub class			*|
 	\*------------------------------*/
-
+	
 	private class JPanelStatisticsItem extends JPanel
 	{
 		/*------------------------------------------------------------------*\
 		|*							Attributs Private						*|
 		\*------------------------------------------------------------------*/
-
+		
 		private String			title;
 		private double			percent;
 		private JLabel			jLabelTitle;
 		private JLabel			jLabelPercent;
 		private JPanelGradient	jPanelGradient;
 		private boolean			noChance;
-
+		
 		/*------------------------------------------------------------------*\
 		|*							Constructeurs							*|
 		\*------------------------------------------------------------------*/
-
+		
 		public JPanelStatisticsItem(String title)
 		{
 			this.title = title;
-
+			
 			geometry();
 			apparence();
-
+			
 			setPercent(0);
 		}
-
+		
 		/*------------------------------------------------------------------*\
 		|*							Methodes Public							*|
 		\*------------------------------------------------------------------*/
-
+		
 		/*------------------------------*\
 		|*				Set				*|
 		\*------------------------------*/
-
+		
 		public void setPercent(double percent)
 		{
 			if (Math.abs(percent - 0.0) <= 10e-6)
@@ -207,19 +219,19 @@ public class JPanelStatistics extends JPanel
 			jPanelGradient.setPercent(this.percent);
 			apparence();
 		}
-
+		
 		/*------------------------------------------------------------------*\
 		|*							Methodes Private						*|
 		\*------------------------------------------------------------------*/
-
+		
 		private void geometry()
 		{
 			setLayout(new MigLayout("insets 0", "[50lp, fill]0", "[20lp, fill]0"));
-
+			
 			jLabelTitle = new JLabel(title);
 			jPanelGradient = new JPanelGradient();
 			jLabelPercent = new JLabel(percent + ".00%");
-
+			
 			Font font = jLabelTitle.getFont();
 			try
 			{
@@ -230,15 +242,15 @@ public class JPanelStatistics extends JPanel
 				e.printStackTrace();
 			}
 			font = font.deriveFont(12f);
-
+			
 			jLabelTitle.setFont(font);
 			jLabelPercent.setFont(font);
-
-			add(jLabelTitle, "width 17%!");
-			add(jPanelGradient, "width 60%!");
-			add(jLabelPercent, "width 23%!");
+			
+			add(jLabelTitle, "width " + PERCENT_WIDTH_TITLE + "%!");
+			add(jPanelGradient, "width " + PERCENT_WIDTH_GRADIENT + "%!");
+			add(jLabelPercent, "width " + PERCENT_WIDTH_VALUE + "%!");
 		}
-
+		
 		private void apparence()
 		{
 			setBackground(null);
@@ -253,117 +265,117 @@ public class JPanelStatistics extends JPanel
 				jLabelPercent.setForeground(Color.WHITE);
 			}
 		}
-
+		
 		/*------------------------------*\
 		|*			Sub class			*|
 		\*------------------------------*/
-
+		
 		private class JPanelGradient extends JPanel
 		{
 			/*------------------------------------------------------------------*\
 			|*							Attributs Private						*|
 			\*------------------------------------------------------------------*/
-
+			
 			private double			percent;
 			private GradientPaint	gradient;
 			private Rectangle2D		gradientRectangle;
-
+			
 			/*------------------------------------------------------------------*\
 			|*							Constructeurs							*|
 			\*------------------------------------------------------------------*/
-
+			
 			public JPanelGradient()
 			{
 				this.percent = 0;
 				geometry();
 				apparence();
 			}
-
+			
 			/*------------------------------------------------------------------*\
 			|*							Methodes Public							*|
 			\*------------------------------------------------------------------*/
-
+			
 			/*------------------------------*\
 			|*				Set				*|
 			\*------------------------------*/
-
+			
 			public void setPercent(double percent)
 			{
 				this.percent = percent;
-
+				
 				int w = getWidth();
 				int h = getHeight();
-
+				
 				gradient = new GradientPaint(0, 0, PF_RED, w, h, PF_GREEN);
 				gradientRectangle = new Rectangle2D.Double(0, 0, (percent / 100.0) * w, h);
-
+				
 				repaint();
 			}
-
+			
 			/*------------------------------------------------------------------*\
 			|*							Methodes Protected						*|
 			\*------------------------------------------------------------------*/
-
+			
 			@Override
 			protected void paintComponent(Graphics g)
 			{
 				super.paintComponent(g);
 				Graphics2D g2d = (Graphics2D)g;
-
+				
 				g2d.setPaint(gradient);
 				g2d.fill(gradientRectangle);
 			}
-
+			
 			/*------------------------------------------------------------------*\
 			|*							Methodes Private						*|
 			\*------------------------------------------------------------------*/
-
+			
 			private void geometry()
 			{
 				gradient = new GradientPaint(0, 0, Color.RED, getWidth(), getHeight(), Color.GREEN);
 				gradientRectangle = new Rectangle2D.Double(0, 0, (percent / 100.0) * getWidth(), getHeight());
 			}
-
+			
 			private void apparence()
 			{
 				setBackground(null);
 			}
 		}
 	}
-
+	
 	private class JPanelStatisticsItemWinLoseTie extends JPanel
 	{
 		/*------------------------------------------------------------------*\
 		|*							Attributs Private						*|
 		\*------------------------------------------------------------------*/
-
+		
 		private double								percentWin;
 		private double								percentTie;
 		private double								percentLose;
 		private JLabel								jLabelTitle;
 		private JLabel								jLabelPercent;
 		private JPanelStatisticsItemWinLoseTieColor	jPanelStatisticsItemWinLoseTieColor;
-
+		
 		/*------------------------------------------------------------------*\
 		|*							Constructeurs							*|
 		\*------------------------------------------------------------------*/
-
+		
 		public JPanelStatisticsItemWinLoseTie()
 		{
 			geometry();
 			apparence();
-
+			
 			setPercents(0, 0, 0);
 		}
-
+		
 		/*------------------------------------------------------------------*\
 		|*							Methodes Public							*|
 		\*------------------------------------------------------------------*/
-
+		
 		/*------------------------------*\
 		|*				Set				*|
 		\*------------------------------*/
-
+		
 		public void setPercents(double percentWin, double percentTie, double percentLose)
 		{
 			this.percentWin = percentWin;
@@ -372,20 +384,20 @@ public class JPanelStatistics extends JPanel
 			jPanelStatisticsItemWinLoseTieColor.setPercents(percentWin, percentTie, percentLose);
 			apparence();
 		}
-
+		
 		/*------------------------------------------------------------------*\
 		|*							Methodes Private						*|
 		\*------------------------------------------------------------------*/
-
+		
 		private void geometry()
 		{
 			setLayout(new MigLayout("insets 0", "[50lp, fill]0", "[20lp, fill]0"));
 			setBackground(null);
-
+			
 			jLabelTitle = new JLabel("Win | Tie | Lose");
 			jPanelStatisticsItemWinLoseTieColor = new JPanelStatisticsItemWinLoseTieColor();
 			jLabelPercent = new JLabel(percentWin + ".00% | " + percentTie + ".00% | " + percentLose + ".00%");
-
+			
 			Font font = jLabelTitle.getFont();
 			try
 			{
@@ -396,76 +408,76 @@ public class JPanelStatistics extends JPanel
 				e.printStackTrace();
 			}
 			font = font.deriveFont(12f);
-
+			
 			jLabelTitle.setFont(font);
 			jLabelPercent.setFont(font);
-
+			
 			jLabelTitle.setForeground(Color.WHITE);
 			jLabelPercent.setForeground(Color.WHITE);
-
-			add(jLabelTitle, "width 17%!");
-			add(jPanelStatisticsItemWinLoseTieColor, "width 60%!");
-			add(jLabelPercent, "width 23%!");
+			
+			add(jLabelTitle, "width " + PERCENT_WIDTH_TITLE + "%!");
+			add(jPanelStatisticsItemWinLoseTieColor, "width " + PERCENT_WIDTH_GRADIENT + "%!");
+			add(jLabelPercent, "width " + PERCENT_WIDTH_VALUE + "%!");
 		}
-
+		
 		private void apparence()
 		{
 			DecimalFormat decimalFormat = new DecimalFormat("#.##");
 			jLabelPercent.setText(decimalFormat.format(percentWin) + "% | " + decimalFormat.format(percentTie) + "% | " + decimalFormat.format(percentLose) + "%");
 		}
-
+		
 		/*------------------------------*\
 		|*			Sub class			*|
 		\*------------------------------*/
-
+		
 		private class JPanelStatisticsItemWinLoseTieColor extends JPanel
 		{
 			/*------------------------------------------------------------------*\
 			|*							Attributs Private						*|
 			\*------------------------------------------------------------------*/
-
+			
 			private Rectangle2D	winRectangle;
 			private Rectangle2D	tieRectangle;
 			private Rectangle2D	loseRectangle;
-
+			
 			/*------------------------------------------------------------------*\
 			|*							Constructeurs							*|
 			\*------------------------------------------------------------------*/
-
+			
 			public JPanelStatisticsItemWinLoseTieColor()
 			{
 				setPercents(0, 0, 0);
 				geometry();
 				apparence();
 			}
-
+			
 			/*------------------------------------------------------------------*\
 			|*							Methodes Public							*|
 			\*------------------------------------------------------------------*/
-
+			
 			/*------------------------------*\
 			|*				Set				*|
 			\*------------------------------*/
-
+			
 			public void setPercents(double percentWin, double percentTie, double percentLose)
 			{
 				winRectangle = new Rectangle2D.Double(0, 0, (percentWin / 100.0) * getWidth(), getHeight());
 				tieRectangle = new Rectangle2D.Double(winRectangle.getWidth(), 0, (percentTie / 100.0) * getWidth(), getHeight());
 				loseRectangle = new Rectangle2D.Double(tieRectangle.getX() + tieRectangle.getWidth(), 0, (percentLose / 100.0) * getWidth(), getHeight());
-
+				
 				repaint();
 			}
-
+			
 			/*------------------------------------------------------------------*\
 			|*							Methodes Protected						*|
 			\*------------------------------------------------------------------*/
-
+			
 			@Override
 			protected void paintComponent(Graphics g)
 			{
 				super.paintComponent(g);
 				Graphics2D g2d = (Graphics2D)g;
-
+				
 				g2d.setPaint(PF_GREEN);
 				g2d.fill(winRectangle);
 				g2d.setPaint(PF_YELLOW);
@@ -473,24 +485,20 @@ public class JPanelStatistics extends JPanel
 				g2d.setPaint(PF_RED);
 				g2d.fill(loseRectangle);
 			}
-
+			
 			/*------------------------------------------------------------------*\
 			|*							Methodes Private						*|
 			\*------------------------------------------------------------------*/
-
+			
 			private void geometry()
 			{
 				//Rien
 			}
-
+			
 			private void apparence()
 			{
 				setBackground(null);
 			}
 		}
 	}
-
-	public static final Color	PF_GREEN	= new Color(39, 174, 96);
-	public static final Color	PF_RED		= new Color(192, 57, 43);
-	public static final Color	PF_YELLOW	= new Color(241, 196, 15);
 }

@@ -26,7 +26,8 @@ public class ImagePanel extends JPanel
 	private Dimension		currentImageDimension;
 	private Image			scaledImage;
 
-	private boolean repaintForced = false;
+	private boolean			repaintForced	= false;
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/

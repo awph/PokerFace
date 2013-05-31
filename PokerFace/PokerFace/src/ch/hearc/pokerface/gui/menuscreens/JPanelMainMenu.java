@@ -30,7 +30,7 @@ public class JPanelMainMenu extends ImagePanel
 	private JButton			playButton;
 	private JButton			aboutButton;
 	private JFrameMain		mainFrame;
-	private JPanelTopBar	topBarPanel = JPanelTopBar.getInstance();
+	private JPanelTopBar	topBarPanel	= JPanelTopBar.getInstance();
 
 	//Tools
 	private JPanel			panelCenter;
@@ -61,8 +61,9 @@ public class JPanelMainMenu extends ImagePanel
 	public void refreshTopBar()
 	{
 		topBarPanel.refreshProfile(ActiveProfile.getInstance().getProfile());
-		add(topBarPanel,BorderLayout.NORTH);
+		add(topBarPanel, BorderLayout.NORTH);
 	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -155,6 +156,5 @@ public class JPanelMainMenu extends ImagePanel
 		add(panelCenter, BorderLayout.CENTER);
 		add(topBarPanel, BorderLayout.NORTH);
 	}
-
 
 }

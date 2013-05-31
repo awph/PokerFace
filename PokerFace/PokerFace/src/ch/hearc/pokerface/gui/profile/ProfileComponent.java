@@ -1,7 +1,6 @@
 
 package ch.hearc.pokerface.gui.profile;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,6 +11,8 @@ import javax.swing.SwingConstants;
 
 import ch.hearc.pokerface.gameengine.player.profile.ActiveProfile;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
+import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
+import ch.hearc.pokerface.gui.gamescreen.table.JPanelStatistics;
 import ch.hearc.pokerface.gui.options.JPanelTopBar;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
 import ch.hearc.pokerface.gui.tools.ImageShop;
@@ -79,19 +80,18 @@ public class ProfileComponent extends ProfileComponentPanel
 		setLayout(new GridLayout());
 
 		JLabel nameProfile = new JLabel(profile.getName());
-		capital = new JLabel(Integer.toString(profile.getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
+		capital = new JLabel("$" + Integer.toString(profile.getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
 
-		nameProfile.setForeground(Color.RED);
-		capital.setForeground(Color.YELLOW);
+		nameProfile.setForeground(JPanelStatistics.PF_RED);
+		capital.setForeground(PlayerComponent.PF_GOLD_COLOR);
 
 		try
 		{
-			nameProfile.setFont(ButtonTools.getButtonFont(false));
-			capital.setFont(ButtonTools.getButtonFont(false));
+			nameProfile.setFont(ButtonTools.getButtonFont(false).deriveFont(26f));
+			capital.setFont(ButtonTools.getButtonFont(false).deriveFont(26f));
 		}
 		catch (Exception e)
 		{
-
 			e.printStackTrace();
 		}
 
@@ -135,7 +135,7 @@ public class ProfileComponent extends ProfileComponentPanel
 		{
 			capital = new JLabel(Integer.toString(ActiveProfile.getInstance().getProfile().getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
 		}*/
-		capital = new JLabel(Integer.toString(profile.getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
+		capital = new JLabel("$" + Integer.toString(profile.getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
 		repaint();
 		revalidate();
 	}

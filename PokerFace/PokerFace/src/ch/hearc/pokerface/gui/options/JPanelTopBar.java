@@ -1,6 +1,7 @@
 
 package ch.hearc.pokerface.gui.options;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -27,13 +28,13 @@ import javax.swing.event.ChangeListener;
 import ch.hearc.pokerface.gameengine.gamecore.SoundEngine;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gui.JFrameMain;
+import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
+import ch.hearc.pokerface.gui.gamescreen.table.JPanelStatistics;
+import ch.hearc.pokerface.gui.tools.ButtonTools;
 import ch.hearc.pokerface.gui.tools.ImageShop;
 
-public final class JPanelTopBar extends JPanel
+public class JPanelTopBar extends JPanel
 {
-	/*------------------------------------------------------------------*\
-	|*							Attributs Private						*|
-	\*------------------------------------------------------------------*/
 	private static volatile JPanelTopBar	instance	= null;
 
 	// Inputs / Outputs
@@ -105,65 +106,12 @@ public final class JPanelTopBar extends JPanel
 
 	private JPanelTopBar()
 	{
-		name = new JLabel();
-		avatar = new JLabel();
-		try
-		{
-			//TODO A mettre dans imageshop
-			coin = new JLabel("", new ImageIcon(ImageIO.read(new File("resources/coin.png"))), 0);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-
-		bankroll = new JLabel();
-		clockLabel = new JLabel();
-		clockLabel.setFont(new Font("Arial", Font.BOLD, 18));
-		help = new JLabel("", ImageShop.ICON_BUTTON_HELP, 0);
-		quitApplication = new JLabel("", ImageShop.ICON_BUTTON_QUIT_APPLICATION, 0);
-		quitGame = new JLabel("", ImageShop.ICON_BUTTON_QUIT_GAME, 0);
-		volumeIcon = new JLabel("\u266B");
-		volumeIcon.setFont(new Font("Arial", Font.BOLD, 18));
-
-		volumeSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 50);
-		volumeSlider.setPaintLabels(false);
-
-		ft = new SimpleDateFormat("HH:mm:ss");
-
-		Box profil = Box.createHorizontalBox();
-		profil.add(avatar);
-		profil.add(Box.createHorizontalStrut(20));
-		profil.add(name);
-		profil.add(Box.createHorizontalStrut(20));
-		profil.add(coin);
-		profil.add(Box.createHorizontalStrut(5));
-		profil.add(bankroll);
-
-		Box options = Box.createHorizontalBox();
-		options.add(volumeIcon);
-		options.add(volumeSlider);
-
-		Box info = Box.createHorizontalBox();
-		info.add(Box.createGlue());
-		info.add(clockLabel);
-		info.add(Box.createHorizontalStrut(20));
-		info.add(help);
-		info.add(Box.createHorizontalStrut(20));
-		info.add(quitGame);
-		info.add(Box.createHorizontalStrut(20));
-		info.add(quitApplication);
-		info.add(Box.createHorizontalStrut(10));
-
-		setLayout(new GridLayout(1, 3));
-
-		add(profil);
-		add(options);
-		add(info);
+		geometry();
+		control();
+		apparence();
 
 		Timer t = new Timer(1000, updateClockAction);
 		t.start();
-		control();
 	}
 
 	/*------------------------------------------------------------------*\
@@ -190,6 +138,81 @@ public final class JPanelTopBar extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
+
+	private void geometry()
+	{
+		name = new JLabel();
+		avatar = new JLabel();
+		try
+		{
+			//TODO A mettre dans imageshop
+			coin = new JLabel("", new ImageIcon(ImageIO.read(new File("resources/coin.png"))), 0);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		bankroll = new JLabel();
+		clockLabel = new JLabel();
+		clockLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		help = new JLabel("", ImageShop.ICON_BUTTON_HELP, 0);
+		quitApplication = new JLabel("", ImageShop.ICON_BUTTON_QUIT_APPLICATION, 0);
+		quitGame = new JLabel("", ImageShop.ICON_BUTTON_QUIT_GAME, 0);
+		volumeIcon = new JLabel("\u266B");
+		volumeIcon.setFont(new Font("Arial", Font.BOLD, 18));
+
+		volumeSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 50);
+		volumeSlider.setPaintLabels(false);
+
+		ft = new SimpleDateFormat("HH:mm:ss");
+
+		Box profil = Box.createHorizontalBox();
+		profil.add(avatar);
+		profil.add(Box.createHorizontalStrut(20));
+		profil.add(name);
+		profil.add(Box.createHorizontalStrut(20));
+		profil.add(coin);
+		profil.add(Box.createHorizontalStrut(5));
+		profil.add(bankroll);
+		profil.add(Box.createHorizontalStrut(20));
+		profil.add(help);
+
+		Box info = Box.createHorizontalBox();
+		info.add(volumeIcon);
+		info.add(volumeSlider);
+		info.add(Box.createHorizontalStrut(20));
+		info.add(clockLabel);
+		info.add(Box.createHorizontalStrut(20));
+		info.add(quitGame);
+		info.add(Box.createHorizontalStrut(20));
+		info.add(quitApplication);
+		info.add(Box.createHorizontalStrut(10));
+
+		setLayout(new GridLayout(1, 3));
+
+		add(profil);
+		add(new JLabel(ImageShop.ICON_LOGO_TOPBAR));
+		add(info);
+	}
+
+	private void apparence()
+	{
+		setBackground(new Color(25, 25, 25, 255));
+		name.setForeground(JPanelStatistics.PF_RED);
+		bankroll.setForeground(PlayerComponent.PF_GOLD_COLOR);
+		clockLabel.setForeground(Color.WHITE);
+		volumeIcon.setForeground(Color.WHITE);
+		try
+		{
+			name.setFont(ButtonTools.getButtonFont(false).deriveFont(26f));
+			bankroll.setFont(ButtonTools.getButtonFont(false).deriveFont(26f));
+			name.setFont(ButtonTools.getButtonFont(false).deriveFont(26f));
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
 
 	private void control()
 	{
@@ -240,6 +263,7 @@ public final class JPanelTopBar extends JPanel
 
 	private ActionListener	updateClockAction	= new ActionListener()
 												{
+													@Override
 													public void actionPerformed(ActionEvent e)
 													{
 														clockLabel.setText(ft.format(new Date()));

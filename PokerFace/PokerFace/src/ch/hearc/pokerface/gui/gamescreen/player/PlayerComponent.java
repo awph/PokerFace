@@ -41,6 +41,12 @@ public class PlayerComponent extends JPanel
 	private CardComponent		card2;
 	private Token				role;
 
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+
+	public static final Color	PF_GOLD_COLOR	= new Color(255, 215, 0);
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
@@ -88,7 +94,7 @@ public class PlayerComponent extends JPanel
 	{
 		if (b)
 		{
-			setBorder(BorderFactory.createLineBorder(Color.YELLOW,3));
+			setBorder(BorderFactory.createLineBorder(Color.YELLOW, 3));
 		}
 		else
 		{
@@ -134,6 +140,7 @@ public class PlayerComponent extends JPanel
 	{
 		allinShow = b;
 	}
+
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
@@ -196,7 +203,7 @@ public class PlayerComponent extends JPanel
 		turnSpend.setFont(font);
 
 		name.setForeground(Color.WHITE);
-		money.setForeground(new Color(255, 215, 0));
+		money.setForeground(PF_GOLD_COLOR);
 		turnSpend.setForeground(new Color(39, 181, 73));
 	}
 

@@ -46,7 +46,7 @@ public class JPanelGameArea extends ImagePanel
 
 	public JPanelGameArea(GameEngine gameEngine) throws IOException
 	{
-		super(ImageIO.read(new File("resources/table/background.png")));
+		super(ImageIO.read(ClassLoader.getSystemResource("resources/table/background.png")));
 		setDoubleBuffered(true);
 
 		this.gameEngine = gameEngine;
