@@ -2,7 +2,6 @@
 package ch.hearc.pokerface.gui;
 
 import java.awt.CardLayout;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -48,22 +47,27 @@ public class JFrameMain extends JFrame
 	// CARD MANIPULATIONS
 	public void setCard(String card)
 	{
-		if (card == "panelGameBoard")
+		try
 		{
-			JOPTableConfiguration tableConfig = new JOPTableConfiguration(this, panelGameBoard);
-			if (!tableConfig.switchToGame()) {
-				return; // Abort the process of switching to gameBoard
-			}
-			// Game is launching
+			if (card == "panelGameBoard")
+			{
+				JOPTableConfiguration tableConfig = new JOPTableConfiguration(this, panelGameBoard);
+				if (!tableConfig.switchToGame()) { return; // Abort the process of switching to gameBoard
+				}
+				// Game is launching
 
-			panelGameBoard.refreshAllComponents();
-			setFullscreen(true);
+				panelGameBoard.refreshAllComponents();
+				setFullscreen(true);
+			}
+			else if (card == "panelProfile")
+			{
+				panelProfile.refreshProfilesData();
+			}
+			layout.show(this.getContentPane(), card);
 		}
-		else if (card == "panelProfile")
+		catch (Exception e)
 		{
-			panelProfile.refreshProfilesData();
 		}
-		layout.show(this.getContentPane(), card);
 	}
 
 	public void gameToMainMenu()
@@ -95,7 +99,16 @@ public class JFrameMain extends JFrame
 	{
 		setVisible(false);
 		dispose();
-		setUndecorated(!isUndecorated());
+		if (isFullscreened)
+		{
+			setExtendedState(MAXIMIZED_BOTH);
+		}
+		else
+		{
+			setExtendedState(NORMAL);
+			setSize(1200, (int)(1200 * 0.75));
+		}
+		/*setUndecorated(!isUndecorated());
 		if (isFullscreened)
 		{
 			GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(this);
@@ -103,7 +116,7 @@ public class JFrameMain extends JFrame
 		else
 		{
 			GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(null);
-		}
+		}*/
 		setVisible(true);
 	}
 
@@ -177,7 +190,7 @@ public class JFrameMain extends JFrame
 		SplashWindow.splash(ImageShop.IMAGE_SPLASH);
 		try
 		{
-			Thread.sleep(3000);
+			//Thread.sleep(2000);
 		}
 		catch (Exception e)
 		{
