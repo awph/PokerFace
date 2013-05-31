@@ -748,23 +748,17 @@ public class GameEngine
 
 	private void runSimulationPlayer()
 	{
-		int lastPlayer = indexPlayer;
-		int i = lastPlayer;
 		int nbCardInBoard = Statistics.NUMBER_CARDS_FLOP;
 		do
 		{
-			i = getNextIndex(i);
-			Player player = players.get(i);
-			if (!player.isFolded())
+			for(Player player:players)
 			{
-				Statistics.getFlopTurnRiverValues(player, player.getPocket(), futureBoard, getNbPlayers(), nbCardInBoard);
+				if (!player.isFolded())
+				{
+					Statistics.getFlopTurnRiverValues(player, player.getPocket(), futureBoard, getNbPlayers(), nbCardInBoard);
+				}
 			}
-			if (i == lastPlayer)
-			{
-				i = getNextIndex(i);
-				nbCardInBoard++;
-			}
-		} while(i != lastPlayer && nbCardInBoard <= Statistics.NUMBER_CARDS_RIVER);
+		}while(++nbCardInBoard <= Statistics.NUMBER_CARDS_RIVER);
 	}
 
 	private void log(final String message)
