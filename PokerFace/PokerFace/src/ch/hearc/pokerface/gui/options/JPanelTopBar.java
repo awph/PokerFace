@@ -193,7 +193,7 @@ public final class JPanelTopBar extends JPanel
 			@Override
 			public void stateChanged(ChangeEvent arg0)
 			{
-				SoundEngine.getInstance().setVolume((float)(volumeSlider.getValue() / 100.0));
+				SoundEngine.getInstance().setVolume((volumeSlider.getValue()));
 			}
 		});
 	}
