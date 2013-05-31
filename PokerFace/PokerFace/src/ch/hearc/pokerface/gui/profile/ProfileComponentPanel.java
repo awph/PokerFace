@@ -4,7 +4,7 @@ package ch.hearc.pokerface.gui.profile;
 import javax.swing.JPanel;
 
 
-public class ProfileComponentPanel extends JPanel
+public abstract class ProfileComponentPanel extends JPanel
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|

@@ -107,65 +107,95 @@ public class EllipsisLayout implements LayoutManager
 
 		int rlSideYOffset = containerHeight/5;
 		int tbXOffset = containerWidth/4;
-
+/*
+ * OLD
+ * 	 3		2		4|5
+ *7						8
+ *	  P [][][][][] K
+ *9						10
+ *	5|4		1		6
+ *
+ * NEW
+ * 	 5		6|X 	7
+ *4						8
+ *	  P [][][][][] K
+ *3						9
+ *	2		1		10
+ *X=2 if 1v1
+ */
 		switch(n - nonEllipseComp)
 		{
 			case 10:
 				c = parent.getComponent(9);
 				d = c.getPreferredSize();
-				angle = 0; // 10
+				angle = Math.PI/2; // 6
 				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
 				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
-				c.setBounds(x - d.width / 2, y + rlSideYOffset - d.height / 2, d.width, d.height);
+				c.setBounds(x + tbXOffset - d.width / 2, y - d.height / 2, d.width, d.height);
 			case 9:
 				c = parent.getComponent(8);
 				d = c.getPreferredSize();
-				angle = Math.PI; // 9
+				angle = 0; // 10
 				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
 				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
-				c.setBounds(x - d.width / 2, y - rlSideYOffset - d.height / 2, d.width, d.height);
+				c.setBounds(x + containerHeight/10 - d.width / 2, y + rlSideYOffset - d.height / 2, d.width, d.height);
 			case 8:
 				c = parent.getComponent(7);
 				d = c.getPreferredSize();
 				angle = 0; // 8
 				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
 				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
-				c.setBounds(x - d.width / 2, y - rlSideYOffset - d.height / 2, d.width, d.height);
+				c.setBounds(x + containerHeight/10  - d.width / 2, y - rlSideYOffset - d.height / 2, d.width, d.height);
 			case 7:
 				c = parent.getComponent(6);
-				d = c.getPreferredSize();
-				angle = Math.PI; // 7
-				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
-				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
-				c.setBounds(x - d.width / 2, y + rlSideYOffset - d.height / 2, d.width, d.height);
-			case 6:
-				c = parent.getComponent(5);
-				d = c.getPreferredSize();
-				angle = Math.PI/2; // 6
-				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
-				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
-				c.setBounds(x + tbXOffset - d.width / 2, y - d.height / 2, d.width, d.height);
-			case 5:
-				c = parent.getComponent(4);
 				d = c.getPreferredSize();
 				angle = -Math.PI/2; // 5
 				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
 				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
 				c.setBounds(x + tbXOffset - d.width / 2, y - d.height / 2, d.width, d.height);
-			case 4:
-				c = parent.getComponent(3);
+			case 6:
+				c = parent.getComponent(5);
 				d = c.getPreferredSize();
-				angle = Math.PI/2; // 4
+				angle = -Math.PI/2; // 2
 				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
 				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
-				c.setBounds(x - tbXOffset - d.width / 2, y - d.height / 2, d.width, d.height);
-			case 3:
-				c = parent.getComponent(2);
+				c.setBounds(x - d.width / 2, y - d.height / 2, d.width, d.height);
+			case 5:
+				c = parent.getComponent(4);
 				d = c.getPreferredSize();
 				angle = -Math.PI/2; // 3
 				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
 				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
 				c.setBounds(x - tbXOffset - d.width / 2, y - d.height / 2, d.width, d.height);
+			case 4:
+				c = parent.getComponent(3);
+				d = c.getPreferredSize();
+				angle = Math.PI; // 9
+				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
+				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
+				c.setBounds(x - containerHeight/10 - d.width / 2, y - rlSideYOffset - d.height / 2, d.width, d.height);
+			case 3:
+				c = parent.getComponent(2);
+				d = c.getPreferredSize();
+				angle = Math.PI; // 7
+				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
+				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
+				c.setBounds(x - containerHeight/10 - d.width / 2, y + rlSideYOffset - d.height / 2, d.width, d.height);
+
+				c = parent.getComponent(1);
+				d = c.getPreferredSize();
+				angle = Math.PI/2; // 4
+				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
+				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
+				c.setBounds(x - tbXOffset - d.width / 2, y - d.height / 2, d.width, d.height);
+
+				c = parent.getComponent(0);
+				d = c.getPreferredSize();
+				angle = Math.PI/2; // 1
+				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
+				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
+				c.setBounds(x - d.width / 2, y - d.height / 2, d.width, d.height);
+				break;
 			case 2:
 				c = parent.getComponent(1);
 				d = c.getPreferredSize();
@@ -173,6 +203,7 @@ public class EllipsisLayout implements LayoutManager
 				x = xcenter + (int)(Math.cos(angle) * xradius); // radius if circle
 				y = ycenter + (int)(Math.sin(angle) * yradius); // radius if circle
 				c.setBounds(x - d.width / 2, y - d.height / 2, d.width, d.height);
+
 				c = parent.getComponent(0);
 				d = c.getPreferredSize();
 

@@ -148,6 +148,11 @@ public final class JPanelTopBar extends JPanel
 		this.frameMain = frameMain;
 	}
 
+	public void setCapital(String capital)
+	{
+		bankroll.setText(capital + " $");
+	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/

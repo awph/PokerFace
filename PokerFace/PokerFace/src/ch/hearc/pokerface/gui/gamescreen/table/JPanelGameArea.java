@@ -14,7 +14,6 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
@@ -99,7 +98,7 @@ public class JPanelGameArea extends ImagePanel
 		panelPlayer.setLayout(new EllipsisLayout());
 		panelPlayer.setOpaque(false);
 
-		panelPlayer.setBorder(new EmptyBorder(50, 10, 50, 10)); // inside padding
+		//panelPlayer.setBorder(new EmptyBorder(50, 10, 50, 10)); // inside padding
 
 		for(Player player:this.gameEngine.getPlayers())
 		{

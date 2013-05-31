@@ -131,7 +131,12 @@ public class ProfileComponent extends ProfileComponentPanel
 
 	public void refreshData()
 	{
+		/*if (profile == ActiveProfile.getInstance().getProfile())
+		{
+			capital = new JLabel(Integer.toString(ActiveProfile.getInstance().getProfile().getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
+		}*/
 		capital = new JLabel(Integer.toString(profile.getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
+		System.out.println("refreshing " + profile.getName() + profile.getCapital());
 		repaint();
 		revalidate();
 	}

@@ -39,7 +39,7 @@ public class ProfileListContainer extends Box
 
 	private final JPanelProfile					profilePanel;
 
-	private LinkedList<Profile>						profileList;
+	private LinkedList<Profile>					profileList;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -251,18 +251,14 @@ public class ProfileListContainer extends Box
 		{
 			if (i < profileComponentList.size())
 			{
-			profileReferenceList.add(add(profileComponentList.get(i), j));
-			Box vStrutBox = Box.createHorizontalBox();
+				profileReferenceList.add(add(profileComponentList.get(i), j));
 			}
-			//vStrutBox.add(createVerticalStrut(VERTICAL_GAP));
-			//profileReferenceList.add(add(vStrutBox, j + 1));
 		}
 	}
 
 	private void appearance()
 	{
-		//TitledBorder titledBorder = BorderFactory.createTitledBorder(null, " Text 1    Text 2", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, Color.RED);
-		//setBorder(BorderFactory.createLineBorder(Color.RED));
+
 		setBackground(new Color(25, 25, 25, 150));
 		setOpaque(true);
 	}
@@ -314,10 +310,14 @@ public class ProfileListContainer extends Box
 	{
 		for(ProfileComponentPanel profileComponent:profileComponentList)
 		{
-			if (profileComponent instanceof ProfileComponent) {
+			if (profileComponent instanceof ProfileComponent)
+			{
 				((ProfileComponent)profileComponent).refreshData();
 			}
 		}
+		repaint();
+		getParent().repaint();
+		refreshProfiles();
 	}
 
 }
