@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
@@ -41,6 +42,7 @@ public final class JPanelTopBar extends JPanel
 	private JLabel							bankroll;
 	private JLabel							coin;
 	private JLabel							clockLabel;
+	private JLabel							help;
 	private JLabel							quitApplication;
 	private JLabel							quitGame;
 	private JLabel							volumeIcon;
@@ -89,6 +91,7 @@ public final class JPanelTopBar extends JPanel
 		bankroll = new JLabel();
 		clockLabel = new JLabel();
 		clockLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		help = new JLabel("", ImageShop.ICON_BUTTON_HELP, 0);
 		quitApplication = new JLabel("", ImageShop.ICON_BUTTON_QUIT_APPLICATION, 0);
 		quitGame = new JLabel("", ImageShop.ICON_BUTTON_QUIT_GAME, 0);
 		volumeIcon = new JLabel("\u266B");
@@ -115,6 +118,8 @@ public final class JPanelTopBar extends JPanel
 		Box info = Box.createHorizontalBox();
 		info.add(Box.createGlue());
 		info.add(clockLabel);
+		info.add(Box.createHorizontalStrut(20));
+		info.add(help);
 		info.add(Box.createHorizontalStrut(20));
 		info.add(quitGame);
 		info.add(Box.createHorizontalStrut(20));
@@ -153,20 +158,21 @@ public final class JPanelTopBar extends JPanel
 		bankroll.setText(capital + " $");
 	}
 
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
-
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
 	private void control()
 	{
+		help.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				showHelp();
+			}
+		});
+
 		quitApplication.addMouseListener(new MouseAdapter()
 		{
 			@Override
@@ -196,6 +202,46 @@ public final class JPanelTopBar extends JPanel
 				SoundEngine.getInstance().setVolume((volumeSlider.getValue()));
 			}
 		});
+	}
+
+	private void showHelp()
+	{
+		String rules =
+				"<html><h3>The Cards</h3>" +
+				"<p>At the beginning, each player receive 2 cards that the other(s) player(s) can't see. In the deck, there are in total 52 cards.<br />" +
+				"During the game, others cards will appear at the middle : first 3, then 1 and finally 1 other. These cards are shared with the other players<br />" +
+				"The purpose is to have the best hand ranking. To help you, there is at the bottom left all the handrankings possible</p>" +
+				"<h3>Game process</h3>" +
+				"<p>In the poker texas holdem, there are 4 main states and few bettings states. In the oreders, the state are :" +
+				"<ul>" +
+				"<ol><b>Pre flop</b> : You receive your 2 cards</ol>" +
+				"<ol><b>Flop</b> : 3 cards appear over the board</ol>" +
+				"<ol><b>Turn</b> : 1 card appears over the board</ol>" +
+				"<ol><b>River</b> : 1 last card appears over the board</ol>" +
+				"</ul>" +
+				"Between each step there is a betting state. It will be described afterwards.<br />" +
+				"After the last betting state, all the players in play show their cards. If a player has less good cards than another one, he has the possibility to not show his cards.<br />" +
+				"At the end, the best player take all the money. If there is more than one winner (tie), the pot is divided up.</p>" +
+				"<h3>Bet</h3>" +
+				"During a game, each player has a role : " +
+				"<ul>" +
+				"<li>Small Blind (only when there are more than 2 players)</li>" +
+				"<li>Big Blind</li>" +
+				"<li>Dealer</li>" +
+				"<li>Nothing</li>" +
+				"</ul>" +
+				"During the first betting state, after the preflop state, the big blind must bet an amount (defined by the table options) and the big blind twice more.<br />" +
+				"The dealer deals the card then the small blind bets and finally the big blind. Afterwards, the next player could play and make a decision.<br /> After all players have played, the small blind has to play and the Big Blind has to finish the turn if no body has raised.<br />" +
+				"After the preflop, there is no more roles.<br />" +
+				"The diffections action possible are :" +
+				"<ul>" +
+				"<li><b>Fold</b> : You left the current game</li>" +
+				"<li><b>Check</b> : If nobody has already bet, that mean \"I continue but I bet nothing\"</li>" +
+				"<li><b>Bet </b> : Same than check but you define the bet</li>" +
+				"<li><b>Call</b> : To continue the game, you have to pay the bet</li>" +
+				"<li><b>Raise</b> : If you have good hands or want to bluff, you could pay more than necessary</li>" +
+				"</ul></html>";
+		JOptionPane.showMessageDialog(this, rules, "Poker Rules, Texas Hold'Em No Limit", JOptionPane.INFORMATION_MESSAGE, ImageShop.ICON_BUTTON_HELP);
 	}
 
 	private ActionListener	updateClockAction	= new ActionListener()

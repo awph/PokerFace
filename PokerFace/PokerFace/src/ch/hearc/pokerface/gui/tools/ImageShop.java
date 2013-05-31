@@ -29,6 +29,7 @@ public class ImageShop
 
 	private static final String		NAME_IMAGE_BUTTON_QUIT_GAME			= "buttons/quitGame.png";
 	private static final String		NAME_IMAGE_BUTTON_QUIT_APPLICATION	= "buttons/quitApplication.png";
+	private static final String		NAME_IMAGE_BUTTON_HELP				= "buttons/help.png";
 
 	private static final String		NAME_IMAGE_TOKEN_BB					= "table/tokens/bb.png";
 	private static final String		NAME_IMAGE_TOKEN_SB					= "table/tokens/sb.png";
@@ -48,6 +49,7 @@ public class ImageShop
 
 	public static final ImageIcon	ICON_BUTTON_QUIT_GAME				= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_BUTTON_QUIT_GAME, 0.1, IS_BLOQUANT);
 	public static final ImageIcon	ICON_BUTTON_QUIT_APPLICATION		= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_BUTTON_QUIT_APPLICATION, 0.4, IS_BLOQUANT);
+	public static final ImageIcon	ICON_BUTTON_HELP					= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_BUTTON_HELP, 0.1, IS_BLOQUANT);
 
 	public static final Image		IMAGE_HANDRANKING					= ImageTools.load(PATH + NAME_IMAGE_HANDRANKING, IS_BLOQUANT);
 	public static final ImageIcon	ICON_HANDRANKING					= ImageTools.loadIcon(PATH + NAME_IMAGE_HANDRANKING, IS_BLOQUANT);
