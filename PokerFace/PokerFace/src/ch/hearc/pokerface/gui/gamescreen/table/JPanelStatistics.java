@@ -7,14 +7,16 @@ import java.awt.FontFormatException;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import net.miginfocom.swing.MigLayout;
 
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.player.Player;
@@ -27,19 +29,21 @@ public class JPanelStatistics extends JPanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private Player					player;
-	private StateType				currentState;
-	private StatisticValue			statisticValue;
+	private Player							player;
+	private StateType						currentState;
+	private StatisticValue					statisticValue;
 
-	private JPanelStatisticsItem	straightFlushItem;
-	private JPanelStatisticsItem	fourOfKindItem;
-	private JPanelStatisticsItem	fullHouseItem;
-	private JPanelStatisticsItem	flushItem;
-	private JPanelStatisticsItem	straightItem;
-	private JPanelStatisticsItem	threeOfKindItem;
-	private JPanelStatisticsItem	twoPairsItem;
-	private JPanelStatisticsItem	onePairItem;
-	private JPanelStatisticsItem	highCardItem;
+	private JPanelStatisticsItemWinLoseTie	winLoseTieItem;
+
+	private JPanelStatisticsItem			straightFlushItem;
+	private JPanelStatisticsItem			fourOfKindItem;
+	private JPanelStatisticsItem			fullHouseItem;
+	private JPanelStatisticsItem			flushItem;
+	private JPanelStatisticsItem			straightItem;
+	private JPanelStatisticsItem			threeOfKindItem;
+	private JPanelStatisticsItem			twoPairsItem;
+	private JPanelStatisticsItem			onePairItem;
+	private JPanelStatisticsItem			highCardItem;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -66,8 +70,8 @@ public class JPanelStatistics extends JPanel
 		if (currentState != StateType.BettingState && currentState != StateType.ShowdownState && (statisticValue == null || this.currentState != currentState))
 		{
 			this.currentState = currentState;
-			loadNewStatistics();
 		}
+		loadNewStatistics();
 		getParent().repaint();
 	}
 
@@ -79,6 +83,8 @@ public class JPanelStatistics extends JPanel
 	{
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+		winLoseTieItem = new JPanelStatisticsItemWinLoseTie();
+
 		straightFlushItem = new JPanelStatisticsItem("Straight Flush");
 		fourOfKindItem = new JPanelStatisticsItem("Four Of A Kind");
 		fullHouseItem = new JPanelStatisticsItem("Full House");
@@ -89,6 +95,7 @@ public class JPanelStatistics extends JPanel
 		onePairItem = new JPanelStatisticsItem("One Pair");
 		highCardItem = new JPanelStatisticsItem("High Card");
 
+		add(winLoseTieItem);
 		add(straightFlushItem);
 		add(fourOfKindItem);
 		add(fullHouseItem);
@@ -104,10 +111,6 @@ public class JPanelStatistics extends JPanel
 	{
 		setBackground(new Color(25, 25, 25, 120));
 	}
-
-	/*------------------------------*\
-	|*			Sub class			*|
-	\*------------------------------*/
 
 	private void loadNewStatistics()
 	{
@@ -135,17 +138,23 @@ public class JPanelStatistics extends JPanel
 	{
 		if (statisticValue != null)
 		{
-			straightFlushItem.setPercent((int)statisticValue.getStraightFlush());
-			fourOfKindItem.setPercent((int)statisticValue.getFourOfKind());
-			fullHouseItem.setPercent((int)statisticValue.getFullHouse());
-			flushItem.setPercent((int)statisticValue.getFlush());
-			straightItem.setPercent((int)statisticValue.getStraight());
-			threeOfKindItem.setPercent((int)statisticValue.getThreeOfKind());
-			twoPairsItem.setPercent((int)statisticValue.getTwoPairs());
-			onePairItem.setPercent((int)statisticValue.getOnePair());
-			highCardItem.setPercent((int)statisticValue.getHighCard());
+			winLoseTieItem.setPercents(statisticValue.getWin(), statisticValue.getTie(), statisticValue.getLoss());
+
+			straightFlushItem.setPercent(statisticValue.getStraightFlush());
+			fourOfKindItem.setPercent(statisticValue.getFourOfKind());
+			fullHouseItem.setPercent(statisticValue.getFullHouse());
+			flushItem.setPercent(statisticValue.getFlush());
+			straightItem.setPercent(statisticValue.getStraight());
+			threeOfKindItem.setPercent(statisticValue.getThreeOfKind());
+			twoPairsItem.setPercent(statisticValue.getTwoPairs());
+			onePairItem.setPercent(statisticValue.getOnePair());
+			highCardItem.setPercent(statisticValue.getHighCard());
 		}
 	}
+
+	/*------------------------------*\
+	|*			Sub class			*|
+	\*------------------------------*/
 
 	private class JPanelStatisticsItem extends JPanel
 	{
@@ -154,7 +163,7 @@ public class JPanelStatistics extends JPanel
 		\*------------------------------------------------------------------*/
 
 		private String			title;
-		private int				percent;
+		private double			percent;
 		private JLabel			jLabelTitle;
 		private JLabel			jLabelPercent;
 		private JPanelGradient	jPanelGradient;
@@ -182,19 +191,21 @@ public class JPanelStatistics extends JPanel
 		|*				Set				*|
 		\*------------------------------*/
 
-		public void setPercent(float percent)
+		public void setPercent(double percent)
 		{
-			if (percent <= 0)
+			if (Math.abs(percent - 0.0) <= 10e-6)
 			{
 				noChance = true;
 			}
 			else
 			{
-				noChance = true;
+				noChance = false;
 			}
-			this.percent = (int)percent;
-			jLabelPercent.setText(this.percent + "%");
+			DecimalFormat decimalFormat = new DecimalFormat("#.##");
+			this.percent = percent;
+			jLabelPercent.setText(decimalFormat.format(percent) + "%");
 			jPanelGradient.setPercent(this.percent);
+			apparence();
 		}
 
 		/*------------------------------------------------------------------*\
@@ -203,12 +214,11 @@ public class JPanelStatistics extends JPanel
 
 		private void geometry()
 		{
-			GridLayout layout = new GridLayout(1, 3);
-			setLayout(layout);
+			setLayout(new MigLayout("insets 0", "[50lp, fill]0", "[20lp, fill]0"));
 
 			jLabelTitle = new JLabel(title);
 			jPanelGradient = new JPanelGradient();
-			jLabelPercent = new JLabel(percent + "%");
+			jLabelPercent = new JLabel(percent + ".00%");
 
 			Font font = jLabelTitle.getFont();
 			try
@@ -224,9 +234,9 @@ public class JPanelStatistics extends JPanel
 			jLabelTitle.setFont(font);
 			jLabelPercent.setFont(font);
 
-			add(jLabelTitle);
-			add(jPanelGradient);
-			add(jLabelPercent);
+			add(jLabelTitle, "width 17%!");
+			add(jPanelGradient, "width 60%!");
+			add(jLabelPercent, "width 23%!");
 		}
 
 		private void apparence()
@@ -254,7 +264,7 @@ public class JPanelStatistics extends JPanel
 			|*							Attributs Private						*|
 			\*------------------------------------------------------------------*/
 
-			private int				percent;
+			private double			percent;
 			private GradientPaint	gradient;
 			private Rectangle2D		gradientRectangle;
 
@@ -277,14 +287,14 @@ public class JPanelStatistics extends JPanel
 			|*				Set				*|
 			\*------------------------------*/
 
-			public void setPercent(int percent)
+			public void setPercent(double percent)
 			{
 				this.percent = percent;
 
 				int w = getWidth();
 				int h = getHeight();
 
-				gradient = new GradientPaint(0, 0, Color.RED, w, h, Color.GREEN);
+				gradient = new GradientPaint(0, 0, PF_RED, w, h, PF_GREEN);
 				gradientRectangle = new Rectangle2D.Double(0, 0, (percent / 100.0) * w, h);
 
 				repaint();
@@ -310,8 +320,8 @@ public class JPanelStatistics extends JPanel
 
 			private void geometry()
 			{
-				gradient = new GradientPaint(0, 0, Color.BLUE, getWidth(), getHeight(), Color.RED);
-				gradientRectangle = new Rectangle2D.Double(0, 0, percent * getWidth(), getHeight());
+				gradient = new GradientPaint(0, 0, Color.RED, getWidth(), getHeight(), Color.GREEN);
+				gradientRectangle = new Rectangle2D.Double(0, 0, (percent / 100.0) * getWidth(), getHeight());
 			}
 
 			private void apparence()
@@ -320,4 +330,167 @@ public class JPanelStatistics extends JPanel
 			}
 		}
 	}
+
+	private class JPanelStatisticsItemWinLoseTie extends JPanel
+	{
+		/*------------------------------------------------------------------*\
+		|*							Attributs Private						*|
+		\*------------------------------------------------------------------*/
+
+		private double								percentWin;
+		private double								percentTie;
+		private double								percentLose;
+		private JLabel								jLabelTitle;
+		private JLabel								jLabelPercent;
+		private JPanelStatisticsItemWinLoseTieColor	jPanelStatisticsItemWinLoseTieColor;
+
+		/*------------------------------------------------------------------*\
+		|*							Constructeurs							*|
+		\*------------------------------------------------------------------*/
+
+		public JPanelStatisticsItemWinLoseTie()
+		{
+			geometry();
+			apparence();
+
+			setPercents(0, 0, 0);
+		}
+
+		/*------------------------------------------------------------------*\
+		|*							Methodes Public							*|
+		\*------------------------------------------------------------------*/
+
+		/*------------------------------*\
+		|*				Set				*|
+		\*------------------------------*/
+
+		public void setPercents(double percentWin, double percentTie, double percentLose)
+		{
+			this.percentWin = percentWin;
+			this.percentTie = percentTie;
+			this.percentLose = percentLose;
+			jPanelStatisticsItemWinLoseTieColor.setPercents(percentWin, percentTie, percentLose);
+			apparence();
+		}
+
+		/*------------------------------------------------------------------*\
+		|*							Methodes Private						*|
+		\*------------------------------------------------------------------*/
+
+		private void geometry()
+		{
+			setLayout(new MigLayout("insets 0", "[50lp, fill]0", "[20lp, fill]0"));
+			setBackground(null);
+
+			jLabelTitle = new JLabel("Win | Tie | Lose");
+			jPanelStatisticsItemWinLoseTieColor = new JPanelStatisticsItemWinLoseTieColor();
+			jLabelPercent = new JLabel(percentWin + ".00% | " + percentTie + ".00% | " + percentLose + ".00%");
+
+			Font font = jLabelTitle.getFont();
+			try
+			{
+				font = Font.createFont(Font.TRUETYPE_FONT, new File(ButtonTools.BUTTON_FONT_NAME));
+			}
+			catch (FontFormatException | IOException e)
+			{
+				e.printStackTrace();
+			}
+			font = font.deriveFont(12f);
+
+			jLabelTitle.setFont(font);
+			jLabelPercent.setFont(font);
+
+			jLabelTitle.setForeground(Color.WHITE);
+			jLabelPercent.setForeground(Color.WHITE);
+
+			add(jLabelTitle, "width 17%!");
+			add(jPanelStatisticsItemWinLoseTieColor, "width 60%!");
+			add(jLabelPercent, "width 23%!");
+		}
+
+		private void apparence()
+		{
+			DecimalFormat decimalFormat = new DecimalFormat("#.##");
+			jLabelPercent.setText(decimalFormat.format(percentWin) + "% | " + decimalFormat.format(percentTie) + "% | " + decimalFormat.format(percentLose) + "%");
+		}
+
+		/*------------------------------*\
+		|*			Sub class			*|
+		\*------------------------------*/
+
+		private class JPanelStatisticsItemWinLoseTieColor extends JPanel
+		{
+			/*------------------------------------------------------------------*\
+			|*							Attributs Private						*|
+			\*------------------------------------------------------------------*/
+
+			private Rectangle2D	winRectangle;
+			private Rectangle2D	tieRectangle;
+			private Rectangle2D	loseRectangle;
+
+			/*------------------------------------------------------------------*\
+			|*							Constructeurs							*|
+			\*------------------------------------------------------------------*/
+
+			public JPanelStatisticsItemWinLoseTieColor()
+			{
+				setPercents(0, 0, 0);
+				geometry();
+				apparence();
+			}
+
+			/*------------------------------------------------------------------*\
+			|*							Methodes Public							*|
+			\*------------------------------------------------------------------*/
+
+			/*------------------------------*\
+			|*				Set				*|
+			\*------------------------------*/
+
+			public void setPercents(double percentWin, double percentTie, double percentLose)
+			{
+				winRectangle = new Rectangle2D.Double(0, 0, (percentWin / 100.0) * getWidth(), getHeight());
+				tieRectangle = new Rectangle2D.Double(winRectangle.getWidth(), 0, (percentTie / 100.0) * getWidth(), getHeight());
+				loseRectangle = new Rectangle2D.Double(tieRectangle.getX() + tieRectangle.getWidth(), 0, (percentLose / 100.0) * getWidth(), getHeight());
+
+				repaint();
+			}
+
+			/*------------------------------------------------------------------*\
+			|*							Methodes Protected						*|
+			\*------------------------------------------------------------------*/
+
+			@Override
+			protected void paintComponent(Graphics g)
+			{
+				super.paintComponent(g);
+				Graphics2D g2d = (Graphics2D)g;
+
+				g2d.setPaint(PF_GREEN);
+				g2d.fill(winRectangle);
+				g2d.setPaint(PF_YELLOW);
+				g2d.fill(tieRectangle);
+				g2d.setPaint(PF_RED);
+				g2d.fill(loseRectangle);
+			}
+
+			/*------------------------------------------------------------------*\
+			|*							Methodes Private						*|
+			\*------------------------------------------------------------------*/
+
+			private void geometry()
+			{
+				//Rien
+			}
+
+			private void apparence()
+			{
+				setBackground(null);
+			}
+		}
+	}
+
+	public static final Color	PF_GREEN	= new Color(39, 174, 96);
+	public static final Color	PF_RED		= new Color(192, 57, 43);
+	public static final Color	PF_YELLOW	= new Color(241, 196, 15);
 }
