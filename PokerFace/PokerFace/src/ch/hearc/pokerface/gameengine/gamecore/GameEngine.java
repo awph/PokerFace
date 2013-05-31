@@ -201,41 +201,8 @@ public class GameEngine
 		else
 		{
 			logPlayerAction(player, Action.Bet, amount);
-			player.takeMoney(amount);
-			pot.addStateTotalAndSetBet(amount);
+			betCallAction(player, amount);
 			setIndexLastRaise(player);
-			updateGUI();
-		}
-	}
-
-	public void raise(Player player, int amount)
-	{
-		if (amount >= player.getBankroll())
-		{
-			allin(player);
-		}
-		else
-		{
-			logPlayerAction(player, Action.Raise, amount);
-			int callValue = player.getCallValue();
-			player.takeMoney(amount);
-			pot.addStateTotalAndSetBet(callValue);
-			pot.addStateTotalAndAddBet(amount - callValue);
-			updateGUI();
-			setIndexLastRaise(player);
-		}
-	}
-
-	public void check(Player player)
-	{
-		if (player.getCallValue() != 0)
-		{
-			call(player);
-		}
-		else
-		{
-			logPlayerAction(player, Action.Check);
-			updateGUI();
 		}
 	}
 
@@ -249,9 +216,20 @@ public class GameEngine
 		else
 		{
 			logPlayerAction(player, Action.Call, amount);
-			player.takeMoney(amount);
-			pot.addStateTotalAndSetBet(amount);
-			updateGUI();
+			betCallAction(player, amount);
+		}
+	}
+
+	public void raise(Player player, int amount)
+	{
+		if (amount >= player.getBankroll())
+		{
+			allin(player);
+		}
+		else
+		{
+			logPlayerAction(player, Action.Raise, amount);
+			raiseAllinAction(player,amount);
 		}
 	}
 
@@ -259,13 +237,20 @@ public class GameEngine
 	{
 		int amount = player.getBankroll();
 		logPlayerAction(player, Action.Allin, amount);
+		raiseAllinAction(player, amount);
+	}
 
-		int callValue = player.getCallValue();
-		player.takeMoney(amount);
-		pot.addStateTotalAndSetBet(callValue);
-		pot.addStateTotalAndAddBet(amount - callValue);
-		updateGUI();
-		setIndexLastRaise(player);
+	public void check(Player player)
+	{
+		if (player.getCallValue() != 0)
+		{
+			call(player);
+		}
+		else
+		{
+			logPlayerAction(player, Action.Check);
+			updateGUI();
+		}
 	}
 
 	public void fold(Player player)
@@ -308,7 +293,7 @@ public class GameEngine
 	{
 		List<Pair<HandsPokerValue, Player>> handsValues = new ArrayList<Pair<HandsPokerValue, Player>>();
 
-		//Compte the value of each player's hand
+		//Count the value of each player's hand
 		for(Player player:players)
 		{
 			if (!player.isFolded())
@@ -835,5 +820,22 @@ public class GameEngine
 	private void showDialog(String text, Icon icon)
 	{
 		JOptionPane.showMessageDialog(frameMain, text, text, JOptionPane.CLOSED_OPTION, icon);//TODO mettre image
+	}
+
+	private void raiseAllinAction(Player player, int amount)
+	{
+		int callValue = player.getCallValue();
+		player.takeMoney(amount);
+		pot.addStateTotalAndSetBet(callValue);
+		pot.addStateTotalAndAddBet(amount - callValue);
+		setIndexLastRaise(player);
+		updateGUI();
+	}
+
+	private void betCallAction(Player player, int amount)
+	{
+		player.takeMoney(amount);
+		pot.addStateTotalAndSetBet(amount);
+		updateGUI();
 	}
 }
