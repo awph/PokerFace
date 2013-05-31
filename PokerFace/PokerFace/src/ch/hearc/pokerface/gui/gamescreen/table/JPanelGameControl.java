@@ -16,13 +16,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JEditorPane;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
-import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
@@ -50,7 +50,7 @@ public class JPanelGameControl extends JPanel
 
 	boolean mouseIsInLogger = false;
 
-	private JTextArea			loggerTextArea;
+	private JEditorPane			loggerTextArea;
 	private JPanelStatistics	statisticsPanel;
 
 	//IO
@@ -183,9 +183,13 @@ public class JPanelGameControl extends JPanel
 		checkCallButton = new JButton();
 		foldButton = new JButton(FOLD);
 		moneySpinner = new JSpinner();
-		loggerTextArea = new JTextArea();
-
-		loggerTextArea.setMaximumSize(loggerTextArea.getPreferredSize());
+		loggerTextArea = new JEditorPane();
+		loggerTextArea.setContentType("text/html");
+		Dimension dim = new Dimension(100, 400);
+		loggerTextArea.setSize(dim);
+		loggerTextArea.setPreferredSize(dim);
+		loggerTextArea.setMinimumSize(dim);
+		loggerTextArea.setMaximumSize(dim);
 		loggerTextArea.setAutoscrolls(false);
 		loggerTextArea.setEditable(false);
 		gameEngine.setLogger(loggerTextArea);

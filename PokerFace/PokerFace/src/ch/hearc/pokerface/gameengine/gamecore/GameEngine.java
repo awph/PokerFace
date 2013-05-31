@@ -10,8 +10,8 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import javax.swing.Icon;
+import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
@@ -62,8 +62,8 @@ public class GameEngine
 	private Card[]				futureBoard;
 	private JPanelGameBoard		panelGameBoard;
 	private Profile				profilePlayer;
-	private JTextArea			logger;
-	private JFrameMain	frameMain;
+	private JEditorPane			logger;
+	private JFrameMain			frameMain;
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
@@ -78,7 +78,7 @@ public class GameEngine
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public GameEngine(JFrameMain frame,int smallBlind, int nbPlayer, Profile profile, int bankroll, JPanelGameBoard panelGameBoard)
+	public GameEngine(JFrameMain frame, int smallBlind, int nbPlayer, Profile profile, int bankroll, JPanelGameBoard panelGameBoard)
 	{
 		this.frameMain = frame;
 		this.panelGameBoard = panelGameBoard;
@@ -119,12 +119,12 @@ public class GameEngine
 		if (HUMAN_PLAYER == players.get(0))
 		{
 			log("You win ! You are the master !");
-			showDialog("YOU WIN !",null);
+			showDialog("YOU WIN !", null);
 		}
 		else
 		{
 			log("You lose ! The winner is " + players.get(0).getProfile().getName());
-			showDialog("YOU LOSE !",null);
+			showDialog("YOU LOSE !", null);
 		}
 		log("You will leave the game in " + NB_SECOND_BEFORE_LEAVING + " seconds");
 		int sec = NB_SECOND_BEFORE_LEAVING;
@@ -229,7 +229,7 @@ public class GameEngine
 		else
 		{
 			logPlayerAction(player, Action.Raise, amount);
-			raiseAllinAction(player,amount);
+			raiseAllinAction(player, amount);
 		}
 	}
 
@@ -309,7 +309,7 @@ public class GameEngine
 		for(Pair<HandsPokerValue, Player> pair:handsValues)
 		{
 			Player p = pair.getValue();
-			logPlayerFinalResult((pair.getKey().getRank() == bestRank ? "Winner" : "Loser"), p, pair.getKey().getHandName());
+			logPlayerFinalResult((pair.getKey().getRank() == bestRank ? "<b style=\"color:green;\">Winner</b>" : "<b style=\"color:red;\">Loser</b>"), p, pair.getKey().getHandName());
 		}
 		//Map<Rank,Triple<groupPot,SumBets,List<Player>>>
 		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
@@ -348,7 +348,7 @@ public class GameEngine
 		updateGUI();
 		divideUpPot(triples);
 		isFinished = players.size() == 1;
-		if(isFinished)
+		if (isFinished)
 		{
 			indexPlayer = 0;
 		}
@@ -522,7 +522,7 @@ public class GameEngine
 	|*				Set				*|
 	\*------------------------------*/
 
-	public void setLogger(JTextArea logger)
+	public void setLogger(JEditorPane logger)
 	{
 		this.logger = logger;
 	}
@@ -567,7 +567,7 @@ public class GameEngine
 			sb.append(c.toString());
 		}
 
-		logBoard(state, sb.toString());
+		logBoard(state, sb.toString().replaceAll("\\u2666", "<b style=\"color:red;\">\u2666</b>").replaceAll("\\u2665", "<b style=\"color:red;\">\u2665</b>"));
 	}
 
 	/*------------------------------------------------------------------*\
@@ -633,7 +633,7 @@ public class GameEngine
 					moneyGiven /= triples[i].getValue1();
 					pot.removeAmount(moneyGiven);
 					p.giveMoney(moneyGiven);
-					winValues[i+j] += moneyGiven;
+					winValues[i + j] += moneyGiven;
 				}
 			}
 		}
@@ -758,7 +758,7 @@ public class GameEngine
 					Statistics.getFlopTurnRiverValues(player, player.getPocket(), futureBoard, getNbPlayers(), nbCardInBoard);
 				}
 			}
-		}while(++nbCardInBoard <= Statistics.NUMBER_CARDS_RIVER);
+		} while(++nbCardInBoard <= Statistics.NUMBER_CARDS_RIVER);
 	}
 
 	private void log(final String message)
@@ -773,7 +773,7 @@ public class GameEngine
 					@Override
 					public void run()
 					{
-						logger.append(message + "\n");
+						logger.setText("<html><head></head><body>" + logger.getText().split("<body>")[1].split("</body")[0] + message + "<br /></body></html>");
 					}
 				});
 			}
@@ -791,7 +791,16 @@ public class GameEngine
 
 	private void logPlayerAction(Player player, Action action, int amount)
 	{
-		log(player.getProfile().getName() + " " + action.toString() + " " + ((amount != -1) ? amount + "$" : ""));
+		String actionText = action.toString();
+		if (action == Action.Raise || action == Action.Bet || action == Action.Allin || action == Action.WinMoney && amount > 0)
+		{
+			actionText = "<b style=\"color:green;\">" + actionText + "</b>";
+		}
+		else if(action == Action.Fold || action == Action.Leave)
+		{
+			actionText = "<b style=\"color:red;\">" + actionText + "</b>";
+		}
+		log("<b>" + player.getProfile().getName() + "</b>" + " " + actionText + " " + ((amount != -1) ? amount + "$" : ""));
 		soundEngine.playSound(action);
 	}
 
@@ -802,8 +811,13 @@ public class GameEngine
 
 	private void logBoard(String state, String cards)
 	{
-		log("---- " + state + " ----");
-		log(cards);
+		log("<br /><b style=\"color:red;\">---- " + state + " ----</b>");
+		if (!state.equals("Preflop"))
+		{
+			log(cards);
+		}
+		log("");
+
 	}
 
 	private void logPlayerFinalResult(String rank, Player player, String handName)
