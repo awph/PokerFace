@@ -23,7 +23,7 @@ public class AI extends Player
 	\*------------------------------*/
 
 	private final static int									MIN_COEF_RAISE	= 1;
-	private final static int									MAX_COEF_RAISE	= 5;
+	private final static int									MAX_COEF_RAISE	= 1;
 	private final static long									TIME_TO_PLAY	= 1000; //ms
 
 	/*------------------------------------------------------------------*\
@@ -65,24 +65,46 @@ public class AI extends Player
 	/**
 	 * Compute a percentage with the chance of win
 	 *
-	 * @param x
+	 * @param win
 	 *            : Chance of win, [0,1]
 	 */
-	/*private double getPercentageBankroll(double x)
+	private double getRaisePercentageBankroll(double win)
 	{
 		double max = Math.E / 0.3;
-		return Math.pow(Math.E, x) / (1.3 - x);
-	}*/
-
-	private double getChanceCallValue(double x, double y)
-	{
-		return Math.pow(x, 1.0 / 3.0) * Math.pow(Math.pow(Math.E, 1 - y), 3.0) / (Math.pow(0.7, 1.0 / 3.0) * Math.pow(Math.E, 3.0)) * 100;
+		return Math.pow(Math.E, win) / (1.3 - win) / max;
 	}
 
-	/*private double getChancePlayValue(double x)
+	/**
+	 * Compute a percentage for the preflop whether to folow or not and used to determine whether there is a raise or not
+	 *
+	 * @param win
+	 *            percentage to win with the current hand
+	 * @param bet
+	 *            amount we need to folow
+	 * @param alreadyBet
+	 *            amount we already spent in this turn
+	 * @return percentage to folow
+	 */
+	private double getChanceCallValuePreFlop(double win, double bet, double alreadyBet)
 	{
-		return (1.0 - Math.pow(Math.E, x))/(1.0 - Math.E)*100.0;
-	}*/
+		return (((Math.pow(win, 1 / 3) * Math.pow(Math.pow(Math.E, 1 - bet), 3)) / (Math.pow(0.7, 1 / 3) * Math.pow(Math.E, 3))) * Math.pow(3, Math.sqrt(alreadyBet) / bet) + alreadyBet) * 100;
+	}
+
+	/**
+	 * Compute a percentage for the river whether to folow or not and used to determine whether there is a raise or not
+	 *
+	 * @param win
+	 *            percentage to win with the current hand
+	 * @param bet
+	 *            amount we need to folow
+	 * @param alreadyBet
+	 *            amount we already spent in this turn
+	 * @return percentage to folow
+	 */
+	private double getChanceCallValueRiver(double win, double bet, double alreadyBet)
+	{
+		return Math.pow(Math.pow(Math.E, Math.sqrt(win) / 0.17) + (1 - bet) * Math.pow(Math.E, Math.sqrt(1 - bet) / 0.24), 1.04) - 40 + alreadyBet * 150;
+	}
 
 	@SuppressWarnings("incomplete-switch")
 	private void level23()
@@ -114,39 +136,39 @@ public class AI extends Player
 			switch(gameEngine.getOldState())
 			{
 				case PreFlopState:
-					double valueHand = Statistics.getChanceHandValuePreFlop(pocket, gameEngine.getNbPlayers());
-					double callValue = getChanceCallValue(valueHand / 100.0, (double)gameEngine.getBet() / (double)bankroll);
+					double valueHandPreFlop = Statistics.getChanceHandValuePreFlop(pocket, gameEngine.getNbPlayers());
+					double callValuePreFlop = getChanceCallValuePreFlop(valueHandPreFlop / 100.0, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()));
 
-					if (valueHand <= 20.0)
+					if (valueHandPreFlop <= 20.0)
 					{
 						action = Action.Fold;
 					}
-					else if (valueHand < 70.0)
+					else if (valueHandPreFlop < 70.0)
 					{
-						if (Math.random() * 100.0 > callValue)
+						if (Math.random() * 100.0 > callValuePreFlop)
 						{
 							action = Action.Fold;
 						}
 					}
 					if (action == null)
 					{
-						if (valueHand >= 70.0)
+						if (valueHandPreFlop >= 70.0)
 						{
-							callValue /= Math.pow(nbTurnBet, 2);
+							callValuePreFlop /= Math.pow(nbTurnBet, 2);
 						}
 						else
 						{
-							callValue /= (Math.pow(nbTurnBet, 2) + 1);
+							callValuePreFlop /= (Math.pow(nbTurnBet, 2) + 1);
 						}
 
-						if (Math.random() * 100.0 > callValue)
+						if (Math.random() * 100.0 > callValuePreFlop)
 						{
 							action = Action.Call;
 						}
 						else
 						{
-							int coef = MIN_COEF_RAISE + (int)(Math.random() * MAX_COEF_RAISE);
-							raiseAmount = coef * gameEngine.getRaiseValue();
+							double coef = MIN_COEF_RAISE + Math.random() * MAX_COEF_RAISE;
+							raiseAmount = (int)(coef * gameEngine.getRaiseValue());
 							action = Action.Raise;
 						}
 					}
@@ -159,7 +181,35 @@ public class AI extends Player
 					action = Action.Fold;
 					break;
 				case RiverState:
-					action = Action.Fold;
+					double valueWinRiver = getRiverValues().getWin();
+					double callValueRiver = getChanceCallValuePreFlop(valueWinRiver / 100.0, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()));
+
+					if (Math.random() * 100.0 < callValueRiver)
+					{
+						if (valueWinRiver >= 70.0)
+						{
+							callValueRiver /= Math.pow(nbTurnBet, 2);
+						}
+						else
+						{
+							callValueRiver /= (Math.pow(nbTurnBet, 2) + 1);
+						}
+
+						if (Math.random() * 100.0 < callValueRiver)
+						{
+							raiseAmount = (int)(getRaisePercentageBankroll(valueWinRiver) * getBankroll());
+							action = Action.Raise;
+						}
+						else
+						{
+							action = Action.Call;
+						}
+					}
+					else
+					{
+						action = Action.Fold;
+					}
+
 					break;
 			}
 
