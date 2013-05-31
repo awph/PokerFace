@@ -47,27 +47,21 @@ public class JFrameMain extends JFrame
 	// CARD MANIPULATIONS
 	public void setCard(String card)
 	{
-		try
+		if (card == "panelGameBoard")
 		{
-			if (card == "panelGameBoard")
-			{
-				JOPTableConfiguration tableConfig = new JOPTableConfiguration(this, panelGameBoard);
-				if (!tableConfig.switchToGame()) { return; // Abort the process of switching to gameBoard
-				}
-				// Game is launching
+			JOPTableConfiguration tableConfig = new JOPTableConfiguration(this, panelGameBoard);
+			if (!tableConfig.switchToGame()) { return; // Abort the process of switching to gameBoard
+			}
+			// Game is launching
 
-				panelGameBoard.refreshAllComponents();
-				setFullscreen(true);
-			}
-			else if (card == "panelProfile")
-			{
-				panelProfile.refreshProfilesData();
-			}
-			layout.show(this.getContentPane(), card);
+			panelGameBoard.refreshAllComponents();
+			setFullscreen(true);
 		}
-		catch (Exception e)
+		else if (card == "panelProfile")
 		{
+			panelProfile.refreshProfilesData();
 		}
+		layout.show(this.getContentPane(), card);
 	}
 
 	public void gameToMainMenu()
