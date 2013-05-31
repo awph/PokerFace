@@ -9,6 +9,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
 
+import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
@@ -116,11 +118,13 @@ public class GameEngine
 	{
 		if (HUMAN_PLAYER == players.get(0))
 		{
-			log("YOU WIN !");
+			log("You win ! You are the master !");
+			showDialog("YOU WIN !",null);
 		}
 		else
 		{
-			log("GAME OVER ! " + players.get(0).getProfile().getName() + " won");
+			log("You lose ! The winner is " + players.get(0).getProfile().getName());
+			showDialog("YOU LOSE !",null);
 		}
 		log("You will leave the game in " + NB_SECOND_BEFORE_LEAVING + " seconds");
 		int sec = NB_SECOND_BEFORE_LEAVING;
@@ -644,7 +648,7 @@ public class GameEngine
 					moneyGiven /= triples[i].getValue1();
 					pot.removeAmount(moneyGiven);
 					p.giveMoney(moneyGiven);
-					winValues[i] += moneyGiven;
+					winValues[i+j] += moneyGiven;
 				}
 			}
 		}
@@ -826,5 +830,10 @@ public class GameEngine
 	private void logPlayerFinalResult(String rank, Player player, String handName)
 	{
 		log(rank + " : " + player.getProfile().getName() + " with " + player.getPocket().toString() + " -> " + handName);
+	}
+
+	private void showDialog(String text, Icon icon)
+	{
+		JOptionPane.showMessageDialog(frameMain, text, text, JOptionPane.CLOSED_OPTION, icon);//TODO mettre image
 	}
 }

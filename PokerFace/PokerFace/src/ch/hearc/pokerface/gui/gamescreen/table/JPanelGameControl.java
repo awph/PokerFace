@@ -133,7 +133,6 @@ public class JPanelGameControl extends JPanel
 		}
 		else
 		{
-
 			allinButton.setText("");
 			betRaiseButton.setText("");
 			checkCallButton.setText("");

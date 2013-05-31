@@ -46,8 +46,8 @@ public class AI extends Player
 		gameEngine.updateGUI();
 		stopCurrentSimulation(true);
 		//level1();
-		level23();
-		//check();
+		//level23();
+		check();
 		nbTurnBet++;
 	}
 
