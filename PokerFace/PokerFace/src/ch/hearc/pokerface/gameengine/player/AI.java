@@ -1,9 +1,6 @@
 
 package ch.hearc.pokerface.gameengine.player;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import ch.hearc.pokerface.gameengine.gamecore.Action;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
@@ -29,53 +26,6 @@ public class AI extends Player
 	private final static int									MAX_COEF_RAISE	= 5;
 	private final static long									TIME_TO_PLAY	= 1000; //ms
 
-	//Map<StateType, Map<nbPlayer,minimumRanking>
-	private static final Map<StateType, Map<Integer, Integer>>	GOOD_HAND		= new HashMap<StateType, Map<Integer, Integer>>()
-																				{
-																					{
-																						//TODO Define good hands for each case
-																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(2, 1));
-																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(3, 1));
-																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(4, 1));
-																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(5, 1));
-																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(6, 1));
-																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(7, 1));
-																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(8, 1));
-																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(9, 1));
-																						put(StateType.PreFlopState, new HashMap<Integer, Integer>(10, 1));
-
-																						put(StateType.FlopState, new HashMap<Integer, Integer>(2, 1));
-																						put(StateType.FlopState, new HashMap<Integer, Integer>(3, 1));
-																						put(StateType.FlopState, new HashMap<Integer, Integer>(4, 1));
-																						put(StateType.FlopState, new HashMap<Integer, Integer>(5, 1));
-																						put(StateType.FlopState, new HashMap<Integer, Integer>(6, 1));
-																						put(StateType.FlopState, new HashMap<Integer, Integer>(7, 1));
-																						put(StateType.FlopState, new HashMap<Integer, Integer>(8, 1));
-																						put(StateType.FlopState, new HashMap<Integer, Integer>(9, 1));
-																						put(StateType.FlopState, new HashMap<Integer, Integer>(10, 1));
-
-																						put(StateType.TurnState, new HashMap<Integer, Integer>(2, 1));
-																						put(StateType.TurnState, new HashMap<Integer, Integer>(3, 1));
-																						put(StateType.TurnState, new HashMap<Integer, Integer>(4, 1));
-																						put(StateType.TurnState, new HashMap<Integer, Integer>(5, 1));
-																						put(StateType.TurnState, new HashMap<Integer, Integer>(6, 1));
-																						put(StateType.TurnState, new HashMap<Integer, Integer>(7, 1));
-																						put(StateType.TurnState, new HashMap<Integer, Integer>(8, 1));
-																						put(StateType.TurnState, new HashMap<Integer, Integer>(9, 1));
-																						put(StateType.TurnState, new HashMap<Integer, Integer>(10, 1));
-
-																						put(StateType.RiverState, new HashMap<Integer, Integer>(2, 1));
-																						put(StateType.RiverState, new HashMap<Integer, Integer>(3, 1));
-																						put(StateType.RiverState, new HashMap<Integer, Integer>(4, 1));
-																						put(StateType.RiverState, new HashMap<Integer, Integer>(5, 1));
-																						put(StateType.RiverState, new HashMap<Integer, Integer>(6, 1));
-																						put(StateType.RiverState, new HashMap<Integer, Integer>(7, 1));
-																						put(StateType.RiverState, new HashMap<Integer, Integer>(8, 1));
-																						put(StateType.RiverState, new HashMap<Integer, Integer>(9, 1));
-																						put(StateType.RiverState, new HashMap<Integer, Integer>(10, 1));
-																					}
-																				};
-
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
@@ -96,8 +46,8 @@ public class AI extends Player
 		gameEngine.updateGUI();
 		stopCurrentSimulation(true);
 		//level1();
-		//level23();
-		check();
+		level23();
+		//check();
 		nbTurnBet++;
 	}
 
