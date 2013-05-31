@@ -139,12 +139,10 @@ public class JPanelGameControl extends JPanel
 			foldButton.setText("");
 		}
 
-		boolean isHumanPlayerTurn = false;
+		boolean isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon());
 
 		if (!gameEngine.getIsFinished())
 		{
-			isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer());
-
 			if (isHumanPlayerTurn)
 			{
 				moneySlider.setMaximum(humanPlayer.getBankroll());
@@ -218,8 +216,6 @@ public class JPanelGameControl extends JPanel
 		moneySpinner.setMaximumSize(new Dimension(60, 20));
 		moneySlider.setPreferredSize(new Dimension(60, 150));
 		allinButton.setMargin(new Insets(10, 10, 10, 10));
-
-
 
 		JPanel handRankingPanel = new JPanel();
 		handRankingPanel.setLayout(new BorderLayout());

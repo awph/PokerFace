@@ -109,7 +109,7 @@ public class PlayerComponent extends JPanel
 
 			if (player.getPocket().getArray().length != 0)
 			{
-				//if (allinShow || !(player instanceof AI)) A METTRE DANS VERSION FINALE
+				//if (allinShow || !(player instanceof AI))//TODO A METTRE DANS VERSION FINALE
 				{
 					card1.setCard(player.getPocket().getArray()[0].getId());
 					card2.setCard(player.getPocket().getArray()[1].getId());
