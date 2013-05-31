@@ -45,7 +45,10 @@ public class ImageShop
 	private static final String		NAME_IMAGE_APPICON					= "appicon.png";
 	private static final String		NAME_IMAGE_REMOVEPROFILE			= "remove.png";
 
+	private static final String		NAME_IMAGE_HE_ARC					= "hearc.jpg";
 	private static final boolean	IS_BLOQUANT							= true;
+
+	public static final ImageIcon		IMAGE_HE_ARC						= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_HE_ARC, 0.4, IS_BLOQUANT);
 
 	public static final ImageIcon	ICON_BUTTON_QUIT_GAME				= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_BUTTON_QUIT_GAME, 0.1, IS_BLOQUANT);
 	public static final ImageIcon	ICON_BUTTON_QUIT_APPLICATION		= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_BUTTON_QUIT_APPLICATION, 0.4, IS_BLOQUANT);

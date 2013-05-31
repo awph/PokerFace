@@ -100,7 +100,7 @@ public class JPanelMainMenu extends ImagePanel
 			@Override
 			public void actionPerformed(ActionEvent event)
 			{
-				JOptionPane.showMessageDialog(null, "about", "about", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, JPanelAbout.getInstance(), "about", JOptionPane.PLAIN_MESSAGE);
 			}
 		});
 
