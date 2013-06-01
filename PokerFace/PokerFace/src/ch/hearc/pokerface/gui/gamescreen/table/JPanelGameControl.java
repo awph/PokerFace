@@ -224,11 +224,6 @@ public class JPanelGameControl extends JPanel
 		moneySlider.setPreferredSize(new Dimension(60, 150));
 		allinButton.setMargin(new Insets(10, 10, 10, 10));
 
-		JPanel handRankingPanel = new JPanel();
-		handRankingPanel.setLayout(new BorderLayout());
-		handRankingPanel.setOpaque(false);
-		handRankingPanel.add(new JLabel(ImageShop.ICON_HANDRANKING), BorderLayout.CENTER);
-
 		Box boxButtons = Box.createVerticalBox();
 		boxButtons.add(Box.createVerticalGlue());
 		boxButtons.add(allinButton);
@@ -265,7 +260,7 @@ public class JPanelGameControl extends JPanel
 		panelGridRight.add(scrollPane);
 		panelGridRight.add(statisticsPanel);
 
-		add(handRankingPanel, BorderLayout.WEST);
+		add(new JLabel(ImageShop.ICON_HANDRANKING), BorderLayout.WEST);
 		add(panelGridRight, BorderLayout.CENTER);
 
 	}
