@@ -3,7 +3,9 @@ package ch.hearc.pokerface.gameengine.gamecore.state;
 
 import java.util.List;
 
+import ch.hearc.pokerface.gameengine.gamecore.Action;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
+import ch.hearc.pokerface.gameengine.gamecore.SoundEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gameengine.player.Role;
 
@@ -31,17 +33,21 @@ public class BettingState extends State
 	{
 		if (ge.getUnfoldedPlayer() > 1)
 		{
-			do
+			if (ge.getUnfoldedPlayer() - ge.getAllInPlayer() > 1)
 			{
-				if (!postSmallBlind && !postBigBlind)//In this case, if everybody checks, the big blind can play twice
+				do
 				{
-					firstBetProcessing(ge, ge.getCurrentPlayer());
-				}
-				else
-				{
-					normalBetProcessing(ge, ge.getCurrentPlayer());
-				}
-			} while(!allChecked(ge));
+					if (!postSmallBlind && !postBigBlind)//In this case, if everybody checks, the big blind can play twice
+					{
+						firstBetProcessing(ge, ge.getCurrentPlayer());
+					}
+					else
+					{
+						//If someone has allin because he's so poor, the player doesn't have to play alone ! He has to "simulate" an allin
+						normalBetProcessing(ge, ge.getCurrentPlayer());
+					}
+				} while(!allChecked(ge));
+			}
 
 			ge.setNewState();
 
@@ -136,7 +142,7 @@ public class BettingState extends State
 			}
 			ge.changeCurrentPlayer();
 			player = ge.getCurrentPlayer();
-		} while(player != ge.getLastRaisePlayer());
+		} while(player != ge.getLastRaisePlayer() && ge.getPlayers().size() > 1);
 	}
 
 	private void firstBetProcessing(GameEngine ge, Player player)
@@ -158,17 +164,29 @@ public class BettingState extends State
 			}
 			else if (player.getBankroll() != 0)//If not all in
 			{
+				if (player == GameEngine.HUMAN_PLAYER)
+				{
+					SoundEngine.getInstance().playSound(Action.YourTurn);
+				}
+
 				//If player -> wait()
 				//Else IA computes
 				player.doAction();
 			}
+			Player oldPlayer = player;
 			ge.changeCurrentPlayer();
 			player = ge.getCurrentPlayer();
 
 			isThePlayerTheLastRaisePlayer = player == ge.getLastRaisePlayer();
 
+			if(!isThePlayerTheLastRaisePlayer)
+			{
+				//If the BB has already plays twice and he raises and everybody has checked, he doesn't have to play again !
+				isThePlayerTheLastRaisePlayer = oldPlayer.getRole() == Role.BigBlind && oldPlayer == ge.getLastRaisePlayer() && hasBigBlindToPlayTwice;
+			}
+
 			//If everybody checks, the big blind can play twice
-			if (isThePlayerTheLastRaisePlayer && player.getRole() == Role.BigBlind && ge.getUnfoldedPlayer() > 1)
+			if (!hasBigBlindToPlayTwice && isThePlayerTheLastRaisePlayer && player.getRole() == Role.BigBlind && ge.getUnfoldedPlayer() > 1)
 			{
 				hasBigBlindToPlayTwice = true;
 				isThePlayerTheLastRaisePlayer = false;

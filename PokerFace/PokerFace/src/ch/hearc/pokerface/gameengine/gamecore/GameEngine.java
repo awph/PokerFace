@@ -122,13 +122,13 @@ public class GameEngine
 		if (HUMAN_PLAYER == players.get(0))
 		{
 			soundEngine.playSound(Action.Winner);
-			log("You win ! You are the master !");
+			log("<b style=\"color:green;\">You win !</b> You are the master !");
 			showDialog("YOU WIN !", null);
 		}
 		else
 		{
 			soundEngine.playSound(Action.Loser);
-			log("You lose ! The winner is " + players.get(0).getProfile().getName());
+			log("<b style=\"color:red;\">You lose !</b> The winner is <b>" + players.get(0).getProfile().getName() + "</b>");
 			showDialog("YOU LOSE !", null);
 		}
 		log("You will leave the game in " + NB_SECOND_BEFORE_LEAVING + " seconds");
@@ -260,6 +260,10 @@ public class GameEngine
 
 	public void fold(Player player)
 	{
+		if(player == players.get(indexLastRaise))
+		{
+			indexLastRaise = getNextIndex(indexLastRaise);
+		}
 		logPlayerAction(player, Action.Fold);
 		updateGUI();
 	}
@@ -355,10 +359,11 @@ public class GameEngine
 		updateGUI();
 		divideUpPot(triples);
 		isFinished = players.size() == 1;
-		if (isFinished)
+		if (isFinished || indexPlayer >= players.size())
 		{
 			indexPlayer = 0;
 		}
+
 		updateGUI();
 		try
 		{
@@ -838,7 +843,7 @@ public class GameEngine
 	{
 		log(rank + " : " + player.getProfile().getName() + " with "
 				+ player.getPocket().toString().replaceAll("\\u2666", "<b style=\"color:red;\">\u2666</b>").replaceAll("\\u2665", "<b style=\"color:red;\">\u2665</b>").replaceAll("\\u2663", "<b style=\"color:black;\">\u2663</b>").replaceAll("\\u2660", "<b style=\"color:black;\">\u2660</b>")
-				+ " -> " + handName);
+				+ " \u2192 <b>" + handName + "</b>");
 	}
 
 	private void showDialog(String text, Icon icon)
@@ -848,11 +853,19 @@ public class GameEngine
 
 	private void raiseAllinAction(Player player, int amount)
 	{
-		int callValue = player.getCallValue();
-		player.takeMoney(amount);
-		pot.addStateTotalAndSetBet(callValue);
-		pot.addStateTotalAndAddBet(amount - callValue);
-		setIndexLastRaise(player);
+		if (amount < pot.getBet())
+		{
+			player.takeMoney(amount);
+			pot.addStateTotalAndSetBet(amount);
+		}
+		else
+		{
+			int callValue = player.getCallValue();
+			player.takeMoney(amount);
+			pot.addStateTotalAndSetBet(callValue);
+			pot.addStateTotalAndAddBet(amount - callValue);
+			setIndexLastRaise(player);
+		}
 		updateGUI();
 	}
 
