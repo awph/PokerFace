@@ -185,6 +185,7 @@ public class JPanelGameControl extends JPanel
 		moneySpinner = new JSpinner();
 		loggerTextArea = new JEditorPane();
 		loggerTextArea.setContentType("text/html");
+		loggerTextArea.setBackground(ColorShop.PF_BACKGROUND_LOGGER);
 		Dimension dim = new Dimension(100, 400);
 		loggerTextArea.setSize(dim);
 		loggerTextArea.setPreferredSize(dim);

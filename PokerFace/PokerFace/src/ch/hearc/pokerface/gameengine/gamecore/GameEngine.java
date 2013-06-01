@@ -291,6 +291,8 @@ public class GameEngine
 
 	public void showdown()
 	{
+		logBoard("Showdown","");
+
 		List<Pair<HandsPokerValue, Player>> handsValues = new ArrayList<Pair<HandsPokerValue, Player>>();
 
 		//Count the value of each player's hand
@@ -567,7 +569,7 @@ public class GameEngine
 			sb.append(c.toString());
 		}
 
-		logBoard(state, sb.toString().replaceAll("\\u2666", "<b style=\"color:red;\">\u2666</b>").replaceAll("\\u2665", "<b style=\"color:red;\">\u2665</b>"));
+		logBoard(state, sb.toString().replaceAll("\\u2666", "<b style=\"color:red;\">\u2666</b>").replaceAll("\\u2665", "<b style=\"color:red;\">\u2665</b>").replaceAll("\\u2663", "<b style=\"color:black;\">\u2663</b>").replaceAll("\\u2660", "<b style=\"color:black;\">\u2660</b>"));
 	}
 
 	/*------------------------------------------------------------------*\
@@ -773,7 +775,7 @@ public class GameEngine
 					@Override
 					public void run()
 					{
-						logger.setText("<html><head></head><body>" + logger.getText().split("<body>")[1].split("</body")[0] + message + "<br /></body></html>");
+						logger.setText("<html><head></head><body style=\"color:white;\">" + logger.getText().split("<body>")[1].split("</body")[0] + message + "<br /></body></html>");
 					}
 				});
 			}
@@ -812,7 +814,7 @@ public class GameEngine
 	private void logBoard(String state, String cards)
 	{
 		log("<br /><b style=\"color:red;\">---- " + state + " ----</b>");
-		if (!state.equals("Preflop"))
+		if (!state.equals("Preflop") && !state.equals("Showdown"))
 		{
 			log(cards);
 		}
@@ -822,7 +824,7 @@ public class GameEngine
 
 	private void logPlayerFinalResult(String rank, Player player, String handName)
 	{
-		log(rank + " : " + player.getProfile().getName() + " with " + player.getPocket().toString() + " -> " + handName);
+		log(rank + " : " + player.getProfile().getName() + " with " + player.getPocket().toString().replaceAll("\\u2666", "<b style=\"color:red;\">\u2666</b>").replaceAll("\\u2665", "<b style=\"color:red;\">\u2665</b>").replaceAll("\\u2663", "<b style=\"color:black;\">\u2663</b>").replaceAll("\\u2660", "<b style=\"color:black;\">\u2660</b>") + " -> " + handName);
 	}
 
 	private void showDialog(String text, Icon icon)
