@@ -60,8 +60,8 @@ public class SoundEngine
 			AudioInputStream aisAllin = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + ALLIN_FILENAME));
 			AudioInputStream aisBet = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + BET_FILENAME));
 			AudioInputStream aisFold = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + FOLD_FILENAME));
-			//AudioInputStream aisWin = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + WIN_PATH));
-			//AudioInputStream aisLose = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + LOSE_PATH));
+			AudioInputStream aisWin = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + WIN_FILENAME));
+			AudioInputStream aisLose = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + LOSE_FILENAME));
 			AudioInputStream aisRaise = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + RAISE_FILENAME));
 			AudioInputStream aisYourTurn = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + YOURTURN_FILENAME));
 
@@ -82,8 +82,8 @@ public class SoundEngine
 			allin.open(aisAllin);
 			bet.open(aisBet);
 			fold.open(aisFold);
-			//win.open(aisWin);
-			//lose.open(aisLose);
+			win.open(aisWin);
+			lose.open(aisLose);
 			raise.open(aisRaise);
 			yourturn.open(aisYourTurn);
 
@@ -99,7 +99,6 @@ public class SoundEngine
 		}
 		catch (LineUnavailableException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -183,8 +182,8 @@ public class SoundEngine
 		((FloatControl)allin.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
 		((FloatControl)bet.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
 		((FloatControl)fold.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
-		//((FloatControl)win.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
-		//((FloatControl)lose.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
+		((FloatControl)win.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
+		((FloatControl)lose.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
 		((FloatControl)raise.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
 	}
 

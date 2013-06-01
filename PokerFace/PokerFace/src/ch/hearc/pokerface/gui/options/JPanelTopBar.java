@@ -157,7 +157,8 @@ public class JPanelTopBar extends JPanel
 		volumeIcon = new JLabel("\u266B");
 		volumeIcon.setFont(new Font("Arial", Font.BOLD, 18));
 
-		volumeSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 50);
+		volumeSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 80);
+		SoundEngine.getInstance().setVolume(80);
 		volumeSlider.setPaintLabels(false);
 
 		ft = new SimpleDateFormat("HH:mm:ss");

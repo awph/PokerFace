@@ -66,6 +66,7 @@ public class GameEngine
 	private Profile				profilePlayer;
 	private JEditorPane			logger;
 	private JFrameMain			frameMain;
+
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
@@ -120,11 +121,13 @@ public class GameEngine
 	{
 		if (HUMAN_PLAYER == players.get(0))
 		{
+			soundEngine.playSound(Action.Winner);
 			log("You win ! You are the master !");
 			showDialog("YOU WIN !", null);
 		}
 		else
 		{
+			soundEngine.playSound(Action.Loser);
 			log("You lose ! The winner is " + players.get(0).getProfile().getName());
 			showDialog("YOU LOSE !", null);
 		}
