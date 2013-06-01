@@ -2,6 +2,7 @@
 package ch.hearc.pokerface.gui.gamescreen.table;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -186,6 +187,7 @@ public class JPanelGameControl extends JPanel
 		loggerTextArea = new JEditorPane();
 		loggerTextArea.setContentType("text/html");
 		loggerTextArea.setBackground(ColorShop.PF_BACKGROUND_LOGGER);
+		loggerTextArea.setForeground(Color.WHITE);
 		Dimension dim = new Dimension(100, 400);
 		loggerTextArea.setSize(dim);
 		loggerTextArea.setPreferredSize(dim);

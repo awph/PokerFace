@@ -13,6 +13,8 @@ import javax.swing.Icon;
 import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.html.HTMLEditorKit;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.compute.ComputeBestHand;
@@ -291,7 +293,7 @@ public class GameEngine
 
 	public void showdown()
 	{
-		logBoard("Showdown","");
+		logBoard("Showdown", "");
 
 		List<Pair<HandsPokerValue, Player>> handsValues = new ArrayList<Pair<HandsPokerValue, Player>>();
 
@@ -775,7 +777,14 @@ public class GameEngine
 					@Override
 					public void run()
 					{
-						logger.setText("<html><head></head><body style=\"color:white;\">" + logger.getText().split("<body>")[1].split("</body")[0] + message + "<br /></body></html>");
+						try
+						{
+							((HTMLEditorKit)logger.getEditorKit()).insertHTML((HTMLDocument)logger.getDocument(), ((HTMLDocument)logger.getDocument()).getLength(), message + "<br />", 0, 0, null);
+						}
+						catch (Exception e)
+						{
+							e.printStackTrace();
+						}
 					}
 				});
 			}
@@ -798,7 +807,7 @@ public class GameEngine
 		{
 			actionText = "<b style=\"color:green;\">" + actionText + "</b>";
 		}
-		else if(action == Action.Fold || action == Action.Leave)
+		else if (action == Action.Fold || action == Action.Leave)
 		{
 			actionText = "<b style=\"color:red;\">" + actionText + "</b>";
 		}
@@ -824,7 +833,9 @@ public class GameEngine
 
 	private void logPlayerFinalResult(String rank, Player player, String handName)
 	{
-		log(rank + " : " + player.getProfile().getName() + " with " + player.getPocket().toString().replaceAll("\\u2666", "<b style=\"color:red;\">\u2666</b>").replaceAll("\\u2665", "<b style=\"color:red;\">\u2665</b>").replaceAll("\\u2663", "<b style=\"color:black;\">\u2663</b>").replaceAll("\\u2660", "<b style=\"color:black;\">\u2660</b>") + " -> " + handName);
+		log(rank + " : " + player.getProfile().getName() + " with "
+				+ player.getPocket().toString().replaceAll("\\u2666", "<b style=\"color:red;\">\u2666</b>").replaceAll("\\u2665", "<b style=\"color:red;\">\u2665</b>").replaceAll("\\u2663", "<b style=\"color:black;\">\u2663</b>").replaceAll("\\u2660", "<b style=\"color:black;\">\u2660</b>")
+				+ " -> " + handName);
 	}
 
 	private void showDialog(String text, Icon icon)
