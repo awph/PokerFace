@@ -4,7 +4,6 @@ package ch.hearc.pokerface.gui.menuscreens;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.Box;
@@ -41,7 +40,7 @@ public class JPanelMainMenu extends ImagePanel
 
 	public JPanelMainMenu(JFrameMain mainFrame) throws Exception
 	{
-		super(ImageIO.read(new File("resources/background.jpg")));
+		super(ImageIO.read(ClassLoader.getSystemResource("resources/background.jpg")));
 		this.mainFrame = mainFrame;
 
 		geometry();

@@ -1,7 +1,6 @@
 
 package ch.hearc.pokerface.gameengine.gamecore;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.sound.sampled.AudioInputStream;
@@ -16,7 +15,7 @@ public class SoundEngine
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	
+
 	private float				volume;
 	private Clip				check;
 	private Clip				call;
@@ -27,15 +26,15 @@ public class SoundEngine
 	private Clip				lose;
 	private Clip				raise;
 	private Clip				yourturn;
-	
+
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
-	
+
 	private static SoundEngine	instance;
-	
+
 	private static final String	PATH				= "resources/sounds/";
-	
+
 	private static final String	CHECK_FILENAME		= "check.wav";
 	private static final String	CALL_FILENAME		= "call.wav";
 	private static final String	ALLIN_FILENAME		= "allin.wav";
@@ -45,27 +44,27 @@ public class SoundEngine
 	private static final String	LOSE_FILENAME		= "lose.wav";
 	private static final String	RAISE_FILENAME		= "raise.wav";
 	private static final String	YOURTURN_FILENAME	= "yourturn.wav";
-	
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-	
+
 	private SoundEngine()
 	{
 		volume = 1f;
 		try
 		{
 			// Set up an audio input stream piped from the sound file.
-			AudioInputStream aisCheck = AudioSystem.getAudioInputStream(new File(PATH + CHECK_FILENAME)); //TODO from jar
-			AudioInputStream aisCall = AudioSystem.getAudioInputStream(new File(PATH + CALL_FILENAME)); //TODO from jar
-			AudioInputStream aisAllin = AudioSystem.getAudioInputStream(new File(PATH + ALLIN_FILENAME)); //TODO from jar
-			AudioInputStream aisBet = AudioSystem.getAudioInputStream(new File(PATH + BET_FILENAME)); //TODO from jar
-			AudioInputStream aisFold = AudioSystem.getAudioInputStream(new File(PATH + FOLD_FILENAME)); //TODO from jar
-			//AudioInputStream aisWin = AudioSystem.getAudioInputStream(new File(PATH + WIN_PATH)); //TODO from jar
-			//AudioInputStream aisLose = AudioSystem.getAudioInputStream(new File(PATH + LOSE_PATH)); //TODO from jar
-			AudioInputStream aisRaise = AudioSystem.getAudioInputStream(new File(PATH + RAISE_FILENAME)); //TODO from jar
-			AudioInputStream aisYourTurn = AudioSystem.getAudioInputStream(new File(PATH + YOURTURN_FILENAME)); //TODO from jar
-			
+			AudioInputStream aisCheck = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + CHECK_FILENAME));
+			AudioInputStream aisCall = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + CALL_FILENAME));
+			AudioInputStream aisAllin = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + ALLIN_FILENAME));
+			AudioInputStream aisBet = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + BET_FILENAME));
+			AudioInputStream aisFold = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + FOLD_FILENAME));
+			//AudioInputStream aisWin = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + WIN_PATH));
+			//AudioInputStream aisLose = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + LOSE_PATH));
+			AudioInputStream aisRaise = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + RAISE_FILENAME));
+			AudioInputStream aisYourTurn = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(PATH + YOURTURN_FILENAME));
+
 			// Get a clip resource.
 			check = AudioSystem.getClip();
 			call = AudioSystem.getClip();
@@ -76,7 +75,7 @@ public class SoundEngine
 			lose = AudioSystem.getClip();
 			raise = AudioSystem.getClip();
 			yourturn = AudioSystem.getClip();
-			
+
 			// Open audio clip and load samples from the audio input stream.
 			check.open(aisCheck);
 			call.open(aisCall);
@@ -87,7 +86,7 @@ public class SoundEngine
 			//lose.open(aisLose);
 			raise.open(aisRaise);
 			yourturn.open(aisYourTurn);
-			
+
 			setVolume(volume);
 		}
 		catch (UnsupportedAudioFileException e)
@@ -104,11 +103,11 @@ public class SoundEngine
 			e.printStackTrace();
 		}
 	}
-	
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
-	
+
 	public void playSound(final Action action)
 	{
 		switch(action)
@@ -145,11 +144,11 @@ public class SoundEngine
 				break;
 		}
 	}
-	
+
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
-	
+
 	public synchronized static SoundEngine getInstance()
 	{
 		if (instance == null)
@@ -158,16 +157,16 @@ public class SoundEngine
 		}
 		return instance;
 	}
-	
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
-	
+
 	public void setVolume(float volume)
 	{
 		float max = ((FloatControl)check.getControl(FloatControl.Type.MASTER_GAIN)).getMaximum();
 		float min = ((FloatControl)check.getControl(FloatControl.Type.MASTER_GAIN)).getMinimum();
-		
+
 		volume = todB(volume);
 		if (volume > max)
 		{
@@ -177,7 +176,7 @@ public class SoundEngine
 		{
 			volume = min;
 		}
-		
+
 		this.volume = volume;
 		((FloatControl)check.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
 		((FloatControl)call.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
@@ -188,16 +187,16 @@ public class SoundEngine
 		//((FloatControl)lose.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
 		((FloatControl)raise.getControl(FloatControl.Type.MASTER_GAIN)).setValue(volume);
 	}
-	
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
-	
+
 	private float todB(float percent)
 	{
 		return (float)(20 * Math.log10((percent + 10e-6) / 80) + 4.08231);
 	}
-	
+
 	private void playCheck()
 	{
 		if (check.isRunning())
@@ -207,7 +206,7 @@ public class SoundEngine
 		check.setFramePosition(0);
 		check.start();
 	}
-	
+
 	private void playCall()
 	{
 		if (call.isRunning())
@@ -217,7 +216,7 @@ public class SoundEngine
 		call.setFramePosition(0);
 		call.start();
 	}
-	
+
 	private void playAllin()
 	{
 		if (allin.isRunning())
@@ -227,7 +226,7 @@ public class SoundEngine
 		allin.setFramePosition(0);
 		allin.start();
 	}
-	
+
 	private void playBet()
 	{
 		if (bet.isRunning())
@@ -237,7 +236,7 @@ public class SoundEngine
 		bet.setFramePosition(0);
 		bet.start();
 	}
-	
+
 	private void playFold()
 	{
 		if (fold.isRunning())
@@ -247,7 +246,7 @@ public class SoundEngine
 		fold.setFramePosition(0);
 		fold.start();
 	}
-	
+
 	private void playWin()
 	{
 		if (win.isRunning())
@@ -257,7 +256,7 @@ public class SoundEngine
 		win.setFramePosition(0);
 		win.start();
 	}
-	
+
 	private void playLose()
 	{
 		if (lose.isRunning())
@@ -267,7 +266,7 @@ public class SoundEngine
 		lose.setFramePosition(0);
 		lose.start();
 	}
-	
+
 	private void playRaise()
 	{
 		if (raise.isRunning())
@@ -277,7 +276,7 @@ public class SoundEngine
 		raise.setFramePosition(0);
 		raise.start();
 	}
-	
+
 	private void playYourTurn()
 	{
 		if (yourturn.isRunning())
@@ -287,5 +286,5 @@ public class SoundEngine
 		yourturn.setFramePosition(0);
 		yourturn.start();
 	}
-	
+
 }

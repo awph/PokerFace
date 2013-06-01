@@ -119,7 +119,7 @@ public class XMLWriter
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File(filename + ".xml"));
+			StreamResult result = new StreamResult(new File(filename + ".xml")); //TODO from jar ClassLoader.getSystemResourceAsStream(
 
 			transformer.transform(source, result);
 		}

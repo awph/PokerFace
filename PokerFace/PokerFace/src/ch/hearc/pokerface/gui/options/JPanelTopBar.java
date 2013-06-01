@@ -8,14 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.imageio.ImageIO;
 import javax.swing.Box;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -151,15 +147,7 @@ public class JPanelTopBar extends JPanel
 	{
 		name = new JLabel();
 		avatar = new JLabel();
-		try
-		{
-			//TODO A mettre dans imageshop
-			coin = new JLabel("", new ImageIcon(ImageIO.read(new File("resources/coin.png"))), 0);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+		coin = new JLabel("", ImageShop.ICON_COIN, 0);
 		bankroll = new JLabel();
 		clockLabel = new JLabel();
 		clockLabel.setFont(new Font("Arial", Font.BOLD, 18));

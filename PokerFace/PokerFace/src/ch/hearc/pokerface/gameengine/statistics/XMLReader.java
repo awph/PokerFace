@@ -44,7 +44,7 @@ public class XMLReader
 
 		try
 		{
-			File fXmlFile = new File(filename + ".xml");
+			File fXmlFile = new File(filename + ".xml"); //TODO From jar ClassLoader.getSystemResourceAsStream(
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.parse(fXmlFile);

@@ -37,7 +37,7 @@ public class ImageShop
 
 	private static final String		NAME_IMAGE_COIN						= "coin.png";
 
-	private static final String		NAME_IMAGE_BACKGROUND				= "table/background.png";
+	private static final String		NAME_IMAGE_TABLE_BACKGROUND			= "table/background.png";
 	private static final String		NAME_IMAGE_SPLASH					= "splash.png";
 
 	private static final String		NAME_IMAGE_HANDRANKING				= "handranking.png";
@@ -61,8 +61,8 @@ public class ImageShop
 	public static final Image		IMAGE_REMOVEPROFILE					= ImageTools.loadJar(PATH + NAME_IMAGE_REMOVEPROFILE, IS_BLOQUANT);
 	public static final ImageIcon	ICON_REMOVEPROFILE_SCALED			= ImageTools.loadIconJar(PATH + NAME_IMAGE_REMOVEPROFILE, IS_BLOQUANT);
 
-	public static final Image		IMAGE_BACKGROUND					= ImageTools.loadJar(PATH + NAME_IMAGE_BACKGROUND, IS_BLOQUANT);
-	public static final ImageIcon	ICON_BACKGROUND						= ImageTools.loadIconJar(PATH + NAME_IMAGE_BACKGROUND, IS_BLOQUANT);
+	public static final Image		IMAGE_BACKGROUND					= ImageTools.loadJar(PATH + NAME_IMAGE_TABLE_BACKGROUND, IS_BLOQUANT);
+	public static final ImageIcon	ICON_BACKGROUND						= ImageTools.loadIconJar(PATH + NAME_IMAGE_TABLE_BACKGROUND, IS_BLOQUANT);
 	public static final Image		IMAGE_SPLASH						= ImageTools.loadJar(PATH + NAME_IMAGE_SPLASH, IS_BLOQUANT);
 
 	public static final Image		IMAGE_COIN							= ImageTools.loadJar(PATH + NAME_IMAGE_COIN, IS_BLOQUANT);

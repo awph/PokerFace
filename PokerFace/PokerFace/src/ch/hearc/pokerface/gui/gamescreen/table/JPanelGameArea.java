@@ -6,7 +6,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GridLayout;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,7 +117,7 @@ public class JPanelGameArea extends ImagePanel
 		Font font = potString.getFont();
 		try
 		{
-			font = Font.createFont(Font.TRUETYPE_FONT, new File(ButtonTools.BUTTON_FONT_NAME));
+			font = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream(ButtonTools.BUTTON_FONT_NAME));
 		}
 		catch (FontFormatException | IOException e)
 		{

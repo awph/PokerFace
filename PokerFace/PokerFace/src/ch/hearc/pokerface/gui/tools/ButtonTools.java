@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
@@ -36,7 +35,7 @@ public class ButtonTools
 
 	public static Font getButtonFont(boolean big) throws FontFormatException, IOException
 	{
-		Font font = Font.createFont(Font.TRUETYPE_FONT, new File(BUTTON_FONT_NAME));
+		Font font = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream(BUTTON_FONT_NAME));
 		if (big)
 		{
 			font = font.deriveFont(50.0f);

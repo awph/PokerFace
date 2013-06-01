@@ -4,7 +4,6 @@ package ch.hearc.pokerface.gui.gamescreen.player;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import java.io.File;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
@@ -182,7 +181,7 @@ public class PlayerComponent extends JPanel
 		Font font = name.getFont();
 		try
 		{
-			font = Font.createFont(Font.TRUETYPE_FONT, new File(ButtonTools.BUTTON_FONT_NAME));
+			font = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream(ButtonTools.BUTTON_FONT_NAME));
 		}
 		catch (FontFormatException | IOException e)
 		{

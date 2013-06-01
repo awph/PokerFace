@@ -8,7 +8,6 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
-import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
@@ -231,7 +230,7 @@ public class JPanelStatistics extends JPanel
 			Font font = jLabelTitle.getFont();
 			try
 			{
-				font = Font.createFont(Font.TRUETYPE_FONT, new File(ButtonTools.BUTTON_FONT_NAME));
+				font = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream(ButtonTools.BUTTON_FONT_NAME));
 			}
 			catch (FontFormatException | IOException e)
 			{
@@ -397,7 +396,7 @@ public class JPanelStatistics extends JPanel
 			Font font = jLabelTitle.getFont();
 			try
 			{
-				font = Font.createFont(Font.TRUETYPE_FONT, new File(ButtonTools.BUTTON_FONT_NAME));
+				font = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream(ButtonTools.BUTTON_FONT_NAME));
 			}
 			catch (FontFormatException | IOException e)
 			{

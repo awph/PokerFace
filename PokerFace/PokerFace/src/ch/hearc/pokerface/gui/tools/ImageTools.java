@@ -68,7 +68,7 @@ public class ImageTools
 
 	public static ImageIcon loadScaledIcon(String nameFile, double scale, boolean isBloquant)
 	{
-		return new ImageIcon(generateScaledBufferedImage(ImageTools.load(nameFile, isBloquant), scale));
+		return new ImageIcon(generateScaledBufferedImage(ImageTools.loadJar(nameFile, isBloquant), scale));
 	}
 
 	public static BufferedImage generateScaledBufferedImage(Image img, double scale)
