@@ -47,7 +47,12 @@ public final class JPanelAbout extends JPanel
 		heArc = new JLabel("",ImageShop.IMAGE_HE_ARC,0);
 		autors = new JLabel("<html><p><b>Diego Antognini</b>, <b>Danick Fort</b> and <b>Alexandre Perez</b> in the class <b>INF2-DLMa</b></p></html>");
 		copyright = new JLabel("<html><p style=\"text-align:center;\"><b>Copyright &copy; HE-Arc - 2013</b></p></html>");
-		links = new JLabel("<html><p>XXXX : <a href=\"#\">Link</a><br />XXXX : <a href=\"#\">Link</a><br />XXXX : <a href=\"#\">Link</a><br />XXXX : <a href=\"#\">Link</a></p></html>");
+		links = new JLabel("<html><p>Wallpaper : <a href=\"http://pixelperfectdigital.com/digitals/0/51/dspname.html\">http://pixelperfectdigital.com/digitals/0/51/dspname.html</a><br />" +
+				"Cards : <a href=\"http://sourceforge.net/projects/vector-cards/\">http://sourceforge.net/projects/vector-cards/</a><br />" +
+				"Cover Cards : <a href=\"http://stovermagic.deviantart.com/art/Bicycle-Card-Vector-310320736\">http://stovermagic.deviantart.com/art/Bicycle-Card-Vector-310320736</a><br />" +
+				"Sounds Win : <a href=\"http://www.freesound.org/people/Wolfsinger/sounds/25762/\">http://www.freesound.org/people/Wolfsinger/sounds/25762/</a><br />" +
+				"Sounds Lose : <a href=\"http://www.freesound.org/people/Kastenfrosch/sounds/162458/\">http://www.freesound.org/people/Kastenfrosch/sounds/162458/</a>" +
+				"</p></html>");
 
 		Box tot = Box.createVerticalBox();
 		tot.add(heArc);

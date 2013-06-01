@@ -28,6 +28,7 @@ public class JOPTableConfiguration extends JOptionPane
 	private static final int	BLIND_MIN			= 10;
 	private static final int	DIVISOR_MIN_BLIND	= 4;
 
+	private static final int	BANKROLL_MIN		= 100;
 	private JTextField			bankRollTextField;
 	private JTextField			smallBlindTextField;
 	private JSpinner			nbPlayersSpinner;
@@ -38,7 +39,7 @@ public class JOPTableConfiguration extends JOptionPane
 
 	//Inputs
 
-	private JFrameMain				frameMain;
+	private JFrameMain			frameMain;
 	private JPanelGameBoard		panelGameBoard;
 
 	/*------------------------------------------------------------------*\
@@ -78,7 +79,7 @@ public class JOPTableConfiguration extends JOptionPane
 			}
 			if (checkValues)
 			{
-				panelGameBoard.start(new GameEngine(frameMain,smallBlind, nbPlayers, ActiveProfile.getInstance().getProfile(), startCash, panelGameBoard));
+				panelGameBoard.start(new GameEngine(frameMain, smallBlind, nbPlayers, ActiveProfile.getInstance().getProfile(), startCash, panelGameBoard));
 			}
 
 		} while(!checkValues && !isCanceled);
@@ -116,6 +117,11 @@ public class JOPTableConfiguration extends JOptionPane
 			if (nbPlayers < NB_PLAYER_MIN || nbPlayers > NB_PLAYER_MAX)
 			{
 				Exception e = new Exception("Values out of bounds for player ! Minimum " + NB_PLAYER_MIN + " and maximum " + NB_PLAYER_MAX);
+				throw e;
+			}
+			if(startCash < BANKROLL_MIN)
+			{
+				Exception e = new Exception("The minimum bankroll must be " + BANKROLL_MIN);
 				throw e;
 			}
 			if (smallBlind < BLIND_MIN || smallBlind > startCash / DIVISOR_MIN_BLIND)

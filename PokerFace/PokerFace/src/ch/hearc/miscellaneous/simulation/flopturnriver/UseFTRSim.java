@@ -10,6 +10,8 @@ import ch.hearc.pokerface.gameengine.cards.CardValue;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gameengine.statistics.Statistics;
 
+//THIS FILE CANNOT BE USED FOR THE SIMULATION. THE SYSTEM CHANGE A BIT WITH AN OBSERVER PATTERN SO NOW IT'S IMPOSSBILE TO TEST WITHOUT A GAMEENGINE
+//PLEASE REFER THE STATISTIC WITHIN THE REAL PROGRAM
 public class UseFTRSim
 {
 	/*------------------------------------------------------------------*\
@@ -38,7 +40,9 @@ public class UseFTRSim
 		player.addCard(new Card(CardValue.Seven, CardColor.Hearts));
 
 		//Board
-		Card[] board = new Card[5];
+		//RIVER
+		int nbCardBoard = 5;
+		Card[] board = new Card[nbCardBoard];
 		board[0] = new Card(CardValue.Six, CardColor.Spades);
 		board[1] = new Card(CardValue.Three, CardColor.Hearts);
 		board[2] = new Card(CardValue.Seven, CardColor.Clubs);
@@ -48,7 +52,7 @@ public class UseFTRSim
 		System.out.println(player.getPocket() + " " + Arrays.toString(board));
 
 		long start = System.currentTimeMillis();
-		Statistics.getFlopTurnRiverValues(player, player.getPocket(), board, NB_PLAYER);
+		Statistics.getFlopTurnRiverValues(player, player.getPocket(), board, NB_PLAYER, nbCardBoard);
 
 		waitValues(player);
 
