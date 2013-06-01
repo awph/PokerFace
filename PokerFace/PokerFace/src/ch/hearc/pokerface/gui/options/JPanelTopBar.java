@@ -28,13 +28,17 @@ import javax.swing.event.ChangeListener;
 import ch.hearc.pokerface.gameengine.gamecore.SoundEngine;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gui.JFrameMain;
-import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
-import ch.hearc.pokerface.gui.gamescreen.table.JPanelStatistics;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
+import ch.hearc.pokerface.gui.tools.ColorShop;
 import ch.hearc.pokerface.gui.tools.ImageShop;
 
 public class JPanelTopBar extends JPanel
 {
+
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+
 	private static volatile JPanelTopBar	instance	= null;
 
 	// Inputs / Outputs
@@ -52,6 +56,10 @@ public class JPanelTopBar extends JPanel
 	private SimpleDateFormat				ft;
 
 	private JFrameMain						frameMain;
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
 
 	private static final String				RULES		= "<html><h3>The Cards</h3>"
 																+ "<p>At the beginning, each player receive 2 cards that the other(s) player(s) can't see. In the deck, there are in total 52 cards.<br />"
@@ -197,9 +205,9 @@ public class JPanelTopBar extends JPanel
 
 	private void apparence()
 	{
-		setBackground(new Color(25, 25, 25, 255));
-		name.setForeground(JPanelStatistics.PF_RED);
-		bankroll.setForeground(PlayerComponent.PF_GOLD_COLOR);
+		setBackground(ColorShop.PF_BACKGROUND);
+		name.setForeground(ColorShop.PF_RED);
+		bankroll.setForeground(ColorShop.PF_GOLD_COLOR);
 		clockLabel.setForeground(Color.WHITE);
 		volumeIcon.setForeground(Color.WHITE);
 		try

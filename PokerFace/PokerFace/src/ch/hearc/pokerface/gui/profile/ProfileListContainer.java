@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gui.menuscreens.JPanelProfile;
+import ch.hearc.pokerface.gui.tools.ColorShop;
 
 public class ProfileListContainer extends Box
 {
@@ -258,8 +259,7 @@ public class ProfileListContainer extends Box
 
 	private void appearance()
 	{
-
-		setBackground(new Color(25, 25, 25, 150));
+		setBackground(ColorShop.PF_BACKGROUND_PROFILE_CONTAINER);
 		setOpaque(true);
 	}
 

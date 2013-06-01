@@ -2,7 +2,6 @@
 package ch.hearc.pokerface.gui.gamescreen.table;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -33,6 +32,7 @@ import javax.swing.text.DefaultFormatter;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
+import ch.hearc.pokerface.gui.tools.ColorShop;
 import ch.hearc.pokerface.gui.tools.ImageShop;
 
 public class JPanelGameControl extends JPanel
@@ -48,7 +48,7 @@ public class JPanelGameControl extends JPanel
 	private JButton				checkCallButton;
 	private JButton				foldButton;
 
-	boolean mouseIsInLogger = false;
+	boolean						mouseIsInLogger	= false;
 
 	private JEditorPane			loggerTextArea;
 	private JPanelStatistics	statisticsPanel;
@@ -60,8 +60,8 @@ public class JPanelGameControl extends JPanel
 	|*			  Static			*|
 	\*------------------------------*/
 
-	private static final String	ALL_IN	= "All in";
-	private static final String	FOLD	= "Fold";
+	private static final String	ALL_IN			= "All in";
+	private static final String	FOLD			= "Fold";
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -262,8 +262,8 @@ public class JPanelGameControl extends JPanel
 		panelGridRight.add(scrollPane);
 		panelGridRight.add(statisticsPanel);
 
-		add(handRankingPanel,BorderLayout.WEST);
-		add(panelGridRight,BorderLayout.CENTER);
+		add(handRankingPanel, BorderLayout.WEST);
+		add(panelGridRight, BorderLayout.CENTER);
 
 	}
 
@@ -390,7 +390,7 @@ public class JPanelGameControl extends JPanel
 
 	private void appearance()
 	{
-		setBackground(Color.BLACK);
+		setBackground(ColorShop.PF_BACKGROUND);
 		ButtonTools.setStyleToButton(checkCallButton, "turquoise");
 		ButtonTools.setStyleToButton(foldButton, "red");
 		ButtonTools.setStyleToButton(betRaiseButton, "green");

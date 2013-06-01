@@ -18,6 +18,7 @@ import ch.hearc.pokerface.gui.gamescreen.card.CardComponent;
 import ch.hearc.pokerface.gui.gamescreen.card.PlayerCard;
 import ch.hearc.pokerface.gui.options.JPanelTopBar;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
+import ch.hearc.pokerface.gui.tools.ColorShop;
 import ch.hearc.pokerface.gui.tools.ImageShop;
 
 public class PlayerComponent extends JPanel
@@ -27,25 +28,19 @@ public class PlayerComponent extends JPanel
 	\*------------------------------------------------------------------*/
 
 	//Tools
-	private Player				player;
+	private Player			player;
 
-	private boolean				allinShow;
-	private boolean				isHumanPlayer;
+	private boolean			allinShow;
+	private boolean			isHumanPlayer;
 
 	//IO
-	private JLabel				name;
-	private JLabel				money;
-	private JLabel				turnSpend;
+	private JLabel			name;
+	private JLabel			money;
+	private JLabel			turnSpend;
 
-	private CardComponent		card1;
-	private CardComponent		card2;
-	private Token				role;
-
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
-
-	public static final Color	PF_GOLD_COLOR	= new Color(255, 215, 0);
+	private CardComponent	card1;
+	private CardComponent	card2;
+	private Token			role;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -81,12 +76,11 @@ public class PlayerComponent extends JPanel
 	{
 		if (b)
 		{
-			setBackground(Color.GREEN);
+			setBackground(ColorShop.PF_GREEN);
 		}
 		else
 		{
-
-			setBackground(new Color(25, 25, 25, 120));
+			setBackground(ColorShop.PF_BACKGROUND_PLAYER_COMPONENT);
 		}
 	}
 
@@ -178,13 +172,12 @@ public class PlayerComponent extends JPanel
 
 	private void control()
 	{
-		// TODO Auto-generated method stub
-
+		//Rien
 	}
 
 	private void appearance()
 	{
-		setBackground(new Color(25, 25, 25, 120));
+		setBackground(ColorShop.PF_BACKGROUND_PLAYER_COMPONENT);
 
 		Font font = name.getFont();
 		try
@@ -203,8 +196,8 @@ public class PlayerComponent extends JPanel
 		turnSpend.setFont(font);
 
 		name.setForeground(Color.WHITE);
-		money.setForeground(PF_GOLD_COLOR);
-		turnSpend.setForeground(new Color(39, 181, 73));
+		money.setForeground(ColorShop.PF_GOLD_COLOR);
+		turnSpend.setForeground(ColorShop.PF_GREEN);
 	}
 
 }

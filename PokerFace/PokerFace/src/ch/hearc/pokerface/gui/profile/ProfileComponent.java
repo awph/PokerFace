@@ -11,10 +11,9 @@ import javax.swing.SwingConstants;
 
 import ch.hearc.pokerface.gameengine.player.profile.ActiveProfile;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
-import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
-import ch.hearc.pokerface.gui.gamescreen.table.JPanelStatistics;
 import ch.hearc.pokerface.gui.options.JPanelTopBar;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
+import ch.hearc.pokerface.gui.tools.ColorShop;
 import ch.hearc.pokerface.gui.tools.ImageShop;
 
 public class ProfileComponent extends ProfileComponentPanel
@@ -26,16 +25,22 @@ public class ProfileComponent extends ProfileComponentPanel
 	private final ProfileListContainer	parent;
 
 	// Tools
-	private static final String			FAKE_HORIZONTAL_STRUT	= "   ";
 	private Box							boxContainer;
 
 	private JLabel						deleteButton;
 	private JLabel						alignedAvatar;
 	private JLabel						capital;
 
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	private static final String			FAKE_HORIZONTAL_STRUT	= "   ";
+
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+
 	public ProfileComponent(Profile profile, ProfileListContainer parent)
 	{
 		super();
@@ -51,18 +56,6 @@ public class ProfileComponent extends ProfileComponentPanel
 		geometry();
 		control();
 	}
-
-	/*------------------------------------------------------------------*\
-	|*							Methodes Public							*|
-	\*------------------------------------------------------------------*/
-
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
-
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
@@ -82,8 +75,8 @@ public class ProfileComponent extends ProfileComponentPanel
 		JLabel nameProfile = new JLabel(profile.getName());
 		capital = new JLabel("$" + Integer.toString(profile.getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
 
-		nameProfile.setForeground(JPanelStatistics.PF_RED);
-		capital.setForeground(PlayerComponent.PF_GOLD_COLOR);
+		nameProfile.setForeground(ColorShop.PF_RED);
+		capital.setForeground(ColorShop.PF_GOLD_COLOR);
 
 		try
 		{
