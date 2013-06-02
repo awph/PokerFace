@@ -152,18 +152,18 @@ public class AI extends Player
 				case FlopState:
 					valueWin = getFlopValues().getWin() / 100.0;
 					pair = actionFlopTurnRiver(valueWin,
-							getChanceCallValueFlopOrTurn(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending())));
+							getChanceCallValueFlopOrTurn(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
 					break;
 				case TurnState:
 					valueWin = getTurnValues().getWin() / 100.0;
 					pair = actionFlopTurnRiver(valueWin,
-							getChanceCallValueFlopOrTurn(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending())));
+							getChanceCallValueFlopOrTurn(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
 					break;
 
 				case RiverState:
 					valueWin = getRiverValues().getWin() / 100.0;
 					pair = actionFlopTurnRiver(valueWin,
-							getChanceCallValueRiver(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending())));
+							getChanceCallValueRiver(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
 					break;
 
 				default:
@@ -212,11 +212,11 @@ public class AI extends Player
 		Action action = null;
 		int raiseAmount = 0;
 
-		if (valueWin <= 20.0)
+		if (valueWin <= 0.2)
 		{
 			action = Action.Fold;
 		}
-		else if (valueWin < 70.0)
+		else if (valueWin < 0.7)
 		{
 			if (Math.random() * 100.0 > callValue)
 			{
@@ -225,7 +225,7 @@ public class AI extends Player
 		}
 		if (action == null)
 		{
-			if (valueWin >= 70.0)
+			if (valueWin >= 0.7)
 			{
 				callValue /= Math.pow(nbTurnBet, 2);
 			}
@@ -234,7 +234,7 @@ public class AI extends Player
 				callValue /= (Math.pow(nbTurnBet, 2) + 1);
 			}
 
-			if (Math.random() * 100.0 > callValue)
+			if (Math.random() > callValue)
 			{
 				action = Action.Call;
 			}
@@ -254,9 +254,9 @@ public class AI extends Player
 		Action action = Action.Fold;
 		int raiseAmount = 0;
 
-		if (Math.random() * 100.0 < callValue)
+		if (Math.random() < callValue)
 		{
-			if (valueWin >= 70.0)
+			if (valueWin >= 0.7)
 			{
 				callValue /= Math.pow(nbTurnBet, 2);
 			}
@@ -265,7 +265,7 @@ public class AI extends Player
 				callValue /= (Math.pow(nbTurnBet, 2) + 1);
 			}
 
-			if (Math.random() * 100.0 < callValue)
+			if (Math.random() < callValue)
 			{
 				double a = howMuchToBet(valueWin);
 				int b = getBankroll();
