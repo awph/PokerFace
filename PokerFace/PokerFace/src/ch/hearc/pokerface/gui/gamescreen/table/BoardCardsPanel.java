@@ -23,6 +23,8 @@ public class BoardCardsPanel extends JPanel
 
 	private List<BoardCard>	boardCards;
 
+	private boolean hasCard = false;
+
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
@@ -41,7 +43,7 @@ public class BoardCardsPanel extends JPanel
 
 		setLayout(new BorderLayout());
 		box = Box.createHorizontalBox();
-		box.setPreferredSize(new Dimension(90*5+15,140));
+		box.setPreferredSize(new Dimension(90 * 5 + 15, 140));
 
 		for(BoardCard card:boardCards)
 		{
@@ -54,6 +56,48 @@ public class BoardCardsPanel extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
+
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+	public void setCards(Card[] cardArray)
+	{
+		int n = cardArray.length;
+		if (n == 0)
+		{
+			setAllGhost();
+			if (hasCard)
+			{
+				refreshBox();
+				hasCard = false;
+			}
+		}
+		else
+		{
+			for(int i = 0; i < n; ++i)
+			{
+				hasCard = true;
+				boardCards.get(i).setCard(cardArray[i].getId());
+			}
+			refreshBox();
+		}
+	}
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Private						*|
+	\*------------------------------------------------------------------*/
+	private void refreshBox()
+	{
+		box.removeAll();
+		for(BoardCard card:boardCards)
+		{
+			box.add(card);
+		}
+	}
 
 	private void initBoardCards()
 	{
@@ -71,31 +115,5 @@ public class BoardCardsPanel extends JPanel
 
 		initBoardCards();
 	}
-
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
-	public void setCards(Card[] cardArray)
-	{
-		int n = cardArray.length;
-		if (n == 0)
-		{
-			setAllGhost();
-		}
-		else
-		{
-			for(int i = 0; i < n; ++i)
-			{
-				boardCards.get(i).setCard(cardArray[i].getId());
-			}
-		}
-	}
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
-	/*------------------------------------------------------------------*\
-	|*							Methodes Private						*|
-	\*------------------------------------------------------------------*/
 
 }

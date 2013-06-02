@@ -67,7 +67,7 @@ public abstract class CardComponent extends JLabel
 		{
 			e.printStackTrace();
 		}
-
+		repaint();
 	}
 
 }
