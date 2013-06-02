@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Rsrc-Class-Path: ./ org.hamcrest.core_1.1.0.v20090501071000.jar miglay
+ out-4.0-swing.jar SyntheticaAluOxide.jar junit.jar
+Class-Path: .
+Rsrc-Main-Class: ch.hearc.pokerface.gui.UseJFrameMain
+Main-Class: org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader
+SplashScreen-Image: resources/misc/splash.png
