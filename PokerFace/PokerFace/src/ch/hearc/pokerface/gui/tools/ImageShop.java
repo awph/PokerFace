@@ -35,22 +35,21 @@ public class ImageShop
 	private static final String		NAME_IMAGE_TOKEN_SB					= "table/tokens/sb.png";
 	private static final String		NAME_IMAGE_TOKEN_D					= "table/tokens/d.png";
 
-	private static final String		NAME_IMAGE_COIN						= "coin.png";
+	private static final String		NAME_IMAGE_COIN						= "misc/coin.png";
 
-	private static final String		NAME_IMAGE_TABLE_BACKGROUND			= "table/background.png";
-	private static final String		NAME_IMAGE_SPLASH					= "splash.png";
+	private static final String		NAME_IMAGE_TABLE_BACKGROUND			= "table/misc/background.png";
+	private static final String		NAME_IMAGE_SPLASH					= "misc/splash.png";
 
-	private static final String		NAME_IMAGE_HANDRANKING				= "handranking.png";
+	private static final String		NAME_IMAGE_HANDRANKING				= "table/misc/handranking.png";
 
-	private static final String		NAME_IMAGE_APPICON					= "appicon.png";
-	private static final String		NAME_IMAGE_REMOVEPROFILE			= "remove.png";
-	private static final String		NAME_ICON_LOGO_TOPBAR				= "logo_pokerface_topbar.png";
+	private static final String		NAME_IMAGE_APPICON					= "misc/appicon.png";
+	private static final String		NAME_IMAGE_REMOVEPROFILE			= "menus/profile/remove.png";
+	private static final String		NAME_ICON_LOGO_TOPBAR				= "menus/topbar/logo_pokerface_topbar.png";
 
-	private static final String		NAME_IMAGE_HE_ARC					= "hearc.png";
-
+	private static final String		NAME_IMAGE_HE_ARC					= "misc/hearc.jpg";
 	private static final boolean	IS_BLOQUANT							= true;
 
-	public static final ImageIcon	IMAGE_HE_ARC						= ImageTools.loadIconJar(PATH + NAME_IMAGE_HE_ARC, IS_BLOQUANT);
+	public static final ImageIcon	IMAGE_HE_ARC						= ImageTools.loadScaledIcon(PATH + NAME_IMAGE_HE_ARC, 0.4, IS_BLOQUANT);
 
 	public static final ImageIcon	ICON_BUTTON_QUIT_GAME				= ImageTools.loadIconJar(PATH + NAME_IMAGE_BUTTON_QUIT_GAME, IS_BLOQUANT);
 	public static final ImageIcon	ICON_BUTTON_QUIT_APPLICATION		= ImageTools.loadIconJar(PATH + NAME_IMAGE_BUTTON_QUIT_APPLICATION, IS_BLOQUANT);

@@ -3,6 +3,8 @@ package ch.hearc.pokerface.gui.profile;
 
 import javax.swing.JPanel;
 
+import ch.hearc.pokerface.gameengine.player.profile.Profile;
+
 
 public abstract class ProfileComponentPanel extends JPanel
 {
@@ -30,7 +32,7 @@ public abstract class ProfileComponentPanel extends JPanel
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
-
+public abstract Profile getProfile();
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/

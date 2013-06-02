@@ -42,7 +42,6 @@ public class NewProfileComponent extends ProfileComponentPanel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
-
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -89,6 +88,13 @@ public class NewProfileComponent extends ProfileComponentPanel
 				NewProfileComponent.this.parent.addProfileFromNew(new Profile(nameProfile.getText(),1,10000),NewProfileComponent.this);
 			}
 		});
+	}
+
+	@Override
+	public Profile getProfile()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 

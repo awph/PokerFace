@@ -61,6 +61,11 @@ public class JFrameMain extends JFrame
 		{
 			panelProfile.refreshProfilesData();
 		}
+
+		else if (card == "panelMainMenu")
+		{
+			panelMainMenu.refreshPlayButtonStatus();
+		}
 		layout.show(this.getContentPane(), card);
 	}
 
@@ -72,6 +77,11 @@ public class JFrameMain extends JFrame
 		setCard("panelMainMenu");
 	}
 
+
+	public void closeApp()
+	{
+		panelProfile.serializeProfiles();
+	}
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -156,7 +166,7 @@ public class JFrameMain extends JFrame
 			@Override
 			public void windowClosing(WindowEvent arg0)
 			{
-				panelProfile.serializeProfiles();
+				closeApp();
 			}
 		});
 	}

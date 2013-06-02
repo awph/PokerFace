@@ -2,6 +2,7 @@
 package ch.hearc.pokerface.gui.gamescreen.table;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -40,6 +41,7 @@ public class BoardCardsPanel extends JPanel
 
 		setLayout(new BorderLayout());
 		box = Box.createHorizontalBox();
+		box.setPreferredSize(new Dimension(100*5+20,140));
 
 		for(BoardCard card:boardCards)
 		{

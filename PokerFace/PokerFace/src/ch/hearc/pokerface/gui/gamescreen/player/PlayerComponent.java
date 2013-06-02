@@ -15,7 +15,6 @@ import javax.swing.SwingConstants;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.gamescreen.card.CardComponent;
 import ch.hearc.pokerface.gui.gamescreen.card.PlayerCard;
-import ch.hearc.pokerface.gui.options.JPanelTopBar;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
 import ch.hearc.pokerface.gui.tools.ColorShop;
 import ch.hearc.pokerface.gui.tools.ImageShop;
@@ -118,9 +117,7 @@ public class PlayerComponent extends JPanel
 
 		role.setToken(player.getRole().toString());
 		money.setText("$" + Integer.toString(player.getBankroll()));
-		JPanelTopBar.getInstance().setCapital(Integer.toString(player.getBankroll()));
 		turnSpend.setText("$" + player.getTurnSpending());
-		//getParent().update(getParent().getGraphics());
 		turnSpend.repaint();
 		getParent().repaint();
 	}
@@ -152,6 +149,7 @@ public class PlayerComponent extends JPanel
 
 		Box nameBox = Box.createHorizontalBox();
 		nameBox.add(name);
+		nameBox.add(role);
 		box.add(nameBox);
 
 		Box moneyAndBetSpendBox = Box.createHorizontalBox();
@@ -164,7 +162,6 @@ public class PlayerComponent extends JPanel
 		cardsBox.add(Box.createHorizontalGlue());
 		cardsBox.add(card1);
 		cardsBox.add(card2);
-		cardsBox.add(role);
 		box.add(cardsBox);
 		add(box);
 	}

@@ -63,12 +63,11 @@ public class ProfileComponent extends ProfileComponentPanel
 
 	private void geometry()
 	{
-		Box avatarX = Box.createHorizontalBox();
-		avatarX.setOpaque(false);
+		Box deleteBox = Box.createHorizontalBox();
+		deleteBox.setOpaque(false);
 
-		avatarX.add(Box.createHorizontalGlue());
-		avatarX.add(alignedAvatar);
-		avatarX.add(deleteButton);
+		deleteBox.add(Box.createHorizontalGlue());
+		deleteBox.add(deleteButton);
 
 		setLayout(new GridLayout());
 
@@ -88,12 +87,16 @@ public class ProfileComponent extends ProfileComponentPanel
 			e.printStackTrace();
 		}
 
-		add(nameProfile);
+		Box nameAvatar = Box.createHorizontalBox();
+		deleteBox.setOpaque(false);
+		nameAvatar.add(alignedAvatar);
+		nameAvatar.add(nameProfile);
+
+		add(nameAvatar);
 
 		add(capital);
 
-		add(avatarX);
-		//add(deleteButton);
+		add(deleteBox);
 	}
 
 	private void control()
@@ -105,10 +108,18 @@ public class ProfileComponent extends ProfileComponentPanel
 			public void mouseClicked(MouseEvent e)
 			{
 
-				ActiveProfile.getInstance().setProfile(ProfileComponent.this.profile);
-				JPanelTopBar.getInstance().refreshProfile(ProfileComponent.this.profile);
+				if (ProfileComponent.this.profile.getCapital() > 0)
+				{
+					ActiveProfile.getInstance().setProfile(ProfileComponent.this.profile);
+					JPanelTopBar.getInstance().refreshProfile(ProfileComponent.this.profile);
 
-				parent.getProfilePanel().getMainFrame().setCard("panelMainMenu");
+					parent.getProfilePanel().getMainFrame().setCard("panelMainMenu");
+				}
+				else
+				{
+					ProfileComponent.this.setEnabled(false);
+					parent.deleteProfile(ProfileComponent.this, profile);
+				}
 			}
 		});
 
@@ -124,13 +135,15 @@ public class ProfileComponent extends ProfileComponentPanel
 
 	public void refreshData()
 	{
-		/*if (profile == ActiveProfile.getInstance().getProfile())
-		{
-			capital = new JLabel(Integer.toString(ActiveProfile.getInstance().getProfile().getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
-		}*/
-		capital = new JLabel("$" + Integer.toString(profile.getCapital()), ImageShop.ICON_COIN, SwingConstants.CENTER);
+		removeAll();
+		geometry();
 		repaint();
 		revalidate();
 	}
 
+	@Override
+	public Profile getProfile()
+	{
+		return profile;
+	}
 }

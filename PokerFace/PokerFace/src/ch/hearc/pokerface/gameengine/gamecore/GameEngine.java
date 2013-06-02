@@ -34,6 +34,7 @@ import ch.hearc.pokerface.gameengine.subsets.CardSubset;
 import ch.hearc.pokerface.gameengine.subsets.Deck;
 import ch.hearc.pokerface.gui.JFrameMain;
 import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
+import ch.hearc.pokerface.gui.options.JPanelTopBar;
 import ch.hearc.pokerface.tools.Pair;
 import ch.hearc.pokerface.tools.Triple;
 
@@ -383,6 +384,7 @@ public class GameEngine
 	public void updateGUI()
 	{
 		panelGameBoard.updateGUI();
+		JPanelTopBar.getInstance().setCapital(Integer.toString(HUMAN_PLAYER.getBankroll() + profilePlayer.getCapital()));
 	}
 
 	public void setNewState()

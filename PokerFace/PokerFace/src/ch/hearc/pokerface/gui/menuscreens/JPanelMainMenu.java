@@ -40,17 +40,33 @@ public class JPanelMainMenu extends ImagePanel
 
 	public JPanelMainMenu(JFrameMain mainFrame) throws Exception
 	{
-		super(ImageIO.read(ClassLoader.getSystemResource("resources/background.jpg")));
+		super(ImageIO.read(ClassLoader.getSystemResource("resources/menus/misc/background.jpg")));
 		this.mainFrame = mainFrame;
 
 		geometry();
 		control();
 		appearance();
+
+		refreshPlayButtonStatus();
 	}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
+
+	public void refreshPlayButtonStatus()
+	{
+		if (ActiveProfile.getInstance().getProfile() != null)
+		{
+			if (ActiveProfile.getInstance().getProfile().getCapital() == 0)
+			{
+				playButton.setEnabled(false);
+			}
+			else {
+				playButton.setEnabled(true);
+			}
+		}
+	}
 
 	public JPanelTopBar getTopBar()
 	{

@@ -70,7 +70,7 @@ public class ProfileListContainer extends Box
 
 	public void deleteProfile(ProfileComponent profileComponent, Profile profile)
 	{
-		if (JOptionPane.showConfirmDialog(null, "Confirm deletion of " + profile.getName() + " ?") == 1) { return; }
+		if (JOptionPane.showConfirmDialog(null, "Confirm deletion of " + profile.getName() + " ?") != 0) { return; }
 
 		removeProfiles();
 		profileComponentList.remove(profileComponent);
@@ -253,6 +253,7 @@ public class ProfileListContainer extends Box
 			if (i < profileComponentList.size())
 			{
 				profileReferenceList.add(add(profileComponentList.get(i), j));
+				repaint();
 			}
 		}
 	}
@@ -271,14 +272,14 @@ public class ProfileListContainer extends Box
 		upArrow.setFocusPainted(false);
 		upArrow.setOpaque(false);
 		upArrow.setBorderPainted(false);
-		upArrow.setForeground(Color.GREEN);
+		upArrow.setForeground(ColorShop.PF_GREEN);
 
 		downArrow = new JButton("\u2193");
 		downArrow.setBackground(Color.MAGENTA);
 		downArrow.setOpaque(false);
 		downArrow.setFocusPainted(false);
 		downArrow.setBorderPainted(false);
-		downArrow.setForeground(Color.GREEN);
+		downArrow.setForeground(ColorShop.PF_GREEN);
 
 		Box upArrowBox = Box.createHorizontalBox();
 		upArrowBox.add(createHorizontalGlue());
@@ -315,9 +316,8 @@ public class ProfileListContainer extends Box
 				((ProfileComponent)profileComponent).refreshData();
 			}
 		}
-		repaint();
-		getParent().repaint();
-		refreshProfiles();
+		//refreshProfiles();
+		//repaint();
 	}
 
 }

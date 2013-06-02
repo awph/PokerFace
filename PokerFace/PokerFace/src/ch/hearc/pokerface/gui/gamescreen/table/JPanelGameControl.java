@@ -12,6 +12,7 @@ import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -202,6 +203,8 @@ public class JPanelGameControl extends JPanel
 		JScrollPane scrollPane = new JScrollPane(loggerTextArea, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setPreferredSize(new Dimension(200, 60));
 
+		scrollPane.getVerticalScrollBar().addMouseListener(loggerMouseListener);
+
 		scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener()
 		{
 			@Override
@@ -267,20 +270,7 @@ public class JPanelGameControl extends JPanel
 
 	private void control()
 	{
-		loggerTextArea.addMouseListener(new MouseAdapter()
-		{
-			@Override
-			public void mouseExited(MouseEvent arg0)
-			{
-				mouseIsInLogger = false;
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent arg0)
-			{
-				mouseIsInLogger = true;
-			}
-		});
+		loggerTextArea.addMouseListener(loggerMouseListener);
 
 		moneySpinner.addChangeListener(new ChangeListener()
 		{
@@ -404,4 +394,20 @@ public class JPanelGameControl extends JPanel
 		moneySlider.setEnabled(false);
 		moneySpinner.setEnabled(false);
 	}
+
+	private MouseListener loggerMouseListener = new MouseAdapter()
+	{
+
+		@Override
+		public void mouseExited(MouseEvent arg0)
+		{
+			mouseIsInLogger = false;
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0)
+		{
+			mouseIsInLogger = true;
+		}
+	};
 }

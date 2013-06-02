@@ -2,7 +2,7 @@
 package ch.hearc.pokerface.gui.gamescreen.table;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GridLayout;
@@ -11,14 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
+import ch.hearc.pokerface.gui.tools.ColorShop;
 import ch.hearc.pokerface.gui.tools.EllipsisLayout;
 import ch.hearc.pokerface.gui.tools.ImagePanel;
 
@@ -45,7 +49,7 @@ public class JPanelGameArea extends ImagePanel
 
 	public JPanelGameArea(GameEngine gameEngine) throws IOException
 	{
-		super(ImageIO.read(ClassLoader.getSystemResource("resources/table/background.png")));
+		super(ImageIO.read(ClassLoader.getSystemResource("resources/table/misc/background.png")));
 		setDoubleBuffered(true);
 
 		this.gameEngine = gameEngine;
@@ -60,14 +64,16 @@ public class JPanelGameArea extends ImagePanel
 		potTurnTotal = new JLabel();
 		currentState = new JLabel();
 
+		currentState.setForeground(ColorShop.PF_RED);
+
 		stylePotLabel(potBet);
 		stylePotLabel(potStateTotal);
 		stylePotLabel(potTurnTotal);
 		stylePotLabel(currentState);
 
-		JPanel panelPot = new JPanel();
-		panelPot.setOpaque(false);
-		panelPot.setLayout(new GridLayout(0,1));
+
+
+
 
 		JPanel currentStatePanel = new JPanel();
 		currentStatePanel.setOpaque(false);
@@ -77,19 +83,44 @@ public class JPanelGameArea extends ImagePanel
 		currentStatePanel.add(currentState);
 		currentStatePanel.add(new JLabel());
 
+		JPanel containerCurrentStatePanel = new JPanel();
+		containerCurrentStatePanel.setOpaque(false);
+		containerCurrentStatePanel.setLayout(new BoxLayout(containerCurrentStatePanel,BoxLayout.X_AXIS));
+		containerCurrentStatePanel.setPreferredSize(new Dimension(100,100));
+		containerCurrentStatePanel.add(currentStatePanel);
+
+
+
+
+
+
+		JPanel panelPot = new JPanel();
+		panelPot.setOpaque(false);
+		panelPot.setLayout(new GridLayout(0,1));
+
+		potBet.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, ColorShop.PF_GOLD_COLOR));
 		panelPot.add(potBet);
 		panelPot.add(potTurnTotal);
+		potStateTotal.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, ColorShop.PF_GOLD_COLOR));
 		panelPot.add(potStateTotal);
+
+		JPanel containerPanelPot = new JPanel();
+		containerPanelPot.setOpaque(false);
+		containerPanelPot.setLayout(new BoxLayout(containerPanelPot,BoxLayout.X_AXIS));
+		containerPanelPot.setPreferredSize(new Dimension(260,140));
+		containerPanelPot.add(panelPot);
+
+
 
 
 		JPanel panelBoard = new JPanel();
 		panelBoard.setOpaque(false);
-		panelBoard.setLayout(new BorderLayout());
-		panelBoard.add(panelPot, BorderLayout.WEST);
+		panelBoard.setLayout(new BoxLayout(panelBoard,BoxLayout.X_AXIS));
+		panelBoard.add(containerPanelPot);
 
-		panelBoard.add(boardCardsPanel, BorderLayout.CENTER);
+		panelBoard.add(boardCardsPanel);
 
-		panelBoard.add(currentStatePanel, BorderLayout.EAST);
+		panelBoard.add(containerCurrentStatePanel);
 
 		setLayout(new BorderLayout());
 
@@ -97,7 +128,7 @@ public class JPanelGameArea extends ImagePanel
 		panelPlayer.setLayout(new EllipsisLayout());
 		panelPlayer.setOpaque(false);
 
-		//panelPlayer.setBorder(new EmptyBorder(50, 10, 50, 10)); // inside padding
+		panelPlayer.setBorder(new EmptyBorder(50, 10, 50, 10)); // inside padding
 
 		for(Player player:this.gameEngine.getPlayers())
 		{
@@ -125,7 +156,6 @@ public class JPanelGameArea extends ImagePanel
 		}
 		font = font.deriveFont(25f);
 
-		potString.setForeground(Color.RED); // HTML?
 		potString.setFont(font);
 	}
 
@@ -183,9 +213,9 @@ public class JPanelGameArea extends ImagePanel
 					playerComponent.setAllinShow(true);
 				}
 			}
-			potBet.setText("Current bet : " + gameEngine.getBet());
-			potTurnTotal.setText("Turn total : " + gameEngine.getTurnTotal());
-			potStateTotal.setText("State total : " + gameEngine.getStateTotal());
+			potBet.setText("<html><font color=black>Current bet</font> : $" + gameEngine.getBet() + "</html>");
+			potTurnTotal.setText("<html><font color=black>Turn total</font> : $" + gameEngine.getTurnTotal() + "</html>");
+			potStateTotal.setText("<html><font color=black>State total</font> : $" + gameEngine.getStateTotal() + "</html>");
 			switch (gameEngine.getOldState())
 			{
 				case BettingState:

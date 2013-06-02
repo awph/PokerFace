@@ -19,7 +19,7 @@ public class ButtonTools
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	public static final String	BUTTON_FONT_NAME	= "resources/Franklin Gothic Demi Cond.ttf";
+	public static final String	BUTTON_FONT_NAME	= "resources/font/Franklin Gothic Demi Cond.ttf";
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
