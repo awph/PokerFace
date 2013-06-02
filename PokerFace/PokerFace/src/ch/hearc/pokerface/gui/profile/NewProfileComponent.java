@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -25,6 +26,9 @@ public class NewProfileComponent extends ProfileComponentPanel
 	private JButton okButton;
 	private ProfileListContainer parent;
 	private JTextField nameProfile;
+
+	// Tools
+	private Random random = new Random();
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -85,7 +89,7 @@ public class NewProfileComponent extends ProfileComponentPanel
 			public void actionPerformed(ActionEvent e)
 			{
 
-				NewProfileComponent.this.parent.addProfileFromNew(new Profile(nameProfile.getText(),1,10000),NewProfileComponent.this);
+				NewProfileComponent.this.parent.addProfileFromNew(new Profile(nameProfile.getText(),random.nextInt(30) + 1,10000),NewProfileComponent.this);
 			}
 		});
 	}

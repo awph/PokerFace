@@ -5,9 +5,12 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
@@ -92,6 +95,16 @@ public class JPanelProfile extends ImagePanel
 		LinkedList<Profile> profileList = new LinkedList<Profile>();
 		try
 		{
+            File f = new File("profiles.dat");
+            if (!f.exists()) {
+                f.createNewFile();
+
+    			FileOutputStream fileOut = new FileOutputStream("profiles.dat");
+    			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+    			out.writeObject(new LinkedList<Profile>());
+    			out.close();
+    			fileOut.close();
+            }
 
 			FileInputStream fileIn = new FileInputStream("profiles.dat");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -133,6 +146,7 @@ public class JPanelProfile extends ImagePanel
 			public void actionPerformed(ActionEvent e)
 			{
 				mainFrame.closeApp();
+				System.exit(0); // 0 normal, -1 anormal
 			}
 		});
 	}
