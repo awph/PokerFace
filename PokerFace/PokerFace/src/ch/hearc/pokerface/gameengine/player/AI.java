@@ -19,9 +19,11 @@ public class AI extends Player
 	|*			  Static			*|
 	\*------------------------------*/
 
-	private final static int	MIN_COEF_RAISE	= 1;
-	private final static int	MAX_COEF_RAISE	= 1;
-	private final static long	TIME_TO_PLAY	= 1000; //ms
+	private final static int	MIN_COEF_RAISE									= 1;
+	private final static int	MAX_COEF_RAISE									= 1;
+	private final static long	TIME_TO_PLAY									= 1500; //ms
+	private final static int	MINIMUN_TRY_BEFORE_ACTION_DEFAULT				= 10;
+	private final static long	TIME_BETWEEN_EACH_TRY_TO_ACCESS_SIMULATION_DATA	= 100;	//ms
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -67,10 +69,10 @@ public class AI extends Player
 	 */
 	private double howMuchToBet(double win)
 	{
-		double a =  Math.pow(Math.E, win);
+		double a = Math.pow(Math.E, win);
 		double b = (1.3 - win);
 		double c = Math.E / 0.3;
-		double res= a/b/c;
+		double res = a / b / c;
 		return res;
 	}
 
@@ -142,40 +144,59 @@ public class AI extends Player
 			Pair<Action, Integer> pair = null;
 			double valueWin = 0;
 
+			int count = 0;
 			switch(gameEngine.getOldState())
 			{
 				case PreFlopState:
-					valueWin = Statistics.getChanceHandValuePreFlop(pocket, gameEngine.getNbPlayers())/100.0;
+					valueWin = Statistics.getChanceHandValuePreFlop(pocket, gameEngine.getNbPlayers()) / 100.0;
 					pair = actionPreFlop(valueWin, getChanceCallValuePreFlop(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending())));
 					break;
 
 				case FlopState:
-					while(getFlopValues() == null)
+					while(getFlopValues() == null && count++ <= MINIMUN_TRY_BEFORE_ACTION_DEFAULT)
 					{
-						Thread.sleep(100);
+						Thread.sleep(TIME_BETWEEN_EACH_TRY_TO_ACCESS_SIMULATION_DATA);
 					}
-					valueWin = getFlopValues().getWin() / 100.0;
-					pair = actionFlopTurnRiver(valueWin,
-							getChanceCallValueFlopOrTurn(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
+					if (getFlopValues() != null)
+					{
+						valueWin = getFlopValues().getWin() / 100.0;
+						pair = actionFlopTurnRiver(valueWin, getChanceCallValueFlopOrTurn(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending())) / 100.0);
+					}
+					else
+					{
+						pair = new Pair<Action, Integer>(Action.Fold, 0);
+					}
 					break;
 				case TurnState:
-					while(getTurnValues() == null)
+					while(getTurnValues() == null && count++ <= MINIMUN_TRY_BEFORE_ACTION_DEFAULT)
 					{
-						Thread.sleep(100);
+						Thread.sleep(TIME_BETWEEN_EACH_TRY_TO_ACCESS_SIMULATION_DATA);
 					}
-					valueWin = getTurnValues().getWin() / 100.0;
-					pair = actionFlopTurnRiver(valueWin,
-							getChanceCallValueFlopOrTurn(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
+					if (getTurnValues() != null)
+					{
+						valueWin = getTurnValues().getWin() / 100.0;
+						pair = actionFlopTurnRiver(valueWin, getChanceCallValueFlopOrTurn(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending())) / 100.0);
+					}
+					else
+					{
+						pair = new Pair<Action, Integer>(Action.Fold, 0);
+					}
 					break;
 
 				case RiverState:
-					while(getRiverValues() == null)
+					while(getRiverValues() == null && count++ <= MINIMUN_TRY_BEFORE_ACTION_DEFAULT)
 					{
-						Thread.sleep(100);
+						Thread.sleep(TIME_BETWEEN_EACH_TRY_TO_ACCESS_SIMULATION_DATA);
 					}
-					valueWin = getRiverValues().getWin() / 100.0;
-					pair = actionFlopTurnRiver(valueWin,
-							getChanceCallValueRiver(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
+					if (getRiverValues() != null)
+					{
+						valueWin = getRiverValues().getWin() / 100.0;
+						pair = actionFlopTurnRiver(valueWin, getChanceCallValueRiver(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending())) / 100.0);
+					}
+					else
+					{
+						pair = new Pair<Action, Integer>(Action.Fold, 0);
+					}
 					break;
 
 				default:
@@ -230,7 +251,7 @@ public class AI extends Player
 		}
 		else if (valueWin < 0.7)
 		{
-			if (Math.random() * 100.0 > callValue)
+			if (Math.random() > callValue)
 			{
 				action = Action.Fold;
 			}
@@ -281,7 +302,7 @@ public class AI extends Player
 			{
 				double a = howMuchToBet(valueWin);
 				int b = getBankroll();
-				raiseAmount =  (int)(a*b);
+				raiseAmount = (int)(a * b);
 				action = Action.Raise;
 			}
 			else

@@ -269,6 +269,29 @@ public class Player extends Observable implements Observer
 		}
 	}
 
+	/**
+	 * Stop the simulation of the state. If all = true, stop all the simulation
+	 *
+	 * @param Current
+	 *            : true -> current simulation, false -> All simulations
+	 */
+	public void stopCurrentSimulation(boolean current)
+	{
+		if (current)
+		{
+			setChanged();
+			StateType state = gameEngine.getOldState();
+			if ((state == StateType.FlopState && svFlop == null) || (state == StateType.TurnState && svTurn == null) || (state == StateType.RiverState && svRiver == null))
+			{
+				notifyObservers(state);
+			}
+		}
+		else
+		{
+			stopAllSimulation();
+		}
+	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -365,29 +388,6 @@ public class Player extends Observable implements Observer
 	/*------------------------------------------------------------------*\
 	|*						Methodes Protected							*|
 	\*------------------------------------------------------------------*/
-
-	/**
-	 * Stop the simulation of the state. If all = true, stop all the simulation
-	 *
-	 * @param Current
-	 *            : true -> current simulation, false -> All simulations
-	 */
-	protected void stopCurrentSimulation(boolean current)
-	{
-		if (current)
-		{
-			setChanged();
-			StateType state = gameEngine.getOldState();
-			if (state == StateType.FlopState || state == StateType.TurnState || state == StateType.RiverState)
-			{
-				notifyObservers(state);
-			}
-		}
-		else
-		{
-			stopAllSimulation();
-		}
-	}
 
 	/**
 	 * Stop the current simulation

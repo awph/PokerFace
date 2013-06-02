@@ -33,6 +33,7 @@ public class BettingState extends State
 	{
 		if (ge.getUnfoldedPlayer() > 1)
 		{
+			GameEngine.HUMAN_PLAYER.stopCurrentSimulation(false);//We stop the current simulation to update the statistics
 			if (ge.getUnfoldedPlayer() - ge.getAllInPlayer() > 1)
 			{
 				do
