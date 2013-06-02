@@ -159,6 +159,7 @@ public class PlayerComponent extends JPanel
 
 		box.add(moneyAndBetSpendBox);
 		Box cardsBox = Box.createHorizontalBox();
+
 		cardsBox.add(Box.createHorizontalGlue());
 		cardsBox.add(card1);
 		cardsBox.add(card2);

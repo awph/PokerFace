@@ -41,7 +41,7 @@ public class BoardCardsPanel extends JPanel
 
 		setLayout(new BorderLayout());
 		box = Box.createHorizontalBox();
-		box.setPreferredSize(new Dimension(100*5+20,140));
+		box.setPreferredSize(new Dimension(90*5+15,140));
 
 		for(BoardCard card:boardCards)
 		{
@@ -57,18 +57,19 @@ public class BoardCardsPanel extends JPanel
 
 	private void initBoardCards()
 	{
-		for(int i = 0; i < 5; ++i)
+		for(int i = 0; i < 3; ++i)
 		{
-			boardCards.add(new BoardCard("ghost"));
+			boardCards.add(new BoardCard("flop"));
 		}
+		boardCards.add(new BoardCard("turn"));
+		boardCards.add(new BoardCard("river"));
 	}
 
 	private void setAllGhost()
 	{
-		for(BoardCard card:boardCards)
-		{
-			card.setCard("ghost");
-		}
+		boardCards.removeAll(boardCards);
+
+		initBoardCards();
 	}
 
 	/*------------------------------*\
