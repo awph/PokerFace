@@ -17,14 +17,14 @@ public class AI extends Player
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private int													nbTurnBet;
+	private int					nbTurnBet;
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
 
-	private final static int									MIN_COEF_RAISE	= 1;
-	private final static int									MAX_COEF_RAISE	= 1;
-	private final static long									TIME_TO_PLAY	= 1000; //ms
+	private final static int	MIN_COEF_RAISE	= 1;
+	private final static int	MAX_COEF_RAISE	= 1;
+	private final static long	TIME_TO_PLAY	= 1000; //ms
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -46,7 +46,7 @@ public class AI extends Player
 		gameEngine.updateGUI();
 		stopCurrentSimulation(true);
 		//level1();
-		level23();
+				level23();
 		//check();
 		nbTurnBet++;
 	}
@@ -87,6 +87,9 @@ public class AI extends Player
 	 */
 	private double getChanceCallValuePreFlop(double win, double bet, double alreadyBet)
 	{
+		win = (win > 0.0) ? (win < 1.0) ? win : 1.0 : 0.0;
+		bet = (bet > 0.0) ? (bet < 1.0) ? bet : 1.0 : 0.0;
+		alreadyBet = (alreadyBet > 0.0) ? (alreadyBet < 1.0) ? alreadyBet : 1.0 : 0.0;
 		return (((Math.pow(win, 1 / 3) * Math.pow(Math.pow(Math.E, 1 - bet), 3)) / (Math.pow(0.7, 1 / 3) * Math.pow(Math.E, 3))) * Math.pow(3, Math.sqrt(alreadyBet) / bet) + alreadyBet) * 100;
 	}
 
@@ -103,6 +106,9 @@ public class AI extends Player
 	 */
 	private double getChanceCallValueRiver(double win, double bet, double alreadyBet)
 	{
+		win = (win > 0.0) ? (win < 1.0) ? win : 1.0 : 0.0;
+		bet = (bet > 0.0) ? (bet < 1.0) ? bet : 1.0 : 0.0;
+		alreadyBet = (alreadyBet > 0.0) ? (alreadyBet < 1.0) ? alreadyBet : 1.0 : 0.0;
 		return Math.pow(Math.pow(Math.E, Math.sqrt(win) / 0.17) + (1 - bet) * Math.pow(Math.E, Math.sqrt(1 - bet) / 0.24), 1.04) - 40 + alreadyBet * 150;
 	}
 
