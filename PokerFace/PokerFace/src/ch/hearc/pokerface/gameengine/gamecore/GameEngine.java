@@ -218,6 +218,10 @@ public class GameEngine
 		{
 			allin(player);
 		}
+		else if(amount == 0)
+		{
+			check(player);
+		}
 		else
 		{
 			logPlayerAction(player, Action.Call, amount);
