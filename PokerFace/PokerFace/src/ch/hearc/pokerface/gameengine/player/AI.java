@@ -150,17 +150,29 @@ public class AI extends Player
 					break;
 
 				case FlopState:
+					while(getFlopValues() == null)
+					{
+						Thread.sleep(100);
+					}
 					valueWin = getFlopValues().getWin() / 100.0;
 					pair = actionFlopTurnRiver(valueWin,
 							getChanceCallValueFlopOrTurn(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
 					break;
 				case TurnState:
+					while(getTurnValues() == null)
+					{
+						Thread.sleep(100);
+					}
 					valueWin = getTurnValues().getWin() / 100.0;
 					pair = actionFlopTurnRiver(valueWin,
 							getChanceCallValueFlopOrTurn(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
 					break;
 
 				case RiverState:
+					while(getRiverValues() == null)
+					{
+						Thread.sleep(100);
+					}
 					valueWin = getRiverValues().getWin() / 100.0;
 					pair = actionFlopTurnRiver(valueWin,
 							getChanceCallValueRiver(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
