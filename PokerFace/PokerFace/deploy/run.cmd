@@ -1,0 +1,1 @@
+java -cp .;./*;ext/* ch.hearc.pokerface.gui.UseJFrameMain
