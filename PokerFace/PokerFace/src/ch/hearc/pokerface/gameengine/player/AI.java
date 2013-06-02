@@ -149,7 +149,7 @@ public class AI extends Player
 			{
 				case PreFlopState:
 					valueWin = Statistics.getChanceHandValuePreFlop(pocket, gameEngine.getNbPlayers()) / 100.0;
-					pair = actionPreFlop(valueWin, getChanceCallValuePreFlop(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending())));
+					pair = actionPreFlop(valueWin, getChanceCallValuePreFlop(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
 					break;
 
 				case FlopState:

@@ -3,8 +3,8 @@ package ch.hearc.pokerface.gameengine.compute;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +16,7 @@ public class HandsPokerMap
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private static final String				FILENAME				= "pokerHands.txt";
+	private static final String				FILENAME				= "datas/pokerHands.txt";
 	private static final String				SEPARATOR				= ";";
 	private static final int				INDEX_RANK				= 0;
 	private static final int				INDEX_KEY				= 1;
@@ -77,12 +77,12 @@ public class HandsPokerMap
 	 */
 	private void fill()
 	{
-		FileReader fr;
+		InputStreamReader isr;
 		BufferedReader br;
 		try
 		{
-			fr = new FileReader(FILENAME);
-			br = new BufferedReader(fr);
+			isr = new InputStreamReader(ClassLoader.getSystemResourceAsStream(FILENAME));
+			br = new BufferedReader(isr);
 
 			String line;
 
@@ -94,7 +94,7 @@ public class HandsPokerMap
 			}
 
 			br.close();
-			fr.close();
+			isr.close();
 		}
 		catch (FileNotFoundException e)
 		{

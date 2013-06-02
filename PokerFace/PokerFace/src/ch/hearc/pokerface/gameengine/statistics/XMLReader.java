@@ -1,7 +1,6 @@
 
 package ch.hearc.pokerface.gameengine.statistics;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,10 +43,9 @@ public class XMLReader
 
 		try
 		{
-			File fXmlFile = new File(filename + ".xml"); //TODO From jar ClassLoader.getSystemResourceAsStream(
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document doc = db.parse(fXmlFile);
+			Document doc = db.parse(ClassLoader.getSystemResourceAsStream(filename + ".xml"));
 
 			doc.getDocumentElement().normalize();
 

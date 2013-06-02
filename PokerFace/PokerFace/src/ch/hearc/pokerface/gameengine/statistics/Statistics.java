@@ -28,7 +28,7 @@ public class Statistics
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private final static String											FILENAME_XML		= "preflop_values";
+	private final static String											FILENAME_XML		= "datas/preflop_values";
 	private final static Map<StateType, Map<String, StatisticValue>>[]	maps				= XMLReader.getXMLValue(FILENAME_XML);
 	private static Map<String, Double>[]								chanceOfCall;
 	public final static int												NUMBER_CARDS_FLOP	= 3;
