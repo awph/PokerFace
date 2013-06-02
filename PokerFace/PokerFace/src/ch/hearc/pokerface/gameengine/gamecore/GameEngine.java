@@ -153,7 +153,7 @@ public class GameEngine
 
 	public void leave()
 	{
-		profilePlayer.setCapital(HUMAN_PLAYER.getBankroll());
+		profilePlayer.setCapital(profilePlayer.getCapital()+HUMAN_PLAYER.getBankroll());
 	}
 
 	public void run()

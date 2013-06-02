@@ -198,6 +198,7 @@ public class Player extends Observable implements Observer
 	public void fold()
 	{
 		stopAllSimulation();
+		svPreFlop = svFlop = svTurn = svRiver = null;
 		gameEngine.fold(this);
 		folded = true;
 	}
