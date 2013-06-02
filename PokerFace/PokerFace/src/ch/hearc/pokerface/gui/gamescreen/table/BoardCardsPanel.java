@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gui.gamescreen.card.BoardCard;
+import ch.hearc.pokerface.gui.gamescreen.card.CardComponent;
 
 public class BoardCardsPanel extends JPanel
 {
@@ -23,7 +24,7 @@ public class BoardCardsPanel extends JPanel
 
 	private List<BoardCard>	boardCards;
 
-	private boolean hasCard = false;
+	private boolean			hasCard	= false;
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -66,20 +67,16 @@ public class BoardCardsPanel extends JPanel
 		if (n == 0)
 		{
 			setAllGhost();
-			if (hasCard)
-			{
-				refreshBox();
-				hasCard = false;
-			}
+			//refreshBox();
 		}
 		else
 		{
 			for(int i = 0; i < n; ++i)
 			{
-				hasCard = true;
+				CardComponent cardInBox = (CardComponent)box.getComponent(i);
 				boardCards.get(i).setCard(cardArray[i].getId());
+				cardInBox.setCard(cardArray[i].getId());
 			}
-			refreshBox();
 		}
 	}
 
@@ -114,6 +111,13 @@ public class BoardCardsPanel extends JPanel
 		boardCards.removeAll(boardCards);
 
 		initBoardCards();
+
+		for(int i = 0; i < 3; ++i)
+		{
+			((CardComponent)box.getComponent(i)).setCard("flop");
+		}
+		((CardComponent)box.getComponent(3)).setCard("turn");
+		((CardComponent)box.getComponent(4)).setCard("river");
 	}
 
 }
