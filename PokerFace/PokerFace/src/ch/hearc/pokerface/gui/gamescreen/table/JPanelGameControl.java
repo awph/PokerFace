@@ -108,7 +108,7 @@ public class JPanelGameControl extends JPanel
 		moneySlider.setMaximum(humanPlayer.getBankroll());
 		moneySlider.setValue(betRaiseValue);
 
-		if (!humanPlayer.isFolded())
+		if (!humanPlayer.isFolded() && !humanPlayer.isDead())
 		{
 			statisticsPanel.setCurrentState(gameEngine.getOldState());
 

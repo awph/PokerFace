@@ -513,7 +513,7 @@ public class GameEngine
 
 	public int getRaiseValue()
 	{
-		return raiseValue+players.get(indexPlayer).getCallValue();
+		return raiseValue + players.get(indexPlayer).getCallValue();
 	}
 
 	public List<Player> getPlayers()
@@ -559,7 +559,7 @@ public class GameEngine
 		String state = "";
 		StringBuilder sb = new StringBuilder();
 
-		if(this.oldState != StateType.PreFlopState)
+		if (this.oldState != StateType.PreFlopState)
 		{
 			raiseValue = bigBlind;
 		}
@@ -829,9 +829,9 @@ public class GameEngine
 			actionText = "<b style=\"color:red;\">" + actionText + "</b>";
 		}
 		String text = "<b>" + player.getProfile().getName() + "</b>" + " " + actionText + " " + ((amount != -1) ? amount + "$" : "");
-		if(action == Action.Raise)
+		if (action == Action.Raise)
 		{
-			text += " (" + player.getCallValue() + "$ + " + (amount-player.getCallValue()) + "$)";
+			text += " (" + player.getCallValue() + "$ + " + (amount - player.getCallValue()) + "$)";
 		}
 		log(text);
 		soundEngine.playSound(action);
@@ -867,11 +867,11 @@ public class GameEngine
 
 	private void betRaiseAllinAction(Player player, int amount)
 	{
-		if (amount+player.getBetSpending() > pot.getBet())
+		if (amount + player.getBetSpending() > pot.getBet())
 		{
-			raiseValue = player.getBetSpending()+amount - pot.getBet();
+			raiseValue = player.getBetSpending() + amount - pot.getBet();
 			setIndexLastRaise(player);
-			pot.setBet(player.getBetSpending());
+			pot.setBet(player.getBetSpending() + amount);
 		}
 		player.takeMoney(amount);
 		pot.addStateTotal(amount);
