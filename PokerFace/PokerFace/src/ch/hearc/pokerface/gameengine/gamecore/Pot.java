@@ -59,18 +59,8 @@ public class Pot
 	 *
 	 * @param amount
 	 */
-	public void addStateTotalAndSetBet(int amount)
+	public void addStateTotal(int amount)
 	{
-		if (amount > bet)
-		{
-			bet = amount;
-		}
-		stateTotal += amount;
-	}
-
-	public void addStateTotalAndAddBet(int amount)
-	{
-		bet += amount;
 		stateTotal += amount;
 	}
 
@@ -102,4 +92,17 @@ public class Pot
 	{
 		return bet;
 	}
+
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+
+	public void setBet(int amount)
+	{
+		if (amount > bet)
+		{
+			bet = amount;
+		}
+	}
+
 }

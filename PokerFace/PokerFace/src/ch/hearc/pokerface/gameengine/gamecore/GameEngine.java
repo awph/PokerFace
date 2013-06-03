@@ -62,6 +62,7 @@ public class GameEngine
 	private HandsPokerMap		handsPokerMap;
 	private int					smallBlind;
 	private int					bigBlind;
+	private int					raiseValue;
 	private Card[]				futureBoard;
 	private JPanelGameBoard		panelGameBoard;
 	private Profile				profilePlayer;
@@ -110,6 +111,7 @@ public class GameEngine
 		}
 		indexPlayer = (int)(Math.random() * nbPlayer);
 		indexDealer = getPreviousIndex(indexPlayer);
+		raiseValue = 0;
 
 		initialize();
 	}
@@ -153,7 +155,7 @@ public class GameEngine
 
 	public void leave()
 	{
-		profilePlayer.setCapital(profilePlayer.getCapital()+HUMAN_PLAYER.getBankroll());
+		profilePlayer.setCapital(profilePlayer.getCapital() + HUMAN_PLAYER.getBankroll());
 	}
 
 	public void run()
@@ -207,8 +209,7 @@ public class GameEngine
 		else
 		{
 			logPlayerAction(player, Action.Bet, amount);
-			betCallAction(player, amount);
-			setIndexLastRaise(player);
+			betRaiseAllinAction(player, amount);
 		}
 	}
 
@@ -219,14 +220,16 @@ public class GameEngine
 		{
 			allin(player);
 		}
-		else if(amount == 0)
+		else if (amount == 0)
 		{
 			check(player);
 		}
 		else
 		{
 			logPlayerAction(player, Action.Call, amount);
-			betCallAction(player, amount);
+			player.takeMoney(amount);
+			pot.addStateTotal(amount);
+			updateGUI();
 		}
 	}
 
@@ -239,7 +242,7 @@ public class GameEngine
 		else
 		{
 			logPlayerAction(player, Action.Raise, amount);
-			raiseAllinAction(player, amount);
+			betRaiseAllinAction(player, amount);
 		}
 	}
 
@@ -247,7 +250,7 @@ public class GameEngine
 	{
 		int amount = player.getBankroll();
 		logPlayerAction(player, Action.Allin, amount);
-		raiseAllinAction(player, amount);
+		betRaiseAllinAction(player, amount);
 	}
 
 	public void check(Player player)
@@ -265,7 +268,7 @@ public class GameEngine
 
 	public void fold(Player player)
 	{
-		if(player == players.get(indexLastRaise))
+		if (player == players.get(indexLastRaise))
 		{
 			indexLastRaise = getNextIndex(indexLastRaise);
 		}
@@ -289,17 +292,18 @@ public class GameEngine
 			action = Action.PostBigBlind;
 		}
 
-		if (player.getBankroll() < blind)
+		if (player.getBankroll() <= blind)
 		{
 			allin(player);
 		}
 		else
 		{
 			logPlayerAction(player, action, blind);
+			pot.addStateTotal(blind);
+			pot.setBet(blind);
 			player.takeMoney(blind);
-			pot.addStateTotalAndSetBet(blind);
-			updateGUI();
 			setIndexLastRaise(player);
+			updateGUI();
 		}
 	}
 
@@ -509,14 +513,7 @@ public class GameEngine
 
 	public int getRaiseValue()
 	{
-		if (getBet() == 0)
-		{
-			return bigBlind;
-		}
-		else
-		{
-			return players.get(indexPlayer).getCallValue() + getBet();
-		}
+		return raiseValue+players.get(indexPlayer).getCallValue();
 	}
 
 	public List<Player> getPlayers()
@@ -561,6 +558,11 @@ public class GameEngine
 		this.oldState = oldState;
 		String state = "";
 		StringBuilder sb = new StringBuilder();
+
+		if(this.oldState != StateType.PreFlopState)
+		{
+			raiseValue = bigBlind;
+		}
 
 		if (this.oldState == StateType.FlopState)
 		{
@@ -759,6 +761,7 @@ public class GameEngine
 			}
 			indexLastRaise = -1;
 
+			raiseValue = bigBlind;
 			Player bigBlindPlayer = players.get(indexBigBlind);
 			bigBlindPlayer.setRole(Role.BigBlind);
 		}
@@ -825,7 +828,12 @@ public class GameEngine
 		{
 			actionText = "<b style=\"color:red;\">" + actionText + "</b>";
 		}
-		log("<b>" + player.getProfile().getName() + "</b>" + " " + actionText + " " + ((amount != -1) ? amount + "$" : ""));
+		String text = "<b>" + player.getProfile().getName() + "</b>" + " " + actionText + " " + ((amount != -1) ? amount + "$" : "");
+		if(action == Action.Raise)
+		{
+			text += " (" + player.getCallValue() + "$ + " + (amount-player.getCallValue()) + "$)";
+		}
+		log(text);
 		soundEngine.playSound(action);
 	}
 
@@ -857,28 +865,16 @@ public class GameEngine
 		JOptionPane.showMessageDialog(frameMain, text, text, JOptionPane.CLOSED_OPTION, icon);//TODO mettre image
 	}
 
-	private void raiseAllinAction(Player player, int amount)
+	private void betRaiseAllinAction(Player player, int amount)
 	{
-		if (amount < pot.getBet())
+		if (amount+player.getBetSpending() > pot.getBet())
 		{
-			player.takeMoney(amount);
-			pot.addStateTotalAndSetBet(amount);
-		}
-		else
-		{
-			int callValue = player.getCallValue();
-			player.takeMoney(amount);
-			pot.addStateTotalAndSetBet(callValue);
-			pot.addStateTotalAndAddBet(amount - callValue);
+			raiseValue = amount - pot.getBet();
 			setIndexLastRaise(player);
 		}
-		updateGUI();
-	}
-
-	private void betCallAction(Player player, int amount)
-	{
 		player.takeMoney(amount);
-		pot.addStateTotalAndSetBet(amount);
+		pot.addStateTotal(amount);
+		pot.setBet(player.getBetSpending());
 		updateGUI();
 	}
 }

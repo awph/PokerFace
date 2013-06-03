@@ -274,7 +274,7 @@ public class AI extends Player
 			else
 			{
 				double coef = MIN_COEF_RAISE + Math.random() * MAX_COEF_RAISE;
-				raiseAmount = (int)(coef * gameEngine.getRaiseValue());
+				raiseAmount = getCallValue() + (int)(coef * (gameEngine.getRaiseValue()-getCallValue()));
 				action = Action.Raise;
 			}
 		}
@@ -300,9 +300,8 @@ public class AI extends Player
 
 			if (Math.random() < callValue)
 			{
-				double a = howMuchToBet(valueWin);
-				int b = getBankroll();
-				raiseAmount = (int)(a * b);
+				raiseAmount = (int)(howMuchToBet(valueWin) * getBankroll());
+				raiseAmount += getCallValue();
 				action = Action.Raise;
 			}
 			else
