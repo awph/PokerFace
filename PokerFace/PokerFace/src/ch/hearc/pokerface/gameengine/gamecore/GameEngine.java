@@ -869,12 +869,12 @@ public class GameEngine
 	{
 		if (amount+player.getBetSpending() > pot.getBet())
 		{
-			raiseValue = amount - pot.getBet();
+			raiseValue = player.getBetSpending()+amount - pot.getBet();
 			setIndexLastRaise(player);
+			pot.setBet(player.getBetSpending());
 		}
 		player.takeMoney(amount);
 		pot.addStateTotal(amount);
-		pot.setBet(player.getBetSpending());
 		updateGUI();
 	}
 }

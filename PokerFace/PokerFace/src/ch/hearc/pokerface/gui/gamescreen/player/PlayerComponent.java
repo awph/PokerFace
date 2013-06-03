@@ -34,7 +34,7 @@ public class PlayerComponent extends JPanel
 	//IO
 	private JLabel			name;
 	private JLabel			money;
-	private JLabel			turnSpend;
+	private JLabel			betSpend;
 
 	private CardComponent	card1;
 	private CardComponent	card2;
@@ -50,7 +50,7 @@ public class PlayerComponent extends JPanel
 		//money = new JLabel(Integer.toString(player.getBankroll()));
 
 		money = new JLabel("$" + Integer.toString(player.getBankroll()), ImageShop.ICON_COIN, SwingConstants.CENTER);
-		turnSpend = new JLabel("" + player.getTurnSpending());
+		betSpend = new JLabel("" + player.getTurnSpending());
 		name = new JLabel(player.getProfile().getName(), player.getProfile().getAvatar().getIcon(), SwingConstants.CENTER);
 
 		money.setHorizontalTextPosition(SwingConstants.LEFT);
@@ -117,8 +117,8 @@ public class PlayerComponent extends JPanel
 
 		role.setToken(player.getRole().toString());
 		money.setText("$" + Integer.toString(player.getBankroll()));
-		turnSpend.setText("$" + player.getTurnSpending());
-		turnSpend.repaint();
+		betSpend.setText("$" + player.getBetSpending());
+		betSpend.repaint();
 		getParent().repaint();
 	}
 
@@ -153,7 +153,7 @@ public class PlayerComponent extends JPanel
 		box.add(nameBox);
 
 		Box moneyAndBetSpendBox = Box.createHorizontalBox();
-		moneyAndBetSpendBox.add(turnSpend);
+		moneyAndBetSpendBox.add(betSpend);
 		moneyAndBetSpendBox.add(Box.createHorizontalGlue());
 		moneyAndBetSpendBox.add(money);
 
@@ -190,11 +190,11 @@ public class PlayerComponent extends JPanel
 
 		name.setFont(font);
 		money.setFont(font);
-		turnSpend.setFont(font);
+		betSpend.setFont(font);
 
 		name.setForeground(Color.WHITE);
 		money.setForeground(ColorShop.PF_GOLD_COLOR);
-		turnSpend.setForeground(ColorShop.PF_GREEN);
+		betSpend.setForeground(ColorShop.PF_GREEN);
 	}
 
 }
