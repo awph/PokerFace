@@ -837,12 +837,7 @@ public class GameEngine
 		{
 			actionText = "<b style=\"color:red;\">" + actionText + "</b>";
 		}
-		String text = "<b>" + player.getProfile().getName() + "</b>" + " " + actionText + " " + ((amount != -1) ? amount + "$" : "");
-		if (action == Action.Raise)
-		{
-			text += " (" + player.getCallValue() + "$ + " + (amount - player.getCallValue()) + "$)";
-		}
-		log(text);
+		log("<b>" + player.getProfile().getName() + "</b>" + " " + actionText + " " + ((amount != -1) ? amount + "$" : ""));
 		soundEngine.playSound(action);
 	}
 
