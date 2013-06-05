@@ -876,6 +876,7 @@ public class GameEngine
 			raiseValue = player.getBetSpending() + amount - pot.getBet();
 			setIndexLastRaise(player);
 			pot.setBet(player.getBetSpending() + amount);
+			nbRaise++;
 		}
 		player.takeMoney(amount);
 		pot.addStateTotal(amount);

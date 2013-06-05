@@ -9,12 +9,6 @@ import ch.hearc.pokerface.tools.Pair;
 
 public class AI extends Player
 {
-	/*------------------------------------------------------------------*\
-	|*							Attributs Private						*|
-	\*------------------------------------------------------------------*/
-
-	private int					nbTurnBet;
-
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
@@ -42,6 +36,7 @@ public class AI extends Player
 	@Override
 	public void doAction()
 	{
+		gameEngine.updateGUI();
 		try
 		{
 			Thread.sleep(TIME_TO_PLAY);
@@ -56,13 +51,6 @@ public class AI extends Player
 		level23();
 		//check();
 		nbTurnBet++;
-	}
-
-	@Override
-	public void endBettingState()
-	{
-		super.endBettingState();
-		nbTurnBet = 1;
 	}
 
 	/*------------------------------------------------------------------*\

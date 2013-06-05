@@ -33,6 +33,7 @@ public class Player extends Observable implements Observer
 	protected StatisticValue	svRiver;
 	protected boolean			dead;
 	protected boolean			hasWon;
+	protected int				nbTurnBet;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -68,6 +69,7 @@ public class Player extends Observable implements Observer
 	 */
 	public void doAction()
 	{
+		nbTurnBet++;
 		stopCurrentSimulation(true);
 		gameEngine.updateGUI();
 		try
@@ -108,6 +110,7 @@ public class Player extends Observable implements Observer
 	 */
 	public void endBettingState()
 	{
+		this.nbTurnBet = 1;
 		this.betSpending = 0;
 	}
 
@@ -165,12 +168,12 @@ public class Player extends Observable implements Observer
 
 	public void betSmallBlind()
 	{
-		gameEngine.betBlind(this,true);
+		gameEngine.betBlind(this, true);
 	}
 
 	public void betBigBlind()
 	{
-		gameEngine.betBlind(this,false);
+		gameEngine.betBlind(this, false);
 	}
 
 	/**
@@ -372,6 +375,10 @@ public class Player extends Observable implements Observer
 		return this.pocket;
 	}
 
+	public int getNbTurnBet()
+	{
+		return this.nbTurnBet;
+	}
 	/*------------------------------*\
 	|*				Is				*|
 	\*------------------------------*/

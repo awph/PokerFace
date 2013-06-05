@@ -32,7 +32,9 @@ import javax.swing.event.ChangeListener;
 import javax.swing.text.DefaultFormatter;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
+import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.player.Player;
+import ch.hearc.pokerface.gameengine.player.Role;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
 import ch.hearc.pokerface.gui.tools.ColorShop;
 import ch.hearc.pokerface.gui.tools.ImageShop;
@@ -49,7 +51,7 @@ public class JPanelGameControl extends JPanel
 	private JButton				betRaiseButton;
 	private JButton				checkCallButton;
 	private JButton				foldButton;
-
+	private boolean				hasHumanPlayed;
 	boolean						mouseIsInLogger	= false;
 
 	private JEditorPane			loggerTextArea;
@@ -71,7 +73,7 @@ public class JPanelGameControl extends JPanel
 	public JPanelGameControl(GameEngine gameEngine)
 	{
 		this.gameEngine = gameEngine;
-
+		this.hasHumanPlayed = false;
 		geometry();
 		control();
 		appearance();
@@ -108,7 +110,10 @@ public class JPanelGameControl extends JPanel
 		moneySlider.setMaximum(humanPlayer.getBankroll());
 		moneySlider.setValue(betRaiseValue);
 
-		if (!humanPlayer.isFolded() && !humanPlayer.isDead())
+		boolean isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon());
+		isHumanPlayerTurn = isHumanPlayerTurn && !(gameEngine.getOldState() == StateType.PreFlopState && (humanPlayer.getRole() == Role.BigBlind || humanPlayer.getRole() == Role.SmallBlind) && humanPlayer.getNbTurnBet() == 1 && humanPlayer.getBankroll() <= gameEngine.getBigBlind());
+
+		if (!hasHumanPlayed && isHumanPlayerTurn && !humanPlayer.isFolded() && !humanPlayer.isDead())
 		{
 			statisticsPanel.setCurrentState(gameEngine.getOldState());
 
@@ -140,8 +145,6 @@ public class JPanelGameControl extends JPanel
 			checkCallButton.setText("");
 			foldButton.setText("");
 		}
-
-		boolean isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon());
 
 		if (!gameEngine.getIsFinished())
 		{
@@ -179,11 +182,11 @@ public class JPanelGameControl extends JPanel
 
 	private void geometry()
 	{
-		allinButton = new JButton(ALL_IN);
+		allinButton = new JButton("");
 		moneySlider = new JSlider(SwingConstants.VERTICAL);
 		betRaiseButton = new JButton();
 		checkCallButton = new JButton();
-		foldButton = new JButton(FOLD);
+		foldButton = new JButton("");
 		moneySpinner = new JSpinner();
 		loggerTextArea = new JEditorPane();
 		loggerTextArea.setContentType("text/html");
@@ -197,6 +200,13 @@ public class JPanelGameControl extends JPanel
 		loggerTextArea.setAutoscrolls(false);
 		loggerTextArea.setEditable(false);
 		gameEngine.setLogger(loggerTextArea);
+
+		betRaiseButton.setEnabled(false);
+		checkCallButton.setEnabled(false);
+		foldButton.setEnabled(false);
+		allinButton.setEnabled(false);
+		moneySlider.setEnabled(false);
+		moneySpinner.setEnabled(false);
 
 		statisticsPanel = new JPanelStatistics(GameEngine.HUMAN_PLAYER);
 
@@ -310,12 +320,16 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				boolean hasPlayed = hasHumanPlayed;
 				disableButton();
-				Player humanPlayer = GameEngine.HUMAN_PLAYER;
-				synchronized (humanPlayer)
+				if (!hasPlayed)
 				{
-					humanPlayer.allIn();
-					humanPlayer.notify();
+					Player humanPlayer = GameEngine.HUMAN_PLAYER;
+					synchronized (humanPlayer)
+					{
+						humanPlayer.allIn();
+						humanPlayer.notify();
+					}
 				}
 			}
 		});
@@ -326,19 +340,23 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				boolean hasPlayed = hasHumanPlayed;
 				disableButton();
-				Player humanPlayer = GameEngine.HUMAN_PLAYER;
-				synchronized (humanPlayer)
+				if (!hasPlayed)
 				{
-					if (gameEngine.getBet() == 0)
+					Player humanPlayer = GameEngine.HUMAN_PLAYER;
+					synchronized (humanPlayer)
 					{
-						humanPlayer.bet(moneySlider.getValue());
+						if (gameEngine.getBet() == 0)
+						{
+							humanPlayer.bet(moneySlider.getValue());
+						}
+						else
+						{
+							humanPlayer.raise(moneySlider.getValue());
+						}
+						humanPlayer.notify();
 					}
-					else
-					{
-						humanPlayer.raise(moneySlider.getValue());
-					}
-					humanPlayer.notify();
 				}
 			}
 		});
@@ -349,12 +367,16 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				boolean hasPlayed = hasHumanPlayed;
 				disableButton();
-				Player humanPlayer = GameEngine.HUMAN_PLAYER;
-				synchronized (humanPlayer)
+				if (!hasPlayed)
 				{
-					humanPlayer.check();
-					humanPlayer.notify();
+					Player humanPlayer = GameEngine.HUMAN_PLAYER;
+					synchronized (humanPlayer)
+					{
+						humanPlayer.check();
+						humanPlayer.notify();
+					}
 				}
 			}
 		});
@@ -365,12 +387,16 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				boolean hasPlayed = hasHumanPlayed;
 				disableButton();
-				Player humanPlayer = GameEngine.HUMAN_PLAYER;
-				synchronized (humanPlayer)
+				if (!hasPlayed)
 				{
-					humanPlayer.fold();
-					humanPlayer.notify();
+					Player humanPlayer = GameEngine.HUMAN_PLAYER;
+					synchronized (humanPlayer)
+					{
+						humanPlayer.fold();
+						humanPlayer.notify();
+					}
 				}
 			}
 		});
@@ -387,6 +413,26 @@ public class JPanelGameControl extends JPanel
 
 	private void disableButton()
 	{
+		if (!hasHumanPlayed)
+		{
+			new Thread(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					try
+					{
+						Thread.sleep(1000);
+					}
+					catch (InterruptedException e)
+					{
+						e.printStackTrace();
+					}
+					JPanelGameControl.this.hasHumanPlayed = false;
+				}
+			}).start();
+		}
+		hasHumanPlayed = true;
 		betRaiseButton.setEnabled(false);
 		checkCallButton.setEnabled(false);
 		foldButton.setEnabled(false);
@@ -395,19 +441,19 @@ public class JPanelGameControl extends JPanel
 		moneySpinner.setEnabled(false);
 	}
 
-	private MouseListener loggerMouseListener = new MouseAdapter()
-	{
+	private MouseListener	loggerMouseListener	= new MouseAdapter()
+												{
 
-		@Override
-		public void mouseExited(MouseEvent arg0)
-		{
-			mouseIsInLogger = false;
-		}
+													@Override
+													public void mouseExited(MouseEvent arg0)
+													{
+														mouseIsInLogger = false;
+													}
 
-		@Override
-		public void mouseEntered(MouseEvent arg0)
-		{
-			mouseIsInLogger = true;
-		}
-	};
+													@Override
+													public void mouseEntered(MouseEvent arg0)
+													{
+														mouseIsInLogger = true;
+													}
+												};
 }
