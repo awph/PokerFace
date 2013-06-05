@@ -52,7 +52,8 @@ public class JPanelGameControl extends JPanel
 	private JButton				checkCallButton;
 	private JButton				foldButton;
 	private boolean				hasHumanPlayed;
-	boolean						mouseIsInLogger	= false;
+	private boolean isHumanPlayerTurn;
+	private boolean						mouseIsInLogger	= false;
 
 	private JEditorPane			loggerTextArea;
 	private JPanelStatistics	statisticsPanel;
@@ -110,10 +111,9 @@ public class JPanelGameControl extends JPanel
 		moneySlider.setMaximum(humanPlayer.getBankroll());
 		moneySlider.setValue(betRaiseValue);
 
-		boolean isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon());
-		isHumanPlayerTurn = isHumanPlayerTurn && !(gameEngine.getOldState() == StateType.PreFlopState && (humanPlayer.getRole() == Role.BigBlind || humanPlayer.getRole() == Role.SmallBlind) && humanPlayer.getNbTurnBet() == 1 && humanPlayer.getBankroll() <= gameEngine.getBigBlind());
+		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon()) && !(gameEngine.getOldState() == StateType.PreFlopState && (humanPlayer.getRole() == Role.BigBlind || humanPlayer.getRole() == Role.SmallBlind) && humanPlayer.getNbTurnBet() == 1 && humanPlayer.getBetSpending() <= gameEngine.getBigBlind());
 
-		if (!hasHumanPlayed && isHumanPlayerTurn && !humanPlayer.isFolded() && !humanPlayer.isDead())
+		if (!hasHumanPlayed && isHumanPlayerTurn && !humanPlayer.isFolded() && !humanPlayer.isDead() && humanPlayer.getBankroll() != 0)
 		{
 			statisticsPanel.setCurrentState(gameEngine.getOldState());
 
@@ -148,7 +148,7 @@ public class JPanelGameControl extends JPanel
 
 		if (!gameEngine.getIsFinished())
 		{
-			if (isHumanPlayerTurn)
+			if (!hasHumanPlayed && isHumanPlayerTurn)
 			{
 				moneySlider.setMaximum(humanPlayer.getBankroll());
 				moneySlider.setMinimum(betRaiseValue);
@@ -299,18 +299,21 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void stateChanged(ChangeEvent arg0)
 			{
-				moneySpinner.setValue(moneySlider.getValue());
-				if (moneySlider.getMaximum() == moneySlider.getValue())
+				if (isHumanPlayerTurn)
 				{
-					betRaiseButton.setText("All-in with " + moneySlider.getValue() + "$");
-				}
-				else if (gameEngine.getBet() == 0)
-				{
-					betRaiseButton.setText("Bet " + moneySlider.getValue() + "$");
-				}
-				else
-				{
-					betRaiseButton.setText("Raise " + moneySlider.getValue() + "$");
+					moneySpinner.setValue(moneySlider.getValue());
+					if (moneySlider.getMaximum() == moneySlider.getValue())
+					{
+						betRaiseButton.setText("All-in with " + moneySlider.getValue() + "$");
+					}
+					else if (gameEngine.getBet() == 0)
+					{
+						betRaiseButton.setText("Bet " + moneySlider.getValue() + "$");
+					}
+					else
+					{
+						betRaiseButton.setText("Raise " + moneySlider.getValue() + "$");
+					}
 				}
 			}
 		});

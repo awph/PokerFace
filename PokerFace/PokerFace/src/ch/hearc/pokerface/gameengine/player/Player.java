@@ -54,6 +54,7 @@ public class Player extends Observable implements Observer
 		this.profile = profile;
 		this.bankroll = bankroll;
 		this.gameEngine = gameEngine;
+		this.nbTurnBet = 1;
 
 		newTurn();
 	}

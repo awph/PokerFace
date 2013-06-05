@@ -173,28 +173,21 @@ public class BettingState extends State
 				//Else IA computes
 				player.doAction();
 			}
-			Player oldPlayer = player;
 			ge.changeCurrentPlayer();
 			player = ge.getCurrentPlayer();
 
 			isThePlayerTheLastRaisePlayer = player == ge.getLastRaisePlayer();
 
-			if(!isThePlayerTheLastRaisePlayer)
+			if(hasBigBlindToPlayTwice)
 			{
-				//If the BB has already plays twice and he raises and everybody has checked, he doesn't have to play again !
-				isThePlayerTheLastRaisePlayer = oldPlayer.getRole() == Role.BigBlind && oldPlayer == ge.getLastRaisePlayer() && hasBigBlindToPlayTwice;
+				isThePlayerTheLastRaisePlayer = true;
 			}
-
-			//If everybody checks, the big blind can play twice
-			if (!hasBigBlindToPlayTwice && isThePlayerTheLastRaisePlayer && player.getRole() == Role.BigBlind && ge.getUnfoldedPlayer() > 1)
+			else if(isThePlayerTheLastRaisePlayer && player.getRole() == Role.BigBlind && ge.getBet() <= ge.getBigBlind())
 			{
 				hasBigBlindToPlayTwice = true;
 				isThePlayerTheLastRaisePlayer = false;
 			}
-			else if (hasBigBlindToPlayTwice)
-			{
-				isThePlayerTheLastRaisePlayer = true;
-			}
+
 		}
 	}
 }
