@@ -1,4 +1,4 @@
-
+﻿
 package ch.hearc.pokerface.gameengine.player.profile.tools;
 
 import java.util.Arrays;
@@ -23,7 +23,7 @@ public class AIProfileGenerator
 	private static List<Integer> AIAvatarIDsList = new LinkedList<Integer>();
 
 	private static final int NUMBER_OF_AVATARS = 31;
-	private static final String NAMES = "Marco,Diego,Khaled,Patrick,Steve,Danick,Simon,Adrian,Mirco,Alexandre,Damiano,Kevin,Cyriaque,Eddy,Issa,Loris,Johan,Vincent,Etienne,Matthieu,Dany,David,Gary,Jason,S�bastien,Essayas,Simon,Michael,Cyrille,Thomas";
+	private static final String NAMES = "Marco,Diego,Khaled,Patrick,Steve,Danick,Simon,Adrian,Mirco,Alexandre,Damiano,Kevin,Cyriaque,Eddy,Issa,Loris,Johan,Vincent,Etienne,Matthieu,Dany,David,Gary,Jason,Sébastien,Essayas,Simon,Michael,Cyrille,Thomas";
 
 	// Tools
 	private static Random random = new Random();

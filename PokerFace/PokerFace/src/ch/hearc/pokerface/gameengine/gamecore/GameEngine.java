@@ -63,6 +63,7 @@ public class GameEngine
 	private int					smallBlind;
 	private int					bigBlind;
 	private int					raiseValue;
+	private int					nbRaise;
 	private Card[]				futureBoard;
 	private JPanelGameBoard		panelGameBoard;
 	private Profile				profilePlayer;
@@ -112,6 +113,7 @@ public class GameEngine
 		indexPlayer = (int)(Math.random() * nbPlayer);
 		indexDealer = getPreviousIndex(indexPlayer);
 		raiseValue = 0;
+		nbRaise = 0;
 
 		initialize();
 	}
@@ -516,6 +518,11 @@ public class GameEngine
 		return raiseValue + players.get(indexPlayer).getCallValue();
 	}
 
+	public int getNbRaise()
+	{
+		return nbRaise;
+	}
+
 	public List<Player> getPlayers()
 	{
 		return players;
@@ -558,6 +565,7 @@ public class GameEngine
 		this.oldState = oldState;
 		String state = "";
 		StringBuilder sb = new StringBuilder();
+		nbRaise = 0;
 
 		if (this.oldState != StateType.PreFlopState)
 		{
@@ -762,6 +770,7 @@ public class GameEngine
 			indexLastRaise = -1;
 
 			raiseValue = bigBlind;
+			nbRaise = 0;
 			Player bigBlindPlayer = players.get(indexBigBlind);
 			bigBlindPlayer.setRole(Role.BigBlind);
 		}

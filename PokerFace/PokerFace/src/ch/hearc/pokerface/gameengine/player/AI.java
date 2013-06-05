@@ -264,7 +264,7 @@ public class AI extends Player
 			}
 			else
 			{
-				callValue /= (Math.pow(nbTurnBet, 2) + 1);
+				callValue /= ((Math.pow(nbTurnBet, 2) + 1) + gameEngine.getNbRaise());
 			}
 
 			if (Math.random() > callValue)
@@ -299,12 +299,17 @@ public class AI extends Player
 			}
 			else
 			{
-				callValue /= (Math.pow(nbTurnBet, 2) + 1);
+				callValue /= ((Math.pow(nbTurnBet, 2) + 1) + gameEngine.getNbRaise());
 			}
 
 			if (Math.random() < callValue)
 			{
-				raiseAmount = getCallValue() + (int)(howMuchToBet(valueWin) * getBankroll());
+				double percentOfBankrollToBet = howMuchToBet(valueWin);
+				if (percentOfBankrollToBet > 0.9)
+				{
+					percentOfBankrollToBet = 1.0;
+				}
+				raiseAmount = getCallValue() + (int)(percentOfBankrollToBet * getBankroll());
 				if (raiseAmount < gameEngine.getRaiseValue())
 				{
 					raiseAmount = gameEngine.getRaiseValue();
