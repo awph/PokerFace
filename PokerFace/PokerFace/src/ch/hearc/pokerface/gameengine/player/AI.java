@@ -42,8 +42,16 @@ public class AI extends Player
 	@Override
 	public void doAction()
 	{
-		gameEngine.updateGUI();
+		try
+		{
+			Thread.sleep(TIME_TO_PLAY);
+		}
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
 		stopCurrentSimulation(true);
+		gameEngine.updateGUI();
 		//level1();
 		level23();
 		//check();
@@ -135,21 +143,19 @@ public class AI extends Player
 
 	private void level23()
 	{
+		Action action = null;
+		int raiseAmount = 0;
+		Pair<Action, Integer> pair = null;
+		double valueWin = 0;
+
 		try
 		{
-			long start = System.currentTimeMillis();
-
-			Action action = null;
-			int raiseAmount = 0;
-			Pair<Action, Integer> pair = null;
-			double valueWin = 0;
-
 			int count = 0;
 			switch(gameEngine.getOldState())
 			{
 				case PreFlopState:
 					valueWin = Statistics.getChanceHandValuePreFlop(pocket, gameEngine.getNbPlayers()) / 100.0;
-					pair = actionPreFlop(valueWin, getChanceCallValuePreFlop(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending()))/100.0);
+					pair = actionPreFlop(valueWin, getChanceCallValuePreFlop(valueWin, (double)gameEngine.getBet() / (double)bankroll, (double)getBetSpending() / (double)(bankroll + getBetSpending())) / 100.0);
 					break;
 
 				case FlopState:
@@ -202,41 +208,35 @@ public class AI extends Player
 				default:
 					break;
 			}
-
-			action = pair.getKey();
-			raiseAmount = pair.getValue();
-
-			long delta = System.currentTimeMillis() - start;
-			if (delta < TIME_TO_PLAY)
-			{
-				Thread.sleep(TIME_TO_PLAY - delta);
-			}
-
-			switch(action)
-			{
-				case Call:
-					call();
-					break;
-				case Raise:
-					raise(raiseAmount);
-					break;
-				case Fold:
-					if (getCallValue() == 0)
-					{
-						check();
-					}
-					else
-					{
-						fold();
-					}
-					break;
-				default:
-					break;
-			}
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
+		}
+
+		action = pair.getKey();
+		raiseAmount = pair.getValue();
+
+		switch(action)
+		{
+			case Call:
+				call();
+				break;
+			case Raise:
+				raise(raiseAmount);
+				break;
+			case Fold:
+				if (getCallValue() == 0)
+				{
+					check();
+				}
+				else
+				{
+					fold();
+				}
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -274,8 +274,8 @@ public class AI extends Player
 			else
 			{
 				double coef = MIN_COEF_RAISE + Math.random() * MAX_COEF_RAISE;
-				raiseAmount = getCallValue() + (int)(coef * (gameEngine.getRaiseValue()-getCallValue()));
-				if(raiseAmount < gameEngine.getRaiseValue())
+				raiseAmount = getCallValue() + (int)(coef * (gameEngine.getRaiseValue() - getCallValue()));
+				if (raiseAmount < gameEngine.getRaiseValue())
 				{
 					raiseAmount = gameEngine.getRaiseValue();
 				}
@@ -305,7 +305,7 @@ public class AI extends Player
 			if (Math.random() < callValue)
 			{
 				raiseAmount = getCallValue() + (int)(howMuchToBet(valueWin) * getBankroll());
-				if(raiseAmount < gameEngine.getRaiseValue())
+				if (raiseAmount < gameEngine.getRaiseValue())
 				{
 					raiseAmount = gameEngine.getRaiseValue();
 				}

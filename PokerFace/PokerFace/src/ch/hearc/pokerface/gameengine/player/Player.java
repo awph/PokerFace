@@ -68,8 +68,8 @@ public class Player extends Observable implements Observer
 	 */
 	public void doAction()
 	{
-		gameEngine.updateGUI();
 		stopCurrentSimulation(true);
+		gameEngine.updateGUI();
 		try
 		{
 			synchronized (this)
@@ -280,10 +280,10 @@ public class Player extends Observable implements Observer
 	{
 		if (current)
 		{
-			setChanged();
 			StateType state = gameEngine.getOldState();
 			if ((state == StateType.FlopState && svFlop == null) || (state == StateType.TurnState && svTurn == null) || (state == StateType.RiverState && svRiver == null))
 			{
+				setChanged();
 				notifyObservers(state);
 			}
 		}

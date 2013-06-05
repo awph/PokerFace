@@ -25,7 +25,7 @@ import ch.hearc.pokerface.gameengine.subsets.Hand;
 import ch.hearc.pokerface.gameengine.subsets.Pocket;
 import ch.hearc.pokerface.tools.Pair;
 
-public class Simulation extends Observable implements Runnable, Observer
+public class Simulation extends Observable implements Runnable ,Observer
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -77,9 +77,13 @@ public class Simulation extends Observable implements Runnable, Observer
 		{
 			stateType = StateType.TurnState;
 		}
-		else
+		else if (nbCardBoard == 5)
 		{
 			stateType = StateType.RiverState;
+		}
+		else
+		{
+			stateType = StateType.ShowdownState;
 		}
 
 		for(int i = 0; i < NB_CORE; ++i)
@@ -139,7 +143,7 @@ public class Simulation extends Observable implements Runnable, Observer
 	@Override
 	public void update(Observable o, Object arg)
 	{
-		if(stateType == (StateType)arg)
+		if (stateType == (StateType)arg)
 		{
 			stillRunSimulation = false;
 		}
