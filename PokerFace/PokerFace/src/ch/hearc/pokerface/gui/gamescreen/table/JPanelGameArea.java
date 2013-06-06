@@ -17,13 +17,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import net.miginfocom.swing.MigLayout;
+
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
-import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.gamescreen.player.PlayerComponent;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
 import ch.hearc.pokerface.gui.tools.ColorShop;
-import ch.hearc.pokerface.gui.tools.EllipsisLayout;
 import ch.hearc.pokerface.gui.tools.ImagePanel;
 
 public class JPanelGameArea extends ImagePanel
@@ -125,20 +125,45 @@ public class JPanelGameArea extends ImagePanel
 		setLayout(new BorderLayout());
 
 		JPanel panelPlayer = new JPanel();
-		panelPlayer.setLayout(new EllipsisLayout());
+		panelPlayer.setLayout(new MigLayout("debug"));
 		panelPlayer.setOpaque(false);
 
 		panelPlayer.setBorder(new EmptyBorder(50, 10, 50, 10)); // inside padding
 
-		for(Player player:this.gameEngine.getPlayers())
+		int nbPlayers = this.gameEngine.getPlayers().size();
+		for(int i = 0; i < nbPlayers; ++i)
 		{
-			playerComponents.add(new PlayerComponent(player));
-
-			panelPlayer.add(playerComponents.get(playerComponents.size() - 1));
-
+			playerComponents.add(new PlayerComponent(this.gameEngine.getPlayers().get(i)));
 		}
 
-		panelPlayer.add(panelBoard, EllipsisLayout.CENTER);
+		switch(nbPlayers)
+		{
+			case 10:
+				panelPlayer.add(playerComponents.get(9), "pos 0.75al 0.9al");
+			case 9:
+				panelPlayer.add(playerComponents.get(8), "pos 0.95al 0.05al");
+			case 8:
+				panelPlayer.add(playerComponents.get(7), "pos 0.95al 0.75al");
+			case 7:
+				panelPlayer.add(playerComponents.get(6), "pos 0.75al 0-pref/5");
+			case 6:
+				panelPlayer.add(playerComponents.get(5), "pos 0.5al 0-pref/5");
+			case 5:
+				panelPlayer.add(playerComponents.get(4), "pos 0.25al 0-pref/5");
+			case 4:
+				panelPlayer.add(playerComponents.get(3), "pos 0.05al 0.05al");
+			case 3:
+				panelPlayer.add(playerComponents.get(2), "pos 0.05al 0.75al");
+				panelPlayer.add(playerComponents.get(1), "pos 0.25al 0.9al");
+				panelPlayer.add(playerComponents.get(0), "pos 0.5al 0.9al");
+				break;
+			case 2:
+				panelPlayer.add(playerComponents.get(1), "pos 0.5al 0-pref/5");
+				panelPlayer.add(playerComponents.get(0), "pos 0.5al 0.9al");
+				break;
+		}
+
+		panelPlayer.add(panelBoard, "pos container.w/2-pref/2 container.h/2-pref"); //Centered
 		add(panelPlayer, BorderLayout.CENTER);
 	}
 
