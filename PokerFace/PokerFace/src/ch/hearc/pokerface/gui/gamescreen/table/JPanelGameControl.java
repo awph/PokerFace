@@ -111,7 +111,7 @@ public class JPanelGameControl extends JPanel
 		moneySlider.setMaximum(humanPlayer.getBankroll());
 		moneySlider.setValue(betRaiseValue);
 
-		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon()) && !(gameEngine.getOldState() == StateType.PreFlopState && (humanPlayer.getRole() == Role.BigBlind || humanPlayer.getRole() == Role.SmallBlind) && humanPlayer.getNbTurnBet() == 1 && humanPlayer.getBetSpending() <= gameEngine.getBigBlind());
+		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon() && !gameEngine.getIsCurrentGameFinised()) && !(gameEngine.getOldState() == StateType.PreFlopState && (humanPlayer.getRole() == Role.BigBlind || humanPlayer.getRole() == Role.SmallBlind) && humanPlayer.getNbTurnBet() == 1 && humanPlayer.getBetSpending() <= gameEngine.getBigBlind());
 
 		if (!hasHumanPlayed && isHumanPlayerTurn && !humanPlayer.isFolded() && !humanPlayer.isDead() && humanPlayer.getBankroll() != 0)
 		{
@@ -323,10 +323,9 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				boolean hasPlayed = hasHumanPlayed;
-				disableButton();
-				if (!hasPlayed)
+				if (!hasHumanPlayed)
 				{
+					disableButton();
 					Player humanPlayer = GameEngine.HUMAN_PLAYER;
 					synchronized (humanPlayer)
 					{
@@ -343,10 +342,9 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				boolean hasPlayed = hasHumanPlayed;
-				disableButton();
-				if (!hasPlayed)
+				if (!hasHumanPlayed)
 				{
+					disableButton();
 					Player humanPlayer = GameEngine.HUMAN_PLAYER;
 					synchronized (humanPlayer)
 					{
@@ -370,10 +368,9 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				boolean hasPlayed = hasHumanPlayed;
-				disableButton();
-				if (!hasPlayed)
+				if (!hasHumanPlayed)
 				{
+					disableButton();
 					Player humanPlayer = GameEngine.HUMAN_PLAYER;
 					synchronized (humanPlayer)
 					{
@@ -390,10 +387,9 @@ public class JPanelGameControl extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				boolean hasPlayed = hasHumanPlayed;
-				disableButton();
-				if (!hasPlayed)
+				if (!hasHumanPlayed)
 				{
+					disableButton();
 					Player humanPlayer = GameEngine.HUMAN_PLAYER;
 					synchronized (humanPlayer)
 					{

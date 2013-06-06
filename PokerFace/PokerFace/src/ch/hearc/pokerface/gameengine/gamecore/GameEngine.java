@@ -64,6 +64,7 @@ public class GameEngine
 	private int					bigBlind;
 	private int					raiseValue;
 	private int					nbRaise;
+	private boolean isCurrentGameFinished;
 	private Card[]				futureBoard;
 	private JPanelGameBoard		panelGameBoard;
 	private Profile				profilePlayer;
@@ -367,6 +368,7 @@ public class GameEngine
 		{
 			triples[0].getValue2().get(i).win();
 		}
+		isCurrentGameFinished = true;
 		updateGUI();
 		divideUpPot(triples);
 		isFinished = players.size() == 1;
@@ -407,6 +409,11 @@ public class GameEngine
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+
+	public boolean getIsCurrentGameFinised()
+	{
+		return isCurrentGameFinished;
+	}
 
 	public int getNbTurn()
 	{
@@ -738,6 +745,7 @@ public class GameEngine
 				bigBlind *= 2;
 			}
 
+			isCurrentGameFinished = false;
 			isFinished = false;
 			pot.initialize();
 			oldState = null;

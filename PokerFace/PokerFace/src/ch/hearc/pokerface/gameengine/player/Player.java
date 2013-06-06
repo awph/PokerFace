@@ -72,7 +72,25 @@ public class Player extends Observable implements Observer
 	{
 		nbTurnBet++;
 		stopCurrentSimulation(true);
-		gameEngine.updateGUI();
+
+		new Thread(new Runnable()
+		{
+
+			@Override
+			public void run()
+			{
+				try
+				{
+					Thread.sleep(100);
+				}
+				catch (InterruptedException e)
+				{
+					e.printStackTrace();
+				}
+				gameEngine.updateGUI();
+			}
+		}).start();
+
 		try
 		{
 			synchronized (this)
