@@ -9,12 +9,20 @@ import ch.hearc.pokerface.tools.Pair;
 
 public class AI extends Player
 {
+	/*------------------------------------------------------------------*\
+	|*							Attributs Private						*|
+	\*------------------------------------------------------------------*/
+
+	private double				risk;
+
 	/*------------------------------*\
 	|*			  Static			*|
 	\*------------------------------*/
 
 	private final static int	MIN_COEF_RAISE									= 1;
 	private final static int	MAX_COEF_RAISE									= 1;
+	private final static double	MIN_COEF_RISK									= 0.8;
+	private final static double	MAX_COEF_RISK									= 1.2;
 	private final static long	TIME_TO_PLAY									= 1500; //ms
 	private final static int	MINIMUN_TRY_BEFORE_ACTION_DEFAULT				= 10;
 	private final static long	TIME_BETWEEN_EACH_TRY_TO_ACCESS_SIMULATION_DATA	= 100;	//ms
@@ -27,6 +35,8 @@ public class AI extends Player
 	{
 		super(profile, bankroll, gameEngine);
 		nbTurnBet = 1;
+		risk = MIN_COEF_RISK + Math.random() * (MAX_COEF_RISK - MIN_COEF_RISK);
+		System.out.println(profile.getName() + " -> " + risk);
 	}
 
 	/*------------------------------------------------------------------*\
@@ -233,6 +243,8 @@ public class AI extends Player
 		Action action = null;
 		int raiseAmount = 0;
 
+		callValue *= risk;
+
 		if (valueWin <= 0.2)
 		{
 			action = Action.Fold;
@@ -278,6 +290,8 @@ public class AI extends Player
 	{
 		Action action = Action.Fold;
 		int raiseAmount = 0;
+
+		callValue *= risk;
 
 		if (Math.random() < callValue)
 		{
