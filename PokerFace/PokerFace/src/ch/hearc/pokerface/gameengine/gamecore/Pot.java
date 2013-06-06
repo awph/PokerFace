@@ -7,14 +7,17 @@ public class Pot
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private int	stateTotal; //Somme des enchères de l'état
-	private int	turnTotal;	//Somme total du tour
-	private int	bet;		//Somme minimale pour que le joueur puisse continuer à jouer
+	private int	stateTotal;
+	private int	turnTotal;
+	private int	bet;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Represent the pot during a poker game
+	 */
 	public Pot()
 	{
 		initialize();

@@ -36,7 +36,6 @@ public class AI extends Player
 		super(profile, bankroll, gameEngine);
 		nbTurnBet = 1;
 		risk = MIN_COEF_RISK + Math.random() * (MAX_COEF_RISK - MIN_COEF_RISK);
-		System.out.println(profile.getName() + " -> " + risk);
 	}
 
 	/*------------------------------------------------------------------*\

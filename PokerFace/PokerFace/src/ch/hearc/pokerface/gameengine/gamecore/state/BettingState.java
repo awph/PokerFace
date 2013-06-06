@@ -99,6 +99,11 @@ public class BettingState extends State
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Check if everybody has checked or allin. In a nutshell if everybody didn't raise
+	 * @param ge : The GameEngine
+	 * @return
+	 */
 	private boolean allChecked(GameEngine ge)
 	{
 		boolean allChecked = true;
@@ -112,7 +117,6 @@ public class BettingState extends State
 			{
 				if (!p.isFolded())
 				{
-					//If the player isn't folded and his bet = betSpend or has all in
 					if ((p.getBetSpending() < ge.getBet() && p.getBankroll() != 0))
 					{
 						allChecked = false;
@@ -125,6 +129,11 @@ public class BettingState extends State
 		return allChecked;
 	}
 
+	/**
+	 * State for a normalBet, i.e. the bet after the flop/turn or river
+	 * @param ge : The GameEngine
+	 * @param player : The currentplayer
+	 */
 	private void normalBetProcessing(GameEngine ge, Player player)
 	{
 		//If he checks, he's considered as the last player who has "raised"
@@ -134,10 +143,8 @@ public class BettingState extends State
 		}
 		do
 		{
-			if (player.getBankroll() != 0)//If not all in
+			if (player.getBankroll() != 0)
 			{
-				//If player -> wait()
-				//Else IA computes
 				player.doAction();
 			}
 			ge.changeCurrentPlayer();
@@ -145,6 +152,11 @@ public class BettingState extends State
 		} while(player != ge.getLastRaisePlayer() && ge.getPlayers().size() > 1);
 	}
 
+	/**
+	 * Only for the bettingstate after the preflop
+	 * @param ge : The GameEngine
+	 * @param player : The currentPlayer
+	 */
 	private void firstBetProcessing(GameEngine ge, Player player)
 	{
 		boolean hasBigBlindToPlayTwice = false;
@@ -162,15 +174,12 @@ public class BettingState extends State
 				player.betBigBlind();
 				postBigBlind = true;
 			}
-			else if (player.getBankroll() != 0)//If not all in
+			else if (player.getBankroll() != 0)
 			{
 				if (player == GameEngine.HUMAN_PLAYER)
 				{
 					SoundEngine.getInstance().playSound(Action.YourTurn);
 				}
-
-				//If player -> wait()
-				//Else IA computes
 				player.doAction();
 			}
 			ge.changeCurrentPlayer();
@@ -178,6 +187,7 @@ public class BettingState extends State
 
 			isThePlayerTheLastRaisePlayer = player == ge.getLastRaisePlayer();
 
+			//We check if everybody checks, the BB can play twice, but only in this case !
 			if(hasBigBlindToPlayTwice)
 			{
 				isThePlayerTheLastRaisePlayer = true;

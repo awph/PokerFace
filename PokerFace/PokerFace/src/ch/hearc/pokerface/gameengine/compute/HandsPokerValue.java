@@ -33,6 +33,12 @@ public class HandsPokerValue implements Comparable<HandsPokerValue>
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Represent all the necessary values for a specificate hand
+	 * @param rank : The rank of the hand
+	 * @param handName : The name of the hand
+	 * @param shortHandName : The shortname of the hand
+	 */
 	public HandsPokerValue(int rank, String handName, String shortHandName)
 	{
 		this.rank = rank;
@@ -45,7 +51,7 @@ public class HandsPokerValue implements Comparable<HandsPokerValue>
 	\*------------------------------------------------------------------*/
 
 	/**
-	 * Lower rank is better !
+	 * Lower is the rank, better it is!
 	 */
 	@Override
 	public int compareTo(HandsPokerValue other)

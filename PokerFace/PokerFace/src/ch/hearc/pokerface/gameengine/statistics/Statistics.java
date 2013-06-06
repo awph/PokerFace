@@ -43,6 +43,10 @@ public class Statistics
 	|*			  Static			*|
 	\*------------------------------*/
 
+	@SuppressWarnings("unchecked")
+	/**
+	 * Initialize the variable chanceOfCall
+	 */
 	public static void initialize()
 	{
 		chanceOfCall = new HashMap[maps.length];

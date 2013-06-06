@@ -31,6 +31,9 @@ public class HandsPokerMap
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Represents the map that contains all the unique hands in the poker
+	 */
 	private HandsPokerMap()
 	{
 		hands = new HashMap<String, HandsPokerValue>();
@@ -58,11 +61,21 @@ public class HandsPokerMap
 	|*				Get				*|
 	\*------------------------------*/
 
+	/**
+	 * Return the corresponding value of the hand with the given hand
+	 * @param key : Hand that we want the HandsPokerValue
+	 * @return
+	 */
 	public HandsPokerValue getHand(String key)
 	{
 		return hands.get(key);
 	}
 
+	/**
+	 * Overload of the function getHand(String key)
+	 * @param hand : Hand that we want the HandsPokerValue
+	 * @return
+	 */
 	public HandsPokerValue getHand(Hand hand)
 	{
 		return hands.get(hand.getKey());

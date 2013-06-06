@@ -9,7 +9,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
 
-import javax.swing.Icon;
 import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -46,25 +45,29 @@ public class GameEngine
 
 	private StateType			oldState;
 	private State				state;
+
 	private int					indexPlayer;
 	private int					indexDealer;
 	private int					indexSmallBlind;
 	private int					indexBigBlind;
 	private int					indexLastRaise;
 	private int					magicIndex;
+	private int					smallBlind;
+	private int					bigBlind;
+	private int					raiseValue;
+	private int					nbRaise;
 	private int					nbTurn;
+
 	private boolean				isFinished;
+	private boolean isCurrentGameFinished;
+
 	private Pot					pot;
 	private Board				board;
 	private List<Player>		players;
 	private Deck				deck;
 	private SoundEngine			soundEngine;
 	private HandsPokerMap		handsPokerMap;
-	private int					smallBlind;
-	private int					bigBlind;
-	private int					raiseValue;
-	private int					nbRaise;
-	private boolean isCurrentGameFinished;
+
 	private Card[]				futureBoard;
 	private JPanelGameBoard		panelGameBoard;
 	private Profile				profilePlayer;
@@ -85,6 +88,15 @@ public class GameEngine
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * GameEngine
+	 * @param frame : The frame with which the GameEngine will interact
+	 * @param smallBlind : The value of the smallBlind
+	 * @param nbPlayer : Number of player
+	 * @param profile : The profile of the human player
+	 * @param bankroll : The bankroll of the players
+	 * @param panelGameBoard : The panel with which the GameEngine will interact
+	 */
 	public GameEngine(JFrameMain frame, int smallBlind, int nbPlayer, Profile profile, int bankroll, JPanelGameBoard panelGameBoard)
 	{
 		this.frameMain = frame;
@@ -123,19 +135,22 @@ public class GameEngine
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Finish the game and announce who has won
+	 */
 	public void finishTheGame()
 	{
 		if (HUMAN_PLAYER == players.get(0))
 		{
 			soundEngine.playSound(Action.Winner);
 			log("<b style=\"color:green;\">You win !</b> You are the master !");
-			showDialog("YOU WIN !", null);
+			showDialog("YOU WIN !");
 		}
 		else
 		{
 			soundEngine.playSound(Action.Loser);
 			log("<b style=\"color:red;\">You lose !</b> The winner is <b>" + players.get(0).getProfile().getName() + "</b>");
-			showDialog("YOU LOSE !", null);
+			showDialog("YOU LOSE !");
 		}
 		log("You will leave the game in " + NB_SECOND_BEFORE_LEAVING + " seconds");
 		int sec = NB_SECOND_BEFORE_LEAVING;
@@ -156,6 +171,9 @@ public class GameEngine
 		frameMain.gameToMainMenu();
 	}
 
+	/**
+	 * Set the new capital of the humanplayer
+	 */
 	public void leave()
 	{
 		profilePlayer.setCapital(profilePlayer.getCapital() + HUMAN_PLAYER.getBankroll());
@@ -171,6 +189,10 @@ public class GameEngine
 		}
 	}
 
+	/**
+	 * Change the current player
+	 * @return return the index of the new current player
+	 */
 	public int changeCurrentPlayer()
 	{
 		do
@@ -180,6 +202,10 @@ public class GameEngine
 		return indexPlayer;
 	}
 
+	/**
+	 * Draw a card from the deck
+	 * @return card just drawed in the deck
+	 */
 	public Card drawCard()
 	{
 		if (magicIndex++ < 0)
@@ -191,7 +217,7 @@ public class GameEngine
 				{
 					futureBoard[i] = deck.getNewCard();
 				}
-				//We run the simulation for the state FLOP, we're currently at the end of the state PREFLOP.
+				//We run the simulation for the state FLOP, TURN & RIVER, we're currently at the end of the state PREFLOP.
 				//So, we have all the betting state to compute these values
 				runSimulationPlayer();
 			}
@@ -203,6 +229,11 @@ public class GameEngine
 		}
 	}
 
+	/**
+	 * Bet action
+	 * @param player : The player
+	 * @param amount : The amount
+	 */
 	public void bet(Player player, int amount)
 	{
 		if (amount >= player.getBankroll())
@@ -216,6 +247,10 @@ public class GameEngine
 		}
 	}
 
+	/**
+	 * Call action
+	 * @param player : The player
+	 */
 	public void call(Player player)
 	{
 		int amount = player.getCallValue();
@@ -236,6 +271,11 @@ public class GameEngine
 		}
 	}
 
+	/**
+	 * Raise action
+	 * @param player : The player
+	 * @param amount : The amount
+	 */
 	public void raise(Player player, int amount)
 	{
 		if (amount >= player.getBankroll())
@@ -249,6 +289,10 @@ public class GameEngine
 		}
 	}
 
+	/**
+	 * Allin action
+	 * @param player : The player
+	 */
 	public void allin(Player player)
 	{
 		int amount = player.getBankroll();
@@ -256,6 +300,10 @@ public class GameEngine
 		betRaiseAllinAction(player, amount);
 	}
 
+	/**
+	 * Check action
+	 * @param player : The player
+	 */
 	public void check(Player player)
 	{
 		if (player.getCallValue() != 0)
@@ -269,6 +317,10 @@ public class GameEngine
 		}
 	}
 
+	/**
+	 * Fold action
+	 * @param player : The player
+	 */
 	public void fold(Player player)
 	{
 		if (player == players.get(indexLastRaise))
@@ -279,6 +331,11 @@ public class GameEngine
 		updateGUI();
 	}
 
+	/**
+	 * Bet small/big blind action
+	 * @param player : The player
+	 * @param isSmall : True if it's the small blind, false if it's the big one
+	 */
 	public void betBlind(Player player, boolean isSmall)
 	{
 		int blind;
@@ -310,13 +367,16 @@ public class GameEngine
 		}
 	}
 
+	/**
+	 * Determine which player has/have won
+	 */
 	public void showdown()
 	{
 		logBoard("Showdown", "");
 
 		List<Pair<HandsPokerValue, Player>> handsValues = new ArrayList<Pair<HandsPokerValue, Player>>();
 
-		//Count the value of each player's hand
+		//Count the hand value of each player's hand
 		for(Player player:players)
 		{
 			if (!player.isFolded())
@@ -334,10 +394,11 @@ public class GameEngine
 			Player p = pair.getValue();
 			logPlayerFinalResult((pair.getKey().getRank() == bestRank ? "<b style=\"color:green;\">Winner</b>" : "<b style=\"color:red;\">Loser</b>"), p, pair.getKey().getHandName());
 		}
+
 		//Map<Rank,Triple<groupPot,SumBets,List<Player>>>
 		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
 
-		//Groupe all players by ranking and if they is an equality, there would be n players in the same group
+		//Groupe all players by ranking and if there is an equality, there would be n players in the same group
 		for(int i = 0; i < handsValues.size(); ++i)
 		{
 			Pair<HandsPokerValue, Player> pair = handsValues.get(i);
@@ -352,7 +413,7 @@ public class GameEngine
 			playerSortByRank.put(rank, triple);
 		}
 
-		//We transform it to array
+		//We transform it to an array
 		Set<Entry<Integer, Triple<Integer, Integer, List<Player>>>> entrySet = playerSortByRank.entrySet();
 		@SuppressWarnings("unchecked")
 		Triple<Integer, Integer, List<Player>>[] triples = new Triple[entrySet.size()];
@@ -368,6 +429,7 @@ public class GameEngine
 		{
 			triples[0].getValue2().get(i).win();
 		}
+
 		isCurrentGameFinished = true;
 		updateGUI();
 		divideUpPot(triples);
@@ -389,18 +451,28 @@ public class GameEngine
 		initialize();
 	}
 
+	/**
+	 * Update the graphic user interface
+	 */
 	public void updateGUI()
 	{
 		panelGameBoard.updateGUI();
 		JPanelTopBar.getInstance().setCapital(Integer.toString(HUMAN_PLAYER.getBankroll() + profilePlayer.getCapital()));
 	}
 
+	/**
+	 * Set the new State
+	 */
 	public void setNewState()
 	{
 		indexLastRaise = -1;
 		indexPlayer = getNextIndex(indexDealer);
 	}
 
+	/**
+	 * Add a card to the current board
+	 * @param card : New card to add
+	 */
 	public void addToBoard(Card card)
 	{
 		board.add(card);
@@ -418,11 +490,6 @@ public class GameEngine
 	public int getNbTurn()
 	{
 		return nbTurn;
-	}
-
-	public SoundEngine getSoundEngine()
-	{
-		return soundEngine;
 	}
 
 	public boolean getIsFinished()
@@ -610,6 +677,7 @@ public class GameEngine
 	\*------------------------------------------------------------------*/
 
 	/**
+	 * Divide up the pot correctily. It takes into account the bet that each player has play and divide up the pot correctely, first to the winner and if the winner had a smaller pot than the other, so the second group will divide up the rest of the pot etc..
 	 * @param triples
 	 *            Triple<groupPot,SumBets,List<Player>>
 	 */
@@ -673,8 +741,7 @@ public class GameEngine
 			}
 		}
 
-		/*There might be a rest if the pot is not divisible. In this case, we take
-		the rest and distribute it between all the first group of winners, $ per $*/
+		//There might be a rest if the pot is not divisible (if it's a prime number or and odd one). In this case, we take the rest and distribute it between all the first group of winners, $ per $
 		int rest = pot.getTurnTotal();
 		pot.removeAmount(rest);
 
@@ -702,6 +769,7 @@ public class GameEngine
 			}
 		}
 
+		//We remove all the play who sits out, because they are so poor ! (They lost all their money)
 		List<Player> playersToKill = new ArrayList<Player>();
 		for(int i = 0; i < players.size(); ++i)
 		{
@@ -720,16 +788,27 @@ public class GameEngine
 		}
 	}
 
+	/**
+	 * @param val : The index with which we want the next one
+	 * @return the index of the next player
+	 */
 	private int getNextIndex(int val)
 	{
 		return (val < (players.size() - 1)) ? val + 1 : 0;
 	}
 
+	/**
+	 * @param val : The index with which we want the next one
+	 * @return the index of the previous player
+	 */
 	private int getPreviousIndex(int val)
 	{
 		return (val == 0) ? getNbPlayers() - 1 : val - 1;
 	}
 
+	/**
+	 * Initialize the gameEngine between each game (a game contains preflop, flop, turn, river, showdown and the different betting states
+	 */
 	private void initialize()
 	{
 		for(Player p:players)
@@ -784,6 +863,9 @@ public class GameEngine
 		}
 	}
 
+	/**
+	 * Run the simulation FLOP, TURN, RIVER for all the player who aren't fold
+	 */
 	private void runSimulationPlayer()
 	{
 		int nbCardInBoard = Statistics.NUMBER_CARDS_FLOP;
@@ -799,6 +881,10 @@ public class GameEngine
 		} while(++nbCardInBoard <= Statistics.NUMBER_CARDS_RIVER);
 	}
 
+	/**
+	 * Log simply a message
+	 * @param message : Message to log
+	 */
 	private void log(final String message)
 	{
 		if (logger != null)
@@ -834,6 +920,12 @@ public class GameEngine
 		}
 	}
 
+	/**
+	 * Log a specific player's action
+	 * @param player : The player to log
+	 * @param action : The player's action
+	 * @param amount : The player's amount
+	 */
 	private void logPlayerAction(Player player, Action action, int amount)
 	{
 		String actionText = action.toString();
@@ -849,11 +941,21 @@ public class GameEngine
 		soundEngine.playSound(action);
 	}
 
+	/**
+	 * Log a specific player's action WITHOUT any amounts, i.e. XXX sits out
+	 * @param player : The player to log
+	 * @param action : The player's action
+	 */
 	private void logPlayerAction(Player player, Action action)
 	{
 		logPlayerAction(player, action, -1);
 	}
 
+	/**
+	 * Log the current board
+	 * @param state : The current state
+	 * @param cards : The card of the current state
+	 */
 	private void logBoard(String state, String cards)
 	{
 		log("<br /><b style=\"color:red;\">---- " + state + " ----</b>");
@@ -865,6 +967,12 @@ public class GameEngine
 
 	}
 
+	/**
+	 * Log the result of the showdown for a player
+	 * @param rank : The rank of the player
+	 * @param player : The Player
+	 * @param handName : The player's hand
+	 */
 	private void logPlayerFinalResult(String rank, Player player, String handName)
 	{
 		log(rank + " : " + player.getProfile().getName() + " with "
@@ -872,11 +980,20 @@ public class GameEngine
 				+ " \u2192 <b>" + handName + "</b>");
 	}
 
-	private void showDialog(String text, Icon icon)
+	/**
+	 * Display the dialog that'll say to the player if he lost or won
+	 * @param text : The text to display
+	 */
+	private void showDialog(String text)
 	{
-		JOptionPane.showMessageDialog(frameMain, text, text, JOptionPane.CLOSED_OPTION, icon);//TODO mettre image
+		JOptionPane.showMessageDialog(frameMain, text, text, JOptionPane.CLOSED_OPTION);
 	}
 
+	/**
+	 * BetRaiseAllin process
+	 * @param player : The current player
+	 * @param amount : The player's amount
+	 */
 	private void betRaiseAllinAction(Player player, int amount)
 	{
 		if (amount + player.getBetSpending() > pot.getBet())

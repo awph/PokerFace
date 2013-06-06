@@ -24,6 +24,9 @@ public class Data
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Represents the datas get by a simulation
+	 */
 	public Data()
 	{
 		nbWin = 0;
@@ -80,6 +83,10 @@ public class Data
 		return String.valueOf(df.format(getWinPercentage()) + "\n" + builder.toString());
 	}
 
+	/**
+	 * Add one to the "key" hand
+	 * @param key
+	 */
 	public void addTime(String key)
 	{
 		nbTime++;

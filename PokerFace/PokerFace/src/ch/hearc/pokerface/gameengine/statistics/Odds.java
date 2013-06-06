@@ -19,6 +19,11 @@ public class Odds implements Comparable<Odds>
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Create an odd in the poker
+	 * @param favorable : number of favorable cases
+	 * @param defavorable : number of defavorable cases
+	 */
 	public Odds(int favorable, int defavorable)
 	{
 		this.favorable = favorable;

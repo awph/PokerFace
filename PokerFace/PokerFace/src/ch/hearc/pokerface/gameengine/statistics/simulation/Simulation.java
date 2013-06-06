@@ -54,6 +54,13 @@ public class Simulation extends Observable implements Runnable ,Observer
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Represent a simulation to get some statistics for the current game
+	 * @param p : Player's pocket
+	 * @param cards : Cards in the board
+	 * @param nbPlayer : Number of players
+	 * @param nbCardBoard : Number of cards in the board (3 = Flop, 4 = Turn, 5 = River)
+	 */
 	public Simulation(Pocket p, Card[] cards, int nbPlayer, int nbCardBoard)
 	{
 		this.pocket = p;
@@ -171,6 +178,11 @@ public class Simulation extends Observable implements Runnable ,Observer
 				/ nbTime * 100, map.get("2P") / nbTime * 100, map.get("1P") / nbTime * 100, map.get("HC") / nbTime * 100);
 	}
 
+	/**
+	 * Create a Callable<Void> used in the executorService
+	 * @param index : index where the simulation has to write
+	 * @return
+	 */
 	private Callable<Void> simulatorCallable(final int index)
 	{
 		return new Callable<Void>()

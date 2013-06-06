@@ -23,6 +23,7 @@ public class ComputeBestHand
 	\*------------------------------------------------------------------*/
 
 	/**
+	 * Compute the best hand in a cardSubset
 	 * Size minimum 5
 	 */
 	public ComputeBestHand(CardSubset actualHand)
@@ -41,6 +42,9 @@ public class ComputeBestHand
 	|*				Get				*|
 	\*------------------------------*/
 
+	/**
+	 * @return the highest hand in the given subset
+	 */
 	public Hand getHighestHand()
 	{
 		searchHighestHand();
@@ -65,7 +69,7 @@ public class ComputeBestHand
 			subset[h++] = c;
 		}
 
-		//We test all the possibilities
+		//We test all the possibilities (bruteforce)
 		for(int i = 0; i < subset.length - 4; ++i)
 		{
 			for(int j = i + 1; j < subset.length - 3; ++j)

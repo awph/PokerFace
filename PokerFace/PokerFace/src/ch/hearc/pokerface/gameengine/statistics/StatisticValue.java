@@ -27,6 +27,7 @@ public class StatisticValue
 	\*------------------------------------------------------------------*/
 
 	/**
+	 * Represents all the value for a simulation
 	 * @param win			value in percent of win
 	 * @param tie			value in percent of tie
 	 * @param loss			value in percent of loss

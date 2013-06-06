@@ -49,6 +49,9 @@ public class SoundEngine
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Class that allow to play any sound in the poker
+	 */
 	private SoundEngine()
 	{
 		volume = 1f;
@@ -107,6 +110,10 @@ public class SoundEngine
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Play the sound associated with the action
+	 * @param action : Action that we want to play the sound
+	 */
 	public void playSound(final Action action)
 	{
 		switch(action)
