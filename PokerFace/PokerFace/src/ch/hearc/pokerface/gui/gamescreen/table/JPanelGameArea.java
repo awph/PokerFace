@@ -125,7 +125,7 @@ public class JPanelGameArea extends ImagePanel
 		setLayout(new BorderLayout());
 
 		JPanel panelPlayer = new JPanel();
-		panelPlayer.setLayout(new MigLayout("debug"));
+		panelPlayer.setLayout(new MigLayout());
 		panelPlayer.setOpaque(false);
 
 		panelPlayer.setBorder(new EmptyBorder(50, 10, 50, 10)); // inside padding

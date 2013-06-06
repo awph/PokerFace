@@ -101,8 +101,8 @@ public class PlayerComponent extends JPanel
 	{
 		if (player.isFolded() || player.isDead())
 		{
-			card1.setCard("folded1");
-			card2.setCard("folded2");
+			card1.setCard("folded");
+			card2.setCard(null);
 		}
 		else
 		{
