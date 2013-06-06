@@ -5,6 +5,7 @@ import java.awt.Color;
 
 public class ColorShop
 {
+	public static final Color	PF_BLUE						= new Color(115, 185, 230);
 	public static final Color	PF_GREEN						= new Color(39, 174, 96);
 	public static final Color	PF_RED							= new Color(192, 57, 43);
 	public static final Color	PF_YELLOW						= new Color(241, 196, 15);

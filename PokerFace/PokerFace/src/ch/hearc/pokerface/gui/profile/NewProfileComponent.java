@@ -90,6 +90,7 @@ public class NewProfileComponent extends ProfileComponentPanel
 			{
 
 				NewProfileComponent.this.parent.addProfileFromNew(new Profile(nameProfile.getText(),random.nextInt(30) + 1,10000),NewProfileComponent.this);
+				NewProfileComponent.this.parent.getProfilePanel().toggleCreateProfileButton();
 			}
 		});
 	}

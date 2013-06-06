@@ -83,8 +83,9 @@ public class JPanelTopBar extends JPanel
 																+ "During the first betting state, after the preflop state, the small blind must bet an set amount. The big blind has to bet double of said set amount.<br />"
 																+ "The dealer deals the card, then the small blind bets and finally the big blind. Afterwards, the next player can play and make a decision.<br /> After all players have played, the small blind has to play and the big blind has to finish the turn if nobody else has raised.<br />"
 																+ "After the preflop, there are no more roles.<br />" + "The different possible actions are :" + "<ul>" + "<li><b>Fold</b> : leaving the current game</li>"
-																+ "<li><b>Check</b> : if no previous player has bet during the current turn, checking lets you continue playing without betting</li>" + "<li><b>Bet </b> : set a current bet that other players have to call in order to stay in the game</li>"
-																+ "<li><b>Call</b> : paying the current bet in order to continue playing</li>" + "<li><b>Raise</b> : raising the bet to a bigger amount.</li>" + "</ul></html>";
+																+ "<li><b>Check</b> : if no previous player has bet during the current turn, checking lets you continue playing without betting</li>"
+																+ "<li><b>Bet </b> : set a current bet that other players have to call in order to stay in the game</li>" + "<li><b>Call</b> : paying the current bet in order to continue playing</li>"
+																+ "<li><b>Raise</b> : raising the bet to a bigger amount.</li>" + "</ul></html>";
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -228,7 +229,6 @@ public class JPanelTopBar extends JPanel
 			public void mouseClicked(MouseEvent e)
 			{
 				JPanelTopBar.this.frameMain.closeApp();
-				System.exit(0);
 			}
 		});
 
@@ -239,6 +239,7 @@ public class JPanelTopBar extends JPanel
 			{
 				if (frameMain != null)
 				{
+					if (JOptionPane.showConfirmDialog(null, "Confirm going back to main menu?") != 0) { return; }
 					frameMain.gameToMainMenu();
 				}
 			}

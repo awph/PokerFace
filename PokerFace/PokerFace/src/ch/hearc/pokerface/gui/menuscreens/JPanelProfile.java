@@ -136,6 +136,7 @@ public class JPanelProfile extends ImagePanel
 			public void actionPerformed(ActionEvent arg0)
 			{
 				container.createNewProfile();
+				toggleCreateProfileButton();
 			}
 		});
 
@@ -184,5 +185,10 @@ public class JPanelProfile extends ImagePanel
 		container.add(new JPanelGlue(BoxLayout.Y_AXIS));
 		add(container, BorderLayout.CENTER);*/
 		add(outsideBox, BorderLayout.CENTER);
+	}
+
+	public void toggleCreateProfileButton()
+	{
+		createProfileButton.setEnabled(!createProfileButton.isEnabled());
 	}
 }

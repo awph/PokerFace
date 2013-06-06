@@ -2,10 +2,13 @@
 package ch.hearc.pokerface.gui;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
 import ch.hearc.pokerface.gui.menuscreens.JOPTableConfiguration;
@@ -81,6 +84,8 @@ public class JFrameMain extends JFrame
 	public void closeApp()
 	{
 		panelProfile.serializeProfiles();
+		if (JOptionPane.showConfirmDialog(null, "Confirm quit?") != 0) { return; }
+		System.exit(0);
 	}
 	/*------------------------------*\
 	|*				Set				*|
@@ -159,7 +164,7 @@ public class JFrameMain extends JFrame
 
 	private void control()
 	{
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
 		addWindowListener(new WindowAdapter()
 		{
@@ -173,8 +178,10 @@ public class JFrameMain extends JFrame
 
 	private void appearance()
 	{
-
 		setSize(1200, (int)(1200 * 0.75));
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation((int)((dim.getWidth() - getWidth()) / 2), (int)((dim.getHeight() - getHeight()) / 2));
+
 
 		setTitle("\u2666 \u2665 \u2660 \u2663 Pokerface \u2663 \u2660 \u2665 \u2666");
 

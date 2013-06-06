@@ -35,6 +35,7 @@ public class PlayerComponent extends JPanel
 	private JLabel			name;
 	private JLabel			money;
 	private JLabel			betSpend;
+	private JLabel	turnSpend;
 
 	private CardComponent	card1;
 	private CardComponent	card2;
@@ -50,7 +51,8 @@ public class PlayerComponent extends JPanel
 		//money = new JLabel(Integer.toString(player.getBankroll()));
 
 		money = new JLabel("$" + Integer.toString(player.getBankroll()), ImageShop.ICON_COIN, SwingConstants.CENTER);
-		betSpend = new JLabel("" + player.getTurnSpending());
+		betSpend = new JLabel("" + player.getBetSpending());
+		turnSpend = new JLabel("" + player.getTurnSpending());
 		name = new JLabel(player.getProfile().getName(), player.getProfile().getAvatar().getIcon(), SwingConstants.CENTER);
 
 		money.setHorizontalTextPosition(SwingConstants.LEFT);
@@ -118,6 +120,7 @@ public class PlayerComponent extends JPanel
 		role.setToken(player.getRole().toString());
 		money.setText("$" + Integer.toString(player.getBankroll()));
 		betSpend.setText("$" + player.getBetSpending());
+		turnSpend.setText("$" + player.getTurnSpending());
 		betSpend.repaint();
 		getParent().repaint();
 	}
@@ -154,6 +157,8 @@ public class PlayerComponent extends JPanel
 
 		Box moneyAndBetSpendBox = Box.createHorizontalBox();
 		moneyAndBetSpendBox.add(betSpend);
+		moneyAndBetSpendBox.add(Box.createHorizontalStrut(10));
+		moneyAndBetSpendBox.add(turnSpend);
 		moneyAndBetSpendBox.add(Box.createHorizontalGlue());
 		moneyAndBetSpendBox.add(money);
 
@@ -191,10 +196,12 @@ public class PlayerComponent extends JPanel
 		name.setFont(font);
 		money.setFont(font);
 		betSpend.setFont(font);
+		turnSpend.setFont(font);
 
 		name.setForeground(Color.WHITE);
 		money.setForeground(ColorShop.PF_GOLD_COLOR);
 		betSpend.setForeground(ColorShop.PF_GREEN);
+		turnSpend.setForeground(ColorShop.PF_BLUE);
 	}
 
 }
