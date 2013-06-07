@@ -28,14 +28,11 @@ public class PlayerComponent extends JPanel
 	//Tools
 	private Player			player;
 
-	private boolean			allinShow;
-	private boolean			isHumanPlayer;
-
 	//IO
 	private JLabel			name;
 	private JLabel			money;
 	private JLabel			betSpend;
-	private JLabel	turnSpend;
+	private JLabel			turnSpend;
 
 	private CardComponent	card1;
 	private CardComponent	card2;
@@ -102,7 +99,7 @@ public class PlayerComponent extends JPanel
 		if (player.isFolded() || player.isDead())
 		{
 			card1.setCard("folded");
-			card2.setCard(null);
+			card2.setCard("empty");
 		}
 		else
 		{
@@ -131,7 +128,6 @@ public class PlayerComponent extends JPanel
 
 	public void setAllinShow(boolean b)
 	{
-		allinShow = b;
 	}
 
 	/*------------------------------*\

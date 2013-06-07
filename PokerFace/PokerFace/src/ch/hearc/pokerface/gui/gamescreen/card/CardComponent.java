@@ -42,12 +42,7 @@ public abstract class CardComponent extends JLabel
 
 	public void setCard(String cardValue)
 	{
-		if(cardValue==null)
-		{
-			this.cardValue = null;
-			updateImage();
-		}
-		else if (!this.cardValue.equals(cardValue))
+		if (!this.cardValue.equals(cardValue))
 		{
 			this.cardValue = cardValue;
 			updateImage();
@@ -64,7 +59,7 @@ public abstract class CardComponent extends JLabel
 
 	private void updateImage()
 	{
-		if (cardValue == null)
+		if (cardValue.equals("empty"))
 		{
 			setIcon(null);
 		}
