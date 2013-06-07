@@ -948,7 +948,7 @@ public class GameEngine implements Runnable
 	}
 
 	/**
-	 * Log a specific player's action WITHOUT any amounts, i.e. XXX sits out
+	 * Log a specific player's action WITHOUT any amounts, i.e. xxx sits out
 	 * @param player : The player to log
 	 * @param action : The player's action
 	 */

@@ -16,37 +16,35 @@ import ch.hearc.pokerface.gui.menuscreens.JPanelMainMenu;
 import ch.hearc.pokerface.gui.menuscreens.JPanelProfile;
 import ch.hearc.pokerface.gui.options.JPanelTopBar;
 import ch.hearc.pokerface.gui.tools.ImageShop;
-import ch.hearc.pokerface.gui.tools.SplashWindow;
 
 public class JFrameMain extends JFrame
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-
+	
 	private JPanelProfile	panelProfile;
 	private JPanelMainMenu	panelMainMenu;
 	private JPanelGameBoard	panelGameBoard;
 	private CardLayout		layout;
-
+	
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-
+	
 	public JFrameMain()
 	{
-		createSplashScreen(); //TODO il faut introduire un fichier manifest pour lancer le splash screen
 		JPanelTopBar.getInstance().setFrameMain(this);
-
+		
 		geometry();
 		control();
 		appearance();
 	}
-
+	
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
-
+	
 	// CARD MANIPULATIONS
 	public void setCard(String card)
 	{
@@ -56,7 +54,7 @@ public class JFrameMain extends JFrame
 			if (!tableConfig.switchToGame()) { return; // Abort the process of switching to gameBoard
 			}
 			// Game is launching
-
+			
 			panelGameBoard.refreshAllComponents();
 			setFullscreen(true);
 		}
@@ -64,50 +62,50 @@ public class JFrameMain extends JFrame
 		{
 			panelProfile.refreshProfilesData();
 		}
-
+		
 		else if (card == "panelMainMenu")
 		{
 			panelMainMenu.refreshPlayButtonStatus();
 		}
 		layout.show(this.getContentPane(), card);
 	}
-
+	
 	public void gameToMainMenu()
 	{
 		setFullscreen(false);
 		setSize(1200, (int)(1200 * 0.75));
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((int)((dim.getWidth() - getWidth()) / 2), (int)((dim.getHeight() - getHeight()) / 2));
-
+		
 		panelMainMenu.refreshTopBar();
 		setCard("panelMainMenu");
 		panelGameBoard.stop();
 	}
-
+	
 	public void closeApp()
 	{
 		panelProfile.serializeProfiles();
 		if (JOptionPane.showConfirmDialog(null, "Confirm quit?") != 0) { return; }
 		System.exit(0);
 	}
-
+	
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
-
+	
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
-
+	
 	public JPanelProfile getProfilePanel()
 	{
 		return panelProfile;
 	}
-
+	
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
-
+	
 	private void setFullscreen(boolean isFullscreened)
 	{
 		setVisible(false);
@@ -132,16 +130,16 @@ public class JFrameMain extends JFrame
 		}*/
 		setVisible(true);
 	}
-
+	
 	private void geometry()
 	{
-
+		
 		/**
 		 * Layout
 		 */
 		layout = new CardLayout();
 		setLayout(layout);
-
+		
 		/**
 		 * Instanciations
 		 */
@@ -152,24 +150,23 @@ public class JFrameMain extends JFrame
 		}
 		catch (Exception e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		panelGameBoard = new JPanelGameBoard();
-
+		
 		/**
 		 * Adds
 		 */
-
+		
 		add(panelProfile, "panelProfile");
 		add(panelGameBoard, "panelGameBoard");
 		add(panelMainMenu, "panelMainMenu");
 	}
-
+	
 	private void control()
 	{
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-
+		
 		addWindowListener(new WindowAdapter()
 		{
 			@Override
@@ -179,40 +176,23 @@ public class JFrameMain extends JFrame
 			}
 		});
 	}
-
+	
 	private void appearance()
 	{
 		setSize(1200, (int)(1200 * 0.75));
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((int)((dim.getWidth() - getWidth()) / 2), (int)((dim.getHeight() - getHeight()) / 2));
-
-
+		
 		setTitle("\u2666 \u2665 \u2660 \u2663 Pokerface \u2663 \u2660 \u2665 \u2666");
-
+		
 		setResizable(false);
-
+		
 		layout.show(this.getContentPane(), "panelProfile");
-
+		
 		//setUndecorated(true);
 		this.setVisible(true);
 		validate();
-
+		
 		setIconImage(ImageShop.IMAGE_APPICON);
 	}
-
-	private void createSplashScreen()
-	{
-		SplashWindow.splash(ImageShop.IMAGE_SPLASH);
-		try
-		{
-			//Thread.sleep(2000);
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		SplashWindow.disposeSplash();
-	}
-
 }

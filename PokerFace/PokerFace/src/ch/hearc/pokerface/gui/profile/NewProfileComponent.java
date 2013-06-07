@@ -94,7 +94,6 @@ public class NewProfileComponent extends ProfileComponentPanel
 		}
 		catch (Exception e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -130,7 +129,8 @@ public class NewProfileComponent extends ProfileComponentPanel
 				{
 					okButton.setEnabled(false);
 				}
-				else{
+				else
+				{
 					okButton.setEnabled(true);
 				}
 			}
@@ -142,7 +142,8 @@ public class NewProfileComponent extends ProfileComponentPanel
 				{
 					okButton.setEnabled(false);
 				}
-				else{
+				else
+				{
 					okButton.setEnabled(true);
 				}
 			}
@@ -154,7 +155,8 @@ public class NewProfileComponent extends ProfileComponentPanel
 				{
 					okButton.setEnabled(false);
 				}
-				else{
+				else
+				{
 					okButton.setEnabled(true);
 				}
 			}
@@ -164,7 +166,6 @@ public class NewProfileComponent extends ProfileComponentPanel
 	@Override
 	public Profile getProfile()
 	{
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -30,7 +30,7 @@ public class JPanelProfile extends ImagePanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private JButton					createProfileButton;	// TODO create profile!
+	private JButton					createProfileButton;
 	private JButton					quit;
 	private JFrameMain				mainFrame;
 

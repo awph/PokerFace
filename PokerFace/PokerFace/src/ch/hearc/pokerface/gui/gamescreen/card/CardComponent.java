@@ -49,10 +49,6 @@ public abstract class CardComponent extends JLabel
 		}
 	}
 
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
@@ -67,7 +63,7 @@ public abstract class CardComponent extends JLabel
 		{
 			try
 			{
-				setIcon(new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("resources/table/cards/" + cardValue + ".png"))));//TODO imageShop
+				setIcon(new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("resources/table/cards/" + cardValue + ".png"))));
 			}
 			catch (IOException e)
 			{

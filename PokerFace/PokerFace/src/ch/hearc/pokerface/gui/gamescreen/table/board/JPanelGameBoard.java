@@ -32,8 +32,6 @@ public class JPanelGameBoard extends JPanel
 	public JPanelGameBoard()
 	{
 		geometry();
-		control();
-		appearance();
 	}
 
 	/*------------------------------------------------------------------*\
@@ -42,7 +40,6 @@ public class JPanelGameBoard extends JPanel
 
 	public void updateGUI()
 	{
-		//TODO: here update all component in this view
 		gameArea.updateGUI();
 		gameControl.updateGUI();
 	}
@@ -103,14 +100,6 @@ public class JPanelGameBoard extends JPanel
 		gameControl.refreshAllComponents();*/
 	}
 
-	/*------------------------------*\
-	|*				Set				*|
-	\*------------------------------*/
-
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
@@ -119,15 +108,6 @@ public class JPanelGameBoard extends JPanel
 	{
 
 		setLayout(new BorderLayout());
-	}
-
-	private void control()
-	{
-
-	}
-
-	private void appearance()
-	{
 	}
 
 }
