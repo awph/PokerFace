@@ -90,6 +90,7 @@ public class JPanelProfile extends ImagePanel
 		quit = new JButton("Quit");
 	}
 
+	@SuppressWarnings("unchecked")
 	private LinkedList<Profile> unserializeProfiles()
 	{
 		LinkedList<Profile> profileList = new LinkedList<Profile>();

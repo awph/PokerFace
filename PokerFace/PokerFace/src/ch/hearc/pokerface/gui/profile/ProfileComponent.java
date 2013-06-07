@@ -25,17 +25,9 @@ public class ProfileComponent extends ProfileComponentPanel
 	private final ProfileListContainer	parent;
 
 	// Tools
-	private Box							boxContainer;
-
 	private JLabel						deleteButton;
 	private JLabel						alignedAvatar;
 	private JLabel						capital;
-
-	/*------------------------------*\
-	|*			  Static			*|
-	\*------------------------------*/
-
-	private static final String			FAKE_HORIZONTAL_STRUT	= "   ";
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -45,14 +37,12 @@ public class ProfileComponent extends ProfileComponentPanel
 	{
 		super();
 
-		boxContainer = Box.createHorizontalBox();
 		this.profile = profile;
 		this.parent = parent;
 
 		deleteButton = new JLabel(ImageShop.ICON_REMOVEPROFILE_SCALED);
 
 		alignedAvatar = new JLabel(profile.getAvatar().getIcon(), SwingConstants.RIGHT);
-		//setAlignmentX(Component.CENTER_ALIGNMENT);
 		geometry();
 		control();
 	}

@@ -5,8 +5,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 import javax.swing.Box;
 import javax.swing.JPanel;
@@ -17,14 +15,9 @@ import ch.hearc.pokerface.gui.gamescreen.card.CardComponent;
 
 public class BoardCardsPanel extends JPanel
 {
-
-	private Set<String>		cards;
-	private List<String>	newCards;
 	private Box				box;
 
 	private List<BoardCard>	boardCards;
-
-	private boolean			hasCard	= false;
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -36,8 +29,6 @@ public class BoardCardsPanel extends JPanel
 	public BoardCardsPanel()
 	{
 		setOpaque(false);
-		cards = new TreeSet<String>();
-		newCards = new ArrayList<String>();
 
 		boardCards = new ArrayList<BoardCard>();
 		initBoardCards();
@@ -87,14 +78,6 @@ public class BoardCardsPanel extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
-	private void refreshBox()
-	{
-		box.removeAll();
-		for(BoardCard card:boardCards)
-		{
-			box.add(card);
-		}
-	}
 
 	private void initBoardCards()
 	{
