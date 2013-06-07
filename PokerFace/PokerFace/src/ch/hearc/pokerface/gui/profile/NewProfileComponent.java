@@ -11,6 +11,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
@@ -69,6 +71,7 @@ public class NewProfileComponent extends ProfileComponentPanel
 
 		setLayout(new GridLayout());
 		okButton = new JButton("OK");
+		okButton.setEnabled(false);
 
 		JPanel okPanel = new JPanel();
 		okPanel.setOpaque(false);
@@ -114,6 +117,46 @@ public class NewProfileComponent extends ProfileComponentPanel
 
 				NewProfileComponent.this.parent.addProfileFromNew(new Profile(nameProfile.getText(), random.nextInt(30) + 1, 10000), NewProfileComponent.this);
 				NewProfileComponent.this.parent.getProfilePanel().toggleCreateProfileButton();
+			}
+		});
+
+		nameProfile.getDocument().addDocumentListener(new DocumentListener()
+		{
+
+			@Override
+			public void removeUpdate(DocumentEvent arg0)
+			{
+				if (nameProfile.getText().length() == 0)
+				{
+					okButton.setEnabled(false);
+				}
+				else{
+					okButton.setEnabled(true);
+				}
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent arg0)
+			{
+				if (nameProfile.getText().length() == 0)
+				{
+					okButton.setEnabled(false);
+				}
+				else{
+					okButton.setEnabled(true);
+				}
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0)
+			{
+				if (nameProfile.getText().length() == 0)
+				{
+					okButton.setEnabled(false);
+				}
+				else{
+					okButton.setEnabled(true);
+				}
 			}
 		});
 	}
