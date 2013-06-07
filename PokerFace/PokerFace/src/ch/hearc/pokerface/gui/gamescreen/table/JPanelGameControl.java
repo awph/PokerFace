@@ -263,10 +263,10 @@ public class JPanelGameControl extends JPanel
 
 		setLayout(new MigLayout("insets 0", "[50lp, fill]20", "[20lp, fill]0"));
 
-		add(new JLabel(ImageShop.ICON_HANDRANKING), "width " + "15%!");
-		add(boxControls, "width " + "15%!");
+		add(new JLabel(ImageShop.ICON_HANDRANKING), "width " + "20%!");
+		add(boxControls, "width " + "20%!");
 		add(scrollPane, "width " + "20%!");
-		add(statisticsPanel, "width " + "50%!");
+		add(statisticsPanel, "width " + "40%!");
 	}
 
 	private void control()
