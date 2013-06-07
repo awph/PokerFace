@@ -101,6 +101,11 @@ public class JPanelGameControl extends JPanel
 			betRaiseValue = humanPlayer.getBankroll();
 		}
 
+		if(gameEngine.getOldState() == StateType.PreFlopState)
+		{
+			statisticsPanel.setCurrentState(StateType.PreFlopState);
+		}
+
 		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon() && !gameEngine.getIsCurrentGameFinised())
 				&& !(gameEngine.getOldState() == StateType.PreFlopState && (humanPlayer.getRole() == Role.BigBlind || humanPlayer.getRole() == Role.SmallBlind) && humanPlayer.getNbTurnBet() == 1 && humanPlayer.getBetSpending() <= gameEngine.getBigBlind());
 
