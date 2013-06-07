@@ -52,8 +52,8 @@ public class JPanelGameControl extends JPanel
 	private JButton				checkCallButton;
 	private JButton				foldButton;
 	private boolean				hasHumanPlayed;
-	private boolean isHumanPlayerTurn;
-	private boolean						mouseIsInLogger	= false;
+	private boolean				isHumanPlayerTurn;
+	private boolean				mouseIsInLogger			= false;
 
 	private JEditorPane			loggerTextArea;
 	private JPanelStatistics	statisticsPanel;
@@ -65,8 +65,9 @@ public class JPanelGameControl extends JPanel
 	|*			  Static			*|
 	\*------------------------------*/
 
-	private static final String	ALL_IN			= "All in";
-	private static final String	FOLD			= "Fold";
+	private static final long	TIME_BETWEEN_EACH_CLICK	= 100;
+	private static final String	ALL_IN					= "All in";
+	private static final String	FOLD					= "Fold";
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -88,33 +89,27 @@ public class JPanelGameControl extends JPanel
 	{
 		Player humanPlayer = GameEngine.HUMAN_PLAYER;
 		int betRaiseValue = gameEngine.getRaiseValue();
-		try
-		{
-			if (humanPlayer.getBankroll() >= gameEngine.getRaiseValue())
-			{
-				betRaiseValue = gameEngine.getRaiseValue();
-			}
-			else
-			{
-				checkCallButton.setEnabled(false);
-				betRaiseValue = humanPlayer.getBankroll();
-			}
 
-			moneySpinner.setModel(new SpinnerNumberModel(betRaiseValue, betRaiseValue, humanPlayer.getBankroll(), 1));
-		}
-		catch (IllegalArgumentException e)
+		if (humanPlayer.getBankroll() >= gameEngine.getRaiseValue())
 		{
-			moneySpinner.setModel(new SpinnerNumberModel(0, 0, 0, 0));
+			betRaiseValue = gameEngine.getRaiseValue();
+		}
+		else
+		{
+			checkCallButton.setEnabled(false);
+			betRaiseValue = humanPlayer.getBankroll();
 		}
 
-		moneySlider.setMinimum(betRaiseValue);
-		moneySlider.setMaximum(humanPlayer.getBankroll());
-		moneySlider.setValue(betRaiseValue);
-
-		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon() && !gameEngine.getIsCurrentGameFinised()) && !(gameEngine.getOldState() == StateType.PreFlopState && (humanPlayer.getRole() == Role.BigBlind || humanPlayer.getRole() == Role.SmallBlind) && humanPlayer.getNbTurnBet() == 1 && humanPlayer.getBetSpending() <= gameEngine.getBigBlind());
+		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon() && !gameEngine.getIsCurrentGameFinised())
+				&& !(gameEngine.getOldState() == StateType.PreFlopState && (humanPlayer.getRole() == Role.BigBlind || humanPlayer.getRole() == Role.SmallBlind) && humanPlayer.getNbTurnBet() == 1 && humanPlayer.getBetSpending() <= gameEngine.getBigBlind());
 
 		if (!hasHumanPlayed && isHumanPlayerTurn && !humanPlayer.isFolded() && !humanPlayer.isDead() && humanPlayer.getBankroll() != 0)
 		{
+			moneySpinner.setModel(new SpinnerNumberModel(betRaiseValue, betRaiseValue, humanPlayer.getBankroll(), 1));
+
+			moneySlider.setMinimum(betRaiseValue);
+			moneySlider.setMaximum(humanPlayer.getBankroll());
+			moneySlider.setValue(betRaiseValue);
 			statisticsPanel.setCurrentState(gameEngine.getOldState());
 
 			if (humanPlayer.getCallValue() == 0)
@@ -421,7 +416,7 @@ public class JPanelGameControl extends JPanel
 				{
 					try
 					{
-						Thread.sleep(1000);
+						Thread.sleep(TIME_BETWEEN_EACH_CLICK);
 					}
 					catch (InterruptedException e)
 					{
