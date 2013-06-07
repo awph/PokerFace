@@ -96,9 +96,14 @@ public class PlayerComponent extends JPanel
 
 	public void updateGUI()
 	{
-		if (player.isFolded() || player.isDead())
+		if (player.isFolded())
 		{
 			card1.setCard("folded");
+			card2.setCard("empty");
+		}
+		else if(player.isDead())
+		{
+			card1.setCard("sitsout");
 			card2.setCard("empty");
 		}
 		else
