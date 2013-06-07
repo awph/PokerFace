@@ -163,7 +163,7 @@ public class JPanelGameArea extends ImagePanel
 				break;
 		}
 
-		panelPlayer.add(panelBoard, "pos container.w/2-pref/2 container.h/2-pref"); //Centered
+		panelPlayer.add(panelBoard, "pos container.w/2-pref/2 container.h/2-pref+pref/10"); //Centered
 		add(panelPlayer, BorderLayout.CENTER);
 	}
 
