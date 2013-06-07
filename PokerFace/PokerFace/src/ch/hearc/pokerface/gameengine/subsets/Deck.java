@@ -23,6 +23,9 @@ public class Deck extends CardSubset
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Constructor. add all the card in the Poker
+	 */
 	public Deck()
 	{
 		super();
@@ -101,7 +104,9 @@ public class Deck extends CardSubset
 
 	/**
 	 * Remove a card by its value and not its reference
-	 * @param c : Card
+	 *
+	 * @param c
+	 *            : Card
 	 */
 	public void removeByValue(Card c)
 	{

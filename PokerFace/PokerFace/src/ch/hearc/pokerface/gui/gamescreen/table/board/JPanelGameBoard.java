@@ -23,6 +23,7 @@ public class JPanelGameBoard extends JPanel
 	private final JPanelTopBar	panelTopBar	= JPanelTopBar.getInstance();
 
 	//Game
+	private Thread				threadGameEngine;
 	protected GameEngine		gameEngine;
 
 	/*------------------------------------------------------------------*\
@@ -65,7 +66,7 @@ public class JPanelGameBoard extends JPanel
 		add(gameArea, BorderLayout.CENTER);
 		add(gameControl, BorderLayout.SOUTH);
 
-		Thread thread = new Thread(new Runnable()
+		threadGameEngine = new Thread(new Runnable()
 		{
 
 			@Override
@@ -74,8 +75,15 @@ public class JPanelGameBoard extends JPanel
 				gameEngine.run();
 			}
 		});
-		thread.setName("GameEngine");
-		thread.start();
+		threadGameEngine.setName("GameEngine");
+		threadGameEngine.start();
+	}
+
+	@SuppressWarnings("deprecation")
+	public synchronized void stop()
+	{
+		gameEngine.stop();
+		threadGameEngine.stop();
 	}
 
 	public void refreshAllComponents()

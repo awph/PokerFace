@@ -30,6 +30,9 @@ public class Pocket extends CardSubset
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Add the card c the {@code Set} by limited the size at {@code NUMBER_OF_CARDS = 2}.
+	 */
 	@Override
 	public void add(Card c)
 	{
@@ -43,6 +46,12 @@ public class Pocket extends CardSubset
 	|*				Get				*|
 	\*------------------------------*/
 
+	/**
+	 * Create and return the key of the pocket.
+	 * The creation appends the two value and add "s" if the two cards are the same color, "o" otherwise.
+	 *
+	 * @return the key of the pocket.
+	 */
 	public String getKey()
 	{
 		StringBuilder stringBuilder = new StringBuilder("");

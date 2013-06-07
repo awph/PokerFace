@@ -19,21 +19,60 @@ public class Player extends Observable implements Observer
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * @contains: the current amount of money that the player has.
+	 */
 	protected int				bankroll;
+
+	/**
+	 * @contains: the current amount of money that the player has spent during the current turn.
+	 */
 	protected int				turnSpending;
-	protected boolean			folded;
+
+	/**
+	 * @contains: the current amount of money that the player has spent during the current bet state.
+	 */
 	protected int				betSpending;
-	protected Pocket			pocket;
-	protected Profile			profile;
-	protected Role				role;
-	protected GameEngine		gameEngine;
-	protected StatisticValue	svPreFlop;
-	protected StatisticValue	svFlop;
-	protected StatisticValue	svTurn;
-	protected StatisticValue	svRiver;
+
+	/**
+	 * @contains: the number of times that the player has done a action during the current turn.
+	 */
+	protected int				nbTurnBet;
+	protected boolean			folded;
 	protected boolean			dead;
 	protected boolean			hasWon;
-	protected int				nbTurnBet;
+
+	/**
+	 * @contains: the statistic value for the PreFlop.
+	 */
+	protected StatisticValue	svPreFlop;
+
+	/**
+	 * @contains: the statistic value for the Flop.
+	 */
+	protected StatisticValue	svFlop;
+
+	/**
+	 * @contains: the statistic value for the Turn.
+	 */
+	protected StatisticValue	svTurn;
+
+	/**
+	 * @contains: the statistic value for the River.
+	 */
+	protected StatisticValue	svRiver;
+
+	/**
+	 * @contains: the current pocket of the player(the two cards).
+	 */
+	protected Pocket			pocket;
+	protected Profile			profile;
+
+	/**
+	 * @contains: the role of the player during this turn.
+	 */
+	protected Role				role;
+	protected GameEngine		gameEngine;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -42,12 +81,9 @@ public class Player extends Observable implements Observer
 	/**
 	 * Constructor
 	 *
-	 * @param profile
-	 *            : The player's profile
-	 * @param bankroll
-	 *            : The value of the bankrool
-	 * @param gameEngine
-	 *            : The GameEngine
+	 * @param profile: The player's profile
+	 * @param bankroll: The value of the bankroll
+	 * @param gameEngine: The GameEngine
 	 */
 	public Player(Profile profile, int bankroll, GameEngine gameEngine)
 	{
@@ -136,8 +172,7 @@ public class Player extends Observable implements Observer
 	/**
 	 * Add money to the player's bankroll
 	 *
-	 * @param money
-	 *            : Money to give
+	 * @param money: Money to give
 	 */
 	public void giveMoney(int money)
 	{
@@ -147,8 +182,7 @@ public class Player extends Observable implements Observer
 	/**
 	 * Take money from the player's bankrool
 	 *
-	 * @param money
-	 *            : Money to take
+	 * @param money: Money to take
 	 */
 	public void takeMoney(int money)
 	{
@@ -177,19 +211,28 @@ public class Player extends Observable implements Observer
 	/**
 	 * The player bets the amount
 	 *
-	 * @param amount
-	 *            : Amount to bet
+	 * @param amount: Amount to bet
 	 */
 	public void bet(int amount)
 	{
 		gameEngine.bet(this, amount);
 	}
 
+	/**
+	 * The player bets the small blind.
+	 *
+	 * @param amount: Amount to bet
+	 */
 	public void betSmallBlind()
 	{
 		gameEngine.betBlind(this, true);
 	}
 
+	/**
+	 * The player bets the big blind.
+	 *
+	 * @param amount: Amount to bet
+	 */
 	public void betBigBlind()
 	{
 		gameEngine.betBlind(this, false);
@@ -206,8 +249,7 @@ public class Player extends Observable implements Observer
 	/**
 	 * The player raises, the call value will be automaticly computed
 	 *
-	 * @param amount
-	 *            : Money for the raise (bet)
+	 * @param amount: Money for the raise (bet)
 	 */
 	public void raise(int amount)
 	{
@@ -245,8 +287,7 @@ public class Player extends Observable implements Observer
 	/**
 	 * Add new card to the player's pocker
 	 *
-	 * @param card
-	 *            : the new card
+	 * @param card: the new card
 	 */
 	public void addCard(Card card)
 	{
@@ -260,8 +301,7 @@ public class Player extends Observable implements Observer
 	/**
 	 * Remove the amount to the player's turningSpend
 	 *
-	 * @param amount
-	 *            : Money to take
+	 * @param amount: Money to take
 	 */
 	public void removeTurningSpend(int amount)
 	{
@@ -295,8 +335,7 @@ public class Player extends Observable implements Observer
 	/**
 	 * Stop the simulation of the state. If all = true, stop all the simulation
 	 *
-	 * @param Current
-	 *            : true -> current simulation, false -> All simulations
+	 * @param Current: true -> current simulation, false -> All simulations
 	 */
 	public void stopCurrentSimulation(boolean current)
 	{
@@ -322,8 +361,7 @@ public class Player extends Observable implements Observer
 	/**
 	 * Set the role of the player
 	 *
-	 * @param r
-	 *            : The role
+	 * @param r: The role
 	 */
 	public void setRole(Role r)
 	{
@@ -398,6 +436,7 @@ public class Player extends Observable implements Observer
 	{
 		return this.nbTurnBet;
 	}
+
 	/*------------------------------*\
 	|*				Is				*|
 	\*------------------------------*/

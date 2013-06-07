@@ -14,7 +14,7 @@ public class Hand extends CardSubset
 	|*			  Static			*|
 	\*------------------------------*/
 
-	public static final int	NUMBER_CARDS	= 5;
+	public static final int	NUMBER_OF_CARDS	= 5;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -29,10 +29,13 @@ public class Hand extends CardSubset
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Add the card c the {@code Set} by limited the size at {@code NUMBER_OF_CARDS = 5}.
+	 */
 	@Override
 	public void add(Card c)
 	{
-		if (size() < NUMBER_CARDS)
+		if (size() < NUMBER_OF_CARDS)
 		{
 			super.add(c);
 		}
@@ -42,6 +45,12 @@ public class Hand extends CardSubset
 	|*				Get				*|
 	\*------------------------------*/
 
+	/**
+	 * Create and return the key of the Hand.
+	 * The creation of value appends five cards and adds "s" if all five cards are of the same color, "o" otherwise.
+	 *
+	 * @return the key of the pocket.
+	 */
 	public String getKey()
 	{
 		StringBuilder stringBuilder = new StringBuilder("");

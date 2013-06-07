@@ -4,6 +4,7 @@ package ch.hearc.pokerface.gameengine.player;
 
 public enum Role
 {
+	//List of the different possible roll for a player in the game
 	Dealer("Dealer",1), SmallBlind("Small Blind",2), BigBlind("Big Blind",3), Nothing("",4);
 
 	/*------------------------------------------------------------------*\

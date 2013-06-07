@@ -37,7 +37,7 @@ import ch.hearc.pokerface.gui.options.JPanelTopBar;
 import ch.hearc.pokerface.tools.Pair;
 import ch.hearc.pokerface.tools.Triple;
 
-public class GameEngine
+public class GameEngine implements Runnable
 {
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -107,7 +107,7 @@ public class GameEngine
 		nbTurn = 0;
 		pot = new Pot();
 		soundEngine = SoundEngine.getInstance();
-		futureBoard = new Card[Board.NUMBER_CARDS];
+		futureBoard = new Card[Board.NUMBER_OF_CARDS];
 		handsPokerMap = HandsPokerMap.getInstance();
 
 		this.smallBlind = smallBlind;
@@ -171,6 +171,11 @@ public class GameEngine
 		frameMain.gameToMainMenu();
 	}
 
+	public void stop()
+	{
+		HUMAN_PLAYER.stopCurrentSimulation(false);
+	}
+
 	/**
 	 * Set the new capital of the humanplayer
 	 */
@@ -179,6 +184,7 @@ public class GameEngine
 		profilePlayer.setCapital(profilePlayer.getCapital() + HUMAN_PLAYER.getBankroll());
 	}
 
+	@Override
 	public void run()
 	{
 		while(!isFinished)
@@ -213,7 +219,7 @@ public class GameEngine
 			Card card = deck.getNewCard();
 			if (magicIndex == 0)
 			{
-				for(int i = 0; i < Board.NUMBER_CARDS; ++i)
+				for(int i = 0; i < Board.NUMBER_OF_CARDS; ++i)
 				{
 					futureBoard[i] = deck.getNewCard();
 				}

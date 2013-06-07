@@ -75,11 +75,10 @@ public class JFrameMain extends JFrame
 	public void gameToMainMenu()
 	{
 		setFullscreen(false);
-
+		panelGameBoard.stop();
 		panelMainMenu.refreshTopBar();
 		setCard("panelMainMenu");
 	}
-
 
 	public void closeApp()
 	{
@@ -87,6 +86,7 @@ public class JFrameMain extends JFrame
 		if (JOptionPane.showConfirmDialog(null, "Confirm quit?") != 0) { return; }
 		System.exit(0);
 	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
