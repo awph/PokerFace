@@ -4,7 +4,6 @@ package ch.hearc.pokerface.gui.gamescreen.table;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +29,8 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.text.DefaultFormatter;
+
+import net.miginfocom.swing.MigLayout;
 
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
@@ -152,7 +153,6 @@ public class JPanelGameControl extends JPanel
 		else
 		{
 			gameEngine.finishTheGame();
-			gameEngine.leave();
 		}
 
 		betRaiseButton.setEnabled(isHumanPlayerTurn);
@@ -187,7 +187,7 @@ public class JPanelGameControl extends JPanel
 		loggerTextArea.setContentType("text/html");
 		loggerTextArea.setBackground(ColorShop.PF_BACKGROUND_LOGGER);
 		loggerTextArea.setForeground(Color.WHITE);
-		Dimension dim = new Dimension(100, 400);
+		Dimension dim = new Dimension(100, 300);
 		loggerTextArea.setSize(dim);
 		loggerTextArea.setPreferredSize(dim);
 		loggerTextArea.setMinimumSize(dim);
@@ -261,16 +261,12 @@ public class JPanelGameControl extends JPanel
 		JPanel panelGridRight = new JPanel();
 		panelGridRight.setOpaque(false);
 
-		GridLayout gridLayout = new GridLayout(1, 3);
+		setLayout(new MigLayout("insets 0", "[50lp, fill]20", "[20lp, fill]0"));
 
-		panelGridRight.setLayout(gridLayout);
-		panelGridRight.add(boxControls);
-		panelGridRight.add(scrollPane);
-		panelGridRight.add(statisticsPanel);
-
-		add(new JLabel(ImageShop.ICON_HANDRANKING), BorderLayout.WEST);
-		add(panelGridRight, BorderLayout.CENTER);
-
+		add(new JLabel(ImageShop.ICON_HANDRANKING), "width " + "15%!");
+		add(boxControls, "width " + "15%!");
+		add(scrollPane, "width " + "20%!");
+		add(statisticsPanel, "width " + "50%!");
 	}
 
 	private void control()

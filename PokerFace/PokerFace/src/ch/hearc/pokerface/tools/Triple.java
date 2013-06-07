@@ -26,6 +26,7 @@ public class Triple<T,U,V> implements Comparable<Triple<T,U,V>>
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public int compareTo(Triple<T, U, V> o)
 	{

@@ -50,8 +50,8 @@ public class JPanelStatistics extends JPanel
 	\*------------------------------*/
 
 	private static final int				PERCENT_WIDTH_TITLE		= 17;
-	private static final int				PERCENT_WIDTH_GRADIENT	= 60;
-	private static final int				PERCENT_WIDTH_VALUE		= 23;
+	private static final int				PERCENT_WIDTH_GRADIENT	= 58;
+	private static final int				PERCENT_WIDTH_VALUE		= 25;
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|

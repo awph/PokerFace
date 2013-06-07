@@ -75,9 +75,9 @@ public class JFrameMain extends JFrame
 	public void gameToMainMenu()
 	{
 		setFullscreen(false);
-		panelGameBoard.stop();
 		panelMainMenu.refreshTopBar();
 		setCard("panelMainMenu");
+		panelGameBoard.stop();
 	}
 
 	public void closeApp()

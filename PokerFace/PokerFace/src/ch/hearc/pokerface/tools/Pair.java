@@ -25,6 +25,7 @@ public class Pair<T,U> implements Comparable<Pair<T,U>>
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public int compareTo(Pair<T, U> o)
 	{

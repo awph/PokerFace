@@ -82,8 +82,11 @@ public class JPanelGameBoard extends JPanel
 	@SuppressWarnings("deprecation")
 	public synchronized void stop()
 	{
-		gameEngine.stop();
-		threadGameEngine.stop();
+		if (!gameEngine.getIsFinished())
+		{
+			gameEngine.stop();
+			threadGameEngine.stop();
+		}
 	}
 
 	public void refreshAllComponents()
