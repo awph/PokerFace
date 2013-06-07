@@ -160,6 +160,7 @@ public class BettingState extends State
 	private void firstBetProcessing(GameEngine ge, Player player)
 	{
 		boolean hasBigBlindToPlayTwice = false;
+		boolean bigBlindCantPlayMore = false;
 		boolean isThePlayerTheLastRaisePlayer = false;
 
 		while(!isThePlayerTheLastRaisePlayer)
@@ -188,11 +189,13 @@ public class BettingState extends State
 			isThePlayerTheLastRaisePlayer = player == ge.getLastRaisePlayer();
 
 			//We check if everybody checks, the BB can play twice, but only in this case !
-			if(hasBigBlindToPlayTwice)
+			if(hasBigBlindToPlayTwice && !bigBlindCantPlayMore)
 			{
 				isThePlayerTheLastRaisePlayer = true;
+				hasBigBlindToPlayTwice = false;
+				bigBlindCantPlayMore = true;
 			}
-			else if(isThePlayerTheLastRaisePlayer && player.getRole() == Role.BigBlind && ge.getBet() <= ge.getBigBlind())
+			else if(isThePlayerTheLastRaisePlayer && !bigBlindCantPlayMore && player.getRole() == Role.BigBlind && ge.getBet() <= ge.getBigBlind())
 			{
 				hasBigBlindToPlayTwice = true;
 				isThePlayerTheLastRaisePlayer = false;
