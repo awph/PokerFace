@@ -141,9 +141,9 @@ public class JPanelGameArea extends ImagePanel
 			case 10:
 				panelPlayer.add(playerComponents.get(9), "pos 0.75al 0.9al");
 			case 9:
-				panelPlayer.add(playerComponents.get(8), "pos 0.95al 0.05al");
+				panelPlayer.add(playerComponents.get(8), "pos 0.95al 0.75al");
 			case 8:
-				panelPlayer.add(playerComponents.get(7), "pos 0.95al 0.75al");
+				panelPlayer.add(playerComponents.get(7), "pos 0.95al 0.05al");
 			case 7:
 				panelPlayer.add(playerComponents.get(6), "pos 0.75al 0-pref/5");
 			case 6:

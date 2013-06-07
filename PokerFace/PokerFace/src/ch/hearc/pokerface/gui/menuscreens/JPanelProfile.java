@@ -157,6 +157,8 @@ public class JPanelProfile extends ImagePanel
 		ButtonTools.setStyleToButton(quit, "pink");
 		ButtonTools.setStyleToButton(createProfileButton, "pink");
 
+		container.setSize(200, 200);
+
 		setLayout(new BorderLayout());
 
 		JPanel panelButtons = new JPanel();

@@ -75,6 +75,10 @@ public class JFrameMain extends JFrame
 	public void gameToMainMenu()
 	{
 		setFullscreen(false);
+		setSize(1200, (int)(1200 * 0.75));
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation((int)((dim.getWidth() - getWidth()) / 2), (int)((dim.getHeight() - getHeight()) / 2));
+
 		panelMainMenu.refreshTopBar();
 		setCard("panelMainMenu");
 		panelGameBoard.stop();

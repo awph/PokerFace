@@ -1,7 +1,6 @@
 
 package ch.hearc.pokerface.gui.profile;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -10,10 +9,17 @@ import java.util.Random;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
+
+import net.miginfocom.swing.MigLayout;
 
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
 import ch.hearc.pokerface.gui.tools.ButtonTools;
+import ch.hearc.pokerface.gui.tools.ColorShop;
 import ch.hearc.pokerface.gui.tools.JPanelGlue;
 
 public class NewProfileComponent extends ProfileComponentPanel
@@ -23,12 +29,12 @@ public class NewProfileComponent extends ProfileComponentPanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	private JButton okButton;
-	private ProfileListContainer parent;
-	private JTextField nameProfile;
+	private JButton					okButton;
+	private ProfileListContainer	parent;
+	private JTextField				nameProfile;
 
 	// Tools
-	private Random random = new Random();
+	private Random					random	= new Random();
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
@@ -43,6 +49,7 @@ public class NewProfileComponent extends ProfileComponentPanel
 		geometry();
 		control();
 	}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
@@ -63,23 +70,39 @@ public class NewProfileComponent extends ProfileComponentPanel
 		setLayout(new GridLayout());
 		okButton = new JButton("OK");
 
-		nameProfile = new JTextField("Name",5);
-		nameProfile.setForeground(Color.RED);
+		JPanel okPanel = new JPanel();
+		okPanel.setOpaque(false);
+		okPanel.setLayout(new MigLayout(""));
+		ButtonTools.setStyleToButton(okButton, "pink");
+		okPanel.add(okButton, "pos 0.5al 0.5al");
+
+		nameProfile = new JTextField("Name", 5);
+		nameProfile.setDocument(new JTextFieldLimit(10));
+		nameProfile.setForeground(ColorShop.PF_RED);
+
+		JPanel namePanel = new JPanel();
+		namePanel.setLayout(new MigLayout());
+		namePanel.setOpaque(false);
+		namePanel.add(nameProfile, "w 200, h 100, pos 0.5al 0.5al");
+
 		try
 		{
 			nameProfile.setFont(ButtonTools.getButtonFont(false));
 		}
-		catch (Exception e) {
+		catch (Exception e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		nameProfile.setMaximumSize(new Dimension(200, 50));
 
-		add(nameProfile);
+		add(namePanel);
 		add(new JPanelGlue(BoxLayout.X_AXIS));
-		add(okButton);
+		add(okPanel);
 
 	}
+
 	private void control()
 	{
 		okButton.addActionListener(new ActionListener()
@@ -89,7 +112,7 @@ public class NewProfileComponent extends ProfileComponentPanel
 			public void actionPerformed(ActionEvent e)
 			{
 
-				NewProfileComponent.this.parent.addProfileFromNew(new Profile(nameProfile.getText(),random.nextInt(30) + 1,10000),NewProfileComponent.this);
+				NewProfileComponent.this.parent.addProfileFromNew(new Profile(nameProfile.getText(), random.nextInt(30) + 1, 10000), NewProfileComponent.this);
 				NewProfileComponent.this.parent.getProfilePanel().toggleCreateProfileButton();
 			}
 		});
@@ -101,5 +124,26 @@ public class NewProfileComponent extends ProfileComponentPanel
 		// TODO Auto-generated method stub
 		return null;
 	}
-}
 
+	private class JTextFieldLimit extends PlainDocument
+	{
+		private int	limit;
+
+		JTextFieldLimit(int limit)
+		{
+			super();
+			this.limit = limit;
+		}
+
+		@Override
+		public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException
+		{
+			if (str == null) { return; }
+
+			if ((getLength() + str.length()) <= limit)
+			{
+				super.insertString(offset, str, attr);
+			}
+		}
+	}
+}
