@@ -45,7 +45,7 @@ public final class JPanelAbout extends JPanel
 	private JPanelAbout()
 	{
 		heArc = new JLabel("",ImageShop.IMAGE_HE_ARC,0);
-		autors = new JLabel("<html><p><b>Diego Antognini</b>, <b>Danick Fort</b> and <b>Alexandre Perez</b> in the class <b>INF2-DLMa</b></p></html>");
+		autors = new JLabel("<html><p><b>Diego Antognini INF2dlm-a</b><br /><b>Danick Fort INF2dlm-a</b><br /><b>Alexandre Perez INF2dlm-a</b></p></html>");
 		copyright = new JLabel("<html><p style=\"text-align:center;\"><b>Copyright &copy; HE-Arc - 2013</b></p></html>");
 		links = new JLabel("<html><p>Wallpaper : <a href=\"http://pixelperfectdigital.com/digitals/0/51/dspname.html\">http://pixelperfectdigital.com/digitals/0/51/dspname.html</a><br />" +
 				"Cards : <a href=\"http://sourceforge.net/projects/vector-cards/\">http://sourceforge.net/projects/vector-cards/</a><br />" +

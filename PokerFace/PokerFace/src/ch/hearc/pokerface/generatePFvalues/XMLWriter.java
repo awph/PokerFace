@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneous.simulation.common;
+package ch.hearc.pokerface.generatePFvalues;
 
 import java.io.File;
 import java.text.DecimalFormat;

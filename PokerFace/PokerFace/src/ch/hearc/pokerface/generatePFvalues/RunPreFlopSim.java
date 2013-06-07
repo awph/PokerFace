@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneous.simulation.preflop;
+package ch.hearc.pokerface.generatePFvalues;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -11,9 +11,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import ch.hearc.miscellaneous.simulation.common.Method;
-import ch.hearc.miscellaneous.simulation.common.Record;
-import ch.hearc.miscellaneous.simulation.common.XMLWriter;
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.cards.CardColor;
 import ch.hearc.pokerface.gameengine.cards.CardValue;

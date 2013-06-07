@@ -463,7 +463,7 @@ public class GameEngine implements Runnable
 	public void updateGUI()
 	{
 		panelGameBoard.updateGUI();
-		JPanelTopBar.getInstance().setCapital(Integer.toString(HUMAN_PLAYER.getBankroll() + profilePlayer.getCapital()));
+		JPanelTopBar.getInstance().setCapital(Integer.toString(profilePlayer.getCapital()));
 	}
 
 	/**

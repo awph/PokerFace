@@ -1,5 +1,5 @@
 
-package ch.hearc.miscellaneous.simulation.preflop;
+package ch.hearc.pokerface.generatePFvalues;
 
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.cards.CardColor;
