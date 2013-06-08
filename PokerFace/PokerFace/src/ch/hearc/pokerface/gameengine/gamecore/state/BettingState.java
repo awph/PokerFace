@@ -165,10 +165,28 @@ public class BettingState extends State
 
 		while(!isThePlayerTheLastRaisePlayer)
 		{
-			if (!postSmallBlind && ge.getNbPlayers() > 2)
+			if (!postSmallBlind)
 			{
-				player.betSmallBlind();
-				postSmallBlind = true;
+				//TODO: Diego, test and deletes this todo if you think it's good like this
+				if(ge.getNbPlayers() == 2)
+				{
+					if(ge.getCurrentPlayer().getRole() != Role.Dealer)
+					{
+						ge.changeCurrentPlayer();
+						player = ge.getCurrentPlayer();
+						player.betSmallBlind();
+						postSmallBlind = true;
+						ge.changeCurrentPlayer();
+						player = ge.getCurrentPlayer();
+						player.betBigBlind();
+						postBigBlind = true;
+					}
+				}
+				else
+				{
+					player.betSmallBlind();
+					postSmallBlind = true;
+				}
 			}
 			else if (!postBigBlind)
 			{
