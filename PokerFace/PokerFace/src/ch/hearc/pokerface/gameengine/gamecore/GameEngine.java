@@ -35,7 +35,6 @@ import ch.hearc.pokerface.gui.JFrameMain;
 import ch.hearc.pokerface.gui.gamescreen.table.board.JPanelGameBoard;
 import ch.hearc.pokerface.gui.options.JPanelTopBar;
 import ch.hearc.pokerface.tools.Pair;
-import ch.hearc.pokerface.tools.Triple;
 
 public class GameEngine implements Runnable
 {
@@ -59,7 +58,7 @@ public class GameEngine implements Runnable
 	private int					nbTurn;
 
 	private boolean				finished;
-	private boolean currentGameFinished;
+	private boolean				currentGameFinished;
 
 	private Pot					pot;
 	private Board				board;
@@ -90,12 +89,19 @@ public class GameEngine implements Runnable
 
 	/**
 	 * GameEngine
-	 * @param frame : The frame with which the GameEngine will interact
-	 * @param smallBlind : The value of the smallBlind
-	 * @param nbPlayer : Number of player
-	 * @param profile : The profile of the human player
-	 * @param bankroll : The bankroll of the players
-	 * @param panelGameBoard : The panel with which the GameEngine will interact
+	 *
+	 * @param frame
+	 *            : The frame with which the GameEngine will interact
+	 * @param smallBlind
+	 *            : The value of the smallBlind
+	 * @param nbPlayer
+	 *            : Number of player
+	 * @param profile
+	 *            : The profile of the human player
+	 * @param bankroll
+	 *            : The bankroll of the players
+	 * @param panelGameBoard
+	 *            : The panel with which the GameEngine will interact
 	 */
 	public GameEngine(JFrameMain frame, int smallBlind, int nbPlayer, Profile profile, int bankroll, JPanelGameBoard panelGameBoard)
 	{
@@ -197,6 +203,7 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Change the current player
+	 *
 	 * @return return the index of the new current player
 	 */
 	public int changeCurrentPlayer()
@@ -210,6 +217,7 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Draw a card from the deck
+	 *
 	 * @return card just drawed in the deck
 	 */
 	public Card drawCard()
@@ -237,8 +245,11 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Bet action
-	 * @param player : The player
-	 * @param amount : The amount
+	 *
+	 * @param player
+	 *            : The player
+	 * @param amount
+	 *            : The amount
 	 */
 	public void bet(Player player, int amount)
 	{
@@ -255,7 +266,9 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Call action
-	 * @param player : The player
+	 *
+	 * @param player
+	 *            : The player
 	 */
 	public void call(Player player)
 	{
@@ -279,8 +292,11 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Raise action
-	 * @param player : The player
-	 * @param amount : The amount
+	 *
+	 * @param player
+	 *            : The player
+	 * @param amount
+	 *            : The amount
 	 */
 	public void raise(Player player, int amount)
 	{
@@ -297,7 +313,9 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Allin action
-	 * @param player : The player
+	 *
+	 * @param player
+	 *            : The player
 	 */
 	public void allin(Player player)
 	{
@@ -308,7 +326,9 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Check action
-	 * @param player : The player
+	 *
+	 * @param player
+	 *            : The player
 	 */
 	public void check(Player player)
 	{
@@ -325,7 +345,9 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Fold action
-	 * @param player : The player
+	 *
+	 * @param player
+	 *            : The player
 	 */
 	public void fold(Player player)
 	{
@@ -339,8 +361,11 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Bet small/big blind action
-	 * @param player : The player
-	 * @param isSmall : True if it's the small blind, false if it's the big one
+	 *
+	 * @param player
+	 *            : The player
+	 * @param isSmall
+	 *            : True if it's the small blind, false if it's the big one
 	 */
 	public void betBlind(Player player, boolean isSmall)
 	{
@@ -401,8 +426,8 @@ public class GameEngine implements Runnable
 			logPlayerFinalResult((pair.getKey().getRank() == bestRank ? "<b style=\"color:green;\">Winner</b>" : "<b style=\"color:red;\">Loser</b>"), p, pair.getKey().getHandName());
 		}
 
-		//Map<Rank,Triple<groupPot,SumBets,List<Player>>>
-		Map<Integer, Triple<Integer, Integer, List<Player>>> playerSortByRank = new TreeMap<Integer, Triple<Integer, Integer, List<Player>>>();
+		//Map<Rank,List<Player>>
+		Map<Integer, List<Player>> playerSortByRank = new TreeMap<Integer, List<Player>>();
 
 		//Groupe all players by ranking and if there is an equality, there would be n players in the same group
 		for(int i = 0; i < handsValues.size(); ++i)
@@ -412,33 +437,33 @@ public class GameEngine implements Runnable
 			int rank = pair.getKey().getRank();
 			if (playerSortByRank.get(rank) == null)
 			{
-				playerSortByRank.put(rank, new Triple<Integer, Integer, List<Player>>(0, 0, new ArrayList<Player>()));
+				playerSortByRank.put(rank, new ArrayList<Player>());
 			}
-			Triple<Integer, Integer, List<Player>> triple = playerSortByRank.get(rank);
-			triple.getValue2().add(pair.getValue());
-			playerSortByRank.put(rank, triple);
+
+			List<Player> list = playerSortByRank.get(rank);
+			list.add(pair.getValue());
+			playerSortByRank.put(rank, list);
 		}
 
 		//We transform it to an array
-		Set<Entry<Integer, Triple<Integer, Integer, List<Player>>>> entrySet = playerSortByRank.entrySet();
+		Set<Entry<Integer, List<Player>>> entrySet = playerSortByRank.entrySet();
 		@SuppressWarnings("unchecked")
-		Triple<Integer, Integer, List<Player>>[] triples = new Triple[entrySet.size()];
+		List<Player>[] playerList = new ArrayList[entrySet.size()];
 		int i = 0;
-		for(Entry<Integer, Triple<Integer, Integer, List<Player>>> entry:entrySet)
+		for(Entry<Integer, List<Player>> entry:entrySet)
 		{
-			Triple<Integer, Integer, List<Player>> triple = entry.getValue();
-			triples[i++] = new Triple<Integer, Integer, List<Player>>(triple.getKey(), triple.getValue1(), triple.getValue2());
+			playerList[i++] = entry.getValue();
 		}
 
 		//We put the flag hasWon to true for the player(s) who win(s)
-		for(i = 0; i < triples[0].getValue2().size(); ++i)
+		for(i = 0; i < playerList[0].size(); ++i)
 		{
-			triples[0].getValue2().get(i).win();
+			playerList[0].get(i).win();
 		}
 
 		currentGameFinished = true;
 		updateGUI();
-		divideUpPot(triples);
+		divideUpPot(playerList);
 		finished = players.size() == 1;
 		if (finished || indexPlayer >= players.size())
 		{
@@ -477,7 +502,9 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Add a card to the current board
-	 * @param card : New card to add
+	 *
+	 * @param card
+	 *            : New card to add
 	 */
 	public void addToBoard(Card card)
 	{
@@ -683,68 +710,83 @@ public class GameEngine implements Runnable
 	\*------------------------------------------------------------------*/
 
 	/**
-	 * Divide up the pot correctily. It takes into account the bet that each player has play and divide up the pot correctely, first to the winner and if the winner had a smaller pot than the other, so the second group will divide up the rest of the pot etc..
-	 * @param triples
-	 *            Triple<groupPot,SumBets,List<Player>>
+	 * Divide up the pot
+	 *
+	 * @param playerList
+	 *            List<Player>[]
 	 */
-	private void divideUpPot(Triple<Integer, Integer, List<Player>>[] triples)
+	private void divideUpPot(List<Player>[] playerList)
 	{
-		for(int i = 0; i < triples.length; ++i)
+		int nbPlayer = 0;
+		for(List<Player> list:playerList)
+		{
+			nbPlayer += list.size();
+		}
+		int indexWinValues = 0;
+		int[] winValues = new int[nbPlayer];
+
+		//We make a copy for the logger
+		@SuppressWarnings("unchecked")
+		List<Player>[] copyPlayerList = new List[playerList.length];
+
+		for(int i = 0; i < playerList.length; ++i)
+		{
+			copyPlayerList[i] = new ArrayList<Player>();
+			for(Player p:playerList[i])
+			{
+				copyPlayerList[i].add(p);
+			}
+		}
+		//DivideUp pot process
+		for(int i = 0; i < playerList.length; ++i)
 		{
 			//Find the min bet of the group
-			int min = triples[i].getValue2().get(0).getTurnSpending();
+			Player minPlayer = playerList[i].get(0);
+			int min = minPlayer.getTurnSpending();
 
-			for(int j = 0; j < triples[i].getValue2().size(); ++j)
+			for(Player p:playerList[i])
 			{
-				Player p = triples[i].getValue2().get(j);
-				min = (p.getTurnSpending() < min) ? p.getTurnSpending() : min;
-				triples[i].setKey(triples[i].getKey() + p.getTurnSpending());
-				triples[i].setValue1(triples[i].getValue1() + p.getTurnSpending());
+				if (p.getTurnSpending() < min)
+				{
+					min = p.getTurnSpending();
+					minPlayer = p;
+				}
 			}
 
-			//Decrease the min found to all next players and add each bet to the groupPot
-			for(int j = i + 1; j < triples.length; ++j)
+			int groupPot = 0;
+			//Decrease the min found to all next players
+			for(int j = i; j < playerList.length; ++j)
 			{
-				for(int k = 0; k < triples[j].getValue2().size(); ++k)
+				for(int k = 0; k < playerList[j].size(); ++k)
 				{
-					Player p = triples[j].getValue2().get(k);
+					Player p = playerList[j].get(k);
 					if (p.getTurnSpending() >= min)
 					{
 						p.removeTurningSpend(min);
-						triples[i].setKey(triples[i].getKey() + min);
+						groupPot += min;
 					}
 					else
 					{
-						triples[i].setKey(triples[i].getKey() + p.getTurnSpending());
-						p.removeTurningSpend(min);
+						groupPot += p.getTurnSpending();
+						p.removeTurningSpend(p.getTurnSpending());
 					}
 				}
 			}
-		}
 
-		int nbPlayer = 0;
-		for(Triple<Integer, Integer, List<Player>> triple:triples)
-		{
-			nbPlayer += triple.getValue2().size();
-		}
+			groupPot /= playerList[i].size();
 
-		int[] winValues = new int[nbPlayer];
-
-		//We know now which money each player has to receive, so we process
-		for(int i = 0; i < triples.length; ++i)
-		{
-			for(int j = 0; j < triples[i].getValue2().size(); ++j)
+			pot.removeAmount(groupPot * playerList[i].size());//We leave a rest if it's not possible to divide
+			for(int j = 0; j < playerList[i].size(); ++j)
 			{
-				Player p = triples[i].getValue2().get(j);
-				int moneyGiven = triples[i].getKey() * p.getTurnSpending();
-				if (moneyGiven != 0 && triples[i].getValue1() != 0)
-				{
-					moneyGiven /= triples[i].getValue1();
-					pot.removeAmount(moneyGiven);
-					p.giveMoney(moneyGiven);
-					winValues[i + j] += moneyGiven;
-				}
+				playerList[i].get(j).giveMoney(groupPot);
+				winValues[indexWinValues + j] += groupPot;
 			}
+			playerList[i].remove(minPlayer);
+			if (playerList[i].size() > 0)
+			{
+				--i;
+			}
+			++indexWinValues;
 		}
 
 		//There might be a rest if the pot is not divisible (if it's a prime number or and odd one). In this case, we take the rest and distribute it between all the first group of winners, $ per $
@@ -753,9 +795,9 @@ public class GameEngine implements Runnable
 
 		while(rest != 0)
 		{
-			for(int i = 0; i < triples[0].getValue2().size(); ++i)
+			for(int i = 0; i < copyPlayerList[0].size(); ++i)
 			{
-				Player p = triples[0].getValue2().get(i);
+				Player p = copyPlayerList[0].get(i);
 				if (rest > 0)
 				{
 					p.giveMoney(1);
@@ -765,11 +807,10 @@ public class GameEngine implements Runnable
 			}
 		}
 
-		int indexWinValues = 0;
-		for(Triple<Integer, Integer, List<Player>> triple:triples)
+		indexWinValues = 0;
+		for(List<Player> list:copyPlayerList)
 		{
-			List<Player> players = triple.getValue2();
-			for(Player p:players)
+			for(Player p:list)
 			{
 				logPlayerAction(p, Action.WinMoney, winValues[indexWinValues++]);
 			}
@@ -795,7 +836,8 @@ public class GameEngine implements Runnable
 	}
 
 	/**
-	 * @param val : The index with which we want the next one
+	 * @param val
+	 *            : The index with which we want the next one
 	 * @return the index of the next player
 	 */
 	private int getNextIndex(int val)
@@ -804,7 +846,8 @@ public class GameEngine implements Runnable
 	}
 
 	/**
-	 * @param val : The index with which we want the next one
+	 * @param val
+	 *            : The index with which we want the next one
 	 * @return the index of the previous player
 	 */
 	private int getPreviousIndex(int val)
@@ -889,7 +932,9 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Log simply a message
-	 * @param message : Message to log
+	 *
+	 * @param message
+	 *            : Message to log
 	 */
 	private void log(final String message)
 	{
@@ -928,9 +973,13 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Log a specific player's action
-	 * @param player : The player to log
-	 * @param action : The player's action
-	 * @param amount : The player's amount
+	 *
+	 * @param player
+	 *            : The player to log
+	 * @param action
+	 *            : The player's action
+	 * @param amount
+	 *            : The player's amount
 	 */
 	private void logPlayerAction(Player player, Action action, int amount)
 	{
@@ -949,8 +998,11 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Log a specific player's action WITHOUT any amounts, i.e. xxx sits out
-	 * @param player : The player to log
-	 * @param action : The player's action
+	 *
+	 * @param player
+	 *            : The player to log
+	 * @param action
+	 *            : The player's action
 	 */
 	private void logPlayerAction(Player player, Action action)
 	{
@@ -959,8 +1011,11 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Log the current board
-	 * @param state : The current state
-	 * @param cards : The card of the current state
+	 *
+	 * @param state
+	 *            : The current state
+	 * @param cards
+	 *            : The card of the current state
 	 */
 	private void logBoard(String state, String cards)
 	{
@@ -975,9 +1030,13 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Log the result of the showdown for a player
-	 * @param rank : The rank of the player
-	 * @param player : The Player
-	 * @param handName : The player's hand
+	 *
+	 * @param rank
+	 *            : The rank of the player
+	 * @param player
+	 *            : The Player
+	 * @param handName
+	 *            : The player's hand
 	 */
 	private void logPlayerFinalResult(String rank, Player player, String handName)
 	{
@@ -988,7 +1047,9 @@ public class GameEngine implements Runnable
 
 	/**
 	 * Display the dialog that'll say to the player if he lost or won
-	 * @param text : The text to display
+	 *
+	 * @param text
+	 *            : The text to display
 	 */
 	private void showDialog(String text)
 	{
@@ -997,8 +1058,11 @@ public class GameEngine implements Runnable
 
 	/**
 	 * BetRaiseAllin process
-	 * @param player : The current player
-	 * @param amount : The player's amount
+	 *
+	 * @param player
+	 *            : The current player
+	 * @param amount
+	 *            : The player's amount
 	 */
 	private void betRaiseAllinAction(Player player, int amount)
 	{

@@ -101,7 +101,9 @@ public class BettingState extends State
 
 	/**
 	 * Check if everybody has checked or allin. In a nutshell if everybody didn't raise
-	 * @param ge : The GameEngine
+	 *
+	 * @param ge
+	 *            : The GameEngine
 	 * @return
 	 */
 	private boolean allChecked(GameEngine ge)
@@ -131,8 +133,11 @@ public class BettingState extends State
 
 	/**
 	 * State for a normalBet, i.e. the bet after the flop/turn or river
-	 * @param ge : The GameEngine
-	 * @param player : The currentplayer
+	 *
+	 * @param ge
+	 *            : The GameEngine
+	 * @param player
+	 *            : The currentplayer
 	 */
 	private void normalBetProcessing(GameEngine ge, Player player)
 	{
@@ -154,8 +159,11 @@ public class BettingState extends State
 
 	/**
 	 * Only for the bettingstate after the preflop
-	 * @param ge : The GameEngine
-	 * @param player : The currentPlayer
+	 *
+	 * @param ge
+	 *            : The GameEngine
+	 * @param player
+	 *            : The currentPlayer
 	 */
 	private void firstBetProcessing(GameEngine ge, Player player)
 	{
@@ -167,20 +175,16 @@ public class BettingState extends State
 		{
 			if (!postSmallBlind)
 			{
-				//TODO: Diego, test and deletes this todo if you think it's good like this
-				if(ge.getNbPlayers() == 2)
+				if (ge.getNbPlayers() == 2)
 				{
-					if(ge.getCurrentPlayer().getRole() != Role.Dealer)
-					{
-						ge.changeCurrentPlayer();
-						player = ge.getCurrentPlayer();
-						player.betSmallBlind();
-						postSmallBlind = true;
-						ge.changeCurrentPlayer();
-						player = ge.getCurrentPlayer();
-						player.betBigBlind();
-						postBigBlind = true;
-					}
+					ge.changeCurrentPlayer();
+					player = ge.getCurrentPlayer();
+					player.betSmallBlind();
+					postSmallBlind = true;
+					ge.changeCurrentPlayer();
+					player = ge.getCurrentPlayer();
+					player.betBigBlind();
+					postBigBlind = true;
 				}
 				else
 				{
@@ -207,13 +211,13 @@ public class BettingState extends State
 			isThePlayerTheLastRaisePlayer = player == ge.getLastRaisePlayer();
 
 			//We check if everybody checks, the BB can play twice, but only in this case !
-			if(hasBigBlindToPlayTwice && !bigBlindCantPlayMore)
+			if (hasBigBlindToPlayTwice && !bigBlindCantPlayMore)
 			{
 				isThePlayerTheLastRaisePlayer = true;
 				hasBigBlindToPlayTwice = false;
 				bigBlindCantPlayMore = true;
 			}
-			else if(isThePlayerTheLastRaisePlayer && !bigBlindCantPlayMore && player.getRole() == Role.BigBlind && ge.getBet() <= ge.getBigBlind())
+			else if (isThePlayerTheLastRaisePlayer && !bigBlindCantPlayMore && player.getRole() == Role.BigBlind && ge.getBet() <= ge.getBigBlind())
 			{
 				hasBigBlindToPlayTwice = true;
 				isThePlayerTheLastRaisePlayer = false;
