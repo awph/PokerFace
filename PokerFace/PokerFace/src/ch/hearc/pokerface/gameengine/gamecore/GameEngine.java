@@ -58,8 +58,8 @@ public class GameEngine implements Runnable
 	private int					nbRaise;
 	private int					nbTurn;
 
-	private boolean				isFinished;
-	private boolean isCurrentGameFinished;
+	private boolean				finished;
+	private boolean currentGameFinished;
 
 	private Pot					pot;
 	private Board				board;
@@ -187,9 +187,9 @@ public class GameEngine implements Runnable
 	@Override
 	public void run()
 	{
-		while(!isFinished)
+		while(!finished)
 		{
-			state.addCads(this);
+			state.addCards(this);
 			state.bet(this);
 			state.nextSate(this);
 		}
@@ -436,11 +436,11 @@ public class GameEngine implements Runnable
 			triples[0].getValue2().get(i).win();
 		}
 
-		isCurrentGameFinished = true;
+		currentGameFinished = true;
 		updateGUI();
 		divideUpPot(triples);
-		isFinished = players.size() == 1;
-		if (isFinished || indexPlayer >= players.size())
+		finished = players.size() == 1;
+		if (finished || indexPlayer >= players.size())
 		{
 			indexPlayer = 0;
 		}
@@ -488,9 +488,9 @@ public class GameEngine implements Runnable
 	|*				Get				*|
 	\*------------------------------*/
 
-	public boolean getIsCurrentGameFinised()
+	public boolean isCurrentGameFinised()
 	{
-		return isCurrentGameFinished;
+		return currentGameFinished;
 	}
 
 	public int getNbTurn()
@@ -498,9 +498,9 @@ public class GameEngine implements Runnable
 		return nbTurn;
 	}
 
-	public boolean getIsFinished()
+	public boolean isFinished()
 	{
-		return isFinished;
+		return finished;
 	}
 
 	public int getSmallBlind()
@@ -822,7 +822,7 @@ public class GameEngine implements Runnable
 			p.newTurn();
 		}
 
-		if (!isFinished)
+		if (!finished)
 		{
 			if (++nbTurn % NB_TURN_BEFORE_CHANGE_BLIND == 0)
 			{
@@ -830,8 +830,8 @@ public class GameEngine implements Runnable
 				bigBlind *= 2;
 			}
 
-			isCurrentGameFinished = false;
-			isFinished = false;
+			currentGameFinished = false;
+			finished = false;
 			pot.initialize();
 			oldState = null;
 

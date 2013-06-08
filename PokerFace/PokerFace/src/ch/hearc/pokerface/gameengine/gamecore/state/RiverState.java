@@ -10,7 +10,7 @@ public class RiverState extends State
 	\*------------------------------------------------------------------*/
 
 	@Override
-	public void addCads(GameEngine ge)
+	public void addCards(GameEngine ge)
 	{
 		ge.addToBoard(ge.drawCard());
 	}

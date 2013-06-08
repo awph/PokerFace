@@ -3,8 +3,13 @@ package ch.hearc.pokerface.gameengine.player;
 
 import ch.hearc.pokerface.gameengine.gamecore.Action;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
+import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
 import ch.hearc.pokerface.gameengine.player.profile.Profile;
+import ch.hearc.pokerface.gameengine.statistics.Odds;
+import ch.hearc.pokerface.gameengine.statistics.StatisticValue;
 import ch.hearc.pokerface.gameengine.statistics.Statistics;
+import ch.hearc.pokerface.gameengine.subsets.Deck;
+import ch.hearc.pokerface.gameengine.subsets.Pocket;
 import ch.hearc.pokerface.tools.Pair;
 
 public class AI extends Player
@@ -24,7 +29,7 @@ public class AI extends Player
 	private final static double	MIN_COEF_RISK									= 0.8;
 	private final static double	MAX_COEF_RISK									= 1.2;
 	private final static long	TIME_TO_PLAY									= 1500; //ms
-	private final static int	MINIMUN_TRY_BEFORE_ACTION_DEFAULT				= 10;
+	private final static int	MINIMUM_TRY_BEFORE_ACTION_DEFAULT				= 10;
 	private final static long	TIME_BETWEEN_EACH_TRY_TO_ACCESS_SIMULATION_DATA	= 100;	//ms
 
 	/*------------------------------------------------------------------*\
@@ -156,7 +161,7 @@ public class AI extends Player
 					break;
 
 				case FlopState:
-					while(getFlopValues() == null && count++ <= MINIMUN_TRY_BEFORE_ACTION_DEFAULT)
+					while(getFlopValues() == null && count++ <= MINIMUM_TRY_BEFORE_ACTION_DEFAULT)
 					{
 						Thread.sleep(TIME_BETWEEN_EACH_TRY_TO_ACCESS_SIMULATION_DATA);
 					}
@@ -171,7 +176,7 @@ public class AI extends Player
 					}
 					break;
 				case TurnState:
-					while(getTurnValues() == null && count++ <= MINIMUN_TRY_BEFORE_ACTION_DEFAULT)
+					while(getTurnValues() == null && count++ <= MINIMUM_TRY_BEFORE_ACTION_DEFAULT)
 					{
 						Thread.sleep(TIME_BETWEEN_EACH_TRY_TO_ACCESS_SIMULATION_DATA);
 					}
@@ -187,7 +192,7 @@ public class AI extends Player
 					break;
 
 				case RiverState:
-					while(getRiverValues() == null && count++ <= MINIMUN_TRY_BEFORE_ACTION_DEFAULT)
+					while(getRiverValues() == null && count++ <= MINIMUM_TRY_BEFORE_ACTION_DEFAULT)
 					{
 						Thread.sleep(TIME_BETWEEN_EACH_TRY_TO_ACCESS_SIMULATION_DATA);
 					}
@@ -330,7 +335,8 @@ public class AI extends Player
 		return new Pair<Action, Integer>(action, raiseAmount);
 	}
 
-	/*@SuppressWarnings({ "incomplete-switch", "unused" })
+	@SuppressWarnings({ "incomplete-switch", "unused" })
+	@Deprecated
 	private void level1()
 	{
 		try
@@ -417,5 +423,5 @@ public class AI extends Player
 		{
 			e.printStackTrace();
 		}
-	}*/
+	}
 }

@@ -23,7 +23,7 @@ public class BettingState extends State
 	\*------------------------------------------------------------------*/
 
 	@Override
-	public void addCads(GameEngine ge)
+	public void addCards(GameEngine ge)
 	{
 		//Nothing
 	}

@@ -15,7 +15,7 @@ public abstract class State
 
 	public abstract void nextSate(GameEngine ge);
 
-	public abstract void addCads(GameEngine ge);
+	public abstract void addCards(GameEngine ge);
 
 	public abstract void bet(GameEngine ge);
 }

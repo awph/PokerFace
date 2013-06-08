@@ -79,7 +79,7 @@ public class JPanelGameBoard extends JPanel
 	@SuppressWarnings("deprecation")
 	public synchronized void stop()
 	{
-		if (!gameEngine.getIsFinished())
+		if (!gameEngine.isFinished())
 		{
 			gameEngine.stop();
 			threadGameEngine.stop();

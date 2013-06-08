@@ -16,7 +16,7 @@ public class PreFlopState extends State
 	\*------------------------------------------------------------------*/
 
 	@Override
-	public void addCads(GameEngine ge)
+	public void addCards(GameEngine ge)
 	{
 		int nbPlayer = ge.getNbPlayers();
 		for(int i = 0; i < nbPlayer; ++i)

@@ -190,7 +190,7 @@ public class JPanelGameArea extends ImagePanel
 
 	public void updateGUI()
 	{
-		if (!gameEngine.getIsFinished())
+		if (!gameEngine.isFinished())
 		{
 			Card[] cards = gameEngine.getUnorderedBoard();
 

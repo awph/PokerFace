@@ -29,7 +29,7 @@ public class Statistics
 	\*------------------------------------------------------------------*/
 
 	private final static String											FILENAME_XML		= "datas/preflop_values";
-	private final static Map<StateType, Map<String, StatisticValue>>[]	maps				= XMLReader.getXMLValue(FILENAME_XML);
+	private final static Map<StateType, Map<String, StatisticValue>>[]	MAPS				= XMLReader.getXMLValue(FILENAME_XML);
 	private static Map<String, Double>[]								chanceOfCall;
 	public final static int												NUMBER_CARDS_FLOP	= 3;
 	public final static int												NUMBER_CARDS_TURN	= 4;
@@ -49,13 +49,13 @@ public class Statistics
 	 */
 	public static void initialize()
 	{
-		chanceOfCall = new HashMap[maps.length];
+		chanceOfCall = new HashMap[MAPS.length];
 
-		for(int i = 0; i < maps.length; ++i)
+		for(int i = 0; i < MAPS.length; ++i)
 		{
 			chanceOfCall[i] = new HashMap<String, Double>();
 			double max = 0;
-			Set<Entry<String, StatisticValue>> entrySet = maps[i].get(StateType.PreFlopState).entrySet();
+			Set<Entry<String, StatisticValue>> entrySet = MAPS[i].get(StateType.PreFlopState).entrySet();
 			for(Entry<String, StatisticValue> entry:entrySet)
 			{
 				if (entry.getValue().getWin() > max)
@@ -98,7 +98,7 @@ public class Statistics
 	 */
 	public static StatisticValue getPreFlopValues(Pocket p, int nbPlayer)
 	{
-		return maps[nbPlayer - XMLReader.NB_MIN_PLAYER].get(StateType.PreFlopState).get(p.getKey());
+		return MAPS[nbPlayer - XMLReader.NB_MIN_PLAYER].get(StateType.PreFlopState).get(p.getKey());
 	}
 
 	/**

@@ -16,7 +16,7 @@ public class FlopState extends State
 	\*------------------------------------------------------------------*/
 
 	@Override
-	public void addCads(GameEngine ge)
+	public void addCards(GameEngine ge)
 	{
 		for(int i = 0; i < NB_CARD_FLOP; ++i)
 		{
