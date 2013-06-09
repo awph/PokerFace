@@ -241,7 +241,7 @@ public class Statistics
 						if (pocketCard.getValue().getIntValue() == cardValue + 1)
 						{
 							outEnoughStrong = true;
-							break; //On complete la suite par le haut
+							break; //We complet the straight by the top
 						}
 						else
 						{
@@ -258,6 +258,7 @@ public class Statistics
 			}
 		}
 
+		//if the board has a pair or nothing, but we can't have a good hand(minimum a straight). Out is already a Two pairs
 		if (highestBoardType.getIntValue() <= HandType.OnePair.getIntValue() && highestHandType.getIntValue() <= HandType.Straight.getIntValue())
 		{
 			// Counting overcard

@@ -79,7 +79,7 @@ public class Player extends Observable implements Observer
 	\*------------------------------------------------------------------*/
 
 	/**
-	 * Constructor
+	 * Player
 	 *
 	 * @param profile: The player's profile
 	 * @param bankroll: The value of the bankroll

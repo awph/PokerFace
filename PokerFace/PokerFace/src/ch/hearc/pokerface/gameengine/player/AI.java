@@ -18,6 +18,9 @@ public class AI extends Player
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * @contains: the risk is used to simulate a strategy player. It is between 0.8 and 1.2. If it's <1 then the AI plays "safe". Otherwise it's plays aggressive and plays with a slight bluff.
+	 */
 	private double				risk;
 
 	/*------------------------------*\
@@ -36,6 +39,16 @@ public class AI extends Player
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * AI
+	 *
+	 * @param profile
+	 *            : The profil of the AI (name, image)
+	 * @param bankroll
+	 *            : The amount of money for the game
+	 * @param gameEngine
+	 *            : The game engine
+	 */
 	public AI(Profile profile, int bankroll, GameEngine gameEngine)
 	{
 		super(profile, bankroll, gameEngine);
@@ -47,6 +60,9 @@ public class AI extends Player
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * doAction is the methode that is call when the AI need to play.
+	 */
 	@Override
 	public void doAction()
 	{
@@ -143,6 +159,9 @@ public class AI extends Player
 		return Math.pow(Math.pow(Math.E, Math.sqrt(win) / 0.17) + (1.0 - bet) * Math.pow(Math.E, Math.sqrt(1.0 - bet) / 0.24), 1.04) - 40.0 + alreadyBet * 150.0;
 	}
 
+	/**
+	 * Dispatch the compute and do the correct action for each state.
+	 */
 	private void level23()
 	{
 		Action action = null;
@@ -242,6 +261,13 @@ public class AI extends Player
 		}
 	}
 
+	/**
+	 * AI logic for PreFlop, compute and make the correct choice of play.
+	 *
+	 * @param valueWin: chance to win the game at the current game state.
+	 * @param callValue: value, compute by other method, for do the choice.
+	 * @return the Action and the amount if needed
+	 */
 	private Pair<Action, Integer> actionPreFlop(double valueWin, double callValue)
 	{
 		Action action = null;
@@ -289,7 +315,13 @@ public class AI extends Player
 
 		return new Pair<Action, Integer>(action, raiseAmount);
 	}
-
+	/**
+	 * AI logic for Flop, Turn and River, compute and make the correct choice of play.
+	 *
+	 * @param valueWin: chance to win the game at the current game state.
+	 * @param callValue: value, compute by other method, for do the choice.
+	 * @return the Action and the amount if needed
+	 */
 	private Pair<Action, Integer> actionFlopTurnRiver(double valueWin, double callValue)
 	{
 		Action action = Action.Fold;
