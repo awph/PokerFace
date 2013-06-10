@@ -57,6 +57,10 @@ public class JPanelStatistics extends JPanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Displays statistics regarding the player's current hand and probabilities
+	 * @param player
+	 */
 	public JPanelStatistics(Player player)
 	{
 		this.player = player;

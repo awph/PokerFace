@@ -40,6 +40,12 @@ public class JPanelProfile extends ImagePanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * First panel shown when opening the game. Lists profiles found in file "./profile.dat"
+	 * Allows to create or delete profiles.
+	 * @param mainFrame
+	 * @throws Exception
+	 */
 	public JPanelProfile(JFrameMain mainFrame) throws Exception
 	{
 		super(ImageIO.read(ClassLoader.getSystemResource("resources/menus/misc/background.jpg")));
@@ -96,7 +102,10 @@ public class JPanelProfile extends ImagePanel
 		LinkedList<Profile> profileList = new LinkedList<Profile>();
 		try
 		{
+
             File f = new File("profiles.dat");
+
+            // If file doesn't exist, create a new profile.dat containing an empty list of profiles
             if (!f.exists()) {
                 f.createNewFile();
 
@@ -180,13 +189,6 @@ public class JPanelProfile extends ImagePanel
 		outsideBox.add(insideBox);
 		outsideBox.add(Box.createHorizontalGlue());
 
-		/*JPanel container = new JPanel();
-		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
-		container.setOpaque(false);
-		container.add(new JPanelGlue(BoxLayout.Y_AXIS));
-		container.add(outsideBox, BorderLayout.CENTER);
-		container.add(new JPanelGlue(BoxLayout.Y_AXIS));
-		add(container, BorderLayout.CENTER);*/
 		add(outsideBox, BorderLayout.CENTER);
 	}
 

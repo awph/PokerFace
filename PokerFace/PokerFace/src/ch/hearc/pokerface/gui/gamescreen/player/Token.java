@@ -15,6 +15,11 @@ public class Token extends JLabel
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+	/*
+	 * Token constructor
+	 * @param role:
+	 * 			Current role of the specific token. Attached to a playerComponent.
+	 */
 	public Token(String role)
 	{
 

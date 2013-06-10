@@ -48,6 +48,11 @@ public class PlayerComponent extends JPanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/*
+	 * PlayerComponent constructor
+	 * @param player
+	 * 			Reference to player attached to this component
+	 */
 	public PlayerComponent(Player player)
 	{
 		this.player = player;
@@ -74,7 +79,10 @@ public class PlayerComponent extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
-
+/**
+ * Sets a special graphic if player has won
+ * @param b
+ */
 	public void setHasWonGraphics(boolean b)
 	{
 		if (b)
@@ -86,7 +94,10 @@ public class PlayerComponent extends JPanel
 			setBackground(ColorShop.PF_BACKGROUND_PLAYER_COMPONENT);
 		}
 	}
-
+	/**
+	 * Sets a special graphic if player is currently playing
+	 * @param b
+	 */
 	public void setCurrentlyPlayingGraphics(boolean b)
 	{
 		if (b)

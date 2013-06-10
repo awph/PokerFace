@@ -25,6 +25,7 @@ public final class JPanelAbout extends JPanel
 	\*------------------------------------------------------------------*/
 
 	/*
+	 * Dialog showing licensing and authors' information
 	 * @return The only instance of the class
 	 */
 	public final static JPanelAbout getInstance()

@@ -3,6 +3,7 @@ package ch.hearc.pokerface.gameengine.player.profile;
 
 /*
  * Singleton class
+ *
  */
 public final class ActiveProfile
 {
@@ -18,7 +19,7 @@ public final class ActiveProfile
 	\*------------------------------------------------------------------*/
 
 	/*
-	 * @return The only instance of the class
+	 * @return The only instance of the class, which is the current active profile chosen by the user in the profile panel
 	 */
 	public final static ActiveProfile getInstance()
 	{

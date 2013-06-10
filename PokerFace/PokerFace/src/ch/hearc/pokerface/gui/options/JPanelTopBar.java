@@ -91,7 +91,15 @@ public class JPanelTopBar extends JPanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	/*
+	/**
+	 * Is displayed on top when a profile has been selected.
+	 * @contains
+	 * 		The time
+	 * 		Volume control
+	 * 		Avatar
+	 * 		Current capital
+	 * 		Help button
+	 * 		Pokerface logo
 	 * @return The only instance of the class
 	 */
 	public final static JPanelTopBar getInstance()

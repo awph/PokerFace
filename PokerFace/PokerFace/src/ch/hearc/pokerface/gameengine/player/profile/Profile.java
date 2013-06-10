@@ -17,6 +17,13 @@ public class Profile implements Serializable
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/*
+	 * Profile constructor
+	 * @param name :
+	 * 			Name of the profile
+	 * @param avatarId:
+	 * 			Id of the avatar attached to profile
+	 */
 	public Profile(String name, int avatarId)
 	{
 		this.name = name;
@@ -26,11 +33,20 @@ public class Profile implements Serializable
 		}
 		catch (IOException e)
 		{
-			System.err.println("Problème à l'ouverture de l'avatar!");
+			System.err.println("Problï¿½me ï¿½ l'ouverture de l'avatar!");
 			e.printStackTrace();
 		}
 	}
 
+	/*
+	 * Profile constructor
+	 * @param name :
+	 * 			Name of the profile
+	 * @param avatarId:
+	 * 			Id of the avatar attached to profile
+	 * @param capital:
+	 * 			Initial capital given to profile
+	 */
 	public Profile(String name, int avatarId, int capital)
 	{
 		this.name = name;
@@ -41,7 +57,7 @@ public class Profile implements Serializable
 		}
 		catch (IOException e)
 		{
-			System.err.println("Problème à l'ouverture de l'avatar!");
+			System.err.println("Problï¿½me ï¿½ l'ouverture de l'avatar!");
 			e.printStackTrace();
 		}
 	}
@@ -62,7 +78,7 @@ public class Profile implements Serializable
 		}
 		catch (IOException e)
 		{
-			System.err.println("Problème au changement de l'avatar!");
+			System.err.println("Problï¿½me au changement de l'avatar!");
 			e.printStackTrace();
 		}
 	}

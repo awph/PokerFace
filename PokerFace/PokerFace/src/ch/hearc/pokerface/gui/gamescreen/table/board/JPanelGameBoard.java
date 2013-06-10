@@ -29,6 +29,9 @@ public class JPanelGameBoard extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+	/**
+	 * JPanelGameBoard contains the game's area and control portions. It is just a container for these two panels.
+	 */
 	public JPanelGameBoard()
 	{
 		geometry();
@@ -86,6 +89,9 @@ public class JPanelGameBoard extends JPanel
 		}
 	}
 
+	/**
+	 * Refreshes the components to prevent graphical glitches when transitioning to and from this panel
+	 */
 	public void refreshAllComponents()
 	{
 		if (getComponentCount() != 0)

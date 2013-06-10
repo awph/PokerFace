@@ -26,6 +26,9 @@ public class BoardCardsPanel extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+	/**
+	 * BoardCardsPanel is the graphical representation of "the board".
+	 */
 	public BoardCardsPanel()
 	{
 		setOpaque(false);
@@ -52,6 +55,12 @@ public class BoardCardsPanel extends JPanel
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
+
+	/**
+	 * Sets the current board status to match current gamestate
+	 * @param cardArray :
+	 * 			Board cards
+	 */
 	public void setCards(Card[] cardArray)
 	{
 		int n = cardArray.length;
@@ -79,6 +88,9 @@ public class BoardCardsPanel extends JPanel
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Initialize the board's cards to ghost
+	 */
 	private void initBoardCards()
 	{
 		for(int i = 0; i < 3; ++i)
@@ -89,6 +101,9 @@ public class BoardCardsPanel extends JPanel
 		boardCards.add(new BoardCard("river"));
 	}
 
+	/**
+	 * Sets all the board's cards to ghost cards (no card)
+	 */
 	private void setAllGhost()
 	{
 		boardCards.removeAll(boardCards);

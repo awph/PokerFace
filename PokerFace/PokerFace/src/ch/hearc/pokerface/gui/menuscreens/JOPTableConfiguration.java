@@ -29,6 +29,7 @@ public class JOPTableConfiguration extends JOptionPane
 	private static final int	DIVISOR_MIN_BLIND	= 4;
 
 	private static final int	BANKROLL_MIN		= 100;
+
 	private JTextField			bankRollTextField;
 	private JTextField			smallBlindTextField;
 	private JSpinner			nbPlayersSpinner;
@@ -45,6 +46,17 @@ public class JOPTableConfiguration extends JOptionPane
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+
+	/**
+	 * The dialog window allowing the player to choose some game settings.
+	 * These settings are :
+	 * 		- Small blind amount
+	 * 		- Number of players
+	 * 		- The bankroll of each player
+	 *
+	 * @param frameMain
+	 * @param panelGameBoard
+	 */
 	public JOPTableConfiguration(JFrameMain frameMain, JPanelGameBoard panelGameBoard)
 	{
 		this.frameMain = frameMain;
@@ -60,6 +72,10 @@ public class JOPTableConfiguration extends JOptionPane
 		return false;
 	}
 
+	/**
+	 * Shows the dialog and checks the bounds and validity of the values entered
+	 * @return A boolean indicating if the user clicked OK
+	 */
 	public boolean switchToGame()
 	{
 		boolean dialog = false;
@@ -98,6 +114,10 @@ public class JOPTableConfiguration extends JOptionPane
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Checks entered values' bounds and validity
+	 * @return
+	 */
 	private boolean checkValues()
 	{
 		try
@@ -144,12 +164,20 @@ public class JOPTableConfiguration extends JOptionPane
 		return true;
 	}
 
+	/**
+	 * Opens dialog
+	 * @return If user pressed OK
+	 */
 	private boolean showDialog()
 	{
 		String options[] = { "Play", "Cancel" };
 		return showOptionDialog(frameMain, getPanel(), "Table Configuration", DEFAULT_OPTION, PLAIN_MESSAGE, null, options, null) == 0;
 	}
 
+	/**
+	 *
+	 * @return Dialog's panel
+	 */
 	private JPanel getPanel()
 	{
 		JPanel panel = new JPanel();

@@ -12,7 +12,9 @@ public class Avatar extends JLabel
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-
+/*
+ * Avatar image, shown in a ProfileComponent
+ */
 	public Avatar(int id) throws IOException
 	{
 		super();

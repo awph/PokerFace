@@ -45,6 +45,11 @@ public class ProfileListContainer extends Box
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+	/**
+	 * Lists all unserialized profiles in a Box.
+	 * @param profileList
+	 * @param profilePanel
+	 */
 	public ProfileListContainer(LinkedList<Profile> profileList, JPanelProfile profilePanel)
 	{
 		super(BoxLayout.Y_AXIS);

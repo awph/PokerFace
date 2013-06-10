@@ -21,6 +21,10 @@ public abstract class CardComponent extends JLabel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/** Abstract class for a card graphical component. Use PlayerCard and BoardCard instead.
+	 *
+	 * @param card
+	 */
 	public CardComponent(Card card)
 	{
 		this(card.getId());

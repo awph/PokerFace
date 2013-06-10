@@ -35,6 +35,12 @@ public class JPanelGameArea extends ImagePanel
 	private List<PlayerComponent>	playerComponents;
 	private GameEngine				gameEngine;
 
+	/**
+	 * BoardCardsPanel and the 4 following labels are the graphical representations of "the board".
+	 * @contains The board (5 cards maximum, ghost card if less)
+	 * @contains Game information on the left
+	 * @contains Current gamestate on the right
+	 */
 	private BoardCardsPanel			boardCardsPanel;
 
 	private JLabel					potBet;
@@ -47,6 +53,11 @@ public class JPanelGameArea extends ImagePanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * The game's main area, with the players laid out around the table (drawn in an ImagePanel), and the board displayed in the middle.
+	 * @param gameEngine
+	 * @throws IOException
+	 */
 	public JPanelGameArea(GameEngine gameEngine) throws IOException
 	{
 		super(ImageIO.read(ClassLoader.getSystemResource("resources/table/misc/background.png")));
@@ -168,6 +179,11 @@ public class JPanelGameArea extends ImagePanel
 	}
 
 
+	/**
+	 * Gives style to info labels
+	 * @param potString :
+	 * 			Label to be styled
+	 */
 	private void stylePotLabel(JLabel potString)
 	{
 		Font font = potString.getFont();

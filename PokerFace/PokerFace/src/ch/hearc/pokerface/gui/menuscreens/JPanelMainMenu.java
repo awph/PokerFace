@@ -38,6 +38,15 @@ public class JPanelMainMenu extends ImagePanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Main menu of the game.
+	 * @contains
+	 *		Play button
+	 *		About button
+	 *		Quit button
+	 * @param mainFrame
+	 * @throws Exception
+	 */
 	public JPanelMainMenu(JFrameMain mainFrame) throws Exception
 	{
 		super(ImageIO.read(ClassLoader.getSystemResource("resources/menus/misc/background.jpg")));
@@ -73,6 +82,9 @@ public class JPanelMainMenu extends ImagePanel
 		return topBarPanel;
 	}
 
+	/**
+	 * Fixes top bar displaying problem when switching back to this menu
+	 */
 	public void refreshTopBar()
 	{
 		topBarPanel.refreshProfile(ActiveProfile.getInstance().getProfile());

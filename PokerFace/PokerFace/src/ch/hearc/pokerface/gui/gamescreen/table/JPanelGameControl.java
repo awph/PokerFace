@@ -45,19 +45,21 @@ public class JPanelGameControl extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	//Tools
+	//Content
 	private JSpinner			moneySpinner;
 	private JSlider				moneySlider;
 	private JButton				allinButton;
 	private JButton				betRaiseButton;
 	private JButton				checkCallButton;
 	private JButton				foldButton;
-	private boolean				hasHumanPlayed;
-	private boolean				isHumanPlayerTurn;
-	private boolean				mouseIsInLogger			= false;
 
 	private JEditorPane			loggerTextArea;
 	private JPanelStatistics	statisticsPanel;
+
+	//Tools
+	private boolean				hasHumanPlayed;
+	private boolean				isHumanPlayerTurn;
+	private boolean				mouseIsInLogger			= false;
 
 	//IO
 	private GameEngine			gameEngine;
@@ -73,6 +75,15 @@ public class JPanelGameControl extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+	/**
+	 * Is the graphical representation of the game's control panel.
+	 * @contains Logger
+	 * @contains Game statistics's panel
+	 * @contains Control buttons (bet,fold,check,etc...)
+	 * @contains Handsranking cheatsheet
+	 *
+	 * @param gameEngine
+	 */
 	public JPanelGameControl(GameEngine gameEngine)
 	{
 		this.gameEngine = gameEngine;
@@ -406,6 +417,9 @@ public class JPanelGameControl extends JPanel
 		ButtonTools.setStyleToButton(allinButton, "gold");
 	}
 
+	/**
+	 * Disables the player's control buttons and erases the text when it is not his turn
+	 */
 	private void disableButton()
 	{
 		if (!hasHumanPlayed)

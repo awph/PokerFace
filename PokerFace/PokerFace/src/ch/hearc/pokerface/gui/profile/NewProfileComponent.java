@@ -42,6 +42,10 @@ public class NewProfileComponent extends ProfileComponentPanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Created when user wants to make a new profile.
+	 * @param parent
+	 */
 	public NewProfileComponent(ProfileListContainer parent)
 	{
 		super();

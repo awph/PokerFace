@@ -33,6 +33,9 @@ public class ProfileComponent extends ProfileComponentPanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	/**
+	 * Is the component listed in the list of profiles (ProfileListContainer class)
+	 */
 	public ProfileComponent(Profile profile, ProfileListContainer parent)
 	{
 		super();
@@ -43,6 +46,7 @@ public class ProfileComponent extends ProfileComponentPanel
 		deleteButton = new JLabel(ImageShop.ICON_REMOVEPROFILE_SCALED);
 
 		alignedAvatar = new JLabel(profile.getAvatar().getIcon(), SwingConstants.RIGHT);
+
 		geometry();
 		control();
 	}
