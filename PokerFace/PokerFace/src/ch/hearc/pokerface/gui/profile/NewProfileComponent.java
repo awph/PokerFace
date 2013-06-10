@@ -114,7 +114,7 @@ public class NewProfileComponent extends ProfileComponentPanel
 			public void actionPerformed(ActionEvent e)
 			{
 
-				NewProfileComponent.this.parent.addProfileFromNew(new Profile(nameProfile.getText(), random.nextInt(30) + 1, 10000), NewProfileComponent.this);
+				NewProfileComponent.this.parent.addProfileFromNew(new Profile(nameProfile.getText().trim(), random.nextInt(30) + 1, 10000), NewProfileComponent.this);
 				NewProfileComponent.this.parent.getProfilePanel().toggleCreateProfileButton();
 			}
 		});
@@ -125,7 +125,7 @@ public class NewProfileComponent extends ProfileComponentPanel
 			@Override
 			public void removeUpdate(DocumentEvent arg0)
 			{
-				if (nameProfile.getText().length() == 0)
+				if (nameProfile.getText().trim().length() == 0)
 				{
 					okButton.setEnabled(false);
 				}
@@ -138,7 +138,7 @@ public class NewProfileComponent extends ProfileComponentPanel
 			@Override
 			public void insertUpdate(DocumentEvent arg0)
 			{
-				if (nameProfile.getText().length() == 0)
+				if (nameProfile.getText().trim().length() == 0)
 				{
 					okButton.setEnabled(false);
 				}
@@ -151,7 +151,7 @@ public class NewProfileComponent extends ProfileComponentPanel
 			@Override
 			public void changedUpdate(DocumentEvent arg0)
 			{
-				if (nameProfile.getText().length() == 0)
+				if (nameProfile.getText().trim().length() == 0)
 				{
 					okButton.setEnabled(false);
 				}
