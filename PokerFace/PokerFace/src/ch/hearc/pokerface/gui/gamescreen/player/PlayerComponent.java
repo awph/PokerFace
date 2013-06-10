@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import ch.hearc.pokerface.gameengine.player.AI;
 import ch.hearc.pokerface.gameengine.player.Player;
 import ch.hearc.pokerface.gui.gamescreen.card.CardComponent;
 import ch.hearc.pokerface.gui.gamescreen.card.PlayerCard;
@@ -27,6 +28,11 @@ public class PlayerComponent extends JPanel
 
 	//Tools
 	private Player			player;
+
+	/*
+	 * @contains Whether the player's cards has to be showns or not, in case of an all-in from everyone
+	 */
+	boolean allinShow = false;
 
 	//IO
 	private JLabel			name;
@@ -111,7 +117,8 @@ public class PlayerComponent extends JPanel
 
 			if (player.getPocket().getArray().length != 0)
 			{
-				//if (allinShow || !(player instanceof AI))//TODO A METTRE DANS VERSION FINALE
+				//Hide the card of the adverser
+				if (allinShow || !(player instanceof AI))
 				{
 					card1.setCard(player.getPocket().getArray()[0].getId());
 					card2.setCard(player.getPocket().getArray()[1].getId());
@@ -133,6 +140,7 @@ public class PlayerComponent extends JPanel
 
 	public void setAllinShow(boolean b)
 	{
+		allinShow = b;
 	}
 
 	/*------------------------------*\

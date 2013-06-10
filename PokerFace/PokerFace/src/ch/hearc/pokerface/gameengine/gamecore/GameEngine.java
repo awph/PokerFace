@@ -59,6 +59,8 @@ public class GameEngine implements Runnable
 
 	private boolean				finished;
 	private boolean				currentGameFinished;
+	private boolean	postSmallBlind;
+	private boolean	postBigBlind;
 
 	private Pot					pot;
 	private Board				board;
@@ -375,11 +377,13 @@ public class GameEngine implements Runnable
 		if (isSmall)
 		{
 			blind = smallBlind;
+			postSmallBlind = true;
 			action = Action.PostSmallBlind;
 		}
 		else
 		{
 			blind = bigBlind;
+			postBigBlind = true;
 			action = Action.PostBigBlind;
 		}
 
@@ -647,6 +651,15 @@ public class GameEngine implements Runnable
 		}
 	}
 
+	public boolean getPostSmallBlind()
+	{
+		return postSmallBlind;
+	}
+
+	public boolean getPostBigBlind()
+	{
+		return postBigBlind;
+	}
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
@@ -864,6 +877,8 @@ public class GameEngine implements Runnable
 		{
 			p.newTurn();
 		}
+		postSmallBlind = false;
+		postBigBlind = false;
 
 		if (!finished)
 		{

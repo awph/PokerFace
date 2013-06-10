@@ -12,13 +12,6 @@ import ch.hearc.pokerface.gameengine.player.Role;
 public class BettingState extends State
 {
 	/*------------------------------------------------------------------*\
-	|*							Attributs Private						*|
-	\*------------------------------------------------------------------*/
-
-	private static boolean	postSmallBlind	= false;
-	private static boolean	postBigBlind	= false;
-
-	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
@@ -37,7 +30,7 @@ public class BettingState extends State
 			{
 				do
 				{
-					if (!postSmallBlind && !postBigBlind)//In this case, if everybody checks, the big blind can play twice
+					if (!ge.getPostSmallBlind() && !ge.getPostBigBlind())//In this case, if everybody checks, the big blind can play twice
 					{
 						firstBetProcessing(ge, ge.getCurrentPlayer());
 					}
@@ -86,9 +79,6 @@ public class BettingState extends State
 				break;
 
 			case RiverState:
-				//Each time, it's a new instance of BettingState, so we must reinitialize the static attributes
-				postBigBlind = false;
-				postSmallBlind = false;
 				ge.setState(new PreFlopState());
 				ge.showdown();
 				break;
@@ -173,29 +163,25 @@ public class BettingState extends State
 
 		while(!isThePlayerTheLastRaisePlayer)
 		{
-			if (!postSmallBlind)
+			if (!ge.getPostSmallBlind())
 			{
 				if (ge.getNbPlayers() == 2)
 				{
 					ge.changeCurrentPlayer();
 					player = ge.getCurrentPlayer();
 					player.betSmallBlind();
-					postSmallBlind = true;
 					ge.changeCurrentPlayer();
 					player = ge.getCurrentPlayer();
 					player.betBigBlind();
-					postBigBlind = true;
 				}
 				else
 				{
 					player.betSmallBlind();
-					postSmallBlind = true;
 				}
 			}
-			else if (!postBigBlind)
+			else if (!ge.getPostBigBlind())
 			{
 				player.betBigBlind();
-				postBigBlind = true;
 			}
 			else if (player.getBankroll() != 0)
 			{
