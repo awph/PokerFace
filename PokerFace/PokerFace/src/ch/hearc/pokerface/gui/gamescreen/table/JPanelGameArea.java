@@ -230,8 +230,6 @@ public class JPanelGameArea extends ImagePanel
 			}
 			for(PlayerComponent playerComponent:playerComponents)
 			{
-				playerComponent.updateGUI();
-
 				if (playerComponent.getPlayer().getHasWon())
 				{
 					playerComponent.setHasWonGraphics(true);
@@ -249,8 +247,11 @@ public class JPanelGameArea extends ImagePanel
 				{
 					playerComponent.setCurrentlyPlayingGraphics(false);
 				}
+
 				playerComponent.setAllinShow(everyoneAllin);
 				playerComponent.setEndGameShow(gameEngine.isCurrentGameFinised());
+
+				playerComponent.updateGUI();
 			}
 			potBet.setText("<html><font color=black>Current bet</font> : $" + gameEngine.getBet() + "</html>");
 			potTurnTotal.setText("<html><font color=black>Turn total</font> : $" + gameEngine.getTurnTotal() + "</html>");
