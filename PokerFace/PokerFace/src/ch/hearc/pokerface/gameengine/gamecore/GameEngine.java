@@ -496,6 +496,11 @@ public class GameEngine implements Runnable
 		JPanelTopBar.getInstance().setCapital(Integer.toString(profilePlayer.getCapital()));
 	}
 
+	public void updateStatePlayerButtons()
+	{
+		panelGameBoard.switchButtons();
+	}
+
 	/**
 	 * Set the new State
 	 */

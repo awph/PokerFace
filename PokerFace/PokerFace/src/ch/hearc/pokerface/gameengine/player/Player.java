@@ -4,6 +4,8 @@ package ch.hearc.pokerface.gameengine.player;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.SwingUtilities;
+
 import ch.hearc.pokerface.gameengine.cards.Card;
 import ch.hearc.pokerface.gameengine.gamecore.GameEngine;
 import ch.hearc.pokerface.gameengine.gamecore.state.StateType;
@@ -109,28 +111,21 @@ public class Player extends Observable implements Observer
 		nbTurnBet++;
 		stopCurrentSimulation(true);
 
-		new Thread(new Runnable()
-		{
-
-			@Override
-			public void run()
-			{
-				try
-				{
-					Thread.sleep(100);
-				}
-				catch (InterruptedException e)
-				{
-					e.printStackTrace();
-				}
-				gameEngine.updateGUI();
-			}
-		}).start();
+		gameEngine.updateGUI();
 
 		try
 		{
 			synchronized (this)
 			{
+				SwingUtilities.invokeLater(new Runnable()
+				{
+
+					@Override
+					public void run()
+					{
+						gameEngine.updateStatePlayerButtons();
+					}
+				});
 				wait();
 			}
 		}

@@ -77,11 +77,11 @@ public class JPanelGameControl extends JPanel
 	\*------------------------------------------------------------------*/
 	/**
 	 * Is the graphical representation of the game's control panel.
+	 *
 	 * @contains Logger
 	 * @contains Game statistics's panel
 	 * @contains Control buttons (bet,fold,check,etc...)
 	 * @contains Handsranking cheatsheet
-	 *
 	 * @param gameEngine
 	 */
 	public JPanelGameControl(GameEngine gameEngine)
@@ -112,7 +112,7 @@ public class JPanelGameControl extends JPanel
 			betRaiseValue = humanPlayer.getBankroll();
 		}
 
-		if(gameEngine.getOldState() == StateType.PreFlopState)
+		if (gameEngine.getOldState() == StateType.PreFlopState)
 		{
 			statisticsPanel.setCurrentState(StateType.PreFlopState);
 		}
@@ -170,7 +170,10 @@ public class JPanelGameControl extends JPanel
 		{
 			gameEngine.finishTheGame();
 		}
+	}
 
+	public void switchButtons()
+	{
 		betRaiseButton.setEnabled(isHumanPlayerTurn);
 		checkCallButton.setEnabled(isHumanPlayerTurn);
 		foldButton.setEnabled(isHumanPlayerTurn);

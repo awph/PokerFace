@@ -47,6 +47,11 @@ public class JPanelGameBoard extends JPanel
 		gameControl.updateGUI();
 	}
 
+	public void switchButtons()
+	{
+		gameControl.switchButtons();
+	}
+
 	public void start(final GameEngine gameEngine)
 	{
 		this.gameEngine = gameEngine;
