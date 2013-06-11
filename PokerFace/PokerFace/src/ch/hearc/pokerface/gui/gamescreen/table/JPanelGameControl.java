@@ -102,13 +102,17 @@ public class JPanelGameControl extends JPanel
 		Player humanPlayer = GameEngine.HUMAN_PLAYER;
 		int betRaiseValue = gameEngine.getRaiseValue();
 
+		allinButton.setText("");
+		betRaiseButton.setText("");
+		checkCallButton.setText("");
+		foldButton.setText("");
+
 		if (humanPlayer.getBankroll() >= gameEngine.getRaiseValue())
 		{
 			betRaiseValue = gameEngine.getRaiseValue();
 		}
 		else
 		{
-			checkCallButton.setEnabled(false);
 			betRaiseValue = humanPlayer.getBankroll();
 		}
 
@@ -149,13 +153,6 @@ public class JPanelGameControl extends JPanel
 			}
 			allinButton.setText(ALL_IN);
 			foldButton.setText(FOLD);
-		}
-		else
-		{
-			allinButton.setText("");
-			betRaiseButton.setText("");
-			checkCallButton.setText("");
-			foldButton.setText("");
 		}
 
 		if (!gameEngine.isFinished())
