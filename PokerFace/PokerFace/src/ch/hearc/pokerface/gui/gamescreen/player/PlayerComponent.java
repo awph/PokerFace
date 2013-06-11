@@ -32,7 +32,12 @@ public class PlayerComponent extends JPanel
 	/*
 	 * @contains Whether the player's cards has to be showns or not, in case of an all-in from everyone
 	 */
-	boolean allinShow = false;
+	boolean					allinShow;
+
+	/*
+	 * @contains Whether the player's cards has to be showns or not, in case of we are at the end of the game
+	 */
+	boolean					endGameShow;
 
 	//IO
 	private JLabel			name;
@@ -56,6 +61,8 @@ public class PlayerComponent extends JPanel
 	public PlayerComponent(Player player)
 	{
 		this.player = player;
+		allinShow = false;
+		endGameShow = false;
 		//money = new JLabel(Integer.toString(player.getBankroll()));
 
 		money = new JLabel("$" + Integer.toString(player.getBankroll()), ImageShop.ICON_COIN, SwingConstants.CENTER);
@@ -79,10 +86,11 @@ public class PlayerComponent extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
-/**
- * Sets a special graphic if player has won
- * @param b
- */
+	/**
+	 * Sets a special graphic if player has won
+	 *
+	 * @param b
+	 */
 	public void setHasWonGraphics(boolean b)
 	{
 		if (b)
@@ -94,8 +102,10 @@ public class PlayerComponent extends JPanel
 			setBackground(ColorShop.PF_BACKGROUND_PLAYER_COMPONENT);
 		}
 	}
+
 	/**
 	 * Sets a special graphic if player is currently playing
+	 *
 	 * @param b
 	 */
 	public void setCurrentlyPlayingGraphics(boolean b)
@@ -118,21 +128,25 @@ public class PlayerComponent extends JPanel
 			card1.setCard("folded");
 			card2.setCard("empty");
 		}
-		else if(player.isDead())
+		else if (player.isDead())
 		{
 			card1.setCard("sitsout");
 			card2.setCard("empty");
 		}
 		else
 		{
-
 			if (player.getPocket().getArray().length != 0)
 			{
 				//Hide the card of the adverser
-				if (allinShow || !(player instanceof AI))
+				if (endGameShow || allinShow || !(player instanceof AI))
 				{
 					card1.setCard(player.getPocket().getArray()[0].getId());
 					card2.setCard(player.getPocket().getArray()[1].getId());
+				}
+				else
+				{
+					card1.setCard("back");
+					card2.setCard("back");
 				}
 			}
 		}
@@ -154,9 +168,15 @@ public class PlayerComponent extends JPanel
 		allinShow = b;
 	}
 
+	public void setEndGameShow(boolean endGameShow)
+	{
+		this.endGameShow = endGameShow;
+	}
+
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
+
 	public Player getPlayer()
 	{
 		return player;

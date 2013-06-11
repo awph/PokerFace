@@ -59,8 +59,8 @@ public class GameEngine implements Runnable
 
 	private boolean				finished;
 	private boolean				currentGameFinished;
-	private boolean	postSmallBlind;
-	private boolean	postBigBlind;
+	private boolean				postSmallBlind;
+	private boolean				postBigBlind;
 
 	private Pot					pot;
 	private Board				board;
@@ -660,6 +660,7 @@ public class GameEngine implements Runnable
 	{
 		return postBigBlind;
 	}
+
 	/*------------------------------*\
 	|*				Set				*|
 	\*------------------------------*/
