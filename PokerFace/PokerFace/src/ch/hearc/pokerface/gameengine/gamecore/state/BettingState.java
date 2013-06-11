@@ -203,7 +203,7 @@ public class BettingState extends State
 				hasBigBlindToPlayTwice = false;
 				bigBlindCantPlayMore = true;
 			}
-			else if (isThePlayerTheLastRaisePlayer && !bigBlindCantPlayMore && player.getRole() == Role.BigBlind && ge.getBet() <= ge.getBigBlind())
+			else if (isThePlayerTheLastRaisePlayer && Math.abs(ge.getAllInPlayer()-ge.getUnfoldedPlayer()) > 1 && !bigBlindCantPlayMore && player.getRole() == Role.BigBlind && ge.getBet() <= ge.getBigBlind())
 			{
 				hasBigBlindToPlayTwice = true;
 				isThePlayerTheLastRaisePlayer = false;

@@ -386,6 +386,7 @@ public class GameEngine implements Runnable
 			postBigBlind = true;
 			action = Action.PostBigBlind;
 		}
+		pot.setBet(blind);
 
 		if (player.getBankroll() <= blind)
 		{
@@ -395,7 +396,7 @@ public class GameEngine implements Runnable
 		{
 			logPlayerAction(player, action, blind);
 			pot.addStateTotal(blind);
-			pot.setBet(blind);
+
 			player.takeMoney(blind);
 			setIndexLastRaise(player);
 			updateGUI();
@@ -751,6 +752,7 @@ public class GameEngine implements Runnable
 				copyPlayerList[i].add(p);
 			}
 		}
+
 		//DivideUp pot process
 		for(int i = 0; i < playerList.length; ++i)
 		{
