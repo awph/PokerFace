@@ -249,10 +249,7 @@ public class JPanelGameArea extends ImagePanel
 				{
 					playerComponent.setCurrentlyPlayingGraphics(false);
 				}
-				if (everyoneAllin)
-				{
-					playerComponent.setAllinShow(true);
-				}
+				playerComponent.setAllinShow(everyoneAllin);
 			}
 			potBet.setText("<html><font color=black>Current bet</font> : $" + gameEngine.getBet() + "</html>");
 			potTurnTotal.setText("<html><font color=black>Turn total</font> : $" + gameEngine.getTurnTotal() + "</html>");
