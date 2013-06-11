@@ -68,7 +68,7 @@ public class JPanelGameControl extends JPanel
 	|*			  Static			*|
 	\*------------------------------*/
 
-	private static final long	TIME_BETWEEN_EACH_CLICK	= 100;
+	private static final long	TIME_BETWEEN_EACH_CLICK	= 10;
 	private static final String	ALL_IN					= "All in";
 	private static final String	FOLD					= "Fold";
 
@@ -170,6 +170,7 @@ public class JPanelGameControl extends JPanel
 
 	public void switchButtons()
 	{
+		//In the case where the 10 ms is not enough
 		if(hasHumanPlayed)
 		{
 			hasHumanPlayed = false;
