@@ -121,8 +121,7 @@ public class JPanelGameControl extends JPanel
 			statisticsPanel.setCurrentState(StateType.PreFlopState);
 		}
 
-		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon() && !gameEngine.isCurrentGameFinised())
-				&& !(gameEngine.getOldState() == StateType.PreFlopState && (humanPlayer.getRole() == Role.BigBlind || humanPlayer.getRole() == Role.SmallBlind) && humanPlayer.getNbTurnBet() == 1 && humanPlayer.getBetSpending() <= gameEngine.getBigBlind());
+		isHumanPlayerTurn = (humanPlayer == gameEngine.getCurrentPlayer() && !humanPlayer.getHasWon() && !gameEngine.isCurrentGameFinised()) && !(gameEngine.getOldState() == StateType.PreFlopState && (humanPlayer.getRole() == Role.BigBlind || humanPlayer.getRole() == Role.SmallBlind) && humanPlayer.getNbTurnBet() == 1 && humanPlayer.getBetSpending() <= gameEngine.getBigBlind());
 
 		if (!hasHumanPlayed && isHumanPlayerTurn && !humanPlayer.isFolded() && !humanPlayer.isDead() && humanPlayer.getBankroll() != 0)
 		{
@@ -171,6 +170,12 @@ public class JPanelGameControl extends JPanel
 
 	public void switchButtons()
 	{
+		if(hasHumanPlayed)
+		{
+			hasHumanPlayed = false;
+			updateGUI();
+		}
+
 		betRaiseButton.setEnabled(isHumanPlayerTurn);
 		checkCallButton.setEnabled(isHumanPlayerTurn);
 		foldButton.setEnabled(isHumanPlayerTurn);

@@ -109,9 +109,8 @@ public class Player extends Observable implements Observer
 	public void doAction()
 	{
 		nbTurnBet++;
-		stopCurrentSimulation(true);
-
 		gameEngine.updateGUI();
+		stopCurrentSimulation(true);
 
 		try
 		{
@@ -119,7 +118,6 @@ public class Player extends Observable implements Observer
 			{
 				SwingUtilities.invokeLater(new Runnable()
 				{
-
 					@Override
 					public void run()
 					{
