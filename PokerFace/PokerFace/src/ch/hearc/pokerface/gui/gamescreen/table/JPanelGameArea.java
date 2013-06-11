@@ -111,9 +111,9 @@ public class JPanelGameArea extends ImagePanel
 
 		potBet.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, ColorShop.PF_GOLD_COLOR));
 		panelPot.add(potBet);
-		panelPot.add(potTurnTotal);
-		potStateTotal.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, ColorShop.PF_GOLD_COLOR));
+		potTurnTotal.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, ColorShop.PF_GOLD_COLOR));
 		panelPot.add(potStateTotal);
+		panelPot.add(potTurnTotal);
 
 		JPanel containerPanelPot = new JPanel();
 		containerPanelPot.setOpaque(false);
