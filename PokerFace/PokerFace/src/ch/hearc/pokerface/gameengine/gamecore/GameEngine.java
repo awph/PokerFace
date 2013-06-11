@@ -832,6 +832,7 @@ public class GameEngine implements Runnable
 			}
 		}
 
+		updateGUI();
 		//We remove all the play who sits out, because they are so poor ! (They lost all their money)
 		List<Player> playersToKill = new ArrayList<Player>();
 		for(int i = 0; i < players.size(); ++i)
