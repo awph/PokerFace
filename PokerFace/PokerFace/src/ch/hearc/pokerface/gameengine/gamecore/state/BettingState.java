@@ -191,6 +191,7 @@ public class BettingState extends State
 				}
 				player.doAction();
 			}
+			Player oldPlayerBB = player;
 			ge.changeCurrentPlayer();
 			player = ge.getCurrentPlayer();
 
@@ -199,7 +200,7 @@ public class BettingState extends State
 			//We check if everybody checks, the BB can play twice, but only in this case !
 			if (hasBigBlindToPlayTwice && !bigBlindCantPlayMore)
 			{
-				isThePlayerTheLastRaisePlayer = true;
+				isThePlayerTheLastRaisePlayer = oldPlayerBB.getBetSpending() <= ge.getBigBlind();
 				hasBigBlindToPlayTwice = false;
 				bigBlindCantPlayMore = true;
 			}
