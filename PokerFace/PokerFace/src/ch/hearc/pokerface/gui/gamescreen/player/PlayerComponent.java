@@ -29,15 +29,20 @@ public class PlayerComponent extends JPanel
 	//Tools
 	private Player			player;
 
-	/*
+	/**
 	 * @contains Whether the player's cards has to be showns or not, in case of an all-in from everyone
 	 */
 	boolean					allinShow;
 
-	/*
+	/**
 	 * @contains Whether the player's cards has to be showns or not, in case of we are at the end of the game
 	 */
 	boolean					endGameShow;
+
+	/**
+	 * @used For show cards when we are sits out
+	 */
+	boolean					endGameShowAndSitsOut;
 
 	//IO
 	private JLabel			name;
@@ -53,14 +58,16 @@ public class PlayerComponent extends JPanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	/*
+	/**
 	 * PlayerComponent constructor
+	 *
 	 * @param player
-	 * 			Reference to player attached to this component
+	 *            Reference to player attached to this component
 	 */
 	public PlayerComponent(Player player)
 	{
 		this.player = player;
+		this.endGameShowAndSitsOut = false;
 		allinShow = false;
 		endGameShow = false;
 		//money = new JLabel(Integer.toString(player.getBankroll()));
@@ -128,7 +135,7 @@ public class PlayerComponent extends JPanel
 			card1.setCard("folded");
 			card2.setCard("empty");
 		}
-		else if (player.isDead())
+		else if (player.isDead() && endGameShowAndSitsOut)
 		{
 			card1.setCard("sitsout");
 			card2.setCard("empty");
@@ -149,6 +156,11 @@ public class PlayerComponent extends JPanel
 					card2.setCard("back");
 				}
 			}
+		}
+
+		if (player.isDead())
+		{
+			endGameShowAndSitsOut = true;
 		}
 
 		role.setToken(player.getRole().toString());
