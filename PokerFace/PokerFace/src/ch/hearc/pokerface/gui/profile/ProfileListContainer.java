@@ -99,7 +99,7 @@ public class ProfileListContainer extends Box
 			{
 				list.add(new Profile("Profile " + i, 1, 10000));
 			}*/
-			FileOutputStream fileOut = new FileOutputStream("profiles.dat");
+			FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.home") + "\\.PokerFaceProfiles.dat");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(profileList);
 			out.close();

@@ -103,20 +103,20 @@ public class JPanelProfile extends ImagePanel
 		try
 		{
 
-            File f = new File("profiles.dat");
+            File f = new File(System.getProperty("user.home") + "\\.PokerFaceProfiles.dat");
 
             // If file doesn't exist, create a new profile.dat containing an empty list of profiles
             if (!f.exists()) {
                 f.createNewFile();
 
-    			FileOutputStream fileOut = new FileOutputStream("profiles.dat");
+    			FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.home") + "\\.PokerFaceProfiles.dat");
     			ObjectOutputStream out = new ObjectOutputStream(fileOut);
     			out.writeObject(new LinkedList<Profile>());
     			out.close();
     			fileOut.close();
             }
 
-			FileInputStream fileIn = new FileInputStream("profiles.dat");
+			FileInputStream fileIn = new FileInputStream(System.getProperty("user.home") + "\\.PokerFaceProfiles.dat");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			profileList = (LinkedList<Profile>)in.readObject();
 			in.close();
